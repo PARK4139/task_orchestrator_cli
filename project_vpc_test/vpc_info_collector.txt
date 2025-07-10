@@ -1,0 +1,27 @@
+____________________________________________________ 
+TEST ENVIRONMENT OS            : Windows 
+TEST ENVIRONMENT PYTHON        : Python 3.12.8 
+TEST TARGET                    : vision module (xc front)
+TEST TARGET DEVICE ID          : Not Found
+
+[      TRY     ]  cat /sys/firmware/devicetree/base/serial-number && echo ''
+[    OUTPUT    ]  'cat'은(는) 내부 또는 외부 명령, exec 할 수 있는 프로그램, 또는
+[    OUTPUT    ]  배치 파일이 아닙니다.
+[     FAIL     ]  The command did not execute successfully.
+[      TRY     ]  whoami
+[    OUTPUT    ]  desktop-ugleind\user
+[   EXPECTED   ]  nvidia
+[     FAIL     ]  'standard output stream' did not contains 'nvidia'
+[      TRY     ]  hostname
+[    OUTPUT    ]  DESKTOP-UGLEIND
+[   EXPECTED   ]  nvidia
+[     FAIL     ]  'standard output stream' did not contains 'nvidia'
+[      TRY     ]  users
+[    OUTPUT    ]  'users'은(는) 내부 또는 외부 명령, exec 할 수 있는 프로그램, 또는
+[    OUTPUT    ]  배치 파일이 아닙니다.
+[     FAIL     ]  The command did not execute successfully.
+[      TRY     ]  ifconfig eth0
+[    OUTPUT    ]  'ifconfig'은(는) 내부 또는 외부 명령, exec 할 수 있는 프로그램, 또는
+[    OUTPUT    ]  배치 파일이 아닙니다.
+[     FAIL     ]  The command did not execute successfully.
+____________________________________________________ 

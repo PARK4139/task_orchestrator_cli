@@ -1,0 +1,48 @@
+#!/usr/bin/env python   # shebang
+# -*- coding: utf-8 -*- # encoding declaration
+__author__ = 'pk == junghoon.park'
+
+if __name__ == "__main__":
+    try:
+        import traceback
+
+        from colorama import init as pk_colorama_init
+
+        from pkg_py.pk_core import pk_copy, kill_self_pk_program, LTA, assist_to_load_video_at_losslesscut, pk_input_v33_nvim_theme, pk_input_v44_uv_theme
+        from pkg_py.pk_core_constants import UNDERLINE, STAMP_TRY_GUIDE, D_PROJECT, STAMP_UNIT_TEST_EXCEPTION_DISCOVERED, D_WORKING
+        from pkg_py.pk_colorful_cli_util import pk_print
+
+        pk_colorama_init(autoreset=True)
+
+        output = pk_input_v33_nvim_theme(
+            working_str="위와 같이 파일을 분류할까요? (o/x):",
+            limit_seconds=5,
+            return_default="o",
+            fuzzy_accept=[("o", "ok", "yes", "y"), ("x", "no", "n")],
+            validator=lambda s: s.lower() in {"o", "x", "yes", "no", "y", "n"},
+            masked=False,
+        )
+        output2 = pk_input_v44_uv_theme(
+            working_str="위와 같이 파일을 분류할까요? (o/x):",
+            limit_seconds=5,
+            return_default="o",
+            fuzzy_accept=[("o", "ok", "yes", "y"), ("x", "no", "n")],
+            validator=lambda s: s.lower() in {"o", "x", "yes", "no", "y", "n"},
+            masked=False,
+        )
+        assert output==output2 , "assert error"
+
+
+    except:
+        from pkg_py.pk_colorful_cli_util import print_red
+        traceback_format_exc_list = traceback.format_exc().split("\n")
+        print_red(UNDERLINE)
+        for line in traceback_format_exc_list:
+            print_red(f'{STAMP_UNIT_TEST_EXCEPTION_DISCOVERED} {line}')
+        print_red(UNDERLINE)
+
+    finally:
+        script_to_run_python_program_in_venv = rf'{D_PROJECT}\.venv\Scripts\activate && python {__file__} && deactivate'
+        pk_print(working_str=f'{UNDERLINE}')
+        pk_print(working_str=f'{STAMP_TRY_GUIDE} {script_to_run_python_program_in_venv}')
+        pk_print(working_str=f'{UNDERLINE}')

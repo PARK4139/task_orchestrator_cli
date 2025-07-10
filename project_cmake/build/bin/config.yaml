@@ -1,0 +1,18 @@
+integers:
+  max_value: 100
+  min_value: 0
+  default_value: 50
+
+floats:
+  pi: 3.1415
+  e: 2.7182
+  gravity: 9.80665
+
+strings:
+  app_name: "project_cmake"
+  version: "1.0.0"
+  author: "junghonn.Park"
+
+booleans:
+  debug_mode: true
+  verbose_logging: false
