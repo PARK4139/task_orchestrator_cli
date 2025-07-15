@@ -1,6 +1,6 @@
-# pk_system Project
+# common_auto_utility Project
 
-`pk_system` is a collaborative, modular Python-based automation toolkit designed to streamline development, testing, deployment, and system operations. This repository is structured to support **teamwork**, scalability, and consistent workflows across Windows, WSL, and Linux environments.
+`common_auto_utility` is a collaborative, modular Python-based automation toolkit designed to streamline development, testing, deployment, and system operations. This repository is structured to support **teamwork**, scalability, and consistent workflows across Windows, WSL, and Linux environments.
 
 ---
 
