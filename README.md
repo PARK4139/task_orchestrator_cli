@@ -1,26 +1,32 @@
-# my_auto_utility
+# pk_system Project
 
-Custom Python and C++ utility toolkit for automating repetitive internal workflows.  
-This project includes tools for file processing, automation scripts, and in-house deployment integration.
-
----
-
-## Project Overview
-
-`my_auto_utility` is a personal and internal-use utility suite built to automate routine tasks across engineering and operations. It includes Python scripts for workflow automation and optional C++ modules tested via CMake.
+`pk_system` is a collaborative, modular Python-based automation toolkit designed to streamline development, testing, deployment, and system operations. This repository is structured to support **teamwork**, scalability, and consistent workflows across Windows, WSL, and Linux environments.
 
 ---
 
-## Environment Setup
+## 🤝 Purpose of This Repository
 
-This project uses [`uv`](https://github.com/astral-sh/uv) for managing Python dependencies and environment.
+This project is built for **collaborative development**. Team members can:
 
-### Python Setup
+- Reuse and extend modular scripts for automation
+- Share consistent development environments using `uv`
+- Maintain system setup and testing routines in one place
+- Contribute via version-controlled Python, Bash, AHK, and batch scripts
+
+It serves as a **shared toolbox** for rapid development, system configuration, testing, and deployment.
+
+---
+
+## 🛠️ Environment Setup
+
+We use [`uv`](https://github.com/astral-sh/uv) to manage the virtual environment and dependencies.
+
+### Quick Start
 
 ```bash
 # Install uv (one-time)
 curl -Ls https://astral.sh/uv/install.sh | sh
 
-# Set up environment and install dependencies
+# Create virtual environment and install dependencies
 uv venv
 uv pip install -r pyproject.toml
