@@ -1,0 +1,63 @@
+import yt_dlp
+# import win32process
+import win32con
+import timeit
+import tarfile
+import sys
+import requests
+import random
+import pythoncom
+import pyautogui
+import paramiko
+import pandas as pd
+import os.path
+import os, inspect
+import numpy as np
+import nest_asyncio
+import math
+import clipboard
+import chardet
+import calendar
+import browser_cookie3
+from zipfile import BadZipFile
+from webdriver_manager.chrome import ChromeDriverManager
+from urllib.parse import urlparse
+from urllib.parse import quote
+from PySide6.QtWidgets import QApplication
+from prompt_toolkit import PromptSession
+from pkg_py.simple_module.part_477_is_losslesscut_running import is_losslesscut_running
+from pkg_py.simple_module.part_474_get_f_video_to_load import get_f_video_to_load
+from pkg_py.simple_module.part_252_does_pnx_exist import does_pnx_exist
+from pkg_py.simple_module.part_019_pk_print_state import pk_print_state
+from pkg_py.simple_module.part_014_pk_print import pk_print
+from pkg_py.simple_module.part_003_get_list_sorted import get_list_sorted
+from pkg_py.simple_module.part_001_ensure_console_cleared import ensure_console_cleared
+from pkg_py.pk_system_layer_files import F_POT_PLAYER_MINI_64_EXE
+from pkg_py.pk_system_layer_400_state_via_database import PkSqlite3DB
+from PIL import Image, ImageFilter
+from passlib.context import CryptContext
+from mutagen.mp3 import MP3
+from datetime import datetime
+from datetime import date
+from cryptography.hazmat.primitives import padding
+from cryptography.hazmat.backends import default_backend
+from Cryptodome.Random import get_random_bytes
+from Cryptodome.Cipher import AES
+from concurrent.futures import ThreadPoolExecutor
+from colorama import init as pk_colorama_init
+from bs4 import ResultSet
+from pkg_py.simple_module.part_005_get_nx import get_nx
+from pkg_py.pk_system_layer_etc import PK_UNDERLINE
+from pkg_py.simple_module.part_019_get_pnx_list import get_pnx_list
+from pkg_py.simple_module.part_007_get_list_calculated import get_list_calculated
+from pkg_py.simple_module.part_002_is_f import is_f
+from pkg_py.simple_module.part_010_get_pnx_unix_style import get_pnx_unix_style
+from pkg_py.simple_module.part_014_pk_print import pk_print
+
+from pkg_py.pk_system_layer_100_Local_test_activate import LTA
+from pkg_py.simple_module.part_014_pk_print import pk_print
+from pkg_py.simple_module.part_330_get_d_working import get_d_working
+
+
+def remove_issue_code():
+    pk_print(f'''issu_code is removed {'%%%FOO%%%' if LTA else ''}''')

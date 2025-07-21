@@ -1,0 +1,50 @@
+import win32con
+import toml
+import time
+import tarfile
+import string
+import sqlite3
+import pickle
+import os.path
+import mysql.connector
+import ipdb
+import inspect
+import importlib
+from selenium.webdriver.common.action_chains import ActionChains
+from pkg_py.simple_module.part_593_ensure_window_to_front import ensure_window_to_front
+from pkg_py.simple_module.part_474_get_f_video_to_load import get_f_video_to_load
+from pkg_py.simple_module.part_252_does_pnx_exist import does_pnx_exist
+from pkg_py.simple_module.part_190_pk_press import pk_press
+from pkg_py.simple_module.part_016_pk_print_once import pk_print_once
+from pkg_py.simple_module.part_009_cmd_to_os import cmd_to_os
+
+from passlib.context import CryptContext
+from mutagen.mp3 import MP3
+from gtts import gTTS
+from datetime import timedelta
+from Cryptodome.Random import get_random_bytes
+from bs4 import ResultSet
+from pkg_py.simple_module.part_007_get_list_calculated import get_list_calculated
+from pkg_py.simple_module.part_001_is_os_wsl_linux import is_os_wsl_linux
+from pkg_py.simple_module.part_012_get_pnx_wsl_unix_style import get_pnx_wsl_unix_style
+
+from pkg_py.pk_system_layer_100_Local_test_activate import LTA
+from pkg_py.simple_module.part_014_pk_print import pk_print
+
+
+def ask_to_google(question: str):
+    # str preprocess
+    question = question.replace(" ", "+")
+    question = question.strip()
+
+    # search in google
+    cmd = f'explorer "https://www.google.com/search?q={question}"  >nul'
+    cmd_to_os(cmd=cmd)
+    pk_print(f'''{cmd}  {'%%%FOO%%%' if LTA else ''}''', print_color="blue")
+
+    # move window to front
+    window_title_seg = rf"{question} - Google"
+    while 1:
+        ensure_window_to_front(window_title_seg=window_title_seg)
+        if is_front_window_title(window_title_seg=window_title_seg):
+            break

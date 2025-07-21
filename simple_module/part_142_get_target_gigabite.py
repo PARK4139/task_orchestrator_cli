@@ -1,0 +1,20 @@
+import sys
+import socket
+import pythoncom
+import pygetwindow
+import pyaudio
+import importlib
+from selenium.common.exceptions import WebDriverException
+from pkg_py.simple_module.part_019_pk_print_state import pk_print_state
+from pkg_py.pk_system_layer_etc import PkFilter
+from pkg_py.pk_system_layer_directories_reuseable import D_PROJECT
+from pkg_py.pk_system_layer_400_state_via_database import PkSqlite3DB
+from pkg_py.pk_system_layer_100_list_logic import get_list_calculated
+from functools import partial
+from bs4 import BeautifulSoup
+from base64 import b64decode
+from pkg_py.simple_module.part_005_get_nx import get_nx
+
+
+def get_target_gigabite(target_path):
+    return get_target_bite(target_path.strip()) / 1024 ** 3

@@ -1,0 +1,75 @@
+import zlib
+# import win32gui
+import win32con
+import webbrowser
+import uuid
+import urllib
+import tomllib
+import toml
+import subprocess
+import shutil
+import secrets
+import pywintypes
+# import pywin32
+# import pywin32
+import pythoncom
+import pyglet
+import pyautogui
+import psutil
+import platform
+import pandas as pd
+import numpy as np
+import inspect
+import colorama
+import asyncio
+from webdriver_manager.chrome import ChromeDriverManager
+from telegram import Bot, Update
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.action_chains import ActionChains
+from selenium.common.exceptions import ElementClickInterceptedException
+from pynput import mouse
+from prompt_toolkit import PromptSession
+from pkg_py.simple_module.part_633_print_iterable_as_vertical import print_iterable_as_vertical
+from pkg_py.simple_module.part_609_get_f_loading_nx_by_pattern import get_f_loading_nx_by_pattern
+from pkg_py.simple_module.part_475_rerun_losslesscut import rerun_losslesscut
+from pkg_py.simple_module.part_474_get_f_video_to_load import get_f_video_to_load
+from pkg_py.simple_module.part_400_is_window_title_front import is_window_title_front
+from pkg_py.simple_module.part_311_is_window_opened import is_window_opened
+from pkg_py.simple_module.part_190_pk_press import pk_press
+from pkg_py.simple_module.part_003_get_list_sorted import get_list_sorted
+from pkg_py.simple_module.part_002_set_pk_context_state_milliseconds_for_speed_control_forcely import \
+    set_pk_context_state_milliseconds_for_speed_control_forcely
+from pkg_py.simple_module.part_001_ensure_console_cleared import ensure_console_cleared
+from pkg_py.pk_system_layer_stamps import STAMP_TRY_GUIDE
+from pkg_py.pk_system_layer_files import F_POT_PLAYER_MINI_64_EXE, F_HISTORICAL_PNX
+from pkg_py.pk_system_layer_files import F_POT_PLAYER_MINI_64_EXE
+from pkg_py.pk_system_layer_encodings import Encoding
+from pkg_py.pk_system_layer_directories_reuseable import D_PROJECT
+
+from PIL import Image, ImageFilter
+from PIL import Image
+from os.path import dirname
+from os import path
+from gtts import gTTS
+from fastapi import HTTPException
+from enum import Enum
+from dirsync import sync
+from dataclasses import dataclass
+from collections import defaultdict, Counter
+from collections import Counter
+from bs4 import ResultSet
+from base64 import b64encode
+from pkg_py.simple_module.part_019_get_pnx_list import get_pnx_list
+from pkg_py.simple_module.part_007_get_list_calculated import get_list_calculated
+from pkg_py.simple_module.part_001_is_d import is_d
+from pkg_py.simple_module.part_001_is_os_wsl_linux import is_os_wsl_linux
+from pkg_py.simple_module.part_010_get_pnx_unix_style import get_pnx_unix_style
+from pkg_py.simple_module.part_014_pk_print import pk_print
+
+from pkg_py.pk_system_layer_100_Local_test_activate import LTA
+from pkg_py.simple_module.part_330_get_d_working import get_d_working
+
+
+def get_set_differenced(set_a, set_b):
+    return get_difference_set(set_a, set_b)

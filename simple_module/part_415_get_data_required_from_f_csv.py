@@ -1,0 +1,53 @@
+import win32con
+import undetected_chromedriver as uc
+import tomllib
+import timeit
+import sqlite3
+import secrets
+# import pywin32
+import pickle
+import os
+import browser_cookie3
+from tkinter import UNDERLINE
+from pkg_py.simple_module.part_400_is_window_title_front import is_window_title_front
+from pkg_py.pk_system_layer_PkMessages2025 import PkMessages2025
+
+from pkg_py.pk_system_layer_100_Local_test_activate import LTA
+from pkg_py.simple_module.part_014_pk_print import pk_print
+
+
+def get_data_required_from_f_csv(line_order):
+    import inspect
+
+    func_n = inspect.currentframe().f_code.co_name
+    pk_print(working_str=rf'''{func_n}()  {'%%%FOO%%%' if LTA else ''}''', print_color='blue')
+    df = get_df_from_issues_list_csv_deprecated()
+    columns_required = df.columns.tolist()  # 전부
+    # columns_required=['주행일자','해결 여부', '문제점 상세',  'SW 버전', 'f 위치', '발생시각', '문제모듈', '개입(크루)',  'Crew 요청사항', '피드백 조치','차량', '지역', '코스', '날씨', 'Crew', '위치(UTM_E)', '위치(UTM_N)', '위치(Azimuth)', '위치(Altitude)','시작 Frame', '종료 Frame','개입(점검)', '위험도', 'DB 분석피드백', 'Comment','수정 여부', '수정 내용', '교육자료', '특이 DB', 'f 크기', ] # 중요도 높은것 앞으로 변경된
+    # columns_required=['주행일자', '해결 여부', '문제점 상세', 'SW 버전', 'f 위치', '발생시각', '문제모듈', '개입(크루)', 'Crew 요청사항', '피드백 조치']  # 필요한 것만
+    # columns_required=["f명", "차량", "지역", "코스", "SW 버전", "운전자", "로그 분석자", "프레임", "문제점 상세", "Crew 요청사항"] ?
+    data_required = {}
+    nth_row = get_nth_row(df, n=line_order)
+    if nth_row is not None:
+        pk_print(working_str=rf'''{UNDERLINE}n="{line_order}"  {'%%%FOO%%%' if LTA else ''}''')
+        for col in columns_required:
+            if col in df.columns:  # 열이 존재하는 경우만 출력 # todo : chore : get은 get 기능만 출력은 따로..
+                pk_print(f"{col}: {nth_row[col]}", print_color='blue')
+                # 필요한 것만 추가
+                if col == "f 위치":
+                    data_required["f 위치"] = nth_row[col]
+                if col == "SW 버전":
+                    data_required["SW 버전"] = nth_row[col]
+                if col == "차량":
+                    data_required["차량"] = nth_row[col]
+                if col == "지역":
+                    data_required["지역"] = nth_row[col]
+                if col == "주행일자":
+                    data_required["주행일자"] = nth_row[col]
+                if col == "코스":
+                    data_required["코스"] = nth_row[col]
+            else:
+                print(f"{col}: N/A")  # 열이 없는 경우 기본값 출력
+                # data_required["차량아이디코드번호"] =
+            # print(f"'차량아이디코드번호='{nth_row[col]}'") # 데이터 전처리하여 추출 및 딕셔너리 data_required에 추가
+    return data_required

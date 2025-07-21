@@ -1,0 +1,93 @@
+# import win32process
+import win32con
+import sys
+import shutil
+import requests
+import pywintypes
+import platform
+import math
+import datetime
+import calendar
+from tkinter import UNDERLINE
+from PySide6.QtWidgets import QApplication
+from pkg_py.simple_module.part_593_ensure_window_to_front import ensure_window_to_front
+from pkg_py.simple_module.part_311_is_window_opened import is_window_opened
+from pkg_py.simple_module.part_014_pk_print import pk_print
+from pkg_py.pk_system_layer_directories import D_PKG_TXT
+from pkg_py.pk_system_layer_100_list_logic import get_list_calculated
+
+from os import path
+from fastapi import HTTPException
+from enum import Enum
+from colorama import init as pk_colorama_init
+from pkg_py.simple_module.part_784_kill_self_pk_program import kill_self_pk_program
+from pkg_py.pk_system_layer_etc import PK_UNDERLINE
+from pkg_py.pk_system_layer_directories import D_DOWNLOADS
+from pkg_py.simple_module.part_010_get_pnx_unix_style import get_pnx_unix_style
+
+from pkg_py.simple_module.part_014_pk_print import pk_print
+from pkg_py.simple_module.part_019_get_pnx_list import get_pnx_list
+
+
+def make_pnx_interested_list_to_f_txt(pnx_interested_list=None, string_exclude=None):
+    import inspect
+
+    func_n = inspect.currentframe().f_code.co_name
+
+    # pnx_interested_list=[]
+    if pnx_interested_list is None:
+        pnx_interested_list = [
+            rf'{D_DOWNLOADS}',
+            rf'{D_HOME}\AppData\Roaming\bittorrent',
+
+            rf'D:\\',
+            rf'E:\\',
+            rf'F:\\',
+        ]
+    # pnxs_exclude=[]
+    if pnx_interested_list is None:
+        string_exclude = [
+            rf'{D_DOWNLOADS}\[]\docker_image_maker\venv',
+            rf'{D_DOWNLOADS}\[]\test_flutter(모바일 프론트 엔드 용도)\ios',
+            rf'{D_DOWNLOADS}\[]\test_flutter(모바일 프론트 엔드 용도)\macos',
+            rf'{D_DOWNLOADS}\[]\test_flutter(모바일 프론트 엔드 용도)\windows',
+            rf'{D_DOWNLOADS}\[]\test_flutter(모바일 프론트 엔드 용도)\web',
+            rf'{D_DOWNLOADS}\[]\test_flutter(모바일 프론트 엔드 용도)\linux',
+            rf'{D_DOWNLOADS}\[]\test_flutter(모바일 프론트 엔드 용도)\lib',
+            rf'{D_DOWNLOADS}\[]\test_flutter(모바일 프론트 엔드 용도)\build',
+            rf'{D_DOWNLOADS}\[]\test_flutter(모바일 프론트 엔드 용도)\asset',
+            rf'{D_DOWNLOADS}\[]\test_flutter(모바일 프론트 엔드 용도)\android',
+
+            rf'D:\$RECYCLE.BIN',
+            rf'D:\System Volume Information',
+
+            rf'E:\$RECYCLE.BIN',
+            rf'E:\System Volume Information',
+
+            rf'F:\$RECYCLE.BIN',
+            rf'F:\System Volume Information',
+
+            rf'deprecated',
+            rf'archived',
+            rf'.git',
+            rf'.idea',
+            rf'venv',
+            rf'node_modules',
+            rf'test_flutter',
+            rf'pkg_font',
+            rf'telegram memo export by static web',
+            rf'docker_image_maker',
+            rf'e-magazine',
+            rf'netlify-web',
+        ]
+
+    pnx_processed_list = []
+    f_func_n_txt = rf"{D_PKG_TXT}\{func_n}.txt"
+    write_str_to_f(msg=f"", f=f_func_n_txt, mode="w")  # 내용 초기화
+    for pnx_interested in pnx_interested_list:
+        pnxs_with_walking = get_pnx_list(d_working=pnx_interested, mode="f", with_walking=1)
+        for pnx_with_walking in pnxs_with_walking:
+            if any(pnx_exclude in pnx_with_walking for pnx_exclude in string_exclude):
+                continue
+            pnx_processed_list.append(pnx_with_walking)
+            write_str_to_f(msg=f"{pnx_with_walking}\n", f=f_func_n_txt, mode="a")

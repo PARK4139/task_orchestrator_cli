@@ -1,0 +1,25 @@
+import win32con
+import timeit
+import threading
+import tarfile
+import sqlite3
+import cv2
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.action_chains import ActionChains
+from pynput import mouse
+from pkg_py.simple_module.part_633_print_iterable_as_vertical import print_iterable_as_vertical
+from pkg_py.simple_module.part_593_ensure_window_to_front import ensure_window_to_front
+from pkg_py.simple_module.part_400_is_window_title_front import is_window_title_front
+from pkg_py.pk_system_layer_stamps import STAMP_ATTEMPTED
+from functools import lru_cache
+from dataclasses import dataclass
+from colorama import init as pk_colorama_init
+from pkg_py.simple_module.part_005_get_value_completed import get_value_completed
+from pkg_py.simple_module.part_014_get_pnx_windows_style import get_pnx_windows_style
+
+
+def print_parents_process_pid():
+    import inspect
+    import os
+    func_n = inspect.currentframe().f_code.co_name
+    os.system(rf'powershell (Get-WmiObject Win32_Process -Filter ProcessId=$PID).ParentProcessId')
