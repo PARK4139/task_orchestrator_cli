@@ -4,7 +4,7 @@ import time
 import win32con
 import win32gui
 
-from pkg_py.workspace.pk_workspace import pk_kill_process_v7
+from pkg_py.workspace.pk_workspace import pk_kill_process_v17
 
 
 def open_dummpy_cmd_exe_with_title(window_title):
@@ -23,4 +23,4 @@ if __name__ == "__main__":
     time.sleep(1)
 
     # 창 모두 닫기
-    pk_kill_process_v7(test_title)
+    pk_kill_process_v17(test_title)

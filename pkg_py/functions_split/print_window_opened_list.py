@@ -120,6 +120,6 @@ from pkg_py.functions_split.pk_print import pk_print
 def print_window_opened_list():
     import inspect
     func_n = inspect.currentframe().f_code.co_name
-    window_opened_list = get_window_opened_list()
+    window_opened_list = get_windows_opened()
     for window_opened in window_opened_list:
         pk_print(working_str=rf'[window_opened] {window_opened}')

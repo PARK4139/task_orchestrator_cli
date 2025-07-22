@@ -9,13 +9,13 @@ if __name__ == "__main__":
 
         from colorama import init as pk_colorama_init
 
-        # from pkg_py.pk_system_object.500_live_logic import pk_copy, kill_self_pk_program, LTA, get_window_opened_list, pk_kill_process, get_value_completed, get_set_from_list
+        # from pkg_py.pk_system_object.500_live_logic import pk_copy, kill_self_pk_program, LTA, get_windows_opened, pk_kill_process, get_value_completed, get_set_from_list
         #, STAMP_TRY_GUIDE, D_PROJECT, STAMP_UNIT_TEST_EXCEPTION_DISCOVERED
         #
 
         pk_colorama_init_once()
 
-        window_opened_list = get_window_opened_list()
+        window_opened_list = get_windows_opened()
         window_opened_set = get_set_from_list(window_opened_list)
         window_title = get_value_completed(key_hint='window_title=', values=window_opened_set)
         pk_kill_process(window_title=window_title)

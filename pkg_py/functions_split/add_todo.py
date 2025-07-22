@@ -1,11 +1,13 @@
+from pkg_py import pk_system_object
 from pkg_py.functions_split.cmd_to_os import cmd_to_os
 from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style
+from pkg_py.functions_split.print_and_write_schedule_template_cyclic_to_f_memo_todo_txt import print_and_write_schedule_template_cyclic_to_f_memo_todo_txt
 
 
 def add_todo():
     from datetime import datetime
 
-    import pkg_py.pk_system_object.static_logic as pk_system_object.static_logic
+    # import pkg_py.pk_system_object.static_logic as pk_system_object.static_logic
 
     now = datetime.now()
     weekday_dict = {0: "월", 1: "화", 2: "수", 3: "목", 4: "금", 5: "토", 6: "일"}

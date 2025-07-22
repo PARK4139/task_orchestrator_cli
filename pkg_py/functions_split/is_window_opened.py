@@ -19,7 +19,7 @@ from pkg_py.pk_system_object.Local_test_activate import LTA
 
 
 def is_window_opened(window_title_seg):
-    windows_titles_opened = get_window_opened_list()
+    windows_titles_opened = get_windows_opened()
     windows_titles_opened = get_list_without_none(working_list=windows_titles_opened)
 
     # print_list_as_vertical(working_list=windows_titles_opened,working_list_n="windows_titles_opened")

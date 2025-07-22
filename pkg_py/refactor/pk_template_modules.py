@@ -117,7 +117,7 @@
 # from pkg_py.functions_split.get_video_filtered_list_v4 import get_video_filtered_list_v4
 # from pkg_py.functions_split.get_webdriver_options_customed import get_webdriver_options_customed
 # from pkg_py.functions_split.get_weekday_as_korean import get_weekday_as_korean
-# from pkg_py.functions_split.get_window_opened_list import get_window_opened_list
+# from pkg_py.pk_interface_graphic_user import get_windows_opened
 # from pkg_py.functions_split.get_windows_opened_via_win32gui import get_windows_opened_via_win32gui
 # from pkg_py.functions_split.get_x import get_x
 # from pkg_py.functions_split.guide_pk_error_mssage import guide_pk_error_mssage
@@ -310,7 +310,7 @@
 # import paramiko
 # import pickle
 # import pk_core_constants
-# import pkg_py.pk_system_object.static_logic as pk_system_object.static_logic
+# # import pkg_py.pk_system_object.static_logic as pk_system_object.static_logic
 # import platform
 # import psutil
 # import pyaudio

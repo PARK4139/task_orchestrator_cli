@@ -1,14 +1,18 @@
-from pkg_py.functions_split.ensure_window_to_front import ensure_window_to_front
 from pkg_py.functions_split.pk_measure_seconds import pk_measure_seconds
-from pkg_py.functions_split.pk_sleep import pk_sleep
-from pkg_py.workspace.pk_workspace import get_refactor_py_file_list, fallback_choice, save_to_history, get_last_history, get_fzf_command, pk_run_py_system_process_by_pnx
+
+
 @pk_measure_seconds
 def ensure_pk_system_started_v5():
+    from pkg_py.functions_split.ensure_window_to_front import ensure_window_to_front
+
+    from pkg_py.functions_split.pk_sleep import pk_sleep
+    from pkg_py.workspace.pk_workspace import get_refactor_py_file_list, fallback_choice, save_to_history, get_last_history, get_fzf_command, pk_run_py_system_process_by_pnx
+
+    import os
+    import subprocess
+    import inspect
+    from pkg_py.functions_split.get_sorted_pk_file_list import get_excutable_pk_system_file_list
     while True:
-        import os
-        import subprocess
-        import inspect
-        from pkg_py.functions_split.get_sorted_pk_file_list import get_excutable_pk_system_file_list
 
         func_n = inspect.currentframe().f_code.co_name
         base_dir = os.path.abspath(os.path.dirname(__file__))
@@ -63,6 +67,5 @@ def ensure_pk_system_started_v5():
 
         pk_run_py_system_process_by_pnx(file_to_excute, file_title)
         pk_sleep(milliseconds=500)
-        # ensure_window_to_front(window_title_seg=rf"file_to_excute") # pk_option
-        ensure_window_to_front(window_title_seg=rf"{func_n.replace("_v5","")}")  # pk_option
-
+        ensure_window_to_front(window_title_seg=rf"file_to_excute") # pk_option
+        # ensure_window_to_front(window_title_seg=rf"{func_n.replace("_v5", "")}")  # pk_option

@@ -44,7 +44,13 @@ def get_value_from_fzf(key_name, values):
             cmd += ["--query", last_selected]
 
         fzf_input = "\n".join(values)
-        proc = subprocess.Popen(cmd, stdin=subprocess.PIPE, stdout=subprocess.PIPE, text=True)
+        proc = subprocess.Popen(
+            cmd,
+            stdin=subprocess.PIPE,
+            stdout=subprocess.PIPE,
+            text=True,
+            encoding = 'utf-8', # pk_option
+        )
         out, _ = proc.communicate(input=fzf_input)
         selected_value = out.strip()
 
@@ -70,7 +76,7 @@ def reload_python_program_as_hot_reloader():
     from pkg_py.functions_split.ensure_pk_system_exit_silent import ensure_pk_system_exit_silent
     from pkg_py.functions_split.get_pnx_list import get_pnx_list
     from pkg_py.pk_system_object.directories import D_PKG_PY
-    from pkg_py.workspace.pk_workspace import pk_kill_process, is_process_killed
+    from pkg_py.workspace.pk_workspace import pk_ensure_process_killed, is_process_killed
     from pkg_py.workspace.pk_workspace import pk_run_py_system_process_by_pnx
     from pkg_py.functions_split.chcp_65001 import chcp_65001
     from pkg_py.functions_split.ensure_console_cleared import ensure_console_cleared
@@ -80,7 +86,7 @@ def reload_python_program_as_hot_reloader():
     from pkg_py.functions_split.get_pk_system_process_pnx_list import get_pk_system_process_pnx_list
     from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style
     from pkg_py.functions_split.get_set_from_list import get_set_from_list
-    from pkg_py.functions_split.get_window_opened_list import get_window_opened_list
+    from pkg_py.pk_interface_graphic_user import get_windows_opened
     from pkg_py.functions_split.pk_print import pk_print
     from pkg_py.pk_system_object.Local_test_activate import LTA
     from pkg_py.pk_system_object.state_via_database import PkSqlite3DB
@@ -216,7 +222,7 @@ def reload_python_program_as_hot_reloader():
     #             asyncio.run(pk_run_process_as_async(f=f))
 
     # f.py with pk_test.py way 2
-    window_opened_list = get_window_opened_list()
+    window_opened_list = get_windows_opened()
     window_opened_set = get_set_from_list(window_opened_list)
 
     pk_system_process_pnx = get_pk_system_process_pnx_list()
@@ -289,10 +295,10 @@ def reload_python_program_as_hot_reloader():
                 # window_tilte_to_kill_list = []
                 for f in pnx_to_execute_list:
                     pk_print("step 3", print_color='green')
-                    pk_kill_process(window_title=get_nx(window_title_to_kill))
+                    pk_ensure_process_killed(window_title=get_nx(window_title_to_kill))
                     if not is_process_killed(window_title_seg=get_nx(f)):
                         pk_print("step 4", print_color='green')
-                        pk_kill_process(window_title=get_nx(window_title_to_kill))
+                        pk_ensure_process_killed(window_title=get_nx(window_title_to_kill))
                         # pk_kill_process(window_title=window_title_to_kill) # 의도치 않았는데 cmd 모두종료되나?
                         # break
                     else:

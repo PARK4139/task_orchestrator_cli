@@ -29,7 +29,7 @@ from pkg_py.functions_split.pk_print import pk_print
 
 
 def run_acu_update_v3_exe_and_login_and_run_autoa2zdrive_release_exe(issue_log_index_data):
-    import pkg_py.pk_system_object.static_logic as pk_system_object.static_logic
+    # import pkg_py.pk_system_object.static_logic as pk_system_object.static_logic
     import inspect
     import os
 

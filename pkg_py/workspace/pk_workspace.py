@@ -1,16 +1,19 @@
+import sys
 import glob
 import os
 import subprocess
 
+import psutil
 import win32gui
 import win32process
 
 from pkg_py.ensure_python_program_reloaded_as_hot_reloader import get_value_from_fzf
 from pkg_py.functions_split.chcp_65001 import chcp_65001
+from pkg_py.functions_split.ensure_windows_deduplicated import ensure_windows_deduplicated
 from pkg_py.functions_split.get_nx import get_nx
 from pkg_py.functions_split.get_os_n import get_os_n
 from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style
-from pkg_py.functions_split.get_window_opened_list import get_window_opened_list
+
 from pkg_py.functions_split.get_window_title import get_window_title
 from pkg_py.functions_split.kill_process_via_taskkill import kill_process_via_taskkill
 from pkg_py.functions_split.pk_colorama_init_once import pk_colorama_init_once
@@ -325,7 +328,7 @@ def pk_kill_process_v6(cmd_exe_title: str):
         pk_print(f"[ERROR] {e}", print_color="red")
 
 
-def pk_kill_process_v7(window_title_seg: str):
+def pk_kill_process_v17(window_title_seg: str):
     import wmi
     import subprocess
 
@@ -354,10 +357,10 @@ def pk_kill_process_v7(window_title_seg: str):
         pk_print(f"[ERROR] {e}", print_color="red")
 
 
-import psutil
 
 
-def pk_kill_process_v7_fast(window_title_seg: str):
+
+def pk_kill_process_v17_fast(window_title_seg: str):
     import subprocess
 
     window_title = get_window_title(window_title_seg=window_title_seg)
@@ -1077,9 +1080,9 @@ def pk_kill_process_v15(window_title_seg: str):
         pk_print(f"[ERROR] {e}", print_color="red")
 
 
-def pk_kill_process(window_title: str):
+def pk_ensure_process_killed(window_title: str):
     # pk_kill_process_v1(window_title)
-    pk_kill_process_v7(window_title)
+    pk_kill_process_v17(window_title)
     # pk_kill_process_v16(window_title, exact=True)
 
 
@@ -1481,7 +1484,7 @@ def get_process_name_list(unique: bool = True, sort: bool = True) -> list:
     return names
 
 
-def pk_kill_process_v17(window_title: str, exact: bool = True):
+def pk_kill_process_v16_1(window_title: str, exact: bool = True):
     """
     창 제목이 정확히 일치(또는 부분 일치)하는 모든 창에 WM_CLOSE 메시지를 보내 창만 닫는다.
     """
@@ -1518,20 +1521,106 @@ def pk_kill_process_v17(window_title: str, exact: bool = True):
     else:
         logging.info(f"[INFO] Closed {len(closed_hwnds)} window(s) for '{window_title}'")
 
+def get_values_sanitize_for_cp949(text):
+    import os
+    # 유사 문자 수동 치환
+    replacements = {
+        '–': '-',  # EN DASH
+        '—': '-',  # EM DASH
+        '“': '"', '”': '"',
+        '‘': "'", '’': "'",
+        '…': '...', '•': '*',
+    }
+    for old, new in replacements.items():
+        text = text.replace(old, new)
+    return text
+    # return text.encode('cp949', errors='replace').decode('cp949')
+    # return text.encode('cp949', errors='replace').decode('cp949')
+
+def pk_ensure_process_deduplicated(window_title_seg: str, exact=True):
+    import win32gui
+    import win32con
+
+    try:
+        window_title = get_window_title(window_title_seg=window_title_seg)
+        if not window_title:
+            return
+
+        if LTA:
+            pk_print(f"[DEBUG] window_title={window_title} {'%%%FOO%%%' if LTA else ''}")
+
+        hwnds = []
+
+        def enum_handler(hwnd, _):
+            if win32gui.IsWindowVisible(hwnd):
+                title = win32gui.GetWindowText(hwnd)
+                if (exact and title == window_title) or (not exact and window_title in title):
+                    hwnds.append(hwnd)
+
+        win32gui.EnumWindows(enum_handler, None)
+
+        if not hwnds:
+            pk_print(f"[SKIP] No matching windows for '{window_title}'", print_color="red")
+            return
+
+        survivor_hwnd = hwnds[0]
+        to_close = hwnds[1:]
+
+        for hwnd in to_close:
+            win32gui.PostMessage(hwnd, win32con.WM_CLOSE, 0, 0)
+            pk_print(f"[CLOSE] HWND={hwnd} closed for window_title='{win32gui.GetWindowText(hwnd)}'", print_color="green")
+
+        pk_print(f"[SURVIVED] HWND={survivor_hwnd} kept alive → '{win32gui.GetWindowText(survivor_hwnd)}'", print_color="yellow")
+
+    except Exception as e:
+        pk_print(f"[ERROR] {e}", print_color="red")
 
 def ensure_cmd_exe_deduplicated():
     key_name = 'window_opened'
-    values = get_window_opened_list()
-    print_iterable_as_vertical(item_iterable=values, item_iterable_n="values")
-    pk_sleep(milliseconds=5000)
-    window_opened = get_value_from_fzf(key_name=key_name, values=values)
-    window_opened = get_pnx_os_style(window_opened)
-    pk_print(f'''window_opened={window_opened} {'%%%FOO%%%' if LTA else ''}''')
-
-    key_name = 'window_opened2'
     values = get_windows_opened()
+    values = [get_values_sanitize_for_cp949(v) for v in values]
     print_iterable_as_vertical(item_iterable=values, item_iterable_n="values")
-    pk_sleep(milliseconds=500)
-    window_opened2 = get_value_from_fzf(key_name=key_name, values=values)
-    window_opened2 = get_pnx_os_style(window_opened2)
-    pk_print(f'''window_opened2={window_opened2} {'%%%FOO%%%' if LTA else ''}''')
+    window_opened = get_value_from_fzf(key_name=key_name, values=values)
+    while True:
+        window_opened = get_pnx_os_style(window_opened)
+        pk_print(f'''window_opened={window_opened} {'%%%FOO%%%' if LTA else ''}''')
+        pk_ensure_process_deduplicated(window_title_seg=window_opened)
+        pk_sleep(milliseconds=1000)
+
+def ensure_cmd_exe_deduplicated_all():
+    from collections import defaultdict
+
+    # ① 열린 창 목록 확보 및 CP949 대응 처리
+    values = get_windows_opened()
+    values = [get_values_sanitize_for_cp949(v) for v in values]
+
+    # ② 제목별로 그룹핑 (윈도우 제목 기준)
+    grouped = defaultdict(list)
+    for title in values:
+        grouped[title].append(title)
+
+    print_iterable_as_vertical(item_iterable=sorted(grouped), item_iterable_n="중복 확인 대상 창 제목들")
+
+    # ③ 각 제목에 대해 1개만 남기고 닫기 시도
+    for window_title in grouped:
+        pk_print(f"[처리 중] 창 제목='{window_title}' 중복 제거", print_color="cyan")
+        pk_ensure_process_deduplicated(window_title_seg=window_title, exact=True)
+        pk_sleep(milliseconds=500)  # 너무 빠르게 반복되지 않도록 약간 대기
+
+
+def ensure_cmd_exe_all_closed():
+    while True:
+        key_name = 'window_opened'
+        values = get_windows_opened()
+        # sys.stdout.reconfigure(encoding='utf-8') # fail
+        # values = values.replace('–', '-')  # 유니코드 EN DASH → 하이픈
+        values = [get_values_sanitize_for_cp949(v) for v in values]
+        print_iterable_as_vertical(item_iterable=values, item_iterable_n="values")
+        window_opened = get_value_from_fzf(key_name=key_name, values=values)
+        window_opened = get_pnx_os_style(window_opened)
+        pk_print(f'''window_opened={window_opened} {'%%%FOO%%%' if LTA else ''}''')
+
+        pk_ensure_process_killed(window_title=window_opened)
+        pk_sleep(milliseconds=500)
+
+
