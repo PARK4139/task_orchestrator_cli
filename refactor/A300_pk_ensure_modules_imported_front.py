@@ -1,19 +1,22 @@
 import inspect
 import logging
 import os
+import os.path
+import os.path
 import traceback
 
+from pkg_py.functions_split.backup_workspace import backup_workspace
+from pkg_py.functions_split.ensure_do_exception_routine import ensure_do_exception_routine
+from pkg_py.functions_split.ensure_do_finally_routine import ensure_do_finally_routine
+from pkg_py.functions_split.get_str_from_f import get_str_from_f
+from pkg_py.functions_split.get_value_completed import get_value_completed
+from pkg_py.functions_split.pk_initialize_and_customize_logging_config import pk_initialize_and_customize_logging_config
+from pkg_py.functions_split.restore_workspace_from_latest_archive import restore_workspace_from_latest_archive
 from pkg_py.pk_system_layer_PkMessages2025 import PkMessages2025
-from pkg_py.pk_system_layer_directories import D_PKG_PY, D_PKG_ARCHIVED
+from pkg_py.pk_system_layer_directories import D_PKG_ARCHIVED
+from pkg_py.pk_system_layer_directories import D_PKG_PY
 from pkg_py.pk_system_layer_directories_reuseable import D_PROJECT
 from pkg_py.pk_system_layer_stamps import STAMP_TRY_GUIDE
-from pkg_py.simple_module.backup_workspace import backup_workspace
-from pkg_py.simple_module.part_005_get_value_completed import get_value_completed
-from pkg_py.simple_module.part_132_get_str_from_f import get_str_from_f
-from pkg_py.simple_module.part_834_ensure_do_finally_routine import ensure_do_finally_routine
-from pkg_py.simple_module.part_835_ensure_do_exception_routine import ensure_do_exception_routine
-from pkg_py.simple_module.pk_initialize_and_customize_logging_config import pk_initialize_and_customize_logging_config
-from pkg_py.simple_module.restore_workspace_from_latest_archive import restore_workspace_from_latest_archive
 
 
 def clean_import_block(block: str) -> str:
@@ -28,7 +31,7 @@ def clean_import_block(block: str) -> str:
 
 def pk_ensure_modules_import_to_python_files():
     func_name = inspect.currentframe().f_code.co_name
-    d_working = rf"{os.environ['USERPROFILE']}\Downloads\pk_system\pkg_py\simple_module"
+    d_working = rf"{os.environ['USERPROFILE']}\Downloads\pk_system\pkg_py\split_functions"
     d_backup_root = os.path.join(D_PKG_PY, "..", "pkg_archived")
     f_module_template = os.path.join(D_PKG_PY, "refactor", "pk_template_modules.py")
     # 6. 파일 처리 (프리뷰 모드에서는 실제 파일 수정 없이 출력만)
