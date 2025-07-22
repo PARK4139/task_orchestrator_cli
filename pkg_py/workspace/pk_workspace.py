@@ -1,4 +1,3 @@
-import sys
 import glob
 import os
 import subprocess
@@ -9,11 +8,9 @@ import win32process
 
 from pkg_py.ensure_python_program_reloaded_as_hot_reloader import get_value_from_fzf
 from pkg_py.functions_split.chcp_65001 import chcp_65001
-from pkg_py.functions_split.ensure_windows_deduplicated import ensure_windows_deduplicated
 from pkg_py.functions_split.get_nx import get_nx
 from pkg_py.functions_split.get_os_n import get_os_n
 from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style
-
 from pkg_py.functions_split.get_window_title import get_window_title
 from pkg_py.functions_split.kill_process_via_taskkill import kill_process_via_taskkill
 from pkg_py.functions_split.pk_colorama_init_once import pk_colorama_init_once
@@ -355,9 +352,6 @@ def pk_kill_process_v17(window_title_seg: str):
 
     except Exception as e:
         pk_print(f"[ERROR] {e}", print_color="red")
-
-
-
 
 
 def pk_kill_process_v17_fast(window_title_seg: str):
@@ -1521,8 +1515,8 @@ def pk_kill_process_v16_1(window_title: str, exact: bool = True):
     else:
         logging.info(f"[INFO] Closed {len(closed_hwnds)} window(s) for '{window_title}'")
 
+
 def get_values_sanitize_for_cp949(text):
-    import os
     # 유사 문자 수동 치환
     replacements = {
         '–': '-',  # EN DASH
@@ -1536,6 +1530,7 @@ def get_values_sanitize_for_cp949(text):
     return text
     # return text.encode('cp949', errors='replace').decode('cp949')
     # return text.encode('cp949', errors='replace').decode('cp949')
+
 
 def pk_ensure_process_deduplicated(window_title_seg: str, exact=True):
     import win32gui
@@ -1575,6 +1570,7 @@ def pk_ensure_process_deduplicated(window_title_seg: str, exact=True):
     except Exception as e:
         pk_print(f"[ERROR] {e}", print_color="red")
 
+
 def ensure_cmd_exe_deduplicated():
     key_name = 'window_opened'
     values = get_windows_opened()
@@ -1585,11 +1581,12 @@ def ensure_cmd_exe_deduplicated():
         window_opened = get_pnx_os_style(window_opened)
         pk_print(f'''window_opened={window_opened} {'%%%FOO%%%' if LTA else ''}''')
         pk_ensure_process_deduplicated(window_title_seg=window_opened)
-        pk_sleep(milliseconds=1000)
+        # pk_sleep(milliseconds=1000)
+        pk_sleep(milliseconds=200)
+
 
 def ensure_cmd_exe_deduplicated_all():
     from collections import defaultdict
-
     # ① 열린 창 목록 확보 및 CP949 대응 처리
     values = get_windows_opened()
     values = [get_values_sanitize_for_cp949(v) for v in values]
@@ -1605,10 +1602,16 @@ def ensure_cmd_exe_deduplicated_all():
     for window_title in grouped:
         pk_print(f"[처리 중] 창 제목='{window_title}' 중복 제거", print_color="cyan")
         pk_ensure_process_deduplicated(window_title_seg=window_title, exact=True)
-        pk_sleep(milliseconds=500)  # 너무 빠르게 반복되지 않도록 약간 대기
+        # pk_sleep(seconds=1000)
+        # pk_sleep(seconds=500)
+        pk_sleep(milliseconds=200)  # 너무 빠르게 반복되지 않도록 약간 대기
+
+def ensure_cmd_exe_deduplicated_all_in_loop():
+    while True:
+        ensure_cmd_exe_deduplicated_all()
 
 
-def ensure_cmd_exe_all_closed():
+def ensure_cmd_exe_all_closed_in_loop():
     while True:
         key_name = 'window_opened'
         values = get_windows_opened()
@@ -1621,6 +1624,6 @@ def ensure_cmd_exe_all_closed():
         pk_print(f'''window_opened={window_opened} {'%%%FOO%%%' if LTA else ''}''')
 
         pk_ensure_process_killed(window_title=window_opened)
-        pk_sleep(milliseconds=500)
-
-
+        # pk_sleep(seconds=1000)
+        # pk_sleep(seconds=500)
+        pk_sleep(milliseconds=200)

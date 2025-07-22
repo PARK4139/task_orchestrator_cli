@@ -1,4 +1,5 @@
 from pkg_py.functions_split.pk_measure_seconds import pk_measure_seconds
+from pkg_py.pk_system_object.Local_test_activate import LTA
 
 
 @pk_measure_seconds
@@ -67,5 +68,8 @@ def ensure_pk_system_started_v5():
 
         pk_run_py_system_process_by_pnx(file_to_excute, file_title)
         pk_sleep(milliseconds=500)
-        ensure_window_to_front(window_title_seg=rf"file_to_excute") # pk_option
-        # ensure_window_to_front(window_title_seg=rf"{func_n.replace("_v5", "")}")  # pk_option
+        if LTA:
+            ensure_window_to_front(window_title_seg=rf"{func_n.replace("_v5", "")}")  # pk_option
+        else:
+            ensure_window_to_front(window_title_seg=rf"file_to_excute") # pk_option
+
