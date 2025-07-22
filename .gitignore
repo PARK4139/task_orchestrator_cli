@@ -1,54 +1,86 @@
-# .gitignore with git push # git push 를 하면, .gitignore의 d/f 는 ignore 됨
-#________________________________________________ important
-__pycache__
-.pytest_cache
-#________________________________________________ d
-# .git
-.idea
-.vscode
-.venv
-pk_system.egg-info
-# pkg_cmd
-# pkg_cloud
-# pkg_dpl
-# pkg_font
-# pk_image
-# pkg_jpg
-# pkg_jq
-# pkg_json
-# pkg_log
-# pkg_md
-# pkg_mp3
-# pkg_msa
-# pkg_png
-# pkg_pptx
-# pkg_py
-# pkg_sh
-# pkg_sound
-# pkg_txt
-# pkg_video
-# pkg_xlsx
-# pkg_yaml
-# pkg_yt_dlp
-# project_release_server
-# project_cmake
-# project_fastapi
-# project_streamlit
-# project_vstest
-#________________________________________________ f
-pk_token_key.toml
-pk_token_pw_2nd_sym.toml
-pk_token_github_pat.toml
-# .dockerignore
-# .gitignore
-# docker push by manual.bat
-# memo_how.toml
-# memo_work.toml
-# pk_system_telegram_bot_session.session
-# requirements.txt
-# setup.py
-# telegram_chat_id.txt
-# project_fastapi.Dockerfile
+# Python/IDE/Build
+__pycache__/
+.pytest_cache/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+.venv/
+.venv*/
+.env
+.env.*
+
+# IDE/Editor
+.idea/
+.vscode/
+*.sublime-workspace
+*.sublime-project
+
+# OS/Backup
+.DS_Store
+Thumbs.db
+*.bak
+*.tmp
+*~ 
+
+# DB/Session/Serialized
+pkg_db/
+pkg_session/
+pkg_pkl/
+*.db
+*.sqlite
+*.pkl
+*.session
+
+# Log/Cache
+pkg_log/
+*.log
+
+# Config/Secret
+pkg_toml/
+pkg_json/
+pkg_yaml/
+*.toml
+*.json
+*.yaml
+*.yml
+
+# Media/Document (저작권/내부자료 위험)
+pkg_font/
+pkg_mp3/
+pkg_mp4/
+pkg_jpg/
+pkg_png/
+pkg_pptx/
+pkg_xlsx/
+pkg_video/
+pkg_sound/
+pkg_image/
+pkg_txt/
+pkg_dpl/
+pkg_zip/
+pkg_exe/
+pkg_rdp/
+pkg_yt_dlp/
+pkg_blend/
+pkg_csv/
+
+# 기타 프로젝트별 민감/불필요 폴더
+pkg_ide_backup/
+pkg_archived/
+pkg_msa/
+project_release_server/
+project_cmake/
+project_fastapi/
+project_streamlit/
+project_vstest/
+
+# 기타
 *:*Zone.Identifier
-#________________________________________________ weired
 nul
+
+# 예시: 공개해도 되는 코드/스크립트만 포함
+!pkg_py/
+!pkg_sh/
+!pkg_windows/
+!tests/ 

@@ -7,8 +7,8 @@
 # dir /b | clip
 # _________________________________________________________
 # allowed f 
-!/pkg_cmd/**
-!/pkg_cmd/temp/**
+!/pkg_windows/**
+!/pkg_windows/temp/**
 !.dockerignore
 !.gitattributes
 !.gitignore

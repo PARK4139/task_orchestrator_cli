@@ -9,7 +9,7 @@ sudo apt install -y python3-dev
 
 sudo apt install -y portaudio19-dev
 
-cd $D_PK_PROJECT
+cd $D_PK_SYSTEM
 ./
 uv sync
 # uv pip install .

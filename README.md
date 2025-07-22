@@ -1,82 +1,80 @@
-# auto_utility
+# pk_system
 
-> **이 문서는 [Cursor](https://www.cursor.so/)를 통해 자동 분석 및 작성되었습니다.**
+## 프로젝트 개요
 
-## 📦 프로젝트 개요
-
-`auto_utility`는 개발, 테스트, 배포, 시스템 운영 자동화를 위한 모듈형 Python 기반 툴킷입니다.  
-Windows, WSL, Linux 등 다양한 환경에서 일관된 개발/운영 경험과 팀 협업을 지원합니다.
+**pk_system**은 Python 3.12+ 기반의 멀티 유틸리티/자동화/시스템 관리/데이터 처리/AI/멀티미디어 통합 툴킷입니다.  
+WSL, Docker, uv, venv 환경에서 동작하며, 다양한 파일 포맷, 시스템, 네트워크, 멀티미디어, 자연어처리, 자동화, 테스트, 배포 기능을 제공합니다.
 
 ---
 
-## 🚀 주요 기능
+## 주요 폴더 및 파일 구조
 
-- **스크립트 자동화**  
-  - Python, Bash, AHK, Batch 등 다양한 언어로 작성된 자동화 스크립트 제공
-  - 반복 작업, 시스템 설정, 환경 초기화, 파일/디렉토리 관리 등 지원
-
-- **환경 세팅 및 유지보수**  
-  - uv 기반 Python 가상환경 및 의존성 관리
-  - zsh, oh-my-zsh, fzf, tmux 등 개발 생산성 도구 자동 설치/설정 스크립트
-  - 시스템별(Windows/WSL/Linux) 환경 맞춤화
-
-- **시스템/네트워크/서버 관리**  
-  - Jetson, AI 프레임워크, Docker, NVMe 등 서버/장비 자동 세팅 및 모니터링
-  - 네트워크 연결, NAS 마운트, 컨테이너 관리, 리부트 루틴 등 운영 자동화
-
-- **파일/데이터 관리**  
-  - 백업, 동기화, 파일 정리, rsync/dirsync 기반 데이터 이동
-  - 프로젝트별 아카이브, 로그, 설정 파일 관리
-
-- **테스트 및 실험 자동화**  
-  - CPU/GPU 스트레스 테스트, 네트워크 성능 측정, 시스템 상태 점검 등
-
-- **유틸리티 모듈**  
-  - 다양한 Python 유틸리티 함수(문자열 처리, 파일/디렉토리, 시스템 정보 등)
-  - 반복 작업, 마우스/키보드 매크로, 자동화 루틴 등
+- **pkg_py/** : 핵심 Python 유틸리티 및 시스템/자동화/데이터/AI/멀티미디어 모듈
+  - 다양한 단일 목적 스크립트 및 시스템 레이어별 모듈(`pk_system_object.*.py`)
+  - 예: 파일/디렉터리 관리, Git/Docker/WSL/윈도우 자동화, Youtube/Cloudflare/ChatGPT 등
+- **tests/** : 테스트 코드(단위/통합/기능 테스트)
+- **project_release_server/**, **project_vpc_test/** : 배포/테스트 관련 프로젝트 구조(현재 코드 없음)
+- **docs_README.md** : 간단한 프로젝트 정보 및 pyproject.toml 안내
+- **pyproject.toml** : 프로젝트 메타 정보, 의존성, 빌드/패키징 설정
+- **docker-compose.yaml, *.Dockerfile** : Docker 기반 실행/배포 환경
+- **pk_push_project_to_github.py** : Git 자동 커밋/푸시/상태 관리 스크립트
+- **기타** : 다양한 데이터/포맷별 패키지 디렉터리(`pkg_csv`, `pkg_json`, `pkg_mp3` 등)
 
 ---
 
-## 🗂️ 디렉토리 구조 및 주요 구성
+## 주요 기능
 
-- `pkg_sh/` : 시스템 환경 구축, 개발 도구 설치, 네트워크/NAS/컨테이너 관리 등 Bash 스크립트
-- `simple_module/` : 파일/데이터 관리, 자동화 유틸리티, 시스템 정보, 테스트 등 Python 모듈
-- `refactor/` : 코드 정리, 함수 분리, 모듈화, 임포트 자동화 등 리팩토링 도구
-- `project_vpc_setup/` : Jetson/AI 프레임워크/서버 환경 자동화, 네트워크 설정, 리부트 루틴 등
-- `project_release_server/` : 릴리즈 서버 관리 및 아카이브
-- `project_system_test/` : 시스템/네트워크/GPU 테스트 스크립트
-- `pkg_ahk/` : Windows용 AutoHotkey 매크로
-- `pkg_sound/`, `pkg_yt_dlp/`, `pkg_zip/` : 부가 유틸리티 및 리소스
-
----
-
-## ⚡ 빠른 시작
-
-> **이 프로젝트는 uv 기반 Python 가상환경에서 실행됩니다.**
-
-```bash
-# uv 설치 (최초 1회)
-curl -Ls https://astral.sh/uv/install.sh | sh
-
-# 가상환경 생성 및 의존성 설치
-uv venv
-uv pip install -r pyproject.toml
-```
-
-- 모든 Python 스크립트 및 자동화 루틴은 uv 가상환경에서 실행하는 것을 권장합니다.
+- **시스템/OS 관리** : 백업, 복원, 프로세스/윈도우/네트워크/환경변수 관리, 자동화
+- **데이터 처리** : CSV, JSON, XLSX, 이미지, 사운드, 동영상 등 다양한 포맷 지원
+- **멀티미디어** : Youtube 다운로드, 영상/음성 처리, 이미지 변환 등
+- **네트워크/웹** : Cloudflare, Selenium, Playwright, FastAPI 등 지원
+- **AI/자연어처리** : ChatGPT, Konlpy, OCR, 음성인식 등
+- **자동화/유틸리티** : 파일/디렉터리/이름 일괄변경, 핫키, GUI, tmux, venv, Docker 등
+- **테스트/배포** : pytest 기반 테스트, Git/Docker 자동화, 배포 스크립트
 
 ---
 
-## 🤝 협업 및 확장성
+## 설치 및 실행
 
-- 팀원 누구나 스크립트/모듈을 추가·확장할 수 있습니다.
-- 일관된 환경에서 자동화 루틴을 공유·재사용할 수 있습니다.
-- 다양한 운영체제 및 개발 환경을 지원합니다.
+1. Python 3.12+ 환경 준비
+2. 의존성 설치
+   ```bash
+   pip install -r requirements.txt
+   # 또는
+   pip install -e .  # pyproject.toml 기반
+   ```
+3. (선택) Docker 환경
+   ```bash
+   docker-compose up --build
+   ```
 
 ---
 
-## 📝 기타
+## 테스트
 
-- 본 프로젝트는 **uv 환경**에서의 실행을 기본으로 하며, 의존성 관리와 환경 일관성을 위해 uv 사용을 적극 권장합니다.
-- 본 프로젝트는 **Cursor**를 통해 자동 분석 및 문서화되었습니다.
-- 상세 사용법, 각 스크립트별 설명은 각 디렉토리/파일 내 주석을 참고하세요.
+- `tests/` 폴더 및 `pk_test_tests.py` 등에서 pytest 기반 테스트 제공
+- 예시:
+  ```bash
+  pytest tests/
+  ```
+
+---
+
+## 개발/기여
+
+- 주요 기능별로 `pkg_py/` 내 스크립트 참고
+- 의존성 및 환경설정은 `pyproject.toml` 참고
+- 자동화/배포/테스트 스크립트 활용 가능
+
+---
+
+## 라이선스
+
+MIT (임시, 추후 변경 가능)
+
+---
+
+## 기타
+
+- 상세 기능/용어는 각 스크립트 및 pyproject.toml 참고
+- release/tag 관리 및 환경별 실행은 Docker, WSL, venv, uv 등 지원

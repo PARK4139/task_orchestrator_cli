@@ -22,7 +22,7 @@ fi
 
 # zip인지 확인
 if file "$F_UV_ZIP" | grep -qi 'zip archive'; then
-    echo "📦 zip 파일 감지됨 → 압축 해제 (~/Downloads)"
+    echo "📦 zip 파일 감지됨 → 압축해제 (~/Downloads)"
     unzip -o "$F_UV_ZIP" -d "$(dirname "$F_UV_ZIP")"
     mv "$(dirname "$F_UV_ZIP")/uv.exe" "$F_UV_EXE"
 else

@@ -1,3 +1,4 @@
+import inspect
 import os
 import re
 import subprocess
@@ -89,7 +90,9 @@ def set_text_from_history_file(file_id: str, text: str):
     file_path.write_text(text.strip())
 
 
-def main():
+def ensure_git_project_pushed():
+    func_n = inspect.currentframe().f_code.co_name
+
     global step_counter
     start_time = time.time()
     print(DIVIDER)
@@ -135,10 +138,24 @@ def main():
     # 2. git commit
     print(DIVIDER)
     commit_number = get_next_commit_number()
-    commit_message = input("commit_message=").strip() 
-    if commit_message == "":
-        commit_message = f"[{commit_number}] make save point by {SCRIPT_NAME}" 
-    print(f"commit_message={commit_message}")
+    commit_message = None
+    key_name = "commit_message"
+    try:
+        from pkg_py.functions_split.get_file_id import get_file_id
+        from pkg_py.functions_split.get_values_from_historical_file_routine import get_values_from_historical_file_routine
+        from pkg_py.functions_split.get_time_as_ import get_time_as_
+        from pkg_py.functions_split.get_value_completed import get_value_completed
+        from pkg_py.pk_system_object.PkMessages2025 import PkMessages2025
+        option_values = [PkMessages2025.EMERGENCY_BACKUP, "add: ", "fix: ", "refactor: ", "found: problem", "chore: various improvements and updates across multiple files", "refactor: restructure and update multiple files with improved messages and translations"]
+        commit_message = get_value_completed(key_hint='commit_message=', values=option_values)
+        commit_message = commit_message.strip()
+        if commit_message == PkMessages2025.EMERGENCY_BACKUP or "":
+            commit_message = f"feat: auto pushed (made savepoint) by {SCRIPT_NAME} at {get_time_as_("%Y-%m-%d %H:%M")}"
+    except:
+        commit_message = input("commit_message=").strip()
+        if commit_message == "":
+            commit_message = f"feat: auto pushed (made savepoint) by {SCRIPT_NAME}"
+
     cmd = f'git commit -m "{commit_message}"'
     code, output = run_command(cmd, capture_output=True)
     print(output.strip())
@@ -170,4 +187,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    ensure_git_project_pushed()

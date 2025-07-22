@@ -1,8 +1,6 @@
 # .dockerignore with COPY . . # COPY 를 도커파일에서 정의하여 빌드를 하면, COPY . . 시 .dockerignore의 d/f 는 ignore 됨
 #________________________________________________ important
-pk_token_key.toml
-pk_token_pw_2nd_sym.toml
-pk_token_github_pat.toml
+# todo : secret 비밀 pubkey 라던지 추가
 #________________________________________________ d/
 .idea/
 __pycache__/
@@ -12,7 +10,7 @@ dist/
 .vscode/
 .idea/ 
 .venv/
-pkg_cmd/
+pkg_windows/
 pkg_dpl/
 pkg_font/
 pk_image/

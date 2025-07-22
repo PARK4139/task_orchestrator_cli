@@ -1,0 +1,26 @@
+
+
+# import pywin32
+# from project_database.test_project_database import MySqlUtil
+from pkg_py.pk_system_object.directories import D_PKG_TXT
+
+
+def get_pnx_list_interested_from_file_system(pnx_interested_list=None, string_exclude=None):
+    f_func_n_txt = rf"{D_PKG_TXT}\make_pnx_interested_list_to_text_file.txt"
+
+    if pnx_interested_list is None:
+        # todo make_pnx_interested_list_to_text_file_x f이 없으면 만들도록
+        make_pnx_interested_list_to_f_txt_x(d_working_list=pnx_interested_list, exclusion_list=string_exclude)
+
+        # PKG_TXT = rf"{D_PKG_TXT}"
+        # window_title_seg = get_nx(PKG_TXT)
+        # if not is_window_open(window_title_seg=window_title_seg):
+        #     open_pnx(pnx=PKG_TXT)
+    else:
+        make_pnx_interested_list_to_f_txt(pnx_interested_list=pnx_interested_list, string_exclude=string_exclude)
+
+        # window_title_seg = get_nx (f_func_n_txt)
+        # if not is_window_open(window_title_seg=window_title_seg):
+        #     open_pnx(pnx=f_func_n_txt)
+
+    return get_list_from_f(f=f_func_n_txt)

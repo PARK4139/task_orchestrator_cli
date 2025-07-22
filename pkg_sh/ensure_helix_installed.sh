@@ -47,7 +47,7 @@ sudo apt install -y curl tar xz-utils libgcc1 libstdc++6 libssl1.1
 # Helix 다운로드 및 설치
 echo "Helix 다운로드 중..."
 curl -LO https://github.com/helix-editor/helix/releases/latest/download/helix-x86_64-linux.tar.xz
-echo "Helix 압축 해제 중..."
+echo "Helix 압축해제 중..."
 tar -xf helix-x86_64-linux.tar.xz
 # sudo snap install helix --classic
 
