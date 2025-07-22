@@ -146,10 +146,22 @@ def ensure_git_project_pushed():
         from pkg_py.functions_split.get_time_as_ import get_time_as_
         from pkg_py.functions_split.get_value_completed import get_value_completed
         from pkg_py.pk_system_object.PkMessages2025 import PkMessages2025
-        option_values = [PkMessages2025.EMERGENCY_BACKUP, "add: ", "fix: ", "refactor: ", "found: problem", "chore: various improvements and updates across multiple files", "refactor: restructure and update multiple files with improved messages and translations"]
-        commit_message = get_value_completed(key_hint='commit_message=', values=option_values)
+        option_values = [
+            "chore: various improvements and updates across multiple files",
+            "chore: update dependencies",
+            "add: new feature for ~~",
+            "fix: resolve issue with ~~",
+            "found: problem",
+            "refactor: improve code readability in ~~",
+            "refactor: improve code readability in user module",
+            "refactor: restructure and update multiple files with improved messages and translations",
+            "docs: update README.md and improved project documentation",
+            "feat: add user profile page",
+            f"feat: auto pushed (made savepoint) by {SCRIPT_NAME} at {get_time_as_("%Y-%m-%d %H:%M")}",
+        ]
+        commit_message = get_value_completed(key_hint='commit_message=',values=option_values)
         commit_message = commit_message.strip()
-        if commit_message == PkMessages2025.EMERGENCY_BACKUP or "":
+        if commit_message == "":
             commit_message = f"feat: auto pushed (made savepoint) by {SCRIPT_NAME} at {get_time_as_("%Y-%m-%d %H:%M")}"
     except:
         commit_message = input("commit_message=").strip()
