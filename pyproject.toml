@@ -3,7 +3,7 @@ name = "pk_system"
 version = "1.1.13"
 description = "WSL + Docker + uv + venv + Python project"
 authors = [
-    { name = "junghoon.park", email = "park4139@example.com" }
+    { name = "junghoon.park", email = "park4139@google.com" }
 ]
 requires-python = ">=3.12"
 readme = "README.md"

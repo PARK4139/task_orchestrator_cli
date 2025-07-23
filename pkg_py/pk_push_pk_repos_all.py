@@ -11,12 +11,12 @@ from pkg_py.workspace.pk_workspace import ensure_git_project_pushed, copy_and_pu
 if __name__ == "__main__":
     try:
         os.chdir(D_PROJECT)
-        ensure_git_project_pushed()
+        ensure_git_project_pushed() # private repo
 
         os.chdir(D_PROJECT_MEMO)
-        ensure_git_project_pushed(with_commit_massage=False)
+        ensure_git_project_pushed() # private repo
 
-        copy_and_push_auto_utility()
+        copy_and_push_auto_utility() # public repo
 
     except Exception as exception:
         ensure_do_exception_routine(traceback=traceback, exception=exception)
