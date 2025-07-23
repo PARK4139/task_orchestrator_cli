@@ -41,8 +41,7 @@ echo ─────────────────────────
 set "CURRENT_STEP=Importing pk_alias"
 powershell -Command "Write-Host '[1/6] %CURRENT_STEP%' -ForegroundColor Cyan"
 call "%D_PKG_WINDOWS%\ensure_pk_alias_imorted.cmd" || goto END
-
-echo ──────────────────────────────────────────────────────────
+@REM echo ──────────────────────────────────────────────────────────
 :: Step 20: Import ahk
 @REM set "CURRENT_STEP=Importing ahk"
 @REM powershell -Command "Write-Host '[2/6] %CURRENT_STEP%' -ForegroundColor Cyan"
