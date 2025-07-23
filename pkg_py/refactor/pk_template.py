@@ -90,3 +90,31 @@
 # window_opened_list = get_list_sorted(working_list=window_opened_list,mode_asc=1)
 # print_iterable_as_vertical(item_iterable=window_opened_list, item_iterable_n="window_opened_list")
 # window_title_to_kill = "pk_test.py" # was..blank problem..
+# _____________________________________________________________________  user input hard cording, autocomplete, fzf, history file
+# pk_option1 : based on tab, without history
+# options = [
+#     "chore: various improvements and updates across multiple files",
+#     "chore: update dependencies",
+#     "add: new feature for ~~",
+#     "fix: resolve issue with ~~",
+#     "found: problem",
+#     "refactor: improve code readability in ~~",
+#     "refactor: improve code readability in user module",
+#     "refactor: restructure and update multiple files with improved messages and translations",
+#     "docs: update README.md and improved project documentation",
+#     "feat: add user profile page",
+#     f"feat: auto pushed (made savepoint) by {SCRIPT_NAME} at {get_time_as_("%Y-%m-%d %H:%M")}",
+# ]
+# commit_message = get_value_completed(key_hint='commit_message=',values=options)
+# commit_message = commit_message.strip()
+# if commit_message == "":
+#     commit_message = f"feat: auto pushed (made savepoint) by {SCRIPT_NAME} at {get_time_as_("%Y-%m-%d %H:%M")}"
+# _____________________________________________________________________  user input history, autocomplete, fzf, history file
+# key_name = 'commit_message'
+# func_n = inspect.currentframe().f_code.co_name
+# file_id = get_file_id(key_name, func_n)
+# # editable = False
+# editable = True
+# value = get_value_via_fzf_or_history_routine(key_name=key_name, file_id=file_id, options=[], editable=editable)
+# commit_message = value
+# pk_print(f'''commit_message={commit_message} {'%%%FOO%%%' if LTA else ''}''')

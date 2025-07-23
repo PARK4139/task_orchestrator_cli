@@ -151,54 +151,22 @@ def ensure_git_project_pushed():
         from pkg_py.functions_split.get_value_completed import get_value_completed
         from pkg_py.pk_system_object.PkMessages2025 import PkMessages2025
 
-        # pk_option1 : based on tab, without history
-        # options = [
-        #     "chore: various improvements and updates across multiple files",
-        #     "chore: update dependencies",
-        #     "add: new feature for ~~",
-        #     "fix: resolve issue with ~~",
-        #     "found: problem",
-        #     "refactor: improve code readability in ~~",
-        #     "refactor: improve code readability in user module",
-        #     "refactor: restructure and update multiple files with improved messages and translations",
-        #     "docs: update README.md and improved project documentation",
-        #     "feat: add user profile page",
-        #     f"feat: auto pushed (made savepoint) by {SCRIPT_NAME} at {get_time_as_("%Y-%m-%d %H:%M")}",
-        # ]
-        # commit_message = get_value_completed(key_hint='commit_message=',values=options)
-        # commit_message = commit_message.strip()
-        # if commit_message == "":
-        #     commit_message = f"feat: auto pushed (made savepoint) by {SCRIPT_NAME} at {get_time_as_("%Y-%m-%d %H:%M")}"
-
         # pk_option2 : based on history
         key_name = 'commit_message'
-        options = [
-            "chore: ",  # 잡일
-            "add: ",  # 신규추가
-            # "chore: various improvements and updates across multiple files",
-            # "chore: update dependencies",
-            # "add: new feature for ~~",
-            # "fix: resolve issue with ~~",
-            # "refactor: improve code readability in ~~",
-            # "refactor: improve code readability in user module",
-            # "refactor: restructure and update multiple files with improved messages and translations",
-            # "docs: update README.md and improved project documentation",
-            # "feat: add user profile page",
-            # f"feat: auto pushed (made savepoint) by {SCRIPT_NAME} at {get_time_as_("%Y-%m-%d %H:%M")}",
-        ]
         func_n = inspect.currentframe().f_code.co_name
         file_id = get_file_id(key_name, func_n)
-        # editable = False
-        editable = True
-        commit_message = get_value_via_fzf_or_history_routine(key_name=key_name, file_id=file_id, options=options, editable=editable)
-        pk_print(f'''commit_message={commit_message} {'%%%FOO%%%' if LTA else ''}''')
-
-
+        editable = False
+        # editable = True
+        commit_message = get_value_via_fzf_or_history_routine(key_name=key_name, file_id=file_id, options=[], editable=editable)
+        if commit_message == "":
+            commit_message = f"feat: auto pushed (made savepoint) by {SCRIPT_NAME} at {get_time_as_("%Y-%m-%d %H:%M")}",
+            pk_print(f'''commit_message={commit_message} {'%%%FOO%%%' if LTA else ''}''')
 
     except:
         commit_message = input("commit_message=").strip()
         if commit_message == "":
             commit_message = f"feat: auto pushed (made savepoint) by {SCRIPT_NAME}"
+            pk_print(f'''commit_message={commit_message} {'%%%FOO%%%' if LTA else ''}''')
 
     cmd = f'git commit -m "{commit_message}"'
     code, output = run_command(cmd, capture_output=True)

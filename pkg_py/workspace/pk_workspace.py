@@ -1650,6 +1650,7 @@ def ensure_cmd_exe_all_closed_in_loop():
 
 
 def get_value_via_fzf_or_history_routine(key_name, file_id, options, editable):
+    # first call 에서 options에 값을 넣고, 이후 호출부터는 options = [] 로 해야함, 계속 값이 더해짐
     f_historical = get_f_historical(file_id=file_id)
     historical_values = get_values_from_history_file(f_historical=f_historical)
     options = get_list_calculated(origin_list=options, plus_list=historical_values)
