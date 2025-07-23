@@ -54,7 +54,7 @@ def pk_ensure_filenames_renamed_from_prefix_xxx(mode=None):
         d_working = D_FUNCTIONS_SPLIT
     else:
         key_name = "d_working"
-        d_working = get_values_from_historical_file_routine(file_id=get_file_id(key_name, func_n), key_hint=f'{key_name}=', values_default=[D_FUNCTIONS_SPLIT])
+        d_working = get_values_from_historical_file_routine(file_id=get_file_id(key_name, func_n), key_hint=f'{key_name}=', options_default=[D_FUNCTIONS_SPLIT])
     if mode is None:
         if LTA:
             exec_mode = PkMessages2025.EXECUTION

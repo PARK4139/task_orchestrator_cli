@@ -7,7 +7,7 @@ from pkg_py.functions_split.ensure_do_finally_routine import ensure_do_finally_r
 from pkg_py.functions_split.get_f_historical import get_f_historical
 from pkg_py.functions_split.get_file_id import get_file_id
 from pkg_py.functions_split.get_list_calculated import get_list_calculated
-from pkg_py.functions_split.get_values_from_historical_file import get_values_from_historical_file
+from pkg_py.functions_split.get_values_from_historical_file import get_values_from_history_file
 from pkg_py.functions_split.pk_colorama_init_once import pk_colorama_init_once
 from pkg_py.functions_split.pk_print import pk_print
 from pkg_py.functions_split.set_values_to_historical_file import set_values_to_historical_file
@@ -1651,7 +1651,7 @@ def ensure_cmd_exe_all_closed_in_loop():
 
 def get_value_via_fzf_or_history_routine(key_name, file_id, options, editable):
     f_historical = get_f_historical(file_id=file_id)
-    historical_values = get_values_from_historical_file(f_historical=f_historical)
+    historical_values = get_values_from_history_file(f_historical=f_historical)
     options = get_list_calculated(origin_list=options, plus_list=historical_values)
     options = get_list_calculated(origin_list=options, dedup=True)
     selected = get_value_via_fzf_or_history(key_name=key_name, file_id=file_id, options=options, editable=editable)

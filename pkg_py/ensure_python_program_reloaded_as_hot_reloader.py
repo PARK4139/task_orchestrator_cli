@@ -67,7 +67,7 @@ def get_value_via_fzf_or_history(key_name, file_id, options, editable=False):
         selected_value = get_values_from_fzf_routine(file_id=file_id, options=options, editable=editable)
         return selected_value
     elif decision == PkMessages2025.VIA_HISTORICAL_FILE:
-        selected_value = get_values_from_historical_file_routine(file_id=file_id, key_hint=f'{key_name}=', values_default=options, editable=editable)
+        selected_value = get_values_from_historical_file_routine(file_id=file_id, key_hint=f'{key_name}=', options_default=options, editable=editable)
         return selected_value
     else:
         selected_value = decision

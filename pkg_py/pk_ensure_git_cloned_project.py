@@ -38,13 +38,13 @@ if __name__ == "__main__":
         func_n = inspect.currentframe().f_code.co_name
 
         key_name = "git_repo_url"
-        git_repo_url = get_values_from_historical_file_routine(file_id = db.get_id(key_name,func_n) , key_hint=f'{key_name}=', values_default=['pk_working'])
+        git_repo_url = get_values_from_historical_file_routine(file_id = db.get_id(key_name,func_n), key_hint=f'{key_name}=', options_default=['pk_working'])
 
         key_name = "git_branch_name"
-        git_branch_name = get_values_from_historical_file_routine(file_id=db.get_id(key_name,func_n), key_hint=f'{key_name}=', values_default=['pk_working'])
+        git_branch_name = get_values_from_historical_file_routine(file_id=db.get_id(key_name,func_n), key_hint=f'{key_name}=', options_default=['pk_working'])
 
         key_name = "d_working"
-        d_working = get_values_from_historical_file_routine(file_id=db.get_id(key_name,func_n), key_hint=f'{key_name}=', values_default=['pk_working'])
+        d_working = get_values_from_historical_file_routine(file_id=db.get_id(key_name,func_n), key_hint=f'{key_name}=', options_default=['pk_working'])
 
         std_list = cmd_to_os(f'git clone -b {git_branch_name} {git_repo_url} {d_working}')
 

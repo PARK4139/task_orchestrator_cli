@@ -95,28 +95,28 @@ def pk_ensure_filecontents_renamed_from_old_str_to_new_str():
             d_working = get_values_from_historical_file_routine(
                 file_id=get_file_id(key_name, func_n),
                 key_hint=f'{key_name}=',
-                values_default=[D_FUNCTIONS_SPLIT, D_PKG_PY]
+                options_default=[D_FUNCTIONS_SPLIT, D_PKG_PY]
             )[0]
 
             key_name = "old_str"
             old_str = get_values_from_historical_file_routine(
                 file_id=get_file_id(key_name, func_n),
                 key_hint=f'{key_name}=',
-                values_default=["old_string"]
+                options_default=["old_string"]
             )[0]
 
             key_name = "new_str"
             new_str = get_values_from_historical_file_routine(
                 file_id=get_file_id(key_name, func_n),
                 key_hint=f'{key_name}=',
-                values_default=["new_string"]
+                options_default=["new_string"]
             )[0]
 
             key_name = "exts"
             exts = get_values_from_historical_file_routine(
                 file_id=get_file_id(key_name, func_n),
                 key_hint=f'{key_name}= (예: .py,.txt)',
-                values_default=[".py,.txt"]
+                options_default=[".py,.txt"]
             )[0]
 
         if not os.path.isdir(d_working):

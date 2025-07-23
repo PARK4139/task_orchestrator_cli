@@ -49,7 +49,7 @@ def ensure_pycharm_module_optimize():
             get_values_from_historical_file_routine(
                 file_id=db.get_id(key_name, func_n),
                 key_hint=f'{key_name}=',
-                values_default=[get_d_working()]
+                options_default=[get_d_working()]
             )
         )
 
@@ -89,7 +89,7 @@ def ensure_pycharm_module_optimize():
         file_skip_limit = get_values_from_historical_file_routine(
             file_id=get_file_id(key_name, func_n),
             key_hint=f'{key_name}=',
-            values_default=[str(file_first_cnt), str(total_file_cnt)],
+            options_default=[str(file_first_cnt), str(total_file_cnt)],
             editable=True,
         )
     file_skip_limit = int(file_skip_limit)

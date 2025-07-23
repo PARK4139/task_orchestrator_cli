@@ -134,19 +134,19 @@ def pk_ensure_modules_imported_proper():
             d_working = get_values_from_historical_file_routine(
                 file_id=get_file_id(key_name, func_n),
                 key_hint=f'{key_name}=',
-                values_default=[D_FUNCTIONS_SPLIT]
+                options_default=[D_FUNCTIONS_SPLIT]
             )
             key_name = "d_import_path_reference"
             d_import_path_reference = get_values_from_historical_file_routine(
                 file_id=get_file_id(key_name, func_n),
                 key_hint=f'{key_name}=',
-                values_default=[D_PROJECT]
+                options_default=[D_PROJECT]
             )
             key_name = "lazy_import_location"
             import_location = get_values_from_historical_file_routine(
                 file_id=get_file_id(key_name, func_n),
                 key_hint=f'{key_name}=',
-                values_default=["general_import_location", "lazy_import_location"]
+                options_default=["general_import_location", "lazy_import_location"]
             )
             exec_mode = get_value_completed(
                 key_hint=f"{PkMessages2025.MODE}=",

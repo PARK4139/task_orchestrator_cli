@@ -4,7 +4,7 @@ from pkg_py.functions_split.get_historical_list import get_historical_list
 from pkg_py.functions_split.is_url import is_url
 
 
-def get_values_from_historical_file(f_historical, pk_serial_filters=None):
+def get_values_from_history_file(f_historical, pk_serial_filters=None):
     # TBD
     # paralel filter(priority) as another function
 
