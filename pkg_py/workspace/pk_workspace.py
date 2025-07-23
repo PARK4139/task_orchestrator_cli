@@ -1,4 +1,21 @@
+import inspect
+import traceback
+
+from pkg_py.ensure_python_program_reloaded_as_hot_reloader import get_value_via_fzf_or_history
+from pkg_py.functions_split.ensure_do_exception_routine import ensure_do_exception_routine
+from pkg_py.functions_split.ensure_do_finally_routine import ensure_do_finally_routine
+from pkg_py.functions_split.get_f_historical import get_f_historical
+from pkg_py.functions_split.get_file_id import get_file_id
+from pkg_py.functions_split.get_list_calculated import get_list_calculated
+from pkg_py.functions_split.get_values_from_historical_file import get_values_from_historical_file
+from pkg_py.functions_split.pk_colorama_init_once import pk_colorama_init_once
+from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.set_values_to_historical_file import set_values_to_historical_file
+from pkg_py.pk_system_object.Local_test_activate import LTA
+from pkg_py.pk_system_object.directories_reuseable import D_PROJECT
+from pkg_py.pk_system_object.stamps import STAMP_TRY_GUIDE
 import glob
+import inspect
 import os
 import subprocess
 
@@ -6,8 +23,9 @@ import psutil
 import win32gui
 import win32process
 
-from pkg_py.ensure_python_program_reloaded_as_hot_reloader import get_value_from_fzf
+from pkg_py.ensure_python_program_reloaded_as_hot_reloader import get_value_via_fzf_or_history
 from pkg_py.functions_split.chcp_65001 import chcp_65001
+from pkg_py.functions_split.get_file_id import get_file_id
 from pkg_py.functions_split.get_nx import get_nx
 from pkg_py.functions_split.get_os_n import get_os_n
 from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style
@@ -334,7 +352,7 @@ def pk_kill_process_v17(window_title_seg: str):
         if not window_title:
             return
         if LTA:
-            pk_print(f"window_title={window_title} {'%%%FOO%\%%' if LTA else ''}")
+            pk_print(f"window_title={window_title} {'%%%FOO%%%' if LTA else ''}")
         c = wmi.WMI()
         matched_pids = set()
         for proc in c.query("SELECT ProcessId, CommandLine, Caption FROM Win32_Process"):
@@ -1073,7 +1091,7 @@ def pk_kill_process_v15(window_title_seg: str):
     except Exception as e:
         pk_print(f"[ERROR] {e}", print_color="red")
 
-
+@pk_measure_seconds
 def pk_ensure_process_killed(window_title: str):
     # pk_kill_process_v1(window_title)
     pk_kill_process_v17(window_title)
@@ -1573,10 +1591,11 @@ def pk_ensure_process_deduplicated(window_title_seg: str, exact=True):
 
 def ensure_cmd_exe_deduplicated():
     key_name = 'window_opened'
+    func_n = inspect.currentframe().f_code.co_name
     values = get_windows_opened()
     values = [get_values_sanitize_for_cp949(v) for v in values]
     print_iterable_as_vertical(item_iterable=values, item_iterable_n="values")
-    window_opened = get_value_from_fzf(key_name=key_name, values=values)
+    window_opened = get_value_via_fzf_or_history(key_name=key_name, options=values, file_id=get_file_id(key_name, func_n))
     while True:
         window_opened = get_pnx_os_style(window_opened)
         pk_print(f'''window_opened={window_opened} {'%%%FOO%%%' if LTA else ''}''')
@@ -1615,11 +1634,12 @@ def ensure_cmd_exe_all_closed_in_loop():
     while True:
         key_name = 'window_opened'
         values = get_windows_opened()
+        func_n = inspect.currentframe().f_code.co_name
         # sys.stdout.reconfigure(encoding='utf-8') # fail
         # values = values.replace('–', '-')  # 유니코드 EN DASH → 하이픈
         values = [get_values_sanitize_for_cp949(v) for v in values]
         print_iterable_as_vertical(item_iterable=values, item_iterable_n="values")
-        window_opened = get_value_from_fzf(key_name=key_name, values=values)
+        window_opened = get_value_via_fzf_or_history(key_name=key_name, options=values, file_id=get_file_id(key_name, func_n))
         window_opened = get_pnx_os_style(window_opened)
         pk_print(f'''window_opened={window_opened} {'%%%FOO%%%' if LTA else ''}''')
 
@@ -1627,3 +1647,15 @@ def ensure_cmd_exe_all_closed_in_loop():
         # pk_sleep(seconds=1000)
         # pk_sleep(seconds=500)
         pk_sleep(milliseconds=200)
+
+
+def get_value_via_fzf_or_history_routine(key_name, file_id, options, editable):
+    f_historical = get_f_historical(file_id=file_id)
+    historical_values = get_values_from_historical_file(f_historical=f_historical)
+    options = get_list_calculated(origin_list=options, plus_list=historical_values)
+    options = get_list_calculated(origin_list=options, dedup=True)
+    selected = get_value_via_fzf_or_history(key_name=key_name, file_id=file_id, options=options, editable=editable)
+    options = get_list_calculated(origin_list=[selected], plus_list=options) # 선택값을 맨 앞으로 정렬
+    options = get_list_calculated(origin_list=options, dedup=True)
+    set_values_to_historical_file(f_historical=f_historical, values=options)
+    return selected

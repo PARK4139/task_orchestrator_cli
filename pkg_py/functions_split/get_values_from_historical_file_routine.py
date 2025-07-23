@@ -20,10 +20,7 @@ def get_values_from_historical_file_routine(file_id: str, key_hint: str, values_
     if editable == True:
         ensure_pnx_opened_by_ext(pnx=f_historical)
         ensure_window_to_front(window_title_seg=get_nx(f_historical))
-    values_optional = get_list_calculated(origin_list=values_default,
-                                          plus_list=get_values_from_historical_file(f_historical=f_historical))
-    # ensure_pk_system_exit_silent()  # pk_option
-
+    values_optional = get_list_calculated(origin_list=values_default,plus_list=get_values_from_historical_file(f_historical=f_historical))
     value_selected = get_value_completed(key_hint=key_hint, values=values_optional)
     values_optional = get_list_calculated(origin_list=values_optional, plus_list=[value_selected])
     set_values_to_historical_file(f_historical=f_historical, values=values_optional)

@@ -2,13 +2,11 @@
     chcp 65001 >nul
     setlocal enabledelayedexpansion
 
-    echo ──────────────────────────────────────────────────────────
-    :: 전체 단계 수를 정의
+    :: steps numbers define
     set /a TOTAL_STEPS=5
     set /a STEP_INDEX=0
 
-    echo ──────────────────────────────────────────────────────────
-    :: 초기 설정
+    :: path define
     set "D_PKG_WINDOWS=%USERPROFILE%\Downloads\pk_system\pkg_windows"
     set "VSCODE_PATH=%USERPROFILE%\AppData\Local\Programs\Microsoft VS Code\bin"
 

@@ -1,10 +1,3 @@
-
-
-# import win32process
-# import win32gui
-
-from pkg_py.functions_split.pk_print import pk_print
-
 # deep size 측정용 (optional, pip install pympler)
 
 try:
@@ -17,11 +10,9 @@ except ImportError:
 
 def pk_measure_memory(func):
     import psutil
-
-    #
-
     import functools
     import os
+    from pkg_py.functions_split.pk_print import pk_print
     import sys
 
     @functools.wraps(func)

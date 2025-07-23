@@ -1,3 +1,7 @@
+from pkg_py.functions_split.pk_measure_seconds import pk_measure_seconds
+
+
+@pk_measure_seconds
 def ensure_f_list_change_stable(f_list, limit_seconds, monitoring_interval_seconds=0.2):
     from pkg_py.functions_split.pk_sleep import pk_sleep
     import os
