@@ -2,6 +2,7 @@ from pkg_py.functions_split.get_pk_program_language import get_pk_program_langua
 
 
 class PkMessages2025:
+    PRESS_ENTER_TO_PROCEED = None
     VIA_HISTORICAL_FILE = None
     PROCESS = None
     KILL = None
@@ -185,6 +186,7 @@ class PkMessages2025:
         "KILL": {"kr": "죽이다", "en": "KILL"},
         "PROCESS": {"kr": "프로세스", "en": "PROCESS"},
         "VIA_HISTORICAL_FILE": {"kr": "파일 히스토리로 입력", "en": "INPUT VIA HISTORICAL FILE"},
+        "PRESS_ENTER_TO_PROCEED": {  "kr": "진행하려면 Enter 를 누르세요",  "en": "Press Enter to proceed"}
     }
 
     @classmethod
