@@ -1,12 +1,16 @@
+from pkg_py.functions_split.ensure_do_exception_routine import ensure_do_exception_routine
+from pkg_py.functions_split.get_pk_token import get_pk_token
+from pkg_py.functions_split.pk_copy import pk_copy
+from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.pk_system_object.directories import D_PKG_TOML
+from pkg_py.pk_system_object.etc import PK_UNDERLINE
+
 if __name__ == "__main__":
     try:
         import traceback
-        # from pkg_py.pk_system_object.500_live_logic import pk_copy, run_project_docker_base, LTA, get_pk_token, assist_to_ensure_vpc_bit, get_vpc_data_raw_from_vpc_request, assist_to_perform_to_ensure_vpc_condition
-        #, print_pk_divider
-        # from pkg_py.pk_system_object.static_logic import D_PROJECT, UNDERLINE, STAMP_TRY_GUIDE, STAMP_EXCEPTION_DISCOVERED, STAMP_UNIT_TEST_EXCEPTION_DISCOVERED, D_PKG_TOML
 
         github_pat = get_pk_token(f_token=f'{D_PKG_TOML}/pk_token_github_pat.toml', initial_str='')
-        pk_copy(working_str=github_pat)
+        pk_copy(github_pat)
     except Exception as exception:
         ensure_do_exception_routine(traceback=traceback, exception=exception)
 
