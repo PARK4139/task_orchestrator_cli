@@ -5,7 +5,7 @@ def split_by_top_level_def(d_working, filepath, prefix=None, preview=False):
     import re
     from collections import defaultdict
 
-    from pkg_py.pk_system_object.PkMessages2025 import PkMessages2025
+    from pkg_py.pk_system_object.map_massages import PkMessages2025
 
     from pkg_py.functions_split.sanitize_filename import sanitize_filename
 

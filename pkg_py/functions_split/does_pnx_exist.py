@@ -1,5 +1,5 @@
 def does_pnx_exist(pnx=None, nx=None):
-    from pkg_py.pk_system_object.Local_test_activate import LTA
+    from pkg_py.pk_system_object.local_test_activate import LTA
     from pkg_py.functions_split.pk_print import pk_print
     from pkg_py.functions_split.get_pnx_list import get_pnx_list
     from pkg_py.functions_split.get_d_working import get_d_working

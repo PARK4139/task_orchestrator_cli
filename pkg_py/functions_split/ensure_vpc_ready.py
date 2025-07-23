@@ -8,7 +8,7 @@ from pkg_py.functions_split.pk_press import pk_press
 from moviepy import VideoFileClip
 from datetime import timedelta
 
-from pkg_py.pk_system_object.Local_test_activate import LTA
+from pkg_py.pk_system_object.local_test_activate import LTA
 
 
 def ensure_vpc_ready(vpc_data, wsl_data, **config_remote_os):

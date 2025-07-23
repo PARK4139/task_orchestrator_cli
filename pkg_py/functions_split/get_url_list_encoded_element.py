@@ -25,7 +25,7 @@ from base64 import b64encode
 from pkg_py.functions_split.get_nx import get_nx
 from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style
 
-from pkg_py.pk_system_object.Local_test_activate import LTA
+from pkg_py.pk_system_object.local_test_activate import LTA
 from pkg_py.functions_split.pk_print import pk_print
 
 

@@ -7,7 +7,7 @@ def pk_ensure_functions_splited_v2():
     import logging
     import os
     import os.path
-    from pkg_py.pk_system_object.PkMessages2025 import PkMessages2025
+    from pkg_py.pk_system_object.map_massages import PkMessages2025
     from pkg_py.functions_split.restore_workspace_from_latest_archive import restore_workspace_from_latest_archive
     from pkg_py.functions_split.split_by_top_level_def import split_by_top_level_def
     func_n = inspect.currentframe().f_code.co_name

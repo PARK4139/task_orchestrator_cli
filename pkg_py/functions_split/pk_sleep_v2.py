@@ -1,6 +1,6 @@
 
 
-from pkg_py.pk_system_object.PkMessages2025 import PkMessages2025
+from pkg_py.pk_system_object.map_massages import PkMessages2025
 from pkg_py.functions_split.pk_print import pk_print
 
 

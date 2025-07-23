@@ -1,5 +1,5 @@
 def is_window_title_opened(window_title):
-    from pkg_py.pk_system_object.Local_test_activate import LTA
+    from pkg_py.pk_system_object.local_test_activate import LTA
     from pkg_py.functions_split.pk_print import pk_print
     from pkg_py.functions_split.get_list_without_none import get_list_without_none
     from pkg_py.pk_interface_graphic_user import get_windows_opened

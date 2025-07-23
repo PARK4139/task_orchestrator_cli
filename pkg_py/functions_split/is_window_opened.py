@@ -9,13 +9,13 @@ from pkg_py.functions_split.ensure_window_to_front import ensure_window_to_front
 from pkg_py.functions_split.is_losslesscut_running import is_losslesscut_running
 from pkg_py.functions_split.cmd_to_os import cmd_to_os
 from pkg_py.pk_system_object.directories import D_PKG_TXT, D_WORKING
-from pkg_py.pk_system_object.Local_test_activate import LTA
+from pkg_py.pk_system_object.local_test_activate import LTA
 from pathlib import Path
 from datetime import datetime
 from pkg_py.functions_split.get_pnx_wsl_unix_style import get_pnx_wsl_unix_style
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 
-from pkg_py.pk_system_object.Local_test_activate import LTA
+from pkg_py.pk_system_object.local_test_activate import LTA
 
 
 def is_window_opened(window_title_seg):

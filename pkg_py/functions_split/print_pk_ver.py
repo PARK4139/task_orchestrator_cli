@@ -1,7 +1,7 @@
 
 
 def print_pk_ver():
-    from pkg_py.pk_system_object.Local_test_activate import LTA
+    from pkg_py.pk_system_object.local_test_activate import LTA
     from pkg_py.functions_split.pk_print import pk_print
 
     if LTA:

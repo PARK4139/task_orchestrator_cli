@@ -75,7 +75,7 @@ from pkg_py.pk_system_object.files import F_HISTORICAL_PNX
 from pkg_py.pk_system_object.files import F_FFMPEG_EXE
 from pkg_py.pk_system_object.encodings import Encoding
 from pkg_py.pk_system_object.state_via_database import PkSqlite3DB
-from pkg_py.pk_system_object.Local_test_activate import LTA
+from pkg_py.pk_system_object.local_test_activate import LTA
 
 from pathlib import Path
 from passlib.context import CryptContext
@@ -99,10 +99,10 @@ from pkg_py.functions_split.is_f import is_f
 from pkg_py.pk_system_object.is_os_windows import is_os_windows
 from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style
 from pkg_py.functions_split.get_pnx_wsl_unix_style import get_pnx_wsl_unix_style
-from pkg_py.pk_system_object.Local_test_activate import LTA
+from pkg_py.pk_system_object.local_test_activate import LTA
 from pkg_py.functions_split.pk_print import pk_print
 
-from pkg_py.pk_system_object.Local_test_activate import LTA
+from pkg_py.pk_system_object.local_test_activate import LTA
 from pkg_py.functions_split.pk_print import pk_print
 from pkg_py.functions_split.get_pnx_list import get_pnx_list
 from pkg_py.functions_split.get_d_working import get_d_working

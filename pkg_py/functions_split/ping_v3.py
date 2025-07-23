@@ -1,29 +1,9 @@
-import urllib.parse
-import tomllib
-import tarfile
-import sqlite3
-import psutil
-import pandas as pd
-import numpy as np
-import math
-import easyocr
-from selenium.webdriver.common.keys import Keys
-from pkg_py.functions_split.is_losslesscut_running import is_losslesscut_running
-from pkg_py.pk_system_object.files import F_LOSSLESSCUT_EXE
-from functools import partial
-from fastapi import HTTPException
-from dirsync import sync
-from collections import Counter
-from pkg_py.pk_system_object.is_os_windows import is_os_windows
-from pkg_py.functions_split.is_os_windows import is_os_windows
-from pkg_py.pk_system_object.Local_test_activate import LTA
-
-from pkg_py.pk_system_object.Local_test_activate import LTA
-from pkg_py.functions_split.pk_print import pk_print
-
-
 def ping_v3(ip, timeout_ms=1000):
     import subprocess
+    from pkg_py.functions_split.is_os_windows import is_os_windows
+    from pkg_py.functions_split.pk_print import pk_print
+    from pkg_py.pk_system_object.local_test_activate import LTA
+    from pkg_py.pk_system_object.etc import PK_BLANK
 
     if not ip:
         pk_print(f'ping {ip}', print_color='red')

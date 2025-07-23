@@ -9,7 +9,7 @@ def ensure_elapsed_time_logged(start_time, log_file_path=None):
     from pkg_py.pk_system_object.color_map import PK_ANSI_COLOR_MAP
     import time
 
-    from pkg_py.pk_system_object.PkMessages2025 import PkMessages2025
+    from pkg_py.pk_system_object.map_massages import PkMessages2025
 
 
     import inspect

@@ -32,7 +32,7 @@ from pkg_py.pk_system_object.files import F_LOSSLESSCUT_EXE
 from pkg_py.pk_system_object.files import F_HISTORICAL_PNX
 from pkg_py.pk_system_object.directories import D_WORKING
 from pkg_py.pk_system_object.is_os_windows import is_os_windows
-from pkg_py.pk_system_object.Local_test_activate import LTA
+from pkg_py.pk_system_object.local_test_activate import LTA
 from pathlib import Path
 from mutagen.mp3 import MP3
 from dirsync import sync

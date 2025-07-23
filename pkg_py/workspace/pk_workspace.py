@@ -1,34 +1,140 @@
+from pkg_py.functions_split.get_file_id import get_file_id
+from pkg_py.functions_split.get_values_from_historical_file_routine import get_values_from_historical_file_routine
+from pkg_py.functions_split.get_time_as_ import get_time_as_
+from pkg_py.functions_split.get_value_completed import get_value_completed
 import glob
+import inspect
 import os
+import re
 import subprocess
+import sys
+import time
+import traceback
+from pathlib import Path
 
+import ipdb
 import psutil
 import win32gui
 import win32process
 
-from pkg_py.ensure_python_program_reloaded_as_hot_reloader import get_value_from_fzf
+from pkg_py.ensure_python_program_reloaded_as_hot_reloader import get_value_via_fzf_or_history
 from pkg_py.functions_split.chcp_65001 import chcp_65001
+from pkg_py.functions_split.cmd_to_os import cmd_to_os
+from pkg_py.functions_split.ensure_console_debuggable import ensure_console_debuggable
+from pkg_py.functions_split.ensure_do_exception_routine import ensure_do_exception_routine
+from pkg_py.functions_split.ensure_do_finally_routine import ensure_do_finally_routine
+from pkg_py.functions_split.ensure_pk_system_exit_silent import ensure_pk_system_exit_silent
+from pkg_py.functions_split.get_f_historical import get_history_file
+from pkg_py.functions_split.get_file_id import get_file_id
+from pkg_py.functions_split.get_list_calculated import get_list_calculated
+from pkg_py.functions_split.get_list_sorted import get_list_sorted
 from pkg_py.functions_split.get_nx import get_nx
 from pkg_py.functions_split.get_os_n import get_os_n
+from pkg_py.functions_split.get_pids import get_pids
 from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style
+from pkg_py.functions_split.get_time_as_ import get_time_as_
+from pkg_py.functions_split.get_value_completed import get_value_completed
+from pkg_py.functions_split.get_values_from_historical_file import get_values_from_history_file
 from pkg_py.functions_split.get_window_title import get_window_title
+from pkg_py.functions_split.get_window_title_list import get_window_title_list
 from pkg_py.functions_split.kill_process_via_taskkill import kill_process_via_taskkill
 from pkg_py.functions_split.pk_colorama_init_once import pk_colorama_init_once
 from pkg_py.functions_split.pk_measure_seconds import pk_measure_seconds
 from pkg_py.functions_split.pk_press import pk_press
+from pkg_py.functions_split.pk_print import pk_print
 from pkg_py.functions_split.pk_sleep import pk_sleep
 from pkg_py.functions_split.print_iterable_as_vertical import print_iterable_as_vertical
+from pkg_py.functions_split.set_values_to_historical_file import set_values_to_historical_file
 from pkg_py.functions_split.write_like_person import write_like_person
 from pkg_py.pk_interface_graphic_user import get_windows_opened
+from pkg_py.pk_system_object.color_map import PK_ANSI_COLOR_MAP
 from pkg_py.pk_system_object.directories import D_PKG_WINDOWS
+from pkg_py.pk_system_object.directories_reuseable import D_PROJECT
 from pkg_py.pk_system_object.encodings import Encoding
 from pkg_py.pk_system_object.etc import PK_UNDERLINE
+from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.pk_system_object.map_massages import PkMessages2025
+from pkg_py.pk_system_object.stamps import STAMP_TRY_GUIDE
 
 
-def get_last_history_file(__file__, func_n):
-    base_dir = os.path.abspath(os.path.dirname(__file__))
-    history_file = os.path.join(__file__, f".{func_n}_history")
-    return history_file
+def pk_test_path_normalized():
+    f = str(Path(f).resolve())
+
+
+def pk_test_guide_not_prepared_yet():
+    pk_print(f'''{PkMessages2025.NOT_PREPARED_YET}{'%%%FOO%%%' if LTA else ''}''', print_color='green', mode_verbose=0)
+
+
+def pk_test_pk_python_program_structure():
+    if __name__ == "__main__":
+        try:
+            os.system(f"title {os.path.basename(__file__)}")  # TBD : 데코레이터로 전환
+            pk_print(f'''{PkMessages2025.NOT_PREPARED_YET}{'%%%FOO%%%' if LTA else ''}''', print_color='green', mode_verbose=0)
+            pass
+            if LTA:
+                ensure_console_debuggable()
+        except Exception as exception:
+            ensure_do_exception_routine(traceback=traceback, exception=exception)
+        finally:
+            ensure_do_finally_routine(D_PROJECT=D_PROJECT, __file__=__file__, STAMP_TRY_GUIDE=STAMP_TRY_GUIDE)
+
+
+def pk_test_get_value_with_tab_v90():
+    from pkg_py.functions_split.get_file_id import get_file_id
+    # user input history, autocomplete, fzf, history file
+    key_name = 'commit_message'
+    func_n = inspect.currentframe().f_code.co_name
+    file_id = get_file_id(key_name, func_n)
+    # editable = False
+    editable = True
+    value = get_value_via_fzf_or_history_routine(key_name=key_name, file_id=file_id, options=[], editable=editable)
+    commit_message = value
+    pk_print(f'''commit_message={commit_message} {'%%%FOO%%%' if LTA else ''}''')
+
+
+def pk_test_get_value_with_tab_v80():
+    # user input hard cording, autocomplete, fzf, history file
+    options = [
+        "chore: various improvements and updates across multiple files",
+        "chore: update dependencies",
+        "add: new feature for ~~",
+        "fix: resolve issue with ~~",
+        "found: problem",
+        "refactor: improve code readability in ~~",
+        "refactor: improve code readability in user module",
+        "refactor: restructure and update multiple files with improved messages and translations",
+        "docs: update README.md and improved project documentation",
+        "feat: add user profile page",
+        f"feat: auto pushed (made savepoint) by {SCRIPT_NAME} at {get_time_as_("%Y-%m-%d %H:%M")}",
+    ]
+    commit_message = get_value_completed(key_hint='commit_message=', values=options)
+    commit_message = commit_message.strip()
+    if commit_message == "":
+        commit_message = f"feat: auto pushed (made savepoint) by {SCRIPT_NAME} at {get_time_as_("%Y-%m-%d %H:%M")}"
+
+
+def pk_test_window_title_debugger():
+    window_title_list = get_window_title_list()
+    window_title_list = get_list_sorted(working_list=window_title_list, mode_asc=1)
+    print_iterable_as_vertical(item_iterable=window_title_list, item_iterable_n="window_title_list")
+    window_opened_list = get_windows_opened()
+    window_opened_list = get_list_sorted(working_list=window_opened_list, mode_asc=1)
+    print_iterable_as_vertical(item_iterable=window_opened_list, item_iterable_n="window_opened_list")
+    window_title_to_kill = "pk_test.py"  # was..blank problem..
+
+
+def pk_test_stop_with_silent_debugger():
+    ensure_pk_system_exit_silent()  # pk_option
+
+
+def pk_test_function_name():
+    func_n = inspect.currentframe().f_code.co_name
+
+
+# def get_last_history_file(__file__, func_n):
+#     base_dir = os.path.abspath(os.path.dirname(__file__))
+#     history_file = os.path.join(__file__, f"{func_n}.history")
+#     return history_file
 
 
 def get_last_history(history_file):
@@ -39,8 +145,11 @@ def get_last_history(history_file):
 
 
 def save_to_history(contents_to_save: str, history_file):
-    with open(history_file, "w", encoding="utf-8") as f:
-        f.write(contents_to_save.strip())
+    pk_print(f'''[{PkMessages2025.DATA}] contents_to_save={contents_to_save} {'%%%FOO%%%' if LTA else ''}''')
+    pk_print(f'''[{PkMessages2025.DATA}] history_file={history_file} {'%%%FOO%%%' if LTA else ''}''')
+    if os.path.exists(history_file):
+        with open(history_file, "w", encoding="utf-8") as f_obj:
+            f_obj.write(contents_to_save.strip())
 
 
 def get_fzf_command():
@@ -78,6 +187,7 @@ def pk_run_py_system_process_by_pnx(file_to_excute, file_title):
 
     if is_os_windows():
         # title 명령어로 창 제목 지정 (pk_ 접두사 제거된 제목)
+        file_title = file_title.strip()
         cmd = f'start "" cmd.exe /k "title {file_title}&& python {file_to_excute}"'
         print(f"[실행 중 - Windows] {cmd}")
         cmd_to_os(cmd=cmd, mode='a', mode_with_window=1)
@@ -97,15 +207,6 @@ def get_refactor_py_file_list():
     refactor_dir = os.path.join(os.path.dirname(__file__), "../refactor")
     pattern = os.path.join(refactor_dir, "*.py")
     return sorted(glob.glob(pattern))
-
-
-# from pkg_py.pk_system_object.Local_test_activate import LTA
-#
-# from pkg_py.pk_system_object.print_util import pk_print
-from pkg_py.functions_split.cmd_to_os import cmd_to_os
-from pkg_py.functions_split.get_pids import get_pids
-from pkg_py.functions_split.pk_print import pk_print
-from pkg_py.pk_system_object.Local_test_activate import LTA
 
 
 def kill_cmd_exe():
@@ -334,7 +435,7 @@ def pk_kill_process_v17(window_title_seg: str):
         if not window_title:
             return
         if LTA:
-            pk_print(f"window_title={window_title} {'%%%FOO%\%%' if LTA else ''}")
+            pk_print(f"window_title={window_title} {'%%%FOO%%%' if LTA else ''}")
         c = wmi.WMI()
         matched_pids = set()
         for proc in c.query("SELECT ProcessId, CommandLine, Caption FROM Win32_Process"):
@@ -1074,6 +1175,7 @@ def pk_kill_process_v15(window_title_seg: str):
         pk_print(f"[ERROR] {e}", print_color="red")
 
 
+@pk_measure_seconds
 def pk_ensure_process_killed(window_title: str):
     # pk_kill_process_v1(window_title)
     pk_kill_process_v17(window_title)
@@ -1506,7 +1608,7 @@ def pk_kill_process_v16_1(window_title: str, exact: bool = True):
                     closed_hwnds.append((hwnd, title))
 
     try:
-        win32gui.EnumWindows(enum_handler, None)
+        win32gui.EnumWindows(lambda h, _: enum_handler(h, closed_hwnds), None)
     except Exception as e:
         logging.error(f"[EnumWindows ERROR] {e}")
 
@@ -1573,10 +1675,11 @@ def pk_ensure_process_deduplicated(window_title_seg: str, exact=True):
 
 def ensure_cmd_exe_deduplicated():
     key_name = 'window_opened'
+    func_n = inspect.currentframe().f_code.co_name
     values = get_windows_opened()
     values = [get_values_sanitize_for_cp949(v) for v in values]
     print_iterable_as_vertical(item_iterable=values, item_iterable_n="values")
-    window_opened = get_value_from_fzf(key_name=key_name, values=values)
+    window_opened = get_value_via_fzf_or_history(key_name=key_name, options=values, file_id=get_file_id(key_name, func_n))
     while True:
         window_opened = get_pnx_os_style(window_opened)
         pk_print(f'''window_opened={window_opened} {'%%%FOO%%%' if LTA else ''}''')
@@ -1606,6 +1709,7 @@ def ensure_cmd_exe_deduplicated_all():
         # pk_sleep(seconds=500)
         pk_sleep(milliseconds=200)  # 너무 빠르게 반복되지 않도록 약간 대기
 
+
 def ensure_cmd_exe_deduplicated_all_in_loop():
     while True:
         ensure_cmd_exe_deduplicated_all()
@@ -1615,11 +1719,12 @@ def ensure_cmd_exe_all_closed_in_loop():
     while True:
         key_name = 'window_opened'
         values = get_windows_opened()
+        func_n = inspect.currentframe().f_code.co_name
         # sys.stdout.reconfigure(encoding='utf-8') # fail
         # values = values.replace('–', '-')  # 유니코드 EN DASH → 하이픈
         values = [get_values_sanitize_for_cp949(v) for v in values]
         print_iterable_as_vertical(item_iterable=values, item_iterable_n="values")
-        window_opened = get_value_from_fzf(key_name=key_name, values=values)
+        window_opened = get_value_via_fzf_or_history(key_name=key_name, options=values, file_id=get_file_id(key_name, func_n))
         window_opened = get_pnx_os_style(window_opened)
         pk_print(f'''window_opened={window_opened} {'%%%FOO%%%' if LTA else ''}''')
 
@@ -1627,3 +1732,227 @@ def ensure_cmd_exe_all_closed_in_loop():
         # pk_sleep(seconds=1000)
         # pk_sleep(seconds=500)
         pk_sleep(milliseconds=200)
+
+
+def get_value_via_fzf_or_history_routine(key_name, file_id, options, editable):
+    # first call 에서 options에 값을 넣고, 이후 호출부터는 options = [] 로 해야함, 계속 값이 더해짐
+    f_historical = get_history_file(file_id=file_id)
+    historical_values = get_values_from_history_file(f_historical=f_historical)
+    options = get_list_calculated(origin_list=options, plus_list=historical_values)
+    pk_print(f'''[{PkMessages2025.DATA}] options={options} {'%%%FOO%%%' if LTA else ''}''')
+    options = get_list_calculated(origin_list=options, dedup=True)
+    selected = get_value_via_fzf_or_history(key_name=key_name, file_id=file_id, options=options, editable=editable)
+    selected = selected.strip()
+    options = get_list_calculated(origin_list=[selected], plus_list=options)  # 선택값을 맨 앞으로 정렬
+    options = get_list_calculated(origin_list=options, dedup=True)
+    set_values_to_historical_file(f_historical=f_historical, values=options)
+    return selected
+
+
+def pk_test_example_call_batchfile_as_new_window():
+    batch_file_base = D_PROJECT
+    batch_filename = rf"pk_push_project_to_github.bat"
+    batch_calling_program = 'start "" call'
+    batch_file = get_pnx_os_style(rf'{batch_file_base}/{batch_filename}')
+    os.chdir(batch_file_base)
+    cmd_to_os(cmd=f'{batch_calling_program} "{batch_file}"')
+
+
+def pk_test_example_call_pythonfile_as_new_window():
+    # not recommanded way
+    python_file_base = D_PROJECT
+    python_filename = rf"pk_push_project_to_github.py"
+    python_file = get_pnx_os_style(rf'{python_file_base}/{python_filename}')
+    python_calling_program = 'start "" python'
+    os.chdir(python_file_base)
+    cmd_to_os(cmd=f'{python_calling_program} "{python_file}"')
+
+
+def print_status(step_num: int, cmd: str, code: int, output: str) -> str:
+    if code == 0:
+        label, color = "SUCCESS", PK_ANSI_COLOR_MAP['GREEN']
+    elif "nothing to commit" in output.lower():
+        label, color = "SKIPPED", PK_ANSI_COLOR_MAP['YELLOW']
+    elif "everything up-to-date" in output.lower():
+        label, color = "SKIPPED", PK_ANSI_COLOR_MAP['YELLOW']
+    else:
+        label, color = "FAILED", PK_ANSI_COLOR_MAP['RED']
+
+    print(f"[ {color}{label}{PK_ANSI_COLOR_MAP['RESET']} ] [{step_num}] {cmd}")
+    return label
+
+
+def run_command(cmd: str, capture_output=False):
+    try:
+        if capture_output:
+            result = subprocess.run(cmd, shell=True, text=True, capture_output=True)
+            return result.returncode, result.stdout + result.stderr
+        else:
+            result = subprocess.run(cmd, shell=True)
+            return result.returncode, ""
+    except Exception as e:
+        return 1, str(e)
+
+
+def get_next_commit_number():
+    code, log_output = run_command('git log -n 20 --pretty=format:%s', capture_output=True)
+    if code != 0:
+        return 1
+    numbers = []
+    for line in log_output.splitlines():
+        match = re.match(r"\[(\d+)\]", line)
+        if match:
+            numbers.append(int(match.group(1)))
+    return max(numbers, default=0) + 1
+
+
+def fail_and_exit(start_time):
+    print(f"\n{PK_ANSI_COLOR_MAP['RED']}[!] Aborting further steps. Current git status:{PK_ANSI_COLOR_MAP['RESET']}")
+    _, status_out = run_command("git status", capture_output=True)
+    print(status_out.strip())
+    duration = time.time() - start_time
+    print(f"{PK_ANSI_COLOR_MAP['RED']}process failed at {time.strftime('%Y-%m-%d %H:%M:%S')} (elapsed {duration:.2f} sec){PK_ANSI_COLOR_MAP['RESET']}")
+    sys.exit(1)
+
+
+def get_history_file_path(file_id: str) -> Path:
+    history_dir = Path.home() / ".git_config_history"
+    history_dir.mkdir(parents=True, exist_ok=True)
+    return history_dir / f"history_{file_id}.txt"
+
+
+def get_text_from_history_file(file_id: str) -> str | None:
+    file_path = get_history_file_path(file_id)
+    if not file_path.exists():
+        file_path.write_text("")  # create an empty file
+        return None
+    content = file_path.read_text().strip()
+    return content if content else None
+
+
+def set_text_from_history_file(file_id: str, text: str):
+    """Save text to the corresponding history file."""
+    file_path = get_history_file_path(file_id)
+    file_path.write_text(text.strip())
+
+
+# 전역 스텝 카운터
+step_counter = 0
+
+
+def ensure_git_project_pushed(with_commit_massage=True):
+    # git commit msg templates
+    #             "chore: various improvements and updates across multiple files",
+    #             "chore: update dependencies",
+    #             "add: new feature for ~~",
+    #             "fix: resolve issue with ~~",
+    #             "refactor: improve code readability in ~~",
+    #             "refactor: improve code readability in user module",
+    #             "refactor: restructure and update multiple files with improved messages and translations",
+    #             "docs: update README.md and improved project documentation",
+    #             "feat: add user profile page",
+    #             f"feat: auto pushed (made savepoint) by {SCRIPT_NAME} at {get_time_as_("%Y-%m-%d %H:%M")}",
+
+    SCRIPT_NAME = Path(__file__).name
+    func_n = inspect.currentframe().f_code.co_name
+
+    global step_counter
+    start_time = time.time()
+    print(PK_UNDERLINE)
+    print(f"LOCAL LEPO : {PK_ANSI_COLOR_MAP['GREEN']}{os.getcwd()}{PK_ANSI_COLOR_MAP['RESET']}")
+    print(f"STARTED AT : {PK_ANSI_COLOR_MAP['GREEN']}{time.strftime('%Y-%m-%d %H:%M:%S')}{PK_ANSI_COLOR_MAP['RESET']}")
+
+    # 0. git config set
+    user_email = get_text_from_history_file("user_email") or ""
+    user_name = get_text_from_history_file("user_name") or ""
+
+    if len(user_email.strip()) == 0:
+        user_email = input("user_email=").strip()
+        cmd = f'git config --global user.email "{user_email}"'
+        code, output = run_command(cmd, capture_output=True)
+        print(output.strip())
+        set_text_from_history_file("user_email", user_email)
+        status = print_status(step_counter + 1, cmd, code, output)
+        if status == "FAILED":
+            fail_and_exit(start_time)
+        step_counter += 1
+
+    if len(user_name.strip()) == 0:
+        user_name = input("user_name=").strip()
+        cmd = f'git config --global user.name "{user_name}"'
+        code, output = run_command(cmd, capture_output=True)
+        print(output.strip())
+        set_text_from_history_file("user_name", user_name)
+        status = print_status(step_counter + 1, cmd, code, output)
+        if status == "FAILED":
+            fail_and_exit(start_time)
+        step_counter += 1
+
+    # 1. git add
+    print(PK_UNDERLINE)
+    cmd = "git add ."
+    code, output = run_command(cmd, capture_output=True)
+    print(output.strip())
+    status = print_status(step_counter + 1, cmd, code, output)
+    if status == "FAILED":
+        fail_and_exit(start_time)
+    step_counter += 1
+
+    # 2. git commit
+    print(PK_UNDERLINE)
+    commit_number = get_next_commit_number()
+    commit_message = None
+    if with_commit_massage == False:
+        commit_message = f"feat: auto pushed (made savepoint) by {SCRIPT_NAME} at {get_time_as_("%Y-%m-%d %H:%M")}"
+    else:
+        key_name = "commit_message"
+        try:
+            key_name = 'commit_message'
+            func_n = inspect.currentframe().f_code.co_name
+            file_id = get_file_id(key_name, func_n)
+            if LTA:
+                editable = True  # pk_option
+            else:
+                editable = False
+            value = get_value_via_fzf_or_history_routine(key_name=key_name, file_id=file_id, options=[], editable=editable)
+            pk_print(f'''[{PkMessages2025.DATA}] value={value} {'%%%FOO%%%' if LTA else ''}''')
+            value = value or ""
+            commit_message = value
+            if commit_message == "":
+                commit_message = f"feat: auto pushed (made savepoint) by {SCRIPT_NAME} at {get_time_as_("%Y-%m-%d %H:%M")}"
+            pk_print(f'''commit_message={commit_message} {'%%%FOO%%%' if LTA else ''}''')
+        except:
+            commit_message = input("commit_message=").strip()
+            if commit_message == "":
+                commit_message = f"feat: auto pushed (made savepoint) by {SCRIPT_NAME}"
+            pk_print(f'''commit_message={commit_message} {'%%%FOO%%%' if LTA else ''}''')
+
+
+    cmd = f'git commit -m "{commit_message}"'
+    code, output = run_command(cmd, capture_output=True)
+    print(output.strip())
+    status = print_status(step_counter + 1, cmd, code, output)
+    if status == "FAILED":
+        fail_and_exit(start_time)
+    step_counter += 1
+
+    # 3. git push
+    print(PK_UNDERLINE)
+    cmd = "git push"
+    code, output = run_command(cmd, capture_output=True)
+    print(output.strip())
+    status = print_status(step_counter + 1, cmd, code, output)
+    if status == "FAILED":
+        fail_and_exit(start_time)
+    step_counter += 1
+
+    print(PK_UNDERLINE)
+    if any(protocol in output for protocol in ["To https://", "To http://", "To git@"]):
+        pass
+    elif "everything up-to-date" in output.lower():
+        pass
+    else:
+        fail_and_exit(start_time)
+
+    duration = time.time() - start_time
+    print(f"{PK_ANSI_COLOR_MAP['GREEN']}ALL PROCESS COMPLETED SUCCESSFULLY. TOTAL EXECUTION TIME: {duration:.2f} SECONDS {PK_ANSI_COLOR_MAP['RESET']}")

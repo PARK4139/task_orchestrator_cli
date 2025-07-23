@@ -37,7 +37,7 @@ from pkg_py.pk_system_object.etc import PkFilter
 from pkg_py.pk_system_object.files import F_POT_PLAYER_MINI_64_EXE
 from pkg_py.pk_system_object.files import F_LOSSLESSCUT_EXE
 from pkg_py.pk_system_object.directories import D_DOWNLOADS, D_PKG_PKL
-from pkg_py.pk_system_object.Local_test_activate import LTA
+from pkg_py.pk_system_object.local_test_activate import LTA
 from pkg_py.pk_system_object.get_list_calculated import get_list_calculated
 from gtts import gTTS
 from dirsync import sync

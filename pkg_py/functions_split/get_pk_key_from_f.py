@@ -16,7 +16,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from PySide6.QtWidgets import QApplication
 from pkg_py.functions_split.is_window_opened import is_window_opened
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
-from pkg_py.pk_system_object.PkMessages2025 import PkMessages2025
+from pkg_py.pk_system_object.map_massages import PkMessages2025
 from dirsync import sync
 from dataclasses import dataclass
 from Cryptodome.Random import get_random_bytes

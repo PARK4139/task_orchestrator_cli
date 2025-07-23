@@ -21,7 +21,7 @@ from fastapi import HTTPException
 from enum import Enum
 from cryptography.hazmat.backends import default_backend
 from pkg_py.pk_system_object.directories import D_DOWNLOADS, D_PKG_PKL
-from pkg_py.pk_system_object.Local_test_activate import LTA
+from pkg_py.pk_system_object.local_test_activate import LTA
 from pkg_py.functions_split.pk_print import pk_print
 
 

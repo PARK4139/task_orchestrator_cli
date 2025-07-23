@@ -34,7 +34,7 @@ from pkg_py.functions_split.cmd_to_os import cmd_to_os
 from pkg_py.functions_split.get_list_sorted import get_list_sorted
 from pkg_py.pk_system_object.stamps import STAMP_ATTEMPTED
 from pkg_py.pk_system_object.encodings import Encoding
-from pkg_py.pk_system_object.PkMessages2025 import PkMessages2025
+from pkg_py.pk_system_object.map_massages import PkMessages2025
 from pathlib import Path
 from passlib.context import CryptContext
 from mutagen.mp3 import MP3

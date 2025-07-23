@@ -1,5 +1,5 @@
 def get_list_from_f(f):
-    from pkg_py.pk_system_object.Local_test_activate import LTA
+    from pkg_py.pk_system_object.local_test_activate import LTA
     from pkg_py.pk_system_object.encodings import Encoding
     from pkg_py.functions_split.pk_print import pk_print
     from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style

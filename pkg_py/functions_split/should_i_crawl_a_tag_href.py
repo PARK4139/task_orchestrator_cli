@@ -1,5 +1,5 @@
 from pkg_py.pk_system_object.encodings import Encoding
-from pkg_py.pk_system_object.PkMessages2025 import PkMessages2025
+from pkg_py.pk_system_object.map_massages import PkMessages2025
 from PIL import Image
 
 

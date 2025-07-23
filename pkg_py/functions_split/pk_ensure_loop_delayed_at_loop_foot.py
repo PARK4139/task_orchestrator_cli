@@ -1,9 +1,9 @@
 
 
 def pk_ensure_loop_delayed_at_loop_foot(loop_cnt, mode_level, miliseconds_limit=10000):
-    from pkg_py.pk_system_object.PkMessages2025 import PkMessages2025
+    from pkg_py.pk_system_object.map_massages import PkMessages2025
     
-    from pkg_py.pk_system_object.Local_test_activate import LTA
+    from pkg_py.pk_system_object.local_test_activate import LTA
     if mode_level == 1:  # strict level
         if LTA:
             input(PkMessages2025.IF_YOU_WANT_MORE_PRESS_ENTER)

@@ -65,7 +65,7 @@ from pkg_py.pk_system_object.directories import D_WORKING
 from pkg_py.pk_system_object.print_red import print_red
 from pkg_py.pk_system_object.state_via_context import SpeedControlContext
 
-from pkg_py.pk_system_object.Local_test_activate import LTA
+from pkg_py.pk_system_object.local_test_activate import LTA
 from pkg_py.pk_system_object.get_list_calculated import get_list_calculated
 from os import path
 from mutagen.mp3 import MP3

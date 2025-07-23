@@ -22,7 +22,7 @@ from Cryptodome.Cipher import AES
 from pkg_py.functions_split.is_f import is_f
 from pkg_py.functions_split.is_os_windows import is_os_windows
 
-from pkg_py.pk_system_object.Local_test_activate import LTA
+from pkg_py.pk_system_object.local_test_activate import LTA
 from pkg_py.functions_split.pk_print import pk_print
 
 

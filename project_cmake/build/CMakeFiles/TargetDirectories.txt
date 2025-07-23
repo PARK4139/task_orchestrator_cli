@@ -1,3 +1,0 @@
-/mnt/c/Users/WIN10PROPC3/Downloads/[]/pk_system/project_cmake/build/CMakeFiles/project_cmake.dir
-/mnt/c/Users/WIN10PROPC3/Downloads/[]/pk_system/project_cmake/build/CMakeFiles/edit_cache.dir
-/mnt/c/Users/WIN10PROPC3/Downloads/[]/pk_system/project_cmake/build/CMakeFiles/rebuild_cache.dir

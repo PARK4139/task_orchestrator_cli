@@ -4,7 +4,7 @@ def ensure_windows_closed():
     import win32gui
 
     from pkg_py.functions_split.ensure_func_info_saved import ensure_func_info_saved
-    from pkg_py.pk_system_object.PkMessages2025 import PkMessages2025
+    from pkg_py.pk_system_object.map_massages import PkMessages2025
     from pkg_py.functions_split.pk_print import pk_print
 
     import win32com.client

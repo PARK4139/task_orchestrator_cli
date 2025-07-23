@@ -1,11 +1,11 @@
 from pkg_py.functions_split.pk_measure_seconds import pk_measure_seconds
-from pkg_py.pk_system_object.PkMessages2025 import PkMessages2025
+from pkg_py.pk_system_object.map_massages import PkMessages2025
 from pkg_py.pk_system_object.etc import pk_
 
 
 @pk_measure_seconds
 def run_pk_python_program_by_path(pnx, pk_arg_list=None):
-    from pkg_py.pk_system_object.Local_test_activate import LTA
+    from pkg_py.pk_system_object.local_test_activate import LTA
     from pkg_py.pk_system_object.stamps import STAMP_TRY_GUIDE
     from pkg_py.functions_split.ensure_tmux_pk_session_removed import ensure_tmux_pk_session_removed
     from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux

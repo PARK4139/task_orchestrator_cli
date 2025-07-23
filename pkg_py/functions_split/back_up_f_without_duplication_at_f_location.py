@@ -48,7 +48,7 @@ from pkg_py.pk_system_object.etc import PkFilter
 from pkg_py.pk_system_object.stamps import STAMP_ATTEMPTED
 from pkg_py.pk_system_object.files import F_LOSSLESSCUT_EXE
 from pkg_py.pk_system_object.encodings import Encoding
-from pkg_py.pk_system_object.PkMessages2025 import PkMessages2025
+from pkg_py.pk_system_object.map_massages import PkMessages2025
 from pkg_py.pk_system_object.state_via_database import PkSqlite3DB
 
 from os.path import dirname

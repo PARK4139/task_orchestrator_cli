@@ -3,7 +3,7 @@ import logging
 import os
 import os.path
 
-from pkg_py.pk_system_object.PkMessages2025 import PkMessages2025
+from pkg_py.pk_system_object.map_massages import PkMessages2025
 from pkg_py.refactor.pk_ensure_functions_splited import restore_workspace_from_latest_archive, split_by_top_level_def, backup_workspace
 from pkg_py.functions_split.ensure_pk_system_exit_silent import ensure_pk_system_exit_silent
 from pkg_py.functions_split.get_value_completed import get_value_completed

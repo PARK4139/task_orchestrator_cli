@@ -1,4 +1,4 @@
-from pkg_py.pk_system_object.PkMessages2025 import PkMessages2025
+from pkg_py.pk_system_object.map_massages import PkMessages2025
 
 
 def move_pnx_v2(pnx, d_dst, with_overwrite=0, sequential_mode=0, timestamp_mode=0):
@@ -12,7 +12,7 @@ def move_pnx_v2(pnx, d_dst, with_overwrite=0, sequential_mode=0, timestamp_mode=
     from pkg_py.functions_split.is_d import is_d
     from pkg_py.functions_split.is_f import is_f
     from pkg_py.functions_split.pk_print import pk_print
-    from pkg_py.pk_system_object.Local_test_activate import LTA
+    from pkg_py.pk_system_object.local_test_activate import LTA
 
     def generate_sequential_pnx(dst_base_path, base_name, ext):
         for i in range(1, 1000):

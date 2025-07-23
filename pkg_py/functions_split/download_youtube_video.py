@@ -1,7 +1,7 @@
 from pkg_py.pk_system_object.is_os_windows import is_os_windows
-from pkg_py.pk_system_object.PkMessages2025 import PkMessages2025
+from pkg_py.pk_system_object.map_massages import PkMessages2025
 
-from pkg_py.pk_system_object.Local_test_activate import LTA
+from pkg_py.pk_system_object.local_test_activate import LTA
 from pkg_py.pk_system_object.state_via_database import PkSqlite3DB
 from pkg_py.pk_system_object.directories import D_PKG_TXT
 from pkg_py.pk_system_object.directories import D_WORKING

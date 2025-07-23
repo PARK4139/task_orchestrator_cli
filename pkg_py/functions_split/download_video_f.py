@@ -11,7 +11,7 @@ def download_video_f(url: str):
     from pkg_py.pk_system_object.files import F_YT_DLP_EXE
 
     from pkg_py.functions_split.pk_print import pk_print
-    from pkg_py.pk_system_object.Local_test_activate import LTA
+    from pkg_py.pk_system_object.local_test_activate import LTA
 
     import os
     import traceback

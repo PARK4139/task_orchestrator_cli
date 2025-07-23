@@ -1,4 +1,4 @@
-from pkg_py.pk_system_object.PkMessages2025 import PkMessages2025
+from pkg_py.pk_system_object.map_massages import PkMessages2025
 
 
 def should_i_rsync():  # todo : chore : wsl rsync 로 교체

@@ -1,6 +1,6 @@
 
 
-from pkg_py.pk_system_object.Local_test_activate import LTA
+from pkg_py.pk_system_object.local_test_activate import LTA
 from pkg_py.pk_system_object.directories import D_DOWNLOADS
 from pkg_py.pk_system_object.directories_reuseable import D_PROJECT
 from pkg_py.functions_split.pk_print import pk_print

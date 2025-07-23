@@ -31,6 +31,7 @@ pkg_pkl/
 *.sqlite
 *.pkl
 *.session
+*.history
 
 # Log/Cache
 pkg_log/

@@ -1,9 +1,13 @@
+from pkg_py.functions_split.get_f_historical import get_history_file
+from pkg_py.functions_split.get_file_id import get_file_id
 from pkg_py.functions_split.pk_measure_seconds import pk_measure_seconds
-from pkg_py.pk_system_object.Local_test_activate import LTA
 
 
 @pk_measure_seconds
 def ensure_pk_system_started_v5():
+    from pkg_py.pk_system_object.local_test_activate import LTA
+    from pkg_py.pk_system_object.directories import D_PKG_HISTORY
+
     from pkg_py.functions_split.ensure_window_to_front import ensure_window_to_front
 
     from pkg_py.functions_split.pk_sleep import pk_sleep
@@ -16,17 +20,24 @@ def ensure_pk_system_started_v5():
     while True:
 
         func_n = inspect.currentframe().f_code.co_name
-        base_dir = os.path.abspath(os.path.dirname(__file__))
-        history_file = os.path.join(base_dir, f".{func_n}_history")
 
-        # 기존 리스트 + refactor 폴더의 py 파일 추가
-        pk_file_list = get_excutable_pk_system_file_list()
-        pk_file_list += get_refactor_py_file_list()
+        pk_file_list = get_excutable_pk_system_file_list()  # pkg_py 폴더의 py 파일 추가
+        pk_file_list += get_refactor_py_file_list()  # refactor 폴더의 py 파일 추가
         if not pk_file_list:
             print("실행 가능한 pk_*.py/refactor/*.py 파일이 없습니다.")
             return
 
-        last_selected = get_last_history(history_file)
+        last_selected_guide_mode = None
+        if LTA:
+            last_selected_guide_mode = True  # pk_option
+        else:
+            last_selected_guide_mode = False
+
+        key_name = "last_selected"
+        last_selected = None
+        history_file = get_history_file(file_id=get_file_id(key_name, func_n))
+        if last_selected_guide_mode == True:
+            last_selected = get_last_history(history_file)
         file_to_excute = None
         fzf_cmd = get_fzf_command()
         if fzf_cmd:
@@ -34,9 +45,10 @@ def ensure_pk_system_started_v5():
                 display_names = [os.path.basename(p)[3:] for p in pk_file_list]  # remove 'pk_'
                 fzf_input = "\n".join(display_names)
                 cmd = [fzf_cmd]
-                if last_selected and last_selected in pk_file_list:
-                    fname = os.path.basename(last_selected)[3:]
-                    cmd += ["--query", fname]
+                if last_selected_guide_mode == True:
+                    if last_selected and last_selected in pk_file_list:
+                        fname = os.path.basename(last_selected)[3:]
+                        cmd += ["--query", fname]
                 proc = subprocess.Popen(cmd, stdin=subprocess.PIPE, stdout=subprocess.PIPE, text=True)
                 out, _ = proc.communicate(input=fzf_input)
                 selected_name = out.strip()
@@ -58,7 +70,8 @@ def ensure_pk_system_started_v5():
             print(f"오류: 파일이 존재하지 않습니다: {file_to_excute}")
             return
 
-        save_to_history(file_to_excute, history_file)
+        if last_selected_guide_mode == True:
+            save_to_history(contents_to_save=file_to_excute, history_file=history_file)
         file_to_excute = os.path.normpath(file_to_excute)
         file_title = os.path.basename(file_to_excute)
 
@@ -69,7 +82,7 @@ def ensure_pk_system_started_v5():
         pk_run_py_system_process_by_pnx(file_to_excute, file_title)
         pk_sleep(milliseconds=500)
         if LTA:
-            ensure_window_to_front(window_title_seg=rf"{func_n.replace("_v5", "")}")  # pk_option
+            ensure_window_to_front(window_title_seg=rf"file_to_excute")  # pk_option
+            # ensure_window_to_front(window_title_seg=rf"{func_n.replace("_v5", "")}")  # pk_option
         else:
-            ensure_window_to_front(window_title_seg=rf"file_to_excute") # pk_option
-
+            ensure_window_to_front(window_title_seg=rf"file_to_excute")  # pk_option

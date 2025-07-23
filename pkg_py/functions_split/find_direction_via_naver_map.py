@@ -19,7 +19,7 @@ from pkg_py.functions_split.pk_print_once import pk_print_once
 from pkg_py.pk_system_object.etc import PkFilter
 from pkg_py.pk_system_object.directories_reuseable import D_PROJECT
 from pkg_py.pk_system_object.is_os_windows import is_os_windows
-from pkg_py.pk_system_object.Local_test_activate import LTA
+from pkg_py.pk_system_object.local_test_activate import LTA
 from moviepy import VideoFileClip
 from fastapi import HTTPException
 from datetime import timedelta

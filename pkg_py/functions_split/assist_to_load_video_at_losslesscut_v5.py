@@ -1,5 +1,9 @@
+from pkg_py.functions_split.pk_sleep import pk_sleep
+from pkg_py.functions_split.set_pk_context_state_milliseconds_for_speed_control_forcely import set_pk_context_state_milliseconds_for_speed_control_forcely
+
+
 def assist_to_load_video_at_losslesscut_v5(max_files=30):
-    from pkg_py.pk_system_object.Local_test_activate import LTA
+    from pkg_py.pk_system_object.local_test_activate import LTA
     from pkg_py.pk_system_object.state_via_context import SpeedControlContext
     from pkg_py.pk_system_object.directories import D_DOWNLOADS, D_PKG_PKL
     from pkg_py.pk_system_object.directories import D_WORKING
@@ -75,7 +79,7 @@ def assist_to_load_video_at_losslesscut_v5(max_files=30):
                 prev_state = state.copy()
             if not does_pnx_exist(pnx=f_video_to_load):
                 f_video_to_load = get_f_video_to_load(f_video_list_allowed)
-                set_pk_context_state_milliseconds_for_speed_control_forcely(value=100)
+                set_pk_context_state_milliseconds_for_speed_control_forcely(value=100, pk_context_state=state)
                 state['playing'] = 0
             if state == {'running': 1, 'loading': 1, 'loaded': 1, 'playing': 0}:
                 window_title = f"정리 중 - LosslessCut"

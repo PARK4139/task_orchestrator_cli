@@ -1,5 +1,5 @@
 import mutagen
-from pkg_py.pk_system_object.Local_test_activate import LTA
+from pkg_py.pk_system_object.local_test_activate import LTA
 
 
 def click_tag_as_with_tag_text_as_new_tab(driver, tag_name, tag_text):

@@ -41,7 +41,7 @@ from pkg_py.pk_system_object.files import F_POT_PLAYER_MINI_64_EXE
 from pkg_py.pk_system_object.files import F_LOSSLESSCUT_EXE
 from pkg_py.pk_system_object.files import F_FFMPEG_EXE
 from pkg_py.pk_system_object.print_red import print_red
-from pkg_py.pk_system_object.Local_test_activate import LTA
+from pkg_py.pk_system_object.local_test_activate import LTA
 from passlib.context import CryptContext
 from os import path
 from functools import lru_cache

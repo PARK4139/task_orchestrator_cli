@@ -26,7 +26,7 @@ from pkg_py.pk_system_object.etc import PkFilter
 from pkg_py.pk_system_object.stamps import STAMP_TRY_GUIDE
 from pkg_py.pk_system_object.files import F_HISTORICAL_PNX
 from pkg_py.pk_system_object.directories_reuseable import D_PROJECT
-from pkg_py.pk_system_object.PkMessages2025 import PkMessages2025
+from pkg_py.pk_system_object.map_massages import PkMessages2025
 from paramiko import SSHClient, AutoAddPolicy
 from os import path
 from mutagen.mp3 import MP3

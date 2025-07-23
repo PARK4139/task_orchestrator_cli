@@ -48,7 +48,7 @@ from pkg_py.pk_system_object.files import F_LOSSLESSCUT_EXE
 from pkg_py.pk_system_object.files import F_HISTORICAL_PNX
 from pkg_py.pk_system_object.files import F_FFMPEG_EXE
 from pkg_py.pk_system_object.is_os_windows import is_os_windows
-from pkg_py.pk_system_object.Local_test_activate import LTA
+from pkg_py.pk_system_object.local_test_activate import LTA
 from PIL import Image
 from pathlib import Path
 from os.path import dirname
@@ -68,7 +68,7 @@ from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style
 from pkg_py.functions_split.get_pnx_windows_style import get_pnx_windows_style
 from pkg_py.functions_split.is_os_windows import is_os_windows
 from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style
-from pkg_py.pk_system_object.Local_test_activate import LTA
+from pkg_py.pk_system_object.local_test_activate import LTA
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 
 

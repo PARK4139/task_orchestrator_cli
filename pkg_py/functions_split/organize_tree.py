@@ -31,7 +31,7 @@ from pkg_py.pk_system_object.files import F_LOSSLESSCUT_EXE
 from pkg_py.pk_system_object.files import F_HISTORICAL_PNX
 from pkg_py.pk_system_object.files import F_FFMPEG_EXE
 from pkg_py.pk_system_object.directories import D_WORKING
-from pkg_py.pk_system_object.PkMessages2025 import PkMessages2025
+from pkg_py.pk_system_object.map_massages import PkMessages2025
 from pkg_py.pk_system_object.print_red import print_red
 from passlib.context import CryptContext
 from paramiko import SSHClient, AutoAddPolicy

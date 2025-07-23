@@ -66,11 +66,11 @@ from pkg_py.pk_system_object.etc import PkFilter
 from pkg_py.pk_system_object.files import F_LOSSLESSCUT_EXE
 from pkg_py.pk_system_object.files import F_FFMPEG_EXE
 from pkg_py.pk_system_object.encodings import Encoding
-from pkg_py.pk_system_object.PkMessages2025 import PkMessages2025
+from pkg_py.pk_system_object.map_massages import PkMessages2025
 from pkg_py.pk_system_object.print_red import print_red
 from pkg_py.pk_system_object.state_via_database import PkSqlite3DB
 from pkg_py.pk_system_object.state_via_context import SpeedControlContext
-from pkg_py.pk_system_object.Local_test_activate import LTA
+from pkg_py.pk_system_object.local_test_activate import LTA
 
 from PIL import Image, ImageFilter
 from passlib.context import CryptContext
@@ -90,10 +90,10 @@ from pkg_py.functions_split.is_f import is_f
 from pkg_py.functions_split.get_pnx_wsl_unix_style import get_pnx_wsl_unix_style
 from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
 from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style
-from pkg_py.pk_system_object.Local_test_activate import LTA
+from pkg_py.pk_system_object.local_test_activate import LTA
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 
-from pkg_py.pk_system_object.Local_test_activate import LTA
+from pkg_py.pk_system_object.local_test_activate import LTA
 from pkg_py.functions_split.get_pnx_list import get_pnx_list
 from pkg_py.functions_split.get_d_working import get_d_working
 

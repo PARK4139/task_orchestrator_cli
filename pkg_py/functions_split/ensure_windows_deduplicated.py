@@ -4,7 +4,7 @@ from pkg_py.pk_interface_graphic_user import get_windows_opened
 def ensure_windows_deduplicated():
     from pkg_py.functions_split.pk_sleep import pk_sleep
 
-    from pkg_py.pk_system_object.Local_test_activate import LTA
+    from pkg_py.pk_system_object.local_test_activate import LTA
     from pkg_py.functions_split.ensure_console_cleared import ensure_console_cleared
 
     from pkg_py.functions_split.pk_print import pk_print

@@ -23,7 +23,7 @@ from pkg_py.functions_split.write_list_to_f import write_list_to_f
 from pkg_py.pk_system_object.stamps import STAMP_TRY_GUIDE
 from pkg_py.pk_system_object.files import F_HISTORICAL_PNX
 from pkg_py.pk_system_object.directories import D_WORKING
-from pkg_py.pk_system_object.Local_test_activate import LTA
+from pkg_py.pk_system_object.local_test_activate import LTA
 from pkg_py.pk_system_object.get_list_calculated import get_list_calculated
 
 from pathlib import Path

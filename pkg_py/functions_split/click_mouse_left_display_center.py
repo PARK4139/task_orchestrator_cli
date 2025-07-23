@@ -42,7 +42,7 @@ from pkg_py.pk_system_object.files import F_HISTORICAL_PNX
 from pkg_py.pk_system_object.files import F_FFMPEG_EXE
 from pkg_py.pk_system_object.directories_reuseable import D_PROJECT
 from pkg_py.pk_system_object.directories import D_WORKING
-from pkg_py.pk_system_object.PkMessages2025 import PkMessages2025
+from pkg_py.pk_system_object.map_massages import PkMessages2025
 from pkg_py.pk_system_object.print_red import print_red
 from pkg_py.pk_system_object.state_via_context import SpeedControlContext
 from pkg_py.pk_system_object.is_os_windows import is_os_windows

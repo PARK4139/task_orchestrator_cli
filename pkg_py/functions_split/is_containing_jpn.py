@@ -5,7 +5,7 @@ import ipdb
 import easyocr
 from selenium.common.exceptions import ElementClickInterceptedException
 from pkg_py.functions_split.is_losslesscut_running import is_losslesscut_running
-from pkg_py.pk_system_object.Local_test_activate import LTA
+from pkg_py.pk_system_object.local_test_activate import LTA
 
 
 def is_containing_jpn(text):

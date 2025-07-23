@@ -30,7 +30,7 @@ from pkg_py.functions_split.write_list_to_f import write_list_to_f
 from pkg_py.functions_split.set_pk_context_state import set_pk_context_state
 from pkg_py.pk_system_object.files import F_POT_PLAYER_MINI_64_EXE, F_HISTORICAL_PNX
 from pkg_py.pk_system_object.directories_reuseable import D_PROJECT
-from pkg_py.pk_system_object.PkMessages2025 import PkMessages2025
+from pkg_py.pk_system_object.map_massages import PkMessages2025
 from pkg_py.pk_system_object.get_list_calculated import get_list_calculated
 from PIL import Image, ImageFilter
 from os.path import dirname

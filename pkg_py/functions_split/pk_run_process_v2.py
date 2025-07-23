@@ -6,7 +6,7 @@ def pk_run_process_v2(pk_program_n_seg=None, pk_arg_list=None):
     from pkg_py.functions_split.get_pk_system_process_pnx_list import get_pk_system_process_pnx_list
     from pkg_py.functions_split.pk_print import pk_print
     from pkg_py.functions_split.run_pk_system_process_by_idx import run_pk_system_process_by_idx
-    from pkg_py.pk_system_object.Local_test_activate import LTA
+    from pkg_py.pk_system_object.local_test_activate import LTA
 
     if not pk_program_n_seg:
         pk_print("[SKIP] No segment provided.", print_color="yellow")

@@ -61,7 +61,7 @@ from pkg_py.pk_system_object.files import F_FFMPEG_EXE
 from pkg_py.pk_system_object.encodings import Encoding
 from pkg_py.pk_system_object.directories_reuseable import D_PROJECT
 from pkg_py.pk_system_object.state_via_context import SpeedControlContext
-from pkg_py.pk_system_object.Local_test_activate import LTA
+from pkg_py.pk_system_object.local_test_activate import LTA
 
 from mysql.connector import connect, Error
 from moviepy import VideoFileClip

@@ -48,7 +48,8 @@ from pkg_py.functions_split.print_cyan import print_cyan
 from pkg_py.functions_split.print_light_black import print_light_black
 from pkg_py.functions_split.print_red import print_red
 from pkg_py.functions_split.print_success import print_success
-from pkg_py.pk_system_object.PkMessages2025 import PkMessages2025
+from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.pk_system_object.map_massages import PkMessages2025
 from pkg_py.pk_system_object.directories_reuseable import D_PROJECT
 from pkg_py.pk_system_object.etc import PK_UNDERLINE
 from pkg_py.pk_system_object.files import F_POP_SOUND_POP_SOUND_WAV, F_MACRO_LOG, F_ICON_PNG, F_GMARKETSANSTTFLIGHT_TTF, F_RUBIKDOODLESHADOW_REGULAR_TTF
@@ -68,33 +69,35 @@ def get_windows_opened_via_win32gui(debug_mode=True):
     # import win32gui  # pywin32
     win32gui.EnumWindows(enum_windows_callback, None)
 
-    if debug_mode == True:
-        pk_print(f'''window_titles = "{window_titles}" %%%FOO%%%''')
+    if LTA:
+        # pk_print(f'''window_titles = "{window_titles}" %%%FOO%%%''') # pk_options
+        pass
     return window_titles
 
 
-def get_windows_opened(debug_mode=True):
+def get_windows_opened():
     # return get_windows_opened_via_psutil()
     # return get_windows_opened_via_pygetwindow()
-    return get_windows_opened_via_win32gui(debug_mode=debug_mode)
+    return get_windows_opened_via_win32gui()
 
 
-def is_window_open(window_title_seg, debug_mode=True):
+def is_window_open(window_title_seg):
     func_n = inspect.currentframe().f_code.co_name
-    if debug_mode == True:
+    if LTA:
         pk_print(working_str=rf'''%%%FOO%%%''')
 
-    windows_titles_opened = get_windows_opened(debug_mode=debug_mode)
+    windows_titles_opened = get_windows_opened()
     windows_titles_opened = get_list_removed_none(items=windows_titles_opened)
 
     for windows_title_opened in windows_titles_opened:
-        if debug_mode == True:
-            pk_print(working_str=rf'''windows_title_opened="{windows_title_opened}" %%%FOO%%%''')
+        if LTA:
+            # pk_print(working_str=rf'''windows_title_opened="{windows_title_opened}" %%%FOO%%%''') # pk_option
+            pass
         if window_title_seg in windows_title_opened:
-            if debug_mode == True:
+            if LTA:
                 pk_print(f'''"{windows_title_opened}" 창이 열려 있습니다''')
             return True
-    if debug_mode == True:
+    if LTA:
         pk_print(f'''"{window_title_seg}" 창이 닫혀 있습니다''')
     return False
 
@@ -103,7 +106,7 @@ def is_front_window_title(window_title_seg, debug_mode=True):
     from pkg_py.functions_split.get_front_window_title import get_front_window_title
     front_window_title = get_front_window_title()
     if not front_window_title is None:
-        if debug_mode == True:
+        if LTA:
             pk_print(f'''window_title_seg = "{window_title_seg}"''')
             pk_print(f'''front_window_title = "{front_window_title}"''')
         if window_title_seg in front_window_title:
@@ -114,7 +117,7 @@ def is_front_window_title(window_title_seg, debug_mode=True):
 # async def move_window_to_front_via_async(window_title_seg=None, pid=None, debug_mode=True):
 #     import psutil
 #     func_n = inspect.currentframe().f_code.co_name
-#     if debug_mode == True:
+#     if LTA:
 #         pk_print(str_working=rf'''%%%FOO%%%''')
 #         if window_title_seg is not None or pid is not None:
 #             pk_print(rf"{func_n}() 동작 조건 충족")

@@ -11,7 +11,7 @@ from pkg_py.pk_system_object.stamps import STAMP_TRY_GUIDE
 
 
 def found_memo_contents():
-    from pkg_py.functions_split.ensure_f_list_change_stable import ensure_f_list_change_stable
+    from pkg_py.functions_split.ensure_f_list_change_stable import ensure_files_stable_after_change
     from pkg_py.functions_split.get_os_n import get_os_n
     from pkg_py.functions_split.chcp_65001 import chcp_65001
     from pkg_py.functions_split.print_memo_titles import print_memo_titles
@@ -43,7 +43,7 @@ def found_memo_contents():
         f_memo
     ]
     while 1:
-        if ensure_f_list_change_stable(f_list=f_monitored_list, limit_seconds=30):
+        if ensure_files_stable_after_change(f_list=f_monitored_list, limit_seconds=30):
             print_memo_titles(f=f_memo)
         pk_sleep(milliseconds=900)
 

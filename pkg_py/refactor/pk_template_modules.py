@@ -189,7 +189,7 @@
 # from pkg_py.pk_interface_graphic_user import GuiUtil, get_display_info, print_as_gui, should_i_do
 # from pkg_py.pk_paste_as_auto import pk_copy
 # from pkg_py.pk_system_object.get_list_calculated import get_list_calculated
-# from pkg_py.pk_system_object.Local_test_activate import LTA
+# from pkg_py.pk_system_object.local_test_activate import LTA
 # from pkg_py.pk_system_object.is_os_windows import is_os_windows
 # 
 # from pkg_py.pk_system_object.performance_logic import pk_measure_seconds, pk_measure_memory
@@ -228,7 +228,7 @@
 # from pkg_py.pk_system_object.files import F_POT_PLAYER_MINI_64_EXE
 # from pkg_py.pk_system_object.files import F_POT_PLAYER_MINI_64_EXE, F_HISTORICAL_PNX
 # from pkg_py.pk_system_object.files import F_TEMP_TXT
-# from pkg_py.pk_system_object.PkMessages2025 import PkMessages2025
+# from pkg_py.pk_system_object.map_massages import PkMessages2025
 # from pkg_py.pk_system_object.stamps import STAMP_ATTEMPTED
 # from pkg_py.pk_system_object.stamps import STAMP_DEBUG, STAMP_INTERACTIVE, STAMP_SUCCEEDED, STAMP_INFO, STAMP_TEST, STAMP_ERROR
 # from pkg_py.pk_system_object.stamps import STAMP_LIST, STAMP_TUPLE, STAMP_DICT, STAMP_SET

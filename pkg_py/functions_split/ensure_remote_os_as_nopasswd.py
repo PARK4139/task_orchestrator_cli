@@ -31,7 +31,7 @@ from pkg_py.functions_split.pk_print_state import pk_print_state
 from pkg_py.pk_system_object.stamps import STAMP_TRY_GUIDE
 from pkg_py.pk_system_object.files import F_POT_PLAYER_MINI_64_EXE
 from pkg_py.pk_system_object.files import F_FFMPEG_EXE
-from pkg_py.pk_system_object.PkMessages2025 import PkMessages2025
+from pkg_py.pk_system_object.map_massages import PkMessages2025
 from pkg_py.pk_system_object.state_via_database import PkSqlite3DB
 from pkg_py.pk_system_object.is_os_windows import is_os_windows
 from os.path import dirname
@@ -50,7 +50,7 @@ from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
 from pkg_py.functions_split.get_pnx_windows_style import get_pnx_windows_style
 from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
 
-from pkg_py.pk_system_object.Local_test_activate import LTA
+from pkg_py.pk_system_object.local_test_activate import LTA
 from pkg_py.functions_split.pk_print import pk_print
 from pkg_py.functions_split.get_pnx_list import get_pnx_list
 from pkg_py.functions_split.get_d_working import get_d_working

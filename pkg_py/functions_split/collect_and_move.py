@@ -45,7 +45,7 @@ from pkg_py.pk_system_object.files import F_HISTORICAL_PNX
 from pkg_py.pk_system_object.encodings import Encoding
 from pkg_py.pk_system_object.directories import D_WORKING
 from pkg_py.pk_system_object.state_via_context import SpeedControlContext
-from pkg_py.pk_system_object.Local_test_activate import LTA
+from pkg_py.pk_system_object.local_test_activate import LTA
 from PIL import Image
 from moviepy import VideoFileClip
 from functools import partial

@@ -14,8 +14,8 @@ from prompt_toolkit.styles import Style
 from pkg_py.functions_split.is_window_opened import is_window_opened
 from pkg_py.functions_split.pk_print import pk_print
 from pkg_py.pk_system_object.directories import D_WORKING
-from pkg_py.pk_system_object.PkMessages2025 import PkMessages2025
-from pkg_py.pk_system_object.Local_test_activate import LTA
+from pkg_py.pk_system_object.map_massages import PkMessages2025
+from pkg_py.pk_system_object.local_test_activate import LTA
 from os import path
 from moviepy import VideoFileClip
 from functools import partial as functools_partial

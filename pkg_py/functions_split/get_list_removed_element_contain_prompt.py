@@ -25,7 +25,7 @@ from pkg_py.functions_split.write_list_to_f import write_list_to_f
 from pkg_py.functions_split.ensure_console_cleared import ensure_console_cleared
 from pkg_py.pk_system_object.directories import D_WORKING
 from pkg_py.pk_system_object.state_via_context import SpeedControlContext
-from pkg_py.pk_system_object.Local_test_activate import LTA
+from pkg_py.pk_system_object.local_test_activate import LTA
 from datetime import datetime
 from Cryptodome.Random import get_random_bytes
 from base64 import b64encode

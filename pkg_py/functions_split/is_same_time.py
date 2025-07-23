@@ -3,7 +3,7 @@
 # import win32process
 # import win32gui
 
-from pkg_py.pk_system_object.Local_test_activate import LTA
+from pkg_py.pk_system_object.local_test_activate import LTA
 
 
 def is_same_time(time1, time2):

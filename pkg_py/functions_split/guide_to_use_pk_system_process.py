@@ -5,7 +5,7 @@ from pkg_py.functions_split.pk_measure_seconds import pk_measure_seconds
 
 @pk_measure_seconds
 def guide_to_use_pk_system_process(pk_system_process_pnx_list, nx_by_user_input):
-    from pkg_py.pk_system_object.Local_test_activate import LTA
+    from pkg_py.pk_system_object.local_test_activate import LTA
     from pkg_py.pk_system_object.stamps import STAMP_TRY_GUIDE
     from pkg_py.functions_split.get_nx import get_nx
     from pkg_py.functions_split.pk_print import pk_print

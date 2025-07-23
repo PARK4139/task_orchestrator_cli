@@ -56,7 +56,7 @@ from pkg_py.pk_system_object.files import F_POT_PLAYER_MINI_64_EXE
 from pkg_py.pk_system_object.encodings import Encoding
 from pkg_py.pk_system_object.directories_reuseable import D_PROJECT
 from pkg_py.pk_system_object.directories import D_WORKING
-from pkg_py.pk_system_object.PkMessages2025 import PkMessages2025
+from pkg_py.pk_system_object.map_massages import PkMessages2025
 from pkg_py.pk_system_object.print_red import print_red
 from pkg_py.pk_system_object.performance_logic import pk_measure_seconds, pk_measure_memory
 from pkg_py.pk_system_object.is_os_windows import is_os_windows
@@ -87,7 +87,7 @@ from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
 from pkg_py.functions_split.get_pnx_wsl_unix_style import get_pnx_wsl_unix_style
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 
-from pkg_py.pk_system_object.Local_test_activate import LTA
+from pkg_py.pk_system_object.local_test_activate import LTA
 from pkg_py.functions_split.pk_print import pk_print
 
 

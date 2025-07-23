@@ -13,8 +13,8 @@ from pkg_py.functions_split.pk_get_colorful_working_str_with_stamp_enviromnet im
 from pkg_py.functions_split.pk_input_validated import pk_input_validated
 from pkg_py.functions_split.pk_print import pk_print
 from pkg_py.functions_split.save_d_to_f import save_d_to_f
-from pkg_py.pk_system_object.Local_test_activate import LTA
-from pkg_py.pk_system_object.PkMessages2025 import PkMessages2025
+from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.pk_system_object.map_massages import PkMessages2025
 from pkg_py.pk_system_object.directories import D_PKG_PY, D_DESKTOP, D_PKG_TXT, D_WORKING, D_DOWNLOADS, D_J_DRIVE, D_I_DRIVE, D_H_DRIVE, D_G_DRIVE, D_F_DRIVE, D_D_DRIVE, D_C_DRIVE
 from pkg_py.pk_system_object.directories_reuseable import D_PROJECT, D_HOME
 from pkg_py.pk_system_object.stamps import STAMP_TRY_GUIDE

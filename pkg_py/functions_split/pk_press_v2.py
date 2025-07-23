@@ -1,5 +1,5 @@
 def pk_press_v2(*presses: str, interval=0.0):
-    from pkg_py.pk_system_object.Local_test_activate import LTA
+    from pkg_py.pk_system_object.local_test_activate import LTA
     from pkg_py.pk_system_object.alias_keyboard_map import alias_keyboard_map
     from pkg_py.functions_split.pk_print import pk_print
     from pkg_py.functions_split.get_list_striped_element import get_list_striped_element

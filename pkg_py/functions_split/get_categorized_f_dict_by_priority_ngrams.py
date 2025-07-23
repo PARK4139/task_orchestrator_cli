@@ -45,10 +45,10 @@ from pkg_py.functions_split.get_list_sorted import get_list_sorted
 from pkg_py.pk_system_object.stamps import STAMP_TRY_GUIDE
 from pkg_py.pk_system_object.files import F_LOSSLESSCUT_EXE
 from pkg_py.pk_system_object.directories_reuseable import D_PROJECT
-from pkg_py.pk_system_object.PkMessages2025 import PkMessages2025
+from pkg_py.pk_system_object.map_massages import PkMessages2025
 from pkg_py.pk_system_object.state_via_database import PkSqlite3DB
 from pkg_py.pk_system_object.state_via_context import SpeedControlContext
-from pkg_py.pk_system_object.Local_test_activate import LTA
+from pkg_py.pk_system_object.local_test_activate import LTA
 from os import path
 from mutagen.mp3 import MP3
 from moviepy import VideoFileClip

@@ -5,7 +5,7 @@ def pk_type_v2(text: str, interval: float = 0.1):
     """
     Types given text with optional IME switching on Windows.
     """
-    from pkg_py.pk_system_object.Local_test_activate import LTA
+    from pkg_py.pk_system_object.local_test_activate import LTA
     from pkg_py.functions_split.pk_print import pk_print
 
     if text is None:

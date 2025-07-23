@@ -47,7 +47,7 @@ from pkg_py.pk_system_object.stamps import STAMP_ATTEMPTED
 from pkg_py.pk_system_object.files import F_POT_PLAYER_MINI_64_EXE, F_HISTORICAL_PNX
 from pkg_py.pk_system_object.files import F_FFMPEG_EXE
 from pkg_py.pk_system_object.encodings import Encoding
-from pkg_py.pk_system_object.Local_test_activate import LTA
+from pkg_py.pk_system_object.local_test_activate import LTA
 from PIL import Image
 from os import path
 from mutagen.mp3 import MP3

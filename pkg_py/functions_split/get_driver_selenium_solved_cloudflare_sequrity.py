@@ -37,7 +37,7 @@ from pkg_py.functions_split.is_window_opened import is_window_opened
 from pkg_py.functions_split.set_pk_context_state import set_pk_context_state
 from pkg_py.pk_system_object.files import F_HISTORICAL_PNX
 from pkg_py.pk_system_object.directories import D_WORKING
-from pkg_py.pk_system_object.PkMessages2025 import PkMessages2025
+from pkg_py.pk_system_object.map_massages import PkMessages2025
 from pkg_py.pk_system_object.state_via_context import SpeedControlContext
 from pkg_py.pk_system_object.get_list_calculated import get_list_calculated
 from PIL import Image, ImageFont, ImageDraw, ImageFilter

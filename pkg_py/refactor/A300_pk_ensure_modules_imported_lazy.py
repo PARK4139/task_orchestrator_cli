@@ -9,12 +9,11 @@ from pkg_py.functions_split.backup_workspace import backup_workspace
 from pkg_py.functions_split.ensure_do_exception_routine import ensure_do_exception_routine
 from pkg_py.functions_split.ensure_do_finally_routine import ensure_do_finally_routine
 from pkg_py.functions_split.get_nx import get_nx
-from pkg_py.functions_split.get_pnx_list_from_d_working import get_pnxs_from_d_working
 from pkg_py.functions_split.get_value_completed import get_value_completed
 from pkg_py.functions_split.is_f import is_f
 from pkg_py.functions_split.pk_initialize_and_customize_logging_config import pk_initialize_and_customize_logging_config
 from pkg_py.functions_split.restore_workspace_from_latest_archive import restore_workspace_from_latest_archive
-from pkg_py.pk_system_object.PkMessages2025 import PkMessages2025
+from pkg_py.pk_system_object.map_massages import PkMessages2025
 from pkg_py.pk_system_object.directories import D_PKG_PY
 from pkg_py.pk_system_object.directories_reuseable import D_PROJECT
 from pkg_py.pk_system_object.encodings import Encoding
@@ -37,7 +36,6 @@ def move_import_to_function_start(body_lines, indent_level):
     # 적절한 들여쓰기를 적용한 import 문 생성
     formatted_imports = [f"{' ' * indent_level}{imp}\n" for imp in imports]
     return formatted_imports + non_import_lines
-
 
 def pk_ensure_modules_imported_lazy_once(f_working, D_PKG_ARCHIVED, preview=False):
     """모듈 임포트를 lazy하게 업데이트하고 백업 및 복원 기능 추가"""
@@ -107,11 +105,7 @@ def pk_ensure_modules_imported_lazy_once(f_working, D_PKG_ARCHIVED, preview=Fals
         logging.info(f"[{PkMessages2025.INSERTED}] 수정된 파일이 '{f_working}'에 저장되었습니다.")
 
     # REVERT 기능
-    decision = get_value_completed(
-        key_hint=f"{PkMessages2025.AFTER_SERVICE}=",
-        values=[rf"{PkMessages2025.ORIGIN} {PkMessages2025.DELETE}", PkMessages2025.REVERT],
-    )
-
+    decision = get_value_completed(        key_hint=f"{PkMessages2025.AFTER_SERVICE}=",        values=[rf"{PkMessages2025.ORIGIN} {PkMessages2025.DELETE}", PkMessages2025.REVERT],    )
     if decision == PkMessages2025.REVERT:
         restore_workspace_from_latest_archive(D_PKG_ARCHIVED, f_working)
     else:
@@ -122,23 +116,31 @@ def pk_ensure_modules_imported_lazy():
     from enum import Enum
     encoding: Enum
 
-    # 작업 디렉토리 설정
-    d_working = rf"{os.environ['USERPROFILE']}\Downloads\pk_system\pkg_py\workspace"
+    # apply to files
+    # d_working = rf"{os.environ['USERPROFILE']}\Downloads\pk_system\pkg_py\workspace"
+    # D_PKG_ARCHIVED = rf"{os.environ['USERPROFILE']}\Downloads\pk_system\pkg_archived"
+    # 
+    # # 실행 모드 설정 (프리뷰 또는 실제 실행 모드)
+    # exec_mode = get_value_completed(
+    #     key_hint=f"{PkMessages2025.MODE}=",
+    #     values=[PkMessages2025.PREVIEW, f"{PkMessages2025.DEFAULT} {PkMessages2025.EXECUTION}"]
+    # ).strip()
+    # 
+    # preview = exec_mode == PkMessages2025.PREVIEW
+    # 
+    # # .py 파일을 하나씩 처리
+    # for f_working in get_pnxs_from_d_working(d_working=d_working):
+    #     if is_f(f_working):
+    #         if get_nx(f_working) != "__init__.py" and get_nx(f_working) != "pk_working.py":
+    #             pk_ensure_modules_imported_lazy_once(f_working, D_PKG_ARCHIVED, preview)
+
+    # apply to file
+    f_working = rf"{os.environ['USERPROFILE']}\Downloads\pk_system\pkg_py\workspace\pk_working.py"
     D_PKG_ARCHIVED = rf"{os.environ['USERPROFILE']}\Downloads\pk_system\pkg_archived"
-
-    # 실행 모드 설정 (프리뷰 또는 실제 실행 모드)
-    exec_mode = get_value_completed(
-        key_hint=f"{PkMessages2025.MODE}=",
-        values=[PkMessages2025.PREVIEW, f"{PkMessages2025.DEFAULT} {PkMessages2025.EXECUTION}"]
-    ).strip()
-
-    preview = exec_mode == PkMessages2025.PREVIEW
-
-    # .py 파일을 하나씩 처리
-    for f_working in get_pnxs_from_d_working(d_working=d_working):
-        if is_f(f_working):
-            if get_nx(f_working) != "__init__.py" and get_nx(f_working) != "pk_woring.py":
-                pk_ensure_modules_imported_lazy_once(f_working, D_PKG_ARCHIVED, preview)
+    if is_f(f_working):
+        exec_mode = get_value_completed(key_hint=f"{PkMessages2025.MODE}=", values=[PkMessages2025.PREVIEW, f"{PkMessages2025.DEFAULT} {PkMessages2025.EXECUTION}"]).strip()
+        preview = exec_mode == PkMessages2025.PREVIEW
+        pk_ensure_modules_imported_lazy_once(f_working, D_PKG_ARCHIVED, preview)
 
 
 if __name__ == "__main__":

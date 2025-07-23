@@ -1,47 +1,10 @@
-import zipfile
-# import win32process
-# import win32gui            
-# import win32gui
-import win32con
-import win32com.client
-import toml
-import threading
-import shutil
-import requests
-# import pywin32
-import pyautogui
-import pyaudio
-import os.path
-import nest_asyncio
-import mutagen
-import importlib
-import easyocr
-import calendar
-from urllib.parse import quote
-from pytube import Playlist
-from pynput import mouse
-# from project_database.test_project_database import MySqlUtil
-from pkg_py.functions_split.is_losslesscut_running import is_losslesscut_running
-from pkg_py.functions_split.get_video_filtered_list import get_video_filtered_list
-from pkg_py.functions_split.is_window_title_opened import is_window_title_opened
-from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
-from pkg_py.functions_split.pk_press import pk_press
-from pkg_py.pk_system_object.stamps import STAMP_TRY_GUIDE
-from pkg_py.pk_system_object.files import F_FFMPEG_EXE
-from pkg_py.pk_system_object.state_via_database import PkSqlite3DB
-from pkg_py.pk_system_object.Local_test_activate import LTA
-
-from pathlib import Path
-from dataclasses import dataclass
-from Cryptodome.Random import get_random_bytes
-from pkg_py.functions_split.get_value_completed import get_value_completed
-from pkg_py.functions_split.is_f import is_f
-from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style
-from pkg_py.functions_split.get_pnx_windows_style import get_pnx_windows_style
-
-
 def pk_speak_v2(working_str, comma_delay=1.00, thread_join_mode=False):
     import inspect
+    from pkg_py.functions_split.is_containing_special_characters_with_thread import is_containing_special_characters_with_thread
+    from pkg_py.functions_split.pk_speak import pk_speak
+    from pkg_py.functions_split.remove_special_characters import remove_special_characters
+    from pkg_py.pk_system_object.etc import PLAYING_SOUNDS
+
     import threading
     from functools import partial
     import pyglet
@@ -52,6 +15,7 @@ def pk_speak_v2(working_str, comma_delay=1.00, thread_join_mode=False):
             player.pause()  # 또는 player.stop()
 
     stop_all_sounds()
+    PYGLET_PLAYER = None
     if PYGLET_PLAYER is not None:
         pass
     else:

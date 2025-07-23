@@ -1,5 +1,5 @@
 def ensure_pnx_made(pnx, mode, script_list=None, mode_script_overwrite=0):
-    from pkg_py.pk_system_object.Local_test_activate import LTA
+    from pkg_py.pk_system_object.local_test_activate import LTA
     from pkg_py.functions_split.cmd_to_os import cmd_to_os
     from pkg_py.functions_split.pk_print import pk_print
     from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style

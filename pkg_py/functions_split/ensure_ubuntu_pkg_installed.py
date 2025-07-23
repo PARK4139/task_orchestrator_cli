@@ -44,7 +44,7 @@ from pkg_py.functions_split.get_list_sorted import get_list_sorted
 
 from pkg_py.pk_system_object.stamps import STAMP_ATTEMPTED
 from pkg_py.pk_system_object.files import F_POT_PLAYER_MINI_64_EXE
-from pkg_py.pk_system_object.Local_test_activate import LTA
+from pkg_py.pk_system_object.local_test_activate import LTA
 
 from passlib.context import CryptContext
 from functools import lru_cache

@@ -20,7 +20,7 @@ if __name__ == '__main__':
         def ensure_windows_deduplicated_in_loop():
             from pkg_py.functions_split.pk_sleep import pk_sleep
 
-            from pkg_py.pk_system_object.Local_test_activate import LTA
+            from pkg_py.pk_system_object.local_test_activate import LTA
             from pkg_py.functions_split.ensure_console_cleared import ensure_console_cleared
 
             from pkg_py.functions_split.pk_print import pk_print
@@ -64,8 +64,11 @@ if __name__ == '__main__':
                     # deduplicate cmd.exe process
                     ensure_cmd_exe_deduplicated_all()
 
-                    pk_sleep(milliseconds=500)
+                    # pk_sleep(milliseconds=500)
                     # pk_sleep(milliseconds=1000)
+                    # pk_sleep(milliseconds=2000) # pk_option
+                    pk_sleep(milliseconds=10000) # pk_option
+
                     ensure_console_cleared()
 
             # start thread ( in background )

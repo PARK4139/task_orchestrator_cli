@@ -1,7 +1,7 @@
 def push_pnx_to_github(d_working, git_repo_url, commit_msg, branch_n):
     from pkg_py.functions_split.cmd_to_os import cmd_to_os
     from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
-    from pkg_py.pk_system_object.Local_test_activate import LTA
+    from pkg_py.pk_system_object.local_test_activate import LTA
     from pkg_py.functions_split.pk_print import pk_print
     pk_colorama_init_once()
     pk_print(f'''commit_msg={commit_msg} {'%%%FOO%%%' if LTA else ''}''')

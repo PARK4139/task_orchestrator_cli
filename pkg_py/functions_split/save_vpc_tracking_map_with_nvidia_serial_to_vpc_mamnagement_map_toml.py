@@ -7,7 +7,7 @@ from seleniumbase import Driver
 from selenium.webdriver.chrome.service import Service
 from PySide6.QtWidgets import QApplication
 from pkg_py.functions_split.get_d_working import get_d_working
-from pkg_py.pk_system_object.PkMessages2025 import PkMessages2025
+from pkg_py.pk_system_object.map_massages import PkMessages2025
 from dirsync import sync
 from datetime import timedelta
 from pkg_py.pk_system_object.etc import PK_UNDERLINE

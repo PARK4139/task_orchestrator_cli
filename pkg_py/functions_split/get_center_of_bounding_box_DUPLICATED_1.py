@@ -39,7 +39,7 @@ from pkg_py.pk_system_object.etc import PkFilter
 from pkg_py.pk_system_object.stamps import STAMP_ATTEMPTED
 from pkg_py.pk_system_object.files import F_POT_PLAYER_MINI_64_EXE
 from pkg_py.pk_system_object.files import F_HISTORICAL_PNX
-from pkg_py.pk_system_object.PkMessages2025 import PkMessages2025
+from pkg_py.pk_system_object.map_massages import PkMessages2025
 from pkg_py.pk_system_object.state_via_context import SpeedControlContext
 from pathlib import Path
 from passlib.context import CryptContext
@@ -60,7 +60,7 @@ from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style
 from pkg_py.functions_split.get_pnx_list import get_pnx_list
 from pkg_py.functions_split.is_d import is_d
 from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
-from pkg_py.pk_system_object.Local_test_activate import LTA
+from pkg_py.pk_system_object.local_test_activate import LTA
 
 
 def get_center_of_bounding_box(bounding_box):

@@ -36,7 +36,7 @@ from pkg_py.functions_split.pk_print_state import pk_print_state
 from pkg_py.functions_split.cmd_to_os import cmd_to_os
 from pkg_py.functions_split.write_list_to_f import write_list_to_f
 from pkg_py.functions_split.get_list_sorted import get_list_sorted
-from pkg_py.pk_system_object.PkMessages2025 import PkMessages2025
+from pkg_py.pk_system_object.map_massages import PkMessages2025
 from pkg_py.pk_system_object.is_os_windows import is_os_windows
 
 from pathlib import Path

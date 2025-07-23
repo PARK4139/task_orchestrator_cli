@@ -17,7 +17,7 @@ from pkg_py.functions_split.get_f_loading_nx_by_pattern import get_f_loading_nx_
 from pkg_py.pk_system_object.files import F_HISTORICAL_PNX
 from pkg_py.pk_system_object.print_red import print_red
 
-from pkg_py.pk_system_object.Local_test_activate import LTA
+from pkg_py.pk_system_object.local_test_activate import LTA
 from moviepy import VideoFileClip
 from gtts import gTTS
 from datetime import timedelta

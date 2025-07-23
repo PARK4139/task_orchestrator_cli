@@ -37,7 +37,7 @@ from functools import partial
 from datetime import date
 from pkg_py.functions_split.get_pnx_list import get_pnx_list
 
-from pkg_py.pk_system_object.Local_test_activate import LTA
+from pkg_py.pk_system_object.local_test_activate import LTA
 from pkg_py.functions_split.pk_print import pk_print
 
 

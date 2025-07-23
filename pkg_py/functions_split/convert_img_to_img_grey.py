@@ -84,7 +84,7 @@ from pkg_py.pk_system_object.files import F_LOSSLESSCUT_EXE
 from pkg_py.pk_system_object.encodings import Encoding
 from pkg_py.pk_system_object.directories_reuseable import D_PROJECT
 from pkg_py.pk_system_object.directories import D_WORKING
-from pkg_py.pk_system_object.PkMessages2025 import PkMessages2025
+from pkg_py.pk_system_object.map_massages import PkMessages2025
 from pkg_py.pk_system_object.state_via_context import SpeedControlContext
 from PIL import Image, ImageFont, ImageDraw, ImageFilter
 from PIL import Image, ImageFont, ImageDraw

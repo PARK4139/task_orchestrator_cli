@@ -8,7 +8,7 @@ from pathlib import Path
 from shutil import move
 
 from colorama import init as pk_colorama_init
-from pkg_py.pk_system_object.Local_test_activate import LTA
+from pkg_py.pk_system_object.local_test_activate import LTA
 from pkg_py.pk_system_object.directories import D_PKG_TXT
 from pkg_py.pk_system_object.directories_reuseable import D_PROJECT
 from pkg_py.pk_system_object.stamps import STAMP_TRY_GUIDE
@@ -26,7 +26,7 @@ def pk_replace_filename_and_directory_name():
     func_n = inspect.currentframe().f_code.co_name
 
     key_name = "d_working"
-    d_working = get_values_from_historical_file_routine(file_id=db.get_id(key_name,func_n), key_hint=f'{key_name}=', values_default=['pk_working'])
+    d_working = get_values_from_historical_file_routine(file_id=db.get_id(key_name,func_n), key_hint=f'{key_name}=', options_default=['pk_working'])
 
 
     f_files_to_replace = f"{D_PKG_TXT}/files_to_replace_via_{func_n}.txt"

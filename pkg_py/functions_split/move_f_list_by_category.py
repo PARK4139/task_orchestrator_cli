@@ -58,7 +58,7 @@ from pkg_py.pk_system_object.files import F_LOSSLESSCUT_EXE
 from pkg_py.pk_system_object.encodings import Encoding
 from pkg_py.pk_system_object.print_red import print_red
 from pkg_py.pk_system_object.state_via_context import SpeedControlContext
-from pkg_py.pk_system_object.Local_test_activate import LTA
+from pkg_py.pk_system_object.local_test_activate import LTA
 from functools import partial
 from functools import lru_cache
 from dirsync import sync

@@ -1,24 +1,18 @@
 import traceback
-
 from pkg_py.functions_split.ensure_do_exception_routine import ensure_do_exception_routine
 from pkg_py.functions_split.ensure_do_finally_routine import ensure_do_finally_routine
-from pkg_py.functions_split.pk_colorama_init_once import pk_colorama_init_once
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.pk_speak import pk_speak
 from pkg_py.pk_system_object.directories_reuseable import D_PROJECT
 from pkg_py.pk_system_object.stamps import STAMP_TRY_GUIDE
 
-pk_colorama_init_once()
 
-if __name__ == "__main__":
-    try:
-        pk_print("test")
-        pk_print("test")
-        pk_print("test")
-        pk_print("test")
-        pk_print("test")
+def pk_test():
+    from pkg_py.functions_split.ensure_pk_system_exit_silent import ensure_pk_system_exit_silent
+    from pkg_py.functions_split.pk_colorama_init_once import pk_colorama_init_once
 
-        # TBD
-        # pk_speak("good evening, sir")
+    pk_colorama_init_once()
+    while True:
+        pk_speak("good evening, sir")
 
         # pk_jarvis()
 
@@ -39,6 +33,11 @@ if __name__ == "__main__":
         #     tmux_session = get_nx(available_pk_python_program_pnx).replace(".", "_")
         #     ensure_tmux_pk_session_removed(tmux_session)
 
+        ensure_pk_system_exit_silent()
+
+if __name__ == "__main__":
+    try:
+        pk_test()
     except Exception as exception:
         ensure_do_exception_routine(traceback=traceback, exception=exception)
     finally:

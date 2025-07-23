@@ -20,7 +20,7 @@ from pkg_py.pk_system_object.etc import PK_UNDERLINE
 from pkg_py.pk_system_object.directories import D_PKG_PY
 from pkg_py.functions_split.is_d import is_d
 
-from pkg_py.pk_system_object.Local_test_activate import LTA
+from pkg_py.pk_system_object.local_test_activate import LTA
 from pkg_py.functions_split.pk_print import pk_print
 
 

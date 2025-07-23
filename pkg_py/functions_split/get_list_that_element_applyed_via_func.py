@@ -14,9 +14,9 @@ from selenium.webdriver.common.keys import Keys
 from prompt_toolkit import PromptSession
 from pkg_py.functions_split.ensure_window_to_front import ensure_window_to_front
 from pkg_py.functions_split.is_losslesscut_running import is_losslesscut_running
-from pkg_py.pk_system_object.PkMessages2025 import PkMessages2025
+from pkg_py.pk_system_object.map_massages import PkMessages2025
 from pkg_py.pk_system_object.state_via_database import PkSqlite3DB
-from pkg_py.pk_system_object.Local_test_activate import LTA
+from pkg_py.pk_system_object.local_test_activate import LTA
 from functools import partial as functools_partial
 from concurrent.futures import ThreadPoolExecutor
 from base64 import b64decode

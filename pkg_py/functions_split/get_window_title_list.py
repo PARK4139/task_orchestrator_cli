@@ -5,7 +5,7 @@ def get_window_title_list(process_img_n=None):
     import win32process
 
     from pkg_py.functions_split.pk_print import pk_print
-    from pkg_py.pk_system_object.Local_test_activate import LTA
+    from pkg_py.pk_system_object.local_test_activate import LTA
 
     import traceback
     # import win32gui  # pywin32

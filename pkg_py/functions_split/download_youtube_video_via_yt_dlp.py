@@ -1,4 +1,4 @@
-from pkg_py.pk_system_object.Local_test_activate import LTA
+from pkg_py.pk_system_object.local_test_activate import LTA
 from pkg_py.pk_system_object.directories import D_PKG_TXT
 from pkg_py.pk_system_object.files import F_FFMPEG_EXE
 from pkg_py.functions_split.pk_print import pk_print

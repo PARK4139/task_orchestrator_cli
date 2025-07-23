@@ -18,7 +18,7 @@ from passlib.context import CryptContext
 from mutagen.mp3 import MP3
 from functools import lru_cache
 from datetime import datetime
-from pkg_py.pk_system_object.Local_test_activate import LTA
+from pkg_py.pk_system_object.local_test_activate import LTA
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 
 

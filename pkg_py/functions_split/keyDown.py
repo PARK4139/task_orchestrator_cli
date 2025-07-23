@@ -35,7 +35,7 @@ from pkg_py.functions_split.write_list_to_f import write_list_to_f
 from pkg_py.pk_system_object.stamps import STAMP_ATTEMPTED
 from pkg_py.pk_system_object.files import F_POT_PLAYER_MINI_64_EXE, F_HISTORICAL_PNX
 from pkg_py.pk_system_object.files import F_HISTORICAL_PNX
-from pkg_py.pk_system_object.PkMessages2025 import PkMessages2025
+from pkg_py.pk_system_object.map_massages import PkMessages2025
 from pkg_py.pk_system_object.performance_logic import pk_measure_seconds, pk_measure_memory
 from pathlib import Path
 from os.path import dirname
@@ -51,7 +51,7 @@ from pkg_py.functions_split.assist_to_load_video_at_losslesscut import pk_ensure
 from pkg_py.pk_system_object.etc import PkFilter, PK_UNDERLINE
 from pkg_py.functions_split.get_pnx_list import get_pnx_list
 from pkg_py.functions_split.is_f import is_f
-from pkg_py.pk_system_object.Local_test_activate import LTA
+from pkg_py.pk_system_object.local_test_activate import LTA
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 
 from pkg_py.functions_split.pk_print import pk_print

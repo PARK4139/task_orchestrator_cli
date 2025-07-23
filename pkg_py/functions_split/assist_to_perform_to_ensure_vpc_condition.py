@@ -3,7 +3,7 @@ from pkg_py.functions_split.ensure_ssh_public_key_to_remote_os import ensure_ssh
 from pkg_py.functions_split.is_os_windows import is_os_windows
 from pkg_py.functions_split.pk_print import pk_print
 from pkg_py.functions_split.print_iterable_as_vertical import print_iterable_as_vertical
-from pkg_py.pk_system_object.Local_test_activate import LTA
+from pkg_py.pk_system_object.local_test_activate import LTA
 
 
 def assist_to_perform_to_ensure_vpc_condition():

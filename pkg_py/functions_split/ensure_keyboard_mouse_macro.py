@@ -1,8 +1,8 @@
 def ensure_keyboard_mouse_macro(macro_routine):
 
-    from pkg_py.pk_system_object.Local_test_activate import LTA
+    from pkg_py.pk_system_object.local_test_activate import LTA
     from pkg_py.pk_system_object.state_via_database import PkSqlite3DB
-    from pkg_py.pk_system_object.PkMessages2025 import PkMessages2025
+    from pkg_py.pk_system_object.map_massages import PkMessages2025
     from pkg_py.pk_system_object.color_map import PK_ANSI_COLOR_MAP
     from pkg_py.pk_system_object.directories import D_DESKTOP
     from pkg_py.refactor.ensure_keyboard_mouse_macro import PkMacroRoutines

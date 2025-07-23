@@ -1,1 +1,0 @@
-/usr/bin/c++  -g -O0 CMakeFiles/project_cmake.dir/src/main.cpp.o CMakeFiles/project_cmake.dir/src/core.cpp.o -o bin/project_cmake  -lyaml-cpp 
