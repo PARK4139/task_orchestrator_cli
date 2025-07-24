@@ -1,6 +1,12 @@
 
 
 def restore_workspace_from_latest_archive(D_PKG_ARCHIVED, d_working):
+    import logging
+    import os
+    import shutil
+    import tarfile
+    from pkg_py.system_object.map_massages import PkMessages2025
+
     archives = sorted(
         [f for f in os.listdir(D_PKG_ARCHIVED) if f.endswith('.tar.bz2')],
         key=lambda f: os.path.getmtime(os.path.join(D_PKG_ARCHIVED, f)),
@@ -29,5 +35,3 @@ def restore_workspace_from_latest_archive(D_PKG_ARCHIVED, d_working):
                     tar.extract(member, path=d_working)
 
     logging.info(f"[{PkMessages2025.REVERT}] Restored to {d_working}")
-
-

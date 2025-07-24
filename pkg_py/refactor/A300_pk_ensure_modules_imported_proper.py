@@ -4,6 +4,10 @@ import logging
 import re
 import traceback
 from pathlib import Path
+
+import ipdb
+
+from pkg_py.TBD import get_latest_tracking_only_from_sqlite_xc_status_db
 from pkg_py.functions_split.backup_workspace import backup_workspace
 from pkg_py.functions_split.ensure_console_cleared import ensure_console_cleared
 from pkg_py.functions_split.ensure_console_debuggable import ensure_console_debuggable
@@ -12,15 +16,30 @@ from pkg_py.functions_split.ensure_do_finally_routine import ensure_do_finally_r
 from pkg_py.functions_split.ensure_elapsed_time_logged import ensure_elapsed_time_logged
 from pkg_py.functions_split.ensure_start_time_logged import ensure_start_time_logged
 from pkg_py.functions_split.get_file_id import get_file_id
+from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style
 from pkg_py.functions_split.get_value_completed import get_value_completed
 from pkg_py.functions_split.get_values_from_historical_file_routine import get_values_from_historical_file_routine
 from pkg_py.functions_split.pk_initialize_and_customize_logging_config import pk_initialize_and_customize_logging_config
 from pkg_py.functions_split.restore_workspace_from_latest_archive import restore_workspace_from_latest_archive
+from pkg_py.system_object.files import F_PK_WORKSPACE_PY
 from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.system_object.map_massages import PkMessages2025
-from pkg_py.system_object.directories import D_PKG_ARCHIVED, D_FUNCTIONS_SPLIT
+from pkg_py.system_object.directories import D_PKG_ARCHIVED, D_FUNCTIONS_SPLIT, D_WORKSPACE, D_PKG_PY
 from pkg_py.system_object.directories_reuseable import D_PROJECT
 from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
+from pkg_py.functions_split.ensure_pnx_made import ensure_pnx_made
+from pkg_py.functions_split.ensure_window_to_front import ensure_window_to_front
+from pkg_py.functions_split.get_f_historical import get_history_file
+from pkg_py.functions_split.get_file_id import get_file_id
+from pkg_py.functions_split.get_nx import get_nx
+from pkg_py.functions_split.open_pnx_by_ext import ensure_pnx_opened_by_ext
+from pkg_py.functions_split.pk_measure_seconds import pk_measure_seconds
+from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.pk_sleep import pk_sleep
+from pkg_py.system_object.directories import D_PKG_HISTORY
+from pkg_py.system_object.local_test_activate import LTA
+from pkg_py.system_object.map_massages import PkMessages2025
+
 
 
 def extract_imports_from_code(code):
@@ -127,20 +146,26 @@ def pk_ensure_modules_imported_proper():
             d_working = D_FUNCTIONS_SPLIT
             d_import_path_reference = D_PROJECT
             import_location = "lazy_import_location"
-            # exec_mode = PkMessages2025.PREVIEW
-            exec_mode = PkMessages2025.EXECUTION
+            exec_mode = PkMessages2025.PREVIEW
+            # exec_mode = PkMessages2025.EXECUTION
         else:
             key_name = "d_working"
             d_working = get_values_from_historical_file_routine(
                 file_id=get_file_id(key_name, func_n),
                 key_hint=f'{key_name}=',
-                options_default=[D_FUNCTIONS_SPLIT]
+                options_default=[get_pnx_os_style(D_WORKSPACE)]
             )
+            # key_name = "f_working"
+            # f_working = get_values_from_historical_file_routine(
+            #     file_id=get_file_id(key_name, func_n),
+            #     key_hint=f'{key_name}=',
+            #     options_default=[F_PK_WORKSPACE_PY]
+            # )
             key_name = "d_import_path_reference"
             d_import_path_reference = get_values_from_historical_file_routine(
                 file_id=get_file_id(key_name, func_n),
                 key_hint=f'{key_name}=',
-                options_default=[D_PROJECT]
+                options_default=[D_PKG_PY]
             )
             key_name = "lazy_import_location"
             import_location = get_values_from_historical_file_routine(
@@ -267,7 +292,7 @@ def pk_ensure_modules_imported_proper():
         logging.info(f"[{func_n}] Finished with mode={exec_mode}, dry_run={dry_run}")
 
         if LTA:
-            ensure_console_debuggable()
+            ensure_console_debuggable(ipdb=ipdb)
 
         ensure_console_cleared()
 

@@ -48,6 +48,7 @@ from pkg_py.system_object.directories import D_PKG_WINDOWS
 from pkg_py.system_object.directories_reuseable import D_PROJECT
 from pkg_py.system_object.encodings import Encoding
 from pkg_py.system_object.etc import PK_UNDERLINE
+from pkg_py.system_object.files import F_PK_WORKSPACE_PY
 from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.system_object.map_massages import PkMessages2025
 from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
@@ -86,14 +87,15 @@ def pk_test_pk_python_program_structure():
 def pk_test_get_value_with_tab_v90():
     from pkg_py.functions_split.get_file_id import get_file_id
     # user input history, autocomplete, fzf, history file
-    key_name = 'commit_message'
+    key_name = 'f_working'
     func_n = inspect.currentframe().f_code.co_name
     file_id = get_file_id(key_name, func_n)
     # editable = False
     editable = True
-    value = get_value_via_fzf_or_history_routine(key_name=key_name, file_id=file_id, options=[], editable=editable)
-    commit_message = value
-    pk_print(f'''commit_message={commit_message} {'%%%FOO%%%' if LTA else ''}''')
+    init_options = [F_PK_WORKSPACE_PY]
+    value = get_value_via_fzf_or_history_routine(key_name=key_name, file_id=file_id, init_options=init_options, editable=editable)
+    f_working = value
+    pk_print(f'''f_working={f_working} {'%%%FOO%%%' if LTA else ''}''')
 
 
 def pk_test_get_value_with_tab_v80():
@@ -1738,22 +1740,22 @@ def ensure_cmd_exe_all_closed_in_loop():
         pk_sleep(milliseconds=200)
 
 
-def get_value_via_fzf_or_history_routine(key_name, file_id, options, editable):
-    # first call 에서 options에 값을 넣고, 이후 호출부터는 options = [] 로 해야함, 계속 값이 더해짐
+def get_value_via_fzf_or_history_routine(key_name, file_id, editable, init_options=[]):
+    # first call 에서 options에 값을 넣고, 이후 호출부터는 init_options = [] 로 해야함, 계속 값이 더해짐
     f_historical = get_history_file(file_id=file_id)
     historical_values = get_values_from_history_file(f_historical=f_historical)
-    options = get_list_calculated(origin_list=options, plus_list=historical_values)
-    pk_print(f'''[{PkMessages2025.DATA}] options={options} {'%%%FOO%%%' if LTA else ''}''')
-    options = get_list_calculated(origin_list=options, dedup=True)
-    selected = get_value_via_fzf_or_history(key_name=key_name, file_id=file_id, options=options, editable=editable)
+    init_options = get_list_calculated(origin_list=init_options, plus_list=historical_values)
+    pk_print(f'''[{PkMessages2025.DATA}] options={init_options} {'%%%FOO%%%' if LTA else ''}''')
+    init_options = get_list_calculated(origin_list=init_options, dedup=True)
+    selected = get_value_via_fzf_or_history(key_name=key_name, file_id=file_id, options=init_options, editable=editable)
     selected = selected.strip()
-    options = get_list_calculated(origin_list=[selected], plus_list=options)  # 선택값을 맨 앞으로 정렬
-    options = get_list_calculated(origin_list=options, dedup=True)
-    set_values_to_historical_file(f_historical=f_historical, values=options)
+    init_options = get_list_calculated(origin_list=[selected], plus_list=init_options)  # 선택값을 맨 앞으로 정렬
+    init_options = get_list_calculated(origin_list=init_options, dedup=True)
+    set_values_to_historical_file(f_historical=f_historical, values=init_options)
     return selected
 
 
-def pk_test_example_call_batchfile_as_new_window():
+def test_example_call_batchfile_as_new_window():
     batch_file_base = D_PROJECT
     batch_filename = rf"pk_push_project_to_github.bat"
     batch_calling_program = 'start "" call'
@@ -1762,7 +1764,7 @@ def pk_test_example_call_batchfile_as_new_window():
     cmd_to_os(cmd=f'{batch_calling_program} "{batch_file}"')
 
 
-def pk_test_example_call_pythonfile_as_new_window():
+def test_example_call_pythonfile_as_new_window():
     # not recommanded way
     python_file_base = D_PROJECT
     python_filename = rf"pk_push_project_to_github.py"
@@ -1918,7 +1920,7 @@ def ensure_git_project_pushed(with_commit_massage=True):
                 editable = True  # pk_option
             else:
                 editable = False
-            value = get_value_via_fzf_or_history_routine(key_name=key_name, file_id=file_id, options=[], editable=editable)
+            value = get_value_via_fzf_or_history_routine(key_name=key_name, file_id=file_id, init_options=[], editable=editable)
             pk_print(f'''[{PkMessages2025.DATA}] value={value} {'%%%FOO%%%' if LTA else ''}''')
             value = value or ""
             commit_message = value
