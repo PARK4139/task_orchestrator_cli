@@ -49,8 +49,8 @@ It runs in WSL, Docker, uv, and venv environments, supporting a wide range of fi
 
 ## Installation & Usage
 
-1. Prepare Python 3.12+ environment
-2. Install dependencies using [uv](https://github.com/astral-sh/uv) (recommended)
+1. Prepare a Python 3.12+ environment.
+2. Install dependencies using [uv](https://github.com/astral-sh/uv) (recommended):
    ```bash
    # Install uv if not already installed
    pip install uv
@@ -58,8 +58,8 @@ It runs in WSL, Docker, uv, and venv environments, supporting a wide range of fi
    # Install all dependencies as defined in pyproject.toml
    uv pip install -e .
    ```
-   - 이 프로젝트는 전통적인 venv/pip 대신 uv를 사용하여 패키지 및 의존성을 관리합니다.
-   - 반드시 uv로 설치 및 실행해 주세요.
+   - This project uses uv as the package and dependency manager instead of traditional venv/pip.
+   - Please make sure to use uv for installation and execution.
 3. (Optional) Docker environment  
    *Docker-based orchestration (docker-compose) is under development and not yet supported.*
 
