@@ -1,7 +1,7 @@
 
 
-# import win32gui
-# import pywin32
+
+
 
 
 def click_center_of_img_recognized_by_mouse_left(img_pnx: str, loop_limit_cnt=0, is_zoom_toogle_mode=False):

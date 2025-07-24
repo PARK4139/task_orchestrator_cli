@@ -1,7 +1,7 @@
 
 
-# import win32process
-# import win32gui
+
+
 import webbrowser
 import urllib.parse
 import undetected_chromedriver as uc
@@ -11,7 +11,7 @@ import string
 import socket
 import shlex
 import secrets
-# import pywin32
+
 import pyaudio
 import os
 import mysql.connector

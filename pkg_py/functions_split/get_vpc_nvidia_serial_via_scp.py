@@ -1,7 +1,7 @@
 import yt_dlp
-# import win32process
-# import win32gui
-# import win32gui
+
+
+
 import webbrowser
 import uuid
 import undetected_chromedriver as uc
@@ -17,8 +17,8 @@ import speech_recognition as sr
 import socket, time
 import secrets
 import re
-# import pywin32
-# import pywin32
+
+
 import pyaudio
 import pickle
 import paramiko
@@ -31,7 +31,7 @@ import ipdb
 import hashlib
 import colorama
 import clipboard
-import browser_cookie3
+
 import asyncio
 from zipfile import BadZipFile
 from yt_dlp import YoutubeDL

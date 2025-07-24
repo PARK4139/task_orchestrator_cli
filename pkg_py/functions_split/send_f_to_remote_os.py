@@ -1,5 +1,5 @@
 import yt_dlp
-# import win32gui
+
 import win32con
 import win32com.client
 import webbrowser
@@ -13,8 +13,8 @@ import socket
 import shutil
 import re
 import random
-# import pywin32
-# import pywin32
+
+
 import pygetwindow
 import pyaudio
 import platform
@@ -27,7 +27,7 @@ import datetime
 import cv2
 import clipboard
 import chardet
-import browser_cookie3
+
 import asyncio
 from zipfile import BadZipFile
 from webdriver_manager.chrome import ChromeDriverManager

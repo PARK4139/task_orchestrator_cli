@@ -2,6 +2,7 @@ from pkg_py.functions_split.get_pk_program_language import get_pk_program_langua
 
 
 class PkMessages2025:
+    SKIP = None
     FILE_GEN_TIME_STABLE_MODE = None
     LOOP_MODE_N_SECONDS_INTERVAL = None
     PRESS_ENTER_TO_PROCEED = None
@@ -191,6 +192,7 @@ class PkMessages2025:
         "PRESS_ENTER_TO_PROCEED": {  "kr": "진행하려면 Enter 를 누르세요",  "en": "Press Enter to proceed"},
         "LOOP_MODE_N_SECONDS_INTERVAL": {"kr": "n 초마다 반복되는 루프 모드","en": "Loop mode triggered every n seconds"},
         "FILE_GEN_TIME_STABLE_MODE": {"kr": "파일 생성 시간이 안정된 경우에만 작동하는 모드","en": "Mode that activates only when the file's generation time is stable"        },
+        "SKIP": {"kr": "넘기기","en": "SKIP"        },
 
     }
 

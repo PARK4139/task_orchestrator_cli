@@ -1,10 +1,10 @@
-# import win32gui
+
 import urllib.parse
 import traceback
 import tomllib
 import subprocess, time
 import string
-# import pywin32
+
 import platform
 import functools
 import easyocr

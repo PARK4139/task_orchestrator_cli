@@ -1,4 +1,4 @@
-# import win32gui
+
 import win32con
 import webbrowser
 import uuid
@@ -10,7 +10,7 @@ import timeit
 import time
 import shutil
 import re
-# import pywin32
+
 import pyglet
 import pyautogui
 import pickle
@@ -23,7 +23,7 @@ import json
 import hashlib
 import cv2
 import chardet
-import browser_cookie3
+
 from zipfile import BadZipFile
 from telegram import Bot, Update
 from telegram import Bot

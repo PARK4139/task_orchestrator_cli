@@ -1,8 +1,8 @@
 import zlib
 import winreg
-# import win32process
-# import win32gui
-# import win32gui
+
+
+
 import win32com.client
 import webbrowser
 import urllib
@@ -14,7 +14,7 @@ import shlex
 import secrets
 import re
 import pywintypes
-# import pywin32
+
 import pythoncom
 import pyaudio
 import os, inspect
@@ -29,7 +29,7 @@ import hashlib
 import easyocr
 import colorama
 import clipboard
-import browser_cookie3
+
 from webdriver_manager.chrome import ChromeDriverManager
 from urllib.parse import urlparse
 from urllib.parse import quote

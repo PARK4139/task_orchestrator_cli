@@ -10,8 +10,8 @@ from pkg_py.system_object.directories import D_PKG_PY
 
 def get_all_pid_and_process_name():
     import inspect
-    # import win32gui  # pywin32
-    # import win32process
+      # pywin32
+    
     func_n = inspect.currentframe().f_code.co_name
     """모든 프로세스명 돌려주는 함수"""
     process_info = ""

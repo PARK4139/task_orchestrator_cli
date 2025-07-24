@@ -10,7 +10,7 @@ def sum_via_txt_f():
 
     f_func_n_txt = rf'{D_PROJECT}\pkg_txt\{func_n}.txt'
     ensure_pnx_made(pnx=f_func_n_txt, mode="f")
-    open_pnx_by_ext(f_func_n_txt)
+    ensure_pnx_opened_by_ext(f_func_n_txt)
 
     texts = get_list_from_f(f=f_func_n_txt)
     # texts=texts.split("\n")

@@ -11,7 +11,7 @@ import time
 import subprocess
 import socket
 import pywintypes
-# import pywin32
+
 import pythoncom
 import pyaudio
 import math
@@ -20,7 +20,7 @@ import functools
 import easyocr
 import datetime
 import cv2
-import browser_cookie3
+
 from urllib.parse import urlparse
 from telegram import Bot, Update
 from seleniumbase import Driver

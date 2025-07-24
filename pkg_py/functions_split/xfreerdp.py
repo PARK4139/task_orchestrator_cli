@@ -1,7 +1,7 @@
 import zipfile
 import winreg
-# import win32process
-# import win32gui
+
+
 import win32con
 import win32com.client
 import webbrowser
@@ -12,7 +12,7 @@ import threading
 import shutil
 import secrets
 import requests
-# import pywin32
+
 import pyglet
 import pyautogui
 import psutil
@@ -26,7 +26,7 @@ import datetime
 import cv2
 import colorama
 import chardet
-import browser_cookie3
+
 from yt_dlp import YoutubeDL
 from urllib.parse import quote, urlparse
 from typing import TypeVar, List

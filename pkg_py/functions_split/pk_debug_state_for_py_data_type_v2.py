@@ -1,8 +1,8 @@
 import zipfile
 import yt_dlp
 import winreg
-# import win32gui
-# import win32gui
+
+
 import urllib
 import tomllib
 import timeit
@@ -19,7 +19,7 @@ import secrets
 import re
 import random
 import pywintypes
-# import pywin32
+
 import pyglet
 import pygetwindow
 import pyaudio
@@ -35,7 +35,7 @@ import colorama
 import colorama
 import clipboard
 import calendar
-import browser_cookie3
+
 from yt_dlp import YoutubeDL
 from tkinter import UNDERLINE
 from telethon import TelegramClient, events

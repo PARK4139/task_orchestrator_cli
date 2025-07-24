@@ -1,6 +1,6 @@
 import zipfile
 import yt_dlp
-# import win32process
+
 import win32con
 import win32con
 import webbrowser
@@ -16,8 +16,8 @@ import string
 import socket
 import shutil
 import re
-# import pywin32
-# import pywin32
+
+
 import pyautogui
 import psutil
 import paramiko
@@ -103,7 +103,7 @@ def organize_d_list_by_stamp(d: str):
     # 불필요한 항목 remove
     working_list = get_list_removed_element_contain_prompt(working_list=working_list, prompt="#")
     working_list = get_list_deduplicated(working_list=working_list)
-    working_list = get_list_removed_element_empty(working_list=working_list)
+    working_list = get_list_removed_empty(working_list=working_list)
     working_list = get_list_striped_element(working_list=working_list)
 
     # 정규식을 사용하여 stamp 리스트 추출

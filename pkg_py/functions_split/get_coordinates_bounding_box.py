@@ -1,11 +1,11 @@
-# import win32gui
-# import win32gui
+
+
 import tqdm
 import toml
 import toml
 import speech_recognition as sr
 import random
-# import pywin32
+
 import pythoncom
 import pyaudio
 import platform

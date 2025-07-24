@@ -1,6 +1,6 @@
 import zipfile
 import winreg
-# import win32gui
+
 import win32con
 import win32con
 import urllib.parse
@@ -17,8 +17,8 @@ import speech_recognition as sr
 import socket
 import shutil
 import secrets
-# import pywin32
-# import pywin32
+
+
 import pythoncom
 import pyglet
 import pygetwindow
@@ -36,7 +36,7 @@ import datetime
 import cv2
 import colorama
 import colorama
-import browser_cookie3
+
 from urllib.parse import quote, urlparse
 from urllib.parse import quote
 from tkinter import UNDERLINE

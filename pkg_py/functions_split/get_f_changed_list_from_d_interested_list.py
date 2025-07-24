@@ -27,7 +27,7 @@ import datetime
 import colorama
 import chardet
 import calendar
-import browser_cookie3
+
 import asyncio
 from zipfile import BadZipFile
 from yt_dlp import YoutubeDL

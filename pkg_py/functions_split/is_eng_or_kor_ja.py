@@ -1,7 +1,7 @@
 import zlib
 import winreg
-# import win32process
-# import win32gui
+
+
 import traceback
 import toml
 import threading
@@ -21,7 +21,7 @@ import datetime
 import cv2
 import colorama
 import calendar
-import browser_cookie3
+
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
 from selenium.common.exceptions import ElementClickInterceptedException

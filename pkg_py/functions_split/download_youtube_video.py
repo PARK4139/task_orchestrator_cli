@@ -1,18 +1,35 @@
-from pkg_py.system_object.is_os_windows import is_os_windows
-from pkg_py.system_object.map_massages import PkMessages2025
-
-from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.system_object.state_via_database import PkSqlite3DB
+from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
+from pkg_py.functions_split.download_youtube_video_via_yt_dlp import download_youtube_video_via_yt_dlp
+from pkg_py.functions_split.ensure_pnx_made import ensure_pnx_made
+from pkg_py.functions_split.ensure_ubuntu_pkg_installed import ensure_ubuntu_pkg_installed
+from pkg_py.functions_split.get_f_contained_feature_str import get_f_contained_feature_str
+from pkg_py.functions_split.get_historical_list import get_historical_list
+from pkg_py.functions_split.get_list_deduplicated import get_list_deduplicated
+from pkg_py.functions_split.get_list_from_f import get_list_from_f
+from pkg_py.functions_split.get_list_removed_element_contain_prompt import get_list_removed_element_contain_prompt
+from pkg_py.functions_split.get_list_removed_element_empty import get_list_removed_empty
+from pkg_py.functions_split.get_list_striped_element import get_list_striped_element
+from pkg_py.functions_split.get_p import get_p
+from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style
+from pkg_py.functions_split.get_pnx_ubuntu_pkg_installed import get_pnx_ubuntu_pkg_installed
+from pkg_py.functions_split.get_str_from_clipboard import get_str_from_clipboard
+from pkg_py.functions_split.get_value_completed import get_value_completed
+from pkg_py.functions_split.get_youtube_clip_id import get_youtube_clip_id
+from pkg_py.functions_split.is_f_contained_feature_str import is_f_contained_feature_str
+from pkg_py.functions_split.is_os_windows import is_os_windows
+from pkg_py.functions_split.is_url import is_url
+from pkg_py.functions_split.normalize_youtube_url import normalize_youtube_url
+from pkg_py.functions_split.open_pnx_by_ext import ensure_pnx_opened_by_ext
+from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.remove_lines_within_keyword_from_f import remove_lines_within_keyword_from_f
+from pkg_py.functions_split.write_list_to_f import write_list_to_f
 from pkg_py.system_object.directories import D_PKG_TXT
 from pkg_py.system_object.directories import D_WORKING
+from pkg_py.system_object.etc import PK_BLANK
 from pkg_py.system_object.files import F_FFMPEG_EXE
-from pkg_py.functions_split.is_os_windows import is_os_windows
-from pkg_py.functions_split.write_list_to_f import write_list_to_f
-from pkg_py.functions_split.get_value_completed import get_value_completed
-from pkg_py.functions_split.pk_print import pk_print
-from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style
-from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
-from pkg_py.functions_split.get_historical_list import get_historical_list
+from pkg_py.system_object.local_test_activate import LTA
+from pkg_py.system_object.map_massages import PkMessages2025
+from pkg_py.system_object.state_via_database import PkSqlite3DB
 
 
 def download_youtube_video():
@@ -57,7 +74,7 @@ def download_youtube_video():
 
         value = pk_db.get_values(db_id='open historical f')
         if value == PkMessages2025.YES:
-            open_pnx_by_ext(pnx=f_historical)
+            ensure_pnx_opened_by_ext(pnx=f_historical)
             pk_db.set_values(db_id="open historical f", values="YES, one time done")  # 프로그램 실생 중 1회만 실행제한
 
         youtube_video_url_from_clipboard = get_str_from_clipboard()
@@ -78,8 +95,8 @@ def download_youtube_video():
                     # play video
                     f_pnx_downloaded = get_f_contained_feature_str(feature_str=youtube_clip_id, d_pnx=d_pnx)
                     if f_pnx_downloaded:
-                        open_pnx_by_ext(pnx=f_pnx_downloaded)
-                if value == PkMessages2025.skip:
+                        ensure_pnx_opened_by_ext(pnx=f_pnx_downloaded)
+                if value == PkMessages2025.SKIP:
                     pass
 
                 # 다운로드 여부 확인 후 제거
@@ -114,8 +131,8 @@ def download_youtube_video():
                     # play video
                     f_pnx_downloaded = get_f_contained_feature_str(feature_str=youtube_clip_id, d_pnx=d_pnx)
                     if f_pnx_downloaded:
-                        open_pnx_by_ext(pnx=f_pnx_downloaded)
-                if value == PkMessages2025.skip:
+                        ensure_pnx_opened_by_ext(pnx=f_pnx_downloaded)
+                if value == PkMessages2025.SKIP:
                     pass
 
                 # 다운로드 여부 확인 후 제거
@@ -137,11 +154,11 @@ def download_youtube_video():
         working_list = get_list_from_f(f=f_historical)
         working_list = get_list_removed_element_contain_prompt(working_list=working_list, prompt="#")
         working_list = get_list_deduplicated(working_list=working_list)
-        working_list = get_list_removed_element_empty(working_list=working_list)
+        working_list = get_list_removed_empty(working_list=working_list)
         working_list = get_list_striped_element(working_list=working_list)
         urls = [url] + working_list
         pk_print(str_working=str(len(urls)))
-        urls = get_list_removed_element_empty(working_list=urls)
+        urls = get_list_removed_empty(working_list=urls)
         pk_print(str_working=str(len(urls)))
         if len(urls) == 0:
             pk_print(f'''len(urls)={len(urls)}  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
@@ -161,8 +178,8 @@ def download_youtube_video():
                     # play video
                     f_pnx_downloaded = get_f_contained_feature_str(feature_str=youtube_clip_id, d_pnx=d_pnx)
                     if f_pnx_downloaded:
-                        open_pnx_by_ext(pnx=f_pnx_downloaded)
-                if value == PkMessages2025.skip:
+                        ensure_pnx_opened_by_ext(pnx=f_pnx_downloaded)
+                if value == PkMessages2025.SKIP:
                     pass
 
             # 다운로드 여부 확인 후 제거
@@ -201,8 +218,8 @@ def download_youtube_video():
                                 # play video
                                 f_pnx_downloaded = get_f_contained_feature_str(feature_str=youtube_clip_id, d_pnx=d_pnx)
                                 if f_pnx_downloaded:
-                                    open_pnx_by_ext(pnx=f_pnx_downloaded)
-                            if value == PkMessages2025.skip:
+                                    ensure_pnx_opened_by_ext(pnx=f_pnx_downloaded)
+                            if value == PkMessages2025.SKIP:
                                 pass
 
                             # remove f in f_historical after download

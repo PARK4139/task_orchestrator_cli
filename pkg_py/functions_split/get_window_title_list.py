@@ -8,8 +8,8 @@ def get_window_title_list(process_img_n=None):
     from pkg_py.system_object.local_test_activate import LTA
 
     import traceback
-    # import win32gui  # pywin32
-    # import win32process
+      # pywin32
+    
 
     import psutil
     if process_img_n is not None:

@@ -12,7 +12,7 @@ def ensure_windows_closed():
     import pythoncom
     import os
     import traceback
-    # import win32gui
+
     import win32con
     import inspect
     try:

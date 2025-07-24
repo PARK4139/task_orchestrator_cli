@@ -1,5 +1,5 @@
 import zipfile
-# import win32gui
+
 import win32con
 import urllib.parse
 import urllib
@@ -13,8 +13,8 @@ import speech_recognition as sr
 import shlex
 import requests
 import random
-# import pywin32
-# import pywin32
+
+
 import pyaudio
 import platform
 import pickle
@@ -28,7 +28,7 @@ import keyboard
 import inspect
 import functools
 import datetime
-import browser_cookie3
+
 from zipfile import BadZipFile
 from yt_dlp import YoutubeDL
 from urllib.parse import urlparse, parse_qs, unquote

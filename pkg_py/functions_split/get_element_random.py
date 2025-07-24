@@ -1,5 +1,5 @@
 import zipfile
-# import win32process
+
 import webbrowser
 import undetected_chromedriver as uc
 import tomllib
@@ -10,8 +10,8 @@ import subprocess, time
 import speech_recognition as sr
 import socket, time
 import re
-# import pywin32
-# import pywin32
+
+
 import pyglet
 import platform
 import pandas as pd
@@ -22,7 +22,7 @@ import ipdb
 import importlib
 import chardet
 import calendar
-import browser_cookie3
+
 from telethon import TelegramClient, events
 from telegram import Bot
 from seleniumbase import Driver

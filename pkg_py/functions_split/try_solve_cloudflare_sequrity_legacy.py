@@ -1,4 +1,4 @@
-# import win32gui
+
 import uuid
 import threading
 import socket
@@ -10,7 +10,7 @@ import colorama
 import colorama
 import chardet
 import calendar
-import browser_cookie3
+
 import asyncio
 from urllib.parse import quote
 from selenium.webdriver.common.action_chains import ActionChains

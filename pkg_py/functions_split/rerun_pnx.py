@@ -14,7 +14,7 @@ import socket
 import shutil
 import re
 import pywintypes
-# import pywin32
+
 import pyautogui
 import os.path
 import nest_asyncio
@@ -23,7 +23,7 @@ import inspect
 import datetime
 import colorama
 import chardet
-import browser_cookie3
+
 import asyncio
 from typing import TypeVar, List
 from telegram import Bot, Update

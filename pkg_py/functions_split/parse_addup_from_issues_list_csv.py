@@ -12,7 +12,7 @@ def parse_addup_from_issues_list_csv():  # todo
     f_csv = issues_list_csv
     f_csv = get_pnx_unix_style(f_csv)
 
-    open_pnx_by_ext(f_csv)
+    ensure_pnx_opened_by_ext(f_csv)
 
     pk_print(str_working='line_order=', print_color='blue')
     line_order = input(":")

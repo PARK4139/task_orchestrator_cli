@@ -9,7 +9,7 @@ def classify_pnx_list_to_d_special_keyword(d_src, with_walking):
     # special_keywords_from_f_txt = get_list_replaced_element_from_str_to_str(working_list=special_keywords_from_f_txt, from_str='\n', to_str='')
     special_keywords_from_f_txt = get_list_striped_element(working_list=special_keywords_from_f_txt)
     special_keywords_from_f_txt = get_list_deduplicated(working_list=special_keywords_from_f_txt)
-    special_keywords_from_f_txt = get_list_removed_element_empty(working_list=special_keywords_from_f_txt)
+    special_keywords_from_f_txt = get_list_removed_empty(working_list=special_keywords_from_f_txt)
     special_keywords_from_f_txt = get_list_without_none(working_list=special_keywords_from_f_txt)
     special_keywords = [  # special_keywords는 텍스트의 길이가 길수록 분류가 잘될 확률이 높다
                            "[]",

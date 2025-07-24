@@ -16,10 +16,10 @@ def gather_pnxs_special():
     d_func_n = rf"{D_PROJECT}\{func_n}"  # func_n_d 에 저장
     ensure_pnx_made(pnx=d_func_n, mode="d")
 
-    open_pnx_by_ext(pnx=d_func_n)
+    ensure_pnx_opened_by_ext(pnx=d_func_n)
 
     if not is_window_opened(window_title_seg=func_n):
-        open_pnx_by_ext(pnx=d_func_n)
+        ensure_pnx_opened_by_ext(pnx=d_func_n)
 
     starting_d = get_d_working()
 

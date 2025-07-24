@@ -10,7 +10,7 @@ import psutil
 import nest_asyncio
 import ipdb
 import colorama
-import browser_cookie3
+
 from yt_dlp import YoutubeDL
 from telegram import Bot
 from prompt_toolkit import PromptSession

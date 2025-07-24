@@ -1,8 +1,8 @@
 import zlib
 import yt_dlp
 import winreg
-# import win32process
-# import win32gui
+
+
 import win32com.client
 import webbrowser
 import urllib
@@ -14,7 +14,7 @@ import socket
 import secrets
 import random, math
 import pywintypes
-# import pywin32
+
 import pygetwindow
 import pickle
 import paramiko

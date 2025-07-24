@@ -1,12 +1,12 @@
 import yt_dlp
-# import win32process
-# import win32gui
+
+
 import urllib
 import tomllib
 import time
 import socket
 import shlex
-# import pywin32
+
 import paramiko
 import os
 import numpy as np
@@ -14,7 +14,7 @@ import importlib
 import easyocr
 import cv2
 import colorama
-import browser_cookie3
+
 from zipfile import BadZipFile
 from telethon import TelegramClient, events
 from selenium.webdriver.common.by import By

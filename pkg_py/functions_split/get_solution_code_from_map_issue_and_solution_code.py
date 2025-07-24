@@ -1,7 +1,7 @@
 import winreg
-# import win32process
-# import win32gui
-# import win32gui
+
+
+
 import win32con
 import win32con
 import uuid
@@ -14,7 +14,7 @@ import speech_recognition as sr
 import shlex
 import secrets
 import random, math
-# import pywin32
+
 import pythoncom
 import pyglet
 import psutil
@@ -30,7 +30,7 @@ import importlib
 import functools
 import colorama
 import chardet
-import browser_cookie3
+
 import asyncio
 from webdriver_manager.chrome import ChromeDriverManager
 from urllib.parse import urlparse, parse_qs, unquote

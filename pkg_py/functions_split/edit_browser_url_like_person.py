@@ -5,7 +5,7 @@ import shlex
 import pythoncom
 import math
 import inspect
-import browser_cookie3
+
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.common.exceptions import WebDriverException
 from pkg_py.functions_split.rerun_losslesscut import rerun_losslesscut

@@ -631,7 +631,7 @@ def pk_kill_process_v10(window_title_seg: str):
 
 def pk_kill_process_v11(window_title_seg: str):
     import psutil
-    # import win32gui
+    
     import time
     from concurrent.futures import ThreadPoolExecutor
 
@@ -706,7 +706,7 @@ def pk_kill_process_v11(window_title_seg: str):
 
 def pk_kill_process_v12(window_title_seg: str):
     import psutil
-    # import win32gui
+    
     import time
     from concurrent.futures import ThreadPoolExecutor
 
@@ -797,7 +797,7 @@ def pk_kill_process_v12(window_title_seg: str):
 
 def pk_kill_process_v13(window_title_seg: str):
     import psutil
-    # import win32gui
+    
     import time
     from concurrent.futures import ThreadPoolExecutor
 
@@ -968,7 +968,7 @@ def is_process_killed(window_title_seg: str, timeout: float = 1.0) -> bool:
 
 def pk_kill_process_v14(window_title_seg: str):
     import psutil
-    # import win32gui
+    
     import time
     from concurrent.futures import ThreadPoolExecutor
 
@@ -1068,7 +1068,7 @@ def pk_kill_process_v14(window_title_seg: str):
 
 def pk_kill_process_v15(window_title_seg: str):
     import psutil
-    # import win32gui
+    
     import time
     from concurrent.futures import ThreadPoolExecutor
 
@@ -1277,8 +1277,8 @@ def pk_kill_process_v16(window_title: str, exact: bool = True):
 
 def pk_kill_process_by_window_title_seg(window_title_seg: str):
     import psutil
-    # import win32gui
-    # import win32process
+    
+    
     import time
     from concurrent.futures import ThreadPoolExecutor
 

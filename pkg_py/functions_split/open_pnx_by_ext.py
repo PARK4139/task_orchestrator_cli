@@ -41,7 +41,7 @@ def ensure_pnx_opened_by_ext(pnx):
         if program:
             text_editor = program
             pnx = get_pnx_windows_style(pnx=pnx)
-            pk_print(f"open_pnx_by_ext: {pnx} is a {description}", print_color='blue')
+            pk_print(f"ensure_pnx_opened_by_ext: {pnx} is a {description}", print_color='blue')
         cmd = f'{text_editor} "{pnx}" '
         cmd_to_os(cmd=cmd, mode='a')
     else:

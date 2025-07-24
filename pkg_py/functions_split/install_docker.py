@@ -2,7 +2,7 @@ import zlib
 import zipfile
 import yt_dlp
 import winreg
-# import win32gui
+
 import win32con
 import win32com.client
 import webbrowser
@@ -19,8 +19,8 @@ import shlex
 import requests
 import random, math
 import pywintypes
-# import pywin32
-# import pywin32
+
+
 import pythoncom
 import pyglet
 import psutil
@@ -39,7 +39,7 @@ import colorama
 import clipboard
 import chardet
 import calendar
-import browser_cookie3
+
 from urllib.parse import urlparse
 from urllib.parse import unquote, urlparse, parse_qs
 from urllib.parse import quote

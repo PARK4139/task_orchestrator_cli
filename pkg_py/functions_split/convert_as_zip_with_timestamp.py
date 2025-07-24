@@ -30,7 +30,7 @@ import importlib
 import hashlib
 import functools
 import datetime
-import browser_cookie3
+
 import asyncio
 from zipfile import BadZipFile
 from yt_dlp import YoutubeDL

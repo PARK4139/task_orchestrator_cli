@@ -1,7 +1,7 @@
 import zlib
 import zipfile
 import yt_dlp
-# import win32gui
+
 import webbrowser
 import uuid
 import urllib.parse
@@ -21,8 +21,8 @@ import secrets
 import requests
 import random
 import pywintypes
-# import pywin32
-# import pywin32
+
+
 import pyglet
 import psutil
 import os.path
@@ -40,7 +40,7 @@ import easyocr
 import datetime
 import colorama
 import clipboard
-import browser_cookie3
+
 import asyncio
 from urllib.parse import urlparse
 from urllib.parse import quote

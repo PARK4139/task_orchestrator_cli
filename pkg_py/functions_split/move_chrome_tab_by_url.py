@@ -2,7 +2,7 @@
 
 import yt_dlp
 import winreg
-# import win32gui
+
 import win32con
 import win32con
 import urllib.parse
@@ -21,7 +21,7 @@ import shutil
 import secrets
 import requests
 import pywintypes
-# import pywin32
+
 import pyglet
 import pygetwindow
 import platform

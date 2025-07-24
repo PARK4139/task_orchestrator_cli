@@ -1,16 +1,25 @@
-from pkg_py.system_object.is_os_windows import is_os_windows
-from pkg_py.system_object.map_massages import PkMessages2025
-
-from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.system_object.state_via_database import PkSqlite3DB
+from pkg_py.functions_split.download_youtube_video_via_yt_dlp_v2 import download_youtube_video_via_yt_dlp_v2
+from pkg_py.functions_split.ensure_pnx_made import ensure_pnx_made
+from pkg_py.functions_split.ensure_ubuntu_pkg_installed import ensure_ubuntu_pkg_installed
+from pkg_py.functions_split.ensure_window_to_front import ensure_window_to_front
+from pkg_py.functions_split.get_f_contained_feature_str import get_f_contained_feature_str
+from pkg_py.functions_split.get_list_deduplicated import get_list_deduplicated
+from pkg_py.functions_split.get_list_from_f import get_list_from_f
+from pkg_py.functions_split.get_nx import get_nx
+from pkg_py.functions_split.get_p import get_p
+from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style
+from pkg_py.functions_split.get_pnx_ubuntu_pkg_installed import get_pnx_ubuntu_pkg_installed
+from pkg_py.functions_split.get_youtube_video_metadata import get_youtube_video_metadata
+from pkg_py.functions_split.is_os_windows import is_os_windows
+from pkg_py.functions_split.mark_url_as_done import mark_url_as_done
+from pkg_py.functions_split.open_pnx_by_ext import ensure_pnx_opened_by_ext
+from pkg_py.functions_split.pk_print import pk_print
 from pkg_py.system_object.directories import D_PKG_TXT
 from pkg_py.system_object.directories import D_WORKING
 from pkg_py.system_object.files import F_FFMPEG_EXE
-from pkg_py.functions_split.is_os_windows import is_os_windows
-from pkg_py.functions_split.get_nx import get_nx
-from pkg_py.functions_split.pk_print import pk_print
-from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style
-from pkg_py.functions_split.ensure_window_to_front import ensure_window_to_front
+from pkg_py.system_object.local_test_activate import LTA
+from pkg_py.system_object.map_massages import PkMessages2025
+from pkg_py.system_object.state_via_database import PkSqlite3DB
 
 
 def download_youtube_videos(urls=None):
@@ -43,7 +52,7 @@ def download_youtube_videos(urls=None):
         D_FFMPEG_LOCATION = get_pnx_ubuntu_pkg_installed('ffmpeg')
 
     if urls is None:
-        open_pnx_by_ext(f_func_txt)
+        ensure_pnx_opened_by_ext(f_func_txt)
         ensure_window_to_front(window_title_seg=get_nx(f_func_txt))
 
         db_id = 'are_you_ready_to_download_urls?'
@@ -89,7 +98,7 @@ def download_youtube_videos(urls=None):
 
                 value = db.get_values(db_id='download_option')
                 if value == PkMessages2025.play:
-                    open_pnx_by_ext(pnx=f_pnx_downloaded)
+                    ensure_pnx_opened_by_ext(pnx=f_pnx_downloaded)
                 continue
 
             download_youtube_video_via_yt_dlp_v2(D_FFMPEG_LOCATION, D_WORKING, ext, url)
@@ -103,7 +112,7 @@ def download_youtube_videos(urls=None):
                 value = db.get_values(db_id='download_option')
                 if value == PkMessages2025.play:
                     pk_print(f'''f_pnx_downloaded={f_pnx_downloaded} {'%%%FOO%%%' if LTA else ''}''')
-                    open_pnx_by_ext(pnx=f_pnx_downloaded)
+                    ensure_pnx_opened_by_ext(pnx=f_pnx_downloaded)
             else:
                 pk_print(f"❗ 병합된 최종 파일이 존재하지 않음: {f_output}", print_color="red")
 

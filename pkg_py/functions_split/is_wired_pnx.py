@@ -21,7 +21,7 @@ import requests
 import re
 import random
 import pywintypes
-# import pywin32
+
 import pythoncom
 import pyglet
 import pygetwindow
@@ -47,7 +47,7 @@ import colorama
 import colorama
 import clipboard
 import chardet
-import browser_cookie3
+
 import asyncio
 from yt_dlp import YoutubeDL
 from webdriver_manager.chrome import ChromeDriverManager

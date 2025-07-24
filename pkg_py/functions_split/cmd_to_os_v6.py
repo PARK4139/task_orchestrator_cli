@@ -1,13 +1,10 @@
-
-
-from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.system_object.encodings import Encoding
-from pkg_py.system_object.stamps import STAMP_ATTEMPTED
-from pkg_py.functions_split.pk_print import pk_print
-from pkg_py.functions_split.print_iterable_as_vertical import print_iterable_as_vertical
-
-
 def cmd_to_os_v6(cmd: str, mode="", encoding=None, mode_with_window=1):
+    from pkg_py.system_object.local_test_activate import LTA
+    from pkg_py.system_object.encodings import Encoding
+    from pkg_py.system_object.stamps import STAMP_ATTEMPTED
+    from pkg_py.functions_split.pk_print import pk_print
+    from pkg_py.functions_split.print_iterable_as_vertical import print_iterable_as_vertical
+
     def decode_with_fallback(byte_data, primary_encoding):
         try:
             return byte_data.decode(primary_encoding)

@@ -1,7 +1,7 @@
 import zipfile
 import yt_dlp
 import winreg
-# import win32gui
+
 import webbrowser
 import uuid
 import urllib.parse
@@ -21,7 +21,7 @@ import shlex
 import requests
 import re
 import random
-# import pywin32
+
 import pythoncom
 import pyglet
 import pygetwindow

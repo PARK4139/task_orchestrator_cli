@@ -20,7 +20,7 @@ import easyocr
 import cv2
 import colorama
 import calendar
-import browser_cookie3
+
 from yt_dlp import YoutubeDL
 from webdriver_manager.chrome import ChromeDriverManager
 from urllib.parse import quote

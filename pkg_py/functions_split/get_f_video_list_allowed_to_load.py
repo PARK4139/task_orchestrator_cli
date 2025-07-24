@@ -9,7 +9,7 @@ import string
 import sqlite3
 import shlex
 import re
-# import pywin32
+
 import psutil
 import pandas as pd
 import os, inspect
@@ -23,7 +23,7 @@ import hashlib
 import datetime
 import chardet
 import calendar
-import browser_cookie3
+
 from yt_dlp import YoutubeDL
 from urllib.parse import urlparse
 from telegram import Bot

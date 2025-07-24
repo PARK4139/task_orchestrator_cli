@@ -1,4 +1,4 @@
-# import win32gui
+
 import win32con
 import win32con
 import webbrowser
@@ -18,7 +18,7 @@ import datetime
 import clipboard
 import chardet
 import calendar
-import browser_cookie3
+
 from yt_dlp import YoutubeDL
 from urllib.parse import quote
 from tkinter import UNDERLINE

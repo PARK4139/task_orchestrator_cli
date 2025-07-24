@@ -66,7 +66,7 @@ def get_windows_opened_via_win32gui(debug_mode=True):
             if window_title:  # 제목이 비어있지 않은 창만 추가
                 window_titles.append(window_title)
 
-    # import win32gui  # pywin32
+      # pywin32
     win32gui.EnumWindows(enum_windows_callback, None)
 
     if LTA:
@@ -153,12 +153,12 @@ def is_front_window_title(window_title_seg, debug_mode=True):
 #             process = psutil.Process(pid)
 #
 #             if process.is_running() and process.status() != psutil.STATUS_ZOMBIE:
-#                 # import win32gui # pywin32
+#                  # pywin32
 #                 hwnd = win32gui.FindWindow(None, None)  # 첫 번째 창 핸들을 가져옴
 #
 #                 # PID와 연결된 창 핸들을 검색
 #                 while hwnd:
-#                     # import win32process
+#                     
 #                     _, found_pid = win32process.GetWindowThreadProcessId(hwnd)
 #
 #                     # 검색된 창의 PID가 입력 PID와 일치하면 창 활성화
@@ -173,7 +173,7 @@ def is_front_window_title(window_title_seg, debug_mode=True):
 #                                 pk_print(f"창 활성화 실패: {e}", print_color='red')
 #
 #                     # 다음 창 핸들 검색
-#                     # import win32gui # pywin32
+#                      # pywin32
 #                     hwnd = win32gui.FindWindowEx(None, hwnd, None, None)
 #                 else:
 #                     if debug_mode:

@@ -37,7 +37,7 @@ import inspect
 import datetime
 import colorama
 import colorama
-import browser_cookie3
+
 from zipfile import BadZipFile
 from yt_dlp import YoutubeDL
 from urllib.parse import quote

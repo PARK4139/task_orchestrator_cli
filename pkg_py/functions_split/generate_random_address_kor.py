@@ -7,7 +7,7 @@ import pywintypes
 import nest_asyncio
 import importlib
 import hashlib
-import browser_cookie3
+
 from urllib.parse import quote, urlparse
 from selenium.webdriver.chrome.options import Options
 from PySide6.QtWidgets import QApplication

@@ -1,4 +1,4 @@
-# import win32process
+
 import win32con
 import urllib.parse
 import urllib
@@ -49,7 +49,7 @@ def collect_magnets_from_torrentqq(search_keyword=None, driver=None, via_f_txt=T
         # [OPTION]
         # window_title_seg = get_nx(collect_magnets_from_nyaa_si_txt)
         # if not is_window_open(window_title_seg=window_title_seg):
-        # open_pnx_by_ext(pnx=f_func_n_txt)
+        # ensure_pnx_opened_by_ext(pnx=f_func_n_txt)
         # move_window_to_front(window_title_seg=window_title_seg)
         # cmd_to_os(cmd=rf'explorer "{f_func_n_txt}" ', debug_mode=True, mode="a")
 
@@ -69,7 +69,7 @@ def collect_magnets_from_torrentqq(search_keyword=None, driver=None, via_f_txt=T
         pk_print(f'''search_keyword_list={filtered_list}  {'%%%FOO%%%' if LTA else ''}''')
         filtered_list = get_list_striped_element(working_list=filtered_list)
         pk_print(f'''search_keyword_list={filtered_list}  {'%%%FOO%%%' if LTA else ''}''')
-        filtered_list = get_list_removed_element_empty(working_list=filtered_list)
+        filtered_list = get_list_removed_empty(working_list=filtered_list)
         pk_print(f'''search_keyword_list={filtered_list}  {'%%%FOO%%%' if LTA else ''}''')
         filtered_list = get_list_deduplicated(working_list=filtered_list)
         pk_print(f'''search_keyword_list={filtered_list}  {'%%%FOO%%%' if LTA else ''}''')
@@ -96,14 +96,14 @@ def collect_magnets_from_torrentqq(search_keyword=None, driver=None, via_f_txt=T
             # magnets 중복remove
             magnets_list = get_list_from_f(f=magnets_txt)
             magnets_list = get_list_striped_element(working_list=magnets_list)
-            magnets_list = get_list_removed_element_empty(working_list=magnets_list)
+            magnets_list = get_list_removed_empty(working_list=magnets_list)
             magnets_list = get_list_deduplicated(working_list=magnets_list)
             write_list_to_f(f=magnets_txt, working_list=magnets_list, mode="w")
 
         # search_keyword_list 목록추가, search_keyword_list 중복remove
         filtered_list = get_list_from_f(f=collect_magnets_from_nyaa_si_txt) + filtered_list
         filtered_list = get_list_striped_element(working_list=filtered_list)
-        filtered_list = get_list_removed_element_empty(working_list=filtered_list)
+        filtered_list = get_list_removed_empty(working_list=filtered_list)
         filtered_list = get_list_deduplicated(working_list=filtered_list)
         write_list_to_f(f=collect_magnets_from_nyaa_si_txt, working_list=filtered_list, mode="w")
 

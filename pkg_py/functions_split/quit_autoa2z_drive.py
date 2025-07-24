@@ -16,7 +16,7 @@ import easyocr
 import datetime
 import cv2
 import colorama
-import browser_cookie3
+
 from yt_dlp import YoutubeDL
 from webdriver_manager.chrome import ChromeDriverManager
 from urllib.parse import quote

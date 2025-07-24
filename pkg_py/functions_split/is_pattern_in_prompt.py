@@ -7,7 +7,7 @@ import speech_recognition as sr
 import socket
 import requests
 import re
-# import pywin32
+
 import pyglet
 import pygetwindow
 import pyautogui

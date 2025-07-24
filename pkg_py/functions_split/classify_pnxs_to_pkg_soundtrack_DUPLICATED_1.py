@@ -10,8 +10,8 @@ import sys
 import subprocess
 import shlex
 import re
-# import pywin32
-# import pywin32
+
+
 import pyaudio
 import os, inspect
 import os

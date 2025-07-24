@@ -2,7 +2,7 @@
 
 def minimize_all_windows_callback(hwnd, lparam):
     import inspect
-    # import win32gui  # pywin32
+      # pywin32
     import win32con  # pywin32
     func_n = inspect.currentframe().f_code.co_name
 

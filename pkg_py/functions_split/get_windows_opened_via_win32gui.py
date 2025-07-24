@@ -1,5 +1,5 @@
 def get_windows_opened_via_win32gui():
-    # import win32gui  # pywin32
+      # pywin32
     import win32gui
     window_titles = []
 

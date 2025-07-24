@@ -1,6 +1,6 @@
-# import win32process
-# import win32gui            
-# import win32gui
+
+
+
 import win32con
 import win32con
 import win32com.client
@@ -24,8 +24,8 @@ import shutil
 import requests
 import re
 import random
-# import pywin32
-# import pywin32
+
+
 import pythoncom
 import pygetwindow
 import pyautogui
@@ -49,7 +49,7 @@ import easyocr
 import cv2
 import colorama
 import clipboard
-import browser_cookie3
+
 from yt_dlp import YoutubeDL
 from webdriver_manager.chrome import ChromeDriverManager
 from urllib.parse import urlparse

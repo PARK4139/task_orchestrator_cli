@@ -1,6 +1,6 @@
 import yt_dlp
 import winreg
-# import win32gui
+
 import tomllib
 import toml
 import sys
@@ -8,7 +8,7 @@ import sqlite3
 import socket
 import shlex
 import random
-# import pywin32
+
 import pyglet
 import pyaudio
 import paramiko

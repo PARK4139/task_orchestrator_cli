@@ -29,7 +29,7 @@ import datetime
 import colorama
 import colorama
 import calendar
-import browser_cookie3
+
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC

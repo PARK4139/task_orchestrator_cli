@@ -7,7 +7,7 @@ import string
 import secrets
 import random, math
 import random
-# import pywin32
+
 import pyautogui
 import pyaudio
 import psutil
@@ -18,7 +18,7 @@ import functools
 import easyocr
 import cv2
 import calendar
-import browser_cookie3
+
 from urllib.parse import quote
 from typing import TypeVar, List
 from seleniumbase import Driver

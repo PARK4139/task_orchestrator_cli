@@ -1,3 +1,11 @@
+from pkg_py.functions_split.get_f_contained_feature_str import get_f_contained_feature_str
+from pkg_py.functions_split.get_str_url_decoded import get_str_url_decoded
+from pkg_py.functions_split.get_url_list_encoded_element import get_url_list_encoded_element
+from pkg_py.functions_split.get_video_title_with_ytdlp import get_video_title_with_ytdlp
+from pkg_py.functions_split.is_f_contained_feature_str import is_f_contained_feature_str
+from pkg_py.functions_split.log_success_to_f import log_success_to_f
+from pkg_py.functions_split.normalize_youtube_url import normalize_youtube_url
+from pkg_py.functions_split.open_pnx_by_ext import ensure_pnx_opened_by_ext
 from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.system_object.directories import D_PKG_TXT
 from pkg_py.system_object.files import F_FFMPEG_EXE
@@ -78,7 +86,7 @@ def download_youtube_video_via_yt_dlp(url_list, d_pnx, f_func_n_txt):
                 f_downloaded = get_f_contained_feature_str(feature_str=feature_str, d_pnx=d_pnx)
                 pk_print(f'''f_downloaded="{f_downloaded}"  {'%%%FOO%%%' if LTA else ''}''')
                 if f_downloaded:
-                    open_pnx_by_ext(pnx=f_downloaded)
+                    ensure_pnx_opened_by_ext(pnx=f_downloaded)
                 FEATURE_NICK_NAME = get_video_title_with_ytdlp(clip_id=clip_id)
                 FEATURE_NICK_NAME = get_url_list_encoded_element(working_list=[FEATURE_NICK_NAME])[0]
                 FEATURE_NICK_NAME = get_str_url_decoded(FEATURE_NICK_NAME)

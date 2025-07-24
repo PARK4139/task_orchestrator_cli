@@ -1,7 +1,7 @@
 import zlib
 import yt_dlp
 import winreg
-# import win32gui
+
 import win32con
 import uuid
 import urllib
@@ -19,8 +19,8 @@ import speech_recognition as sr
 import socket
 import re
 import random, math
-# import pywin32
-# import pywin32
+
+
 import pythoncom
 import pyglet
 import pygetwindow

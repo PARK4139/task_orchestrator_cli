@@ -16,7 +16,7 @@ import re
 import random, math
 import random
 import pywintypes
-# import pywin32
+
 import pyautogui
 import pyaudio
 import psutil
@@ -30,7 +30,7 @@ import hashlib
 import functools
 import cv2
 import calendar
-import browser_cookie3
+
 from urllib.parse import urlparse
 from seleniumbase import Driver
 from selenium.webdriver.support import expected_conditions as EC

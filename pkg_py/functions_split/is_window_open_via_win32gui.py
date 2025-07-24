@@ -1,5 +1,5 @@
 def is_window_open_via_win32gui(window_title):
-    # import win32gui  # pywin32
+      # pywin32
     def enum_windows_callback(hwnd, lparam):
         if win32gui.IsWindowVisible(hwnd):
             # 창의 제목을 확인

@@ -2,8 +2,8 @@ import zlib
 import zipfile
 import yt_dlp
 import winreg
-# import win32process
-# import win32gui
+
+
 import undetected_chromedriver as uc
 import tomllib
 import tomllib
@@ -21,7 +21,7 @@ import secrets
 import requests
 import re
 import random, math
-# import pywin32
+
 import pythoncom
 import pyautogui
 import psutil
@@ -44,7 +44,7 @@ import colorama
 import colorama
 import clipboard
 import chardet
-import browser_cookie3
+
 import asyncio
 from yt_dlp import YoutubeDL
 from webdriver_manager.chrome import ChromeDriverManager

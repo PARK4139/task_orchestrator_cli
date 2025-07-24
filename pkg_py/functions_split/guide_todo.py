@@ -1,10 +1,10 @@
-# import win32process
+
 import urllib
 import subprocess
 import speech_recognition as sr
 import requests
 import re
-# import pywin32
+
 import numpy as np
 import colorama
 from webdriver_manager.chrome import ChromeDriverManager
@@ -49,7 +49,7 @@ def guide_todo():
                                                            (F_MEMO_WORK_PK, F_MEMO_WORK_PK, F_MEMO_TRASH_BIN_TOML))
 
     # explorer
-    # open_pnx_by_ext(pnx=MEMO_TODO_TXT)
+    # ensure_pnx_opened_by_ext(pnx=MEMO_TODO_TXT)
 
     # f = rf'{__file__}'
 

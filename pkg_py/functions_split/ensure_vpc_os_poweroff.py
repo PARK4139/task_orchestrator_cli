@@ -1,8 +1,8 @@
 
 
 import winreg
-# import win32gui
-# import win32gui
+
+
 import win32con
 import win32con
 import undetected_chromedriver as uc
@@ -13,7 +13,7 @@ import socket
 import secrets
 import random
 import pywintypes
-# import pywin32
+
 import os
 import numpy as np
 import mysql.connector

@@ -1,6 +1,6 @@
 
 
-# import win32gui
+
 import win32con
 import win32com.client
 import uuid
@@ -11,7 +11,7 @@ import toml
 import socket, time
 import requests
 import random
-# import pywin32
+
 import pythoncom
 import psutil
 import platform
@@ -25,7 +25,7 @@ import json
 import importlib
 import hashlib
 import colorama
-import browser_cookie3
+
 from urllib.parse import urlparse
 from tkinter import UNDERLINE
 from telethon import TelegramClient, events

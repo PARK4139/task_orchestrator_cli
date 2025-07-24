@@ -1,4 +1,4 @@
-# import win32gui
+
 import win32con
 import uuid
 import traceback
@@ -9,7 +9,7 @@ import speech_recognition as sr
 import shlex
 import secrets
 import random
-# import pywin32
+
 import pythoncom
 import pyaudio
 import nest_asyncio

@@ -76,7 +76,7 @@ from pkg_py.functions_split.pk_print import pk_print
 
 
 def save_chrome_youtube_cookies_to_f():
-    import browser_cookie3
+    import browser_ cookie3
 
     f_cookie = rf"{D_PKG_TXT}/chrome_youtube_cookies.txt"
     f_cookie = get_pnx_os_style(pnx=f_cookie)

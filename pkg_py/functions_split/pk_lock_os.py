@@ -5,9 +5,9 @@ import speech_recognition as sr
 import socket
 import random
 import pywintypes
-# import pywin32
+
 import mysql.connector
-import browser_cookie3
+
 from PySide6.QtWidgets import QApplication
 from prompt_toolkit import PromptSession
 # from project_database.test_project_database import MySqlUtil

@@ -2,7 +2,7 @@ import zlib
 import zipfile
 import yt_dlp
 import winreg
-# import win32gui
+
 import win32com.client
 import uuid
 import tqdm
@@ -13,7 +13,7 @@ import time
 import threading
 import tarfile
 import speech_recognition as sr
-# import pywin32
+
 import pythoncom
 import pygetwindow
 import platform

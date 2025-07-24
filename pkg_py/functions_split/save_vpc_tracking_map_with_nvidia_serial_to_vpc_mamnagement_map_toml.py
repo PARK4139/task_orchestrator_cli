@@ -2,7 +2,7 @@ import zlib
 import uuid
 import toml
 import shutil
-# import pywin32
+
 from seleniumbase import Driver
 from selenium.webdriver.chrome.service import Service
 from PySide6.QtWidgets import QApplication

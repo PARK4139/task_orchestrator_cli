@@ -37,7 +37,7 @@ def make_version_new_v_1_0_1(via_f_txt=False, working_list=None, debug_mode=True
     func_n = inspect.currentframe().f_code.co_name
     f_func_n_txt = rf'{D_PROJECT}\pkg_txt\{func_n}.txt'
     ensure_pnx_made(pnx=f_func_n_txt, mode='f')
-    open_pnx_by_ext(pnx=f_func_n_txt)
+    ensure_pnx_opened_by_ext(pnx=f_func_n_txt)
 
     def get_next_versioned_nx(f_nx, debug_mode=True):
         func_n = inspect.currentframe().f_code.co_name

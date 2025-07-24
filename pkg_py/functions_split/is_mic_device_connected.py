@@ -9,7 +9,7 @@ import inspect
 import importlib
 import hashlib
 import calendar
-import browser_cookie3
+
 from urllib.parse import quote
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.chrome.options import Options

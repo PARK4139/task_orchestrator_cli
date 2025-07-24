@@ -1,7 +1,7 @@
 import zipfile
 import winreg
-# import win32gui
-# import win32gui
+
+
 import urllib.parse
 import urllib
 import undetected_chromedriver as uc
@@ -19,7 +19,7 @@ import socket
 import shutil
 import re
 import random
-# import pywin32
+
 import pythoncom
 import pygetwindow
 import pyautogui
@@ -45,7 +45,7 @@ import colorama
 import colorama
 import clipboard
 import chardet
-import browser_cookie3
+
 import asyncio
 from zipfile import BadZipFile
 from yt_dlp import YoutubeDL

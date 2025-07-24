@@ -1,7 +1,7 @@
 import zlib
 import zipfile
 import winreg
-# import win32gui
+
 import win32con
 import win32con
 import win32com.client
@@ -12,7 +12,7 @@ import sys
 import string
 import speech_recognition as sr
 import socket
-# import pywin32
+
 import pickle
 import paramiko
 import pandas as pd

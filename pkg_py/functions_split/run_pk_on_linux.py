@@ -1,7 +1,7 @@
 
 
-# import win32gui
-# import pywin32
+
+
 
 
 def run_pk_on_linux(cmd_to_autorun: str,

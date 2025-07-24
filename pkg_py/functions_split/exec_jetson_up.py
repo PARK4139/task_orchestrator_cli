@@ -1,5 +1,5 @@
-# import win32process
-# import win32gui
+
+
 import win32com.client
 import urllib.parse
 import undetected_chromedriver as uc
@@ -12,8 +12,8 @@ import speech_recognition as sr
 import shutil
 import secrets
 import pywintypes
-# import pywin32            
-# import pywin32
+
+
 import platform
 import paramiko
 import keyboard
@@ -23,7 +23,7 @@ import hashlib
 import datetime
 import cv2
 import colorama
-import browser_cookie3
+
 from zipfile import BadZipFile
 from yt_dlp import YoutubeDL
 from urllib.parse import urlparse

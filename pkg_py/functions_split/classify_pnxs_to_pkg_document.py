@@ -1,8 +1,8 @@
 
 
 import yt_dlp
-# import win32process
-# import win32gui
+
+
 import win32con
 import webbrowser
 import uuid
@@ -22,7 +22,7 @@ import shutil
 import requests
 import re
 import pywintypes
-# import pywin32
+
 import pythoncom
 import pyglet
 import pygetwindow
@@ -44,7 +44,7 @@ import datetime
 import cv2
 import colorama
 import colorama
-import browser_cookie3
+
 import asyncio
 from urllib.parse import urlparse, parse_qs, unquote
 from typing import TypeVar, List

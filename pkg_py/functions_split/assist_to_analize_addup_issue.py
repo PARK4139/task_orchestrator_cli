@@ -148,7 +148,7 @@ def assist_to_analize_addup_issue():  # todo
     # todo : option : 필요 시 주석처리
     # driver.quit()
 
-    open_pnx_by_ext(issues_list_csv)
+    ensure_pnx_opened_by_ext(issues_list_csv)
 
     pk_print(str_working='line_order=', print_color='blue')
     line_order = input(":")

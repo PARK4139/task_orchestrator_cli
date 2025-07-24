@@ -6,7 +6,7 @@ import speech_recognition as sr
 import requests
 import random, math
 import random
-# import pywin32
+
 import pythoncom
 import pygetwindow
 import pickle

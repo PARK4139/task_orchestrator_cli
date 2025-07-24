@@ -1,6 +1,6 @@
 import zlib
-# import win32gui
-# import win32gui
+
+
 import traceback
 import toml
 import toml
@@ -12,8 +12,8 @@ import string
 import speech_recognition as sr
 import socket
 import shutil
-# import pywin32
-# import pywin32
+
+
 import pyglet
 import pyautogui
 import pickle

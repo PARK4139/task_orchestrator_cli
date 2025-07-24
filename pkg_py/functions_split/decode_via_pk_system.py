@@ -2,7 +2,7 @@ import zlib
 import zipfile
 import yt_dlp
 import winreg
-# import win32gui
+
 import win32con
 import webbrowser
 import uuid
@@ -21,7 +21,7 @@ import shutil
 import random, math
 import random
 import pywintypes
-# import pywin32
+
 import pythoncom
 import pyglet
 import pygetwindow
@@ -45,7 +45,7 @@ import colorama
 import colorama
 import chardet
 import calendar
-import browser_cookie3
+
 from zipfile import BadZipFile
 from webdriver_manager.chrome import ChromeDriverManager
 from urllib.parse import urlparse, parse_qs, unquote

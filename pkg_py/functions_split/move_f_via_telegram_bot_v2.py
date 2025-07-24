@@ -21,7 +21,7 @@ import keyboard
 import json
 import datetime
 import cv2
-import browser_cookie3
+
 import asyncio
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options

@@ -1,6 +1,6 @@
 import zipfile
-# import win32gui
-# import win32gui
+
+
 import urllib
 import undetected_chromedriver as uc
 import tqdm
@@ -13,7 +13,7 @@ import secrets
 import requests
 import random, math
 import pywintypes
-# import pywin32
+
 import pythoncom
 import pyglet
 import pyautogui
@@ -29,7 +29,7 @@ import datetime
 import cv2
 import clipboard
 import calendar
-import browser_cookie3
+
 from webdriver_manager.chrome import ChromeDriverManager
 from urllib.parse import quote
 from typing import TypeVar, List

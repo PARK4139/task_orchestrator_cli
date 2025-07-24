@@ -5,7 +5,7 @@ import string
 import pyautogui
 import pickle
 import nest_asyncio
-import browser_cookie3
+
 from yt_dlp import YoutubeDL
 from pytube import Playlist
 from pkg_py.functions_split.get_f_loading_nx_by_pattern import get_f_loading_nx_by_pattern

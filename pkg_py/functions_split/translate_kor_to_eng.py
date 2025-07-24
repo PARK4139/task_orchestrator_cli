@@ -5,9 +5,9 @@ import timeit
 import tarfile
 import sqlite3
 import re
-# import pywin32
+
 import psutil
-import browser_cookie3
+
 from telegram import Bot
 from selenium.common.exceptions import ElementClickInterceptedException
 from pynput import mouse

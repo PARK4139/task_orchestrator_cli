@@ -2,7 +2,7 @@ import zlib
 import zipfile
 import yt_dlp
 import winreg
-# import win32gui
+
 import win32con
 import webbrowser
 import urllib.parse
@@ -17,7 +17,7 @@ import speech_recognition as sr
 import shutil
 import shlex
 import requests
-# import pywin32
+
 import pythoncom
 import psutil
 import paramiko
@@ -34,7 +34,7 @@ import colorama
 import clipboard
 import chardet
 import calendar
-import browser_cookie3
+
 import asyncio
 from yt_dlp import YoutubeDL
 from urllib.parse import urlparse

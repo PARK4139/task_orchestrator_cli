@@ -21,7 +21,7 @@ import inspect
 import datetime
 import colorama
 import chardet
-import browser_cookie3
+
 import asyncio
 from urllib.parse import urlparse
 from selenium.webdriver.support import expected_conditions as EC

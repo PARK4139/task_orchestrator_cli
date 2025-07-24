@@ -8,7 +8,7 @@ import sqlite3
 import socket
 import re
 import random
-# import pywin32
+
 import pyglet
 import pygetwindow
 import pyautogui
@@ -17,7 +17,7 @@ import importlib
 import easyocr
 import clipboard
 import chardet
-import browser_cookie3
+
 from urllib.parse import quote, urlparse
 from seleniumbase import Driver
 from selenium.webdriver.support.ui import WebDriverWait

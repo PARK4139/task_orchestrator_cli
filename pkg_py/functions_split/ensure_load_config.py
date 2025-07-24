@@ -14,7 +14,7 @@ import json
 import ipdb
 import easyocr
 import clipboard
-import browser_cookie3
+
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.options import Options
 from pkg_py.functions_split.ensure_window_to_front import ensure_window_to_front

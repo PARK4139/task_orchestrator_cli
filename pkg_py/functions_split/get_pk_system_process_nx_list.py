@@ -2,7 +2,7 @@
 
 import zipfile
 import winreg
-# import win32process
+
 import win32con
 import win32com.client
 import undetected_chromedriver as uc
@@ -14,7 +14,7 @@ import time
 import string
 import speech_recognition as sr
 import random
-# import pywin32
+
 import pythoncom
 import pyglet
 import platform
@@ -24,7 +24,7 @@ import mysql.connector
 import json
 import hashlib
 import clipboard
-import browser_cookie3
+
 from webdriver_manager.chrome import ChromeDriverManager
 from urllib.parse import quote
 from selenium.webdriver.support.ui import WebDriverWait

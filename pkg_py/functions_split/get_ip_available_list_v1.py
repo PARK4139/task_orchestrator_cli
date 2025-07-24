@@ -2,8 +2,8 @@
 
 import zlib
 import winreg
-# import win32gui
-# import win32gui
+
+
 import win32con
 import webbrowser
 import urllib.parse
@@ -26,7 +26,7 @@ import re
 import random, math
 import random
 import pywintypes
-# import pywin32
+
 import pygetwindow
 import pyaudio
 import psutil
@@ -48,7 +48,7 @@ import colorama
 import colorama
 import clipboard
 import calendar
-import browser_cookie3
+
 import asyncio
 from zipfile import BadZipFile
 from yt_dlp import YoutubeDL

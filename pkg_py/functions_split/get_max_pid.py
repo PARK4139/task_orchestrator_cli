@@ -16,7 +16,7 @@ import sqlite3
 import socket
 import re
 import random, math
-# import pywin32
+
 import pythoncom
 import pygetwindow
 import pyautogui
@@ -41,7 +41,7 @@ import cv2
 import colorama
 import chardet
 import calendar
-import browser_cookie3
+
 import asyncio
 from zipfile import BadZipFile
 from urllib.parse import urlparse

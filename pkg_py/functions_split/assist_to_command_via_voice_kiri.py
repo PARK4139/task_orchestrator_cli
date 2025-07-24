@@ -5,8 +5,8 @@ import sys
 import sqlite3
 import speech_recognition as sr
 import socket
-# import pywin32
-# import pywin32
+
+
 import platform
 import os.path
 import mysql.connector

@@ -8,7 +8,7 @@ import threading
 import subprocess
 import socket
 import random
-# import pywin32
+
 import pyautogui
 import nest_asyncio
 import ipdb
@@ -17,7 +17,7 @@ import hashlib
 import cv2
 import colorama
 import chardet
-import browser_cookie3
+
 from webdriver_manager.chrome import ChromeDriverManager
 from urllib.parse import quote
 from tkinter import UNDERLINE

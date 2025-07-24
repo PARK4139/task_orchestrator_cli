@@ -1,5 +1,5 @@
 import keyboard
-import browser_cookie3
+
 from passlib.context import CryptContext
 from pkg_py.system_object.directories import D_PKG_PY
 from pkg_py.functions_split.get_pnx_wsl_unix_style import get_pnx_wsl_unix_style

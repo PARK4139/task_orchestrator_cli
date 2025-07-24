@@ -3,8 +3,8 @@
 import zipfile
 import yt_dlp
 import winreg
-# import win32process
-# import win32gui
+
+
 import win32con
 import win32con
 import win32com.client
@@ -25,7 +25,7 @@ import speech_recognition as sr
 import socket
 import shlex
 import pywintypes
-# import pywin32
+
 import platform
 import pickle
 import numpy as np

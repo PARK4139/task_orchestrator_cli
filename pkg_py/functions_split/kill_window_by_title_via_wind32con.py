@@ -5,7 +5,7 @@ from pkg_py.functions_split.pk_print import pk_print
 def kill_window_by_title_via_wind32con(window_title):
     import traceback
     import win32con  # pywin32
-    # import win32gui  # pywin32
+      # pywin32
 
     def enum_windows_callback(hwnd, lparam):
         try:

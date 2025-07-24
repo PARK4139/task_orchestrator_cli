@@ -5,7 +5,7 @@ import socket
 import shlex
 import pyglet
 import mutagen
-import browser_cookie3
+
 import asyncio
 from selenium.webdriver.common.keys import Keys
 from PySide6.QtWidgets import QApplication

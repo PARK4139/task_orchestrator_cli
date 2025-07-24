@@ -40,7 +40,7 @@ def rename_pnxs_from_keywords_to_keyword_new_at_d(d, mode, with_walking, debug_m
     working_list = get_list_from_f(f=rf'{D_PKG_TXT}\collect_magnets_from_nyaa_si.txt')
     working_list = get_list_removed_element_contain_prompt(working_list=working_list, prompt="#")
     working_list = get_list_deduplicated(working_list=working_list)
-    working_list = get_list_removed_element_empty(working_list=working_list)
+    working_list = get_list_removed_empty(working_list=working_list)
     working_list = get_list_striped_element(working_list=working_list)
     pattern = re.compile(r"(\[.*?\])\s*(.*)")
     # filtered_list = []

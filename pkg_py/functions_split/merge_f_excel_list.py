@@ -92,7 +92,7 @@ def merge_f_excel_list(d):
             merged_df.to_excel(f_merged)  # success
             # pd.ExcelWriter(merged_file, engine= "openpyxl") # fail, 확장자 잘못 저장했나?
             # open_pnx(merged_file)
-            open_pnx_by_ext(pnx=f_merged)
+            ensure_pnx_opened_by_ext(pnx=f_merged)
         except PermissionError:
             pk_print(f'''{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
             pk_print(f"{func_n}() 엑셀f이 열려있을 수 있습니다. 닫고 머지를 다시 시도해 주세요", print_color='red')

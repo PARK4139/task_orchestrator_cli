@@ -1,7 +1,7 @@
 import zlib
 import yt_dlp
-# import win32gui
-# import win32gui
+
+
 import win32com.client
 import webbrowser
 import uuid
@@ -21,7 +21,7 @@ import sqlite3
 import socket
 import requests
 import pywintypes
-# import pywin32
+
 import pygetwindow
 import pyaudio
 import psutil
@@ -47,7 +47,7 @@ import cv2
 import colorama
 import colorama
 import calendar
-import browser_cookie3
+
 from zipfile import BadZipFile
 from yt_dlp import YoutubeDL
 from urllib.parse import urlparse

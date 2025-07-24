@@ -1,6 +1,6 @@
 import zipfile
 import winreg
-# import win32gui
+
 import win32con
 import webbrowser
 import uuid
@@ -19,8 +19,8 @@ import requests
 import re
 import random, math
 import random
-# import pywin32
-# import pywin32
+
+
 import pyglet
 import pyautogui
 import psutil

@@ -4,10 +4,10 @@ import tomllib
 import timeit
 import sqlite3
 import secrets
-# import pywin32
+
 import pickle
 import os
-import browser_cookie3
+
 from tkinter import UNDERLINE
 from pkg_py.functions_split.is_window_title_front import is_window_title_front
 from pkg_py.system_object.map_massages import PkMessages2025

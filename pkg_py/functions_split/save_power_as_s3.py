@@ -22,7 +22,7 @@ import easyocr
 import colorama
 import colorama
 import calendar
-import browser_cookie3
+
 import asyncio
 from yt_dlp import YoutubeDL
 from urllib.parse import unquote, urlparse, parse_qs

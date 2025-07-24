@@ -1,5 +1,5 @@
-# import win32process
-# import win32gui
+
+
 import win32con
 import win32con
 import win32com.client
@@ -23,7 +23,7 @@ import secrets
 import requests
 import random
 import pywintypes
-# import pywin32
+
 import pyaudio
 import platform
 import pickle
@@ -44,7 +44,7 @@ import functools
 import datetime
 import cv2
 import colorama
-import browser_cookie3
+
 from zipfile import BadZipFile
 from yt_dlp import YoutubeDL
 from webdriver_manager.chrome import ChromeDriverManager

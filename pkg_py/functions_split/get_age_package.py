@@ -1,7 +1,7 @@
 import zlib
 import winreg
-# import win32process
-# import win32gui
+
+
 import win32con
 import webbrowser
 import uuid
@@ -16,7 +16,7 @@ import string
 import sqlite3
 import speech_recognition as sr
 import shlex
-# import pywin32
+
 import pythoncom
 import pyglet
 import pygetwindow

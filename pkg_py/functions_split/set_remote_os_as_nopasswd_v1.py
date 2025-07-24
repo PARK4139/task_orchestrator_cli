@@ -8,7 +8,7 @@ import json
 import ipdb
 import inspect
 import easyocr
-import browser_cookie3
+
 from urllib.parse import urlparse
 from urllib.parse import quote
 from selenium.webdriver.support import expected_conditions as EC

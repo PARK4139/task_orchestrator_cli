@@ -1,6 +1,6 @@
 import zipfile
 import winreg
-# import win32gui
+
 import uuid
 import urllib.parse
 import traceback
@@ -28,7 +28,7 @@ import importlib
 import easyocr
 import colorama
 import colorama
-import browser_cookie3
+
 import asyncio
 from yt_dlp import YoutubeDL
 from urllib.parse import quote

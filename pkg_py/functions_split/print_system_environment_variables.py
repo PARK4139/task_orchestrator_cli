@@ -1,5 +1,5 @@
 import yt_dlp
-# import win32gui
+
 import win32con
 import uuid
 import urllib.parse
@@ -28,7 +28,7 @@ import importlib
 import functools
 import clipboard
 import chardet
-import browser_cookie3
+
 from yt_dlp import YoutubeDL
 from webdriver_manager.chrome import ChromeDriverManager
 from urllib.parse import unquote, urlparse, parse_qs

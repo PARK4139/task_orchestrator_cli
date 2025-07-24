@@ -5,7 +5,7 @@ import random
 import pygetwindow
 import nest_asyncio
 import colorama
-import browser_cookie3
+
 from yt_dlp import YoutubeDL
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.action_chains import ActionChains

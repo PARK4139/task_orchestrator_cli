@@ -8,7 +8,7 @@ import sqlite3
 import pyautogui
 import functools
 import calendar
-import browser_cookie3
+
 from selenium.webdriver.chrome.options import Options
 from pkg_py.functions_split.ensure_window_to_front import ensure_window_to_front
 from pkg_py.functions_split.get_video_filtered_list import get_video_filtered_list

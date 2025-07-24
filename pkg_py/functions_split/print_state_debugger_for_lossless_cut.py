@@ -1,5 +1,5 @@
 import zlib
-# import win32gui
+
 import uuid
 import traceback
 import timeit
@@ -7,7 +7,7 @@ import random
 import pygetwindow
 import inspect
 import easyocr
-import browser_cookie3
+
 import asyncio
 from seleniumbase import Driver
 from selenium.webdriver.support.ui import WebDriverWait

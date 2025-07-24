@@ -1,4 +1,4 @@
-# import win32gui
+
 import undetected_chromedriver as uc
 import tqdm
 import timeit

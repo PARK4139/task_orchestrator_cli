@@ -112,13 +112,13 @@ def collect_magnet_set_from_nyaa_si(search_keyword=None, driver=None, via_f_txt=
     # magnets 중복remove
     magnets_list = get_list_from_f(f=f)
     magnets_list = get_list_striped_element(working_list=magnets_list)
-    magnets_list = get_list_removed_element_empty(working_list=magnets_list)
+    magnets_list = get_list_removed_empty(working_list=magnets_list)
     magnets_list = get_list_deduplicated(working_list=magnets_list)
     write_list_to_f(f=f, working_list=magnets_list, mode="w")
 
     # search_keyword_list 목록추가, search_keyword_list 중복remove
     search_keyword_list = get_list_from_f(f=f_func_n_txt) + search_keyword_list
     search_keyword_list = get_list_striped_element(working_list=search_keyword_list)
-    search_keyword_list = get_list_removed_element_empty(working_list=search_keyword_list)
+    search_keyword_list = get_list_removed_empty(working_list=search_keyword_list)
     search_keyword_list = get_list_deduplicated(working_list=search_keyword_list)
     write_list_to_f(f=f_func_n_txt, working_list=search_keyword_list, mode="w")
