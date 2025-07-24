@@ -3,27 +3,33 @@ from pkg_py.functions_split.get_pnx_list_from_d_working import get_pnxs_from_d_w
 from pkg_py.functions_split.is_f import is_f
 
 
-def pk_ensure_modules_printed_from_file(f_working):
+def ensure_modules_printed_from_file(f_working):
+    modules = get_modules_from_file(f_working)
+    for module in modules:
+        print(module)
+
+def get_modules_from_file(f_working):
+    # todo fix    수작업 결과보다 적었음. 잘못 로직을 만든 것 같음.
     from pkg_py.functions_split.get_list_from_f import get_list_from_f
-    # # # todo fix    수작업 결과보다 적었음. 잘못 로직을 만든 것 같음.
-    line_imported_pkg_set = set()
-    line_list = get_list_from_f(f=f_working)
+    modules_parsed = set()
+    lines = get_list_from_f(f=f_working)
     signiture1 = f'import'
     signiture2 = f'from'
-    for line in line_list:
+    for line in lines:
         line = line.strip()
         if line.startswith('#'):
             line = line.replace('#', "", 1)
         if line.startswith(signiture1):
-            line_imported_pkg_set.add(line.strip())
+            modules_parsed.add(line.strip())
         if line.startswith(signiture2):
-            line_imported_pkg_set.add(line.strip())
-    line_imported_pkg_set = sorted(line_imported_pkg_set, reverse=True)
-    for line_imported_pkg in line_imported_pkg_set:
-        print(line_imported_pkg)
+            modules_parsed.add(line.strip())
+    modules_parsed = sorted(modules_parsed, reverse=True)
+    modules = []
+    for line_imported_pkg in modules_parsed:
+        modules.append(line_imported_pkg)
+    return modules
 
-
-def pk_ensure_modules_printed():
+def ensure_modules_printed():
     import os
     # d_working = rf"{os.environ['USERPROFILE']}\Downloads\pk_system\pkg_py\functions_split"  # pk_option
     # d_working = rf"{os.environ['USERPROFILE']}\Downloads\pk_system\pkg_py\workspace"  # pk_option
@@ -32,4 +38,4 @@ def pk_ensure_modules_printed():
     for pnx in pnxs:
         if is_f(pnx):
             f_working = pnx
-            pk_ensure_modules_printed_from_file(f_working=f_working)
+            ensure_modules_printed_from_file(f_working=f_working)

@@ -14,7 +14,6 @@ import psutil
 import win32gui
 import win32process
 
-from pkg_py.workspace.pk_workspace2 import get_value_via_fzf_or_history
 from pkg_py.functions_split.chcp_65001 import chcp_65001
 from pkg_py.functions_split.cmd_to_os import cmd_to_os
 from pkg_py.functions_split.ensure_console_debuggable import ensure_console_debuggable
@@ -52,6 +51,7 @@ from pkg_py.system_object.etc import PK_UNDERLINE
 from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.system_object.map_massages import PkMessages2025
 from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
+from pkg_py.workspace.pk_workspace2 import get_value_via_fzf_or_history
 
 
 def pk_test_path_normalized():
@@ -62,7 +62,7 @@ def pk_test_guide_not_prepared_yet():
     pk_print(f'''{PkMessages2025.NOT_PREPARED_YET}{'%%%FOO%%%' if LTA else ''}''', print_color='green', mode_verbose=0)
 
 
-def ensure_this_code_operated(ipdb: ModuleType):
+def debug_this_code_operated(ipdb: ModuleType):
     # based on from types import ModuleType
     pk_print(f"{PK_ANSI_COLOR_MAP['GREEN']}here! here! here! here! here! here! here! here! here! here! here! here! {PK_ANSI_COLOR_MAP['RESET']}")
     ensure_console_debuggable(ipdb)
@@ -74,7 +74,7 @@ def pk_test_pk_python_program_structure():
         try:
             os.system(f"title {os.path.basename(__file__)}")  # TBD : 데코레이터로 전환
             pk_print(f'''{PkMessages2025.NOT_PREPARED_YET}{'%%%FOO%%%' if LTA else ''}''', print_color='green', mode_verbose=0)
-            ensure_this_code_operated(ipdb)
+            debug_this_code_operated(ipdb)
             if LTA:
                 ensure_console_debuggable(ipdb)
         except Exception as exception:
@@ -2136,3 +2136,7 @@ def debug_call_depth(func_n):
     depth = len(inspect.stack(0))
     print(f"[DEBUG] CALL DEPTH ({func_n}): {depth}")
     return depth
+
+
+def debug_as_ipdb_console(ipdb):
+    ipdb.set_trace()

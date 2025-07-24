@@ -2,13 +2,13 @@ import traceback
 
 import ipdb
 
+from pkg_py.functions_split.pk_jarvis import run_jarvis
 from pkg_py.functions_split.ensure_do_exception_routine import ensure_do_exception_routine
 from pkg_py.functions_split.ensure_do_finally_routine import ensure_do_finally_routine
-from pkg_py.functions_split.pk_assist_to_alert_time import pk_jarvis
 from pkg_py.functions_split.pk_speak import pk_speak
 from pkg_py.system_object.directories_reuseable import D_PROJECT
 from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
-from pkg_py.workspace.pk_workspace import ensure_this_code_operated
+from pkg_py.workspace.pk_workspace import debug_this_code_operated, debug_as_ipdb_console
 
 
 def pk_test():
@@ -18,11 +18,18 @@ def pk_test():
     pk_colorama_init_once()
 
     while True:
-        ensure_this_code_operated(ipdb=ipdb)
+        debug_this_code_operated(ipdb=ipdb)
 
-        pk_speak("good evening, sir")
+        debug_as_ipdb_console(ipdb=ipdb)
 
-        pk_jarvis()
+        # run_jarvis()
+        # jarvis control flow in Jetson
+        # host : watch host local code changed
+        # host : 자동배포(host->Jetson)  # rsync
+        # Jetson : watch Jetson local code changed
+        # Jetson : shutdown jarvis
+        # Jetson : run jarvis
+
 
         # if not ensure_pk_wsl_distro_installed():
         #     raise RuntimeError("WSL 배포판 설치/이름 변경에 실패했습니다.")
@@ -38,6 +45,7 @@ def pk_test():
         #         available_pk_python_program_pnx = pnx
         #     tmux_session = get_nx(available_pk_python_program_pnx).replace(".", "_")
         #     ensure_tmux_pk_session_removed(tmux_session)
+
 
         ensure_pk_system_exit_silent()
 

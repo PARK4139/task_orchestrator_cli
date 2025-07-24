@@ -1,7 +1,7 @@
 import ipdb
 
 from pkg_py.functions_split.is_internet_connected import is_internet_connected
-from pkg_py.workspace.pk_workspace import pk_speak_v3, ensure_this_code_operated
+from pkg_py.workspace.pk_workspace import pk_speak_v3, debug_this_code_operated
 
 
 def pk_speak(str_working, after_delay=1.00, delimiter=None):
