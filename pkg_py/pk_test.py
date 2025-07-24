@@ -1,9 +1,14 @@
 import traceback
+
+import ipdb
+
 from pkg_py.functions_split.ensure_do_exception_routine import ensure_do_exception_routine
 from pkg_py.functions_split.ensure_do_finally_routine import ensure_do_finally_routine
+from pkg_py.functions_split.pk_assist_to_alert_time import pk_jarvis
 from pkg_py.functions_split.pk_speak import pk_speak
 from pkg_py.pk_system_object.directories_reuseable import D_PROJECT
 from pkg_py.pk_system_object.stamps import STAMP_TRY_GUIDE
+from pkg_py.workspace.pk_workspace import ensure_this_code_operated
 
 
 def pk_test():
@@ -11,12 +16,13 @@ def pk_test():
     from pkg_py.functions_split.pk_colorama_init_once import pk_colorama_init_once
 
     pk_colorama_init_once()
+
     while True:
+        ensure_this_code_operated(ipdb=ipdb)
+
         pk_speak("good evening, sir")
 
-        # pk_jarvis()
-
-        # pk_assist_to_alert_time()
+        pk_jarvis()
 
         # if not ensure_pk_wsl_distro_installed():
         #     raise RuntimeError("WSL 배포판 설치/이름 변경에 실패했습니다.")

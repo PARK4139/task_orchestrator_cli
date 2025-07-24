@@ -1,10 +1,13 @@
+from pkg_py.functions_split.pk_speak import pk_speak
+from pkg_py.pk_system_object.etc import AUDIO_IDS_ALLOWED, VIDEO_IDS_ALLOWED
+
+
 def download_video_f(url: str):
     from pkg_py.functions_split.cmd_to_os import cmd_to_os
     from pkg_py.functions_split.cmd_to_os_like_person_as_admin import cmd_to_os_like_person_as_admin
     from pkg_py.functions_split.is_pattern_in_prompt import is_pattern_in_prompt
     from pkg_py.functions_split.move_pnx import move_pnx
     from pkg_py.functions_split.parse_youtube_video_id import parse_youtube_video_id
-    from pkg_py.functions_split.pk_speak_v2 import pk_speak_v2
     from pkg_py.functions_split.print_magenta import print_magenta
     from pkg_py.pk_interface_graphic_user import GuiUtil
     from pkg_py.pk_system_object.directories import D_DOWNLOADING
@@ -83,7 +86,7 @@ def download_video_f(url: str):
         if video_id == "" or audio_id == "" == 1:
             # text="다운로드를 진행할 수 없습니다\n다운로드용 video_id 와 audio_id를 설정 후\nurl을 다시 붙여넣어 다운로드를 다시 시도하세요\n{url}"
             pk_print(working_str="불완전한 다운로드 명령어가 감지되었습니다....")
-            pk_speak_v2(working_str="불완전한 다운로드 명령어가 감지되었습니다", comma_delay=0.98)
+            pk_speak(working_str="불완전한 다운로드 명령어가 감지되었습니다")
             dialog = GuiUtil.CustomQdialog(
                 prompt=f"에러코드[E004]\n아래의 비디오 아이디를 저장하고 에러코드를 관리자에게 문의해주세요\nvideo id: {url}",
                 btn_list=["확인"],

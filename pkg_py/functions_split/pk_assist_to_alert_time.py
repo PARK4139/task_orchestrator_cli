@@ -1,9 +1,11 @@
-
-
+from pkg_py.functions_split.ensure_console_cleared import ensure_console_cleared
 from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.pk_sleep import pk_sleep
+from pkg_py.functions_split.pk_speak import pk_speak
+from pkg_py.workspace.pk_workspace import pk_speak_v3
 
 
-def pk_assist_to_alert_time():
+def pk_jarvis():
     from datetime import datetime, time
 
     def parse_time_ranges(text_list):
@@ -29,7 +31,9 @@ def pk_assist_to_alert_time():
         pk_speak(f"현재 시간은 {now_time.hour}시 {now_time.minute}분입니다.")
         pk_print(f"현재 시간은 {now_time.hour}시 {now_time.minute}분입니다.", print_color='yellow')
 
-    # 샘플 설정 시간
+
+
+    pk_speak_v3("샘플 설정 시간을 입력해주세요")
     sleep_time_ranges_text = ["00:12-05:30"]
     lunch_time_ranges_text = ["12:00-13:00"]
     break_time_ranges_text = ["15:00-15:15"]

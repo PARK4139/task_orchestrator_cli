@@ -8,12 +8,13 @@ import sys
 import time
 import traceback
 from pathlib import Path
+from types import ModuleType
 
 import psutil
 import win32gui
 import win32process
 
-from pkg_py.ensure_python_program_reloaded_as_hot_reloader import get_value_via_fzf_or_history
+from pkg_py.workspace.pk_workspace2 import get_value_via_fzf_or_history
 from pkg_py.functions_split.chcp_65001 import chcp_65001
 from pkg_py.functions_split.cmd_to_os import cmd_to_os
 from pkg_py.functions_split.ensure_console_debuggable import ensure_console_debuggable
@@ -61,14 +62,21 @@ def pk_test_guide_not_prepared_yet():
     pk_print(f'''{PkMessages2025.NOT_PREPARED_YET}{'%%%FOO%%%' if LTA else ''}''', print_color='green', mode_verbose=0)
 
 
+def ensure_this_code_operated(ipdb: ModuleType):
+    # based on from types import ModuleType
+    pk_print(f"{PK_ANSI_COLOR_MAP['GREEN']}here! here! here! here! here! here! here! here! here! here! here! here! {PK_ANSI_COLOR_MAP['RESET']}")
+    ensure_console_debuggable(ipdb)
+
+
 def pk_test_pk_python_program_structure():
     if __name__ == "__main__":
+        import ipdb
         try:
             os.system(f"title {os.path.basename(__file__)}")  # TBD : 데코레이터로 전환
             pk_print(f'''{PkMessages2025.NOT_PREPARED_YET}{'%%%FOO%%%' if LTA else ''}''', print_color='green', mode_verbose=0)
-            pass
+            ensure_this_code_operated(ipdb)
             if LTA:
-                ensure_console_debuggable()
+                ensure_console_debuggable(ipdb)
         except Exception as exception:
             ensure_do_exception_routine(traceback=traceback, exception=exception)
         finally:
@@ -2018,3 +2026,113 @@ def copy_except_blacklist(src_dir, dst_dir, exclude_names):
             copied_count += 1
 
     print(f"[{PkMessages2025.DONE}] {copied_count} file(s) copied to '{dst_dir}'.")
+
+
+def pk_speak_v3(working_str, segment_delay=0.90, queue_mode=False):
+    import threading
+    import queue
+
+    from pkg_py.functions_split.is_containing_special_characters_with_thread import is_containing_special_characters_with_thread
+    from pkg_py.functions_split.pk_speak import pk_speak
+    from pkg_py.functions_split.remove_special_characters import remove_special_characters
+    from pkg_py.pk_system_object.etc import PLAYING_SOUNDS
+
+    func_n = inspect.currentframe().f_code.co_name
+    depth = debug_call_depth(func_n)
+    limit_of_call_depth = 10
+
+    if limit_of_call_depth >= depth:
+        print(f"[ERROR] Too deep: depth={depth}")
+        return
+
+    try:
+        # 전역 음성 큐 및 재생 쓰레드 (초기화 1회만)
+        if not hasattr(pk_speak_v3, "_queue"):
+            pk_speak_v3._queue = queue.Queue()
+            pk_speak_v3._thread_started = False
+
+        def stop_all_sounds():
+            for player in PLAYING_SOUNDS:
+                try:
+                    player.pause()
+                    player.delete()
+                except Exception:
+                    pass
+            PLAYING_SOUNDS.clear()
+
+        def process_queue():
+            while True:
+                try:
+                    seg, delay = pk_speak_v3._queue.get()
+                    pk_speak(seg, after_delay=delay)
+                except Exception:
+                    pass
+                pk_speak_v3._queue.task_done()
+
+        # 최초 1회만 큐 소비 쓰레드 시작
+        if queue_mode and not pk_speak_v3._thread_started:
+            threading.Thread(
+                target=process_queue,
+                name="thread_speak_queue",
+                daemon=True
+            ).start()
+            pk_speak_v3._thread_started = True
+
+        # 문자열 전처리
+        working_str = str(working_str).strip()
+        if not working_str:
+            return
+
+        if is_containing_special_characters_with_thread(text=working_str):
+            working_str = remove_special_characters(text=working_str)
+
+        working_list = [x.strip() for x in working_str.replace(".", ",").split(",") if x.strip()]
+
+        if queue_mode:
+            # 큐 모드: 순서대로 재생
+            for seg in working_list:
+                pk_speak_v3._queue.put((seg, segment_delay))
+        else:
+            # 즉시 모드: 기존 재생 중단 후 바로 실행
+            stop_all_sounds()
+            for seg in working_list:
+                pk_speak(seg, after_delay=segment_delay)
+
+    except Exception as e:
+        ensure_do_exception_routine(traceback=traceback, exception=e)
+    finally:
+        ensure_do_finally_routine(D_PROJECT=D_PROJECT, __file__=__file__, STAMP_TRY_GUIDE=STAMP_TRY_GUIDE)
+
+
+def debug_call_stack():
+    print("[CALL STACK]")
+    for frame in inspect.stack()[1:5]:
+        print(f"  - {frame.function} @ {frame.filename}:{frame.lineno}")
+
+
+def debug_current_threads(verbose: bool = True) -> list:
+    """
+    Print and return current alive threads.
+
+    Args:
+        verbose (bool): If True, prints detailed info.
+
+    Returns:
+        list: List of thread names.
+    """
+    import threading
+
+    thread_list = threading.enumerate()
+
+    if verbose:
+        print(f"[INFO] Active thread count: {len(thread_list)}")
+        for t in thread_list:
+            print(f"  - name={t.name}, daemon={t.daemon}, alive={t.is_alive()}, ident={t.ident}")
+
+    return [t.name for t in thread_list]
+
+
+def debug_call_depth(func_n):
+    depth = len(inspect.stack(0))
+    print(f"[DEBUG] CALL DEPTH ({func_n}): {depth}")
+    return depth
