@@ -1,4 +1,4 @@
-from pkg_py import pk_system_object
+from pkg_py import system_object
 from pkg_py.functions_split.cmd_to_os import cmd_to_os
 from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style
 from pkg_py.functions_split.print_and_write_schedule_template_cyclic_to_f_memo_todo_txt import print_and_write_schedule_template_cyclic_to_f_memo_todo_txt
@@ -7,7 +7,7 @@ from pkg_py.functions_split.print_and_write_schedule_template_cyclic_to_f_memo_t
 def add_todo():
     from datetime import datetime
 
-    # import pkg_py.pk_system_object.static_logic as pk_system_object.static_logic
+    # import pkg_py.system_object.static_logic as system_object.static_logic
 
     now = datetime.now()
     weekday_dict = {0: "월", 1: "화", 2: "수", 3: "목", 4: "금", 5: "토", 6: "일"}
@@ -35,11 +35,11 @@ def add_todo():
     # print_holidays_for_2025(task_name=task_name)
     # print(UNDERLINE)
 
-    memo_todo_txt = rf"{pk_system_object.static_logic.D_PKG_TXT}/memo_todo.txt"
+    memo_todo_txt = rf"{system_object.static_logic.D_PKG_TXT}/memo_todo.txt"
     memo_todo_txt = get_pnx_os_style(memo_todo_txt)
-    memo_trash_bin_txt = rf'{pk_system_object.static_logic.D_PKG_TXT}/memo_trash_bin.txt'
+    memo_trash_bin_txt = rf'{system_object.static_logic.D_PKG_TXT}/memo_trash_bin.txt'
     memo_trash_bin_txt = get_pnx_os_style(memo_trash_bin_txt)
-    memo_done_txt = rf'{pk_system_object.static_logic.D_PKG_TXT}/memo_done.txt'
+    memo_done_txt = rf'{system_object.static_logic.D_PKG_TXT}/memo_done.txt'
     memo_done_txt = get_pnx_os_style(memo_done_txt)
 
     # make_pnx(pnx=memo_done_txt, mode='f')

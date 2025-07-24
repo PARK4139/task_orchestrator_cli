@@ -1,14 +1,14 @@
 __author__ = 'pk == junghoon.park'
 
-# from pkg_py.pk_system_object.directories import D_WORKING
+# from pkg_py.system_object.directories import D_WORKING
 #
 #, STAMP_UNIT_TEST_EXCEPTION_DISCOVERED
-# from pkg_py.pk_system_object.etc import PK_UNDERLINE
+# from pkg_py.system_object.etc import PK_UNDERLINE
 from pkg_py.functions_split.print_red import print_red
 from pkg_py.functions_split.pk_print import pk_print
 from pkg_py.functions_split.pk_input import pk_input
 from pkg_py.functions_split.get_nx_validated import get_nx_validated
-from pkg_py.functions_split.get_no_blank_working_str_validated import get_no_blank_working_str_validated
+from pkg_py.functions_split.get_no_blank_str_working_validated import get_no_blank_str_working_validated
 from pkg_py.functions_split.get_pnx_validated import get_pnx_validated
 from pkg_py.functions_split.pk_replace_f_nx_list_from_old_str_to_new_str import pk_replace_f_nx_list_from_old_str_to_new_str
 
@@ -20,12 +20,12 @@ if __name__ == "__main__":
 
         pk_colorama_init_once()
 
-        d_working = pk_input(working_str=rf'd_working=', limit_seconds=60, return_default=D_WORKING, get_input_validated=get_pnx_validated)
+        d_working = pk_input(str_working=rf'd_working=', limit_seconds=60, return_default=D_WORKING, get_input_validated=get_pnx_validated)
         while 1:
-            old_str = pk_input(working_str="old_str=", limit_seconds=60, return_default='%%%OLD_STR%%%', get_input_validated=get_nx_validated)
-            old_str = get_no_blank_working_str_validated(old_str)
-            new_str = pk_input(working_str="new_str=", limit_seconds=60, return_default='%%%NEW_STR%%%', get_input_validated=get_nx_validated)
-            new_str = get_no_blank_working_str_validated(new_str)
+            old_str = pk_input(str_working="old_str=", limit_seconds=60, return_default='%%%OLD_STR%%%', get_input_validated=get_nx_validated)
+            old_str = get_no_blank_str_working_validated(old_str)
+            new_str = pk_input(str_working="new_str=", limit_seconds=60, return_default='%%%NEW_STR%%%', get_input_validated=get_nx_validated)
+            new_str = get_no_blank_str_working_validated(new_str)
             pk_replace_f_nx_list_from_old_str_to_new_str(d_working=d_working, old_str=old_str, new_str=new_str)
 
     except:

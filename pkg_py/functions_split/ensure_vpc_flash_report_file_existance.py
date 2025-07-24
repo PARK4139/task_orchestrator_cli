@@ -35,10 +35,10 @@ from pkg_py.functions_split.pk_print_state import pk_print_state
 from pkg_py.functions_split.pk_print import pk_print
 
 from pkg_py.functions_split.set_pk_context_state import set_pk_context_state
-from pkg_py.pk_system_object.etc import PkFilter
-from pkg_py.pk_system_object.stamps import STAMP_TRY_GUIDE
-from pkg_py.pk_system_object.stamps import STAMP_ATTEMPTED
-from pkg_py.pk_system_object.state_via_context import SpeedControlContext
+from pkg_py.system_object.etc import PkFilter
+from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
+from pkg_py.system_object.stamps import STAMP_ATTEMPTED
+from pkg_py.system_object.state_via_context import SpeedControlContext
 
 
 from PIL import Image
@@ -54,7 +54,7 @@ from colorama import init as pk_colorama_init
 from base64 import b64decode
 from pkg_py.functions_split.assist_to_load_video_at_losslesscut import pk_ensure_video_loaded_at_losslesscut
 from pkg_py.functions_split.kill_self_pk_program import kill_self_pk_program
-from pkg_py.pk_system_object.etc import PkFilter, PK_UNDERLINE
+from pkg_py.system_object.etc import PkFilter, PK_UNDERLINE
 from pkg_py.functions_split.get_value_completed import get_value_completed
 from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style
 from pkg_py.functions_split.get_pnx_list import get_pnx_list

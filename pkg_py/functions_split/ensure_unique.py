@@ -1,6 +1,6 @@
 import undetected_chromedriver as uc
 from pkg_py.functions_split.pk_print import pk_print
-from pkg_py.pk_system_object.files import F_HISTORICAL_PNX
+from pkg_py.system_object.files import F_HISTORICAL_PNX
 from Cryptodome.Random import get_random_bytes
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 

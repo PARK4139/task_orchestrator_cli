@@ -16,9 +16,9 @@ from telegram import Bot
 from prompt_toolkit import PromptSession
 from pkg_py.functions_split.is_window_title_opened import is_window_title_opened
 from pkg_py.functions_split.is_window_opened import is_window_opened
-from pkg_py.pk_system_object.files import F_HISTORICAL_PNX
-from pkg_py.pk_system_object.local_test_activate import LTA
-from pkg_py.pk_system_object.get_list_calculated import get_list_calculated
+from pkg_py.system_object.files import F_HISTORICAL_PNX
+from pkg_py.system_object.local_test_activate import LTA
+from pkg_py.system_object.get_list_calculated import get_list_calculated
 from passlib.context import CryptContext
 from functools import partial as functools_partial
 from dirsync import sync

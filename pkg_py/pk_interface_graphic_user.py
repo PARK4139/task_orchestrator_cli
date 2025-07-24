@@ -48,11 +48,11 @@ from pkg_py.functions_split.print_cyan import print_cyan
 from pkg_py.functions_split.print_light_black import print_light_black
 from pkg_py.functions_split.print_red import print_red
 from pkg_py.functions_split.print_success import print_success
-from pkg_py.pk_system_object.local_test_activate import LTA
-from pkg_py.pk_system_object.map_massages import PkMessages2025
-from pkg_py.pk_system_object.directories_reuseable import D_PROJECT
-from pkg_py.pk_system_object.etc import PK_UNDERLINE
-from pkg_py.pk_system_object.files import F_POP_SOUND_POP_SOUND_WAV, F_MACRO_LOG, F_ICON_PNG, F_GMARKETSANSTTFLIGHT_TTF, F_RUBIKDOODLESHADOW_REGULAR_TTF
+from pkg_py.system_object.local_test_activate import LTA
+from pkg_py.system_object.map_massages import PkMessages2025
+from pkg_py.system_object.directories_reuseable import D_PROJECT
+from pkg_py.system_object.etc import PK_UNDERLINE
+from pkg_py.system_object.files import F_POP_SOUND_POP_SOUND_WAV, F_MACRO_LOG, F_ICON_PNG, F_GMARKETSANSTTFLIGHT_TTF, F_RUBIKDOODLESHADOW_REGULAR_TTF
 
 T = TypeVar('T')
 
@@ -84,14 +84,14 @@ def get_windows_opened():
 def is_window_open(window_title_seg):
     func_n = inspect.currentframe().f_code.co_name
     if LTA:
-        pk_print(working_str=rf'''%%%FOO%%%''')
+        pk_print(str_working=rf'''%%%FOO%%%''')
 
     windows_titles_opened = get_windows_opened()
     windows_titles_opened = get_list_removed_none(items=windows_titles_opened)
 
     for windows_title_opened in windows_titles_opened:
         if LTA:
-            # pk_print(working_str=rf'''windows_title_opened="{windows_title_opened}" %%%FOO%%%''') # pk_option
+            # pk_print(str_working=rf'''windows_title_opened="{windows_title_opened}" %%%FOO%%%''') # pk_option
             pass
         if window_title_seg in windows_title_opened:
             if LTA:
@@ -192,12 +192,12 @@ class GuiUtil:
 
         def update_txt_clicked(self, text_of_clicked_button):
             func_n = inspect.currentframe().f_code.co_name
-            pk_print(working_str=rf'''%%%FOO%%%''')
+            pk_print(str_working=rf'''%%%FOO%%%''')
             self.txt_clicked = text_of_clicked_button
 
         def update_txt_clicked_and_close(self, text_of_clicked_button):
             func_n = inspect.currentframe().f_code.co_name
-            pk_print(working_str=rf'''%%%FOO%%%''')
+            pk_print(str_working=rf'''%%%FOO%%%''')
             #  import play_wav_f
             play_wav_f(f=F_POP_SOUND_POP_SOUND_WAV)
             self.txt_clicked = text_of_clicked_button
@@ -205,7 +205,7 @@ class GuiUtil:
 
         def set_shortcut(self, key_plus_key: str, function):
             func_n = inspect.currentframe().f_code.co_name
-            pk_print(working_str=rf'''%%%FOO%%%''')
+            pk_print(str_working=rf'''%%%FOO%%%''')
             self.shortcut = QShortcut(QKeySequence(key_plus_key), self)
             self.shortcut.activated.connect(function)
 
@@ -227,7 +227,7 @@ class GuiUtil:
 
             # log _________ class_name.function()
             class_name = self.__class__.__name__
-            pk_print(working_str=rf'''{PK_UNDERLINE}class_name="{class_name}/{func_n}()" %%%FOO%%%''')
+            pk_print(str_working=rf'''{PK_UNDERLINE}class_name="{class_name}/{func_n}()" %%%FOO%%%''')
 
             try:
                 super().__init__(parent)
@@ -439,8 +439,8 @@ class GuiUtil:
 
                 # 레이아웃 설정
                 self.layout_horizontal = QGridLayout()
-                pk_print(working_str=rf'''self.btns="{self.btns}" %%%FOO%%%''')
-                pk_print(working_str=rf'''len(self.btns)="{len(self.btns)}" %%%FOO%%%''')
+                pk_print(str_working=rf'''self.btns="{self.btns}" %%%FOO%%%''')
+                pk_print(str_working=rf'''len(self.btns)="{len(self.btns)}" %%%FOO%%%''')
                 try:
                     if len(self.btns) > 0 and self.btns[0]:  # btns 리스트의 길이가 0보다 크고, 첫 번째 요소가 True인 경우
                         self.layout_horizontal.addWidget(self.btn_positive, 0, 0)
@@ -531,7 +531,7 @@ class GuiUtil:
     class CustomDialog():
         def __init__(self, q_application: QApplication, q_wiget: QWidget, is_app_instance_mode=False, is_exec_mode=True):
             func_n = inspect.currentframe().f_code.co_name
-            pk_print(working_str=rf'''%%%FOO%%%''')
+            pk_print(str_working=rf'''%%%FOO%%%''')
             """
             이 함수는 특별한 사용요구사항이 있습니다
             pyside6 앱 내에서 해당 함수를 호출할때는 is_app_instance_mode 를 파라미터에 넣지 않고 쓰는 것을 default 로 디자인했습니다.
@@ -584,7 +584,7 @@ class GuiUtil:
         def __init__(self, q_application):
 
             func_n = inspect.currentframe().f_code.co_name
-            pk_print(working_str=rf'''%%%FOO%%%''')
+            pk_print(str_working=rf'''%%%FOO%%%''')
 
             f = F_POP_SOUND_POP_SOUND_WAV
             if os.path.exists(f):
@@ -1917,7 +1917,7 @@ class GuiUtil:
             btn_list = ["확인"]
         if platform.system() == 'Windows':
             func_n = inspect.currentframe().f_code.co_name
-            pk_print(working_str=rf'''%%%FOO%%%''')
+            pk_print(str_working=rf'''%%%FOO%%%''')
             f = F_POP_SOUND_POP_SOUND_WAV
             if os.path.exists(f):
                 #  import play_wav_f
@@ -1971,7 +1971,7 @@ def should_i_do(prompt: str, function: Callable = None, auto_click_negative_btn_
     if not btn_list:
         btn_list = [PkMessages2025.POSITIVE, PkMessages2025.NEGATIVE]
     func_n = inspect.currentframe().f_code.co_name
-    pk_print(working_str=rf'''%%%FOO%%%''')
+    pk_print(str_working=rf'''%%%FOO%%%''')
 
     # gui pop sound
     f = F_POP_SOUND_POP_SOUND_WAV
@@ -2457,7 +2457,7 @@ def print_as_gui(ment: str, input_text_default="", auto_click_positive_btn_after
     if not btn_list:
         btn_list = ["확인"]
     func_n = inspect.currentframe().f_code.co_name
-    pk_print(working_str=rf'''%%%FOO%%%''')
+    pk_print(str_working=rf'''%%%FOO%%%''')
     """
     이 함수는 특별한 사용요구사항이 있습니다
     pyside6 앱 내에서 해당 함수를 호출할때는 is_app_instance_mode 를 파라미터에 넣지 않고 쓰는 것을 default 로 디자인했습니다.
@@ -2504,7 +2504,7 @@ def print_as_gui(ment: str, input_text_default="", auto_click_positive_btn_after
 # THIS IS BAD FUNCTION... I SHOULD CHECK TYPE, WHEN I MADE THIS
 def get_display_info():
     func_n = inspect.currentframe().f_code.co_name
-    pk_print(working_str=rf'''%%%FOO%%%''')
+    pk_print(str_working=rf'''%%%FOO%%%''')
     # 디스플레이 정보 가져오기  # pyautogui.size?() 로 대체할것.
     global height, width
     for infos in get_monitors():
@@ -2522,7 +2522,7 @@ def get_display_info():
 
 def get_display_setting():
     func_n = inspect.currentframe().f_code.co_name
-    pk_print(working_str=rf'''%%%FOO%%%''')
+    pk_print(str_working=rf'''%%%FOO%%%''')
     height = ''
     width = ''
     for monitor_info in get_monitors():

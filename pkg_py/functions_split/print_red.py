@@ -1,6 +1,6 @@
 
 
-from pkg_py.pk_system_object.color_map import ColormaColorMap
+from pkg_py.system_object.color_map import ColormaColorMap
 from pkg_py.functions_split.print_prompt_via_colorama import print_prompt_via_colorama
 
 

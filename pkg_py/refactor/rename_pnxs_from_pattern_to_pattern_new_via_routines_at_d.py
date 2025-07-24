@@ -34,10 +34,10 @@ from pkg_py.functions_split.is_window_opened import is_window_opened
 from pkg_py.functions_split.pk_print_once import pk_print_once
 
 from pkg_py.functions_split.write_list_to_f import write_list_to_f
-from pkg_py.pk_system_object.etc import PkFilter
-from pkg_py.pk_system_object.map_massages import PkMessages2025
-from pkg_py.pk_system_object.is_os_windows import is_os_windows
-from pkg_py.pk_system_object.get_list_calculated import get_list_calculated
+from pkg_py.system_object.etc import PkFilter
+from pkg_py.system_object.map_massages import PkMessages2025
+from pkg_py.system_object.is_os_windows import is_os_windows
+from pkg_py.system_object.get_list_calculated import get_list_calculated
 from mutagen.mp3 import MP3
 from moviepy import VideoFileClip
 from enum import Enum

@@ -13,4 +13,4 @@ cd / && mkdir mnt -p
 cd mnt && sudo mkdir NAS2 -p
 cd NAS2 && sudo mkdir 30_VISION_DEV -p
 
-sudo mount 192.168.1.40:/volume1/30_VISION_DEV /mnt/NAS2/30_VISION_DEV
+sudo mount xxx.xxx.x.xx:/volume1/30_VISION_DEV /mnt/NAS2/30_VISION_DEV

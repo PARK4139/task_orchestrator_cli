@@ -37,10 +37,10 @@ from pkg_py.functions_split.is_window_title_front import is_window_title_front
 from pkg_py.functions_split.is_window_title_opened import is_window_title_opened
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 from pkg_py.functions_split.get_list_sorted import get_list_sorted
-from pkg_py.pk_system_object.files import F_POT_PLAYER_MINI_64_EXE, F_HISTORICAL_PNX
-from pkg_py.pk_system_object.state_via_database import PkSqlite3DB
-from pkg_py.pk_system_object.local_test_activate import LTA
-from pkg_py.pk_system_object.get_list_calculated import get_list_calculated
+from pkg_py.system_object.files import F_POT_PLAYER_MINI_64_EXE, F_HISTORICAL_PNX
+from pkg_py.system_object.state_via_database import PkSqlite3DB
+from pkg_py.system_object.local_test_activate import LTA
+from pkg_py.system_object.get_list_calculated import get_list_calculated
 from PIL import Image
 from paramiko import SSHClient, AutoAddPolicy
 from os.path import dirname
@@ -57,7 +57,7 @@ from pkg_py.functions_split.is_d import is_d
 from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style
 from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
 
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.pk_print import pk_print
 
 
@@ -68,7 +68,7 @@ def is_pattern_in_prompt(prompt: str, pattern: any, with_case_ignored=True):
     # pk_print(string = rf'''string="{string}"  {'%%%FOO%%%' if LTA else ''}''')
     # pk_print(string = rf'''regex="{regex}"  {'%%%FOO%%%' if LTA else ''}''')
     func_n = inspect.currentframe().f_code.co_name
-    pk_print(working_str=rf'''{PK_UNDERLINE}{func_n}()  {'%%%FOO%%%' if LTA else ''}''')
+    pk_print(str_working=rf'''{PK_UNDERLINE}{func_n}()  {'%%%FOO%%%' if LTA else ''}''')
     if with_case_ignored == True:
         pattern = re.compile(pattern, re.IGNORECASE)
     else:

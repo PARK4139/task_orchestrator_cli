@@ -11,7 +11,7 @@ from pkg_py.functions_split.get_d_working import get_d_working
 from pkg_py.functions_split.pk_print_state import pk_print_state
 
 from pkg_py.functions_split.write_list_to_f import write_list_to_f
-from pkg_py.pk_system_object.directories import D_WORKING
+from pkg_py.system_object.directories import D_WORKING
 
 from fastapi import HTTPException
 from datetime import timedelta

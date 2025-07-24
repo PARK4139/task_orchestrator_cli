@@ -2,10 +2,10 @@
 
 import paramiko
 from pkg_py.functions_split.cmd_to_os import cmd_to_os
-from pkg_py.pk_system_object.directories_reuseable import D_PROJECT
+from pkg_py.system_object.directories_reuseable import D_PROJECT
 
 
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.pk_print import pk_print
 
 
@@ -28,7 +28,7 @@ def compress_pnx_via_bz(pnx):
             pnx = pnx.replace("\"", "")
 
             if pnx.strip() == "":
-                pk_speak_v2(working_str="백업할 대상이 입력되지 않았습니다", comma_delay=0.98)
+                pk_speak_v2(str_working="백업할 대상이 입력되지 않았습니다", comma_delay=0.98)
                 break
 
             target_dirname = os.path.dirname(pnx)
@@ -64,7 +64,7 @@ def compress_pnx_via_bz(pnx):
             try:
                 pk_chdir(target_dirname)
             except:
-                pk_speak_v2(working_str="경로를 이해할 수 없습니다", comma_delay=0.98)
+                pk_speak_v2(str_working="경로를 이해할 수 없습니다", comma_delay=0.98)
                 pk_chdir(D_PROJECT)
                 break
             lines = cmd_to_os_like_person_as_admin('dir /b /a-d *.zip')

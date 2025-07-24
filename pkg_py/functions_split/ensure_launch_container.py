@@ -47,9 +47,9 @@ from pkg_py.functions_split.pk_print_once import pk_print_once
 from pkg_py.functions_split.cmd_to_os import cmd_to_os
 
 from pkg_py.functions_split.set_pk_context_state import set_pk_context_state
-from pkg_py.pk_system_object.stamps import STAMP_ATTEMPTED
-from pkg_py.pk_system_object.files import F_LOSSLESSCUT_EXE
-from pkg_py.pk_system_object.state_via_database import PkSqlite3DB
+from pkg_py.system_object.stamps import STAMP_ATTEMPTED
+from pkg_py.system_object.files import F_LOSSLESSCUT_EXE
+from pkg_py.system_object.state_via_database import PkSqlite3DB
 
 from PIL import Image
 from mutagen.mp3 import MP3
@@ -61,13 +61,13 @@ from colorama import init as pk_colorama_init
 from collections import Counter
 from pkg_py.functions_split.get_nx import get_nx
 from pkg_py.functions_split.get_value_completed import get_value_completed
-from pkg_py.pk_system_object.directories import D_PKG_PY
+from pkg_py.system_object.directories import D_PKG_PY
 from pkg_py.functions_split.is_d import is_d
-from pkg_py.pk_system_object.is_os_windows import is_os_windows
+from pkg_py.system_object.is_os_windows import is_os_windows
 from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style
 from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style
 
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.pk_print import pk_print
 
 

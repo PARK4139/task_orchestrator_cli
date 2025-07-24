@@ -3,10 +3,10 @@ from pkg_py.functions_split.ensure_do_exception_routine import ensure_do_excepti
 if __name__ == "__main__":
     try:
         import traceback
-        from pkg_py.pk_system_object.local_test_activate import LTA
-        from pkg_py.pk_system_object.directories_reuseable import D_PROJECT
-        from pkg_py.pk_system_object.etc import PK_UNDERLINE
-        from pkg_py.pk_system_object.stamps import STAMP_TRY_GUIDE, STAMP_UNIT_TEST_EXCEPTION_DISCOVERED
+        from pkg_py.system_object.local_test_activate import LTA
+        from pkg_py.system_object.directories_reuseable import D_PROJECT
+        from pkg_py.system_object.etc import PK_UNDERLINE
+        from pkg_py.system_object.stamps import STAMP_TRY_GUIDE, STAMP_UNIT_TEST_EXCEPTION_DISCOVERED
         from pkg_py.functions_split.pk_print import pk_print
         from pkg_py.functions_split.assist_to_load_video_at_losslesscut import pk_ensure_video_loaded_at_losslesscut
         from pkg_py.functions_split.kill_self_pk_program import kill_self_pk_program

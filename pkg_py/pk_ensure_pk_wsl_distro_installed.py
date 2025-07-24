@@ -7,7 +7,7 @@ import traceback
 
 from colorama import init as pk_colorama_init
 
-# from pkg_py.pk_system_object.500_live_logic import ensure_pk_wsl_distro_installed
+# from pkg_py.system_object.500_live_logic import ensure_pk_wsl_distro_installed
 #, STAMP_TRY_GUIDE, D_PROJECT, STAMP_UNIT_TEST_EXCEPTION_DISCOVERED
 #, print_red
 

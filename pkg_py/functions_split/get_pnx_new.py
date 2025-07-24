@@ -20,7 +20,7 @@ from yt_dlp import YoutubeDL
 from urllib.parse import quote, urlparse
 from tkinter import UNDERLINE
 from pkg_py.functions_split.set_pk_context_state import set_pk_context_state
-from pkg_py.pk_system_object.files import F_LOSSLESSCUT_EXE
+from pkg_py.system_object.files import F_LOSSLESSCUT_EXE
 from gtts import gTTS
 from dirsync import sync
 from datetime import datetime

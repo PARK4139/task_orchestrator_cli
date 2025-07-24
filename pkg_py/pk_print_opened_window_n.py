@@ -12,7 +12,7 @@ if __name__ == "__main__":
         from pathlib import Path
 
         from colorama import init as pk_colorama_init
-        # from pkg_py.pk_system_object.500_live_logic import pk_copy, ensure_vpc_recovery_mode_entered, print_window_opened_list
+        # from pkg_py.system_object.500_live_logic import pk_copy, ensure_vpc_recovery_mode_entered, print_window_opened_list
         #, STAMP_TRY_GUIDE, D_PROJECT, STAMP_UNIT_TEST_EXCEPTION_DISCOVERED, PK_WSL_DISTRO_N
         #, print_red
 
@@ -30,7 +30,7 @@ if __name__ == "__main__":
     finally:
         script_cmd = rf'{D_PROJECT}\.venv\Scripts\activate && python {__file__} && deactivate'
         print(f"\n")
-        pk_copy(working_str=script_cmd)
+        pk_copy(str_working=script_cmd)
         pk_print(UNDERLINE)
         pk_print(f"{STAMP_TRY_GUIDE} {script_cmd}")
         pk_print(UNDERLINE)

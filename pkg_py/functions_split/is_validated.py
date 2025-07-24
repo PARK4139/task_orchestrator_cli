@@ -2,7 +2,7 @@ import secrets
 import pythoncom
 import importlib
 
-from pkg_py.pk_system_object.state_via_context import SpeedControlContext
+from pkg_py.system_object.state_via_context import SpeedControlContext
 from functools import lru_cache
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 

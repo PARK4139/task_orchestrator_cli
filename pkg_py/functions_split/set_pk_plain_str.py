@@ -4,7 +4,7 @@ from dirsync import sync
 from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.pk_print import pk_print
 
 

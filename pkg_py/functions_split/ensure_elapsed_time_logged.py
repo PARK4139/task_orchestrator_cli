@@ -6,15 +6,15 @@
 def ensure_elapsed_time_logged(start_time, log_file_path=None):
     from pkg_py.functions_split.ensure_pk_system_exit_silent import ensure_pk_system_exit_silent
     from pkg_py.functions_split.print_and_save_log_to_file import print_and_save_log_to_file
-    from pkg_py.pk_system_object.color_map import PK_ANSI_COLOR_MAP
+    from pkg_py.system_object.color_map import PK_ANSI_COLOR_MAP
     import time
 
-    from pkg_py.pk_system_object.map_massages import PkMessages2025
+    from pkg_py.system_object.map_massages import PkMessages2025
 
 
     import inspect
 
-    from pkg_py.pk_system_object.directories import D_DESKTOP
+    from pkg_py.system_object.directories import D_DESKTOP
 
     if log_file_path is None:
         func_n = inspect.currentframe().f_code.co_name

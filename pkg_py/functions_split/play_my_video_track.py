@@ -6,7 +6,7 @@ from selenium.webdriver.common.keys import Keys
 from prompt_toolkit import PromptSession
 from pkg_py.functions_split.get_f_video_to_load import get_f_video_to_load
 from pkg_py.functions_split.cmd_to_os import cmd_to_os
-from pkg_py.pk_system_object.state_via_context import SpeedControlContext
+from pkg_py.system_object.state_via_context import SpeedControlContext
 
 from pkg_py.functions_split.get_nx import get_nx
 

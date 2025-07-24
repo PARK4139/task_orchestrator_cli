@@ -11,11 +11,11 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 from pkg_py.functions_split.pk_press import pk_press
-from pkg_py.pk_system_object.stamps import STAMP_TRY_GUIDE
-from pkg_py.pk_system_object.stamps import STAMP_ATTEMPTED
-from pkg_py.pk_system_object.files import F_HISTORICAL_PNX
-from pkg_py.pk_system_object.encodings import Encoding
-from pkg_py.pk_system_object.state_via_context import SpeedControlContext
+from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
+from pkg_py.system_object.stamps import STAMP_ATTEMPTED
+from pkg_py.system_object.files import F_HISTORICAL_PNX
+from pkg_py.system_object.encodings import Encoding
+from pkg_py.system_object.state_via_context import SpeedControlContext
 
 from os.path import dirname
 from os import path

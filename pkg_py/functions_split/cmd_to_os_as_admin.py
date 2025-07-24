@@ -1,6 +1,6 @@
 
 
-from pkg_py.pk_system_object.encodings import Encoding
+from pkg_py.system_object.encodings import Encoding
 
 
 def cmd_to_os_as_admin(cmd):

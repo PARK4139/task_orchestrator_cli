@@ -35,11 +35,11 @@ from pkg_py.functions_split.write_list_to_f import write_list_to_f
 from pkg_py.functions_split.get_list_sorted import get_list_sorted
 
 from pkg_py.functions_split.set_pk_context_state import set_pk_context_state
-from pkg_py.pk_system_object.etc import PkFilter
-from pkg_py.pk_system_object.encodings import Encoding
-from pkg_py.pk_system_object.directories import D_WORKING
-from pkg_py.pk_system_object.state_via_database import PkSqlite3DB
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.etc import PkFilter
+from pkg_py.system_object.encodings import Encoding
+from pkg_py.system_object.directories import D_WORKING
+from pkg_py.system_object.state_via_database import PkSqlite3DB
+from pkg_py.system_object.local_test_activate import LTA
 from os.path import dirname
 from functools import partial as functools_partial
 from functools import partial
@@ -55,7 +55,7 @@ from pkg_py.functions_split.get_pnx_wsl_unix_style import get_pnx_wsl_unix_style
 from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style
 from pkg_py.functions_split.get_pnx_windows_style import get_pnx_windows_style
 
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.pk_print import pk_print
 
 

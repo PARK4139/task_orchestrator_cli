@@ -2,7 +2,7 @@
 
 import re
 
-from pkg_py.pk_system_object.color_map import PK_ANSI_COLOR_MAP
+from pkg_py.system_object.color_map import PK_ANSI_COLOR_MAP
 
 
 def get_txt_highlighted(txt_whole, config_highlight_dict):

@@ -35,9 +35,9 @@ from pkg_py.functions_split.pk_print_state import pk_print_state
 
 from pkg_py.functions_split.get_list_sorted import get_list_sorted
 from pkg_py.functions_split.set_pk_context_state import set_pk_context_state
-from pkg_py.pk_system_object.files import F_HISTORICAL_PNX
-from pkg_py.pk_system_object.directories import D_WORKING
-from pkg_py.pk_system_object.state_via_database import PkSqlite3DB
+from pkg_py.system_object.files import F_HISTORICAL_PNX
+from pkg_py.system_object.directories import D_WORKING
+from pkg_py.system_object.state_via_database import PkSqlite3DB
 
 from os.path import dirname
 from moviepy import VideoFileClip
@@ -47,7 +47,7 @@ from cryptography.hazmat.backends import default_backend
 from Cryptodome.Cipher import AES
 from base64 import b64encode
 from base64 import b64decode
-from pkg_py.pk_system_object.stamps import STAMP_TRY_GUIDE, STAMP_UNIT_TEST_EXCEPTION_DISCOVERED
+from pkg_py.system_object.stamps import STAMP_TRY_GUIDE, STAMP_UNIT_TEST_EXCEPTION_DISCOVERED
 from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style
 from pkg_py.functions_split.is_d import is_d
 from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux

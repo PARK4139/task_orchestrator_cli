@@ -1,7 +1,7 @@
 import os
 import sys
 
-# from pkg_py.pk_system_object.static_logic import D_WORKING
+# from pkg_py.system_object.static_logic import D_WORKING
 
 # colorama 설정 (Windows에서 색상 출력 지원)
 try:

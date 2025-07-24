@@ -19,8 +19,8 @@ from pkg_py.functions_split.is_window_title_opened import is_window_title_opened
 from pkg_py.functions_split.is_window_opened import is_window_opened
 from pkg_py.functions_split.write_list_to_f import write_list_to_f
 from pkg_py.functions_split.get_list_sorted import get_list_sorted
-from pkg_py.pk_system_object.directories_reuseable import D_PROJECT
-from pkg_py.pk_system_object.get_list_calculated import get_list_calculated
+from pkg_py.system_object.directories_reuseable import D_PROJECT
+from pkg_py.system_object.get_list_calculated import get_list_calculated
 from os.path import dirname
 from moviepy import VideoFileClip
 from functools import partial
@@ -28,12 +28,12 @@ from functools import lru_cache
 from enum import Enum
 from colorama import init as pk_colorama_init
 from collections import Counter
-from pkg_py.pk_system_object.is_os_windows import is_os_windows
+from pkg_py.system_object.is_os_windows import is_os_windows
 from pkg_py.functions_split.get_pnx_wsl_unix_style import get_pnx_wsl_unix_style
 from pkg_py.functions_split.is_os_windows import is_os_windows
 from pkg_py.functions_split.get_pnx_wsl_unix_style import get_pnx_wsl_unix_style
 
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.pk_print import pk_print
 from pkg_py.functions_split.get_pnx_list import get_pnx_list
 

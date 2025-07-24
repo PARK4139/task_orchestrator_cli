@@ -16,13 +16,13 @@ from selenium.webdriver.support import expected_conditions as EC
 from PySide6.QtWidgets import QApplication
 from pkg_py.functions_split.is_window_opened import is_window_opened
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
-from pkg_py.pk_system_object.map_massages import PkMessages2025
+from pkg_py.system_object.map_massages import PkMessages2025
 from dirsync import sync
 from dataclasses import dataclass
 from Cryptodome.Random import get_random_bytes
 from pkg_py.functions_split.get_nx import get_nx
 from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style
-from pkg_py.pk_system_object.directories import D_PKG_PY
+from pkg_py.system_object.directories import D_PKG_PY
 from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
 from pkg_py.functions_split.is_os_windows import is_os_windows
 from pkg_py.functions_split.get_pnx_wsl_unix_style import get_pnx_wsl_unix_style

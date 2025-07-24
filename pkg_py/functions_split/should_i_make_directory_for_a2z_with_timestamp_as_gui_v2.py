@@ -2,7 +2,7 @@
 
 
 
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.cmd_to_os import cmd_to_os
 from pkg_py.functions_split.pk_print import pk_print
 from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style
@@ -55,11 +55,11 @@ def should_i_make_directory_for_a2z_with_timestamp_as_gui_v2():
         pnx = get_pnx_os_style(pnx)
         if is_pnx_required(pnx):
             return
-        pk_print(working_str=rf'''pnx="{pnx}"  {'%%%FOO%%%' if LTA else ''}''')
-        pk_print(working_str=rf'''work_n="{work_n}"  {'%%%FOO%%%' if LTA else ''}''')
+        pk_print(str_working=rf'''pnx="{pnx}"  {'%%%FOO%%%' if LTA else ''}''')
+        pk_print(str_working=rf'''work_n="{work_n}"  {'%%%FOO%%%' if LTA else ''}''')
         timestamp = get_time_as_("yyyy MM dd (weekday) HH mm")
         pnx_new = rf"{pnx}\{timestamp} {work_n}"
-        pk_print(working_str=rf'''pnx_new="{pnx_new}"  {'%%%FOO%%%' if LTA else ''}''')
+        pk_print(str_working=rf'''pnx_new="{pnx_new}"  {'%%%FOO%%%' if LTA else ''}''')
         ensure_pnx_made(pnx=pnx_new, mode="d")
         pnx = pnx_new
         cmd = rf'explorer "{pnx}"'

@@ -5,7 +5,7 @@
 # from project_database.test_project_database import MySqlUtil
 
 
-from pkg_py.pk_system_object.directories import D_DOWNLOADS
+from pkg_py.system_object.directories import D_DOWNLOADS
 from pkg_py.functions_split.cmd_to_os import cmd_to_os
 
 from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style

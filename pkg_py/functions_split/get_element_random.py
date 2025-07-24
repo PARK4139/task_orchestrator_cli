@@ -35,13 +35,13 @@ from pkg_py.functions_split.is_window_title_front import is_window_title_front
 from pkg_py.functions_split.is_window_title_opened import is_window_title_opened
 from pkg_py.functions_split.pk_print_state import pk_print_state
 from pkg_py.functions_split.ensure_console_cleared import ensure_console_cleared
-from pkg_py.pk_system_object.stamps import STAMP_TRY_GUIDE
-from pkg_py.pk_system_object.files import F_POT_PLAYER_MINI_64_EXE
-from pkg_py.pk_system_object.files import F_FFMPEG_EXE
-from pkg_py.pk_system_object.encodings import Encoding
-from pkg_py.pk_system_object.directories_reuseable import D_PROJECT
-from pkg_py.pk_system_object.print_red import print_red
-from pkg_py.pk_system_object.get_list_calculated import get_list_calculated
+from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
+from pkg_py.system_object.files import F_POT_PLAYER_MINI_64_EXE
+from pkg_py.system_object.files import F_FFMPEG_EXE
+from pkg_py.system_object.encodings import Encoding
+from pkg_py.system_object.directories_reuseable import D_PROJECT
+from pkg_py.system_object.print_red import print_red
+from pkg_py.system_object.get_list_calculated import get_list_calculated
 from pathlib import Path
 from gtts import gTTS
 from functools import partial as functools_partial
@@ -51,13 +51,13 @@ from colorama import init as pk_colorama_init
 from bs4 import BeautifulSoup
 from pkg_py.functions_split.get_nx import get_nx
 from pkg_py.functions_split.assist_to_load_video_at_losslesscut import pk_ensure_video_loaded_at_losslesscut
-from pkg_py.pk_system_object.stamps import STAMP_TRY_GUIDE, STAMP_UNIT_TEST_EXCEPTION_DISCOVERED
+from pkg_py.system_object.stamps import STAMP_TRY_GUIDE, STAMP_UNIT_TEST_EXCEPTION_DISCOVERED
 from pkg_py.functions_split.get_value_completed import get_value_completed
 from pkg_py.functions_split.get_pnx_list import get_pnx_list
 from pkg_py.functions_split.get_list_calculated import get_list_calculated
 from pkg_py.functions_split.is_os_windows import is_os_windows
 from pkg_py.functions_split.get_pnx_wsl_unix_style import get_pnx_wsl_unix_style
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 
 from pkg_py.functions_split.pk_print import pk_print

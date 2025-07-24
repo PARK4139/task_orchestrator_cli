@@ -9,7 +9,7 @@ if __name__ == "__main__":
 
         from colorama import init as pk_colorama_init
 
-        # from pkg_py.pk_system_object.500_live_logic import pk_copy, kill_self_pk_program, LTA, get_windows_opened, pk_kill_process, get_value_completed, get_set_from_list
+        # from pkg_py.system_object.500_live_logic import pk_copy, kill_self_pk_program, LTA, get_windows_opened, pk_kill_process, get_value_completed, get_set_from_list
         #, STAMP_TRY_GUIDE, D_PROJECT, STAMP_UNIT_TEST_EXCEPTION_DISCOVERED
         #
 
@@ -24,12 +24,12 @@ if __name__ == "__main__":
             kill_self_pk_program(self_f=__file__)
     except:
         # traceback_format_exc_list = traceback.format_exc().split("\n")
-        # pk_print(working_str=f'{PK_UNDERLINE}', print_color='red')
+        # pk_print(str_working=f'{PK_UNDERLINE}', print_color='red')
         # for traceback_format_exc_str in traceback_format_exc_list:
-        #     # pk_print(working_str=f'{STAMP_EXCEPTION_DISCOVERED} {traceback_format_exc_str}', print_color='red')
-        #     pk_print(working_str=f'{STAMP_UNIT_TEST_EXCEPTION_DISCOVERED} {traceback_format_exc_str}', print_color='red')
-        # pk_print(working_str=f'{PK_UNDERLINE}', print_color='red')
-        # from pkg_py.pk_system_object.print_red import print_red
+        #     # pk_print(str_working=f'{STAMP_EXCEPTION_DISCOVERED} {traceback_format_exc_str}', print_color='red')
+        #     pk_print(str_working=f'{STAMP_UNIT_TEST_EXCEPTION_DISCOVERED} {traceback_format_exc_str}', print_color='red')
+        # pk_print(str_working=f'{PK_UNDERLINE}', print_color='red')
+        # from pkg_py.system_object.print_red import print_red
 
         traceback_format_exc_list = traceback.format_exc().split("\n")
         print_red(PK_UNDERLINE)

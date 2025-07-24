@@ -14,10 +14,10 @@ from pkg_py.functions_split.load_f_video_on_losslesscut import load_f_video_on_l
 from pkg_py.functions_split.pk_press import pk_press
 from pkg_py.functions_split.get_list_sorted import get_list_sorted
 from pkg_py.functions_split.set_pk_context_state import set_pk_context_state
-from pkg_py.pk_system_object.files import F_POT_PLAYER_MINI_64_EXE
-from pkg_py.pk_system_object.directories_reuseable import D_PROJECT
-from pkg_py.pk_system_object.state_via_context import SpeedControlContext
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.files import F_POT_PLAYER_MINI_64_EXE
+from pkg_py.system_object.directories_reuseable import D_PROJECT
+from pkg_py.system_object.state_via_context import SpeedControlContext
+from pkg_py.system_object.local_test_activate import LTA
 from os.path import dirname
 from cryptography.hazmat.primitives import padding
 from bs4 import ResultSet

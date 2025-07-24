@@ -6,7 +6,7 @@ from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 from pkg_py.functions_split.pk_print_state import pk_print_state
 from pkg_py.functions_split.set_pk_context_state import set_pk_context_state
 from gtts import gTTS
-from pkg_py.pk_system_object.etc import PK_UNDERLINE
+from pkg_py.system_object.etc import PK_UNDERLINE
 
 from pkg_py.functions_split.pk_print import pk_print
 

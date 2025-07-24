@@ -19,7 +19,7 @@ def refresh_chrome_tab_like_person(url_to_close):
     for window_title_seg in window_titles:
         if "chrome".lower() in window_title_seg.lower():
             if time_limit_seconds == 50:
-                pk_print(working_str=rf'''window_title="{window_title_seg}"  {'%%%FOO%%%' if LTA else ''}''')
+                pk_print(str_working=rf'''window_title="{window_title_seg}"  {'%%%FOO%%%' if LTA else ''}''')
             while 1:
                 elapsed_time = time.time() - time_s
                 if elapsed_time > time_limit_seconds:
@@ -30,8 +30,8 @@ def refresh_chrome_tab_like_person(url_to_close):
                 pk_sleep(milliseconds=15)
                 url_dragged = get_txt_dragged()
                 if url_dragged == url_to_close:
-                    pk_print(working_str=rf'''url_to_close="{url_to_close}"  {'%%%FOO%%%' if LTA else ''}''')
-                    pk_print(working_str=rf'''url_dragged="{url_dragged}"  {'%%%FOO%%%' if LTA else ''}''')
+                    pk_print(str_working=rf'''url_to_close="{url_to_close}"  {'%%%FOO%%%' if LTA else ''}''')
+                    pk_print(str_working=rf'''url_dragged="{url_dragged}"  {'%%%FOO%%%' if LTA else ''}''')
                     pk_press("f5")
                     # restore_all_windows()
                     return

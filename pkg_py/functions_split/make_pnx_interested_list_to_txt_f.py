@@ -1,7 +1,7 @@
 
 
-from pkg_py.pk_system_object.directories import D_PKG_TXT
-from pkg_py.pk_system_object.directories import D_PKG_TXT
+from pkg_py.system_object.directories import D_PKG_TXT
+from pkg_py.system_object.directories import D_PKG_TXT
 from pkg_py.functions_split.get_pnx_list import get_pnx_list
 
 

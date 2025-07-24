@@ -45,14 +45,14 @@ from pkg_py.functions_split.pk_print_state import pk_print_state
 from pkg_py.functions_split.pk_print import pk_print
 
 from pkg_py.functions_split.set_pk_context_state import set_pk_context_state
-from pkg_py.pk_system_object.etc import PkFilter
-from pkg_py.pk_system_object.stamps import STAMP_ATTEMPTED
-from pkg_py.pk_system_object.files import F_LOSSLESSCUT_EXE
-from pkg_py.pk_system_object.files import F_HISTORICAL_PNX
-from pkg_py.pk_system_object.encodings import Encoding
-from pkg_py.pk_system_object.is_os_windows import is_os_windows
-from pkg_py.pk_system_object.local_test_activate import LTA
-from pkg_py.pk_system_object.get_list_calculated import get_list_calculated
+from pkg_py.system_object.etc import PkFilter
+from pkg_py.system_object.stamps import STAMP_ATTEMPTED
+from pkg_py.system_object.files import F_LOSSLESSCUT_EXE
+from pkg_py.system_object.files import F_HISTORICAL_PNX
+from pkg_py.system_object.encodings import Encoding
+from pkg_py.system_object.is_os_windows import is_os_windows
+from pkg_py.system_object.local_test_activate import LTA
+from pkg_py.system_object.get_list_calculated import get_list_calculated
 from functools import lru_cache
 from fastapi import HTTPException
 from datetime import datetime
@@ -60,7 +60,7 @@ from datetime import date
 from cryptography.hazmat.backends import default_backend
 from base64 import b64encode
 from pkg_py.functions_split.assist_to_load_video_at_losslesscut import pk_ensure_video_loaded_at_losslesscut
-from pkg_py.pk_system_object.etc import PK_UNDERLINE
+from pkg_py.system_object.etc import PK_UNDERLINE
 from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style
 from pkg_py.functions_split.get_list_calculated import get_list_calculated
 from pkg_py.functions_split.is_d import is_d
@@ -71,7 +71,7 @@ from pkg_py.functions_split.get_pnx_windows_style import get_pnx_windows_style
 from pkg_py.functions_split.pk_print import pk_print
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.pk_print import pk_print
 
 
@@ -135,7 +135,7 @@ def get_comprehensive_weather_information_from_web():
                     global results_about_pm_ranking
                     results_about_pm_ranking = results
                     pk_print(
-                        working_str=rf'''results_about_pm_ranking="{results_about_pm_ranking}"  {'%%%FOO%%%' if LTA else ''}''')
+                        str_working=rf'''results_about_pm_ranking="{results_about_pm_ranking}"  {'%%%FOO%%%' if LTA else ''}''')
                 except:
                     pk_print(f'''{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
                     # driver.close()
@@ -178,7 +178,7 @@ def get_comprehensive_weather_information_from_web():
                 global results_about_nationwide_ultrafine_dust
                 results_about_nationwide_ultrafine_dust = results___
                 pk_print(
-                    working_str=rf'''results_about_nationwide_ultrafine_dust="{results_about_nationwide_ultrafine_dust}"  {'%%%FOO%%%' if LTA else ''}''')
+                    str_working=rf'''results_about_nationwide_ultrafine_dust="{results_about_nationwide_ultrafine_dust}"  {'%%%FOO%%%' if LTA else ''}''')
 
             async def crawl_naver_weather():
                 func_n = inspect.currentframe().f_code.co_name
@@ -227,7 +227,7 @@ def get_comprehensive_weather_information_from_web():
                 global results_about_naver_weather
                 results_about_naver_weather = results
                 pk_print(
-                    working_str=rf'''results_about_naver_weather="{results_about_naver_weather}"  {'%%%FOO%%%' if LTA else ''}''')
+                    str_working=rf'''results_about_naver_weather="{results_about_naver_weather}"  {'%%%FOO%%%' if LTA else ''}''')
 
             async def crawl_geo_info():
                 func_n = inspect.currentframe().f_code.co_name
@@ -252,7 +252,7 @@ def get_comprehensive_weather_information_from_web():
 
                 global results_about_geo
                 results_about_geo = results
-                pk_print(working_str=rf'''results_about_geo="{results_about_geo}"  {'%%%FOO%%%' if LTA else ''}''')
+                pk_print(str_working=rf'''results_about_geo="{results_about_geo}"  {'%%%FOO%%%' if LTA else ''}''')
 
             def run_async_loop1():
                 import asyncio
@@ -306,7 +306,7 @@ def get_comprehensive_weather_information_from_web():
             thread3.join()
             thread4.join()
 
-            pk_speak_v2(working_str='날씨에 대한 웹크롤링 및 데이터 분석이 성공되었습니다', comma_delay=0.98)
+            pk_speak_v2(str_working='날씨에 대한 웹크롤링 및 데이터 분석이 성공되었습니다', comma_delay=0.98)
             # 함수가 break 로 끝이 나면 창들이 창을 닫아야 dialog 들이 사라지도록 dialog 를 global 처리를 해두었음.
             global dialog4
             global dialog3

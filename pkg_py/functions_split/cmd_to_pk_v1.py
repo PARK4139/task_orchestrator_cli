@@ -1,6 +1,6 @@
 
 
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.get_pk_system_process_available_idx_list import get_pk_system_process_available_idx_list
 from pkg_py.functions_split.run_pk_system_process_by_idx import run_pk_system_process_by_idx
 from pkg_py.functions_split.pk_print import pk_print

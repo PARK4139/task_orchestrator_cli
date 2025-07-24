@@ -8,8 +8,8 @@ from selenium.common.exceptions import ElementClickInterceptedException
 from pynput import mouse
 from pkg_py.functions_split.is_window_title_front import is_window_title_front
 from pkg_py.functions_split.cmd_to_os import cmd_to_os
-from pkg_py.pk_system_object.etc import PkFilter
-from pkg_py.pk_system_object.state_via_context import SpeedControlContext
+from pkg_py.system_object.etc import PkFilter
+from pkg_py.system_object.state_via_context import SpeedControlContext
 from os import path
 from functools import lru_cache
 from fastapi import HTTPException
@@ -19,7 +19,7 @@ from pkg_py.functions_split.is_f import is_f
 from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.pk_print import pk_print
 
 

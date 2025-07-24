@@ -1,6 +1,6 @@
 from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
 
-from pkg_py.pk_system_object.directories import D_PKG_PKL
+from pkg_py.system_object.directories import D_PKG_PKL
 from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
 from pkg_py.functions_split.pk_print import pk_print
 

@@ -2,7 +2,7 @@
 
 # import pywin32
 # from project_database.test_project_database import MySqlUtil
-from pkg_py.pk_system_object.directories import D_PKG_TXT
+from pkg_py.system_object.directories import D_PKG_TXT
 
 
 def get_pnx_list_interested_from_file_system(pnx_interested_list=None, string_exclude=None):

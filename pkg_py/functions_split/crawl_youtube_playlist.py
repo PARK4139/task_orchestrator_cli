@@ -22,9 +22,9 @@ from pkg_py.functions_split.get_video_filtered_list import get_video_filtered_li
 from pkg_py.functions_split.pk_print import pk_print
 
 from pkg_py.functions_split.set_pk_context_state import set_pk_context_state
-from pkg_py.pk_system_object.files import F_LOSSLESSCUT_EXE
-from pkg_py.pk_system_object.directories_reuseable import D_PROJECT
-from pkg_py.pk_system_object.state_via_database import PkSqlite3DB
+from pkg_py.system_object.files import F_LOSSLESSCUT_EXE
+from pkg_py.system_object.directories_reuseable import D_PROJECT
+from pkg_py.system_object.state_via_database import PkSqlite3DB
 from PIL import Image
 from passlib.context import CryptContext
 from os import path
@@ -32,7 +32,7 @@ from functools import partial
 from datetime import timedelta
 from datetime import datetime
 from cryptography.hazmat.primitives import padding
-from pkg_py.pk_system_object.directories import D_PKG_PY
+from pkg_py.system_object.directories import D_PKG_PY
 from pkg_py.functions_split.get_pnx_windows_style import get_pnx_windows_style
 from pkg_py.functions_split.get_pnx_wsl_unix_style import get_pnx_wsl_unix_style
 

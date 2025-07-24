@@ -2,7 +2,7 @@ import os
 import sys
 
 #  import download_youtube_video
-# from pkg_py.pk_system_object.static_logic import D_PKG_DB, UNDERLINE, D_PROJECT
+# from pkg_py.system_object.static_logic import D_PKG_DB, UNDERLINE, D_PROJECT
 from pkg_py.functions_split.pk_print import pk_print
 from pkg_py.pk_core_class import PkMents2025, PkSqlite3DB
 

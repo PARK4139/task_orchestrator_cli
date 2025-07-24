@@ -19,12 +19,12 @@ from pkg_py.functions_split.get_f_video_to_load import get_f_video_to_load
 from pkg_py.functions_split.get_video_filtered_list import get_video_filtered_list
 from pkg_py.functions_split.pk_press import pk_press
 from pkg_py.functions_split.cmd_to_os import cmd_to_os
-from pkg_py.pk_system_object.stamps import STAMP_TRY_GUIDE
-from pkg_py.pk_system_object.files import F_POT_PLAYER_MINI_64_EXE, F_HISTORICAL_PNX
-from pkg_py.pk_system_object.encodings import Encoding
-from pkg_py.pk_system_object.directories_reuseable import D_PROJECT
-from pkg_py.pk_system_object.map_massages import PkMessages2025
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
+from pkg_py.system_object.files import F_POT_PLAYER_MINI_64_EXE, F_HISTORICAL_PNX
+from pkg_py.system_object.encodings import Encoding
+from pkg_py.system_object.directories_reuseable import D_PROJECT
+from pkg_py.system_object.map_massages import PkMessages2025
+from pkg_py.system_object.local_test_activate import LTA
 from os.path import dirname
 from functools import lru_cache
 from enum import Enum

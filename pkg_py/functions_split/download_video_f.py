@@ -1,5 +1,5 @@
 from pkg_py.functions_split.pk_speak import pk_speak
-from pkg_py.pk_system_object.etc import AUDIO_IDS_ALLOWED, VIDEO_IDS_ALLOWED
+from pkg_py.system_object.etc import AUDIO_IDS_ALLOWED, VIDEO_IDS_ALLOWED
 
 
 def download_video_f(url: str):
@@ -10,11 +10,11 @@ def download_video_f(url: str):
     from pkg_py.functions_split.parse_youtube_video_id import parse_youtube_video_id
     from pkg_py.functions_split.print_magenta import print_magenta
     from pkg_py.pk_interface_graphic_user import GuiUtil
-    from pkg_py.pk_system_object.directories import D_DOWNLOADING
-    from pkg_py.pk_system_object.files import F_YT_DLP_EXE
+    from pkg_py.system_object.directories import D_DOWNLOADING
+    from pkg_py.system_object.files import F_YT_DLP_EXE
 
     from pkg_py.functions_split.pk_print import pk_print
-    from pkg_py.pk_system_object.local_test_activate import LTA
+    from pkg_py.system_object.local_test_activate import LTA
 
     import os
     import traceback
@@ -24,7 +24,7 @@ def download_video_f(url: str):
             pk_print(f'''  {'%%%FOO%%%' if LTA else ''} {url}" ''', print_color='red')
             break
 
-        pk_print(working_str=rf'''url="{url}"  {'%%%FOO%%%' if LTA else ''}''')
+        pk_print(str_working=rf'''url="{url}"  {'%%%FOO%%%' if LTA else ''}''')
 
         # 유튜브 다운로더 업데이트 # 다운로드가 안되면 주석 풀어 시도
         # os.system(rf'{YT_DLP_CMD} -U')
@@ -85,8 +85,8 @@ def download_video_f(url: str):
         # cmd=rf'{YT_DLP_CMD} x+x "{url}"' # --list-formats 해서 다운로드
         if video_id == "" or audio_id == "" == 1:
             # text="다운로드를 진행할 수 없습니다\n다운로드용 video_id 와 audio_id를 설정 후\nurl을 다시 붙여넣어 다운로드를 다시 시도하세요\n{url}"
-            pk_print(working_str="불완전한 다운로드 명령어가 감지되었습니다....")
-            pk_speak(working_str="불완전한 다운로드 명령어가 감지되었습니다")
+            pk_print(str_working="불완전한 다운로드 명령어가 감지되었습니다....")
+            pk_speak(str_working="불완전한 다운로드 명령어가 감지되었습니다")
             dialog = GuiUtil.CustomQdialog(
                 prompt=f"에러코드[E004]\n아래의 비디오 아이디를 저장하고 에러코드를 관리자에게 문의해주세요\nvideo id: {url}",
                 btn_list=["확인"],
@@ -106,7 +106,7 @@ def download_video_f(url: str):
         if not os.path.exists(D_DOWNLOADING):
             os.makedirs(D_DOWNLOADING)
 
-        pk_print(working_str="다운로드 f 이동 시도 중...")
+        pk_print(str_working="다운로드 f 이동 시도 중...")
         file = ""
         try:
             clip_id = parse_youtube_video_id(url)

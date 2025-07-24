@@ -16,13 +16,13 @@ from pkg_py.functions_split.is_window_title_front import is_window_title_front
 from pkg_py.functions_split.is_window_title_opened import is_window_title_opened
 from pkg_py.functions_split.is_window_opened import is_window_opened
 from pkg_py.functions_split.ensure_console_cleared import ensure_console_cleared
-from pkg_py.pk_system_object.directories import D_WORKING
+from pkg_py.system_object.directories import D_WORKING
 from datetime import datetime
 from dataclasses import dataclass
 from collections import Counter
 from pkg_py.functions_split.kill_self_pk_program import kill_self_pk_program
 from pkg_py.functions_split.is_d import is_d
-from pkg_py.pk_system_object.is_os_windows import is_os_windows
+from pkg_py.system_object.is_os_windows import is_os_windows
 
 from pkg_py.functions_split.pk_print import pk_print
 from pkg_py.functions_split.get_d_working import get_d_working

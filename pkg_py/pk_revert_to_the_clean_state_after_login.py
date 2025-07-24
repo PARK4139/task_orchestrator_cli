@@ -1,4 +1,4 @@
-# from pkg_py.pk_system_object.500_live_logic import kill_process, get_process_name_list, get_list_sorted, cmd_to_os
+# from pkg_py.system_object.500_live_logic import kill_process, get_process_name_list, get_list_sorted, cmd_to_os
 
 process_name_list = get_process_name_list()
 process_name_list = get_list_sorted(working_list=process_name_list, mode_asc=1)

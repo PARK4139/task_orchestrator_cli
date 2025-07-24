@@ -35,12 +35,12 @@ from pkg_py.functions_split.pk_press import pk_press
 from pkg_py.functions_split.pk_print_state import pk_print_state
 
 from pkg_py.functions_split.set_pk_context_state import set_pk_context_state
-from pkg_py.pk_system_object.etc import PkFilter
-from pkg_py.pk_system_object.stamps import STAMP_ATTEMPTED
-from pkg_py.pk_system_object.files import F_POT_PLAYER_MINI_64_EXE
-from pkg_py.pk_system_object.files import F_HISTORICAL_PNX
-from pkg_py.pk_system_object.map_massages import PkMessages2025
-from pkg_py.pk_system_object.state_via_context import SpeedControlContext
+from pkg_py.system_object.etc import PkFilter
+from pkg_py.system_object.stamps import STAMP_ATTEMPTED
+from pkg_py.system_object.files import F_POT_PLAYER_MINI_64_EXE
+from pkg_py.system_object.files import F_HISTORICAL_PNX
+from pkg_py.system_object.map_massages import PkMessages2025
+from pkg_py.system_object.state_via_context import SpeedControlContext
 from pathlib import Path
 from passlib.context import CryptContext
 from os.path import dirname
@@ -55,12 +55,12 @@ from Cryptodome.Cipher import AES
 from collections import Counter
 from base64 import b64decode
 from pkg_py.functions_split.assist_to_load_video_at_losslesscut import pk_ensure_video_loaded_at_losslesscut
-from pkg_py.pk_system_object.etc import PK_UNDERLINE
+from pkg_py.system_object.etc import PK_UNDERLINE
 from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style
 from pkg_py.functions_split.get_pnx_list import get_pnx_list
 from pkg_py.functions_split.is_d import is_d
 from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.local_test_activate import LTA
 
 
 def get_center_of_bounding_box(bounding_box):

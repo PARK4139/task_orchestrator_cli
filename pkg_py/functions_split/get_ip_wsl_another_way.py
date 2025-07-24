@@ -1,9 +1,9 @@
 from pkg_py.functions_split.cmd_to_os import cmd_to_os
 
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.pk_print import pk_print
 
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.cmd_to_os import cmd_to_os
 from pkg_py.functions_split.pk_print import pk_print
 
@@ -16,5 +16,5 @@ def get_ip_wsl_another_way():
         if signiture_str in std_str:
             wsl_ip = std_str.split('/')[0].split(signiture_str)[1]
             if LTA:
-                pk_print(working_str=rf'''wsl_ip="{wsl_ip}" {'%%%FOO%%%' if LTA else ''}''', print_color='green')
+                pk_print(str_working=rf'''wsl_ip="{wsl_ip}" {'%%%FOO%%%' if LTA else ''}''', print_color='green')
     return wsl_ip

@@ -1,7 +1,7 @@
 
 
 def write_list_to_f(working_list, f, mode, encoding=None, line_feed_mode=1, head_line_mode=True):
-    from pkg_py.pk_system_object.encodings import Encoding
+    from pkg_py.system_object.encodings import Encoding
     from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style
     from enum import Enum
     encoding: Enum

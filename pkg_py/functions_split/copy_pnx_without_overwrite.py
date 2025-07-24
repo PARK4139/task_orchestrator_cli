@@ -41,10 +41,10 @@ from pkg_py.functions_split.pk_print import pk_print
 from pkg_py.functions_split.cmd_to_os import cmd_to_os
 from pkg_py.functions_split.get_list_sorted import get_list_sorted
 from pkg_py.functions_split.set_pk_context_state import set_pk_context_state
-from pkg_py.pk_system_object.stamps import STAMP_TRY_GUIDE
-from pkg_py.pk_system_object.files import F_POT_PLAYER_MINI_64_EXE
-from pkg_py.pk_system_object.files import F_FFMPEG_EXE
-from pkg_py.pk_system_object.is_os_windows import is_os_windows
+from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
+from pkg_py.system_object.files import F_POT_PLAYER_MINI_64_EXE
+from pkg_py.system_object.files import F_FFMPEG_EXE
+from pkg_py.system_object.is_os_windows import is_os_windows
 from PIL import Image
 from os import path
 from moviepy import VideoFileClip
@@ -62,7 +62,7 @@ from pkg_py.functions_split.is_os_windows import is_os_windows
 from pkg_py.functions_split.get_pnx_wsl_unix_style import get_pnx_wsl_unix_style
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.pk_print import pk_print
 from pkg_py.functions_split.get_pnx_list import get_pnx_list
 
@@ -92,8 +92,8 @@ def copy_pnx_without_overwrite(pnx, dst):
             pnx_new = rf"{dst}\{pnx_n}{pnx_x}"
             pattern = r'\d{4}_\d{2}_\d{2}_(월|화|수|목|금|토|일)_\d{2}_\d{2}_\d{2}_\d{3}'
             pnx_n = re.sub(pattern=pattern, repl='', string=pnx_n)
-            pk_print(working_str=rf'''pnx="{pnx}"  {'%%%FOO%%%' if LTA else ''}''')
-            pk_print(working_str=rf'''dst="{dst}"  {'%%%FOO%%%' if LTA else ''}''')
+            pk_print(str_working=rf'''pnx="{pnx}"  {'%%%FOO%%%' if LTA else ''}''')
+            pk_print(str_working=rf'''dst="{dst}"  {'%%%FOO%%%' if LTA else ''}''')
             dst_nx = None
             if not does_pnx_exist(pnx=pnx_new):
                 dst_nx = rf"{dst}\{pnx_n}{pnx_x}"

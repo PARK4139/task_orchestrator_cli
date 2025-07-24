@@ -1,11 +1,11 @@
 
 
-def pk_input_with_timeout(working_str: str, timeout_secs: int = 9999) -> str | None:
+def pk_input_with_timeout(str_working: str, timeout_secs: int = 9999) -> str | None:
     import sys
     import threading
     from queue import Queue, Empty
 
-    print(working_str, end=" ", flush=True)
+    print(str_working, end=" ", flush=True)
     input_queue = Queue()
 
     def read_input():

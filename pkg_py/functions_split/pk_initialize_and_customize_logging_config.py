@@ -15,7 +15,7 @@ def pk_initialize_and_customize_logging_config(__file__):
         logging.info(msg)
     """
     import logging
-    from pkg_py.pk_system_object.files import F_TEMP_TXT
+    from pkg_py.system_object.files import F_TEMP_TXT
     logging.basicConfig(
         level=logging.DEBUG,  # setting to record from level DEBUG to level info
         format="[%(asctime)s] [%(levelname)s] [%(message)s]",

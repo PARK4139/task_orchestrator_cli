@@ -2,7 +2,7 @@ import webbrowser
 import tomllib
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import WebDriverException
-from pkg_py.pk_system_object.etc import PK_UNDERLINE
+from pkg_py.system_object.etc import PK_UNDERLINE
 from pkg_py.functions_split.is_d import is_d
 from pkg_py.functions_split.is_f import is_f
 from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux

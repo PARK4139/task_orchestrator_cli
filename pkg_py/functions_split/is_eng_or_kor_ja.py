@@ -37,9 +37,9 @@ from pkg_py.functions_split.pk_print_once import pk_print_once
 from pkg_py.functions_split.pk_print import pk_print
 from pkg_py.functions_split.write_list_to_f import write_list_to_f
 from pkg_py.functions_split.ensure_console_cleared import ensure_console_cleared
-from pkg_py.pk_system_object.stamps import STAMP_TRY_GUIDE
-from pkg_py.pk_system_object.stamps import STAMP_ATTEMPTED
-from pkg_py.pk_system_object.files import F_POT_PLAYER_MINI_64_EXE
+from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
+from pkg_py.system_object.stamps import STAMP_ATTEMPTED
+from pkg_py.system_object.files import F_POT_PLAYER_MINI_64_EXE
 
 from PIL import Image, ImageFilter
 from PIL import Image
@@ -54,12 +54,12 @@ from bs4 import ResultSet
 from base64 import b64decode
 from pkg_py.functions_split.assist_to_load_video_at_losslesscut import pk_ensure_video_loaded_at_losslesscut
 from pkg_py.functions_split.is_f import is_f
-from pkg_py.pk_system_object.is_os_windows import is_os_windows
+from pkg_py.system_object.is_os_windows import is_os_windows
 from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
 from pkg_py.functions_split.is_os_windows import is_os_windows
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.local_test_activate import LTA
 
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.local_test_activate import LTA
 
 
 def is_eng_or_kor_ja(text: str):

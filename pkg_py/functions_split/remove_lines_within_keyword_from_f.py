@@ -12,13 +12,13 @@ from webdriver_manager.chrome import ChromeDriverManager
 from tkinter import UNDERLINE
 from pkg_py.functions_split.is_window_opened import is_window_opened
 from pkg_py.functions_split.set_pk_context_state import set_pk_context_state
-from pkg_py.pk_system_object.files import F_HISTORICAL_PNX
-from pkg_py.pk_system_object.map_massages import PkMessages2025
+from pkg_py.system_object.files import F_HISTORICAL_PNX
+from pkg_py.system_object.map_massages import PkMessages2025
 
 from os import path
 from dirsync import sync
 from collections import Counter
-from pkg_py.pk_system_object.etc import PK_UNDERLINE
+from pkg_py.system_object.etc import PK_UNDERLINE
 from pkg_py.functions_split.get_pnx_wsl_unix_style import get_pnx_wsl_unix_style
 from pkg_py.functions_split.pk_print import pk_print
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist

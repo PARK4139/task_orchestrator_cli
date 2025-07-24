@@ -43,7 +43,7 @@
 # from PIL import Image, ImageFont, ImageDraw
 # from PIL import Image, ImageFont, ImageDraw, ImageFilter
 # from pkg_py.functions_split.pk_print import pk_print
-# from pkg_ps1.pk_system_object.process import pk_kill_process_by_window_title_seg
+# from pkg_ps1.system_object.process import pk_kill_process_by_window_title_seg
 # from pkg_py.functions_split import ensure_pycharm_module_optimize
 # from pkg_py.functions_split import pk_ensure_keyboard_mouse_macro
 # from pkg_py.functions_split.assist_to_load_video_at_losslesscut import pk_ensure_video_loaded_at_losslesscut
@@ -188,54 +188,54 @@
 # from pkg_py.pk_core_constants import USERPROFILE, HOSTNAME, UNDERLINE, BLANK, BIGGEST_PNXS, SMALLEST_PNXS, PLAYING_SOUNDS, COUNTS_FOR_GUIDE_TO_SLEEP,VIDEO_IDS_ALLOWED, AUDIO_IDS_ALLOWED, STORAGE_VIDEOES_MERGED, PROJECT_PARENTS_D, DESKTOP, DOWNLOADS, PKG_PNG, PKG_DPL, PKG_TXT
 # from pkg_py.pk_interface_graphic_user import GuiUtil, get_display_info, print_as_gui, should_i_do
 # from pkg_py.pk_paste_as_auto import pk_copy
-# from pkg_py.pk_system_object.get_list_calculated import get_list_calculated
-# from pkg_py.pk_system_object.local_test_activate import LTA
-# from pkg_py.pk_system_object.is_os_windows import is_os_windows
+# from pkg_py.system_object.get_list_calculated import get_list_calculated
+# from pkg_py.system_object.local_test_activate import LTA
+# from pkg_py.system_object.is_os_windows import is_os_windows
 # 
-# from pkg_py.pk_system_object.performance_logic import pk_measure_seconds, pk_measure_memory
-# from pkg_py.pk_system_object.state_via_context import SpeedControlContext
-# from pkg_py.pk_system_object.state_via_database import PkSqlite3DB
-# from pkg_py.pk_system_object.print_red import print_red
-# from pkg_py.pk_system_object.alias_keyboard_map import alias_keyboard_map
-# from pkg_py.pk_system_object.color_map import COLORAMA_CODE_MAP
-# from pkg_py.pk_system_object.color_map import ColormaColorMap
-# from pkg_py.pk_system_object.color_map import PK_ANSI_COLOR_MAP
-# from pkg_py.pk_system_object.directories import D_DESKTOP
-# from pkg_py.pk_system_object.directories import D_DOWNLOADS
-# from pkg_py.pk_system_object.directories import D_DOWNLOADS, D_PKG_PKL
-# from pkg_py.pk_system_object.directories import D_DOWNLOADS, D_PKG_PKL, D_PKG_PY
-# from pkg_py.pk_system_object.directories import D_PKG_ARCHIVED
-# from pkg_py.pk_system_object.directories import D_PKG_PKL
-# from pkg_py.pk_system_object.directories import D_PKG_PY
-# from pkg_py.pk_system_object.directories import D_PKG_PY, D_PKG_ARCHIVED
-# from pkg_py.pk_system_object.directories import D_PKG_TXT
-# from pkg_py.pk_system_object.directories import D_PKG_TXT, D_WORKING
-# from pkg_py.pk_system_object.directories import D_FUNCTIONS_SPLIT
-# from pkg_py.pk_system_object.directories import D_FUNCTIONS_SPLIT, D_PKG_ARCHIVED
-# from pkg_py.pk_system_object.directories import D_WORKING
-# from pkg_py.pk_system_object.directories import D_WORKING, D_DOWNLOADS
-# from pkg_py.pk_system_object.directories import D_WORKING, D_DOWNLOADS, D_PKG_PKL
-# from pkg_py.pk_system_object.directories import D_WORKING, D_DOWNLOADS, D_PKG_PKL, D_PKG_PY
-# from pkg_py.pk_system_object.directories import D_WORKING, D_DOWNLOADS, D_PKG_PY
-# from pkg_py.pk_system_object.directories_reuseable import D_PROJECT
-# from pkg_py.pk_system_object.encodings import Encoding
-# from pkg_py.pk_system_object.etc import PK_UNDERLINE
-# from pkg_py.pk_system_object.etc import PkFilter
-# from pkg_py.pk_system_object.etc import PkFilter, PK_UNDERLINE
-# from pkg_py.pk_system_object.files import F_FFMPEG_EXE
-# from pkg_py.pk_system_object.files import F_HISTORICAL_PNX
-# from pkg_py.pk_system_object.files import F_LOSSLESSCUT_EXE
-# from pkg_py.pk_system_object.files import F_POT_PLAYER_MINI_64_EXE
-# from pkg_py.pk_system_object.files import F_POT_PLAYER_MINI_64_EXE, F_HISTORICAL_PNX
-# from pkg_py.pk_system_object.files import F_TEMP_TXT
-# from pkg_py.pk_system_object.map_massages import PkMessages2025
-# from pkg_py.pk_system_object.stamps import STAMP_ATTEMPTED
-# from pkg_py.pk_system_object.stamps import STAMP_DEBUG, STAMP_INTERACTIVE, STAMP_SUCCEEDED, STAMP_INFO, STAMP_TEST, STAMP_ERROR
-# from pkg_py.pk_system_object.stamps import STAMP_LIST, STAMP_TUPLE, STAMP_DICT, STAMP_SET
-# from pkg_py.pk_system_object.stamps import STAMP_PK_ENVIRONMENT_WITH_UNDERBAR
-# from pkg_py.pk_system_object.stamps import STAMP_TRY_GUIDE
-# from pkg_py.pk_system_object.stamps import STAMP_TRY_GUIDE, STAMP_EXCEPTION_DISCOVERED
-# from pkg_py.pk_system_object.stamps import STAMP_TRY_GUIDE, STAMP_UNIT_TEST_EXCEPTION_DISCOVERED
+# from pkg_py.system_object.performance_logic import pk_measure_seconds, pk_measure_memory
+# from pkg_py.system_object.state_via_context import SpeedControlContext
+# from pkg_py.system_object.state_via_database import PkSqlite3DB
+# from pkg_py.system_object.print_red import print_red
+# from pkg_py.system_object.alias_keyboard_map import alias_keyboard_map
+# from pkg_py.system_object.color_map import COLORAMA_CODE_MAP
+# from pkg_py.system_object.color_map import ColormaColorMap
+# from pkg_py.system_object.color_map import PK_ANSI_COLOR_MAP
+# from pkg_py.system_object.directories import D_DESKTOP
+# from pkg_py.system_object.directories import D_DOWNLOADS
+# from pkg_py.system_object.directories import D_DOWNLOADS, D_PKG_PKL
+# from pkg_py.system_object.directories import D_DOWNLOADS, D_PKG_PKL, D_PKG_PY
+# from pkg_py.system_object.directories import D_PKG_ARCHIVED
+# from pkg_py.system_object.directories import D_PKG_PKL
+# from pkg_py.system_object.directories import D_PKG_PY
+# from pkg_py.system_object.directories import D_PKG_PY, D_PKG_ARCHIVED
+# from pkg_py.system_object.directories import D_PKG_TXT
+# from pkg_py.system_object.directories import D_PKG_TXT, D_WORKING
+# from pkg_py.system_object.directories import D_FUNCTIONS_SPLIT
+# from pkg_py.system_object.directories import D_FUNCTIONS_SPLIT, D_PKG_ARCHIVED
+# from pkg_py.system_object.directories import D_WORKING
+# from pkg_py.system_object.directories import D_WORKING, D_DOWNLOADS
+# from pkg_py.system_object.directories import D_WORKING, D_DOWNLOADS, D_PKG_PKL
+# from pkg_py.system_object.directories import D_WORKING, D_DOWNLOADS, D_PKG_PKL, D_PKG_PY
+# from pkg_py.system_object.directories import D_WORKING, D_DOWNLOADS, D_PKG_PY
+# from pkg_py.system_object.directories_reuseable import D_PROJECT
+# from pkg_py.system_object.encodings import Encoding
+# from pkg_py.system_object.etc import PK_UNDERLINE
+# from pkg_py.system_object.etc import PkFilter
+# from pkg_py.system_object.etc import PkFilter, PK_UNDERLINE
+# from pkg_py.system_object.files import F_FFMPEG_EXE
+# from pkg_py.system_object.files import F_HISTORICAL_PNX
+# from pkg_py.system_object.files import F_LOSSLESSCUT_EXE
+# from pkg_py.system_object.files import F_POT_PLAYER_MINI_64_EXE
+# from pkg_py.system_object.files import F_POT_PLAYER_MINI_64_EXE, F_HISTORICAL_PNX
+# from pkg_py.system_object.files import F_TEMP_TXT
+# from pkg_py.system_object.map_massages import PkMessages2025
+# from pkg_py.system_object.stamps import STAMP_ATTEMPTED
+# from pkg_py.system_object.stamps import STAMP_DEBUG, STAMP_INTERACTIVE, STAMP_SUCCEEDED, STAMP_INFO, STAMP_TEST, STAMP_ERROR
+# from pkg_py.system_object.stamps import STAMP_LIST, STAMP_TUPLE, STAMP_DICT, STAMP_SET
+# from pkg_py.system_object.stamps import STAMP_PK_ENVIRONMENT_WITH_UNDERBAR
+# from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
+# from pkg_py.system_object.stamps import STAMP_TRY_GUIDE, STAMP_EXCEPTION_DISCOVERED
+# from pkg_py.system_object.stamps import STAMP_TRY_GUIDE, STAMP_UNIT_TEST_EXCEPTION_DISCOVERED
 # from pkg_py.refactor.ensure_keyboard_mouse_macro import PkMacroRoutines
 # from pkg_py.refactor.pk_ensure_functions_splited import restore_workspace_from_latest_archive, split_by_top_level_def, backup_workspace
 # from pkg_py.refactor.pk_ensure_keyboard_mouse_macro import PkMacroRoutines
@@ -310,7 +310,7 @@
 # import paramiko
 # import pickle
 # import pk_core_constants
-# # import pkg_py.pk_system_object.static_logic as pk_system_object.static_logic
+# # import pkg_py.system_object.static_logic as system_object.static_logic
 # import platform
 # import psutil
 # import pyaudio

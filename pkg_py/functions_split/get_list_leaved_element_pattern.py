@@ -1,7 +1,7 @@
 import socket
 from pkg_py.functions_split.pk_press import pk_press
 
-from pkg_py.pk_system_object.files import F_POT_PLAYER_MINI_64_EXE
+from pkg_py.system_object.files import F_POT_PLAYER_MINI_64_EXE
 from datetime import date
 from collections import Counter
 from bs4 import BeautifulSoup

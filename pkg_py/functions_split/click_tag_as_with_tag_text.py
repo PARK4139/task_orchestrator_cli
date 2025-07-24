@@ -27,9 +27,9 @@ from pkg_py.functions_split.is_losslesscut_running import is_losslesscut_running
 from pkg_py.functions_split.is_window_title_front import is_window_title_front
 from pkg_py.functions_split.cmd_to_os import cmd_to_os
 from pkg_py.functions_split.ensure_console_cleared import ensure_console_cleared
-from pkg_py.pk_system_object.files import F_FFMPEG_EXE
-from pkg_py.pk_system_object.encodings import Encoding
-from pkg_py.pk_system_object.is_os_windows import is_os_windows
+from pkg_py.system_object.files import F_FFMPEG_EXE
+from pkg_py.system_object.encodings import Encoding
+from pkg_py.system_object.is_os_windows import is_os_windows
 from pathlib import Path
 from passlib.context import CryptContext
 from os import path
@@ -37,14 +37,14 @@ from functools import partial as functools_partial
 from functools import partial
 from colorama import init as pk_colorama_init
 from pkg_py.functions_split.kill_self_pk_program import kill_self_pk_program
-from pkg_py.pk_system_object.etc import PK_UNDERLINE
+from pkg_py.system_object.etc import PK_UNDERLINE
 from pkg_py.functions_split.is_d import is_d
-from pkg_py.pk_system_object.is_os_windows import is_os_windows
+from pkg_py.system_object.is_os_windows import is_os_windows
 from pkg_py.functions_split.is_os_windows import is_os_windows
 from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style
 from pkg_py.functions_split.pk_print import pk_print
 
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.pk_print import pk_print
 from pkg_py.functions_split.get_pnx_list import get_pnx_list
 

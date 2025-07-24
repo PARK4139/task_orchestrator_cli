@@ -47,13 +47,13 @@ from pkg_py.functions_split.rerun_losslesscut import rerun_losslesscut
 from pkg_py.functions_split.get_f_video_to_load import get_f_video_to_load
 from pkg_py.functions_split.is_window_title_opened import is_window_title_opened
 
-from pkg_py.pk_system_object.stamps import STAMP_TRY_GUIDE
-from pkg_py.pk_system_object.files import F_LOSSLESSCUT_EXE
-from pkg_py.pk_system_object.files import F_FFMPEG_EXE
-from pkg_py.pk_system_object.encodings import Encoding
-from pkg_py.pk_system_object.map_massages import PkMessages2025
-from pkg_py.pk_system_object.state_via_database import PkSqlite3DB
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
+from pkg_py.system_object.files import F_LOSSLESSCUT_EXE
+from pkg_py.system_object.files import F_FFMPEG_EXE
+from pkg_py.system_object.encodings import Encoding
+from pkg_py.system_object.map_massages import PkMessages2025
+from pkg_py.system_object.state_via_database import PkSqlite3DB
+from pkg_py.system_object.local_test_activate import LTA
 from passlib.context import CryptContext
 from os import path
 from moviepy import VideoFileClip
@@ -81,7 +81,7 @@ from pkg_py.functions_split.get_pnx_wsl_unix_style import get_pnx_wsl_unix_style
 from pkg_py.functions_split.pk_print import pk_print
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.pk_print import pk_print
 from pkg_py.functions_split.get_pnx_list import get_pnx_list
 

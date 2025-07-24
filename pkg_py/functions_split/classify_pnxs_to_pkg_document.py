@@ -76,15 +76,15 @@ from pkg_py.functions_split.write_list_to_f import write_list_to_f
 
 from pkg_py.functions_split.set_pk_context_state import set_pk_context_state
 from pkg_py.functions_split.ensure_console_cleared import ensure_console_cleared
-from pkg_py.pk_system_object.files import F_POT_PLAYER_MINI_64_EXE
-from pkg_py.pk_system_object.files import F_HISTORICAL_PNX
-from pkg_py.pk_system_object.files import F_FFMPEG_EXE
-from pkg_py.pk_system_object.encodings import Encoding
-from pkg_py.pk_system_object.directories import D_PKG_TXT, D_WORKING
-from pkg_py.pk_system_object.directories import D_DOWNLOADS, D_PKG_PKL
-from pkg_py.pk_system_object.map_massages import PkMessages2025
-from pkg_py.pk_system_object.state_via_database import PkSqlite3DB
-from pkg_py.pk_system_object.get_list_calculated import get_list_calculated
+from pkg_py.system_object.files import F_POT_PLAYER_MINI_64_EXE
+from pkg_py.system_object.files import F_HISTORICAL_PNX
+from pkg_py.system_object.files import F_FFMPEG_EXE
+from pkg_py.system_object.encodings import Encoding
+from pkg_py.system_object.directories import D_PKG_TXT, D_WORKING
+from pkg_py.system_object.directories import D_DOWNLOADS, D_PKG_PKL
+from pkg_py.system_object.map_massages import PkMessages2025
+from pkg_py.system_object.state_via_database import PkSqlite3DB
+from pkg_py.system_object.get_list_calculated import get_list_calculated
 from PIL import Image, ImageFont, ImageDraw, ImageFilter
 from PIL import Image, ImageFilter
 from pathlib import Path
@@ -106,7 +106,7 @@ from concurrent.futures import ThreadPoolExecutor
 from collections import Counter
 from base64 import b64decode
 from pkg_py.functions_split.kill_self_pk_program import kill_self_pk_program
-from pkg_py.pk_system_object.stamps import STAMP_TRY_GUIDE, STAMP_UNIT_TEST_EXCEPTION_DISCOVERED
+from pkg_py.system_object.stamps import STAMP_TRY_GUIDE, STAMP_UNIT_TEST_EXCEPTION_DISCOVERED
 from pkg_py.functions_split.get_list_calculated import get_list_calculated
 from pkg_py.functions_split.is_f import is_f
 from pkg_py.functions_split.get_pnx_wsl_unix_style import get_pnx_wsl_unix_style
@@ -117,7 +117,7 @@ from pkg_py.functions_split.get_pnx_wsl_unix_style import get_pnx_wsl_unix_style
 from pkg_py.functions_split.get_pnx_windows_style import get_pnx_windows_style
 from pkg_py.functions_split.pk_print import pk_print
 
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.pk_print import pk_print
 from pkg_py.functions_split.get_d_working import get_d_working
 
@@ -154,5 +154,5 @@ def classify_pnxs_to_pkg_document(pnx, without_walking=True):
         if file_x in [ext.replace(".", "") for ext in x_allowed]:  # x_allowed의 확장자와 비교
             ensure_pnx_made(dst, mode="d")
             move_pnx(pnx=file_pnx, d_dst=dst)
-            pk_print(working_str=rf'''file_pnx="{file_pnx}"  {'%%%FOO%%%' if LTA else ''}''')
-    pk_print(working_str=rf'''dst="{dst}"  {'%%%FOO%%%' if LTA else ''}''')
+            pk_print(str_working=rf'''file_pnx="{file_pnx}"  {'%%%FOO%%%' if LTA else ''}''')
+    pk_print(str_working=rf'''dst="{dst}"  {'%%%FOO%%%' if LTA else ''}''')

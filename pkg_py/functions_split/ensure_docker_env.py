@@ -16,9 +16,9 @@ from selenium.common.exceptions import ElementClickInterceptedException
 from PySide6.QtWidgets import QApplication
 from pkg_py.functions_split.load_f_video_on_losslesscut import load_f_video_on_losslesscut
 from pkg_py.functions_split.set_pk_context_state import set_pk_context_state
-from pkg_py.pk_system_object.files import F_LOSSLESSCUT_EXE
-from pkg_py.pk_system_object.encodings import Encoding
-from pkg_py.pk_system_object.state_via_database import PkSqlite3DB
+from pkg_py.system_object.files import F_LOSSLESSCUT_EXE
+from pkg_py.system_object.encodings import Encoding
+from pkg_py.system_object.state_via_database import PkSqlite3DB
 from PIL import Image
 from pkg_py.functions_split.kill_self_pk_program import kill_self_pk_program
 from pkg_py.functions_split.get_value_completed import get_value_completed

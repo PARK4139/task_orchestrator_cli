@@ -1,4 +1,4 @@
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.is_f import is_f
 from pkg_py.functions_split.pk_print import pk_print
 
@@ -36,5 +36,5 @@ def classify_pnx_list_to_pkg_compressed(src, without_walking=True):
         if file_x in [ext.replace(".", "") for ext in x_allowed]:  # x_allowed의 확장자와 비교
             ensure_pnx_made(dst, mode="d")
             move_pnx(pnx=f, d_dst=dst)
-            pk_print(working_str=rf'''file_new="{f}"  {'%%%FOO%%%' if LTA else ''}''')
-    pk_print(working_str=rf'''dst="{dst}"  {'%%%FOO%%%' if LTA else ''}''')
+            pk_print(str_working=rf'''file_new="{f}"  {'%%%FOO%%%' if LTA else ''}''')
+    pk_print(str_working=rf'''dst="{dst}"  {'%%%FOO%%%' if LTA else ''}''')

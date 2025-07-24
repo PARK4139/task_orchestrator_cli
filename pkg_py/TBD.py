@@ -74,9 +74,9 @@ def _TEST_CASE_파일_제어기():
 
 def _TEST_CASE_출력하고TTS():
     # todo 인터넷 있을때 테스트 가능
-    # working_str = 'what time is it'
-    working_str = '테스트이다'
-    pk_speak(working_str=working_str, after_delay=1.00)
+    # str_working = 'what time is it'
+    str_working = '테스트이다'
+    pk_speak(str_working=str_working, after_delay=1.00)
 
     # print_and_speak("Playing music...")
 

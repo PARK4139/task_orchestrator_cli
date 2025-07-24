@@ -7,7 +7,7 @@ def pk_organize_f_list_by_ngram(f_to_organize_list, d_working, token_splitter_pa
     print_preview(categorized_f_dict)
 
     ans = pk_input_v44_uv_theme(
-        working_str="위와 같이 파일을 분류할까요? (o/x):",
+        str_working="위와 같이 파일을 분류할까요? (o/x):",
         limit_seconds=60,
         return_default="x",
         fuzzy_accept=[("o", "ok", "yes", "y"), ("x", "no", "n")],

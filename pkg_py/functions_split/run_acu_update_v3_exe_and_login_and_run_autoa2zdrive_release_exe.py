@@ -24,30 +24,30 @@ from pkg_py.functions_split.kill_self_pk_program import kill_self_pk_program
 from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.pk_print import pk_print
 
 
 def run_acu_update_v3_exe_and_login_and_run_autoa2zdrive_release_exe(issue_log_index_data):
-    # import pkg_py.pk_system_object.static_logic as pk_system_object.static_logic
+    # import pkg_py.system_object.static_logic as system_object.static_logic
     import inspect
     import os
 
     func_n = inspect.currentframe().f_code.co_name
-    pk_print(working_str=rf'''{pk_system_object.static_logic.PK_UNDERLINE}{func_n}()  {'%%%FOO%%%' if LTA else ''}''')
-    AUTOA2ZDRIVE_RELEASE_SW_VERSION_EXE = rf"{pk_system_object.static_logic.D_HOME}\Desktop\AutoA2zDrive\AutoA2ZDrive_Release_{issue_log_index_data["SW 버전"]}.exe"
+    pk_print(str_working=rf'''{system_object.static_logic.PK_UNDERLINE}{func_n}()  {'%%%FOO%%%' if LTA else ''}''')
+    AUTOA2ZDRIVE_RELEASE_SW_VERSION_EXE = rf"{system_object.static_logic.D_HOME}\Desktop\AutoA2zDrive\AutoA2ZDrive_Release_{issue_log_index_data["SW 버전"]}.exe"
     pk_print(
-        working_str=rf'''AUTOA2ZDRIVE_RELEASE_SW_VERSION_EXE="{AUTOA2ZDRIVE_RELEASE_SW_VERSION_EXE}"  {'%%%FOO%%%' if LTA else ''}''')
+        str_working=rf'''AUTOA2ZDRIVE_RELEASE_SW_VERSION_EXE="{AUTOA2ZDRIVE_RELEASE_SW_VERSION_EXE}"  {'%%%FOO%%%' if LTA else ''}''')
     window_title_seg = "acu_update_v3_exe"
     if not does_pnx_exist(pnx=AUTOA2ZDRIVE_RELEASE_SW_VERSION_EXE):
-        acu_update_v3_exe = rf"{pk_system_object.static_logic.D_HOME}\Desktop\AutoA2zDrive\ACU_update_v3.exe"
+        acu_update_v3_exe = rf"{system_object.static_logic.D_HOME}\Desktop\AutoA2zDrive\ACU_update_v3.exe"
         acu_update_v3_exe_p = get_p(pnx=acu_update_v3_exe)
         os.chdir(acu_update_v3_exe_p)
-        cmd = rf' start cmd.exe /k "title {window_title_seg}&& {pk_system_object.static_logic.D_HOME}\Desktop\AutoA2zDrive\ACU_update_v3.exe &" '
+        cmd = rf' start cmd.exe /k "title {window_title_seg}&& {system_object.static_logic.D_HOME}\Desktop\AutoA2zDrive\ACU_update_v3.exe &" '
         cmd_to_os(cmd=cmd, mode="a")
-        pw = get_token_from_f_token(f_token=rf'{pk_system_object.static_logic.D_PKG_TXT}\token_linux_pw.txt',
+        pw = get_token_from_f_token(f_token=rf'{system_object.static_logic.D_PKG_TXT}\token_linux_pw.txt',
                                     initial_str="")
-        user_n = get_token_from_f_token(f_token=rf'{pk_system_object.static_logic.D_PKG_TXT}\token_linux_id.txt',
+        user_n = get_token_from_f_token(f_token=rf'{system_object.static_logic.D_PKG_TXT}\token_linux_id.txt',
                                         initial_str="")
         while 1:
             pk_sleep(milliseconds=2000)
@@ -81,5 +81,5 @@ def run_acu_update_v3_exe_and_login_and_run_autoa2zdrive_release_exe(issue_log_i
         #         click_mouse_left_btn(x_abs=x_abs, y_abs=y_abs)
         #         pk_print(string = rf'''text_string="{text_string}"  {'%%%FOO%%%' if LTA else ''}''')
         #         break
-        # img_pnx = rf"{pk_system_object.static_logic.PROJECT_D}\pk_image\screenshot_Press_Enter_Key_To_Quit_Program_2024_11_21_11_30_35.png"
+        # img_pnx = rf"{system_object.static_logic.PROJECT_D}\pk_image\screenshot_Press_Enter_Key_To_Quit_Program_2024_11_21_11_30_35.png"
         # click_center_of_img_recognized_by_mouse_left(img_pnx=img_pnx, loop_limit_cnt=10)

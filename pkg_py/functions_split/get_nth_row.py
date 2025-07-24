@@ -9,5 +9,5 @@ def get_nth_row(df, n):
     if n >= 0 and n <= len(df):
         return df.iloc[n]  # n번째 행
     else:
-        pk_print(working_str="유효하지 않은 행 번호입니다.")
+        pk_print(str_working="유효하지 않은 행 번호입니다.")
         return None

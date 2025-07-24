@@ -2,10 +2,10 @@ import pandas as pd
 from pkg_py.functions_split.get_historical_list import get_historical_list
 from pkg_py.functions_split.is_losslesscut_running import is_losslesscut_running
 from dirsync import sync
-from pkg_py.pk_system_object.directories import D_PKG_PY
+from pkg_py.system_object.directories import D_PKG_PY
 from pkg_py.functions_split.is_f import is_f
 
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.pk_print import pk_print
 
 
@@ -43,5 +43,5 @@ def classify_pnxs_to_pkg_video(pnx, without_walking=True):
         if file_x in [ext.replace(".", "") for ext in x_allowed]:  # x_allowed의 확장자와 비교
             ensure_pnx_made(pnx=dst, mode="d")
             move_pnx(pnx=f, d_dst=dst)
-            pk_print(working_str=rf'''f="{f}"  {'%%%FOO%%%' if LTA else ''}''')
-    pk_print(working_str=rf'''dst="{dst}"  {'%%%FOO%%%' if LTA else ''}''')
+            pk_print(str_working=rf'''f="{f}"  {'%%%FOO%%%' if LTA else ''}''')
+    pk_print(str_working=rf'''dst="{dst}"  {'%%%FOO%%%' if LTA else ''}''')

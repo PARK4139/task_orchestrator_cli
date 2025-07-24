@@ -6,11 +6,11 @@ from pkg_py.functions_split.is_window_opened import is_window_opened
 from pkg_py.functions_split.pk_press import pk_press
 
 from pkg_py.functions_split.cmd_to_os import cmd_to_os
-from pkg_py.pk_system_object.directories import D_PKG_TXT
+from pkg_py.system_object.directories import D_PKG_TXT
 
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.pk_print import pk_print
 
 
@@ -22,7 +22,7 @@ def run_and_login_acu_update_v3_exe_and_run_autoa2zdrive_release_exe(issue_log_i
 
     AUTOA2ZDRIVE_RELEASE_SW_VERSION_EXE = rf"{D_HOME}\Desktop\AutoA2zDrive\AutoA2ZDrive_Release_{issue_log_index_data["SW 버전"]}.exe"
     pk_print(
-        working_str=rf'''AUTOA2ZDRIVE_RELEASE_SW_VERSION_EXE="{AUTOA2ZDRIVE_RELEASE_SW_VERSION_EXE}"  {'%%%FOO%%%' if LTA else ''}''')
+        str_working=rf'''AUTOA2ZDRIVE_RELEASE_SW_VERSION_EXE="{AUTOA2ZDRIVE_RELEASE_SW_VERSION_EXE}"  {'%%%FOO%%%' if LTA else ''}''')
     window_title_seg = "acu_update_v3_exe"
     if not does_pnx_exist(pnx=AUTOA2ZDRIVE_RELEASE_SW_VERSION_EXE):
         acu_update_v3_exe = rf"{D_HOME}\Desktop\AutoA2zDrive\ACU_update_v3.exe"

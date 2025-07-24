@@ -23,8 +23,8 @@ from pkg_py.functions_split.is_window_title_opened import is_window_title_opened
 from pkg_py.functions_split.pk_press import pk_press
 
 from pkg_py.functions_split.cmd_to_os import cmd_to_os
-from pkg_py.pk_system_object.directories import D_WORKING
-from pkg_py.pk_system_object.map_massages import PkMessages2025
+from pkg_py.system_object.directories import D_WORKING
+from pkg_py.system_object.map_massages import PkMessages2025
 from PIL import Image
 from functools import partial as functools_partial
 from datetime import datetime
@@ -33,7 +33,7 @@ from Cryptodome.Random import get_random_bytes
 from Cryptodome.Cipher import AES
 from collections import Counter
 from pkg_py.functions_split.get_pnx_list import get_pnx_list
-from pkg_py.pk_system_object.directories import D_PKG_PY
+from pkg_py.system_object.directories import D_PKG_PY
 from pkg_py.functions_split.is_d import is_d
 from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
 from pkg_py.functions_split.get_pnx_wsl_unix_style import get_pnx_wsl_unix_style

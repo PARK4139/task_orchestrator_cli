@@ -2,7 +2,7 @@ def get_pid_by_window_title(window_title_seg):  # 테스트필요
     import psutil
     from pkg_py.functions_split.get_window_title_list import get_window_title_list
     from pkg_py.functions_split.pk_print import pk_print
-    from pkg_py.pk_system_object.local_test_activate import LTA
+    from pkg_py.system_object.local_test_activate import LTA
     import inspect
     import pygetwindow
     func_n = inspect.currentframe().f_code.co_name

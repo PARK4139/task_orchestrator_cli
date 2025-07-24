@@ -58,13 +58,13 @@ from pkg_py.functions_split.pk_print import pk_print
 
 from pkg_py.functions_split.write_list_to_f import write_list_to_f
 
-from pkg_py.pk_system_object.files import F_POT_PLAYER_MINI_64_EXE, F_HISTORICAL_PNX
-from pkg_py.pk_system_object.files import F_POT_PLAYER_MINI_64_EXE
-from pkg_py.pk_system_object.encodings import Encoding
-from pkg_py.pk_system_object.directories import D_WORKING, D_DOWNLOADS, D_PKG_PKL
-from pkg_py.pk_system_object.state_via_context import SpeedControlContext
-from pkg_py.pk_system_object.is_os_windows import is_os_windows
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.files import F_POT_PLAYER_MINI_64_EXE, F_HISTORICAL_PNX
+from pkg_py.system_object.files import F_POT_PLAYER_MINI_64_EXE
+from pkg_py.system_object.encodings import Encoding
+from pkg_py.system_object.directories import D_WORKING, D_DOWNLOADS, D_PKG_PKL
+from pkg_py.system_object.state_via_context import SpeedControlContext
+from pkg_py.system_object.is_os_windows import is_os_windows
+from pkg_py.system_object.local_test_activate import LTA
 
 from PIL import Image
 from pathlib import Path

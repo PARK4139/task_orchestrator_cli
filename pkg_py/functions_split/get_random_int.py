@@ -8,8 +8,8 @@ from urllib.parse import urlparse
 from selenium.webdriver.chrome.options import Options
 from pytube import Playlist
 from prompt_toolkit.styles import Style
-from pkg_py.pk_system_object.files import F_LOSSLESSCUT_EXE
-from pkg_py.pk_system_object.files import F_FFMPEG_EXE
+from pkg_py.system_object.files import F_LOSSLESSCUT_EXE
+from pkg_py.system_object.files import F_FFMPEG_EXE
 from gtts import gTTS
 from datetime import timedelta
 from cryptography.hazmat.primitives import padding

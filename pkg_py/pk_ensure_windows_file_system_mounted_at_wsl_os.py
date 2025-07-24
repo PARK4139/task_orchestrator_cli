@@ -6,8 +6,8 @@ import traceback
 
 from colorama import init as pk_colorama_init
 
-# from pkg_py.pk_system_object.500_live_logic import ensure_tmux_pk_session_removed, get_nx, get_value_completed, get_pk_wsl_mount_d, get_pnx_list, is_os_linux, pk_sleep, pk_speak
-# from pkg_py.pk_system_object.static_logic import D_PKG_PY, UNDERLINE, STAMP_TRY_GUIDE, D_PROJECT, STAMP_UNIT_TEST_EXCEPTION_DISCOVERED
+# from pkg_py.system_object.500_live_logic import ensure_tmux_pk_session_removed, get_nx, get_value_completed, get_pk_wsl_mount_d, get_pnx_list, is_os_linux, pk_sleep, pk_speak
+# from pkg_py.system_object.static_logic import D_PKG_PY, UNDERLINE, STAMP_TRY_GUIDE, D_PROJECT, STAMP_UNIT_TEST_EXCEPTION_DISCOVERED
 #, print_red
 
 pk_colorama_init_once()

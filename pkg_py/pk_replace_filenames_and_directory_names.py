@@ -8,10 +8,10 @@ from pathlib import Path
 from shutil import move
 
 from colorama import init as pk_colorama_init
-from pkg_py.pk_system_object.local_test_activate import LTA
-from pkg_py.pk_system_object.directories import D_PKG_TXT
-from pkg_py.pk_system_object.directories_reuseable import D_PROJECT
-from pkg_py.pk_system_object.stamps import STAMP_TRY_GUIDE
+from pkg_py.system_object.local_test_activate import LTA
+from pkg_py.system_object.directories import D_PKG_TXT
+from pkg_py.system_object.directories_reuseable import D_PROJECT
+from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
 from pkg_py.functions_split.ensure_pnx_made import ensure_pnx_made
 from pkg_py.functions_split.ensure_pnx_removed import ensure_pnx_removed
 from pkg_py.functions_split.get_values_from_historical_file_routine import get_values_from_historical_file_routine

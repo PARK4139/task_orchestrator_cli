@@ -1,5 +1,5 @@
-from pkg_py.pk_system_object.local_test_activate import LTA
-from pkg_py.pk_system_object.files import F_LOSSLESSCUT_EXE
+from pkg_py.system_object.local_test_activate import LTA
+from pkg_py.system_object.files import F_LOSSLESSCUT_EXE
 from pkg_py.functions_split.cmd_to_os import cmd_to_os
 from pkg_py.functions_split.pk_print import pk_print
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist

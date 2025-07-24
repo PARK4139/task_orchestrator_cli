@@ -5,11 +5,11 @@ import shutil
 import pyglet
 from tkinter import UNDERLINE
 from selenium.common.exceptions import WebDriverException
-from pkg_py.pk_system_object.directories_reuseable import D_PROJECT
-from pkg_py.pk_system_object.state_via_database import PkSqlite3DB
-from pkg_py.pk_system_object.is_os_windows import is_os_windows
+from pkg_py.system_object.directories_reuseable import D_PROJECT
+from pkg_py.system_object.state_via_database import PkSqlite3DB
+from pkg_py.system_object.is_os_windows import is_os_windows
 
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.pk_print import pk_print
 
 
@@ -22,13 +22,13 @@ def get_torrent_magnets_set_from_nyaa_si(title_to_search, driver_selenium, exclu
     include_elements_any = include_elements_any or []
     include_elements_all = include_elements_all or []
     func_n = inspect.currentframe().f_code.co_name
-    pk_print(working_str=rf'''{PK_UNDERLINE}{func_n}()  {'%%%FOO%%%' if LTA else ''}''', print_color='blue')
+    pk_print(str_working=rf'''{PK_UNDERLINE}{func_n}()  {'%%%FOO%%%' if LTA else ''}''', print_color='blue')
     f_func_n_txt = rf'{D_PROJECT}\pkg_txt\{func_n}.txt'
     query = urllib.parse.quote(f"{title_to_search}")
     url = f'https://nyaa.si/?f=0&c=0_0&q={query}'
-    pk_print(working_str=rf'''url="{url}"  {'%%%FOO%%%' if LTA else ''}''')
+    pk_print(str_working=rf'''url="{url}"  {'%%%FOO%%%' if LTA else ''}''')
     url_decoded = get_str_url_decoded(str_working=url)
-    pk_print(working_str=rf'''url_decoded="{url_decoded}"  {'%%%FOO%%%' if LTA else ''}''')
+    pk_print(str_working=rf'''url_decoded="{url_decoded}"  {'%%%FOO%%%' if LTA else ''}''')
     driver_selenium.get(url)
 
     # 페이지 소스 RAW

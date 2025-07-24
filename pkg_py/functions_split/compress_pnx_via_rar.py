@@ -1,19 +1,19 @@
 
 
 from pkg_py.functions_split.cmd_to_os import cmd_to_os
-from pkg_py.pk_system_object.encodings import Encoding
+from pkg_py.system_object.encodings import Encoding
 
 from pkg_py.functions_split.get_nx import get_nx
 from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style
 from pkg_py.functions_split.get_pnx_wsl_unix_style import get_pnx_wsl_unix_style
 
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.pk_print import pk_print
 from pkg_py.functions_split.get_d_working import get_d_working
 
 
-from pkg_py.pk_system_object.local_test_activate import LTA
-from pkg_py.pk_system_object.encodings import Encoding
+from pkg_py.system_object.local_test_activate import LTA
+from pkg_py.system_object.encodings import Encoding
 from pkg_py.functions_split.get_nx import get_nx
 from pkg_py.functions_split.cmd_to_os import cmd_to_os
 from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style
@@ -86,9 +86,9 @@ def compress_pnx_via_rar(src, dst, with_timestamp=1):
     # rename
     rename_pnx(src=dst_nx_rar, pnx_new=dst_nx_timestamp_rar)
 
-    pk_print(working_str=rf'''wsl_pn_rar="{wsl_pn_rar}"  {'%%%FOO%%%' if LTA else ''}''')
+    pk_print(str_working=rf'''wsl_pn_rar="{wsl_pn_rar}"  {'%%%FOO%%%' if LTA else ''}''')
     dst_nx = rf"{dst}/{nx}"
-    pk_print(working_str=rf'''desktop_nx="{dst_nx}"  {'%%%FOO%%%' if LTA else ''}''')
+    pk_print(str_working=rf'''desktop_nx="{dst_nx}"  {'%%%FOO%%%' if LTA else ''}''')
 
     # remove
     move_pnx_to_pk_recycle_bin(pnx=dst_nx)
@@ -98,8 +98,8 @@ def compress_pnx_via_rar(src, dst, with_timestamp=1):
     os.chdir(d_working)
 
     # logging
-    pk_print(working_str=rf'''dst_nx_rar="{dst_nx_rar}"  {'%%%FOO%%%' if LTA else ''}''')
-    pk_print(working_str=rf'''[{func_n}] dst_nx_timestamp_rar="{dst_nx_timestamp_rar}"  {'%%%FOO%%%' if LTA else ''}''',
+    pk_print(str_working=rf'''dst_nx_rar="{dst_nx_rar}"  {'%%%FOO%%%' if LTA else ''}''')
+    pk_print(str_working=rf'''[{func_n}] dst_nx_timestamp_rar="{dst_nx_timestamp_rar}"  {'%%%FOO%%%' if LTA else ''}''',
              print_color='green')
 
     return dst_nx_timestamp_rar

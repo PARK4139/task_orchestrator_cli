@@ -37,18 +37,18 @@ from pkg_py.functions_split.is_window_opened import is_window_opened
 
 from pkg_py.functions_split.write_list_to_f import write_list_to_f
 from pkg_py.functions_split.get_list_sorted import get_list_sorted
-from pkg_py.pk_system_object.files import F_POT_PLAYER_MINI_64_EXE
-from pkg_py.pk_system_object.files import F_LOSSLESSCUT_EXE
-from pkg_py.pk_system_object.files import F_FFMPEG_EXE
-from pkg_py.pk_system_object.print_red import print_red
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.files import F_POT_PLAYER_MINI_64_EXE
+from pkg_py.system_object.files import F_LOSSLESSCUT_EXE
+from pkg_py.system_object.files import F_FFMPEG_EXE
+from pkg_py.system_object.print_red import print_red
+from pkg_py.system_object.local_test_activate import LTA
 from passlib.context import CryptContext
 from os import path
 from functools import lru_cache
 from cryptography.hazmat.primitives import padding
 from collections import Counter
 from pkg_py.functions_split.get_nx import get_nx
-from pkg_py.pk_system_object.is_os_windows import is_os_windows
+from pkg_py.system_object.is_os_windows import is_os_windows
 from pkg_py.functions_split.is_os_windows import is_os_windows
 from pkg_py.functions_split.get_pnx_wsl_unix_style import get_pnx_wsl_unix_style
 from pkg_py.functions_split.get_pnx_windows_style import get_pnx_windows_style

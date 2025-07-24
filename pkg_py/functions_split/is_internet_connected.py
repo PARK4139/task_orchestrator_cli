@@ -5,7 +5,7 @@ def is_internet_connected():
     func_n = inspect.currentframe().f_code.co_name
     from pkg_py.functions_split.ping import ping
     from pkg_py.functions_split.pk_print import pk_print
-    from pkg_py.pk_system_object.local_test_activate import LTA
+    from pkg_py.system_object.local_test_activate import LTA
     from time import time
     if not hasattr(is_internet_connected, "_cache_time"):
         is_internet_connected._cache_time = 0

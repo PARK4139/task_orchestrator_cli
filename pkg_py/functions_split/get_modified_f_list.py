@@ -14,10 +14,10 @@ from seleniumbase import Driver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.chrome.service import Service
 from pkg_py.functions_split.get_f_loading_nx_by_pattern import get_f_loading_nx_by_pattern
-from pkg_py.pk_system_object.files import F_HISTORICAL_PNX
-from pkg_py.pk_system_object.print_red import print_red
+from pkg_py.system_object.files import F_HISTORICAL_PNX
+from pkg_py.system_object.print_red import print_red
 
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.local_test_activate import LTA
 from moviepy import VideoFileClip
 from gtts import gTTS
 from datetime import timedelta

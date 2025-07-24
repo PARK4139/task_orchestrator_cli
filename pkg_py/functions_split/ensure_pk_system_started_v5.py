@@ -5,8 +5,8 @@ from pkg_py.functions_split.pk_measure_seconds import pk_measure_seconds
 
 @pk_measure_seconds
 def ensure_pk_system_started_v5():
-    from pkg_py.pk_system_object.local_test_activate import LTA
-    from pkg_py.pk_system_object.directories import D_PKG_HISTORY
+    from pkg_py.system_object.local_test_activate import LTA
+    from pkg_py.system_object.directories import D_PKG_HISTORY
 
     from pkg_py.functions_split.ensure_window_to_front import ensure_window_to_front
 

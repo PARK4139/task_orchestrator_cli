@@ -53,10 +53,10 @@ from pkg_py.functions_split.pk_print_state import pk_print_state
 from pkg_py.functions_split.pk_print import pk_print
 from pkg_py.functions_split.write_list_to_f import write_list_to_f
 from pkg_py.functions_split.get_list_sorted import get_list_sorted
-from pkg_py.pk_system_object.files import F_FFMPEG_EXE
-from pkg_py.pk_system_object.directories_reuseable import D_PROJECT
-from pkg_py.pk_system_object.state_via_context import SpeedControlContext
-from pkg_py.pk_system_object.performance_logic import pk_measure_seconds, pk_measure_memory
+from pkg_py.system_object.files import F_FFMPEG_EXE
+from pkg_py.system_object.directories_reuseable import D_PROJECT
+from pkg_py.system_object.state_via_context import SpeedControlContext
+from pkg_py.system_object.performance_logic import pk_measure_seconds, pk_measure_memory
 from PIL import Image
 from pathlib import Path
 from passlib.context import CryptContext

@@ -11,10 +11,10 @@ from pynput import mouse
 from pkg_py.functions_split.print_iterable_as_vertical import print_iterable_as_vertical
 from pkg_py.functions_split.get_video_filtered_list import get_video_filtered_list
 from pkg_py.functions_split.set_pk_context_state import set_pk_context_state
-from pkg_py.pk_system_object.files import F_POT_PLAYER_MINI_64_EXE
-from pkg_py.pk_system_object.files import F_HISTORICAL_PNX
-from pkg_py.pk_system_object.encodings import Encoding
-from pkg_py.pk_system_object.directories import D_PKG_TXT
+from pkg_py.system_object.files import F_POT_PLAYER_MINI_64_EXE
+from pkg_py.system_object.files import F_HISTORICAL_PNX
+from pkg_py.system_object.encodings import Encoding
+from pkg_py.system_object.directories import D_PKG_TXT
 from passlib.context import CryptContext
 from mutagen.mp3 import MP3
 from datetime import datetime
@@ -22,10 +22,10 @@ from datetime import date
 from collections import Counter
 from bs4 import BeautifulSoup
 from pkg_py.functions_split.get_list_calculated import get_list_calculated
-from pkg_py.pk_system_object.is_os_windows import is_os_windows
+from pkg_py.system_object.is_os_windows import is_os_windows
 from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
 
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.pk_print import pk_print
 
 
@@ -41,17 +41,17 @@ def find_pnx_interested_list_from_txt_f_x(including_texts=[], exclude_texts=[], 
     # pattern=rf"{re.escape(d)}\update_pnx_interested_list_to_text_file_\d\.txt$"
     # pattern=rf"{re.escape(d)}\\update_pnx_interested_list_to_text_file_\d\.txt$"
     pattern = rf"^update_pnx_interested_list_to_text_file_\d\.txt$"
-    pk_print(working_str=rf'''pattern="{pattern}"  {'%%%FOO%%%' if LTA else ''}''')
+    pk_print(str_working=rf'''pattern="{pattern}"  {'%%%FOO%%%' if LTA else ''}''')
     # f_list_in_d 아니고 f_nx_list_in_d 인지 확인필요
     f_list_in_d = os.listdir(d)
     print_iterable_as_vertical(item_iterable=f_list_in_d, item_iterable_n="f_list_in_d")
     f_nx_list_matched = [file for file in f_list_in_d if re.match(pattern, file)]
     pnxs_required = []
     if f_nx_list_matched:
-        pk_print(working_str=rf'''files_matched="{f_nx_list_matched}"  {'%%%FOO%%%' if LTA else ''}''')
+        pk_print(str_working=rf'''files_matched="{f_nx_list_matched}"  {'%%%FOO%%%' if LTA else ''}''')
         for files_nx_matched in f_nx_list_matched:
             pnx = rf"{d}\{files_nx_matched}"
-            pk_print(working_str=rf'''pnx="{pnx}"  {'%%%FOO%%%' if LTA else ''}''')
+            pk_print(str_working=rf'''pnx="{pnx}"  {'%%%FOO%%%' if LTA else ''}''')
             lines = get_list_from_f(f=pnx)
             for line in lines:
                 if not including_texts == []:
@@ -62,7 +62,7 @@ def find_pnx_interested_list_from_txt_f_x(including_texts=[], exclude_texts=[], 
         pnxs_required = get_list_replaced_element_from_str_to_str(working_list=pnxs_required, from_str="\n", to_str="")
         # print_list_as_vertical(working_list=pnxs_required, items_name="pnxs_required")
     else:
-        pk_print(working_str="정규식 패턴에 맞는 f이 존재하지 않습니다.")
+        pk_print(str_working="정규식 패턴에 맞는 f이 존재하지 않습니다.")
 
     pnxs_excluded = []
     for pnx in pnxs_required:

@@ -1,5 +1,5 @@
-from pkg_py.pk_system_object.local_test_activate import LTA
-from pkg_py.pk_system_object.directories import D_PKG_PY
+from pkg_py.system_object.local_test_activate import LTA
+from pkg_py.system_object.directories import D_PKG_PY
 from pkg_py.functions_split.get_nx import get_nx
 from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style
 from pkg_py.functions_split.kill_self_pk_program import kill_self_pk_program
@@ -11,7 +11,7 @@ def pk_kill_pk_program_list():
     f_list_b = [
         rf"{D_PKG_PY}\pk_core.py",
         rf"{D_PKG_PY}\pk_core_class.py",
-        rf"{D_PKG_PY}\pk_system_object.static_logic.py"
+        rf"{D_PKG_PY}\system_object.static_logic.py"
         rf"{D_PKG_PY}\pk_kill_pk_program.py",
     ]
     f_list_b = get_list_that_element_applyed_via_func(func=get_pnx_os_style, working_list=f_list_b)

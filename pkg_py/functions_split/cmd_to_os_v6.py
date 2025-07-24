@@ -1,8 +1,8 @@
 
 
-from pkg_py.pk_system_object.local_test_activate import LTA
-from pkg_py.pk_system_object.encodings import Encoding
-from pkg_py.pk_system_object.stamps import STAMP_ATTEMPTED
+from pkg_py.system_object.local_test_activate import LTA
+from pkg_py.system_object.encodings import Encoding
+from pkg_py.system_object.stamps import STAMP_ATTEMPTED
 from pkg_py.functions_split.pk_print import pk_print
 from pkg_py.functions_split.print_iterable_as_vertical import print_iterable_as_vertical
 
@@ -21,7 +21,7 @@ def cmd_to_os_v6(cmd: str, mode="", encoding=None, mode_with_window=1):
     if mode == "a":
         mode = 'async'
     if LTA:
-        pk_print(working_str=rf'''{STAMP_ATTEMPTED} {cmd} encoding={encoding:5s} mode={mode}''')
+        pk_print(str_working=rf'''{STAMP_ATTEMPTED} {cmd} encoding={encoding:5s} mode={mode}''')
     std_list = []
     if mode == "async":
         if mode_with_window:

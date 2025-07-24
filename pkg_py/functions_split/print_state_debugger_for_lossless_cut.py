@@ -16,9 +16,9 @@ from pkg_py.functions_split.print_iterable_as_vertical import print_iterable_as_
 from pkg_py.functions_split.rerun_losslesscut import rerun_losslesscut
 from pkg_py.functions_split.cmd_to_os import cmd_to_os
 
-from pkg_py.pk_system_object.stamps import STAMP_ATTEMPTED
-from pkg_py.pk_system_object.files import F_LOSSLESSCUT_EXE
-from pkg_py.pk_system_object.directories_reuseable import D_PROJECT
+from pkg_py.system_object.stamps import STAMP_ATTEMPTED
+from pkg_py.system_object.files import F_LOSSLESSCUT_EXE
+from pkg_py.system_object.directories_reuseable import D_PROJECT
 
 from paramiko import SSHClient, AutoAddPolicy
 from moviepy import VideoFileClip
@@ -32,14 +32,14 @@ from colorama import init as pk_colorama_init
 from collections import Counter
 from bs4 import ResultSet
 from bs4 import BeautifulSoup
-from pkg_py.pk_system_object.directories import D_PKG_PY
+from pkg_py.system_object.directories import D_PKG_PY
 from pkg_py.functions_split.get_list_calculated import get_list_calculated
 from pkg_py.functions_split.get_pnx_windows_style import get_pnx_windows_style
 
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.get_pnx_list import get_pnx_list
 
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.pk_print import pk_print
 
 

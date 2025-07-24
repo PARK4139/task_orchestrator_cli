@@ -1,7 +1,7 @@
 import os
 
 from pkg_py.functions_split.ensure_console_debuggable import ensure_console_debuggable
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.workspace.pk_workspace import pk_test_pk_python_program_structure, ensure_git_project_pushed
 
 if __name__ == "__main__":
@@ -16,9 +16,9 @@ if __name__ == "__main__":
         from pkg_py.functions_split.get_value_completed import get_value_completed
         from pkg_py.functions_split.pk_colorama_init_once import pk_colorama_init_once
         from pkg_py.functions_split.push_pnx_to_github import push_pnx_to_github
-        from pkg_py.pk_system_object.directories import D_PKG_TOML
-        from pkg_py.pk_system_object.directories_reuseable import D_PROJECT
-        from pkg_py.pk_system_object.stamps import STAMP_TRY_GUIDE
+        from pkg_py.system_object.directories import D_PKG_TOML
+        from pkg_py.system_object.directories_reuseable import D_PROJECT
+        from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
 
         # python_file_base = D_PROJECT
         # python_filename = rf"pk_push_project_to_github.py"

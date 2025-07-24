@@ -26,11 +26,11 @@ from pkg_py.functions_split.get_f_loading_nx_by_pattern import get_f_loading_nx_
 from pkg_py.functions_split.get_video_filtered_list import get_video_filtered_list
 from pkg_py.functions_split.pk_print_once import pk_print_once
 from pkg_py.functions_split.pk_print import pk_print
-from pkg_py.pk_system_object.files import F_LOSSLESSCUT_EXE
-from pkg_py.pk_system_object.files import F_HISTORICAL_PNX
-from pkg_py.pk_system_object.encodings import Encoding
-from pkg_py.pk_system_object.directories_reuseable import D_PROJECT
-from pkg_py.pk_system_object.directories import D_WORKING
+from pkg_py.system_object.files import F_LOSSLESSCUT_EXE
+from pkg_py.system_object.files import F_HISTORICAL_PNX
+from pkg_py.system_object.encodings import Encoding
+from pkg_py.system_object.directories_reuseable import D_PROJECT
+from pkg_py.system_object.directories import D_WORKING
 
 from passlib.context import CryptContext
 from mutagen.mp3 import MP3
@@ -42,10 +42,10 @@ from Cryptodome.Cipher import AES
 from collections import Counter
 from bs4 import ResultSet
 from pkg_py.functions_split.get_pnx_windows_style import get_pnx_windows_style
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.pk_print import pk_print
 from pkg_py.functions_split.get_d_working import get_d_working
 

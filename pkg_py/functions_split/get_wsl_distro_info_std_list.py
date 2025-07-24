@@ -15,11 +15,11 @@ from selenium.common.exceptions import WebDriverException
 from pynput import mouse
 from pkg_py.functions_split.get_d_working import get_d_working
 from pkg_py.functions_split.cmd_to_os import cmd_to_os
-from pkg_py.pk_system_object.state_via_context import SpeedControlContext
+from pkg_py.system_object.state_via_context import SpeedControlContext
 
 from mutagen.mp3 import MP3
 from base64 import b64decode
-from pkg_py.pk_system_object.etc import PK_UNDERLINE
+from pkg_py.system_object.etc import PK_UNDERLINE
 from pkg_py.functions_split.get_value_completed import get_value_completed
 from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style
 from pkg_py.functions_split.get_pnx_wsl_unix_style import get_pnx_wsl_unix_style

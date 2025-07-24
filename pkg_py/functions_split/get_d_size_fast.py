@@ -9,7 +9,7 @@ import asyncio
 from pytube import Playlist
 # from project_database.test_project_database import MySqlUtil
 from pkg_py.functions_split.pk_print_once import pk_print_once
-from pkg_py.pk_system_object.map_massages import PkMessages2025
+from pkg_py.system_object.map_massages import PkMessages2025
 from mutagen.mp3 import MP3
 from gtts import gTTS
 from datetime import date

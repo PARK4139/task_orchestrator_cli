@@ -12,7 +12,7 @@ from PySide6.QtWidgets import QApplication
 from prompt_toolkit import PromptSession
 from pkg_py.functions_split.load_f_video_on_losslesscut import load_f_video_on_losslesscut
 from pkg_py.functions_split.write_list_to_f import write_list_to_f
-from pkg_py.pk_system_object.state_via_database import PkSqlite3DB
+from pkg_py.system_object.state_via_database import PkSqlite3DB
 from gtts import gTTS
 from concurrent.futures import ThreadPoolExecutor
 from bs4 import ResultSet

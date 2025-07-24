@@ -1,6 +1,6 @@
 # tests/test_ensure_f_list_change_stable.py
 import pytest
-# from pkg_py.pk_system_object.500_live_logic import ensure_f_list_change_stable
+# from pkg_py.system_object.500_live_logic import ensure_f_list_change_stable
 import os
 
 class GetmtimeSeq:
@@ -27,10 +27,10 @@ class GetmtimeSeq:
 
 @pytest.fixture(autouse=True)
 def disable_side_effects(monkeypatch):
-    monkeypatch.setattr('pkg_py.pk_system_object.500_live_logic.get_pnx_os_style', lambda x: x)
+    monkeypatch.setattr('pkg_py.system_object.500_live_logic.get_pnx_os_style', lambda x: x)
     monkeypatch.setattr('os.path.exists', lambda path: True)
-    monkeypatch.setattr('pkg_py.pk_system_object.print_util.pk_print', lambda *args, **kwargs: None)
-    monkeypatch.setattr('pkg_py.pk_system_object.500_live_logic.pk_sleep', lambda secs: None)
+    monkeypatch.setattr('pkg_py.system_object.print_util.pk_print', lambda *args, **kwargs: None)
+    monkeypatch.setattr('pkg_py.system_object.500_live_logic.pk_sleep', lambda secs: None)
 
 
 def test_변경없을_때_True반환():

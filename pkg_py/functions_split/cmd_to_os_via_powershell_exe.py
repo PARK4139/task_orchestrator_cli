@@ -1,6 +1,6 @@
 
 
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.local_test_activate import LTA
 
 from pkg_py.functions_split.pk_print import pk_print
 from pkg_py.functions_split.pk_press import pk_press
@@ -13,7 +13,7 @@ def cmd_to_os_via_powershell_exe(cmd, console_keep_mode=False, admin_mode=False)
 
     # | clip 을 하여도 값을 읽어오기 어려운 경우가 있음
     window_title_seg = rf'PowerShell'
-    pk_print(working_str=rf'''cmd="{cmd}"  {'%%%FOO%%%' if LTA else ''}''')
+    pk_print(str_working=rf'''cmd="{cmd}"  {'%%%FOO%%%' if LTA else ''}''')
     if not is_window_opened(window_title_seg=window_title_seg):
         # run_cmd_exe()
         if admin_mode == False:
@@ -37,7 +37,7 @@ def cmd_to_os_via_powershell_exe(cmd, console_keep_mode=False, admin_mode=False)
         # 5초가 지났는지 확인
         # pk_print(str_working=time.time() - time_s)
         if time.time() - time_s > time_limit:
-            pk_print(working_str="5 seconds passed. Exiting loop.")
+            pk_print(str_working="5 seconds passed. Exiting loop.")
             break
         pk_sleep(seconds=0.5)  # CPU 점유율을 낮추기 위해 약간의 대기
 
@@ -54,7 +54,7 @@ def cmd_to_os_via_powershell_exe(cmd, console_keep_mode=False, admin_mode=False)
                 break
             # pk_print(str_working=time.time() - time_s)
             if time.time() - time_s > time_limit:
-                pk_print(working_str="5 seconds passed. Exiting loop.")
+                pk_print(str_working="5 seconds passed. Exiting loop.")
                 break
             pk_sleep(seconds=0.5)  # CPU 점유율을 낮추기 위해 약간의 대기
     return std_output_stream

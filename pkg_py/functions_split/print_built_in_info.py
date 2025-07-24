@@ -19,10 +19,10 @@ from pkg_py.functions_split.is_losslesscut_running import is_losslesscut_running
 from pkg_py.functions_split.is_window_opened import is_window_opened
 from pkg_py.functions_split.pk_press import pk_press
 from pkg_py.functions_split.get_list_sorted import get_list_sorted
-from pkg_py.pk_system_object.files import F_FFMPEG_EXE
-from pkg_py.pk_system_object.encodings import Encoding
-from pkg_py.pk_system_object.directories_reuseable import D_PROJECT
-from pkg_py.pk_system_object.state_via_context import SpeedControlContext
+from pkg_py.system_object.files import F_FFMPEG_EXE
+from pkg_py.system_object.encodings import Encoding
+from pkg_py.system_object.directories_reuseable import D_PROJECT
+from pkg_py.system_object.state_via_context import SpeedControlContext
 from PIL import Image
 from moviepy import VideoFileClip
 from functools import partial
@@ -44,17 +44,17 @@ def print_built_in_info(thing_curious):
 
     func_n = inspect.currentframe().f_code.co_name
     pk_print(f"{inspect.currentframe().f_code.co_name} {str(thing_curious.__code__.co_varnames)}")
-    pk_print(working_str="_______________________________________________________________ " + str() + "(" + str(
+    pk_print(str_working="_______________________________________________________________ " + str() + "(" + str(
         thing_curious) + ") s")
-    pk_print(working_str="print(inspect.getsource(thing_curious))")
+    pk_print(str_working="print(inspect.getsource(thing_curious))")
     print(inspect.getsource(thing_curious))
-    pk_print(working_str="for i in inspect.getmembers(thing_curious_):")
+    pk_print(str_working="for i in inspect.getmembers(thing_curious_):")
     for i in inspect.getmembers(thing_curious):
         print(i)
-    pk_print(working_str="print(help(thing_curious))")
+    pk_print(str_working="print(help(thing_curious))")
     print(help(thing_curious))
-    pk_print(working_str="[x for x in dir(thing_curious) if '__' not in x]")
+    pk_print(str_working="[x for x in dir(thing_curious) if '__' not in x]")
     foo = [x for x in dir(thing_curious) if '__' not in x]
     # dir() 함수는 값 없이 지정된 객체의 모든 속성과 메서드를 반환합니다 .
     # 이 함수는 모든 속성과 메서드를 반환하며, 모든 개체에 대한 기본값인 내장 속성도 반환합니다.
-    pk_print(working_str="[x for x in dir(thing_curious) if '__' not in x]")
+    pk_print(str_working="[x for x in dir(thing_curious) if '__' not in x]")

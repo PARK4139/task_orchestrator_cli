@@ -1,4 +1,4 @@
-from pkg_py.pk_system_object.map_massages import PkMessages2025
+from pkg_py.system_object.map_massages import PkMessages2025
 
 from pkg_py.functions_split.ensure_pnx_made import ensure_pnx_made
 from pkg_py.functions_split.get_x import get_x

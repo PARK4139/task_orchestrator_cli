@@ -6,7 +6,7 @@ if __name__ == '__main__':
     try:
         import traceback
         #  import pk_deprecated_get_d_current_n_like_person, get_f_current_n, chcp_65001, get_os_n, organize_tree, gather_empty_d, get_p, organize_d_list_by_stamp
-        # from pkg_py.pk_system_object.static_logic import D_PROJECT, UNDERLINE, STAMP_TRY_GUIDE, STAMP_PYTHON_DEBUGGING_NOTE, STAMP_EXCEPTION_DISCOVERED, D_WORKING
+        # from pkg_py.system_object.static_logic import D_PROJECT, UNDERLINE, STAMP_TRY_GUIDE, STAMP_PYTHON_DEBUGGING_NOTE, STAMP_EXCEPTION_DISCOVERED, D_WORKING
         #
         #
         import threading
@@ -64,10 +64,10 @@ if __name__ == '__main__':
     except Exception as e:
         ensure_do_exception_routine(traceback=traceback, exception=exception)
 
-        pk_print(working_str=f'{PK_UNDERLINE}', print_color='red')
+        pk_print(str_working=f'{PK_UNDERLINE}', print_color='red')
         for traceback_format_exc_str in traceback_format_exc_list:
-            pk_print(working_str=f'{STAMP_EXCEPTION_DISCOVERED} {traceback_format_exc_str}', print_color='red')
-        pk_print(working_str=f'{PK_UNDERLINE}', print_color='red')
+            pk_print(str_working=f'{STAMP_EXCEPTION_DISCOVERED} {traceback_format_exc_str}', print_color='red')
+        pk_print(str_working=f'{PK_UNDERLINE}', print_color='red')
 
         
 

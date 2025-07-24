@@ -1,6 +1,6 @@
 
 
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.pk_print import pk_print
 
 
@@ -49,13 +49,13 @@ def make_shellscript_version_new_via_hard_coded_v_1_0_0():
 
         # f 유효성 검사
         if not os.path.isfile(file_pnx):
-            pk_print(working_str=rf'''file_pnx="{file_pnx}"  {'%%%FOO%%%' if LTA else ''}''')
+            pk_print(str_working=rf'''file_pnx="{file_pnx}"  {'%%%FOO%%%' if LTA else ''}''')
             return
 
         # 복사
         file_pnx_new = get_f_next_versioned(os.path.basename(file_pnx))
         shutil.copy2(file_pnx, file_pnx_new)
-        pk_print(working_str=rf'''file_pnx_new="{file_pnx_new}"  {'%%%FOO%%%' if LTA else ''}''')
+        pk_print(str_working=rf'''file_pnx_new="{file_pnx_new}"  {'%%%FOO%%%' if LTA else ''}''')
 
     # 절대 경로를 사용하여 대상 f의 절대 경로를 입력
     file_pnxs = [

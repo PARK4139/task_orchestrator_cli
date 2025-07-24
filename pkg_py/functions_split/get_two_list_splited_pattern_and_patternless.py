@@ -4,7 +4,7 @@ import os
 from selenium.webdriver.common.keys import Keys
 from pytube import Playlist
 from pkg_py.functions_split.get_f_loading_nx_by_pattern import get_f_loading_nx_by_pattern
-from pkg_py.pk_system_object.encodings import Encoding
+from pkg_py.system_object.encodings import Encoding
 
 from datetime import date
 from pkg_py.functions_split.get_pnx_list import get_pnx_list

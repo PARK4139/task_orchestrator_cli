@@ -1,4 +1,4 @@
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.pk_print import pk_print
 
 
@@ -24,8 +24,8 @@ def print_original_log_f(issue_log_index_data):
     issue_log_index_data["_f_ 위치"] = issue_log_index_data["_f_ 위치"].replace("/", f"\\")
 
     src = rf"\\192.168.1.33\01_Issue\{issue_log_index_data["_f_ 위치"]}"
-    pk_print(working_str=rf'''src="{src}"  {'%%%FOO%%%' if LTA else ''}''')
+    pk_print(str_working=rf'''src="{src}"  {'%%%FOO%%%' if LTA else ''}''')
     if original_log == True:
         src = rf"\\192.168.1.33\02_Orignal\{issue_log_index_data["차량"]}\{issue_log_index_data["지역"]}\{issue_log_index_data["주행일자"]}\{issue_log_index_data["코스"]}\{origin_log_file_name}"
-        pk_print(working_str=rf'''src="{src}"  {'%%%FOO%%%' if LTA else ''}''')
+        pk_print(str_working=rf'''src="{src}"  {'%%%FOO%%%' if LTA else ''}''')
         return

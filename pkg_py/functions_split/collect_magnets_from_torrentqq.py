@@ -19,18 +19,18 @@ from pkg_py.functions_split.is_window_title_front import is_window_title_front
 from pkg_py.functions_split.is_window_title_opened import is_window_title_opened
 from pkg_py.functions_split.pk_print_once import pk_print_once
 from pkg_py.functions_split.write_list_to_f import write_list_to_f
-from pkg_py.pk_system_object.files import F_POT_PLAYER_MINI_64_EXE
-from pkg_py.pk_system_object.directories import D_PKG_TXT
+from pkg_py.system_object.files import F_POT_PLAYER_MINI_64_EXE
+from pkg_py.system_object.directories import D_PKG_TXT
 from PIL import Image
 from functools import lru_cache
 from enum import Enum
 from colorama import init as pk_colorama_init
 from bs4 import ResultSet
-from pkg_py.pk_system_object.etc import PK_UNDERLINE
-from pkg_py.pk_system_object.is_os_windows import is_os_windows
+from pkg_py.system_object.etc import PK_UNDERLINE
+from pkg_py.system_object.is_os_windows import is_os_windows
 from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
 
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.pk_print import pk_print
 
 
@@ -74,7 +74,7 @@ def collect_magnets_from_torrentqq(search_keyword=None, driver=None, via_f_txt=T
         filtered_list = get_list_deduplicated(working_list=filtered_list)
         pk_print(f'''search_keyword_list={filtered_list}  {'%%%FOO%%%' if LTA else ''}''')
         print_iterable_as_vertical(item_iterable=filtered_list, item_iterable_n='search_keyword_list')
-        pk_print(working_str=rf'''len(search_keyword_list)="{len(filtered_list)}"  {'%%%FOO%%%' if LTA else ''}''')
+        pk_print(str_working=rf'''len(search_keyword_list)="{len(filtered_list)}"  {'%%%FOO%%%' if LTA else ''}''')
 
         # if driver is None:
         #     driver = get_driver_selenium_solved_cloudflare_sequrity()

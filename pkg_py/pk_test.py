@@ -6,8 +6,8 @@ from pkg_py.functions_split.ensure_do_exception_routine import ensure_do_excepti
 from pkg_py.functions_split.ensure_do_finally_routine import ensure_do_finally_routine
 from pkg_py.functions_split.pk_assist_to_alert_time import pk_jarvis
 from pkg_py.functions_split.pk_speak import pk_speak
-from pkg_py.pk_system_object.directories_reuseable import D_PROJECT
-from pkg_py.pk_system_object.stamps import STAMP_TRY_GUIDE
+from pkg_py.system_object.directories_reuseable import D_PROJECT
+from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
 from pkg_py.workspace.pk_workspace import ensure_this_code_operated
 
 

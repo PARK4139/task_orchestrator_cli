@@ -1,9 +1,9 @@
 from pkg_py.functions_split.cmd_to_os import cmd_to_os
-from pkg_py.pk_system_object.is_os_windows import is_os_windows
+from pkg_py.system_object.is_os_windows import is_os_windows
 
-from pkg_py.pk_system_object.directories import D_PKG_PY
-from pkg_py.pk_system_object.directories import D_WORKING
-from pkg_py.pk_system_object.directories_reuseable import D_PROJECT
+from pkg_py.system_object.directories import D_PKG_PY
+from pkg_py.system_object.directories import D_WORKING
+from pkg_py.system_object.directories_reuseable import D_PROJECT
 from pkg_py.functions_split.is_os_windows import is_os_windows
 from pkg_py.functions_split.get_nx import get_nx
 from pkg_py.functions_split.cmd_to_os import cmd_to_os

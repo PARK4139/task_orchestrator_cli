@@ -22,18 +22,18 @@ from pkg_py.functions_split.is_window_title_opened import is_window_title_opened
 from pkg_py.functions_split.is_window_opened import is_window_opened
 
 from pkg_py.functions_split.write_list_to_f import write_list_to_f
-from pkg_py.pk_system_object.encodings import Encoding
-from pkg_py.pk_system_object.map_massages import PkMessages2025
-from pkg_py.pk_system_object.print_red import print_red
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.encodings import Encoding
+from pkg_py.system_object.map_massages import PkMessages2025
+from pkg_py.system_object.print_red import print_red
+from pkg_py.system_object.local_test_activate import LTA
 from os.path import dirname
 from bs4 import BeautifulSoup
 from base64 import b64decode
 from pkg_py.functions_split.assist_to_load_video_at_losslesscut import pk_ensure_video_loaded_at_losslesscut
 from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.local_test_activate import LTA
 
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.local_test_activate import LTA
 
 
 def get_vpc_core_cnt_via_scp(vpc_data_raw):

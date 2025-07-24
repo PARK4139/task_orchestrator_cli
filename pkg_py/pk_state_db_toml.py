@@ -5,7 +5,7 @@
 #
 # from PySide6.QtCore import Signal, QThread
 #
-# from pk_system_object.static_logic import PROJECT_D
+# from system_object.static_logic import PROJECT_D
 #
 # directory_abspath = PROJECT_D
 #

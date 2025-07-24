@@ -4,8 +4,8 @@ from pkg_py.functions_split.pk_print import pk_print
 
 def get_pk_program_language_v2():
     import inspect
-    from pkg_py.pk_system_object.local_test_activate import LTA
-    from pkg_py.pk_system_object.state_via_database import PkSqlite3DB
+    from pkg_py.system_object.local_test_activate import LTA
+    from pkg_py.system_object.state_via_database import PkSqlite3DB
 
     func_n = inspect.currentframe().f_code.co_name
     db = PkSqlite3DB()

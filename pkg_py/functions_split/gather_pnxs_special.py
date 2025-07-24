@@ -1,7 +1,7 @@
 
 
-from pkg_py.pk_system_object.directories import D_DOWNLOADS
-from pkg_py.pk_system_object.directories_reuseable import D_PROJECT
+from pkg_py.system_object.directories import D_DOWNLOADS
+from pkg_py.system_object.directories_reuseable import D_PROJECT
 from pkg_py.functions_split.pk_print import pk_print
 from pkg_py.functions_split.is_window_opened import is_window_opened
 from pkg_py.functions_split.get_d_working import get_d_working

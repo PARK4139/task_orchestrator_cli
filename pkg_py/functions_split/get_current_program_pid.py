@@ -24,7 +24,7 @@ from pkg_py.functions_split.load_f_video_on_losslesscut import load_f_video_on_l
 from pkg_py.functions_split.is_window_title_front import is_window_title_front
 from pkg_py.functions_split.is_window_opened import is_window_opened
 from pkg_py.functions_split.pk_print_once import pk_print_once
-from pkg_py.pk_system_object.files import F_LOSSLESSCUT_EXE
+from pkg_py.system_object.files import F_LOSSLESSCUT_EXE
 from pathlib import Path
 from passlib.context import CryptContext
 from moviepy import VideoFileClip

@@ -1,4 +1,4 @@
-from pkg_py.pk_system_object.map_massages import PkMessages2025
+from pkg_py.system_object.map_massages import PkMessages2025
 
 from pkg_py.functions_split.cmd_to_os import cmd_to_os
 

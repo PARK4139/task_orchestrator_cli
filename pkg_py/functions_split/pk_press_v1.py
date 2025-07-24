@@ -11,7 +11,7 @@ def pk_press_v1(*presses: str, interval=0.0):
                 key_list = get_list_striped_element(key_list)
                 pyautogui.hotkey(*key_list, interval=interval)
                 tmp = ' + '.join(i for i in presses)
-                pk_print(working_str=rf'''{tmp}  {'%%%FOO%%%' if LTA else ''}''')
+                pk_print(str_working=rf'''{tmp}  {'%%%FOO%%%' if LTA else ''}''')
                 break
             if presses == "pgup":
                 presses = "pageup"
@@ -20,7 +20,7 @@ def pk_press_v1(*presses: str, interval=0.0):
             for i in pyautogui.KEYBOARD_KEYS:
                 if str(i) == str(presses[0]):
                     pyautogui.press(str(presses[0]), interval=interval)
-                    pk_print(working_str=rf'''{i}  {'%%%FOO%%%' if LTA else ''}''')
+                    pk_print(str_working=rf'''{i}  {'%%%FOO%%%' if LTA else ''}''')
                     break
                 else:
                     pass
@@ -28,7 +28,7 @@ def pk_press_v1(*presses: str, interval=0.0):
         else:
             pyautogui.hotkey(*presses, interval=interval)
             tmp = ' + '.join(i for i in presses)
-            pk_print(working_str=rf'''{tmp}  {'%%%FOO%%%' if LTA else ''}''')
+            pk_print(str_working=rf'''{tmp}  {'%%%FOO%%%' if LTA else ''}''')
         # pk_sleep(milliseconds=100)
         break
 

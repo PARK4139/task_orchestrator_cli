@@ -14,8 +14,8 @@ from pytube import Playlist
 from prompt_toolkit.styles import Style
 from pkg_py.functions_split.get_f_video_to_load import get_f_video_to_load
 
-from pkg_py.pk_system_object.files import F_POT_PLAYER_MINI_64_EXE
-from pkg_py.pk_system_object.files import F_HISTORICAL_PNX
+from pkg_py.system_object.files import F_POT_PLAYER_MINI_64_EXE
+from pkg_py.system_object.files import F_HISTORICAL_PNX
 from mutagen.mp3 import MP3
 from fastapi import HTTPException
 from Cryptodome.Cipher import AES

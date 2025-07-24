@@ -1,11 +1,11 @@
-from pkg_py.pk_system_object.is_os_windows import is_os_windows
-from pkg_py.pk_system_object.map_massages import PkMessages2025
+from pkg_py.system_object.is_os_windows import is_os_windows
+from pkg_py.system_object.map_massages import PkMessages2025
 
-from pkg_py.pk_system_object.local_test_activate import LTA
-from pkg_py.pk_system_object.state_via_database import PkSqlite3DB
-from pkg_py.pk_system_object.directories import D_PKG_TXT
-from pkg_py.pk_system_object.directories import D_WORKING
-from pkg_py.pk_system_object.files import F_FFMPEG_EXE
+from pkg_py.system_object.local_test_activate import LTA
+from pkg_py.system_object.state_via_database import PkSqlite3DB
+from pkg_py.system_object.directories import D_PKG_TXT
+from pkg_py.system_object.directories import D_WORKING
+from pkg_py.system_object.files import F_FFMPEG_EXE
 from pkg_py.functions_split.is_os_windows import is_os_windows
 from pkg_py.functions_split.get_nx import get_nx
 from pkg_py.functions_split.pk_print import pk_print
@@ -14,13 +14,13 @@ from pkg_py.functions_split.ensure_window_to_front import ensure_window_to_front
 
 
 def download_youtube_videos(urls=None):
-    # from pkg_py.pk_system_object.state_via_database import PkSqlite3DB
-    # from pkg_py.pk_system_object.map_massages import PkMessages2025
+    # from pkg_py.system_object.state_via_database import PkSqlite3DB
+    # from pkg_py.system_object.map_massages import PkMessages2025
     # , D_WORKING
-    # from pkg_py.pk_system_object.files import F_FFMPEG_EXE
+    # from pkg_py.system_object.files import F_FFMPEG_EXE
     #
-    # from pkg_py.pk_system_object.files_and_directories_logic import get_pnx_os_style, get_nx
-    # from pkg_py.pk_system_object.is_os_windows import is_os_windows
+    # from pkg_py.system_object.files_and_directories_logic import get_pnx_os_style, get_nx
+    # from pkg_py.system_object.is_os_windows import is_os_windows
     #
     import inspect
     import yt_dlp

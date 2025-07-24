@@ -1,6 +1,6 @@
 
 
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.local_test_activate import LTA
 
 from pkg_py.functions_split.pk_print import pk_print
 from pkg_py.functions_split.pk_press import pk_press
@@ -10,14 +10,14 @@ from pkg_py.functions_split.ensure_window_to_front import ensure_window_to_front
 
 
 #
-# from pkg_py.pk_system_object.files_and_directories_maker_logic import ensure_pnx_made
-# from pkg_py.pk_system_object.mouse_and_keyboard import write_like_person
-# from pkg_py.pk_system_object.is_os_windows import is_os_windows
+# from pkg_py.system_object.files_and_directories_maker_logic import ensure_pnx_made
+# from pkg_py.system_object.mouse_and_keyboard import write_like_person
+# from pkg_py.system_object.is_os_windows import is_os_windows
 # , pk_print_state
-# from pkg_py.pk_system_object.time_and_lanauge_util import pk_sleep
-# from pkg_py.pk_system_object.directories import D_PKG_WINDOWS
-# from pkg_py.pk_system_object.encodings import Encoding
-# from pkg_py.pk_system_object.stamps import STAMP_REMOTE_ERROR, STAMP_REMOTE_DEBUG, STAMP_ATTEMPTED
+# from pkg_py.system_object.time_and_lanauge_util import pk_sleep
+# from pkg_py.system_object.directories import D_PKG_WINDOWS
+# from pkg_py.system_object.encodings import Encoding
+# from pkg_py.system_object.stamps import STAMP_REMOTE_ERROR, STAMP_REMOTE_DEBUG, STAMP_ATTEMPTED
 
 
 def cmd_to_os_like_person(cmd, admin_mode=False, mode_exit=True):
@@ -29,7 +29,7 @@ def cmd_to_os_like_person(cmd, admin_mode=False, mode_exit=True):
     '''
     window_title_seg = rf'cmd.exe'
     # | clip 을 하여도 값을 읽어오기 어려운 경우가 있음
-    pk_print(working_str=rf'''cmd="{cmd}"  {'%%%FOO%%%' if LTA else ''}''')
+    pk_print(str_working=rf'''cmd="{cmd}"  {'%%%FOO%%%' if LTA else ''}''')
     if not is_window_opened(window_title_seg=window_title_seg):
         if admin_mode == False:
 
@@ -55,7 +55,7 @@ def cmd_to_os_like_person(cmd, admin_mode=False, mode_exit=True):
         ensure_window_to_front(window_title_seg=window_title_seg)
         # # pk_print(str_working=time.time() - time_s)
         if time.time() - time_s > time_limit:
-            pk_print(working_str=rf'''rf"{time_limit} seconds passed. Exiting loop."  {'%%%FOO%%%' if LTA else ''}''')
+            pk_print(str_working=rf'''rf"{time_limit} seconds passed. Exiting loop."  {'%%%FOO%%%' if LTA else ''}''')
             break
         pk_sleep(seconds=0.5)  # CPU 점유율을 낮추기 위해 약간의 대기
 
@@ -69,7 +69,7 @@ def cmd_to_os_like_person(cmd, admin_mode=False, mode_exit=True):
                 pk_press("enter")
         # pk_print(str_working=time.time() - time_s)
         if time.time() - time_s > time_limit:
-            pk_print(working_str="5 seconds passed. Exiting loop.")
+            pk_print(str_working="5 seconds passed. Exiting loop.")
             break
         pk_sleep(seconds=0.5)  # CPU 점유율을 낮추기 위해 약간의 대기
     return std_str

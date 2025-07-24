@@ -13,7 +13,7 @@ from pkg_py.functions_split.is_losslesscut_running import is_losslesscut_running
 from pkg_py.functions_split.is_window_title_opened import is_window_title_opened
 
 from pkg_py.functions_split.set_pk_context_state import set_pk_context_state
-from pkg_py.pk_system_object.state_via_context import SpeedControlContext
+from pkg_py.system_object.state_via_context import SpeedControlContext
 from PIL import Image
 from os.path import dirname
 from os import path
@@ -30,7 +30,7 @@ from pkg_py.functions_split.is_os_windows import is_os_windows
 from pkg_py.functions_split.get_pnx_wsl_unix_style import get_pnx_wsl_unix_style
 from pkg_py.functions_split.get_pnx_windows_style import get_pnx_windows_style
 
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.pk_print import pk_print
 from pkg_py.functions_split.get_pnx_list import get_pnx_list
 

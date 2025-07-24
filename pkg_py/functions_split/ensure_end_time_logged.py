@@ -1,7 +1,7 @@
 
 
 def ensure_end_time_logged():
-    from pkg_py.pk_system_object.color_map import PK_ANSI_COLOR_MAP
+    from pkg_py.system_object.color_map import PK_ANSI_COLOR_MAP
     import time
     end_time = time.time()
     GREEN = PK_ANSI_COLOR_MAP['GREEN']

@@ -1,7 +1,7 @@
 if __name__ == "__main__":
     import traceback
     try:
-        seconds = ensure_input_preprocessed(working_str=f"seconds=", upper_seconds_limit=10, return_default=f"{10}")
+        seconds = ensure_input_preprocessed(str_working=f"seconds=", upper_seconds_limit=10, return_default=f"{10}")
         seconds = seconds.strip()
         make_os_shutdown(seconds=seconds)
 

@@ -4,11 +4,11 @@ def pk_ensure_keyboard_mouse_macro(macro_routine):
     import os
     import time
     from pkg_py.functions_split.ensure_pycharm_module_optimize import ensure_pycharm_module_optimize
-    from pkg_py.pk_system_object.local_test_activate import LTA
-    from pkg_py.pk_system_object.state_via_database import PkSqlite3DB
-    from pkg_py.pk_system_object.map_massages import PkMessages2025
-    from pkg_py.pk_system_object.color_map import PK_ANSI_COLOR_MAP
-    from pkg_py.pk_system_object.directories import D_DESKTOP
+    from pkg_py.system_object.local_test_activate import LTA
+    from pkg_py.system_object.state_via_database import PkSqlite3DB
+    from pkg_py.system_object.map_massages import PkMessages2025
+    from pkg_py.system_object.color_map import PK_ANSI_COLOR_MAP
+    from pkg_py.system_object.directories import D_DESKTOP
     from pkg_py.refactor.pk_ensure_keyboard_mouse_macro import PkMacroRoutines
     from pkg_py.functions_split.ensure_elapsed_time_logged import ensure_elapsed_time_logged
     from pkg_py.functions_split.ensure_start_time_logged import ensure_start_time_logged

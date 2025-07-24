@@ -1,4 +1,4 @@
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.pk_print import pk_print
 from pkg_py.functions_split.print_iterable_as_vertical import print_iterable_as_vertical
 
@@ -17,4 +17,4 @@ def print_sub_pnx_list(src):
 
     # 확인
     print_iterable_as_vertical(item_iterable=pnx_list, item_iterable_n="바꿀 대상")
-    pk_print(working_str=rf'''len(pnxs)="{len(pnx_list)}"  {'%%%FOO%%%' if LTA else ''}''')
+    pk_print(str_working=rf'''len(pnxs)="{len(pnx_list)}"  {'%%%FOO%%%' if LTA else ''}''')

@@ -41,8 +41,8 @@ from pkg_py.functions_split.pk_press import pk_press
 from pkg_py.functions_split.pk_print_once import pk_print_once
 
 from pkg_py.functions_split.cmd_to_os import cmd_to_os
-from pkg_py.pk_system_object.stamps import STAMP_TRY_GUIDE
-from pkg_py.pk_system_object.files import F_HISTORICAL_PNX
+from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
+from pkg_py.system_object.files import F_HISTORICAL_PNX
 
 from pathlib import Path
 from datetime import timedelta
@@ -59,7 +59,7 @@ from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style
 from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
 from pkg_py.functions_split.get_pnx_windows_style import get_pnx_windows_style
 
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.get_pnx_list import get_pnx_list
 
 

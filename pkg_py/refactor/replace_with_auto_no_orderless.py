@@ -69,21 +69,21 @@ from pkg_py.functions_split.get_list_sorted import get_list_sorted
 
 from pkg_py.functions_split.set_pk_context_state import set_pk_context_state
 from pkg_py.functions_split.ensure_console_cleared import ensure_console_cleared
-from pkg_py.pk_system_object.stamps import STAMP_TRY_GUIDE
-from pkg_py.pk_system_object.stamps import STAMP_ATTEMPTED
-from pkg_py.pk_system_object.files import F_POT_PLAYER_MINI_64_EXE
-from pkg_py.pk_system_object.files import F_LOSSLESSCUT_EXE
-from pkg_py.pk_system_object.files import F_HISTORICAL_PNX
-from pkg_py.pk_system_object.files import F_FFMPEG_EXE
-from pkg_py.pk_system_object.encodings import Encoding
-from pkg_py.pk_system_object.directories_reuseable import D_PROJECT
-from pkg_py.pk_system_object.directories import D_PKG_TXT, D_WORKING
-from pkg_py.pk_system_object.directories import D_DOWNLOADS, D_PKG_PKL
-from pkg_py.pk_system_object.map_massages import PkMessages2025
-from pkg_py.pk_system_object.print_red import print_red
-from pkg_py.pk_system_object.state_via_database import PkSqlite3DB
-from pkg_py.pk_system_object.state_via_context import SpeedControlContext
-from pkg_py.pk_system_object.get_list_calculated import get_list_calculated
+from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
+from pkg_py.system_object.stamps import STAMP_ATTEMPTED
+from pkg_py.system_object.files import F_POT_PLAYER_MINI_64_EXE
+from pkg_py.system_object.files import F_LOSSLESSCUT_EXE
+from pkg_py.system_object.files import F_HISTORICAL_PNX
+from pkg_py.system_object.files import F_FFMPEG_EXE
+from pkg_py.system_object.encodings import Encoding
+from pkg_py.system_object.directories_reuseable import D_PROJECT
+from pkg_py.system_object.directories import D_PKG_TXT, D_WORKING
+from pkg_py.system_object.directories import D_DOWNLOADS, D_PKG_PKL
+from pkg_py.system_object.map_massages import PkMessages2025
+from pkg_py.system_object.print_red import print_red
+from pkg_py.system_object.state_via_database import PkSqlite3DB
+from pkg_py.system_object.state_via_context import SpeedControlContext
+from pkg_py.system_object.get_list_calculated import get_list_calculated
 from PIL import Image, ImageFont, ImageDraw, ImageFilter
 from PIL import Image, ImageFilter
 from PIL import Image
@@ -102,8 +102,8 @@ from collections import Counter
 from base64 import b64encode
 from base64 import b64decode
 from pkg_py.functions_split.get_nx import get_nx
-from pkg_py.pk_system_object.etc import PkFilter, PK_UNDERLINE
-from pkg_py.pk_system_object.stamps import STAMP_TRY_GUIDE, STAMP_UNIT_TEST_EXCEPTION_DISCOVERED
+from pkg_py.system_object.etc import PkFilter, PK_UNDERLINE
+from pkg_py.system_object.stamps import STAMP_TRY_GUIDE, STAMP_UNIT_TEST_EXCEPTION_DISCOVERED
 from pkg_py.functions_split.get_value_completed import get_value_completed
 from pkg_py.functions_split.get_pnx_list import get_pnx_list
 from pkg_py.functions_split.get_list_calculated import get_list_calculated
@@ -117,7 +117,7 @@ from pkg_py.functions_split.get_pnx_wsl_unix_style import get_pnx_wsl_unix_style
 from pkg_py.functions_split.get_pnx_windows_style import get_pnx_windows_style
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.local_test_activate import LTA
 
 
 def replace_with_auto_no_orderless(contents: str, unique_word: str, auto_cnt_starting_no=0):

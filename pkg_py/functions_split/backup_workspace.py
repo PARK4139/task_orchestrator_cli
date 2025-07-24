@@ -4,14 +4,14 @@ from pkg_py.functions_split.pk_measure_seconds import pk_measure_seconds
 @pk_measure_seconds
 def backup_workspace(D_PKG_ARCHIVED, d_working, func_n):
     import traceback
-    from pkg_py.pk_system_object.local_test_activate import LTA
+    from pkg_py.system_object.local_test_activate import LTA
     from pkg_py.functions_split.ensure_do_exception_routine import ensure_do_exception_routine
     from pkg_py.functions_split.pk_print import pk_print
     import logging
     import os
     import tarfile
     from datetime import datetime
-    from pkg_py.pk_system_object.map_massages import PkMessages2025
+    from pkg_py.system_object.map_massages import PkMessages2025
     try:
         # 0. 경로 정규화
         from pathlib import Path

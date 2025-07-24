@@ -6,8 +6,8 @@ if __name__ == "__main__":
         from pkg_py.functions_split.kill_self_pk_program import kill_self_pk_program
         from pkg_py.functions_split.pk_colorama_init_once import pk_colorama_init_once
         from pkg_py.functions_split.pk_toggle_pk_config_key import pk_toggle_pk_config_key
-        from pkg_py.pk_system_object.directories_reuseable import D_PROJECT
-        from pkg_py.pk_system_object.stamps import STAMP_TRY_GUIDE
+        from pkg_py.system_object.directories_reuseable import D_PROJECT
+        from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
         import traceback
         from colorama import init as pk_colorama_init
 

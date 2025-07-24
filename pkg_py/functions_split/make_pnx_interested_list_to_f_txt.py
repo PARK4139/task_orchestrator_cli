@@ -13,16 +13,16 @@ from PySide6.QtWidgets import QApplication
 from pkg_py.functions_split.ensure_window_to_front import ensure_window_to_front
 from pkg_py.functions_split.is_window_opened import is_window_opened
 from pkg_py.functions_split.pk_print import pk_print
-from pkg_py.pk_system_object.directories import D_PKG_TXT
-from pkg_py.pk_system_object.get_list_calculated import get_list_calculated
+from pkg_py.system_object.directories import D_PKG_TXT
+from pkg_py.system_object.get_list_calculated import get_list_calculated
 
 from os import path
 from fastapi import HTTPException
 from enum import Enum
 from colorama import init as pk_colorama_init
 from pkg_py.functions_split.kill_self_pk_program import kill_self_pk_program
-from pkg_py.pk_system_object.etc import PK_UNDERLINE
-from pkg_py.pk_system_object.directories import D_DOWNLOADS
+from pkg_py.system_object.etc import PK_UNDERLINE
+from pkg_py.system_object.directories import D_DOWNLOADS
 from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style
 
 from pkg_py.functions_split.pk_print import pk_print

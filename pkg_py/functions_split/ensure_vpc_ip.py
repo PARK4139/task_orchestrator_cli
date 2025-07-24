@@ -1,4 +1,4 @@
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.pk_print import pk_print
 
 
@@ -11,7 +11,7 @@ def ensure_vpc_ip(vpc_data, **config_remote_os):
     while 1:
         set_vpc_ip(vpc_data, **config_remote_os)
         if not ping(ip_new):
-            pk_print(working_str=rf'''{vpc_type} set as {vpc_side_mode} side {'%%%FOO%%%' if LTA else ''}''',
+            pk_print(str_working=rf'''{vpc_type} set as {vpc_side_mode} side {'%%%FOO%%%' if LTA else ''}''',
                      print_color="red")
             raise
         else:

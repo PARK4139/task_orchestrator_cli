@@ -29,13 +29,13 @@ from pkg_py.functions_split.pk_print_state import pk_print_state
 
 from pkg_py.functions_split.cmd_to_os import cmd_to_os
 from pkg_py.functions_split.write_list_to_f import write_list_to_f
-from pkg_py.pk_system_object.etc import PkFilter
-from pkg_py.pk_system_object.files import F_HISTORICAL_PNX
-from pkg_py.pk_system_object.map_massages import PkMessages2025
-from pkg_py.pk_system_object.print_red import print_red
-from pkg_py.pk_system_object.state_via_database import PkSqlite3DB
-from pkg_py.pk_system_object.state_via_context import SpeedControlContext
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.etc import PkFilter
+from pkg_py.system_object.files import F_HISTORICAL_PNX
+from pkg_py.system_object.map_massages import PkMessages2025
+from pkg_py.system_object.print_red import print_red
+from pkg_py.system_object.state_via_database import PkSqlite3DB
+from pkg_py.system_object.state_via_context import SpeedControlContext
+from pkg_py.system_object.local_test_activate import LTA
 
 from PIL import Image
 from passlib.context import CryptContext
@@ -45,12 +45,12 @@ from cryptography.hazmat.backends import default_backend
 from colorama import init as pk_colorama_init
 from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style
 from pkg_py.functions_split.get_pnx_list import get_pnx_list
-from pkg_py.pk_system_object.directories import D_PKG_PY
+from pkg_py.system_object.directories import D_PKG_PY
 from pkg_py.functions_split.is_f import is_f
 from pkg_py.functions_split.is_os_windows import is_os_windows
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.local_test_activate import LTA
 
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.pk_print import pk_print
 
 
@@ -65,7 +65,7 @@ def download_video_mp4(url: str):
             pk_print(rf"if url.strip() == "":", print_color='blue')
             break
 
-        pk_print(working_str=rf'''url="{url}"  {'%%%FOO%%%' if LTA else ''}''')
+        pk_print(str_working=rf'''url="{url}"  {'%%%FOO%%%' if LTA else ''}''')
         video_id = ''
         cmd = rf'{F_YT_DLP_EXE} -F {url}'
         lines = cmd_to_os(cmd=cmd)
@@ -96,7 +96,7 @@ def download_video_mp4(url: str):
         if video_id == "" or audio_id == "" == 1:
             # text="다운로드를 진행할 수 없습니다\n다운로드용 video_id 와 audio_id를 설정 후\nurl을 다시 붙여넣어 다운로드를 다시 시도하세요\n{url}"
             pk_print("불완전한 다운로드 명령어가 감지되었습니다....", print_color='blue')
-            pk_speak_v2(working_str="불완전한 다운로드 명령어가 감지되었습니다", comma_delay=0.98)
+            pk_speak_v2(str_working="불완전한 다운로드 명령어가 감지되었습니다", comma_delay=0.98)
             dialog = GuiUtil.CustomQdialog(
                 prompt=f"에러코드[E004]\n아래의 비디오 아이디를 저장하고 에러코드를 관리자에게 문의해주세요\nvideo id: {url}",
                 btn_list=["확인"],

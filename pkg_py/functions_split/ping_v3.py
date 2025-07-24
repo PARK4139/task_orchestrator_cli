@@ -2,8 +2,8 @@ def ping_v3(ip, timeout_ms=1000):
     import subprocess
     from pkg_py.functions_split.is_os_windows import is_os_windows
     from pkg_py.functions_split.pk_print import pk_print
-    from pkg_py.pk_system_object.local_test_activate import LTA
-    from pkg_py.pk_system_object.etc import PK_BLANK
+    from pkg_py.system_object.local_test_activate import LTA
+    from pkg_py.system_object.etc import PK_BLANK
 
     if not ip:
         pk_print(f'ping {ip}', print_color='red')

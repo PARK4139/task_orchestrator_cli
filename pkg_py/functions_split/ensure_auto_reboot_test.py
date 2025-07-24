@@ -39,14 +39,14 @@ from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 from pkg_py.functions_split.pk_print import pk_print
 from pkg_py.functions_split.get_list_sorted import get_list_sorted
 from pkg_py.functions_split.ensure_console_cleared import ensure_console_cleared
-from pkg_py.pk_system_object.stamps import STAMP_ATTEMPTED
-from pkg_py.pk_system_object.files import F_POT_PLAYER_MINI_64_EXE, F_HISTORICAL_PNX
-from pkg_py.pk_system_object.files import F_FFMPEG_EXE
-from pkg_py.pk_system_object.directories import D_WORKING
-from pkg_py.pk_system_object.map_massages import PkMessages2025
-from pkg_py.pk_system_object.state_via_database import PkSqlite3DB
-from pkg_py.pk_system_object.state_via_context import SpeedControlContext
-from pkg_py.pk_system_object.get_list_calculated import get_list_calculated
+from pkg_py.system_object.stamps import STAMP_ATTEMPTED
+from pkg_py.system_object.files import F_POT_PLAYER_MINI_64_EXE, F_HISTORICAL_PNX
+from pkg_py.system_object.files import F_FFMPEG_EXE
+from pkg_py.system_object.directories import D_WORKING
+from pkg_py.system_object.map_massages import PkMessages2025
+from pkg_py.system_object.state_via_database import PkSqlite3DB
+from pkg_py.system_object.state_via_context import SpeedControlContext
+from pkg_py.system_object.get_list_calculated import get_list_calculated
 from functools import lru_cache
 from datetime import datetime, time
 from dataclasses import dataclass
@@ -55,10 +55,10 @@ from Cryptodome.Random import get_random_bytes
 from bs4 import ResultSet
 from pkg_py.functions_split.assist_to_load_video_at_losslesscut import pk_ensure_video_loaded_at_losslesscut
 from pkg_py.functions_split.kill_self_pk_program import kill_self_pk_program
-from pkg_py.pk_system_object.etc import PK_UNDERLINE
+from pkg_py.system_object.etc import PK_UNDERLINE
 from pkg_py.functions_split.get_value_completed import get_value_completed
 from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style
-from pkg_py.pk_system_object.directories import D_PKG_PY
+from pkg_py.system_object.directories import D_PKG_PY
 from pkg_py.functions_split.get_list_calculated import get_list_calculated
 from pkg_py.functions_split.is_f import is_f
 from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
@@ -67,7 +67,7 @@ from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style
 from pkg_py.functions_split.get_pnx_wsl_unix_style import get_pnx_wsl_unix_style
 from pkg_py.functions_split.pk_print import pk_print
 
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.local_test_activate import LTA
 
 
 def ensure_auto_reboot_test():

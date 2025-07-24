@@ -1,4 +1,4 @@
-from pkg_py.pk_system_object.directories_reuseable import D_PROJECT
+from pkg_py.system_object.directories_reuseable import D_PROJECT
 
 
 def make_pkg(dst):

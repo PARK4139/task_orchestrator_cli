@@ -32,8 +32,8 @@ from pkg_py.functions_split.write_list_to_f import write_list_to_f
 
 from pkg_py.functions_split.set_pk_context_state import set_pk_context_state
 from pkg_py.functions_split.ensure_console_cleared import ensure_console_cleared
-from pkg_py.pk_system_object.etc import PkFilter
-from pkg_py.pk_system_object.is_os_windows import is_os_windows
+from pkg_py.system_object.etc import PkFilter
+from pkg_py.system_object.is_os_windows import is_os_windows
 
 from paramiko import SSHClient, AutoAddPolicy
 from os import path
@@ -47,9 +47,9 @@ from concurrent.futures import ThreadPoolExecutor
 from bs4 import ResultSet
 from base64 import b64encode
 from base64 import b64decode
-from pkg_py.pk_system_object.etc import PK_UNDERLINE
-from pkg_py.pk_system_object.directories import D_PKG_PY
-from pkg_py.pk_system_object.is_os_windows import is_os_windows
+from pkg_py.system_object.etc import PK_UNDERLINE
+from pkg_py.system_object.directories import D_PKG_PY
+from pkg_py.system_object.is_os_windows import is_os_windows
 from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style
 from pkg_py.functions_split.get_pnx_wsl_unix_style import get_pnx_wsl_unix_style
 from pkg_py.functions_split.get_pnx_wsl_unix_style import get_pnx_wsl_unix_style

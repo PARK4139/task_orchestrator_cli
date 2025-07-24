@@ -11,10 +11,10 @@ from selenium.webdriver.common.action_chains import ActionChains
 from PySide6.QtWidgets import QApplication
 from pkg_py.functions_split.rerun_losslesscut import rerun_losslesscut
 
-from pkg_py.pk_system_object.stamps import STAMP_ATTEMPTED
-from pkg_py.pk_system_object.files import F_FFMPEG_EXE
-from pkg_py.pk_system_object.state_via_context import SpeedControlContext
-from pkg_py.pk_system_object.is_os_windows import is_os_windows
+from pkg_py.system_object.stamps import STAMP_ATTEMPTED
+from pkg_py.system_object.files import F_FFMPEG_EXE
+from pkg_py.system_object.state_via_context import SpeedControlContext
+from pkg_py.system_object.is_os_windows import is_os_windows
 from pkg_py.functions_split.get_pnx_wsl_unix_style import get_pnx_wsl_unix_style
 
 

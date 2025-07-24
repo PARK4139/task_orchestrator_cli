@@ -17,8 +17,8 @@ from selenium.common.exceptions import ElementClickInterceptedException
 from PySide6.QtWidgets import QApplication
 from pynput import mouse
 from pkg_py.functions_split.rerun_losslesscut import rerun_losslesscut
-from pkg_py.pk_system_object.state_via_database import PkSqlite3DB
-from pkg_py.pk_system_object.get_list_calculated import get_list_calculated
+from pkg_py.system_object.state_via_database import PkSqlite3DB
+from pkg_py.system_object.get_list_calculated import get_list_calculated
 
 from os.path import dirname
 from gtts import gTTS

@@ -44,12 +44,12 @@ from pkg_py.functions_split.get_list_sorted import get_list_sorted
 
 from pkg_py.functions_split.set_pk_context_state import set_pk_context_state
 from pkg_py.functions_split.ensure_console_cleared import ensure_console_cleared
-from pkg_py.pk_system_object.etc import PkFilter
-from pkg_py.pk_system_object.stamps import STAMP_ATTEMPTED
-from pkg_py.pk_system_object.files import F_LOSSLESSCUT_EXE
-from pkg_py.pk_system_object.encodings import Encoding
-from pkg_py.pk_system_object.map_massages import PkMessages2025
-from pkg_py.pk_system_object.state_via_database import PkSqlite3DB
+from pkg_py.system_object.etc import PkFilter
+from pkg_py.system_object.stamps import STAMP_ATTEMPTED
+from pkg_py.system_object.files import F_LOSSLESSCUT_EXE
+from pkg_py.system_object.encodings import Encoding
+from pkg_py.system_object.map_massages import PkMessages2025
+from pkg_py.system_object.state_via_database import PkSqlite3DB
 
 from os.path import dirname
 from os import path
@@ -63,10 +63,10 @@ from datetime import datetime
 from bs4 import ResultSet
 from base64 import b64decode
 from pkg_py.functions_split.assist_to_load_video_at_losslesscut import pk_ensure_video_loaded_at_losslesscut
-from pkg_py.pk_system_object.stamps import STAMP_TRY_GUIDE, STAMP_UNIT_TEST_EXCEPTION_DISCOVERED
+from pkg_py.system_object.stamps import STAMP_TRY_GUIDE, STAMP_UNIT_TEST_EXCEPTION_DISCOVERED
 from pkg_py.functions_split.get_value_completed import get_value_completed
 from pkg_py.functions_split.get_pnx_list import get_pnx_list
-from pkg_py.pk_system_object.directories import D_PKG_PY
+from pkg_py.system_object.directories import D_PKG_PY
 from pkg_py.functions_split.is_d import is_d
 from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
 from pkg_py.functions_split.get_pnx_windows_style import get_pnx_windows_style

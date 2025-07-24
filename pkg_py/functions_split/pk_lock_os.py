@@ -15,17 +15,17 @@ from pkg_py.functions_split.print_iterable_as_vertical import print_iterable_as_
 from pkg_py.functions_split.pk_print_state import pk_print_state
 from pkg_py.functions_split.pk_print import pk_print
 from pkg_py.functions_split.cmd_to_os import cmd_to_os
-from pkg_py.pk_system_object.directories_reuseable import D_PROJECT
+from pkg_py.system_object.directories_reuseable import D_PROJECT
 
 from functools import lru_cache
 from colorama import init as pk_colorama_init
 from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style
 from pkg_py.functions_split.is_d import is_d
-from pkg_py.pk_system_object.is_os_windows import is_os_windows
+from pkg_py.system_object.is_os_windows import is_os_windows
 from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
 from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
 from pkg_py.functions_split.is_os_windows import is_os_windows
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.local_test_activate import LTA
 
 
 def pk_lock_os():

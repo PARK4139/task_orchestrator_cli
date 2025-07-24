@@ -1,7 +1,7 @@
 
 
 def ensure_window_to_front_core(window_title_seg):
-    from pkg_py.pk_system_object.local_test_activate import LTA
+    from pkg_py.system_object.local_test_activate import LTA
     import win32gui  # pywin32
     import win32con  # pywin32
     from pkg_py.functions_split.pk_sleep import pk_sleep

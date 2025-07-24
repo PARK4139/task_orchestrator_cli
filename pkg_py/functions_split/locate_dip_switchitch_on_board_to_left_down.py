@@ -2,8 +2,8 @@ import pyaudio
 import numpy as np
 # from project_database.test_project_database import MySqlUtil
 from pkg_py.functions_split.pk_press import pk_press
-from pkg_py.pk_system_object.directories import D_WORKING
-from pkg_py.pk_system_object.state_via_database import PkSqlite3DB
+from pkg_py.system_object.directories import D_WORKING
+from pkg_py.system_object.state_via_database import PkSqlite3DB
 from mutagen.mp3 import MP3
 
 from pkg_py.functions_split.get_pnx_list import get_pnx_list

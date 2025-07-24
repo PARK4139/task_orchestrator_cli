@@ -22,17 +22,17 @@ from pkg_py.functions_split.is_window_title_front import is_window_title_front
 from pkg_py.functions_split.is_window_title_opened import is_window_title_opened
 from pkg_py.functions_split.pk_print_once import pk_print_once
 from pkg_py.functions_split.write_list_to_f import write_list_to_f
-from pkg_py.pk_system_object.directories import D_WORKING
-from pkg_py.pk_system_object.state_via_database import PkSqlite3DB
-from pkg_py.pk_system_object.is_os_windows import is_os_windows
+from pkg_py.system_object.directories import D_WORKING
+from pkg_py.system_object.state_via_database import PkSqlite3DB
+from pkg_py.system_object.is_os_windows import is_os_windows
 from passlib.context import CryptContext
 from os import path
 from dataclasses import dataclass
 from base64 import b64encode
-from pkg_py.pk_system_object.is_os_windows import is_os_windows
+from pkg_py.system_object.is_os_windows import is_os_windows
 from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
 
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.local_test_activate import LTA
 
 
 def install_chrome_remote_desktop_server_to_remote_os(users, ip, remote_os_distro_n, wsl_window_title_seg, pw,

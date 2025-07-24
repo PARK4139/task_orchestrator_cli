@@ -1,7 +1,7 @@
 
 
-from pkg_py.pk_system_object.local_test_activate import LTA
-from pkg_py.pk_system_object.encodings import Encoding
+from pkg_py.system_object.local_test_activate import LTA
+from pkg_py.system_object.encodings import Encoding
 from pkg_py.functions_split.pk_print import pk_print
 
 
@@ -16,9 +16,9 @@ def cmd_to_os_v_1_0_1(cmd: str, mode="", encoding=None):
 
     std_list = []
     if mode == "a":
-        pk_print(working_str=rf'''cmd="{cmd}" mode="async"  {'%%%FOO%%%' if LTA else ''}''')
+        pk_print(str_working=rf'''cmd="{cmd}" mode="async"  {'%%%FOO%%%' if LTA else ''}''')
     else:
-        pk_print(working_str=rf'''cmd="{cmd}" mode="동기"  {'%%%FOO%%%' if LTA else ''}''')
+        pk_print(str_working=rf'''cmd="{cmd}" mode="동기"  {'%%%FOO%%%' if LTA else ''}''')
     if encoding != Encoding.UTF8:
         encoding = Encoding.CP949  # UTF8 가 아니면 CP949 로 강제
     if mode == "a":  # async

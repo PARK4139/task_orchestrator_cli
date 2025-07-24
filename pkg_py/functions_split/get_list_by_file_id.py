@@ -1,6 +1,6 @@
 def get_list_by_file_id(file_id, editable=False):
-    from pkg_py.pk_system_object.local_test_activate import LTA
-    from pkg_py.pk_system_object.encodings import Encoding
+    from pkg_py.system_object.local_test_activate import LTA
+    from pkg_py.system_object.encodings import Encoding
     from pkg_py.functions_split.get_f_historical import get_history_file
     from pkg_py.functions_split.ensure_pnx_made import ensure_pnx_made
     from pkg_py.functions_split.pk_print import pk_print

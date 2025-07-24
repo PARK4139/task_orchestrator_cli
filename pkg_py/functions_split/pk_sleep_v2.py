@@ -1,6 +1,6 @@
 
 
-from pkg_py.pk_system_object.map_massages import PkMessages2025
+from pkg_py.system_object.map_massages import PkMessages2025
 from pkg_py.functions_split.pk_print import pk_print
 
 
@@ -13,7 +13,7 @@ def pk_sleep_v2(milliseconds=None, seconds=None, minutes=None, hours=None, mode_
     time_units = {"milliseconds": milliseconds, "seconds": seconds, "minutes": minutes, "hours": hours}
     provided_units = {k: v for k, v in time_units.items() if v is not None}
     if len(provided_units) != 1:
-        pk_print(working_str=f"{func_n}() 함수는 {list(time_units.keys())} 중 하나만 정의되어야 합니다.")
+        pk_print(str_working=f"{func_n}() 함수는 {list(time_units.keys())} 중 하나만 정의되어야 합니다.")
         return
     unit, value = next(iter(provided_units.items()))
 
@@ -40,7 +40,7 @@ def pk_sleep_v2(milliseconds=None, seconds=None, minutes=None, hours=None, mode_
         # 카운트다운 시작
         for i in range(remaining, 0, -1):
             formatted_time = format_time(i)
-            pk_print(working_str=f"[{PkMessages2025.TIME_LEFT}] [hours:minute:seconds] [{formatted_time}]")
+            pk_print(str_working=f"[{PkMessages2025.TIME_LEFT}] [hours:minute:seconds] [{formatted_time}]")
             time.sleep(1)
 
         # 남은 시간이 소수점으로 딱 맞지 않는 경우, 잉여 시간 처리
@@ -48,6 +48,6 @@ def pk_sleep_v2(milliseconds=None, seconds=None, minutes=None, hours=None, mode_
         if leftover > 0:
             time.sleep(leftover)
         else:
-            pk_print(working_str="count down complete")
+            pk_print(str_working="count down complete")
     else:
         time.sleep(time_value)

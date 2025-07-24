@@ -4,8 +4,8 @@
 # import win32gui
 # import win32gui
 # import pywin32
-from pkg_py.pk_system_object.etc import PK_UNDERLINE
+from pkg_py.system_object.etc import PK_UNDERLINE
 
 
-def print_pk_divider(working_str=''):
-    print_magenta(f"{PK_UNDERLINE}{working_str}")
+def print_pk_divider(str_working=''):
+    print_magenta(f"{PK_UNDERLINE}{str_working}")

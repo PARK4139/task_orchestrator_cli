@@ -1,4 +1,4 @@
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.is_d import is_d
 from pkg_py.functions_split.is_f import is_f
 from pkg_py.functions_split.get_nx import get_nx
@@ -32,15 +32,15 @@ def move_pnx_v1(pnx, d_dst, with_overwrite=0, sequential_mode=0, timestamp_mode=
                 if not does_pnx_exist(pnx_with_timestamp):
                     shutil.move(src=pnx_with_timestamp, dst=d_dst)
                 if LTA:
-                    pk_print(working_str=rf'''time_pattern="{time_pattern}"  {'%%%FOO%%%' if LTA else ''}''')
+                    pk_print(str_working=rf'''time_pattern="{time_pattern}"  {'%%%FOO%%%' if LTA else ''}''')
                     pk_print(
-                        working_str=rf'''src_type="{src_type:5s}" pnx_with_timestamp="{pnx_with_timestamp:<150}" dst="{d_dst:<50}" {'%%%FOO%%%' if LTA else ''}''',
+                        str_working=rf'''src_type="{src_type:5s}" pnx_with_timestamp="{pnx_with_timestamp:<150}" dst="{d_dst:<50}" {'%%%FOO%%%' if LTA else ''}''',
                         print_color='green')
                     pk_print(
-                        working_str=rf'''src_type={src_type} pnx_with_timestamp={pnx_with_timestamp.replace('\n', ''):<150} dst={d_dst.replace('\n', ''):<50}  {'%%%FOO%%%' if LTA else ''}''',
+                        str_working=rf'''src_type={src_type} pnx_with_timestamp={pnx_with_timestamp.replace('\n', ''):<150} dst={d_dst.replace('\n', ''):<50}  {'%%%FOO%%%' if LTA else ''}''',
                         print_color='green')
                 pk_print(
-                    working_str=rf'''src_type={src_type} pnx_with_timestamp={pnx_with_timestamp:<150} dst={d_dst:<50}  {'%%%FOO%%%' if LTA else ''}'''.replace(
+                    str_working=rf'''src_type={src_type} pnx_with_timestamp={pnx_with_timestamp:<150} dst={d_dst:<50}  {'%%%FOO%%%' if LTA else ''}'''.replace(
                         '\n', ''), print_color='green')
         elif with_overwrite == 1:
             if not is_f(pnx):

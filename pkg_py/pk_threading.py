@@ -1,7 +1,7 @@
 import traceback
 
-# from pkg_py.pk_system_object.static_logic import STAMP_UNIT_TEST_EXCEPTION_DISCOVERED, UNDERLINE, STAMP_TRY_GUIDE, STAMP_PYTHON_DEBUGGING_NOTE, D_PROJECT, STAMP_EXCEPTION_DISCOVERED
-# from pkg_py.pk_system_object.print_red import print_red
+# from pkg_py.system_object.static_logic import STAMP_UNIT_TEST_EXCEPTION_DISCOVERED, UNDERLINE, STAMP_TRY_GUIDE, STAMP_PYTHON_DEBUGGING_NOTE, D_PROJECT, STAMP_EXCEPTION_DISCOVERED
+# from pkg_py.system_object.print_red import print_red
 
 if __name__ == "__main__":
     #

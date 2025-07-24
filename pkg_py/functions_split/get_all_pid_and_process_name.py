@@ -3,9 +3,9 @@ import colorama
 from seleniumbase import Driver
 from pkg_py.functions_split.rerun_losslesscut import rerun_losslesscut
 from pkg_py.functions_split.get_f_video_to_load import get_f_video_to_load
-from pkg_py.pk_system_object.files import F_HISTORICAL_PNX
+from pkg_py.system_object.files import F_HISTORICAL_PNX
 from cryptography.hazmat.backends import default_backend
-from pkg_py.pk_system_object.directories import D_PKG_PY
+from pkg_py.system_object.directories import D_PKG_PY
 
 
 def get_all_pid_and_process_name():

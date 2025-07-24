@@ -48,11 +48,11 @@ from pkg_py.functions_split.pk_print import pk_print
 from pkg_py.functions_split.get_list_sorted import get_list_sorted
 from pkg_py.functions_split.set_pk_context_state import set_pk_context_state
 from pkg_py.functions_split.ensure_console_cleared import ensure_console_cleared
-from pkg_py.pk_system_object.stamps import STAMP_TRY_GUIDE
-from pkg_py.pk_system_object.files import F_LOSSLESSCUT_EXE
-from pkg_py.pk_system_object.directories import D_PKG_TXT, D_WORKING
-from pkg_py.pk_system_object.map_massages import PkMessages2025
-from pkg_py.pk_system_object.is_os_windows import is_os_windows
+from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
+from pkg_py.system_object.files import F_LOSSLESSCUT_EXE
+from pkg_py.system_object.directories import D_PKG_TXT, D_WORKING
+from pkg_py.system_object.map_massages import PkMessages2025
+from pkg_py.system_object.is_os_windows import is_os_windows
 from PIL import Image
 from pathlib import Path
 from paramiko import SSHClient, AutoAddPolicy
@@ -65,7 +65,7 @@ from base64 import b64encode
 from base64 import b64decode
 from pkg_py.functions_split.get_value_completed import get_value_completed
 from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style
-from pkg_py.pk_system_object.directories import D_PKG_PY
+from pkg_py.system_object.directories import D_PKG_PY
 from pkg_py.functions_split.get_list_calculated import get_list_calculated
 from pkg_py.functions_split.get_pnx_wsl_unix_style import get_pnx_wsl_unix_style
 from pkg_py.functions_split.get_pnx_windows_style import get_pnx_windows_style

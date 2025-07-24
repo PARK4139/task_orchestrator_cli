@@ -38,8 +38,8 @@ from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 from pkg_py.functions_split.pk_press import pk_press
 from pkg_py.functions_split.pk_print_once import pk_print_once
 
-from pkg_py.pk_system_object.files import F_FFMPEG_EXE
-from pkg_py.pk_system_object.is_os_windows import is_os_windows
+from pkg_py.system_object.files import F_FFMPEG_EXE
+from pkg_py.system_object.is_os_windows import is_os_windows
 from PIL import Image
 from pathlib import Path
 from moviepy import VideoFileClip
@@ -47,7 +47,7 @@ from functools import partial
 from fastapi import HTTPException
 from datetime import datetime, time
 from collections import defaultdict, Counter
-from pkg_py.pk_system_object.etc import PkFilter, PK_UNDERLINE
+from pkg_py.system_object.etc import PkFilter, PK_UNDERLINE
 from pkg_py.functions_split.get_value_completed import get_value_completed
 from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style
 from pkg_py.functions_split.get_list_calculated import get_list_calculated
@@ -55,7 +55,7 @@ from pkg_py.functions_split.is_d import is_d
 from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.pk_print import pk_print
 from pkg_py.functions_split.get_pnx_list import get_pnx_list
 

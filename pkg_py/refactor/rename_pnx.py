@@ -46,5 +46,5 @@ def rename_pnx(src, pnx_new):
                 pk_sleep(milliseconds=waiting_limit)
     except:
         pk_print(
-            working_str=rf'''traceback.format_exc()="{traceback.format_exc()}" rename 확인필요 src={src} pnx_new={pnx_new}  {'%%%FOO%%%' if LTA else ''}''',
+            str_working=rf'''traceback.format_exc()="{traceback.format_exc()}" rename 확인필요 src={src} pnx_new={pnx_new}  {'%%%FOO%%%' if LTA else ''}''',
             print_color='red')

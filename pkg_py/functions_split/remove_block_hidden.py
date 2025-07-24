@@ -32,10 +32,10 @@ from pkg_py.functions_split.pk_print_state import pk_print_state
 from pkg_py.functions_split.pk_print_once import pk_print_once
 from pkg_py.functions_split.set_pk_context_state import set_pk_context_state
 from pkg_py.functions_split.ensure_console_cleared import ensure_console_cleared
-from pkg_py.pk_system_object.stamps import STAMP_TRY_GUIDE
-from pkg_py.pk_system_object.stamps import STAMP_ATTEMPTED
-from pkg_py.pk_system_object.encodings import Encoding
-from pkg_py.pk_system_object.directories import D_WORKING
+from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
+from pkg_py.system_object.stamps import STAMP_ATTEMPTED
+from pkg_py.system_object.encodings import Encoding
+from pkg_py.system_object.directories import D_WORKING
 
 from passlib.context import CryptContext
 from os import path
@@ -51,9 +51,9 @@ from bs4 import ResultSet
 from base64 import b64decode
 from pkg_py.functions_split.get_nx import get_nx
 from pkg_py.functions_split.kill_self_pk_program import kill_self_pk_program
-from pkg_py.pk_system_object.etc import PK_UNDERLINE
+from pkg_py.system_object.etc import PK_UNDERLINE
 from pkg_py.functions_split.get_pnx_list import get_pnx_list
-from pkg_py.pk_system_object.directories import D_PKG_PY
+from pkg_py.system_object.directories import D_PKG_PY
 from pkg_py.functions_split.is_d import is_d
 from pkg_py.functions_split.is_f import is_f
 from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style
@@ -63,7 +63,7 @@ from pkg_py.functions_split.get_pnx_wsl_unix_style import get_pnx_wsl_unix_style
 from pkg_py.functions_split.get_pnx_windows_style import get_pnx_windows_style
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.pk_print import pk_print
 from pkg_py.functions_split.get_pnx_list import get_pnx_list
 
@@ -79,6 +79,6 @@ def remove_block_hidden(driver):
     try:
         overlay = driver.find_element(By.CSS_SELECTOR, ".MuiModal-root")
         overlay.click()  # 가려진 요소 클릭으로 닫기
-        pk_print(working_str="가려진 요소 닫기 성공")
+        pk_print(str_working="가려진 요소 닫기 성공")
     except Exception as e:
         print(f"가려진 요소 닫기 중 오류 발생: {e}")

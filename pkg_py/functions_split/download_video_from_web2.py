@@ -1,4 +1,4 @@
-from pkg_py.pk_system_object.directories_reuseable import D_PROJECT
+from pkg_py.system_object.directories_reuseable import D_PROJECT
 
 from pkg_py.functions_split.pk_press import pk_press
 
@@ -25,8 +25,8 @@ def download_video_from_web2():
             if is_image_finded:
                 pk_press("shift", "w")
             else:
-                pk_speak_v2(working_str="이미지를 찾을 수 없어 해당 자동화 기능을 마저 진행할 수 없습니다", comma_delay=0.98)
+                pk_speak_v2(str_working="이미지를 찾을 수 없어 해당 자동화 기능을 마저 진행할 수 없습니다", comma_delay=0.98)
         else:
-            pk_speak_v2(working_str="이미지를 찾을 수 없어 해당 자동화 기능을 마저 진행할 수 없습니다", comma_delay=0.98)
+            pk_speak_v2(str_working="이미지를 찾을 수 없어 해당 자동화 기능을 마저 진행할 수 없습니다", comma_delay=0.98)
         break
     pass

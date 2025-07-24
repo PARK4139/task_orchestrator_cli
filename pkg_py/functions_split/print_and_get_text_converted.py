@@ -14,8 +14,8 @@ from selenium.webdriver.support import expected_conditions as EC
 from pkg_py.functions_split.ensure_window_to_front import ensure_window_to_front
 from pkg_py.functions_split.get_d_working import get_d_working
 from pkg_py.functions_split.cmd_to_os import cmd_to_os
-from pkg_py.pk_system_object.stamps import STAMP_ATTEMPTED
-from pkg_py.pk_system_object.performance_logic import pk_measure_seconds, pk_measure_memory
+from pkg_py.system_object.stamps import STAMP_ATTEMPTED
+from pkg_py.system_object.performance_logic import pk_measure_seconds, pk_measure_memory
 
 from PIL import Image
 from moviepy import VideoFileClip
@@ -23,9 +23,9 @@ from Cryptodome.Cipher import AES
 from pkg_py.functions_split.assist_to_load_video_at_losslesscut import pk_ensure_video_loaded_at_losslesscut
 from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style
 from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.local_test_activate import LTA
 
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.pk_print import pk_print
 
 

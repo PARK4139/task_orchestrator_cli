@@ -16,10 +16,10 @@ from pkg_py.functions_split.is_window_opened import is_window_opened
 from pkg_py.functions_split.pk_press import pk_press
 
 from pkg_py.functions_split.write_list_to_f import write_list_to_f
-from pkg_py.pk_system_object.stamps import STAMP_ATTEMPTED
-from pkg_py.pk_system_object.directories import D_WORKING
-from pkg_py.pk_system_object.directories import D_PKG_TXT
-from pkg_py.pk_system_object.state_via_database import PkSqlite3DB
+from pkg_py.system_object.stamps import STAMP_ATTEMPTED
+from pkg_py.system_object.directories import D_WORKING
+from pkg_py.system_object.directories import D_PKG_TXT
+from pkg_py.system_object.state_via_database import PkSqlite3DB
 from passlib.context import CryptContext
 from os import path
 from pkg_py.functions_split.is_os_windows import is_os_windows

@@ -1,4 +1,4 @@
-from pkg_py.pk_system_object.directories import D_PKG_TXT
+from pkg_py.system_object.directories import D_PKG_TXT
 
 
 def classify_pnx_list_to_d_special_keyword(d_src, with_walking):

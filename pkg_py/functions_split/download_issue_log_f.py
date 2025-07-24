@@ -11,7 +11,7 @@ from seleniumbase import Driver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.chrome.options import Options
 from pkg_py.functions_split.cmd_to_os import cmd_to_os
-from pkg_py.pk_system_object.files import F_FFMPEG_EXE
+from pkg_py.system_object.files import F_FFMPEG_EXE
 
 from os import path
 from base64 import b64encode
@@ -22,7 +22,7 @@ from pkg_py.functions_split.get_pnx_wsl_unix_style import get_pnx_wsl_unix_style
 from pkg_py.functions_split.get_pnx_windows_style import get_pnx_windows_style
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.pk_print import pk_print
 
 
@@ -46,10 +46,10 @@ def download_issue_log_f(issue_log_index_data, original_log=False):
     issue_log_index_data["_f_ 위치"] = issue_log_index_data["_f_ 위치"].replace("/", f"\\")
 
     src = rf"\\192.168.1.33\01_Issue\{issue_log_index_data["_f_ 위치"]}"
-    pk_print(working_str=rf'''src="{src}"  {'%%%FOO%%%' if LTA else ''}''')
+    pk_print(str_working=rf'''src="{src}"  {'%%%FOO%%%' if LTA else ''}''')
     if original_log == True:
         src = rf"\\192.168.1.33\02_Orignal\{issue_log_index_data["차량"]}\{issue_log_index_data["지역"]}\{issue_log_index_data["주행일자"]}\{issue_log_index_data["코스"]}\{origin_log_file_name}"
-        pk_print(working_str=rf'''src="{src}"  {'%%%FOO%%%' if LTA else ''}''')
+        pk_print(str_working=rf'''src="{src}"  {'%%%FOO%%%' if LTA else ''}''')
         return
 
     # pause()
@@ -60,11 +60,11 @@ def download_issue_log_f(issue_log_index_data, original_log=False):
 
     while 1:
         if does_pnx_exist(pnx=src_new):
-            pk_print(working_str=rf'''{src_new} 가 이미 있습니다."  {'%%%FOO%%%' if LTA else ''}''')
+            pk_print(str_working=rf'''{src_new} 가 이미 있습니다."  {'%%%FOO%%%' if LTA else ''}''')
             break
         else:
             if not does_pnx_exist(pnx=src_new):
                 cmd_to_os(cmd=cmd, mode="a")
-                pk_print(working_str=rf'''이슈데이터 다운로드 완료 "{src_new}"  {'%%%FOO%%%' if LTA else ''}''',
+                pk_print(str_working=rf'''이슈데이터 다운로드 완료 "{src_new}"  {'%%%FOO%%%' if LTA else ''}''',
                          print_color='blue')
                 return

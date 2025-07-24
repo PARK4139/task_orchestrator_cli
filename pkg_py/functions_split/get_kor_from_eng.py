@@ -5,7 +5,7 @@ from pkg_py.functions_split.get_historical_list import get_historical_list
 from moviepy import VideoFileClip
 from datetime import timedelta
 from bs4 import BeautifulSoup
-from pkg_py.pk_system_object.directories import D_PKG_PY
+from pkg_py.system_object.directories import D_PKG_PY
 
 
 def get_kor_from_eng(english_word: str):

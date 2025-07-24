@@ -1,8 +1,8 @@
 try:
-    # from pkg_py.pk_system_object.500_live_logic import pk_cd, assist_to_change_d
+    # from pkg_py.system_object.500_live_logic import pk_cd, assist_to_change_d
     import traceback
-    # from pkg_py.pk_system_object.static_logic import D_PROJECT, UNDERLINE, STAMP_TRY_GUIDE, STAMP_PYTHON_DEBUGGING_NOTE, STAMP_EXCEPTION_DISCOVERED
-    # from pkg_py.pk_system_object.500_live_logic import pk_deprecated_get_d_current_n_like_person, get_f_current_n, pk_copy
+    # from pkg_py.system_object.static_logic import D_PROJECT, UNDERLINE, STAMP_TRY_GUIDE, STAMP_PYTHON_DEBUGGING_NOTE, STAMP_EXCEPTION_DISCOVERED
+    # from pkg_py.system_object.500_live_logic import pk_deprecated_get_d_current_n_like_person, get_f_current_n, pk_copy
     #
     from colorama import init as pk_colorama_init
 

@@ -55,18 +55,18 @@ from pkg_py.functions_split.cmd_to_os import cmd_to_os
 from pkg_py.functions_split.write_list_to_f import write_list_to_f
 from pkg_py.functions_split.get_list_sorted import get_list_sorted
 from pkg_py.functions_split.set_pk_context_state import set_pk_context_state
-from pkg_py.pk_system_object.files import F_POT_PLAYER_MINI_64_EXE
-from pkg_py.pk_system_object.files import F_LOSSLESSCUT_EXE
-from pkg_py.pk_system_object.files import F_HISTORICAL_PNX
-from pkg_py.pk_system_object.files import F_FFMPEG_EXE
-from pkg_py.pk_system_object.encodings import Encoding
-from pkg_py.pk_system_object.directories_reuseable import D_PROJECT
-from pkg_py.pk_system_object.directories import D_WORKING
-from pkg_py.pk_system_object.print_red import print_red
-from pkg_py.pk_system_object.state_via_context import SpeedControlContext
+from pkg_py.system_object.files import F_POT_PLAYER_MINI_64_EXE
+from pkg_py.system_object.files import F_LOSSLESSCUT_EXE
+from pkg_py.system_object.files import F_HISTORICAL_PNX
+from pkg_py.system_object.files import F_FFMPEG_EXE
+from pkg_py.system_object.encodings import Encoding
+from pkg_py.system_object.directories_reuseable import D_PROJECT
+from pkg_py.system_object.directories import D_WORKING
+from pkg_py.system_object.print_red import print_red
+from pkg_py.system_object.state_via_context import SpeedControlContext
 
-from pkg_py.pk_system_object.local_test_activate import LTA
-from pkg_py.pk_system_object.get_list_calculated import get_list_calculated
+from pkg_py.system_object.local_test_activate import LTA
+from pkg_py.system_object.get_list_calculated import get_list_calculated
 from os import path
 from mutagen.mp3 import MP3
 from gtts import gTTS
@@ -81,12 +81,12 @@ from collections import Counter
 from bs4 import ResultSet
 from bs4 import BeautifulSoup
 from base64 import b64encode
-from pkg_py.pk_system_object.etc import PkFilter, PK_UNDERLINE
+from pkg_py.system_object.etc import PkFilter, PK_UNDERLINE
 from pkg_py.functions_split.get_value_completed import get_value_completed
-from pkg_py.pk_system_object.directories import D_PKG_PY
+from pkg_py.system_object.directories import D_PKG_PY
 from pkg_py.functions_split.get_list_calculated import get_list_calculated
 from pkg_py.functions_split.is_f import is_f
-from pkg_py.pk_system_object.is_os_windows import is_os_windows
+from pkg_py.system_object.is_os_windows import is_os_windows
 from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style
 from pkg_py.functions_split.get_pnx_wsl_unix_style import get_pnx_wsl_unix_style
 from pkg_py.functions_split.get_pnx_wsl_unix_style import get_pnx_wsl_unix_style

@@ -38,12 +38,12 @@ from pkg_py.functions_split.pk_print_state import pk_print_state
 from pkg_py.functions_split.get_list_sorted import get_list_sorted
 
 from pkg_py.functions_split.set_pk_context_state import set_pk_context_state
-from pkg_py.pk_system_object.files import F_FFMPEG_EXE
-from pkg_py.pk_system_object.directories import D_WORKING
-from pkg_py.pk_system_object.print_red import print_red
-from pkg_py.pk_system_object.state_via_database import PkSqlite3DB
-from pkg_py.pk_system_object.state_via_context import SpeedControlContext
-from pkg_py.pk_system_object.get_list_calculated import get_list_calculated
+from pkg_py.system_object.files import F_FFMPEG_EXE
+from pkg_py.system_object.directories import D_WORKING
+from pkg_py.system_object.print_red import print_red
+from pkg_py.system_object.state_via_database import PkSqlite3DB
+from pkg_py.system_object.state_via_context import SpeedControlContext
+from pkg_py.system_object.get_list_calculated import get_list_calculated
 from PIL import Image, ImageFilter
 from pathlib import Path
 from passlib.context import CryptContext
@@ -55,15 +55,15 @@ from cryptography.hazmat.primitives import padding
 from Cryptodome.Cipher import AES
 from base64 import b64encode
 from pkg_py.functions_split.kill_self_pk_program import kill_self_pk_program
-from pkg_py.pk_system_object.etc import PK_UNDERLINE
+from pkg_py.system_object.etc import PK_UNDERLINE
 from pkg_py.functions_split.get_list_calculated import get_list_calculated
 from pkg_py.functions_split.is_d import is_d
-from pkg_py.pk_system_object.is_os_windows import is_os_windows
+from pkg_py.system_object.is_os_windows import is_os_windows
 from pkg_py.functions_split.get_pnx_windows_style import get_pnx_windows_style
 from pkg_py.functions_split.pk_print import pk_print
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.pk_print import pk_print
 from pkg_py.functions_split.get_d_working import get_d_working
 

@@ -9,15 +9,15 @@ from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style
 from pkg_py.functions_split.is_os_windows import is_os_windows
 from pkg_py.functions_split.pk_cd import pk_cd
 from pkg_py.functions_split.pk_debug_state_for_py_data_type import pk_debug_state_for_py_data_type
-from pkg_py.functions_split.pk_get_colorful_working_str_with_stamp_enviromnet import pk_get_colorful_working_str_with_stamp_enviromnet
+from pkg_py.functions_split.pk_get_colorful_str_working_with_stamp_enviromnet import pk_get_colorful_str_working_with_stamp_enviromnet
 from pkg_py.functions_split.pk_input_validated import pk_input_validated
 from pkg_py.functions_split.pk_print import pk_print
 from pkg_py.functions_split.save_d_to_f import save_d_to_f
-from pkg_py.pk_system_object.local_test_activate import LTA
-from pkg_py.pk_system_object.map_massages import PkMessages2025
-from pkg_py.pk_system_object.directories import D_PKG_PY, D_DESKTOP, D_PKG_TXT, D_WORKING, D_DOWNLOADS, D_J_DRIVE, D_I_DRIVE, D_H_DRIVE, D_G_DRIVE, D_F_DRIVE, D_D_DRIVE, D_C_DRIVE
-from pkg_py.pk_system_object.directories_reuseable import D_PROJECT, D_HOME
-from pkg_py.pk_system_object.stamps import STAMP_TRY_GUIDE
+from pkg_py.system_object.local_test_activate import LTA
+from pkg_py.system_object.map_massages import PkMessages2025
+from pkg_py.system_object.directories import D_PKG_PY, D_DESKTOP, D_PKG_TXT, D_WORKING, D_DOWNLOADS, D_J_DRIVE, D_I_DRIVE, D_H_DRIVE, D_G_DRIVE, D_F_DRIVE, D_D_DRIVE, D_C_DRIVE
+from pkg_py.system_object.directories_reuseable import D_PROJECT, D_HOME
+from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
 
 
 def assist_to_change_d():
@@ -84,7 +84,7 @@ def assist_to_change_d():
             pk_sys_argv = pk_cmd_str.split(" ")
         else:
             pk_cmd = pk_input_validated(str_working='', mode_verbose=0, mode_upper=0, mode_blank_validation=0,
-                                        input_str=rf'''{pk_get_colorful_working_str_with_stamp_enviromnet(func_n=func_n, ment=f'{get_pwd_in_python()} >>>')}''')  # best practice input
+                                        input_str=rf'''{pk_get_colorful_str_working_with_stamp_enviromnet(func_n=func_n, ment=f'{get_pwd_in_python()} >>>')}''')  # best practice input
             pk_cmd_str = pk_cmd.strip()
             pk_sys_argv = pk_cmd_str.split(" ")
 

@@ -6,11 +6,11 @@
 
 from typing import TypeVar
 
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.pk_print import pk_print
 
 # , pk_measure_memory
-# from pkg_py.pk_system_object.time_and_lanauge_util import pk_sleep
+# from pkg_py.system_object.time_and_lanauge_util import pk_sleep
 
 T = TypeVar('T')
 

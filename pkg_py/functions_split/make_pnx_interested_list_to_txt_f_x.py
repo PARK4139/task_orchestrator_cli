@@ -1,7 +1,7 @@
 
 
 from pkg_py.functions_split.print_iterable_as_vertical import print_iterable_as_vertical
-from pkg_py.pk_system_object.directories import D_PKG_TXT
+from pkg_py.system_object.directories import D_PKG_TXT
 from pkg_py.functions_split.get_pnx_list import get_pnx_list
 from pkg_py.functions_split.print_iterable_as_vertical import print_iterable_as_vertical
 

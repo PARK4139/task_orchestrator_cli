@@ -25,10 +25,10 @@ from os.path import dirname
 from datetime import datetime
 from dataclasses import dataclass
 from cryptography.hazmat.primitives import padding
-from pkg_py.pk_system_object.etc import PK_UNDERLINE
+from pkg_py.system_object.etc import PK_UNDERLINE
 from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style
 
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.local_test_activate import LTA
 
 
 def convert_img_to_img_flipped_horizontally(img_pnx):

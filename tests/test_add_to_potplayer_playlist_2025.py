@@ -1,6 +1,6 @@
-# from pkg_py.pk_system_object.500_live_logic import ensure_dummy_file_exists, ensure_pnx_made, add_to_potplayer_playlist, ensure_func_info_loaded
-from pkg_py.pk_system_object.directories import D_PKG_MP4
-from pkg_py.pk_system_object.files import F_POT_PLAYER_MINI_64_EXE
+# from pkg_py.system_object.500_live_logic import ensure_dummy_file_exists, ensure_pnx_made, add_to_potplayer_playlist, ensure_func_info_loaded
+from pkg_py.system_object.directories import D_PKG_MP4
+from pkg_py.system_object.files import F_POT_PLAYER_MINI_64_EXE
 from pkg_py.functions_split.part_827_add_to_potplayer_playlist import add_to_potplayer_playlist
 from pkg_py.functions_split.part_828_ensure_dummy_file_exists import ensure_dummy_file_exists
 from pkg_py.functions_split.part_830_ensure_func_info_loaded import ensure_func_info_loaded

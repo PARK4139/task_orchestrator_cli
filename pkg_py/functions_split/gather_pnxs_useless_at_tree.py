@@ -26,10 +26,10 @@ from prompt_toolkit import PromptSession
 from pkg_py.functions_split.get_f_video_to_load import get_f_video_to_load
 from pkg_py.functions_split.pk_print import pk_print
 from pkg_py.functions_split.ensure_console_cleared import ensure_console_cleared
-from pkg_py.pk_system_object.files import F_POT_PLAYER_MINI_64_EXE
-from pkg_py.pk_system_object.directories import D_WORKING
-from pkg_py.pk_system_object.is_os_windows import is_os_windows
-from pkg_py.pk_system_object.get_list_calculated import get_list_calculated
+from pkg_py.system_object.files import F_POT_PLAYER_MINI_64_EXE
+from pkg_py.system_object.directories import D_WORKING
+from pkg_py.system_object.is_os_windows import is_os_windows
+from pkg_py.system_object.get_list_calculated import get_list_calculated
 from PIL import Image, ImageFilter
 from PIL import Image
 from pathlib import Path
@@ -47,13 +47,13 @@ from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style
 from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style
 from pkg_py.functions_split.get_pnx_windows_style import get_pnx_windows_style
 
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.pk_print import pk_print
 
 
 def gather_pnxs_useless_at_tree(src, mode):
-    pk_print(working_str=rf'''src="{src}"  {'%%%FOO%%%' if LTA else ''}''')
-    pk_print(working_str=rf'''mode="{mode}"  {'%%%FOO%%%' if LTA else ''}''')
+    pk_print(str_working=rf'''src="{src}"  {'%%%FOO%%%' if LTA else ''}''')
+    pk_print(str_working=rf'''mode="{mode}"  {'%%%FOO%%%' if LTA else ''}''')
 
     if mode == 'd':
         # gather_pnxs_useless(src=src, debug_mode=True) #쓸라면 테스트 필요

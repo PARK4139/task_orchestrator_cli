@@ -4,9 +4,9 @@ import traceback
 from colorama import init as pk_colorama_init
 
 #
-# from pkg_py.pk_system_object.500_live_logic import ensure_pnx_made, get_value_completed, get_values_from_historical_file, get_n
-# from pkg_py.pk_system_object.500_live_logic import pk_ensure_f_list_organized_by_ngram
-# from pkg_py.pk_system_object.static_logic import D_DOWNLOADS, D_WORKING
+# from pkg_py.system_object.500_live_logic import ensure_pnx_made, get_value_completed, get_values_from_historical_file, get_n
+# from pkg_py.system_object.500_live_logic import pk_ensure_f_list_organized_by_ngram
+# from pkg_py.system_object.static_logic import D_DOWNLOADS, D_WORKING
 #, STAMP_TRY_GUIDE, D_PROJECT, STAMP_UNIT_TEST_EXCEPTION_DISCOVERED, D_PKG_TXT
 
 if __name__ == "__main__":

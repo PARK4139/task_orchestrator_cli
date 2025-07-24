@@ -1,10 +1,10 @@
 
 
 
-from pkg_py.pk_system_object.is_os_windows import is_os_windows
+from pkg_py.system_object.is_os_windows import is_os_windows
 from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
 
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
 from pkg_py.functions_split.is_os_windows import is_os_windows
 from pkg_py.functions_split.cmd_to_os import cmd_to_os
@@ -32,7 +32,7 @@ def ensure_and_get_port_wsl_via_sshd_config(wsl_distro_n):
     signiture2 = "Port "
     for std_str in std_out_list:
         if signiture in std_str:
-            pk_print(working_str=rf'''The port configuration is commented out in WSL ENVIRONMENT.  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
+            pk_print(str_working=rf'''The port configuration is commented out in WSL ENVIRONMENT.  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
             if is_os_wsl_linux():
                 cmd_to_os(rf'code {f_sshd_config}')  # todo port 변경 자동화
                 guide_to_manual_remedy(prompt_remedy=f'sudo code {f_sshd_config}')

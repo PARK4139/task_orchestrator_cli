@@ -10,9 +10,9 @@ from urllib.parse import urlparse
 from urllib.parse import quote
 from seleniumbase import Driver
 from pynput import mouse
-from pkg_py.pk_system_object.files import F_HISTORICAL_PNX
-from pkg_py.pk_system_object.print_red import print_red
-from pkg_py.pk_system_object.state_via_context import SpeedControlContext
+from pkg_py.system_object.files import F_HISTORICAL_PNX
+from pkg_py.system_object.print_red import print_red
+from pkg_py.system_object.state_via_context import SpeedControlContext
 from pathlib import Path
 from os import path
 from mutagen.mp3 import MP3

@@ -24,7 +24,7 @@ from pkg_py.functions_split.get_video_filtered_list import get_video_filtered_li
 from pkg_py.functions_split.get_d_working import get_d_working
 from pkg_py.functions_split.pk_press import pk_press
 from pkg_py.functions_split.write_list_to_f import write_list_to_f
-from pkg_py.pk_system_object.files import F_POT_PLAYER_MINI_64_EXE
+from pkg_py.system_object.files import F_POT_PLAYER_MINI_64_EXE
 from os.path import dirname
 from functools import lru_cache
 from cryptography.hazmat.primitives import padding
@@ -37,7 +37,7 @@ from pkg_py.functions_split.get_nx import get_nx
 from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
 from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style
 
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.pk_print import pk_print
 
 
@@ -58,4 +58,4 @@ def pk_decompress_f_via_zip(f):
         if not os.path.exists(pnx_p):
             os.makedirs(pnx_p)
         zip_ref.extractall(pnx_p)
-        pk_print(working_str=rf'''pnx_p="{pnx_p}"  {'%%%FOO%%%' if LTA else ''}''')
+        pk_print(str_working=rf'''pnx_p="{pnx_p}"  {'%%%FOO%%%' if LTA else ''}''')

@@ -36,14 +36,14 @@ from pkg_py.functions_split.pk_press import pk_press
 from pkg_py.functions_split.pk_print_state import pk_print_state
 from pkg_py.functions_split.pk_print_once import pk_print_once
 from pkg_py.functions_split.set_pk_context_state import set_pk_context_state
-from pkg_py.pk_system_object.etc import PkFilter
-from pkg_py.pk_system_object.stamps import STAMP_ATTEMPTED
-from pkg_py.pk_system_object.files import F_HISTORICAL_PNX
-from pkg_py.pk_system_object.files import F_FFMPEG_EXE
-from pkg_py.pk_system_object.encodings import Encoding
-from pkg_py.pk_system_object.directories import D_WORKING
-from pkg_py.pk_system_object.print_red import print_red
-from pkg_py.pk_system_object.state_via_context import SpeedControlContext
+from pkg_py.system_object.etc import PkFilter
+from pkg_py.system_object.stamps import STAMP_ATTEMPTED
+from pkg_py.system_object.files import F_HISTORICAL_PNX
+from pkg_py.system_object.files import F_FFMPEG_EXE
+from pkg_py.system_object.encodings import Encoding
+from pkg_py.system_object.directories import D_WORKING
+from pkg_py.system_object.print_red import print_red
+from pkg_py.system_object.state_via_context import SpeedControlContext
 from pathlib import Path
 from paramiko import SSHClient, AutoAddPolicy
 from moviepy import VideoFileClip
@@ -56,12 +56,12 @@ from bs4 import ResultSet
 from base64 import b64decode
 from pkg_py.functions_split.get_nx import get_nx
 from pkg_py.functions_split.assist_to_load_video_at_losslesscut import pk_ensure_video_loaded_at_losslesscut
-from pkg_py.pk_system_object.directories import D_PKG_PY
+from pkg_py.system_object.directories import D_PKG_PY
 from pkg_py.functions_split.get_list_calculated import get_list_calculated
-from pkg_py.pk_system_object.is_os_windows import is_os_windows
+from pkg_py.system_object.is_os_windows import is_os_windows
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.pk_print import pk_print
 from pkg_py.functions_split.get_d_working import get_d_working
 
@@ -73,5 +73,5 @@ def ensure_remove_and_make_remote_d(d, config_remote_os):
     # make d
     std_out_list, std_err_list = cmd_to_remote_os(d=f"mkdir -p {d}", **config_remote_os)
     for std_out in std_out_list:
-        pk_print(working_str=rf'''std_out={std_out}  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
+        pk_print(str_working=rf'''std_out={std_out}  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
         raise

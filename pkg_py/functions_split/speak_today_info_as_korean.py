@@ -5,4 +5,4 @@ def speak_today_info_as_korean():
     MM = get_time_as_('%m')
     dd = get_time_as_('%d')
 
-    pk_speak(working_str=f'{int(yyyy)}년 {int(MM)}월 {int(dd)}일', after_delay=0.95)
+    pk_speak(str_working=f'{int(yyyy)}년 {int(MM)}월 {int(dd)}일', after_delay=0.95)

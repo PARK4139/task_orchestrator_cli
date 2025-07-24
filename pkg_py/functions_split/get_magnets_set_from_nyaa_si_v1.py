@@ -41,9 +41,9 @@ from pkg_py.functions_split.load_f_video_on_losslesscut import load_f_video_on_l
 from pkg_py.functions_split.get_video_filtered_list import get_video_filtered_list
 from pkg_py.functions_split.is_window_title_opened import is_window_title_opened
 
-from pkg_py.pk_system_object.etc import PkFilter
-from pkg_py.pk_system_object.encodings import Encoding
-from pkg_py.pk_system_object.print_red import print_red
+from pkg_py.system_object.etc import PkFilter
+from pkg_py.system_object.encodings import Encoding
+from pkg_py.system_object.print_red import print_red
 from passlib.context import CryptContext
 from moviepy import VideoFileClip
 from functools import partial as functools_partial
@@ -59,7 +59,7 @@ from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style
 from pkg_py.functions_split.get_pnx_wsl_unix_style import get_pnx_wsl_unix_style
 from pkg_py.functions_split.get_pnx_windows_style import get_pnx_windows_style
 
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.pk_print import pk_print
 from pkg_py.functions_split.get_d_working import get_d_working
 
@@ -108,7 +108,7 @@ def get_magnets_set_from_nyaa_si_v1(nyaa_si_supplier, search_keyword, driver):  
     for page_number in range(page_number_start_to_download, page_number_end_to_download + 1):
         url_page = f'{url}&p={page_number}'
         url_decoded = get_str_url_decoded(str_working=url_page)
-        pk_print(working_str=rf'''url_page={url_page:60s}  url_decoded={url_decoded}  {'%%%FOO%%%' if LTA else ''}''')
+        pk_print(str_working=rf'''url_page={url_page:60s}  url_decoded={url_decoded}  {'%%%FOO%%%' if LTA else ''}''')
         driver.get(url_page)
         WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.TAG_NAME, "body")))
         pk_sleep(milliseconds=random.randint(200, 333))

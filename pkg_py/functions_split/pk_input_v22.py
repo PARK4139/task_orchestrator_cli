@@ -22,7 +22,7 @@ from pkg_py.functions_split.pk_print import pk_print
 
 
 def pk_input_v22(
-        working_str: str,
+        str_working: str,
         limit_seconds: int = 30,
         return_default: str | None = None,
         *,

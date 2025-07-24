@@ -16,10 +16,10 @@ from pkg_py.functions_split.is_window_title_front import is_window_title_front
 from pkg_py.functions_split.pk_press import pk_press
 from pkg_py.functions_split.pk_print_once import pk_print_once
 
-from pkg_py.pk_system_object.etc import PkFilter
-from pkg_py.pk_system_object.directories_reuseable import D_PROJECT
-from pkg_py.pk_system_object.is_os_windows import is_os_windows
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.etc import PkFilter
+from pkg_py.system_object.directories_reuseable import D_PROJECT
+from pkg_py.system_object.is_os_windows import is_os_windows
+from pkg_py.system_object.local_test_activate import LTA
 from moviepy import VideoFileClip
 from fastapi import HTTPException
 from datetime import timedelta
@@ -78,5 +78,5 @@ def find_direction_via_naver_map(destination: str):
         pk_press('enter')
 
         # 작업마침 알림
-        pk_speak_v2(working_str='길찾기가 시도되었습니다', comma_delay=0.98)
+        pk_speak_v2(str_working='길찾기가 시도되었습니다', comma_delay=0.98)
         break

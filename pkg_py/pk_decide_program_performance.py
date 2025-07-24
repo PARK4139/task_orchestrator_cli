@@ -7,7 +7,7 @@ import time
 from typing import TypeVar
 
 # , pk_deprecated_get_d_current_n_like_person, get_tree_depth_level, get_pnx_list_with_mtime_without_f_list_to_exclude, kill_powershell_exe, get_token_from_txt_f, get_hostname, get_d_working, chcp_65001, get_os_n, kill_wsl_exe, LTA, print_function_run_measure_seconds_via_timeit
-# from pkg_py.pk_system_object.500_live_logic import run_pk_release_server
+# from pkg_py.system_object.500_live_logic import run_pk_release_server
 #, print_red, print_yellow
 
 #, D_PKG_TXT, D_PROJECT
@@ -31,16 +31,16 @@ def print_measure_seconds_performance_nth_for_비교군1(function):
     def wrapper(**kwargs):  # **kwargs, keyword argument, dictionary 로 parameter 를 받음. named parameter / positional parameter 를 받을 사용가능?
         # def wrapper(*args):# *args, arguments, tuple 로 parameter 를 받음.
         # def wrapper():
-        pk_print(working_str=rf'''{PK_UNDERLINE}{func_n}() %%%FOO%%%''', print_color='blue')
-        pk_print(working_str=rf'''test_loop_limit="{test_loop_limit}" %%%FOO%%%''', print_color="blue")
-        pk_print(working_str=rf'''is_first_test_lap="{is_first_test_lap}" %%%FOO%%%''', print_color="blue")
+        pk_print(str_working=rf'''{PK_UNDERLINE}{func_n}() %%%FOO%%%''', print_color='blue')
+        pk_print(str_working=rf'''test_loop_limit="{test_loop_limit}" %%%FOO%%%''', print_color="blue")
+        pk_print(str_working=rf'''is_first_test_lap="{is_first_test_lap}" %%%FOO%%%''', print_color="blue")
         if test_loop_limit == 1:
             is_first_test_lap = False
             # speak_ment(ment=ment, after_delay=1) # 너무느려
         seconds = []
 
         for i in range(0, test_loop_limit):
-            pk_print(working_str=rf'''{PK_UNDERLINE}{i} 번째 테스트 %%%FOO%%%''', print_color="blue")
+            pk_print(str_working=rf'''{PK_UNDERLINE}{i} 번째 테스트 %%%FOO%%%''', print_color="blue")
             time_s = time.time()
             try:
                 # todo : ref : set argument counts
@@ -53,15 +53,15 @@ def print_measure_seconds_performance_nth_for_비교군1(function):
                 mesured_seconds = time_e - time_s
                 seconds.append(round(mesured_seconds, 2))
             except:
-                pk_print(working_str=f'{PK_UNDERLINE}예외발생 s\n\n', print_color="blue")
+                pk_print(str_working=f'{PK_UNDERLINE}예외발생 s\n\n', print_color="blue")
                 pk_print(f'''{traceback.format_exc()} %%%FOO%%%''', print_color='red')
-                pk_print(working_str=f'{PK_UNDERLINE}예외발생 e\n\n', print_color="blue")
+                pk_print(str_working=f'{PK_UNDERLINE}예외발생 e\n\n', print_color="blue")
 
-                pk_print(working_str=f'{PK_UNDERLINE}[Debugging Note] s\n', print_color="blue")
+                pk_print(str_working=f'{PK_UNDERLINE}[Debugging Note] s\n', print_color="blue")
                 f_current= get_f_current_n()
                 d_current=pk_deprecated_get_d_current_n_like_person()
                 print_yellow(prompt=f'f_current={f_current}\n d_current={d_current}\n')
-                pk_print(working_str=f'{PK_UNDERLINE}[Debugging Note] e\n', print_color="blue")
+                pk_print(str_working=f'{PK_UNDERLINE}[Debugging Note] e\n', print_color="blue")
 
                 # ment = ment + f'{StateManageUNDERLINE_PROMISED}테스트 진행할 명령어를 입력하세요+++ s'
                 # pk_print(ment=ment, print_color='blue')
@@ -70,10 +70,10 @@ def print_measure_seconds_performance_nth_for_비교군1(function):
 
         if len(seconds) == test_loop_limit:
             pk_print(f'''"{UNDERLINE}시간성능측정 테스트 결과 보고"''', print_color="blue")
-            pk_print(working_str=rf'''test_loop_limit="{test_loop_limit}" %%%FOO%%%''', print_color="blue")
-            pk_print(working_str=rf'''seconds={seconds} %%%FOO%%%''', print_color="blue")
+            pk_print(str_working=rf'''test_loop_limit="{test_loop_limit}" %%%FOO%%%''', print_color="blue")
+            pk_print(str_working=rf'''seconds={seconds} %%%FOO%%%''', print_color="blue")
             seconds_average = sum(seconds) / len(seconds)
-            pk_print(working_str=rf'''seconds_average="{seconds_average}" %%%FOO%%%''', print_color="blue")
+            pk_print(str_working=rf'''seconds_average="{seconds_average}" %%%FOO%%%''', print_color="blue")
             global 비교군1_결과
             비교군1_결과 = {'test_loop_limit': test_loop_limit, 'seconds_average': seconds_average}
             is_first_test_lap = 1
@@ -91,15 +91,15 @@ def measure_seconds_performance_nth_for_비교군2(function):
     def wrapper(**kwargs):  # **kwargs, keyword argument, dictionary 로 parameter 를 받음. named parameter / positional parameter 를 받을 사용가능?
         # def wrapper(*args):# *args, arguments, tuple 로 parameter 를 받음.
         # def wrapper():
-        pk_print(working_str=rf'''{PK_UNDERLINE}{func_n}() %%%FOO%%%''', print_color='blue')
-        pk_print(working_str=rf'''test_loop_limit="{test_loop_limit}" %%%FOO%%%''', print_color="blue")
-        pk_print(working_str=rf'''StateManageis_first_test_lap="{is_first_test_lap}" %%%FOO%%%''', print_color="blue")
+        pk_print(str_working=rf'''{PK_UNDERLINE}{func_n}() %%%FOO%%%''', print_color='blue')
+        pk_print(str_working=rf'''test_loop_limit="{test_loop_limit}" %%%FOO%%%''', print_color="blue")
+        pk_print(str_working=rf'''StateManageis_first_test_lap="{is_first_test_lap}" %%%FOO%%%''', print_color="blue")
         if is_first_test_lap:
             is_first_test_lap = False
             # speak_ment(ment=ment, after_delay=1) # 너무느려
         seconds = []
         for i in range(0, test_loop_limit):
-            pk_print(working_str=rf'''{PK_UNDERLINE}{i} 번째 테스트 %%%FOO%%%''', print_color="blue")
+            pk_print(str_working=rf'''{PK_UNDERLINE}{i} 번째 테스트 %%%FOO%%%''', print_color="blue")
             time_s = time.time()
             try:
                 # todo : ref : function argument setting
@@ -113,15 +113,15 @@ def measure_seconds_performance_nth_for_비교군2(function):
                 # seconds_performance_test_results.append(f"{round(mesured_seconds, 2)}sec")
                 seconds.append(round(mesured_seconds, 2))
             except:
-                pk_print(working_str=f'{PK_UNDERLINE}예외발생 s\n\n', print_color="blue")
+                pk_print(str_working=f'{PK_UNDERLINE}예외발생 s\n\n', print_color="blue")
                 pk_print(f'''{traceback.format_exc()} %%%FOO%%%''', print_color='red')
-                pk_print(working_str=f'{PK_UNDERLINE}예외발생 e\n\n', print_color="blue")
+                pk_print(str_working=f'{PK_UNDERLINE}예외발생 e\n\n', print_color="blue")
 
-                pk_print(working_str=f'{PK_UNDERLINE}[Debugging Note] s\n', print_color="blue")
+                pk_print(str_working=f'{PK_UNDERLINE}[Debugging Note] s\n', print_color="blue")
                 f_current= get_f_current_n()
                 d_current=pk_deprecated_get_d_current_n_like_person()
                 print_yellow(prompt=f'f_current={f_current}\n d_current={d_current}\n')
-                pk_print(working_str=f'{PK_UNDERLINE}[Debugging Note] e\n', print_color="blue")
+                pk_print(str_working=f'{PK_UNDERLINE}[Debugging Note] e\n', print_color="blue")
 
                 # ment = ment + f'{StateManageUNDERLINE_PROMISED}테스트 진행할 명령어를 입력하세요+++ s'
                 # pk_print(ment=ment, print_color='blue')
@@ -130,10 +130,10 @@ def measure_seconds_performance_nth_for_비교군2(function):
 
         if len(seconds) == test_loop_limit:
             pk_print(f'''"{UNDERLINE}시간성능측정 테스트 결과 보고"''', print_color="blue")
-            pk_print(working_str=rf'''test_loop_limit="{test_loop_limit}" %%%FOO%%%''', print_color="blue")
-            pk_print(working_str=rf'''seconds={seconds} %%%FOO%%%''', print_color="blue")
+            pk_print(str_working=rf'''test_loop_limit="{test_loop_limit}" %%%FOO%%%''', print_color="blue")
+            pk_print(str_working=rf'''seconds={seconds} %%%FOO%%%''', print_color="blue")
             seconds_average = sum(seconds) / len(seconds)
-            pk_print(working_str=rf'''seconds_average="{seconds_average}" %%%FOO%%%''', print_color="blue")
+            pk_print(str_working=rf'''seconds_average="{seconds_average}" %%%FOO%%%''', print_color="blue")
             global 비교군2_결과
             비교군2_결과 = {'test_loop_limit': test_loop_limit, 'seconds_average': seconds_average}
             is_first_test_lap = 1
@@ -161,9 +161,9 @@ def run_비교군2():
 def print_report_compared_functions_exec_time(function1, function2):
     function1()
     function2()
-    pk_print(working_str=rf'''{PK_UNDERLINE}비교군 코드 대조 %%%FOO%%%''', print_color='blue')
-    pk_print(working_str=rf'''비교군1_결과="{비교군1_결과}" %%%FOO%%%''', print_color="blue")
-    pk_print(working_str=rf'''비교군2_결과="{비교군2_결과}" %%%FOO%%%''', print_color="blue")
+    pk_print(str_working=rf'''{PK_UNDERLINE}비교군 코드 대조 %%%FOO%%%''', print_color='blue')
+    pk_print(str_working=rf'''비교군1_결과="{비교군1_결과}" %%%FOO%%%''', print_color="blue")
+    pk_print(str_working=rf'''비교군2_결과="{비교군2_결과}" %%%FOO%%%''', print_color="blue")
     # results = [
     #     비교군1_결과['seconds_average'],
     #     비교군2_결과['seconds_average'],
@@ -179,8 +179,8 @@ def print_report_compared_functions_exec_time(function1, function2):
         "비교군2_결과": 비교군2_결과['seconds_average'],
     }
     fastest = min(results, key=results.get)
-    pk_print(working_str=rf'''fastest="{fastest}" %%%FOO%%%''')
-    pk_print(working_str=rf'''results[fastest]="{results[fastest]}" %%%FOO%%%''')
+    pk_print(str_working=rf'''fastest="{fastest}" %%%FOO%%%''')
+    pk_print(str_working=rf'''results[fastest]="{results[fastest]}" %%%FOO%%%''')
     pk_print(f'가장 빠른 시간은 "{fastest}" 입니다', print_color="blue")
 
 
@@ -333,16 +333,16 @@ if __name__ == '__main__':
         # red
         import traceback
 
-        pk_print(working_str=f'{PK_UNDERLINE}예외발생 s\n\n', print_color='red')
-        pk_print(working_str=f'{traceback.format_exc()}\n', print_color='red')
-        pk_print(working_str=f'{PK_UNDERLINE}예외발생 e\n\n', print_color='red')
+        pk_print(str_working=f'{PK_UNDERLINE}예외발생 s\n\n', print_color='red')
+        pk_print(str_working=f'{traceback.format_exc()}\n', print_color='red')
+        pk_print(str_working=f'{PK_UNDERLINE}예외발생 e\n\n', print_color='red')
 
         # yellow
         f_current= get_f_current_n()
         d_current=pk_deprecated_get_d_current_n_like_person()
-        pk_print(working_str=f'{PK_UNDERLINE}[Debugging Note] s\n', print_color="yellow")
-        pk_print(working_str=f'f_current={f_current}\nd_current={d_current}\n', print_color="yellow")
-        pk_print(working_str=f'{PK_UNDERLINE}[Debugging Note] e\n', print_color="yellow")
+        pk_print(str_working=f'{PK_UNDERLINE}[Debugging Note] s\n', print_color="yellow")
+        pk_print(str_working=f'f_current={f_current}\nd_current={d_current}\n', print_color="yellow")
+        pk_print(str_working=f'{PK_UNDERLINE}[Debugging Note] e\n', print_color="yellow")
         ensure_do_finally_routine(D_PROJECT=D_PROJECT, __file__=__file__, STAMP_TRY_GUIDE=STAMP_TRY_GUIDE)
         pk_print(script_to_run_python_program_in_venv)
 
@@ -512,7 +512,7 @@ class DataStructureUtil:
         #, D_PROJECT 
         from pkg_py.functions_split.pk_print import pk_print
         func_n = inspect.currentframe().f_code.co_name
-        pk_print(working_str=rf'''{PK_UNDERLINE}{func_n}() %%%FOO%%%''')
+        pk_print(str_working=rf'''{PK_UNDERLINE}{func_n}() %%%FOO%%%''')
         # 두 리스트의 요소들이 동일한지만 확인 # 하나라도 발견되면 탐색 중지 # 두 리스트의 동일 인덱스에서 진행하다 달라도 다른거다
         if len(list1) != len(list2):
             print(f"두 리스트의 줄 수가 다릅니다 {len(list1)}, {len(list2)}")

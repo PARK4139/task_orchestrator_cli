@@ -40,12 +40,12 @@ from pkg_py.functions_split.get_d_working import get_d_working
 from pkg_py.functions_split.is_window_opened import is_window_opened
 from pkg_py.functions_split.cmd_to_os import cmd_to_os
 
-from pkg_py.pk_system_object.files import F_POT_PLAYER_MINI_64_EXE
-from pkg_py.pk_system_object.files import F_HISTORICAL_PNX
-from pkg_py.pk_system_object.encodings import Encoding
-from pkg_py.pk_system_object.directories import D_WORKING
-from pkg_py.pk_system_object.state_via_context import SpeedControlContext
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.files import F_POT_PLAYER_MINI_64_EXE
+from pkg_py.system_object.files import F_HISTORICAL_PNX
+from pkg_py.system_object.encodings import Encoding
+from pkg_py.system_object.directories import D_WORKING
+from pkg_py.system_object.state_via_context import SpeedControlContext
+from pkg_py.system_object.local_test_activate import LTA
 from PIL import Image
 from moviepy import VideoFileClip
 from functools import partial
@@ -61,8 +61,8 @@ from Cryptodome.Cipher import AES
 from bs4 import BeautifulSoup
 from base64 import b64encode
 from pkg_py.functions_split.get_nx import get_nx
-from pkg_py.pk_system_object.stamps import STAMP_TRY_GUIDE, STAMP_UNIT_TEST_EXCEPTION_DISCOVERED
-from pkg_py.pk_system_object.directories import D_PKG_PY
+from pkg_py.system_object.stamps import STAMP_TRY_GUIDE, STAMP_UNIT_TEST_EXCEPTION_DISCOVERED
+from pkg_py.system_object.directories import D_PKG_PY
 from pkg_py.functions_split.get_list_calculated import get_list_calculated
 from pkg_py.functions_split.is_d import is_d
 from pkg_py.functions_split.is_f import is_f

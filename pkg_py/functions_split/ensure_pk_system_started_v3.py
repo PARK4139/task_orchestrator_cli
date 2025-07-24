@@ -3,8 +3,8 @@ from pkg_py.functions_split.pk_measure_seconds import pk_measure_seconds
 
 @pk_measure_seconds
 def ensure_pk_system_started_v3(file_list: list[str]):
-    from pkg_py.pk_system_object.map_massages import PkMessages2025
-    from pkg_py.pk_system_object.local_test_activate import LTA
+    from pkg_py.system_object.map_massages import PkMessages2025
+    from pkg_py.system_object.local_test_activate import LTA
     from pkg_py.functions_split.run_pk_python_program_by_path import run_pk_python_program_by_path
     from pkg_py.functions_split.pk_print import pk_print
     from pkg_py.functions_split.print_pk_ls import print_pk_ls

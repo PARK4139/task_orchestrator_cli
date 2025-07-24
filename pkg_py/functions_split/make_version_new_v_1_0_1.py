@@ -13,14 +13,14 @@ from pkg_py.functions_split.is_window_title_opened import is_window_title_opened
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 from pkg_py.functions_split.cmd_to_os import cmd_to_os
 from pkg_py.functions_split.write_list_to_f import write_list_to_f
-from pkg_py.pk_system_object.directories_reuseable import D_PROJECT
+from pkg_py.system_object.directories_reuseable import D_PROJECT
 from functools import partial as functools_partial
 from fastapi import HTTPException
 from dirsync import sync
 from cryptography.hazmat.primitives import padding
 from bs4 import ResultSet
 from pkg_py.functions_split.get_nx import get_nx
-from pkg_py.pk_system_object.directories import D_DOWNLOADS
+from pkg_py.system_object.directories import D_DOWNLOADS
 from pkg_py.functions_split.get_list_calculated import get_list_calculated
 from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist

@@ -18,7 +18,7 @@ def cmd_to_wsl_os_like_person_deprecated(cmd, remote_os_distro_n, wsl_window_tit
         if is_window_opened(window_title_seg=wsl_window_title_seg):
             break
         open_and_move_wsl_console_to_front(remote_os_distro_n=remote_os_distro_n, window_title_seg=wsl_window_title_seg)
-        pk_print(working_str=time.time() - start_time)
+        pk_print(str_working=time.time() - start_time)
         if time.time() - start_time > timeout:
             break
         pk_sleep(seconds=0.5)
@@ -34,9 +34,9 @@ def cmd_to_wsl_os_like_person_deprecated(cmd, remote_os_distro_n, wsl_window_tit
         ensure_window_to_front(window_title_seg=wsl_window_title_seg)
 
         # 5초가 지났는지 확인
-        pk_print(working_str=time.time() - start_time)
+        pk_print(str_working=time.time() - start_time)
         if time.time() - start_time > timeout:
-            pk_print(working_str="5 seconds passed. Exiting loop.")
+            pk_print(str_working="5 seconds passed. Exiting loop.")
             break
         pk_sleep(seconds=0.5)  # CPU 점유율을 낮추기 위해 약간의 대기
 
@@ -52,9 +52,9 @@ def cmd_to_wsl_os_like_person_deprecated(cmd, remote_os_distro_n, wsl_window_tit
                 break
             else:
                 ensure_window_to_front(window_title_seg=wsl_window_title_seg)
-            pk_print(working_str=time.time() - start_time)
+            pk_print(str_working=time.time() - start_time)
             if time.time() - start_time > timeout:
-                pk_print(working_str="5 seconds passed. Exiting loop.")
+                pk_print(str_working="5 seconds passed. Exiting loop.")
                 break
             pk_sleep(seconds=0.5)  # CPU 점유율을 낮추기 위해 약간의 대기
 

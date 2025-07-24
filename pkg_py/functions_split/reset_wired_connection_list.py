@@ -56,15 +56,15 @@ from pkg_py.functions_split.pk_print_state import pk_print_state
 from pkg_py.functions_split.cmd_to_os import cmd_to_os
 from pkg_py.functions_split.set_pk_context_state import set_pk_context_state
 from pkg_py.functions_split.ensure_console_cleared import ensure_console_cleared
-from pkg_py.pk_system_object.etc import PkFilter
-from pkg_py.pk_system_object.files import F_FFMPEG_EXE
-from pkg_py.pk_system_object.encodings import Encoding
-from pkg_py.pk_system_object.directories_reuseable import D_PROJECT
-from pkg_py.pk_system_object.directories import D_WORKING
-from pkg_py.pk_system_object.directories import D_PKG_TXT, D_WORKING
-from pkg_py.pk_system_object.print_red import print_red
-from pkg_py.pk_system_object.is_os_windows import is_os_windows
-from pkg_py.pk_system_object.get_list_calculated import get_list_calculated
+from pkg_py.system_object.etc import PkFilter
+from pkg_py.system_object.files import F_FFMPEG_EXE
+from pkg_py.system_object.encodings import Encoding
+from pkg_py.system_object.directories_reuseable import D_PROJECT
+from pkg_py.system_object.directories import D_WORKING
+from pkg_py.system_object.directories import D_PKG_TXT, D_WORKING
+from pkg_py.system_object.print_red import print_red
+from pkg_py.system_object.is_os_windows import is_os_windows
+from pkg_py.system_object.get_list_calculated import get_list_calculated
 from mutagen.mp3 import MP3
 from gtts import gTTS
 from functools import partial as functools_partial
@@ -77,18 +77,18 @@ from colorama import init as pk_colorama_init
 from bs4 import BeautifulSoup
 from base64 import b64decode
 from pkg_py.functions_split.kill_self_pk_program import kill_self_pk_program
-from pkg_py.pk_system_object.etc import PK_UNDERLINE
+from pkg_py.system_object.etc import PK_UNDERLINE
 from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style
 from pkg_py.functions_split.get_pnx_list import get_pnx_list
-from pkg_py.pk_system_object.directories import D_PKG_PY
+from pkg_py.system_object.directories import D_PKG_PY
 from pkg_py.functions_split.get_list_calculated import get_list_calculated
 from pkg_py.functions_split.is_d import is_d
 from pkg_py.functions_split.is_f import is_f
-from pkg_py.pk_system_object.is_os_windows import is_os_windows
+from pkg_py.system_object.is_os_windows import is_os_windows
 from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style
 from pkg_py.functions_split.get_pnx_wsl_unix_style import get_pnx_wsl_unix_style
 from pkg_py.functions_split.is_os_windows import is_os_windows
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.local_test_activate import LTA
 
 from pkg_py.functions_split.get_d_working import get_d_working
 

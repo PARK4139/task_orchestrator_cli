@@ -23,14 +23,14 @@ from pkg_py.functions_split.print_iterable_as_vertical import print_iterable_as_
 from pkg_py.functions_split.get_video_filtered_list import get_video_filtered_list
 from pkg_py.functions_split.write_list_to_f import write_list_to_f
 from pkg_py.functions_split.ensure_console_cleared import ensure_console_cleared
-from pkg_py.pk_system_object.directories import D_WORKING
-from pkg_py.pk_system_object.state_via_context import SpeedControlContext
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.directories import D_WORKING
+from pkg_py.system_object.state_via_context import SpeedControlContext
+from pkg_py.system_object.local_test_activate import LTA
 from datetime import datetime
 from Cryptodome.Random import get_random_bytes
 from base64 import b64encode
 from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style
-from pkg_py.pk_system_object.directories import D_PKG_PY
+from pkg_py.system_object.directories import D_PKG_PY
 from pkg_py.functions_split.is_os_windows import is_os_windows
 
 

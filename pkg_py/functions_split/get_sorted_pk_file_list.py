@@ -1,6 +1,6 @@
 
 
-from pkg_py.pk_system_object.directories import D_PKG_PY
+from pkg_py.system_object.directories import D_PKG_PY
 
 
 def get_excutable_pk_system_file_list():

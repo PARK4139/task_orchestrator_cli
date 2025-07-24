@@ -4,7 +4,7 @@ from pkg_py.functions_split.pk_measure_seconds import pk_measure_seconds
 
 @pk_measure_seconds
 def get_value_completed_v3(message, options):
-    from pkg_py.pk_system_object.map_massages import PkMessages2025
+    from pkg_py.system_object.map_massages import PkMessages2025
     from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style
     from pkg_py.functions_split.pk_speak import pk_speak
     from pkg_py.functions_split.is_path_like import is_path_like

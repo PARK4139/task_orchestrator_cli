@@ -48,12 +48,12 @@ from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 from pkg_py.functions_split.pk_press import pk_press
 from pkg_py.functions_split.pk_print import pk_print
 
-from pkg_py.pk_system_object.stamps import STAMP_TRY_GUIDE
-from pkg_py.pk_system_object.stamps import STAMP_ATTEMPTED
-from pkg_py.pk_system_object.files import F_FFMPEG_EXE
-from pkg_py.pk_system_object.directories_reuseable import D_PROJECT
-from pkg_py.pk_system_object.print_red import print_red
-from pkg_py.pk_system_object.is_os_windows import is_os_windows
+from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
+from pkg_py.system_object.stamps import STAMP_ATTEMPTED
+from pkg_py.system_object.files import F_FFMPEG_EXE
+from pkg_py.system_object.directories_reuseable import D_PROJECT
+from pkg_py.system_object.print_red import print_red
+from pkg_py.system_object.is_os_windows import is_os_windows
 from mysql.connector import connect, Error
 from mutagen.mp3 import MP3
 from functools import partial as functools_partial
@@ -66,16 +66,16 @@ from bs4 import ResultSet
 from bs4 import BeautifulSoup
 from base64 import b64decode
 from pkg_py.functions_split.assist_to_load_video_at_losslesscut import pk_ensure_video_loaded_at_losslesscut
-from pkg_py.pk_system_object.stamps import STAMP_TRY_GUIDE, STAMP_UNIT_TEST_EXCEPTION_DISCOVERED
+from pkg_py.system_object.stamps import STAMP_TRY_GUIDE, STAMP_UNIT_TEST_EXCEPTION_DISCOVERED
 from pkg_py.functions_split.get_value_completed import get_value_completed
-from pkg_py.pk_system_object.directories import D_PKG_PY
+from pkg_py.system_object.directories import D_PKG_PY
 from pkg_py.functions_split.get_list_calculated import get_list_calculated
-from pkg_py.pk_system_object.is_os_windows import is_os_windows
+from pkg_py.system_object.is_os_windows import is_os_windows
 from pkg_py.functions_split.get_pnx_wsl_unix_style import get_pnx_wsl_unix_style
 from pkg_py.functions_split.get_pnx_windows_style import get_pnx_windows_style
 from pkg_py.functions_split.is_os_windows import is_os_windows
 from pkg_py.functions_split.get_pnx_windows_style import get_pnx_windows_style
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.local_test_activate import LTA
 
 from pkg_py.functions_split.get_d_working import get_d_working
 

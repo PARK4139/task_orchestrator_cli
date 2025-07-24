@@ -15,10 +15,10 @@ from pkg_py.functions_split.get_historical_list import get_historical_list
 from pkg_py.functions_split.is_window_opened import is_window_opened
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 
-from pkg_py.pk_system_object.files import F_POT_PLAYER_MINI_64_EXE
-from pkg_py.pk_system_object.files import F_FFMPEG_EXE
-from pkg_py.pk_system_object.state_via_database import PkSqlite3DB
-from pkg_py.pk_system_object.get_list_calculated import get_list_calculated
+from pkg_py.system_object.files import F_POT_PLAYER_MINI_64_EXE
+from pkg_py.system_object.files import F_FFMPEG_EXE
+from pkg_py.system_object.state_via_database import PkSqlite3DB
+from pkg_py.system_object.get_list_calculated import get_list_calculated
 from passlib.context import CryptContext
 from os import path
 from mutagen.mp3 import MP3
@@ -27,12 +27,12 @@ from enum import Enum
 from dirsync import sync
 from dataclasses import dataclass
 from bs4 import BeautifulSoup
-from pkg_py.pk_system_object.is_os_windows import is_os_windows
+from pkg_py.system_object.is_os_windows import is_os_windows
 from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style
 from pkg_py.functions_split.get_pnx_windows_style import get_pnx_windows_style
 from pkg_py.functions_split.pk_print import pk_print
 
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.pk_print import pk_print
 
 

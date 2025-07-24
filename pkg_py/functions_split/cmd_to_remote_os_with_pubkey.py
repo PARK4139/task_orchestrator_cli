@@ -1,9 +1,9 @@
 
 
 
-from pkg_py.pk_system_object.is_os_windows import is_os_windows
+from pkg_py.system_object.is_os_windows import is_os_windows
 
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.is_os_windows import is_os_windows
 from pkg_py.functions_split.cmd_to_os import cmd_to_os
 from pkg_py.functions_split.pk_print import pk_print
@@ -82,4 +82,4 @@ def cmd_to_remote_os_with_pubkey(cmd, **config_remote_os):
 
     except Exception as e:
         import traceback
-        pk_print(working_str=rf"{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''} ", print_color='red')
+        pk_print(str_working=rf"{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''} ", print_color='red')

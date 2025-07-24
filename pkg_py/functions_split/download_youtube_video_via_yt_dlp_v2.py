@@ -20,9 +20,9 @@ from pkg_py.functions_split.get_f_video_to_load import get_f_video_to_load
 from pkg_py.functions_split.is_window_title_front import is_window_title_front
 from pkg_py.functions_split.cmd_to_os import cmd_to_os
 from pkg_py.functions_split.get_list_sorted import get_list_sorted
-from pkg_py.pk_system_object.stamps import STAMP_TRY_GUIDE
-from pkg_py.pk_system_object.files import F_FFMPEG_EXE
-from pkg_py.pk_system_object.state_via_context import SpeedControlContext
+from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
+from pkg_py.system_object.files import F_FFMPEG_EXE
+from pkg_py.system_object.state_via_context import SpeedControlContext
 from moviepy import VideoFileClip
 from bs4 import BeautifulSoup
 from base64 import b64encode
@@ -34,7 +34,7 @@ from pkg_py.functions_split.pk_print import pk_print
 
 
 def download_youtube_video_via_yt_dlp_v2(D_FFMPEG_LOCATION, D_WORKING, ext, url):
-    # from pkg_py.pk_system_object.directories import D_WORKING
+    # from pkg_py.system_object.directories import D_WORKING
     #
     import yt_dlp
     import os

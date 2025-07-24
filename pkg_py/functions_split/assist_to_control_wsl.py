@@ -1,5 +1,5 @@
-from pkg_py.pk_system_object.local_test_activate import LTA
-from pkg_py.pk_system_object.stamps import STAMP_TRY_GUIDE
+from pkg_py.system_object.local_test_activate import LTA
+from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
 from pkg_py.functions_split.pk_print import pk_print
 
 
@@ -139,7 +139,7 @@ def assist_to_control_wsl(**pk_config):
                 _pwc._excute_wsl_cmd(idx_by_user_input=int(pk_sys_argv[1]))
 
         pk_wsl_cmd_from_input = input(
-            rf'{pk_get_colorful_working_str_with_stamp_enviromnet(func_n=func_n, ment="WRITE PK WSL CMD")} >>>')
+            rf'{pk_get_colorful_str_working_with_stamp_enviromnet(func_n=func_n, ment="WRITE PK WSL CMD")} >>>')
         pk_wsl_cmd_from_input = pk_wsl_cmd_from_input.strip()
         pk_wsl_cmd_list = pk_wsl_cmd_from_input.split(" ")
         pk_sys_argv = pk_wsl_cmd_list

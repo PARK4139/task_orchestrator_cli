@@ -16,8 +16,8 @@ from prompt_toolkit.styles import Style
 # from project_database.test_project_database import MySqlUtil
 from pkg_py.functions_split.rerun_losslesscut import rerun_losslesscut
 from pkg_py.functions_split.get_list_sorted import get_list_sorted
-from pkg_py.pk_system_object.encodings import Encoding
-from pkg_py.pk_system_object.state_via_database import PkSqlite3DB
+from pkg_py.system_object.encodings import Encoding
+from pkg_py.system_object.state_via_database import PkSqlite3DB
 from PIL import Image
 from os import path
 from functools import lru_cache
@@ -28,7 +28,7 @@ from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style
 from pkg_py.functions_split.pk_print import pk_print
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.pk_print import pk_print
 
 

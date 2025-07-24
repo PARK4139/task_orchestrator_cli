@@ -14,7 +14,7 @@ from yt_dlp import YoutubeDL
 from urllib.parse import urlparse
 from telegram import Bot
 from pkg_py.functions_split.ensure_console_cleared import ensure_console_cleared
-from pkg_py.pk_system_object.encodings import Encoding
+from pkg_py.system_object.encodings import Encoding
 from os import path
 from gtts import gTTS
 from fastapi import HTTPException
@@ -24,7 +24,7 @@ from pkg_py.functions_split.get_list_calculated import get_list_calculated
 from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
 from pkg_py.functions_split.get_pnx_wsl_unix_style import get_pnx_wsl_unix_style
 
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.pk_print import pk_print
 from pkg_py.functions_split.get_pnx_list import get_pnx_list
 

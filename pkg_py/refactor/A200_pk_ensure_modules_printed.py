@@ -3,9 +3,9 @@ import traceback
 from pkg_py.functions_split.pk_ensure_all_import_script_printed import pk_ensure_modules_printed
 
 if __name__ == "__main__":
-    from pkg_py.pk_system_object.directories_reuseable import D_PROJECT
-    from pkg_py.pk_system_object.etc import PK_UNDERLINE
-    from pkg_py.pk_system_object.stamps import STAMP_TRY_GUIDE, STAMP_EXCEPTION_DISCOVERED
+    from pkg_py.system_object.directories_reuseable import D_PROJECT
+    from pkg_py.system_object.etc import PK_UNDERLINE
+    from pkg_py.system_object.stamps import STAMP_TRY_GUIDE, STAMP_EXCEPTION_DISCOVERED
     from pkg_py.functions_split.pk_print import pk_print
     from pkg_py.functions_split.ensure_do_finally_routine import ensure_do_finally_routine
 

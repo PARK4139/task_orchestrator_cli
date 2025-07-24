@@ -6,7 +6,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from pkg_py.functions_split.ensure_window_to_front import ensure_window_to_front
 from pkg_py.functions_split.is_window_opened import is_window_opened
 from pkg_py.functions_split.cmd_to_os import cmd_to_os
-from pkg_py.pk_system_object.directories_reuseable import D_PROJECT
+from pkg_py.system_object.directories_reuseable import D_PROJECT
 
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 

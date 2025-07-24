@@ -34,10 +34,10 @@ from pkg_py.functions_split.pk_print import pk_print
 from pkg_py.functions_split.cmd_to_os import cmd_to_os
 
 from pkg_py.functions_split.set_pk_context_state import set_pk_context_state
-from pkg_py.pk_system_object.etc import PkFilter
-from pkg_py.pk_system_object.files import F_HISTORICAL_PNX
-from pkg_py.pk_system_object.state_via_database import PkSqlite3DB
-from pkg_py.pk_system_object.get_list_calculated import get_list_calculated
+from pkg_py.system_object.etc import PkFilter
+from pkg_py.system_object.files import F_HISTORICAL_PNX
+from pkg_py.system_object.state_via_database import PkSqlite3DB
+from pkg_py.system_object.get_list_calculated import get_list_calculated
 from mutagen.mp3 import MP3
 from gtts import gTTS
 from functools import partial
@@ -48,9 +48,9 @@ from pkg_py.functions_split.get_nx import get_nx
 from pkg_py.functions_split.assist_to_load_video_at_losslesscut import pk_ensure_video_loaded_at_losslesscut
 from pkg_py.functions_split.kill_self_pk_program import kill_self_pk_program
 from pkg_py.functions_split.get_value_completed import get_value_completed
-from pkg_py.pk_system_object.directories import D_PKG_PY
+from pkg_py.system_object.directories import D_PKG_PY
 from pkg_py.functions_split.get_list_calculated import get_list_calculated
-from pkg_py.pk_system_object.is_os_windows import is_os_windows
+from pkg_py.system_object.is_os_windows import is_os_windows
 from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
 from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
 from pkg_py.functions_split.pk_print import pk_print

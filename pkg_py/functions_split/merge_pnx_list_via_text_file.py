@@ -36,9 +36,9 @@ from pkg_py.functions_split.cmd_to_os import cmd_to_os
 from pkg_py.functions_split.get_list_sorted import get_list_sorted
 
 from pkg_py.functions_split.ensure_console_cleared import ensure_console_cleared
-from pkg_py.pk_system_object.stamps import STAMP_ATTEMPTED
-from pkg_py.pk_system_object.files import F_LOSSLESSCUT_EXE
-from pkg_py.pk_system_object.directories_reuseable import D_PROJECT
+from pkg_py.system_object.stamps import STAMP_ATTEMPTED
+from pkg_py.system_object.files import F_LOSSLESSCUT_EXE
+from pkg_py.system_object.directories_reuseable import D_PROJECT
 from pathlib import Path
 from passlib.context import CryptContext
 from fastapi import HTTPException

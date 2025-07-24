@@ -1,9 +1,9 @@
-from pkg_py.pk_system_object.stamps import STAMP_LIST, STAMP_TUPLE, STAMP_DICT, STAMP_SET
+from pkg_py.system_object.stamps import STAMP_LIST, STAMP_TUPLE, STAMP_DICT, STAMP_SET
 
 
 def print_iterable_as_vertical(item_iterable, item_iterable_n=None, mode_verbose=1):
     import inspect
-    from pkg_py.pk_system_object.local_test_activate import LTA
+    from pkg_py.system_object.local_test_activate import LTA
     from pkg_py.functions_split.pk_print import pk_print
     if mode_verbose == 1:
         # 변수 이름 자동 추출 시도

@@ -6,9 +6,9 @@ import inspect
 import traceback
 
 from colorama import init as pk_colorama_init
-from pkg_py.pk_system_object.directories import D_PKG_TXT
-from pkg_py.pk_system_object.directories_reuseable import D_PROJECT
-from pkg_py.pk_system_object.stamps import STAMP_TRY_GUIDE
+from pkg_py.system_object.directories import D_PKG_TXT
+from pkg_py.system_object.directories_reuseable import D_PROJECT
+from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
 from pkg_py.functions_split.get_n import get_n
 from pkg_py.functions_split.cmd_to_os import cmd_to_os
 from pkg_py.functions_split.remove_pnx_parmanently import remove_pnx_parmanently
@@ -16,10 +16,10 @@ from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 from pkg_py.functions_split.get_values_from_historical_file_routine import get_values_from_historical_file_routine
 from pkg_py.functions_split.ensure_do_finally_routine import ensure_do_finally_routine
 from pkg_py.functions_split.ensure_do_exception_routine import ensure_do_exception_routine
-from pkg_py.pk_system_object.state_via_database import PkSqlite3DB
+from pkg_py.system_object.state_via_database import PkSqlite3DB
 
 #, print_red
-# from pkg_py.pk_system_object.500_live_logic import cmd_to_os, get_n, remove_pnx_parmanently, does_pnx_exist, get_values_from_historical_file_routine
+# from pkg_py.system_object.500_live_logic import cmd_to_os, get_n, remove_pnx_parmanently, does_pnx_exist, get_values_from_historical_file_routine
 #, STAMP_TRY_GUIDE, D_PROJECT, STAMP_UNIT_TEST_EXCEPTION_DISCOVERED, D_PKG_TXT
 
 pk_colorama_init_once()

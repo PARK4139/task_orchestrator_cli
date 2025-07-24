@@ -9,7 +9,7 @@ import colorama
 from prompt_toolkit import PromptSession
 from pkg_py.functions_split.print_iterable_as_vertical import print_iterable_as_vertical
 
-from pkg_py.pk_system_object.files import F_FFMPEG_EXE
+from pkg_py.system_object.files import F_FFMPEG_EXE
 
 
 def is_path_like(s: str) -> bool:

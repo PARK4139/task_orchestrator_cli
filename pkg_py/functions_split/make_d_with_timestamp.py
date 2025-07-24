@@ -8,7 +8,7 @@ from datetime import date
 from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style
 from pkg_py.functions_split.pk_print import pk_print
 
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.pk_print import pk_print
 
 
@@ -32,18 +32,18 @@ def make_d_with_timestamp(d_nx, dst):
         dst = get_pnx_os_style(dst)
         if is_pnx_required(dst):
             return
-        pk_print(working_str=rf'''dst="{dst}"  {'%%%FOO%%%' if LTA else ''}''')
+        pk_print(str_working=rf'''dst="{dst}"  {'%%%FOO%%%' if LTA else ''}''')
 
         # 타임스템프 생성
         timestamp = get_time_as_("yyyy MM dd (weekday) HH mm")
         pnx_new = rf"{dst}\{timestamp} {d_nx}"
         pnx_new = get_pnx_os_style(pnx_new)
-        pk_print(working_str=rf'''pnx_new="{pnx_new}"  {'%%%FOO%%%' if LTA else ''}''')
+        pk_print(str_working=rf'''pnx_new="{pnx_new}"  {'%%%FOO%%%' if LTA else ''}''')
 
         # d 생성 및 f 탐색기 열기 # todo
         ensure_pnx_made(pnx=pnx_new, mode="d")
         cmd = rf'explorer "{pnx_new}"'
-        pk_print(working_str=rf'''cmd="{cmd}"  {'%%%FOO%%%' if LTA else ''}''')
+        pk_print(str_working=rf'''cmd="{cmd}"  {'%%%FOO%%%' if LTA else ''}''')
         # cmd_run(cmd=cmd)
         # print_list_as_vertical(get_windows_opened(), items_name="get_windows_opened()")
 

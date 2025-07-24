@@ -9,8 +9,8 @@ from prompt_toolkit import PromptSession
 from pkg_py.functions_split.pk_press import pk_press
 from pkg_py.functions_split.pk_print_state import pk_print_state
 from pkg_py.functions_split.set_pk_context_state import set_pk_context_state
-from pkg_py.pk_system_object.files import F_FFMPEG_EXE
-from pkg_py.pk_system_object.encodings import Encoding
+from pkg_py.system_object.files import F_FFMPEG_EXE
+from pkg_py.system_object.encodings import Encoding
 from colorama import init as pk_colorama_init
 from pkg_py.functions_split.get_pnx_wsl_unix_style import get_pnx_wsl_unix_style
 from pkg_py.functions_split.is_os_windows import is_os_windows

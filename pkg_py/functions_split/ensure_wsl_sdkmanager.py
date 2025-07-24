@@ -14,14 +14,14 @@ from prompt_toolkit import PromptSession
 from pkg_py.functions_split.get_video_filtered_list import get_video_filtered_list
 from pkg_py.functions_split.pk_print import pk_print
 from pkg_py.functions_split.set_pk_context_state import set_pk_context_state
-from pkg_py.pk_system_object.files import F_POT_PLAYER_MINI_64_EXE
+from pkg_py.system_object.files import F_POT_PLAYER_MINI_64_EXE
 from os.path import dirname
 from functools import partial
 from fastapi import HTTPException
 from enum import Enum
 from cryptography.hazmat.backends import default_backend
-from pkg_py.pk_system_object.directories import D_DOWNLOADS, D_PKG_PKL
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.directories import D_DOWNLOADS, D_PKG_PKL
+from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.pk_print import pk_print
 
 

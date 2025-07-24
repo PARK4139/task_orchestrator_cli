@@ -39,13 +39,13 @@ from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 from pkg_py.functions_split.pk_press import pk_press
 from pkg_py.functions_split.pk_print_state import pk_print_state
 
-from pkg_py.pk_system_object.stamps import STAMP_TRY_GUIDE
-from pkg_py.pk_system_object.stamps import STAMP_ATTEMPTED
-from pkg_py.pk_system_object.files import F_LOSSLESSCUT_EXE
-from pkg_py.pk_system_object.files import F_HISTORICAL_PNX
-from pkg_py.pk_system_object.encodings import Encoding
-from pkg_py.pk_system_object.state_via_context import SpeedControlContext
-from pkg_py.pk_system_object.is_os_windows import is_os_windows
+from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
+from pkg_py.system_object.stamps import STAMP_ATTEMPTED
+from pkg_py.system_object.files import F_LOSSLESSCUT_EXE
+from pkg_py.system_object.files import F_HISTORICAL_PNX
+from pkg_py.system_object.encodings import Encoding
+from pkg_py.system_object.state_via_context import SpeedControlContext
+from pkg_py.system_object.is_os_windows import is_os_windows
 
 from PIL import Image, ImageFont, ImageDraw
 from PIL import Image
@@ -59,13 +59,13 @@ from datetime import datetime, time
 from datetime import date
 from dataclasses import dataclass
 from base64 import b64decode
-from pkg_py.pk_system_object.stamps import STAMP_TRY_GUIDE, STAMP_UNIT_TEST_EXCEPTION_DISCOVERED
-from pkg_py.pk_system_object.directories import D_PKG_PY
+from pkg_py.system_object.stamps import STAMP_TRY_GUIDE, STAMP_UNIT_TEST_EXCEPTION_DISCOVERED
+from pkg_py.system_object.directories import D_PKG_PY
 from pkg_py.functions_split.is_d import is_d
 from pkg_py.functions_split.is_f import is_f
 from pkg_py.functions_split.get_pnx_wsl_unix_style import get_pnx_wsl_unix_style
 from pkg_py.functions_split.get_pnx_windows_style import get_pnx_windows_style
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 
 from pkg_py.functions_split.pk_print import pk_print

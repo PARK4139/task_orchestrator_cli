@@ -10,11 +10,11 @@ from pkg_py.functions_split.get_file_id import get_file_id
 from pkg_py.functions_split.get_value_completed import get_value_completed
 from pkg_py.functions_split.get_values_from_historical_file_routine import get_values_from_historical_file_routine
 from pkg_py.functions_split.restore_workspace_from_latest_archive import restore_workspace_from_latest_archive
-from pkg_py.pk_system_object.local_test_activate import LTA
-from pkg_py.pk_system_object.map_massages import PkMessages2025
-from pkg_py.pk_system_object.directories import D_FUNCTIONS_SPLIT, D_PKG_ARCHIVED
-from pkg_py.pk_system_object.directories import D_PKG_PY
-from pkg_py.pk_system_object.directories_reuseable import D_PROJECT
+from pkg_py.system_object.local_test_activate import LTA
+from pkg_py.system_object.map_massages import PkMessages2025
+from pkg_py.system_object.directories import D_FUNCTIONS_SPLIT, D_PKG_ARCHIVED
+from pkg_py.system_object.directories import D_PKG_PY
+from pkg_py.system_object.directories_reuseable import D_PROJECT
 
 
 def replace_in_file(file_path, old_str, new_str):
@@ -182,7 +182,7 @@ def pk_ensure_filecontents_renamed_from_old_str_to_new_str():
 
 if __name__ == "__main__":
     from pkg_py.functions_split.pk_initialize_and_customize_logging_config import pk_initialize_and_customize_logging_config
-    from pkg_py.pk_system_object.stamps import STAMP_TRY_GUIDE
+    from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
     from pkg_py.functions_split.ensure_do_exception_routine import ensure_do_exception_routine
     from pkg_py.functions_split.ensure_do_finally_routine import ensure_do_finally_routine
 

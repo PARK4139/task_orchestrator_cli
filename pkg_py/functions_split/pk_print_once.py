@@ -3,7 +3,7 @@
 def pk_print_once(msg):
     import os.path
 
-    from pkg_py.pk_system_object.directories import D_PKG_PKL
+    from pkg_py.system_object.directories import D_PKG_PKL
     from pkg_py.functions_split.load_logged_set import load_logged_set
     from pkg_py.functions_split.save_logged_set import save_logged_set
     from pkg_py.functions_split.pk_print import pk_print

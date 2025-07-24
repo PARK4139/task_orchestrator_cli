@@ -1,6 +1,6 @@
-from pkg_py.pk_system_object.local_test_activate import LTA
-from pkg_py.pk_system_object.directories import D_PKG_TXT
-from pkg_py.pk_system_object.directories_reuseable import D_PROJECT
+from pkg_py.system_object.local_test_activate import LTA
+from pkg_py.system_object.directories import D_PKG_TXT
+from pkg_py.system_object.directories_reuseable import D_PROJECT
 from pkg_py.functions_split.cmd_to_os import cmd_to_os
 from pkg_py.functions_split.pk_print import pk_print
 from pkg_py.functions_split.pk_press import pk_press
@@ -17,7 +17,7 @@ def chrome_remote_desktop(hostname):
     # url="https://remotedesktop.google.com/access/session/7dc038af-5992-1938-470a-8f85923ab286"
     url = 'https://remotedesktop.google.com/access'
     cmd_to_os(cmd=f'explorer "{url}"')
-    pk_print(working_str=rf'''url="{url}"  {'%%%FOO%%%' if LTA else ''}''')
+    pk_print(str_working=rf'''url="{url}"  {'%%%FOO%%%' if LTA else ''}''')
 
     # 창 앞으로 이동
     ensure_window_to_front(window_title_seg="Chrome")

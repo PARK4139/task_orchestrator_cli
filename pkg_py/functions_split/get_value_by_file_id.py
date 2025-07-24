@@ -6,8 +6,8 @@ from pkg_py.functions_split.get_list_striped import get_list_striped
 def get_value_by_file_id(file_id):
     import logging
 
-    from pkg_py.pk_system_object.local_test_activate import LTA
-    from pkg_py.pk_system_object.map_massages import PkMessages2025
+    from pkg_py.system_object.local_test_activate import LTA
+    from pkg_py.system_object.map_massages import PkMessages2025
     from pkg_py.functions_split.get_nx import get_nx
     from pkg_py.functions_split.get_value_completed import get_value_completed
     from pkg_py.functions_split.open_pnx_by_ext import ensure_pnx_opened_by_ext

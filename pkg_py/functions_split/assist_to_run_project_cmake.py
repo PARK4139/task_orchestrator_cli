@@ -29,20 +29,20 @@ from pkg_py.functions_split.pk_print_once import pk_print_once
 
 
 from pkg_py.functions_split.set_pk_context_state import set_pk_context_state
-from pkg_py.pk_system_object.stamps import STAMP_TRY_GUIDE
-from pkg_py.pk_system_object.stamps import STAMP_ATTEMPTED
-from pkg_py.pk_system_object.encodings import Encoding
-from pkg_py.pk_system_object.directories import D_DOWNLOADS, D_PKG_PKL
-from pkg_py.pk_system_object.get_list_calculated import get_list_calculated
+from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
+from pkg_py.system_object.stamps import STAMP_ATTEMPTED
+from pkg_py.system_object.encodings import Encoding
+from pkg_py.system_object.directories import D_DOWNLOADS, D_PKG_PKL
+from pkg_py.system_object.get_list_calculated import get_list_calculated
 from os.path import dirname
 from os import path
 from datetime import timedelta
 from datetime import datetime
 from base64 import b64encode
 from pkg_py.functions_split.get_nx import get_nx
-from pkg_py.pk_system_object.stamps import STAMP_TRY_GUIDE
+from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
 from pkg_py.functions_split.is_d import is_d
-from pkg_py.pk_system_object.is_os_windows import is_os_windows
+from pkg_py.system_object.is_os_windows import is_os_windows
 from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
 from pkg_py.functions_split.get_pnx_wsl_unix_style import get_pnx_wsl_unix_style
 from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
@@ -50,7 +50,7 @@ from pkg_py.functions_split.is_os_windows import is_os_windows
 from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style
 from pkg_py.functions_split.pk_print import pk_print
 
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.pk_print import pk_print
 from pkg_py.functions_split.get_d_working import get_d_working
 

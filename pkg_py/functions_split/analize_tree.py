@@ -19,4 +19,4 @@ def analize_tree(d_src):
     if largest_f:
         pk_print(f'''largest_f={largest_f}''')
     else:
-        pk_print(working_str="d에 f이 없거나 f 크기를 확인할 수 없습니다.")
+        pk_print(str_working="d에 f이 없거나 f 크기를 확인할 수 없습니다.")

@@ -5,7 +5,7 @@ if __name__ == "__main__":
         from datetime import datetime
         from pathlib import Path
 
-        # from pkg_py.pk_system_object.500_live_logic import pk_copy
+        # from pkg_py.system_object.500_live_logic import pk_copy
         #, STAMP_TRY_GUIDE, D_PROJECT, STAMP_UNIT_TEST_EXCEPTION_DISCOVERED, D_DOWNLOADS
         #
 
@@ -69,10 +69,10 @@ if __name__ == "__main__":
 
     except:
         traceback_format_exc_list = traceback.format_exc().split("\n")
-        pk_print(working_str=f'{PK_UNDERLINE}', print_color='red')
+        pk_print(str_working=f'{PK_UNDERLINE}', print_color='red')
         for traceback_format_exc_str in traceback_format_exc_list:
-            pk_print(working_str=f'{STAMP_UNIT_TEST_EXCEPTION_DISCOVERED} {traceback_format_exc_str}', print_color='red')
-        pk_print(working_str=f'{PK_UNDERLINE}', print_color='red')
+            pk_print(str_working=f'{STAMP_UNIT_TEST_EXCEPTION_DISCOVERED} {traceback_format_exc_str}', print_color='red')
+        pk_print(str_working=f'{PK_UNDERLINE}', print_color='red')
 
     finally:
         ensure_do_finally_routine(D_PROJECT=D_PROJECT, __file__=__file__, STAMP_TRY_GUIDE=STAMP_TRY_GUIDE)

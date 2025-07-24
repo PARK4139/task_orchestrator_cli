@@ -3,7 +3,7 @@ def ensure_pnx_removed(pnx):
     from pkg_py.functions_split.get_nx import get_nx
     from pkg_py.functions_split.move_pnx_to_pk_recycle_bin import move_pnx_to_pk_recycle_bin
     from pkg_py.functions_split.pk_print import pk_print
-    from pkg_py.pk_system_object.local_test_activate import LTA
+    from pkg_py.system_object.local_test_activate import LTA
 
     import os
     import inspect

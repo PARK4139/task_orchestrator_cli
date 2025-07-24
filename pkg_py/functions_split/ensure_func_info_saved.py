@@ -1,4 +1,4 @@
-from pkg_py.pk_system_object.state_via_database import PkSqlite3DB
+from pkg_py.system_object.state_via_database import PkSqlite3DB
 
 
 def ensure_func_info_saved(func_n, func_data):

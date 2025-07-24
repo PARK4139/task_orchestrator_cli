@@ -1,4 +1,4 @@
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.cmd_to_os import cmd_to_os
 from pkg_py.functions_split.get_pnx_windows_style import get_pnx_windows_style
 from pkg_py.functions_split.pk_print import pk_print
@@ -42,7 +42,7 @@ def ensure_vpc_smoke_test(vpc_data):
     if not ensure_vpc_ip(vpc_data, **config_remote_os):
         ip = get_ip_available_by_user_input()
 
-    # input(f"{pk_get_colorful_working_str_with_stamp_enviromnet(func_n=func_n)} >")  # [SUGGEST] sleep() 하는게 어떤가?
+    # input(f"{pk_get_colorful_str_working_with_stamp_enviromnet(func_n=func_n)} >")  # [SUGGEST] sleep() 하는게 어떤가?
 
     ensure_auto_reboot_test()
 
@@ -56,7 +56,7 @@ def ensure_vpc_smoke_test(vpc_data):
         if std_out_list == [] or std_err_list == []:
             pk_print(f'''{'%%%FOO%%%' if LTA else ''}''', print_color='green')
         else:
-            pk_print(working_str=rf'''{'%%%FOO%%%' if LTA else ''}''', print_color='red')
+            pk_print(str_working=rf'''{'%%%FOO%%%' if LTA else ''}''', print_color='red')
             raise
 
         # send f (vpc_info_collector.sh)
@@ -78,7 +78,7 @@ def ensure_vpc_smoke_test(vpc_data):
         if std_out_list == [] or std_err_list == []:
             pk_print(f'''{'%%%FOO%%%' if LTA else ''}''', print_color='green')
         else:
-            pk_print(working_str=rf'''{'%%%FOO%%%' if LTA else ''}''', print_color='red')
+            pk_print(str_working=rf'''{'%%%FOO%%%' if LTA else ''}''', print_color='red')
             return
 
         vpc_id = vpc_id.strip()
@@ -113,7 +113,7 @@ def ensure_vpc_smoke_test(vpc_data):
         if std_out_list == [] or std_err_list == []:
             pk_print(f'''{'%%%FOO%%%' if LTA else ''}''', print_color='green')
         else:
-            pk_print(working_str=rf'''{'%%%FOO%%%' if LTA else ''}''', print_color='red')
+            pk_print(str_working=rf'''{'%%%FOO%%%' if LTA else ''}''', print_color='red')
             return
 
         # remove vpc_info_collector.sh
@@ -122,7 +122,7 @@ def ensure_vpc_smoke_test(vpc_data):
         if std_out_list == [] or std_err_list == []:
             pk_print(f'''{'%%%FOO%%%' if LTA else ''}''', print_color='green')
         else:
-            pk_print(working_str=rf'''{'%%%FOO%%%' if LTA else ''}''', print_color='red')
+            pk_print(str_working=rf'''{'%%%FOO%%%' if LTA else ''}''', print_color='red')
             return
 
         # compare vpc tree
@@ -154,7 +154,7 @@ def ensure_vpc_smoke_test(vpc_data):
         # set vpc ip
         ensure_vpc_ip(vpc_data, **config_remote_os)
 
-        # input(f"{pk_get_colorful_working_str_with_stamp_enviromnet(func_n=func_n)} >")
+        # input(f"{pk_get_colorful_str_working_with_stamp_enviromnet(func_n=func_n)} >")
 
         # set vpc ip as custom
         wired_connection_3_new = {'wired_connection_no': 3, "address": rf"", "method": "auto", "gateway": "",
@@ -187,7 +187,7 @@ def ensure_vpc_smoke_test(vpc_data):
         if std_out_list == [] or std_err_list == []:
             pk_print(f'''{'%%%FOO%%%' if LTA else ''}''', print_color='green')
         else:
-            pk_print(working_str=rf'''{'%%%FOO%%%' if LTA else ''}''', print_color='red')
+            pk_print(str_working=rf'''{'%%%FOO%%%' if LTA else ''}''', print_color='red')
             return
 
         # 로그 확인
@@ -202,7 +202,7 @@ def ensure_vpc_smoke_test(vpc_data):
             question=rf'''AI frame work is restarted, again ? {'%%%FOO%%%' if LTA else ''}''')
 
     except:
-        pk_print(working_str=rf"{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''} ", print_color='red')
+        pk_print(str_working=rf"{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''} ", print_color='red')
         return
     finally:
         ensure_pnx_removed(d_temp)

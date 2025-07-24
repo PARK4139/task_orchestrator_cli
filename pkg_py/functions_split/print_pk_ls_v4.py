@@ -1,6 +1,6 @@
 
 
-from pkg_py.pk_system_object.stamps import STAMP_PK_ENVIRONMENT_WITH_UNDERBAR
+from pkg_py.system_object.stamps import STAMP_PK_ENVIRONMENT_WITH_UNDERBAR
 from pkg_py.functions_split.pk_print import pk_print
 
 from pkg_py.functions_split.pk_measure_seconds import pk_measure_seconds

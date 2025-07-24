@@ -7,9 +7,9 @@ from pkg_py.functions_split.open_pnx_by_ext import ensure_pnx_opened_by_ext
 from pkg_py.functions_split.pk_measure_seconds import pk_measure_seconds
 from pkg_py.functions_split.pk_print import pk_print
 from pkg_py.functions_split.pk_sleep import pk_sleep
-from pkg_py.pk_system_object.directories import D_PKG_HISTORY
-from pkg_py.pk_system_object.local_test_activate import LTA
-from pkg_py.pk_system_object.map_massages import PkMessages2025
+from pkg_py.system_object.directories import D_PKG_HISTORY
+from pkg_py.system_object.local_test_activate import LTA
+from pkg_py.system_object.map_massages import PkMessages2025
 
 
 @pk_measure_seconds
@@ -128,7 +128,7 @@ def get_value_from_fzf_routine(file_id, options, editable):
 
 def get_value_via_fzf_or_history(key_name, file_id, options, editable=False):
     from pkg_py.functions_split.get_values_from_historical_file_routine import get_values_from_historical_file_routine
-    from pkg_py.pk_system_object.map_massages import PkMessages2025
+    from pkg_py.system_object.map_massages import PkMessages2025
     # decision = get_value_completed(key_hint=rf"{key_name}=", values=[PkMessages2025.VIA_FZF, PkMessages2025.VIA_HISTORICAL_FILE]) # pk_option
     decision = PkMessages2025.VIA_FZF  # pk_option
     if decision == PkMessages2025.VIA_FZF:
@@ -144,7 +144,7 @@ def get_value_via_fzf_or_history(key_name, file_id, options, editable=False):
 
 def reload_python_program_as_hot_reloader():
     from pkg_py.functions_split.get_pnx_list import get_pnx_list
-    from pkg_py.pk_system_object.directories import D_PKG_PY
+    from pkg_py.system_object.directories import D_PKG_PY
     from pkg_py.workspace.pk_workspace import pk_ensure_process_killed, is_process_killed
     from pkg_py.workspace.pk_workspace import pk_run_py_system_process_by_pnx
     from pkg_py.functions_split.chcp_65001 import chcp_65001
@@ -154,7 +154,7 @@ def reload_python_program_as_hot_reloader():
     from pkg_py.functions_split.get_set_from_list import get_set_from_list
     from pkg_py.pk_interface_graphic_user import get_windows_opened
     from pkg_py.functions_split.pk_print import pk_print
-    from pkg_py.pk_system_object.local_test_activate import LTA
+    from pkg_py.system_object.local_test_activate import LTA
     import inspect
     if get_os_n() == 'windows':
         chcp_65001()

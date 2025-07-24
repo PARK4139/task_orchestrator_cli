@@ -10,20 +10,20 @@ from selenium.common.exceptions import WebDriverException
 from prompt_toolkit import PromptSession
 from pkg_py.functions_split.is_losslesscut_running import is_losslesscut_running
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
-from pkg_py.pk_system_object.etc import PkFilter
-from pkg_py.pk_system_object.files import F_POT_PLAYER_MINI_64_EXE
-from pkg_py.pk_system_object.print_red import print_red
+from pkg_py.system_object.etc import PkFilter
+from pkg_py.system_object.files import F_POT_PLAYER_MINI_64_EXE
+from pkg_py.system_object.print_red import print_red
 from PIL import Image
 from datetime import timedelta
 from pkg_py.functions_split.get_pnx_wsl_unix_style import get_pnx_wsl_unix_style
 from pkg_py.functions_split.pk_print import pk_print
 
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.pk_print import pk_print
 
 
 def classify_pnx_list_at_tree(d_working, mode, with_walking, debug_mode=True):
-    pk_print(working_str=rf'''d="{d_working}" mode="{mode}"  {'%%%FOO%%%' if LTA else ''}''')
+    pk_print(str_working=rf'''d="{d_working}" mode="{mode}"  {'%%%FOO%%%' if LTA else ''}''')
 
     if mode == 'f':
         # todo : ref : f이 너무 많을떄(file_cnt_limit이 100개(?) 넘어가면) without_walking=True

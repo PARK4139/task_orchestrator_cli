@@ -13,16 +13,16 @@ from selenium.common.exceptions import ElementClickInterceptedException
 from pkg_py.functions_split.is_losslesscut_running import is_losslesscut_running
 from pkg_py.functions_split.set_pk_context_state import set_pk_context_state
 from pkg_py.functions_split.ensure_console_cleared import ensure_console_cleared
-from pkg_py.pk_system_object.files import F_LOSSLESSCUT_EXE
-from pkg_py.pk_system_object.encodings import Encoding
-from pkg_py.pk_system_object.get_list_calculated import get_list_calculated
+from pkg_py.system_object.files import F_LOSSLESSCUT_EXE
+from pkg_py.system_object.encodings import Encoding
+from pkg_py.system_object.get_list_calculated import get_list_calculated
 from PIL import Image
 from enum import Enum
 from Cryptodome.Cipher import AES
 from pkg_py.functions_split.is_f import is_f
 from pkg_py.functions_split.is_os_windows import is_os_windows
 
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.pk_print import pk_print
 
 

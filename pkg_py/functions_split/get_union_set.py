@@ -27,7 +27,7 @@ from pkg_py.functions_split.get_video_filtered_list import get_video_filtered_li
 from pkg_py.functions_split.is_window_opened import is_window_opened
 from pkg_py.functions_split.pk_print_once import pk_print_once
 
-from pkg_py.pk_system_object.stamps import STAMP_TRY_GUIDE
+from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
 from passlib.context import CryptContext
 from mutagen.mp3 import MP3
 from enum import Enum
@@ -35,7 +35,7 @@ from datetime import datetime
 from Cryptodome.Random import get_random_bytes
 from base64 import b64encode
 from pkg_py.functions_split.get_pnx_list import get_pnx_list
-from pkg_py.pk_system_object.directories import D_PKG_PY
+from pkg_py.system_object.directories import D_PKG_PY
 from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style
 from pkg_py.functions_split.get_pnx_wsl_unix_style import get_pnx_wsl_unix_style
 from pkg_py.functions_split.get_pnx_windows_style import get_pnx_windows_style

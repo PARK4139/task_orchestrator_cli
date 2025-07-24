@@ -1,4 +1,4 @@
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.pk_print import pk_print
 
 
@@ -22,11 +22,11 @@ def build_project_cmake(project_pnx, **config_remote_os):
         std_out_list, std_err_list = cmd_to_remote_os_with_pubkey(cmd=cmd, **config_remote_os)
         if not len(std_err_list) == 0:
             for std_err_str in std_err_list:
-                pk_print(working_str=rf'{STAMP_REMOTE_ERROR} {std_err_str}', print_color='red')
+                pk_print(str_working=rf'{STAMP_REMOTE_ERROR} {std_err_str}', print_color='red')
             return
         if not len(std_out_list) == 0:
             for std_out_str in std_out_list:
-                pk_print(working_str=rf'{STAMP_REMOTE_DEBUG} {std_out_str}')
+                pk_print(str_working=rf'{STAMP_REMOTE_DEBUG} {std_out_str}')
                 prompt_positive = "cmake version "
                 if prompt_positive in std_out_str:
                     break
@@ -35,11 +35,11 @@ def build_project_cmake(project_pnx, **config_remote_os):
         std_out_list, std_err_list = cmd_to_remote_os_with_pubkey(cmd=cmd, **config_remote_os)
         if not len(std_err_list) == 0:
             for std_err_str in std_err_list:
-                pk_print(working_str=rf'{STAMP_REMOTE_ERROR} {std_err_str}', print_color='red')
+                pk_print(str_working=rf'{STAMP_REMOTE_ERROR} {std_err_str}', print_color='red')
             return
         if not len(std_out_list) == 0:
             for std_out_str in std_out_list:
-                pk_print(working_str=rf'{STAMP_REMOTE_DEBUG} {std_out_str}')
+                pk_print(str_working=rf'{STAMP_REMOTE_DEBUG} {std_out_str}')
 
         cmd = rf"mkdir -p {project_pnx}/build"
         std_out_list, std_err_list = cmd_to_remote_os_with_pubkey(cmd=cmd, **config_remote_os)
@@ -50,7 +50,7 @@ def build_project_cmake(project_pnx, **config_remote_os):
         std_out_list, std_err_list = cmd_to_remote_os_with_pubkey(cmd=cmd, **config_remote_os)
         if not len(std_err_list) == 0:
             for std_err_str in std_err_list:
-                pk_print(working_str=rf'{STAMP_REMOTE_ERROR} {std_err_str}', print_color='red')
+                pk_print(str_working=rf'{STAMP_REMOTE_ERROR} {std_err_str}', print_color='red')
 
             # [ TRY GUIDE ] : sudo apt install build-essential cmake g++ make git libyaml-cpp-dev
 
@@ -77,19 +77,19 @@ def build_project_cmake(project_pnx, **config_remote_os):
             return
         if not len(std_out_list) == 0:
             for std_out_str in std_out_list:
-                pk_print(working_str=rf'{STAMP_REMOTE_DEBUG} {std_out_str}')
+                pk_print(str_working=rf'{STAMP_REMOTE_DEBUG} {std_out_str}')
 
         cmd = rf"cd {project_pnx}/build && make"
         std_out_list, std_err_list = cmd_to_remote_os_with_pubkey(cmd=cmd, **config_remote_os)
         if not len(std_err_list) == 0:
             for std_err_str in std_err_list:
-                pk_print(working_str=rf'{STAMP_REMOTE_ERROR} {std_err_str}', print_color='red')
+                pk_print(str_working=rf'{STAMP_REMOTE_ERROR} {std_err_str}', print_color='red')
             return
         if not len(std_out_list) == 0:
             for std_out_str in std_out_list:
-                pk_print(working_str=rf'{STAMP_REMOTE_DEBUG} {std_out_str}')
+                pk_print(str_working=rf'{STAMP_REMOTE_DEBUG} {std_out_str}')
 
-        pk_print(working_str=rf'''{func_n}()  {'%%%FOO%%%' if LTA else ''}''', print_color='green')
+        pk_print(str_working=rf'''{func_n}()  {'%%%FOO%%%' if LTA else ''}''', print_color='green')
     except:
-        pk_print(working_str=rf"{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''} ", print_color='red')
+        pk_print(str_working=rf"{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''} ", print_color='red')
         raise

@@ -1,7 +1,7 @@
 
 
 # import pywin32
-from pkg_py.pk_system_object.encodings import Encoding
+from pkg_py.system_object.encodings import Encoding
 
 
 def write_str_to_f(msg: str, f: str, mode: str = "a", encoding=None) -> None:

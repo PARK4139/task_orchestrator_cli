@@ -1,5 +1,5 @@
-from pkg_py.pk_system_object.local_test_activate import LTA
-from pkg_py.pk_system_object.directories import D_PKG_TXT
+from pkg_py.system_object.local_test_activate import LTA
+from pkg_py.system_object.directories import D_PKG_TXT
 from pkg_py.functions_split.get_nx import get_nx
 from pkg_py.functions_split.cmd_to_os import cmd_to_os
 from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style
@@ -76,7 +76,7 @@ def ensure_vpc_side_mode(vpc_data, config_remote_os):
         if std_out_list == [] or std_err_list == []:
             pk_print(f'''{'%%%FOO%%%' if LTA else ''}''', print_color='green')
         else:
-            pk_print(working_str=rf'''{'%%%FOO%%%' if LTA else ''}''', print_color='red')
+            pk_print(str_working=rf'''{'%%%FOO%%%' if LTA else ''}''', print_color='red')
             raise
 
         d_temp = make_and_get_d_temp()
@@ -105,7 +105,7 @@ def ensure_vpc_side_mode(vpc_data, config_remote_os):
         if std_out_list == [] or std_err_list == []:
             pk_print(f'''{'%%%FOO%%%' if LTA else ''}''', print_color='green')
         else:
-            pk_print(working_str=rf'''{'%%%FOO%%%' if LTA else ''}''', print_color='red')
+            pk_print(str_working=rf'''{'%%%FOO%%%' if LTA else ''}''', print_color='red')
             return
 
         # send xc_field.sh
@@ -118,7 +118,7 @@ def ensure_vpc_side_mode(vpc_data, config_remote_os):
         if std_out_list == [] or std_err_list == []:
             pk_print(f'''{'%%%FOO%%%' if LTA else ''}''', print_color='green')
         else:
-            pk_print(working_str=rf'''{'%%%FOO%%%' if LTA else ''}''', print_color='red')
+            pk_print(str_working=rf'''{'%%%FOO%%%' if LTA else ''}''', print_color='red')
             return
 
         # import ipdb
@@ -140,7 +140,7 @@ def ensure_vpc_side_mode(vpc_data, config_remote_os):
         cmd = f"sudo visudo -c"
         std_out_list, std_err_list = cmd_to_remote_os_with_pw_via_paramiko(cmd=cmd, **config_remote_os)
         if "parsed OK" not in std_out_list:
-            pk_print(working_str=rf'''{cmd} fail  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
+            pk_print(str_working=rf'''{cmd} fail  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
 
         # a2z_xavier_launcher.zip rm
         cmd = f"rm -rf ~/works/a2z_xavier_launcher.zip"
@@ -148,7 +148,7 @@ def ensure_vpc_side_mode(vpc_data, config_remote_os):
         if std_out_list == [] or std_err_list == []:
             pk_print(f'''{'%%%FOO%%%' if LTA else ''}''', print_color='green')
         else:
-            pk_print(working_str=rf'''{'%%%FOO%%%' if LTA else ''}''', print_color='red')
+            pk_print(str_working=rf'''{'%%%FOO%%%' if LTA else ''}''', print_color='red')
             return
 
         # set xc_field.sh {mode}
@@ -165,7 +165,7 @@ def ensure_vpc_side_mode(vpc_data, config_remote_os):
         if std_out_list == [] or std_err_list == []:
             pk_print(f'''{'%%%FOO%%%' if LTA else ''}''', print_color='green')
         else:
-            pk_print(working_str=rf'''{'%%%FOO%%%' if LTA else ''}''', print_color='red')
+            pk_print(str_working=rf'''{'%%%FOO%%%' if LTA else ''}''', print_color='red')
             return
 
         # download xc_field.sh
@@ -183,7 +183,7 @@ def ensure_vpc_side_mode(vpc_data, config_remote_os):
                                                        initial_str=rf"")
             download_f_from_gitlab(f_nx_remote_src='xc_field.sh', d_local_dst=d_temp, gitlab_repo_url=token_gitlab_repo)
         if not does_pnx_exist(pnx=f_remote_src):
-            pk_print(working_str=rf'''{f_remote_src} does not exist.  {'%%%FOO%%%' if LTA else ''}''',
+            pk_print(str_working=rf'''{f_remote_src} does not exist.  {'%%%FOO%%%' if LTA else ''}''',
                      print_color='red')
             import ipdb
             ipdb.set_trace()
@@ -230,9 +230,9 @@ def ensure_vpc_side_mode(vpc_data, config_remote_os):
 
         ensure_pnx_removed(d_temp)
 
-        pk_print(working_str=rf'''Successfully, set XC as {vpc_side_mode}.  {'%%%FOO%%%' if LTA else ''}''',
+        pk_print(str_working=rf'''Successfully, set XC as {vpc_side_mode}.  {'%%%FOO%%%' if LTA else ''}''',
                  print_color="green")
     except:
-        pk_print(working_str=rf"{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''} ", print_color='red')
+        pk_print(str_working=rf"{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''} ", print_color='red')
         import sys
         raise

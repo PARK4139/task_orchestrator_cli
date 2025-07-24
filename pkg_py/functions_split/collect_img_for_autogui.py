@@ -27,7 +27,7 @@ def collect_img_for_autogui():
         pk_sleep(milliseconds=500)
         pk_press("ctrl", "l", interval=0.5)
         pk_sleep(milliseconds=300)
-        pk_copy(working_str=f_p)
+        pk_copy(str_working=f_p)
         pk_sleep(milliseconds=300)
         pk_press("enter")
         pk_sleep(milliseconds=300)

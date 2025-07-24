@@ -13,11 +13,11 @@ from pkg_py.functions_split.get_value_completed import get_value_completed
 from pkg_py.functions_split.is_f import is_f
 from pkg_py.functions_split.pk_initialize_and_customize_logging_config import pk_initialize_and_customize_logging_config
 from pkg_py.functions_split.restore_workspace_from_latest_archive import restore_workspace_from_latest_archive
-from pkg_py.pk_system_object.map_massages import PkMessages2025
-from pkg_py.pk_system_object.directories import D_PKG_PY
-from pkg_py.pk_system_object.directories_reuseable import D_PROJECT
-from pkg_py.pk_system_object.encodings import Encoding
-from pkg_py.pk_system_object.stamps import STAMP_TRY_GUIDE
+from pkg_py.system_object.map_massages import PkMessages2025
+from pkg_py.system_object.directories import D_PKG_PY
+from pkg_py.system_object.directories_reuseable import D_PROJECT
+from pkg_py.system_object.encodings import Encoding
+from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
 from pkg_py.refactor.A300_pk_ensure_modules_imported_front import clean_import_block
 
 

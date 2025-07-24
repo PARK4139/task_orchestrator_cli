@@ -2,7 +2,7 @@
 
 
 
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.cmd_to_os import cmd_to_os
 
 from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style

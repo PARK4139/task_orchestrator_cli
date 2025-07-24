@@ -3,7 +3,7 @@ import sys
 
 #  import pk_sleep, add_to_potplayer_playlist
 from pkg_py.functions_split.pk_print import pk_print
-# from pkg_py.pk_system_object.500_live_logic import get_pnx_list_from_d_working
+# from pkg_py.system_object.500_live_logic import get_pnx_list_from_d_working
 from pkg_py.pk_core_class import PkSqlite3DB
 
 from colorama import init as pk_colorama_init

@@ -45,14 +45,14 @@ from pkg_py.functions_split.load_f_video_on_losslesscut import load_f_video_on_l
 from pkg_py.functions_split.pk_press import pk_press
 from pkg_py.functions_split.pk_print_state import pk_print_state
 
-from pkg_py.pk_system_object.etc import PkFilter
-from pkg_py.pk_system_object.stamps import STAMP_ATTEMPTED
-from pkg_py.pk_system_object.files import F_HISTORICAL_PNX
-from pkg_py.pk_system_object.directories import D_WORKING
-from pkg_py.pk_system_object.directories import D_PKG_TXT, D_WORKING
-from pkg_py.pk_system_object.map_massages import PkMessages2025
-from pkg_py.pk_system_object.print_red import print_red
-from pkg_py.pk_system_object.state_via_context import SpeedControlContext
+from pkg_py.system_object.etc import PkFilter
+from pkg_py.system_object.stamps import STAMP_ATTEMPTED
+from pkg_py.system_object.files import F_HISTORICAL_PNX
+from pkg_py.system_object.directories import D_WORKING
+from pkg_py.system_object.directories import D_PKG_TXT, D_WORKING
+from pkg_py.system_object.map_massages import PkMessages2025
+from pkg_py.system_object.print_red import print_red
+from pkg_py.system_object.state_via_context import SpeedControlContext
 
 from pathlib import Path
 from passlib.context import CryptContext
@@ -68,12 +68,12 @@ from collections import defaultdict, Counter
 from collections import Counter
 from base64 import b64decode
 from pkg_py.functions_split.get_nx import get_nx
-from pkg_py.pk_system_object.stamps import STAMP_TRY_GUIDE, STAMP_UNIT_TEST_EXCEPTION_DISCOVERED
-from pkg_py.pk_system_object.etc import PK_UNDERLINE
+from pkg_py.system_object.stamps import STAMP_TRY_GUIDE, STAMP_UNIT_TEST_EXCEPTION_DISCOVERED
+from pkg_py.system_object.etc import PK_UNDERLINE
 from pkg_py.functions_split.get_pnx_list import get_pnx_list
 from pkg_py.functions_split.get_list_calculated import get_list_calculated
 from pkg_py.functions_split.is_d import is_d
-from pkg_py.pk_system_object.is_os_windows import is_os_windows
+from pkg_py.system_object.is_os_windows import is_os_windows
 from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style
 from pkg_py.functions_split.get_pnx_windows_style import get_pnx_windows_style
 from pkg_py.functions_split.get_pnx_windows_style import get_pnx_windows_style

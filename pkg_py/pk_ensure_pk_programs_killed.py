@@ -2,8 +2,8 @@ import traceback
 
 from colorama import init as pk_colorama_init
 
-# from pkg_py.pk_system_object.500_live_logic import pk_kill_pk_program_list
-# from pkg_py.pk_system_object.static_logic import D_PROJECT, UNDERLINE, STAMP_TRY_GUIDE, STAMP_EXCEPTION_DISCOVERED
+# from pkg_py.system_object.500_live_logic import pk_kill_pk_program_list
+# from pkg_py.system_object.static_logic import D_PROJECT, UNDERLINE, STAMP_TRY_GUIDE, STAMP_EXCEPTION_DISCOVERED
 #
 
 if __name__ == "__main__":

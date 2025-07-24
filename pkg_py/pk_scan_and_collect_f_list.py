@@ -8,7 +8,7 @@ if __name__ == "__main__":
 
     from colorama import init as pk_colorama_init
 
-    # from pkg_py.pk_system_object.500_live_logic import pk_copy, pk_ensure_f_list_scaned_and_collected
+    # from pkg_py.system_object.500_live_logic import pk_copy, pk_ensure_f_list_scaned_and_collected
     #, STAMP_TRY_GUIDE, D_PROJECT, STAMP_UNIT_TEST_EXCEPTION_DISCOVERED
     #, print_red
 

@@ -1,8 +1,8 @@
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.pk_print import pk_print
 
 
-def ensure_input_preprocessed(working_str, upper_seconds_limit, return_default):
+def ensure_input_preprocessed(str_working, upper_seconds_limit, return_default):
     # 이거 windows 에서망 동작하는 함수?
     import time
 
@@ -17,7 +17,7 @@ def ensure_input_preprocessed(working_str, upper_seconds_limit, return_default):
                 return return_default
             else:
                 return user_input
-        user_input = pk_input_with_timeout(working_str=rf'{working_str}',
+        user_input = pk_input_with_timeout(str_working=rf'{str_working}',
                                            timeout_secs=int(upper_seconds_limit - elapsed))
         if user_input is None:
             user_input = ""

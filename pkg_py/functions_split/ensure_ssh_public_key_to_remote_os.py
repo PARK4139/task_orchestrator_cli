@@ -1,7 +1,7 @@
 
 
-from pkg_py.pk_system_object.local_test_activate import LTA
-from pkg_py.pk_system_object.stamps import STAMP_TRY_GUIDE
+from pkg_py.system_object.local_test_activate import LTA
+from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
 from pkg_py.functions_split.pk_print import pk_print
 
 
@@ -18,7 +18,7 @@ def ensure_ssh_public_key_to_remote_os(**config_remote_os):
         pk_print("SSH PUBLIC KEY IS ALREADY REGISTERED")
         return
     else:
-        pk_print(working_str="SSH PUBLIC KEY IS NOT REGISTERED", print_color='red')
+        pk_print(str_working="SSH PUBLIC KEY IS NOT REGISTERED", print_color='red')
 
     # Paramiko로 SSH 연결
     ssh = paramiko.SSHClient()

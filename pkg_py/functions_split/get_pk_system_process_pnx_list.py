@@ -1,5 +1,5 @@
 def get_pk_system_process_pnx_list():
-    from pkg_py.pk_system_object.directories import D_PKG_PY
+    from pkg_py.system_object.directories import D_PKG_PY
     from pkg_py.functions_split.get_nx import get_nx
     from pkg_py.functions_split.get_list_calculated import get_list_calculated
     from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style

@@ -46,7 +46,7 @@ def crawl_html_href(url: str):
         n = 6  # success
         if len(scroll_maxs_monitored) == n:
             if all(scroll_maxs_monitored) == True:  # [bool] bool list 내 요소가 모두 true 인지 확인
-                pk_print(working_str="스크롤 최하단으로 이동되었습니다", print_color='blue')
+                pk_print(str_working="스크롤 최하단으로 이동되었습니다", print_color='blue')
                 break
 
         # previous_scroll_h 업데이트

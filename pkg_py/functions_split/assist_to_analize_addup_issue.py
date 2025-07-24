@@ -1,8 +1,8 @@
 
 
 
-from pkg_py.pk_system_object.directories import D_DOWNLOADS
-from pkg_py.pk_system_object.directories import D_PKG_TXT
+from pkg_py.system_object.directories import D_DOWNLOADS
+from pkg_py.system_object.directories import D_PKG_TXT
 
 from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style
 from pkg_py.functions_split.pk_print import pk_print
@@ -46,7 +46,7 @@ def assist_to_analize_addup_issue():  # todo
                     stamp_func_n = rf'''[{func_n}()]'''
                     pk_print(f'''{stamp_func_n} {traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}''',
                              print_color='red')
-                    pk_print(working_str="페이지 로딩에 실패", print_color='red')
+                    pk_print(str_working="페이지 로딩에 실패", print_color='red')
                     return
 
     def write_user_input_by_tag_id(driver, tag_id, user_input):
@@ -150,7 +150,7 @@ def assist_to_analize_addup_issue():  # todo
 
     open_pnx_by_ext(issues_list_csv)
 
-    pk_print(working_str='line_order=', print_color='blue')
+    pk_print(str_working='line_order=', print_color='blue')
     line_order = input(":")
     issue_log_index_data = get_issue_log_index_data_from_f_csv(line_order=line_order, issues_list_csv=issues_list_csv)
 
@@ -158,9 +158,9 @@ def assist_to_analize_addup_issue():  # todo
     print_template_for_notion_issue_reporting(line_order=line_order, issues_list_csv=issues_list_csv)
 
     # download the issue log
-    pk_print(working_str=rf'''Could I proceed to download the issue log?  {'%%%FOO%%%' if LTA else ''}''',
+    pk_print(str_working=rf'''Could I proceed to download the issue log?  {'%%%FOO%%%' if LTA else ''}''',
              print_color='blue')
-    input(f"{pk_get_colorful_working_str_with_stamp_enviromnet(func_n=func_n)} >")
+    input(f"{pk_get_colorful_str_working_with_stamp_enviromnet(func_n=func_n)} >")
 
     if isinstance(issue_log_index_data["_f_ 위치"], float):
         issue_log_index_data["_f_ 위치"] = ""

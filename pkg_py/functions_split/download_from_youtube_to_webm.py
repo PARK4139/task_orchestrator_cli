@@ -30,12 +30,12 @@ from pkg_py.functions_split.load_f_video_on_losslesscut import load_f_video_on_l
 from pkg_py.functions_split.write_list_to_f import write_list_to_f
 
 from pkg_py.functions_split.ensure_console_cleared import ensure_console_cleared
-from pkg_py.pk_system_object.stamps import STAMP_TRY_GUIDE
-from pkg_py.pk_system_object.stamps import STAMP_ATTEMPTED
-from pkg_py.pk_system_object.files import F_HISTORICAL_PNX
-from pkg_py.pk_system_object.directories import D_WORKING
-from pkg_py.pk_system_object.state_via_context import SpeedControlContext
-from pkg_py.pk_system_object.get_list_calculated import get_list_calculated
+from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
+from pkg_py.system_object.stamps import STAMP_ATTEMPTED
+from pkg_py.system_object.files import F_HISTORICAL_PNX
+from pkg_py.system_object.directories import D_WORKING
+from pkg_py.system_object.state_via_context import SpeedControlContext
+from pkg_py.system_object.get_list_calculated import get_list_calculated
 from pathlib import Path
 from os.path import dirname
 from moviepy import VideoFileClip
@@ -46,16 +46,16 @@ from bs4 import ResultSet
 from pkg_py.functions_split.get_nx import get_nx
 from pkg_py.functions_split.assist_to_load_video_at_losslesscut import pk_ensure_video_loaded_at_losslesscut
 from pkg_py.functions_split.kill_self_pk_program import kill_self_pk_program
-from pkg_py.pk_system_object.etc import PkFilter, PK_UNDERLINE
+from pkg_py.system_object.etc import PkFilter, PK_UNDERLINE
 from pkg_py.functions_split.get_pnx_list import get_pnx_list
 from pkg_py.functions_split.is_d import is_d
-from pkg_py.pk_system_object.is_os_windows import is_os_windows
+from pkg_py.system_object.is_os_windows import is_os_windows
 from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
 from pkg_py.functions_split.is_os_windows import is_os_windows
 from pkg_py.functions_split.pk_print import pk_print
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.pk_print import pk_print
 
 
@@ -68,10 +68,10 @@ def download_from_youtube_to_webm(urls):
     while 1:
         urls = str(urls).strip()
         if urls is None:
-            pk_speak_v2(working_str="다운로드할 대상 목록에 아무것도 입력되지 않았습니다", comma_delay=0.98)
+            pk_speak_v2(str_working="다운로드할 대상 목록에 아무것도 입력되지 않았습니다", comma_delay=0.98)
             break
         if urls == "None":
-            pk_speak_v2(working_str="다운로드할 대상 목록에 이상한 것이 입력되었습니다", comma_delay=0.98)
+            pk_speak_v2(str_working="다운로드할 대상 목록에 이상한 것이 입력되었습니다", comma_delay=0.98)
             break
 
         if "\n" in urls:
@@ -122,7 +122,7 @@ def download_from_youtube_to_webm(urls):
                 from pytube import Playlist
                 playlist = Playlist(url)  # 이걸로도 parsing 기능 수행 생각 중
                 pk_print(f"predicted clips cnt : {len(playlist.video_urls)}", print_color='blue')
-                pk_speak_v2(working_str=f"{len(playlist.video_urls)}개의 다운로드 목록이 확인되었습니다", comma_delay=0.98)
+                pk_speak_v2(str_working=f"{len(playlist.video_urls)}개의 다운로드 목록이 확인되었습니다", comma_delay=0.98)
                 # os.system(f'echo "여기서부터 비디오 리스트 시작 {url}" >> success_yt_dlp.log')
                 for video_id in playlist.video_urls:
                     try:

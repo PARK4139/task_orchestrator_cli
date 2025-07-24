@@ -33,8 +33,8 @@ from pkg_py.functions_split.is_window_opened import is_window_opened
 from pkg_py.functions_split.pk_print_state import pk_print_state
 
 from pkg_py.functions_split.cmd_to_os import cmd_to_os
-from pkg_py.pk_system_object.map_massages import PkMessages2025
-from pkg_py.pk_system_object.get_list_calculated import get_list_calculated
+from pkg_py.system_object.map_massages import PkMessages2025
+from pkg_py.system_object.get_list_calculated import get_list_calculated
 from moviepy import VideoFileClip
 from functools import partial
 from functools import lru_cache

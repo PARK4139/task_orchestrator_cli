@@ -1,6 +1,6 @@
 if __name__ == '__main__':
-    from pkg_py.pk_system_object.directories_reuseable import D_PROJECT
-    from pkg_py.pk_system_object.stamps import STAMP_TRY_GUIDE
+    from pkg_py.system_object.directories_reuseable import D_PROJECT
+    from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
     from pkg_py.functions_split.get_driver_selenium_solved_cloudflare_sequrity import get_driver_selenium_solved_cloudflare_sequrity
     from pkg_py.functions_split.ensure_do_finally_routine import ensure_do_finally_routine
 

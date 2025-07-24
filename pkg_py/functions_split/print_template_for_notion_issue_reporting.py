@@ -19,7 +19,7 @@ from pkg_py.functions_split.pk_print_once import pk_print_once
 from pkg_py.functions_split.cmd_to_os import cmd_to_os
 from pkg_py.functions_split.get_list_sorted import get_list_sorted
 from pkg_py.functions_split.set_pk_context_state import set_pk_context_state
-from pkg_py.pk_system_object.files import F_HISTORICAL_PNX
+from pkg_py.system_object.files import F_HISTORICAL_PNX
 from PIL import Image
 from functools import partial
 from dirsync import sync
@@ -29,12 +29,12 @@ from pkg_py.functions_split.assist_to_load_video_at_losslesscut import pk_ensure
 from pkg_py.functions_split.get_value_completed import get_value_completed
 from pkg_py.functions_split.get_list_calculated import get_list_calculated
 
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.pk_print import pk_print
 
 
 def print_template_for_notion_issue_reporting(line_order, issues_list_csv):
-    pk_print(working_str=rf'''노션 이슈발생 템플릿  {'%%%FOO%%%' if LTA else ''}''', print_color='white')
+    pk_print(str_working=rf'''노션 이슈발생 템플릿  {'%%%FOO%%%' if LTA else ''}''', print_color='white')
     collect_row_data = collect_row_data_from_csv(line_order=line_order, issues_list_csv=issues_list_csv)
     pk_print(string=f'''차량 : {collect_row_data["차량"]}''', print_color='white')
     pk_print(string=f'''지역 : {collect_row_data["지역"]}''', print_color='white')

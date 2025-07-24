@@ -23,21 +23,21 @@ from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 
 from pkg_py.functions_split.cmd_to_os import cmd_to_os
 from pkg_py.functions_split.ensure_console_cleared import ensure_console_cleared
-from pkg_py.pk_system_object.stamps import STAMP_TRY_GUIDE
-from pkg_py.pk_system_object.files import F_LOSSLESSCUT_EXE
-from pkg_py.pk_system_object.files import F_HISTORICAL_PNX
-from pkg_py.pk_system_object.files import F_FFMPEG_EXE
-from pkg_py.pk_system_object.encodings import Encoding
-from pkg_py.pk_system_object.directories_reuseable import D_PROJECT
-from pkg_py.pk_system_object.state_via_database import PkSqlite3DB
-from pkg_py.pk_system_object.get_list_calculated import get_list_calculated
+from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
+from pkg_py.system_object.files import F_LOSSLESSCUT_EXE
+from pkg_py.system_object.files import F_HISTORICAL_PNX
+from pkg_py.system_object.files import F_FFMPEG_EXE
+from pkg_py.system_object.encodings import Encoding
+from pkg_py.system_object.directories_reuseable import D_PROJECT
+from pkg_py.system_object.state_via_database import PkSqlite3DB
+from pkg_py.system_object.get_list_calculated import get_list_calculated
 
 from functools import partial as functools_partial
 from functools import partial
 from datetime import date
 from pkg_py.functions_split.get_pnx_list import get_pnx_list
 
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.pk_print import pk_print
 
 
@@ -64,12 +64,12 @@ def ensure_remote_os_ip_usb_connection(config_remote_os, remote_os_distro_n=None
                          print_color='red')
                 pk_print(f'''리커버리 모드 진입을 재시도하세요.  {'%%%FOO%%%' if LTA else ''}"''', print_color='red')
                 raise
-            pk_print(working_str=rf'''match="{match}"  {'%%%FOO%%%' if LTA else ''}''')
+            pk_print(str_working=rf'''match="{match}"  {'%%%FOO%%%' if LTA else ''}''')
             bus_id = match.group()
     if bus_id is None:
         pk_print(f'''"bus_id 가 None 입니다.  {'%%%FOO%%%' if LTA else ''} "''', print_color='red')
         raise
-    pk_print(working_str=rf'''bus id found, bus_id={bus_id}  {'%%%FOO%%%' if LTA else ''}''', print_color="green")
+    pk_print(str_working=rf'''bus id found, bus_id={bus_id}  {'%%%FOO%%%' if LTA else ''}''', print_color="green")
 
     # signiture = "제공된 이름의 배포가 없습니다" or 'xxxx'
     std_list = cmd_to_os(cmd=rf"wsl -d {remote_os_distro_n} -- exit")
@@ -103,7 +103,7 @@ def ensure_remote_os_ip_usb_connection(config_remote_os, remote_os_distro_n=None
     start_time = time.time()
     while 1:
         if is_window_opened(window_title_seg=cmd):
-            pk_print(working_str=rf'''[ATTEMPTED] "wsl attach"  {'%%%FOO%%%' if LTA else ''}''')
+            pk_print(str_working=rf'''[ATTEMPTED] "wsl attach"  {'%%%FOO%%%' if LTA else ''}''')
             break
         if time.time() - start_time > timeout:
             return 0

@@ -15,8 +15,8 @@ from pkg_py.functions_split.get_historical_list import get_historical_list
 from pkg_py.functions_split.pk_print import pk_print
 
 from pkg_py.functions_split.write_list_to_f import write_list_to_f
-from pkg_py.pk_system_object.stamps import STAMP_TRY_GUIDE
-from pkg_py.pk_system_object.state_via_context import SpeedControlContext
+from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
+from pkg_py.system_object.state_via_context import SpeedControlContext
 
 from passlib.context import CryptContext
 from mutagen.mp3 import MP3
@@ -28,9 +28,9 @@ from collections import Counter
 from pkg_py.functions_split.assist_to_load_video_at_losslesscut import pk_ensure_video_loaded_at_losslesscut
 from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
 from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.local_test_activate import LTA
 
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.pk_print import pk_print
 from pkg_py.functions_split.get_d_working import get_d_working
 

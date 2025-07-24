@@ -1,12 +1,12 @@
-from pkg_py.pk_system_object.print_red import print_red
-from pkg_py.pk_system_object.directories import D_DOWNLOADS
+from pkg_py.system_object.print_red import print_red
+from pkg_py.system_object.directories import D_DOWNLOADS
 
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.pk_print import pk_print
-from pkg_py.pk_system_object.print_red import print_red
+from pkg_py.system_object.print_red import print_red
 
-from pkg_py.pk_system_object.local_test_activate import LTA
-from pkg_py.pk_system_object.directories import D_DOWNLOADS
+from pkg_py.system_object.local_test_activate import LTA
+from pkg_py.system_object.directories import D_DOWNLOADS
 from pkg_py.functions_split.pk_print import pk_print
 
 

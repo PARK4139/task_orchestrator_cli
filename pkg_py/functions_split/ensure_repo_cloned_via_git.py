@@ -6,7 +6,7 @@ from tkinter import UNDERLINE
 from prompt_toolkit import PromptSession
 from pkg_py.functions_split.write_list_to_f import write_list_to_f
 from pkg_py.functions_split.set_pk_context_state import set_pk_context_state
-from pkg_py.pk_system_object.etc import PkFilter
+from pkg_py.system_object.etc import PkFilter
 from cryptography.hazmat.primitives import padding
 from bs4 import ResultSet
 from base64 import b64decode
@@ -14,7 +14,7 @@ from pkg_py.functions_split.get_nx import get_nx
 from pkg_py.functions_split.is_d import is_d
 from pkg_py.functions_split.is_f import is_f
 
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.pk_print import pk_print
 from pkg_py.functions_split.get_d_working import get_d_working
 

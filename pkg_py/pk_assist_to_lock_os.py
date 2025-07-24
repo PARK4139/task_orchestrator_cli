@@ -7,9 +7,9 @@ if __name__ == '__main__':
         from colorama import init as pk_colorama_init
 
         #  import chcp_65001, is_os_windows
-        # from pkg_py.pk_system_object.500_live_logic import pk_assist_to_lock_os
-        # from pkg_py.pk_system_object.500_live_logic import pk_copy
-        # from pkg_py.pk_system_object.static_logic import D_PROJECT, UNDERLINE, STAMP_TRY_GUIDE, STAMP_EXCEPTION_DISCOVERED
+        # from pkg_py.system_object.500_live_logic import pk_assist_to_lock_os
+        # from pkg_py.system_object.500_live_logic import pk_copy
+        # from pkg_py.system_object.static_logic import D_PROJECT, UNDERLINE, STAMP_TRY_GUIDE, STAMP_EXCEPTION_DISCOVERED
         #
 
         pk_colorama_init_once()

@@ -2,9 +2,9 @@ if __name__ == "__main__":
     try:
         import traceback
 
-        # from pkg_py.pk_system_object.500_live_logic import restart_up_pk_process_list, pk_copy
+        # from pkg_py.system_object.500_live_logic import restart_up_pk_process_list, pk_copy
         #
-        # from pkg_py.pk_system_object.static_logic import D_PROJECT, UNDERLINE, STAMP_TRY_GUIDE, STAMP_EXCEPTION_DISCOVERED
+        # from pkg_py.system_object.static_logic import D_PROJECT, UNDERLINE, STAMP_TRY_GUIDE, STAMP_EXCEPTION_DISCOVERED
 
         restart_up_pk_process_list()
 

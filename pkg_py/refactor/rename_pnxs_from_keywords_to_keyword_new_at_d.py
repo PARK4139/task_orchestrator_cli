@@ -1,5 +1,5 @@
-from pkg_py.pk_system_object.local_test_activate import LTA
-from pkg_py.pk_system_object.directories import D_PKG_TXT
+from pkg_py.system_object.local_test_activate import LTA
+from pkg_py.system_object.directories import D_PKG_TXT
 from pkg_py.functions_split.get_nx import get_nx
 from pkg_py.functions_split.pk_print import pk_print
 
@@ -28,7 +28,7 @@ def rename_pnxs_from_keywords_to_keyword_new_at_d(d, mode, with_walking, debug_m
     elif mode == "d":
         pnxs = d_list
     else:
-        pk_print(working_str=rf'''mode={mode}  {'%%%FOO%%%' if LTA else ''}''')
+        pk_print(str_working=rf'''mode={mode}  {'%%%FOO%%%' if LTA else ''}''')
         return
 
     # pnxs에 "System Volume Information" 있으면 제외

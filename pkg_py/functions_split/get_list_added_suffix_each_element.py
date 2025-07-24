@@ -17,10 +17,10 @@ from pkg_py.functions_split.is_losslesscut_running import is_losslesscut_running
 from pkg_py.functions_split.rerun_losslesscut import rerun_losslesscut
 
 from pkg_py.functions_split.cmd_to_os import cmd_to_os
-from pkg_py.pk_system_object.stamps import STAMP_ATTEMPTED
-from pkg_py.pk_system_object.files import F_HISTORICAL_PNX
-from pkg_py.pk_system_object.print_red import print_red
-from pkg_py.pk_system_object.state_via_database import PkSqlite3DB
+from pkg_py.system_object.stamps import STAMP_ATTEMPTED
+from pkg_py.system_object.files import F_HISTORICAL_PNX
+from pkg_py.system_object.print_red import print_red
+from pkg_py.system_object.state_via_database import PkSqlite3DB
 from passlib.context import CryptContext
 from gtts import gTTS
 from dirsync import sync

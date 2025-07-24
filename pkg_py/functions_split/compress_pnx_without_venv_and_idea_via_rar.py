@@ -50,13 +50,13 @@ from pkg_py.functions_split.pk_print_state import pk_print_state
 
 from pkg_py.functions_split.cmd_to_os import cmd_to_os
 from pkg_py.functions_split.get_list_sorted import get_list_sorted
-from pkg_py.pk_system_object.etc import PkFilter
-from pkg_py.pk_system_object.files import F_LOSSLESSCUT_EXE
-from pkg_py.pk_system_object.files import F_FFMPEG_EXE
-from pkg_py.pk_system_object.encodings import Encoding
-from pkg_py.pk_system_object.directories_reuseable import D_PROJECT
-from pkg_py.pk_system_object.state_via_database import PkSqlite3DB
-from pkg_py.pk_system_object.is_os_windows import is_os_windows
+from pkg_py.system_object.etc import PkFilter
+from pkg_py.system_object.files import F_LOSSLESSCUT_EXE
+from pkg_py.system_object.files import F_FFMPEG_EXE
+from pkg_py.system_object.encodings import Encoding
+from pkg_py.system_object.directories_reuseable import D_PROJECT
+from pkg_py.system_object.state_via_database import PkSqlite3DB
+from pkg_py.system_object.is_os_windows import is_os_windows
 
 from gtts import gTTS
 from functools import partial as functools_partial
@@ -72,7 +72,7 @@ from base64 import b64encode
 from pkg_py.functions_split.get_nx import get_nx
 from pkg_py.functions_split.assist_to_load_video_at_losslesscut import pk_ensure_video_loaded_at_losslesscut
 from pkg_py.functions_split.kill_self_pk_program import kill_self_pk_program
-from pkg_py.pk_system_object.directories import D_PKG_PY
+from pkg_py.system_object.directories import D_PKG_PY
 from pkg_py.functions_split.is_f import is_f
 from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
 from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style
@@ -80,7 +80,7 @@ from pkg_py.functions_split.get_pnx_wsl_unix_style import get_pnx_wsl_unix_style
 from pkg_py.functions_split.get_pnx_windows_style import get_pnx_windows_style
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.pk_print import pk_print
 from pkg_py.functions_split.get_d_working import get_d_working
 
@@ -171,6 +171,6 @@ def compress_pnx_without_venv_and_idea_via_rar(pnx, d_dst, with_timestamp=1):
     if does_pnx_exist(pnx=f_rar_new_timestamp):
         STAMP_func_n = rf'[{inspect.currentframe().f_code.co_name}()]'
         pk_print(
-            working_str=rf'''{STAMP_func_n} f_rar_new_timestamp={f_rar_new_timestamp}  {'%%%FOO%%%' if LTA else ''}''',
+            str_working=rf'''{STAMP_func_n} f_rar_new_timestamp={f_rar_new_timestamp}  {'%%%FOO%%%' if LTA else ''}''',
             print_color='green')
     return f_rar_new_timestamp

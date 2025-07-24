@@ -13,7 +13,7 @@ from pkg_py.functions_split.is_losslesscut_running import is_losslesscut_running
 from pkg_py.functions_split.pk_press import pk_press
 from pkg_py.functions_split.pk_print_once import pk_print_once
 from pkg_py.functions_split.write_list_to_f import write_list_to_f
-from pkg_py.pk_system_object.files import F_LOSSLESSCUT_EXE
+from pkg_py.system_object.files import F_LOSSLESSCUT_EXE
 from os import path
 from fastapi import HTTPException
 from pkg_py.functions_split.is_d import is_d

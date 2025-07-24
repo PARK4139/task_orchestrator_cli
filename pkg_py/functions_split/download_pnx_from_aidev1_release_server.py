@@ -1,4 +1,4 @@
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.get_nx import get_nx
 from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style
 from pkg_py.functions_split.get_pnx_windows_style import get_pnx_windows_style
@@ -18,7 +18,7 @@ def download_pnx_from_aidev1_release_server(remote_f_src, local_d_dst, **config_
     # todo migrate secret txt f to token
 
     remote_f_src = get_pnx_unix_style(remote_f_src)
-    pk_print(working_str=rf'''src="{remote_f_src}"  {'%%%FOO%%%' if LTA else ''}''')
+    pk_print(str_working=rf'''src="{remote_f_src}"  {'%%%FOO%%%' if LTA else ''}''')
 
     f_dst = rf"{local_d_dst}/{get_nx(remote_f_src)}"
     f_dst = get_pnx_windows_style(f_dst)

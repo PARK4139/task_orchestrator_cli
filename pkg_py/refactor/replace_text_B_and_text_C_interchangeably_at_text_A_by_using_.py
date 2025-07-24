@@ -17,7 +17,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from pytube import Playlist
 from pkg_py.functions_split.get_historical_list import get_historical_list
 from pkg_py.functions_split.is_losslesscut_running import is_losslesscut_running
-from pkg_py.pk_system_object.directories_reuseable import D_PROJECT
+from pkg_py.system_object.directories_reuseable import D_PROJECT
 from os import path
 from mutagen.mp3 import MP3
 from moviepy import VideoFileClip
@@ -29,7 +29,7 @@ from pkg_py.functions_split.assist_to_load_video_at_losslesscut import pk_ensure
 from pkg_py.functions_split.get_pnx_windows_style import get_pnx_windows_style
 from pkg_py.functions_split.get_pnx_windows_style import get_pnx_windows_style
 
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.pk_print import pk_print
 
 
@@ -46,7 +46,7 @@ def replace_text_B_and_text_C_interchangeably_at_text_A_by_using_(____text_A, __
     if ____text_C == "":
         ____text_A = ____text_A.replace(____text_B, ____text_C)
     elif text_special in ____text_C:
-        pk_print(working_str="text_A 에서 " + ____text_B + " 를 총" + str(text_B_cnt) + "개 발견하였습니다")
+        pk_print(str_working="text_A 에서 " + ____text_B + " 를 총" + str(text_B_cnt) + "개 발견하였습니다")
         foo_list = ____text_A.split(____text_B)
         if ____text_B in ____text_C:
             foo_cmt = 0

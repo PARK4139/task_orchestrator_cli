@@ -12,7 +12,7 @@ import mysql.connector
 
 from colorama import init as pk_colorama_init
 
-# from pkg_py.pk_system_object.500_live_logic import get_pk_config
+# from pkg_py.system_object.500_live_logic import get_pk_config
 #, STAMP_TRY_GUIDE, D_PROJECT, STAMP_UNIT_TEST_EXCEPTION_DISCOVERED
 #, print_red
 

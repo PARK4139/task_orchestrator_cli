@@ -45,10 +45,10 @@ from pkg_py.functions_split.pk_print_state import pk_print_state
 from pkg_py.functions_split.pk_print_once import pk_print_once
 from pkg_py.functions_split.cmd_to_os import cmd_to_os
 from pkg_py.functions_split.write_list_to_f import write_list_to_f
-from pkg_py.pk_system_object.etc import PkFilter
-from pkg_py.pk_system_object.directories_reuseable import D_PROJECT
-from pkg_py.pk_system_object.state_via_context import SpeedControlContext
-from pkg_py.pk_system_object.get_list_calculated import get_list_calculated
+from pkg_py.system_object.etc import PkFilter
+from pkg_py.system_object.directories_reuseable import D_PROJECT
+from pkg_py.system_object.state_via_context import SpeedControlContext
+from pkg_py.system_object.get_list_calculated import get_list_calculated
 from PIL import Image
 from mutagen.mp3 import MP3
 from functools import partial
@@ -61,7 +61,7 @@ from concurrent.futures import ThreadPoolExecutor
 from colorama import init as pk_colorama_init
 from bs4 import BeautifulSoup
 from base64 import b64encode
-from pkg_py.pk_system_object.etc import PK_UNDERLINE
+from pkg_py.system_object.etc import PK_UNDERLINE
 from pkg_py.functions_split.is_d import is_d
 from pkg_py.functions_split.is_f import is_f
 from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux

@@ -1,4 +1,4 @@
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.pk_print import pk_print
 
 
@@ -8,7 +8,7 @@ def is_user_input_required(user_input: str):
     func_n = inspect.currentframe().f_code.co_name
     # 수정 필요.
     user_input = user_input.strip()
-    pk_print(working_str=rf'''user_input="{user_input}"  {'%%%FOO%%%' if LTA else ''}''')
+    pk_print(str_working=rf'''user_input="{user_input}"  {'%%%FOO%%%' if LTA else ''}''')
     if is_only_no(user_input):
         user_input = int(user_input)
     else:

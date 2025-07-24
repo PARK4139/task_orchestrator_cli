@@ -1,4 +1,4 @@
-from pkg_py.pk_system_object.files import F_POT_PLAYER_MINI_64_EXE
+from pkg_py.system_object.files import F_POT_PLAYER_MINI_64_EXE
 
 
 def add_to_potplayer_playlist(file_path: str):

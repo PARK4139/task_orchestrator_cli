@@ -45,11 +45,11 @@ from pkg_py.functions_split.pk_print_once import pk_print_once
 
 from pkg_py.functions_split.write_list_to_f import write_list_to_f
 from pkg_py.functions_split.get_list_sorted import get_list_sorted
-from pkg_py.pk_system_object.etc import PkFilter
-from pkg_py.pk_system_object.files import F_LOSSLESSCUT_EXE
-from pkg_py.pk_system_object.directories_reuseable import D_PROJECT
-from pkg_py.pk_system_object.state_via_context import SpeedControlContext
-from pkg_py.pk_system_object.get_list_calculated import get_list_calculated
+from pkg_py.system_object.etc import PkFilter
+from pkg_py.system_object.files import F_LOSSLESSCUT_EXE
+from pkg_py.system_object.directories_reuseable import D_PROJECT
+from pkg_py.system_object.state_via_context import SpeedControlContext
+from pkg_py.system_object.get_list_calculated import get_list_calculated
 from PIL import Image
 from passlib.context import CryptContext
 from os.path import dirname
@@ -63,12 +63,12 @@ from cryptography.hazmat.backends import default_backend
 from collections import Counter
 from base64 import b64encode
 from pkg_py.functions_split.kill_self_pk_program import kill_self_pk_program
-from pkg_py.pk_system_object.etc import PkFilter, PK_UNDERLINE
-from pkg_py.pk_system_object.directories import D_PKG_PY
+from pkg_py.system_object.etc import PkFilter, PK_UNDERLINE
+from pkg_py.system_object.directories import D_PKG_PY
 from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style
 from pkg_py.functions_split.pk_print import pk_print
 
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.pk_print import pk_print
 
 

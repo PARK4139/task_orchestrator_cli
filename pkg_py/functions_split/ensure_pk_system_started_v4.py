@@ -9,7 +9,7 @@ def ensure_pk_system_started_v4():
     import sys
     import subprocess
     func_n = inspect.currentframe().f_code.co_name
-    from pkg_py.pk_system_object.directories import D_PKG_PY
+    from pkg_py.system_object.directories import D_PKG_PY
     from pkg_py.functions_split.get_sorted_pk_file_list import get_excutable_pk_system_file_list
 
     last_history_file = get_last_history_file(__file__, func_n)

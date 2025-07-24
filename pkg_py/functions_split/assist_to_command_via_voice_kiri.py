@@ -26,8 +26,8 @@ from pkg_py.functions_split.is_window_title_front import is_window_title_front
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 from pkg_py.functions_split.cmd_to_os import cmd_to_os
 from pkg_py.functions_split.get_list_sorted import get_list_sorted
-from pkg_py.pk_system_object.stamps import STAMP_TRY_GUIDE
-from pkg_py.pk_system_object.directories_reuseable import D_PROJECT
+from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
+from pkg_py.system_object.directories_reuseable import D_PROJECT
 
 from passlib.context import CryptContext
 from os.path import dirname
@@ -39,16 +39,16 @@ from datetime import date
 from cryptography.hazmat.backends import default_backend
 from Cryptodome.Random import get_random_bytes
 from pkg_py.functions_split.assist_to_load_video_at_losslesscut import pk_ensure_video_loaded_at_losslesscut
-from pkg_py.pk_system_object.directories import D_WORKING, D_PKG_PKL, D_PKG_PY
-from pkg_py.pk_system_object.directories import D_PKG_PY
-from pkg_py.pk_system_object.is_os_windows import is_os_windows
+from pkg_py.system_object.directories import D_WORKING, D_PKG_PKL, D_PKG_PY
+from pkg_py.system_object.directories import D_PKG_PY
+from pkg_py.system_object.is_os_windows import is_os_windows
 
 
 from pkg_py.functions_split.get_pnx_windows_style import get_pnx_windows_style
 from pkg_py.functions_split.is_os_windows import is_os_windows
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.local_test_activate import LTA
 
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.pk_print import pk_print
 
 
@@ -88,7 +88,7 @@ def assist_to_command_via_voice_kiri():
     if is_internet_connected():
         # recognizer=sr.Recognizer()
         # with sr.Microphone() as source:
-        #     pk_print(working_str="음성을 말하세요...")
+        #     pk_print(str_working="음성을 말하세요...")
         #     recognizer.adjust_for_ambient_noise(source)
         #     audio=recognizer.listen(source)
         pass
@@ -137,32 +137,32 @@ def assist_to_command_via_voice_kiri():
             pk_print_and_speak(ice_breaking_ment)
 
         try:
-            if working_str is None:
+            if str_working is None:
                 with sr.Microphone() as source:
                     # recognizer.adjust_for_ambient_noise(source, duration=1.0)  # 주변 소음 보정 # adjust_for_ambient_noise no attribution
                     while 1:
                         try:
                             pk_print("지금 말씀하실것을 추천드립니다.", print_color='blue')
                             # audio = recognizer.listen(source, phrase_time_limit=10)  # 음성 듣기
-                            working_str = recognizer.recognize_google(audio, language="ko")  # Google STT
+                            str_working = recognizer.recognize_google(audio, language="ko")  # Google STT
                             break
                         except sr.UnknownValueError:
-                            pk_print(f"UnknownValueError {working_str}")
+                            pk_print(f"UnknownValueError {str_working}")
                         except sr.RequestError as e:
                             pk_print(f"Google Speech Recognition service access", print_color='red')
-            working_str = working_str.replace(' ', '')
-            pk_print(rf"{working_str}", print_color='blue')
-            if any(keyword in working_str for keyword in ["ipdb"]):
+            str_working = str_working.replace(' ', '')
+            pk_print(rf"{str_working}", print_color='blue')
+            if any(keyword in str_working for keyword in ["ipdb"]):
                 import ipdb
                 ipdb.set_trace()
-            elif any(keyword in working_str for keyword in ["테스트", "test"]):
+            elif any(keyword in str_working for keyword in ["테스트", "test"]):
                 pk_count_down()
-            elif any(keyword in working_str for keyword in ["휴지통비워", "휴지통정리", "empty_trash_bin"]):
+            elif any(keyword in str_working for keyword in ["휴지통비워", "휴지통정리", "empty_trash_bin"]):
                 empty_recycle_bin()
                 pk_print_and_speak("I have emptied the trash bin")
-            elif any(keyword in working_str for keyword in ["플레인", "플래인"]):
+            elif any(keyword in str_working for keyword in ["플레인", "플래인"]):
                 pk_print_and_speak("yes. i am here")
-            elif any(keyword in working_str for keyword in ["영어공부"]):
+            elif any(keyword in str_working for keyword in ["영어공부"]):
                 pk_print_and_speak("What is the weather like?")
                 pk_sleep(seconds=random.randint(a=200, b=500))
                 pk_print_and_speak(
@@ -171,12 +171,12 @@ def assist_to_command_via_voice_kiri():
                 pk_print_and_speak("Quit")
                 pk_sleep(seconds=random.randint(a=200, b=500))
                 pk_print_and_speak("Ending the conversation. Goodbye!")
-            elif any(keyword in working_str for keyword in ["업무_d_생성", '업무_d_']):
+            elif any(keyword in str_working for keyword in ["업무_d_생성", '업무_d_']):
                 make_d_with_timestamp(d_nx=rf"생산관리", dst=rf"{D_WORKING}")
                 assist_to_make_d_for_work()
-            elif any(keyword in working_str for keyword in ["sound interactive mode"]):
+            elif any(keyword in str_working for keyword in ["sound interactive mode"]):
                 # guide_todo(days=1)  # todo : add : 등록된 스케쥴시간확인
-                pk_print(working_str="Please give a cmd", print_color='blue')
+                pk_print(str_working="Please give a cmd", print_color='blue')
                 # print_and_speak("시키실 일 없으신가요.", after_delay=1.0) #random
                 with sr.Microphone() as source:
                     # recognizer.adjust_for_ambient_noise(source)
@@ -184,16 +184,16 @@ def assist_to_command_via_voice_kiri():
                     # audio=recognizer.listen(source, time_limit=15, phrase_time_limit=10)
                     audio = recognizer.listen(source,
                                               phrase_time_limit=10)  # phrase_time_limit: Limit the maximum length of a phrase.
-                    working_str = recognizer.recognize_google(audio, language="ko")
-            elif any(keyword in working_str for keyword in ["버전자동업데이트", '버저닝']):
+                    str_working = recognizer.recognize_google(audio, language="ko")
+            elif any(keyword in str_working for keyword in ["버전자동업데이트", '버저닝']):
                 make_version_new(via_f_txt=True)
-            elif any(keyword in working_str for keyword in ["프로젝트백업", "백업", "백업해라"]):
+            elif any(keyword in str_working for keyword in ["프로젝트백업", "백업", "백업해라"]):
 
                 restart_f_list_with_new_window_as_async([rf"{D_PKG_PY}/pk_kill_cmd_exe.py"])
-            elif any(keyword in working_str for keyword in ["프로젝트백업", "백업", "백업해라"]):
+            elif any(keyword in str_working for keyword in ["프로젝트백업", "백업", "백업해라"]):
 
                 restart_f_list_with_new_window_as_async([rf"{D_PKG_PY}/pk_back_up_project.py"])
-            elif any(keyword in working_str for keyword in ["텔레그램으로 백업"]):
+            elif any(keyword in str_working for keyword in ["텔레그램으로 백업"]):
                 import nest_asyncio
                 import asyncio
                 f = pk_back_up_pnx_without_venv_and_idea(pnx_working=D_PROJECT, d_dst=D_ARCHIVED, with_timestamp=0)
@@ -205,66 +205,66 @@ def assist_to_command_via_voice_kiri():
                 return  # return is necceary code, 처리 안시키면 PC 부팅 시 최대절전모드로 무한 진입, 컴퓨터 전원 재연결해야 된다 -> keyword = '' and use continue -> 시도하면 아마될듯
                 keyword = ''
                 continue
-            elif any(keyword in working_str for keyword in ["퇴근해", "자자"]):
+            elif any(keyword in str_working for keyword in ["퇴근해", "자자"]):
 
                 restart_f_list_with_new_window_as_async([rf"{D_PKG_PY}/pk_자자.py"])
                 keyword = ''
                 continue
-            elif any(keyword in working_str for keyword in ["트리정리"]):
+            elif any(keyword in str_working for keyword in ["트리정리"]):
 
                 restart_f_list_with_new_window_as_async([rf"{D_PKG_PY}/pk_organize_tree.py"])
                 keyword = ''
                 continue
-            elif any(keyword in working_str for keyword in ["피케이"]):
+            elif any(keyword in str_working for keyword in ["피케이"]):
                 cmd_f_in_cmd_exe_like_person(cmd_prefix='python', f=rf"{D_PROJECT}/ensure_pk_system_started")
-            elif any(keyword in working_str for keyword in ["할일", "스케쥴러", "스케쥴가이드"]):
+            elif any(keyword in str_working for keyword in ["할일", "스케쥴러", "스케쥴가이드"]):
                 guide_todo()
-            elif any(keyword in working_str for keyword in ["토렌트", "토렌트다운로드"]):
+            elif any(keyword in str_working for keyword in ["토렌트", "토렌트다운로드"]):
                 pass
-            elif any(keyword in working_str for keyword in ["유튜브다운로드"]):
+            elif any(keyword in str_working for keyword in ["유튜브다운로드"]):
                 pass
-            elif any(keyword in working_str for keyword in ["youtube channel download", "유튜브채널다운로드"]):
+            elif any(keyword in str_working for keyword in ["youtube channel download", "유튜브채널다운로드"]):
                 pass
-            elif any(keyword in working_str for keyword in
+            elif any(keyword in str_working for keyword in
                      ["ytctd", "youtube channel thumbnail download", "유튜브채널썸네일다운로드"]):
                 youtube_channel_main_page_url = input('youtube_channel_main_page_url=')
                 youtube_channel_main_page_url = youtube_channel_main_page_url.strip()
                 download_youtube_thumbnails_from_youtube_channel_main_page_url(youtube_channel_main_page_url)
-            elif any(keyword in working_str for keyword in ["오늘무슨날", "무슨날"]):
+            elif any(keyword in str_working for keyword in ["오늘무슨날", "무슨날"]):
                 pk_speak('today is christmas. happy christmas')
                 pk_speak('today is newyear')
-            elif any(keyword in working_str for keyword in ["오늘날짜", "날짜"]):
+            elif any(keyword in str_working for keyword in ["오늘날짜", "날짜"]):
                 speak_today_info_as_korean()
-            elif any(keyword in working_str for keyword in ["요일", "오늘요일", "몇요일"]):
+            elif any(keyword in str_working for keyword in ["요일", "오늘요일", "몇요일"]):
                 pk_speak(f'{get_weekday_as_english()}')
-            elif any(keyword in working_str for keyword in ["시간", "몇시야", "몇시"]):
+            elif any(keyword in str_working for keyword in ["시간", "몇시야", "몇시"]):
                 HH = get_time_as_('%H')
                 mm = get_time_as_('%M')
                 pk_speak(f'{int(HH)} hour {int(mm)} minutes')
-            elif any(keyword in working_str for keyword in ["몇분이야", "몇분", "몇분"]):
+            elif any(keyword in str_working for keyword in ["몇분이야", "몇분", "몇분"]):
                 mm = get_time_as_('%M')
                 pk_speak(f'{int(mm)} minutes')
-            elif any(keyword in working_str for keyword in ["몇초야", "몇초"]):
+            elif any(keyword in str_working for keyword in ["몇초야", "몇초"]):
                 server_seconds = get_time_as_('%S')
                 pk_speak(f'{server_seconds} seconds')
-            elif any(keyword in working_str for keyword in ["날씨"]):
+            elif any(keyword in str_working for keyword in ["날씨"]):
                 pk_print_and_speak("Searching for weather...")
                 get_comprehensive_weather_information_from_web()
-            elif any(keyword in working_str for keyword in ["음악"]):
+            elif any(keyword in str_working for keyword in ["음악"]):
                 play_my_sound_track()
                 pk_print_and_speak("Playing music...")
-            elif any(keyword in working_str for keyword in ["게임", "미니게임"]):
+            elif any(keyword in str_working for keyword in ["게임", "미니게임"]):
                 run_up_and_down_game()
                 pk_print_and_speak("Playing mini game...")
-            elif any(keyword in working_str for keyword in ["exit"]):
+            elif any(keyword in str_working for keyword in ["exit"]):
                 raise
-            elif any(keyword in working_str for keyword in ["비디오"]):
+            elif any(keyword in str_working for keyword in ["비디오"]):
                 play_my_video_track()
                 pk_print_and_speak("Playing video...")
-            elif any(keyword in working_str for keyword in ["최대절전모드", "powersave", "sleep"]):
+            elif any(keyword in str_working for keyword in ["최대절전모드", "powersave", "sleep"]):
                 save_power_as_s4()
                 return  # return is necceary code, 처리 안시키면 PC 부팅 시 최대절전모드로 무한 진입, 컴퓨터 전원 재연결해야 된다.
-            elif any(keyword in working_str for keyword in ["화면보호기", "화면보호"]):
+            elif any(keyword in str_working for keyword in ["화면보호기", "화면보호"]):
                 save_screen()
             else:
                 pk_print(rf"it was Unknown command", print_color='yellow')  # woas

@@ -11,7 +11,7 @@ It runs in WSL, Docker, uv, and venv environments, supporting a wide range of fi
 
 - **pkg_py/** : Core Python utilities for system/automation/data/AI/multimedia
   - **functions_split/** : Numerous single-purpose scripts for window/process/network/file/automation/translation/crawling, etc.
-  - **pk_system_object/** : Utilities for state management, file/directory/encoding/color/keymap, and other system objects
+  - **system_object/** : Utilities for state management, file/directory/encoding/color/keymap, and other system objects
   - **refactor/** : Tools for code automation, refactoring, module/file renaming, and meta-programming
   - **workspace/** : Workspace management and integrated execution/state control
   - **Standalone scripts** : Various scripts for process/window/network/multimedia/automation/testing/deployment
@@ -38,7 +38,7 @@ It runs in WSL, Docker, uv, and venv environments, supporting a wide range of fi
 
 - **functions_split/**  
   - Window/process control, file/dir management, translation, crawling, automation, screenshot, networking, data transformation, etc.
-- **pk_system_object/**  
+- **system_object/**  
   - System state management, file/dir/encoding/color/keymap utilities
 - **refactor/**  
   - Code automation, function/module splitting, batch renaming, meta-programming

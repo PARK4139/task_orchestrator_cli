@@ -23,10 +23,10 @@ def ensure_pycharm_module_optimize():
     from pkg_py.functions_split.press_ctrl_alt_l_nth import press_ctrl_alt_l_nth
     from pkg_py.refactor.pk_ensure_keyboard_mouse_macro import PkMacroRoutines
     from pkg_py.pk_paste_as_auto import pk_copy
-    from pkg_py.pk_system_object.local_test_activate import LTA
-    from pkg_py.pk_system_object.state_via_database import PkSqlite3DB
-    from pkg_py.pk_system_object.map_massages import PkMessages2025
-    from pkg_py.pk_system_object.directories import D_PKG_ARCHIVED
+    from pkg_py.system_object.local_test_activate import LTA
+    from pkg_py.system_object.state_via_database import PkSqlite3DB
+    from pkg_py.system_object.map_massages import PkMessages2025
+    from pkg_py.system_object.directories import D_PKG_ARCHIVED
     from pkg_py.functions_split.ensure_console_cleared import ensure_console_cleared
     from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
     from pkg_py.functions_split.get_d_working import get_d_working

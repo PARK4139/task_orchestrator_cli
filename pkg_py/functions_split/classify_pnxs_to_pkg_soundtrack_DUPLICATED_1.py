@@ -34,12 +34,12 @@ from pkg_py.functions_split.is_window_title_front import is_window_title_front
 from pkg_py.functions_split.get_d_working import get_d_working
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 from pkg_py.functions_split.pk_print_once import pk_print_once
-from pkg_py.pk_system_object.files import F_POT_PLAYER_MINI_64_EXE
-from pkg_py.pk_system_object.encodings import Encoding
-from pkg_py.pk_system_object.directories_reuseable import D_PROJECT
-from pkg_py.pk_system_object.directories import D_WORKING
-from pkg_py.pk_system_object.state_via_context import SpeedControlContext
-from pkg_py.pk_system_object.is_os_windows import is_os_windows
+from pkg_py.system_object.files import F_POT_PLAYER_MINI_64_EXE
+from pkg_py.system_object.encodings import Encoding
+from pkg_py.system_object.directories_reuseable import D_PROJECT
+from pkg_py.system_object.directories import D_WORKING
+from pkg_py.system_object.state_via_context import SpeedControlContext
+from pkg_py.system_object.is_os_windows import is_os_windows
 
 from PIL import Image, ImageFont, ImageDraw, ImageFilter
 from PIL import Image
@@ -58,7 +58,7 @@ from pkg_py.functions_split.is_os_windows import is_os_windows
 from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style
 from pkg_py.functions_split.get_pnx_windows_style import get_pnx_windows_style
 
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.pk_print import pk_print
 from pkg_py.functions_split.get_pnx_list import get_pnx_list
 
@@ -95,5 +95,5 @@ def classify_pnxs_to_pkg_soundtrack(pnx, without_walking=True):
         if file_x in [ext.replace(".", "") for ext in x_allowed]:  # x_allowed의 확장자와 비교
             ensure_pnx_made(dst, mode="d")
             move_pnx(pnx=f, d_dst=dst)
-            pk_print(working_str=rf'''f="{f}"  {'%%%FOO%%%' if LTA else ''}''')
-    pk_print(working_str=rf'''dst="{dst}"  {'%%%FOO%%%' if LTA else ''}''')
+            pk_print(str_working=rf'''f="{f}"  {'%%%FOO%%%' if LTA else ''}''')
+    pk_print(str_working=rf'''dst="{dst}"  {'%%%FOO%%%' if LTA else ''}''')

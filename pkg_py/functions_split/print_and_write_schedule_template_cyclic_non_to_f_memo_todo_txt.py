@@ -50,7 +50,7 @@ def print_and_write_schedule_template_cyclic_non_to_f_memo_todo_txt(stamp_custom
     str_list.append(UNDERLINE)
 
     # 디버깅 출력
-    pk_print(working_str="\n".join(str_list))
+    pk_print(str_working="\n".join(str_list))
 
     pk_print("f에 저장을 원하면 enter를 눌러주세요", print_color='blue')
     input(":")

@@ -13,16 +13,16 @@ from pynput import mouse
 from pkg_py.functions_split.get_historical_list import get_historical_list
 from pkg_py.functions_split.cmd_to_os import cmd_to_os
 from pkg_py.functions_split.set_pk_context_state import set_pk_context_state
-from pkg_py.pk_system_object.files import F_LOSSLESSCUT_EXE
-from pkg_py.pk_system_object.files import F_FFMPEG_EXE
-from pkg_py.pk_system_object.directories_reuseable import D_PROJECT
-from pkg_py.pk_system_object.state_via_context import SpeedControlContext
+from pkg_py.system_object.files import F_LOSSLESSCUT_EXE
+from pkg_py.system_object.files import F_FFMPEG_EXE
+from pkg_py.system_object.directories_reuseable import D_PROJECT
+from pkg_py.system_object.state_via_context import SpeedControlContext
 from paramiko import SSHClient, AutoAddPolicy
 from Cryptodome.Cipher import AES
 from colorama import init as pk_colorama_init
 from bs4 import BeautifulSoup
 from pkg_py.functions_split.get_nx import get_nx
-from pkg_py.pk_system_object.is_os_windows import is_os_windows
+from pkg_py.system_object.is_os_windows import is_os_windows
 from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
 from pkg_py.functions_split.get_pnx_wsl_unix_style import get_pnx_wsl_unix_style
 

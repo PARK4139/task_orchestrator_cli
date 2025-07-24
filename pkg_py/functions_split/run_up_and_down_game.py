@@ -61,11 +61,11 @@ from pkg_py.functions_split.pk_print_once import pk_print_once
 from pkg_py.functions_split.pk_print import pk_print
 
 from pkg_py.functions_split.ensure_console_cleared import ensure_console_cleared
-from pkg_py.pk_system_object.stamps import STAMP_TRY_GUIDE
-from pkg_py.pk_system_object.stamps import STAMP_ATTEMPTED
-from pkg_py.pk_system_object.files import F_POT_PLAYER_MINI_64_EXE, F_HISTORICAL_PNX
-from pkg_py.pk_system_object.files import F_FFMPEG_EXE
-from pkg_py.pk_system_object.state_via_database import PkSqlite3DB
+from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
+from pkg_py.system_object.stamps import STAMP_ATTEMPTED
+from pkg_py.system_object.files import F_POT_PLAYER_MINI_64_EXE, F_HISTORICAL_PNX
+from pkg_py.system_object.files import F_FFMPEG_EXE
+from pkg_py.system_object.state_via_database import PkSqlite3DB
 
 
 from PIL import Image, ImageFont, ImageDraw, ImageFilter
@@ -88,8 +88,8 @@ from base64 import b64encode
 from base64 import b64decode
 from pkg_py.functions_split.get_nx import get_nx
 from pkg_py.functions_split.kill_self_pk_program import kill_self_pk_program
-from pkg_py.pk_system_object.stamps import STAMP_TRY_GUIDE, STAMP_UNIT_TEST_EXCEPTION_DISCOVERED
-from pkg_py.pk_system_object.etc import PK_UNDERLINE
+from pkg_py.system_object.stamps import STAMP_TRY_GUIDE, STAMP_UNIT_TEST_EXCEPTION_DISCOVERED
+from pkg_py.system_object.etc import PK_UNDERLINE
 from pkg_py.functions_split.get_value_completed import get_value_completed
 from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style
 from pkg_py.functions_split.get_list_calculated import get_list_calculated
@@ -98,7 +98,7 @@ from pkg_py.functions_split.get_pnx_windows_style import get_pnx_windows_style
 from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
 from pkg_py.functions_split.is_os_windows import is_os_windows
 from pkg_py.functions_split.get_pnx_wsl_unix_style import get_pnx_wsl_unix_style
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.pk_print import pk_print
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 
@@ -111,7 +111,7 @@ def run_up_and_down_game():
     correct_answer: int = random.randint(1, 100)
     left_oportunity: int = 10
     ment = f"<UP AND DOWN GAME>\n\nFIND CORRECT NUMBER"
-    pk_speak_v2(working_str=ment, comma_delay=1.0)
+    pk_speak_v2(str_working=ment, comma_delay=1.0)
 
     txt_clicked, function, txt_written = should_i_do(
         prompt=ment,
@@ -130,11 +130,11 @@ def run_up_and_down_game():
 
     if btn_txt_clicked == "START":
         ment = f"START IS PRESSED, LETS START GAME"
-        pk_speak_v2(working_str=ment, comma_delay=0.98, thread_join_mode=True)
+        pk_speak_v2(str_working=ment, comma_delay=0.98, thread_join_mode=True)
         while left_oportunity >= 0:
             if left_oportunity == 0:
                 ment = f"LEFT CHANCE IS {left_oportunity} \nTAKE YOUR NEXT CHANCE."
-                pk_speak_v2(working_str=ment, comma_delay=0.98)
+                pk_speak_v2(str_working=ment, comma_delay=0.98)
 
                 txt_clicked, function, txt_written = should_i_do(
                     prompt=ment,
@@ -153,7 +153,7 @@ def run_up_and_down_game():
                 ment = f"TYPE NUMBER BETWEEN 1 TO 100"
                 if user_input is None:
                     ment = rf"{ment} AGAIN"
-                pk_speak_v2(working_str=ment, comma_delay=0.98)
+                pk_speak_v2(str_working=ment, comma_delay=0.98)
                 txt_clicked, function, txt_written = should_i_do(
                     prompt=ment,
                     btn_list=["SUBMIT", "EXIT"],
@@ -171,7 +171,7 @@ def run_up_and_down_game():
                 is_game_strated = True
             elif user_input == correct_answer:
                 ment = f"CONGRATULATIONS\n\nYOUR NUMBER IS {correct_answer}\nTHIS IS ANSWER\n\nSEE YOU AGAIN"
-                pk_speak_v2(working_str=ment, comma_delay=0.98)
+                pk_speak_v2(str_working=ment, comma_delay=0.98)
 
                 txt_clicked, function, txt_written = should_i_do(
                     prompt=ment,
@@ -186,7 +186,7 @@ def run_up_and_down_game():
 
             elif correct_answer < user_input:
                 ment = f"YOUR NUMBER IS {user_input}\n\nYOU NEED DOWN\n\nYOUR LEFT CHANCE IS {left_oportunity}"
-                pk_speak_v2(working_str=ment, comma_delay=0.98)
+                pk_speak_v2(str_working=ment, comma_delay=0.98)
 
                 txt_clicked, function, txt_written = should_i_do(
                     prompt=ment,
@@ -204,7 +204,7 @@ def run_up_and_down_game():
                     left_oportunity = left_oportunity - 1
             elif correct_answer > user_input:
                 ment = f"YOUR NUMBER IS {user_input}\n\nYOU NEED UP\n\nYOUR LEFT CHANCE IS {left_oportunity}"
-                pk_speak_v2(working_str=ment, comma_delay=0.98)
+                pk_speak_v2(str_working=ment, comma_delay=0.98)
 
                 txt_clicked, function, txt_written = should_i_do(
                     prompt=ment,

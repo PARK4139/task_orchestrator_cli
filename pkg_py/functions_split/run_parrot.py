@@ -1,4 +1,4 @@
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.pk_print import pk_print
 
 
@@ -10,7 +10,7 @@ def run_parrot():
     pk_print_and_speak("저는 따라쟁이 앵무새 parrot 입니다")
     while 1:
         try:
-            pk_print(working_str="말씀해주세요", print_color='blue')
+            pk_print(str_working="말씀해주세요", print_color='blue')
             with sr.Microphone() as source:
                 recognizer.adjust_for_ambient_noise(source)
                 audio = recognizer.listen(source)

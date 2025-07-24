@@ -52,16 +52,16 @@ def measure_time_to_exec_function_via_cprofile():
     import cProfile
     import inspect
     func_n = inspect.currentframe().f_code.co_name
-    pk_print(working_str=rf'''{PK_UNDERLINE}{func_n}() s %%%FOO%%%''', print_color='blue')
+    pk_print(str_working=rf'''{PK_UNDERLINE}{func_n}() s %%%FOO%%%''', print_color='blue')
     cProfile.run('function_to_test()')
-    pk_print(working_str=rf'''{PK_UNDERLINE}{func_n}() e %%%FOO%%%''', print_color='blue')
+    pk_print(str_working=rf'''{PK_UNDERLINE}{func_n}() e %%%FOO%%%''', print_color='blue')
 
 
 def measure_time_to_exec_function_via_time():
     import time
     import inspect
     func_n = inspect.currentframe().f_code.co_name
-    pk_print(working_str=rf'''{PK_UNDERLINE}{func_n}() s %%%FOO%%%''', print_color='blue')
+    pk_print(str_working=rf'''{PK_UNDERLINE}{func_n}() s %%%FOO%%%''', print_color='blue')
     debug_mode = True
     total_start = time.time()
     try:
@@ -71,7 +71,7 @@ def measure_time_to_exec_function_via_time():
     except Exception as e:
         print(f"Exception occurred: {e}")
     print(f"Total execution time: {time.time() - total_start:.2f} seconds")
-    pk_print(working_str=rf'''{PK_UNDERLINE}{func_n}() e %%%FOO%%%''', print_color='blue')
+    pk_print(str_working=rf'''{PK_UNDERLINE}{func_n}() e %%%FOO%%%''', print_color='blue')
 
 
 if __name__ == '__main__':
@@ -87,16 +87,16 @@ if __name__ == '__main__':
         # red
         import traceback
 
-        pk_print(working_str=f'{PK_UNDERLINE}예외발생 s\n\n', print_color='red')
-        pk_print(working_str=f'{traceback.format_exc()}\n', print_color='red')
-        pk_print(working_str=f'{PK_UNDERLINE}예외발생 e\n\n', print_color='red')
+        pk_print(str_working=f'{PK_UNDERLINE}예외발생 s\n\n', print_color='red')
+        pk_print(str_working=f'{traceback.format_exc()}\n', print_color='red')
+        pk_print(str_working=f'{PK_UNDERLINE}예외발생 e\n\n', print_color='red')
 
         # yellow
         f_current = get_f_current_n()
         d_current = pk_deprecated_get_d_current_n_like_person()
-        pk_print(working_str=f'{PK_UNDERLINE}[Debugging Note] s\n', print_color="yellow")
-        pk_print(working_str=f'f_current={f_current}\nd_current={d_current}\n', print_color="yellow")
-        pk_print(working_str=f'{PK_UNDERLINE}[Debugging Note] e\n', print_color="yellow")
+        pk_print(str_working=f'{PK_UNDERLINE}[Debugging Note] s\n', print_color="yellow")
+        pk_print(str_working=f'f_current={f_current}\nd_current={d_current}\n', print_color="yellow")
+        pk_print(str_working=f'{PK_UNDERLINE}[Debugging Note] e\n', print_color="yellow")
         ensure_do_finally_routine(D_PROJECT=D_PROJECT, __file__=__file__, STAMP_TRY_GUIDE=STAMP_TRY_GUIDE)
         pk_print(script_to_run_python_program_in_venv)
 

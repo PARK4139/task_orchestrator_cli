@@ -1,5 +1,5 @@
 def test_subprocess_module_출력검증():
-    # from pkg_py.pk_system_object.500_live_logic import cmd_to_os
+    # from pkg_py.system_object.500_live_logic import cmd_to_os
 
     # output = cmd_to_os(cmd="echo test", mode='a', mode_with_window=0)
 

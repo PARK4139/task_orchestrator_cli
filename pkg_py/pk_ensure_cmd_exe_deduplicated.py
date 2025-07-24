@@ -4,9 +4,9 @@ if __name__ == '__main__':
         from pkg_py.functions_split.ensure_do_finally_routine import ensure_do_finally_routine
         from pkg_py.workspace.pk_workspace import ensure_cmd_exe_deduplicated
         import traceback
-        from pkg_py.pk_system_object.directories_reuseable import D_PROJECT
-        from pkg_py.pk_system_object.etc import PK_UNDERLINE
-        from pkg_py.pk_system_object.stamps import STAMP_TRY_GUIDE, STAMP_PYTHON_DEBUGGING_NOTE, STAMP_EXCEPTION_DISCOVERED
+        from pkg_py.system_object.directories_reuseable import D_PROJECT
+        from pkg_py.system_object.etc import PK_UNDERLINE
+        from pkg_py.system_object.stamps import STAMP_TRY_GUIDE, STAMP_PYTHON_DEBUGGING_NOTE, STAMP_EXCEPTION_DISCOVERED
         from pkg_py.functions_split.is_os_windows import is_os_windows
         from pkg_py.functions_split.pk_print import pk_print
         from pkg_py.functions_split.ensure_windows_deduplicated import ensure_windows_deduplicated

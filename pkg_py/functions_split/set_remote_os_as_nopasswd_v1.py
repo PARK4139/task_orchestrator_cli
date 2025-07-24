@@ -17,9 +17,9 @@ from selenium.common.exceptions import WebDriverException
 from pkg_py.functions_split.rerun_losslesscut import rerun_losslesscut
 from pkg_py.functions_split.is_window_opened import is_window_opened
 from pkg_py.functions_split.pk_print_state import pk_print_state
-from pkg_py.pk_system_object.files import F_HISTORICAL_PNX
-from pkg_py.pk_system_object.encodings import Encoding
-from pkg_py.pk_system_object.state_via_context import SpeedControlContext
+from pkg_py.system_object.files import F_HISTORICAL_PNX
+from pkg_py.system_object.encodings import Encoding
+from pkg_py.system_object.state_via_context import SpeedControlContext
 from pathlib import Path
 from mutagen.mp3 import MP3
 from functools import partial
@@ -30,7 +30,7 @@ from Cryptodome.Random import get_random_bytes
 from Cryptodome.Cipher import AES
 from collections import Counter
 from pkg_py.functions_split.kill_self_pk_program import kill_self_pk_program
-from pkg_py.pk_system_object.etc import PK_UNDERLINE
+from pkg_py.system_object.etc import PK_UNDERLINE
 from pkg_py.functions_split.get_pnx_windows_style import get_pnx_windows_style
 
 from pkg_py.functions_split.pk_print import pk_print

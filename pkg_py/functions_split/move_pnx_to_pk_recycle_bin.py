@@ -3,8 +3,8 @@ from pkg_py.functions_split.ensure_pnx_made import ensure_pnx_made
 from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style
 from pkg_py.functions_split.move_pnx import move_pnx
 from pkg_py.functions_split.pk_print import pk_print
-from pkg_py.pk_system_object.local_test_activate import LTA
-from pkg_py.pk_system_object.directories import D_PK_RECYCLE_BIN
+from pkg_py.system_object.local_test_activate import LTA
+from pkg_py.system_object.directories import D_PK_RECYCLE_BIN
 
 
 def move_pnx_to_pk_recycle_bin(pnx):

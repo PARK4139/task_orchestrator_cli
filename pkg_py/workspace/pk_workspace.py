@@ -44,14 +44,14 @@ from pkg_py.functions_split.print_iterable_as_vertical import print_iterable_as_
 from pkg_py.functions_split.set_values_to_historical_file import set_values_to_historical_file
 from pkg_py.functions_split.write_like_person import write_like_person
 from pkg_py.pk_interface_graphic_user import get_windows_opened
-from pkg_py.pk_system_object.color_map import PK_ANSI_COLOR_MAP
-from pkg_py.pk_system_object.directories import D_PKG_WINDOWS
-from pkg_py.pk_system_object.directories_reuseable import D_PROJECT
-from pkg_py.pk_system_object.encodings import Encoding
-from pkg_py.pk_system_object.etc import PK_UNDERLINE
-from pkg_py.pk_system_object.local_test_activate import LTA
-from pkg_py.pk_system_object.map_massages import PkMessages2025
-from pkg_py.pk_system_object.stamps import STAMP_TRY_GUIDE
+from pkg_py.system_object.color_map import PK_ANSI_COLOR_MAP
+from pkg_py.system_object.directories import D_PKG_WINDOWS
+from pkg_py.system_object.directories_reuseable import D_PROJECT
+from pkg_py.system_object.encodings import Encoding
+from pkg_py.system_object.etc import PK_UNDERLINE
+from pkg_py.system_object.local_test_activate import LTA
+from pkg_py.system_object.map_massages import PkMessages2025
+from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
 
 
 def pk_test_path_normalized():
@@ -219,7 +219,7 @@ def kill_cmd_exe():
         for pid in pids:
             kill_process(pid=pid)
     except:
-        pk_print(working_str=rf'''{'%%%FOO%%%' if LTA else ''}''', print_color='red')
+        pk_print(str_working=rf'''{'%%%FOO%%%' if LTA else ''}''', print_color='red')
 
 
 def kill_powershell_exe(debug_mode=True):
@@ -231,7 +231,7 @@ def kill_powershell_exe(debug_mode=True):
         for pid in pids:
             kill_process_via_wmic(pid=pid)
     except:
-        pk_print(working_str=rf'''{'%%%FOO%%%' if LTA else ''}''', print_color='red')
+        pk_print(str_working=rf'''{'%%%FOO%%%' if LTA else ''}''', print_color='red')
 
 
 def kill_process_via_wmic(process_img_n=None, debug_mode=True):
@@ -1539,12 +1539,12 @@ def kill_process(img_name=None, pid=None):
     import inspect
 
     func_n = inspect.currentframe().f_code.co_name
-    pk_print(working_str=rf'''{PK_UNDERLINE}{func_n}()  {'%%%FOO%%%' if LTA else ''}''')
+    pk_print(str_working=rf'''{PK_UNDERLINE}{func_n}()  {'%%%FOO%%%' if LTA else ''}''')
     # function_arg_names= [param.name for param in inspect.signature(process_kill).parameters.values()] # fail
     Nones = [img_name, pid]
     None_count = Nones.count(None)
     if None_count == 2:
-        pk_print(working_str=rf''' 이 {func_n}()의 인자는 최대 1개 까지 받을 수 있습니다.  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
+        pk_print(str_working=rf''' 이 {func_n}()의 인자는 최대 1개 까지 받을 수 있습니다.  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
     if None_count == 1:
         if img_name is not None:
             img_name = img_name.replace("\'", "")
@@ -1555,7 +1555,7 @@ def kill_process(img_name=None, pid=None):
             # cmd_to_os(f'taskkill /f /pid {pid}', debug_mode=debug_mode)
             cmd_to_os(f'taskkill /f /pid {pid}')
     if None_count == 0:
-        pk_print(working_str=rf''' 이 {func_n}()의 인자는 최소 1개의 인자가 요구됩니다.  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
+        pk_print(str_working=rf''' 이 {func_n}()의 인자는 최소 1개의 인자가 요구됩니다.  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
 
 
 def get_process_name_list(unique: bool = True, sort: bool = True) -> list:
@@ -2028,14 +2028,14 @@ def copy_except_blacklist(src_dir, dst_dir, exclude_names):
     print(f"[{PkMessages2025.DONE}] {copied_count} file(s) copied to '{dst_dir}'.")
 
 
-def pk_speak_v3(working_str, segment_delay=0.90, queue_mode=False):
+def pk_speak_v3(str_working, segment_delay=0.90, queue_mode=False):
     import threading
     import queue
 
     from pkg_py.functions_split.is_containing_special_characters_with_thread import is_containing_special_characters_with_thread
     from pkg_py.functions_split.pk_speak import pk_speak
     from pkg_py.functions_split.remove_special_characters import remove_special_characters
-    from pkg_py.pk_system_object.etc import PLAYING_SOUNDS
+    from pkg_py.system_object.etc import PLAYING_SOUNDS
 
     func_n = inspect.currentframe().f_code.co_name
     depth = debug_call_depth(func_n)
@@ -2079,14 +2079,14 @@ def pk_speak_v3(working_str, segment_delay=0.90, queue_mode=False):
             pk_speak_v3._thread_started = True
 
         # 문자열 전처리
-        working_str = str(working_str).strip()
-        if not working_str:
+        str_working = str(str_working).strip()
+        if not str_working:
             return
 
-        if is_containing_special_characters_with_thread(text=working_str):
-            working_str = remove_special_characters(text=working_str)
+        if is_containing_special_characters_with_thread(text=str_working):
+            str_working = remove_special_characters(text=str_working)
 
-        working_list = [x.strip() for x in working_str.replace(".", ",").split(",") if x.strip()]
+        working_list = [x.strip() for x in str_working.replace(".", ",").split(",") if x.strip()]
 
         if queue_mode:
             # 큐 모드: 순서대로 재생

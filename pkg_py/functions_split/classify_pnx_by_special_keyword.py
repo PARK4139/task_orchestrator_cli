@@ -26,11 +26,11 @@ from pkg_py.functions_split.is_window_opened import is_window_opened
 from pkg_py.functions_split.pk_press import pk_press
 from pkg_py.functions_split.pk_print_once import pk_print_once
 from pkg_py.functions_split.set_pk_context_state import set_pk_context_state
-from pkg_py.pk_system_object.stamps import STAMP_TRY_GUIDE
-from pkg_py.pk_system_object.files import F_POT_PLAYER_MINI_64_EXE
-from pkg_py.pk_system_object.files import F_LOSSLESSCUT_EXE
-from pkg_py.pk_system_object.directories_reuseable import D_PROJECT
-from pkg_py.pk_system_object.state_via_database import PkSqlite3DB
+from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
+from pkg_py.system_object.files import F_POT_PLAYER_MINI_64_EXE
+from pkg_py.system_object.files import F_LOSSLESSCUT_EXE
+from pkg_py.system_object.directories_reuseable import D_PROJECT
+from pkg_py.system_object.state_via_database import PkSqlite3DB
 
 from paramiko import SSHClient, AutoAddPolicy
 from datetime import datetime
@@ -38,15 +38,15 @@ from cryptography.hazmat.backends import default_backend
 from Cryptodome.Random import get_random_bytes
 from concurrent.futures import ThreadPoolExecutor
 from pkg_py.functions_split.get_nx import get_nx
-from pkg_py.pk_system_object.directories import D_PKG_PY
+from pkg_py.system_object.directories import D_PKG_PY
 from pkg_py.functions_split.get_list_calculated import get_list_calculated
 from pkg_py.functions_split.is_d import is_d
-from pkg_py.pk_system_object.is_os_windows import is_os_windows
+from pkg_py.system_object.is_os_windows import is_os_windows
 from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style
 from pkg_py.functions_split.get_pnx_wsl_unix_style import get_pnx_wsl_unix_style
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.pk_print import pk_print
 from pkg_py.functions_split.get_d_working import get_d_working
 
@@ -65,11 +65,11 @@ def classify_pnx_by_special_keyword(d_src, special_keyword, with_walking):
         if os.path.exists(drive_path):
             connected_drives.append(drive_path)
             if d_src == drive_path:
-                pk_print(working_str=rf'''광범위진행제한 {'%%%FOO%%%' if LTA else ''}''', print_color='red')
+                pk_print(str_working=rf'''광범위진행제한 {'%%%FOO%%%' if LTA else ''}''', print_color='red')
                 return
 
     if not os.path.exists(d_src):
-        pk_print(working_str=rf"입력된 d_src 가 존재하지 않습니다 d_src={d_src}", print_color='red')
+        pk_print(str_working=rf"입력된 d_src 가 존재하지 않습니다 d_src={d_src}", print_color='red')
         return
 
     if d_src == "":
@@ -85,7 +85,7 @@ def classify_pnx_by_special_keyword(d_src, special_keyword, with_walking):
 
     special_keyword = special_keyword.strip()
     if special_keyword == "":
-        pk_print(working_str="special_keyword 는 ""일 수 없습니다.", print_color='red')
+        pk_print(str_working="special_keyword 는 ""일 수 없습니다.", print_color='red')
         return
     if "\n" in special_keyword:
         f_list = special_keyword.split("\n")
@@ -114,7 +114,7 @@ def classify_pnx_by_special_keyword(d_src, special_keyword, with_walking):
                 return
 
         pk_print(
-            working_str=rf'''len(pnxs_searched)="{len(pnxs_searched)}"  {'%%%FOO%%%' if LTA else ''}''')  # 검색된 f 개수
+            str_working=rf'''len(pnxs_searched)="{len(pnxs_searched)}"  {'%%%FOO%%%' if LTA else ''}''')  # 검색된 f 개수
         dst = None
         for index, special_dir in enumerate(special_dirs_promised):
             dst = rf"{D_WORKING_EXTERNAL}\{special_dirs_promised[index]}"
@@ -122,4 +122,4 @@ def classify_pnx_by_special_keyword(d_src, special_keyword, with_walking):
                 if special_dir in os.path.basename(pnx_searched):
                     move_pnx(pnx=pnx_searched, d_dst=dst)
         special_dirs_promised = []
-        pk_print(working_str=rf'''dst="{dst}"  {'%%%FOO%%%' if LTA else ''}''', print_color='green')
+        pk_print(str_working=rf'''dst="{dst}"  {'%%%FOO%%%' if LTA else ''}''', print_color='green')

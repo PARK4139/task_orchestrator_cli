@@ -7,7 +7,7 @@ import traceback
 
 from colorama import init as pk_colorama_init
 
-# from pkg_py.pk_system_object.500_live_logic import collect_magnet_set_from_nyaa_si_p1, get_historical_list, ensure_pnx_made, get_driver_selenium
+# from pkg_py.system_object.500_live_logic import collect_magnet_set_from_nyaa_si_p1, get_historical_list, ensure_pnx_made, get_driver_selenium
 #, STAMP_TRY_GUIDE, D_PROJECT, STAMP_UNIT_TEST_EXCEPTION_DISCOVERED
 #, print_red
 

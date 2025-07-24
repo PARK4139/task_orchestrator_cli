@@ -1,11 +1,11 @@
-from pkg_py.pk_system_object.is_os_windows import is_os_windows
-from pkg_py.pk_system_object.map_massages import PkMessages2025
+from pkg_py.system_object.is_os_windows import is_os_windows
+from pkg_py.system_object.map_massages import PkMessages2025
 
-from pkg_py.pk_system_object.local_test_activate import LTA
-from pkg_py.pk_system_object.state_via_database import PkSqlite3DB
-from pkg_py.pk_system_object.directories import D_PKG_TXT
-from pkg_py.pk_system_object.directories import D_WORKING
-from pkg_py.pk_system_object.files import F_FFMPEG_EXE
+from pkg_py.system_object.local_test_activate import LTA
+from pkg_py.system_object.state_via_database import PkSqlite3DB
+from pkg_py.system_object.directories import D_PKG_TXT
+from pkg_py.system_object.directories import D_WORKING
+from pkg_py.system_object.files import F_FFMPEG_EXE
 from pkg_py.functions_split.is_os_windows import is_os_windows
 from pkg_py.functions_split.write_list_to_f import write_list_to_f
 from pkg_py.functions_split.get_value_completed import get_value_completed
@@ -48,7 +48,7 @@ def download_youtube_video():
             'cookiefile': cookie_f  # 유튜브영상 성인인증
         }
 
-        # search_keyword = input(f"{pk_get_colorful_working_str_with_stamp_enviromnet(func_n=func_n, ment='WRITE URL TO DOWNLOAD')} >")
+        # search_keyword = input(f"{pk_get_colorful_str_working_with_stamp_enviromnet(func_n=func_n, ment='WRITE URL TO DOWNLOAD')} >")
 
         f_historical = rf'{D_PKG_TXT}/historical_{func_n}.txt'
         ensure_pnx_made(pnx=f_historical, mode='f')
@@ -140,9 +140,9 @@ def download_youtube_video():
         working_list = get_list_removed_element_empty(working_list=working_list)
         working_list = get_list_striped_element(working_list=working_list)
         urls = [url] + working_list
-        pk_print(working_str=str(len(urls)))
+        pk_print(str_working=str(len(urls)))
         urls = get_list_removed_element_empty(working_list=urls)
-        pk_print(working_str=str(len(urls)))
+        pk_print(str_working=str(len(urls)))
         if len(urls) == 0:
             pk_print(f'''len(urls)={len(urls)}  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
             return

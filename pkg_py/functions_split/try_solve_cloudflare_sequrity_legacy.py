@@ -21,7 +21,7 @@ from pkg_py.functions_split.ensure_window_to_front import ensure_window_to_front
 from pkg_py.functions_split.is_losslesscut_running import is_losslesscut_running
 from pkg_py.functions_split.get_f_video_to_load import get_f_video_to_load
 
-from pkg_py.pk_system_object.is_os_windows import is_os_windows
+from pkg_py.system_object.is_os_windows import is_os_windows
 
 from passlib.context import CryptContext
 from functools import partial
@@ -31,13 +31,13 @@ from cryptography.hazmat.backends import default_backend
 from Cryptodome.Random import get_random_bytes
 from bs4 import ResultSet
 from pkg_py.functions_split.assist_to_load_video_at_losslesscut import pk_ensure_video_loaded_at_losslesscut
-from pkg_py.pk_system_object.etc import PK_UNDERLINE
+from pkg_py.system_object.etc import PK_UNDERLINE
 from pkg_py.functions_split.get_pnx_list import get_pnx_list
 from pkg_py.functions_split.get_list_calculated import get_list_calculated
 from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
 from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style
 
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.pk_print import pk_print
 
 
@@ -46,7 +46,7 @@ def try_solve_cloudflare_sequrity_legacy(driver):  # fail
 
     url = f'https://torrentqq348.com'
     url_decoded = get_str_url_decoded(url)
-    pk_print(working_str=rf'''url={url:60s}  url_decoded={url_decoded}  {'%%%FOO%%%' if LTA else ''}''',
+    pk_print(str_working=rf'''url={url:60s}  url_decoded={url_decoded}  {'%%%FOO%%%' if LTA else ''}''',
              print_color='blue')
     driver.get(url_decoded)
     # driver.get(url)

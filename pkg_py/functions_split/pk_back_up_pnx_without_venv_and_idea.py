@@ -1,4 +1,4 @@
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.pk_print import pk_print
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 
@@ -8,7 +8,7 @@ def pk_back_up_pnx_without_venv_and_idea(pnx_working, d_dst, with_timestamp=1):
     # done : save f_rar without timestamp
 
     if not does_pnx_exist(pnx=pnx_working):
-        pk_print(working_str=rf'''not does_pnx_exist  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
+        pk_print(str_working=rf'''not does_pnx_exist  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
         return
 
     # 압축

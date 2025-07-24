@@ -1,8 +1,8 @@
 def test_wsl_제어():
-    # from pkg_py.pk_system_object.500_live_logic import pk_debug_state_for_py_data_type, check_installed_wsl
-    # from pkg_py.pk_system_object.print_util import pk_print
+    # from pkg_py.system_object.500_live_logic import pk_debug_state_for_py_data_type, check_installed_wsl
+    # from pkg_py.system_object.print_util import pk_print
     import sys
-    # from pkg_py.pk_system_object.500_live_logic import LTA
+    # from pkg_py.system_object.500_live_logic import LTA
     state_wsl_installed, pk_wsl_cmd_map_dict = check_installed_wsl()
     if not state_wsl_installed:
         pk_debug_state_for_py_data_type(pk_stamp='%%%FOO%%%-2', data_working=pk_wsl_cmd_map_dict)

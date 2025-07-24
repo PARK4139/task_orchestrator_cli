@@ -12,9 +12,9 @@ from pkg_py.functions_split.get_video_filtered_list import get_video_filtered_li
 from pkg_py.functions_split.is_window_title_front import is_window_title_front
 from pkg_py.functions_split.pk_print import pk_print
 from pkg_py.functions_split.get_list_sorted import get_list_sorted
-from pkg_py.pk_system_object.etc import PkFilter
-from pkg_py.pk_system_object.stamps import STAMP_TRY_GUIDE
-from pkg_py.pk_system_object.is_os_windows import is_os_windows
+from pkg_py.system_object.etc import PkFilter
+from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
+from pkg_py.system_object.is_os_windows import is_os_windows
 from os import path
 from gtts import gTTS
 from enum import Enum
@@ -25,7 +25,7 @@ from base64 import b64encode
 from pkg_py.functions_split.get_nx import get_nx
 from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style
 
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.pk_print import pk_print
 
 

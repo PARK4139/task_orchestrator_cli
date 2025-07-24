@@ -1,7 +1,7 @@
-from pkg_py.pk_system_object.local_test_activate import LTA
-from pkg_py.pk_system_object.directories import D_PKG_TXT
-from pkg_py.pk_system_object.directories_reuseable import D_PROJECT
-from pkg_py.pk_system_object.encodings import Encoding
+from pkg_py.system_object.local_test_activate import LTA
+from pkg_py.system_object.directories import D_PKG_TXT
+from pkg_py.system_object.directories_reuseable import D_PROJECT
+from pkg_py.system_object.encodings import Encoding
 from pkg_py.functions_split.pk_print import pk_print
 
 
@@ -42,7 +42,7 @@ def save_all_drive_pnxs_to_text_file2():  # 루프 수정필요 # 이 함수는 
             drive = f"{letter}:\\"
             if os.path.exists(drive):
                 drives.append(drive)
-        pk_print(working_str=rf'''drives="{drives}"  {'%%%FOO%%%' if LTA else ''}''')
+        pk_print(str_working=rf'''drives="{drives}"  {'%%%FOO%%%' if LTA else ''}''')
         return drives
 
     # 3. 드라이브에서 f 검색하고 처리하기
@@ -62,7 +62,7 @@ def save_all_drive_pnxs_to_text_file2():  # 루프 수정필요 # 이 함수는 
         temp = set()
         # 모든 드라이브에서 f 탐색
         for drive in drives:
-            pk_print(working_str=rf'''drive="{drive}"  {'%%%FOO%%%' if LTA else ''}''')
+            pk_print(str_working=rf'''drive="{drive}"  {'%%%FOO%%%' if LTA else ''}''')
             for root, d_nx_list, f_nx_list in os.walk(drive):
                 for f_nx in f_nx_list:
                     f = os.path.join(root, f_nx)
@@ -97,10 +97,10 @@ def save_all_drive_pnxs_to_text_file2():  # 루프 수정필요 # 이 함수는 
                                     if not pnx.strip() == "":
                                         f.write(f'{pnx}\n')
                                         pk_print(
-                                            working_str=rf'''cnt="{cnt}" pnxs="{pnx}" output_pnx_txt="{output_pnx_txt}"  {'%%%FOO%%%' if LTA else ''}''')
+                                            str_working=rf'''cnt="{cnt}" pnxs="{pnx}" output_pnx_txt="{output_pnx_txt}"  {'%%%FOO%%%' if LTA else ''}''')
                                     else:
                                         pk_print(f'''없다''')
-        pk_print(working_str=rf'''temp="{temp}"  {'%%%FOO%%%' if LTA else ''}''')
+        pk_print(str_working=rf'''temp="{temp}"  {'%%%FOO%%%' if LTA else ''}''')
 
     # exec
     exclude_paths_txt = rf'{D_PKG_TXT}\{func_n}_exclude_paths.txt'

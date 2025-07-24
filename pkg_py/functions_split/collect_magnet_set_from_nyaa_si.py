@@ -1,7 +1,7 @@
 from pkg_py.functions_split.ensure_pnx_made import ensure_pnx_made
 from pkg_py.functions_split.get_historical_list import get_historical_list
-from pkg_py.pk_system_object.directories import D_PKG_TXT
-from pkg_py.pk_system_object.directories_reuseable import D_PROJECT
+from pkg_py.system_object.directories import D_PKG_TXT
+from pkg_py.system_object.directories_reuseable import D_PROJECT
 from pkg_py.functions_split.write_list_to_f import write_list_to_f
 from pkg_py.functions_split.get_value_completed import get_value_completed
 from pkg_py.functions_split.pk_print import pk_print
@@ -26,7 +26,7 @@ def collect_magnet_set_from_nyaa_si(search_keyword=None, driver=None, via_f_txt=
     #     if answer == 'o':
     #         cmd_to_os(cmd=rf'explorer "{get_pnx_windows_style(f)}"', mode="a")
     # else:
-    #     pk_print(working_str=rf'''{get_pnx_unix_style(f)}  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
+    #     pk_print(str_working=rf'''{get_pnx_unix_style(f)}  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
     #     pass # todo
 
     f_func_n_txt = rf'{D_PROJECT}\pkg_txt\{func_n}.txt'

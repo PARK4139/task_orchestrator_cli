@@ -28,12 +28,12 @@ from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 from pkg_py.functions_split.pk_press import pk_press
 from pkg_py.functions_split.pk_print_state import pk_print_state
 
-from pkg_py.pk_system_object.stamps import STAMP_TRY_GUIDE
-from pkg_py.pk_system_object.files import F_POT_PLAYER_MINI_64_EXE
-from pkg_py.pk_system_object.files import F_FFMPEG_EXE
-from pkg_py.pk_system_object.map_massages import PkMessages2025
-from pkg_py.pk_system_object.state_via_database import PkSqlite3DB
-from pkg_py.pk_system_object.is_os_windows import is_os_windows
+from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
+from pkg_py.system_object.files import F_POT_PLAYER_MINI_64_EXE
+from pkg_py.system_object.files import F_FFMPEG_EXE
+from pkg_py.system_object.map_massages import PkMessages2025
+from pkg_py.system_object.state_via_database import PkSqlite3DB
+from pkg_py.system_object.is_os_windows import is_os_windows
 from os.path import dirname
 from mutagen.mp3 import MP3
 from dirsync import sync
@@ -41,7 +41,7 @@ from datetime import datetime, time
 from dataclasses import dataclass
 from colorama import init as pk_colorama_init
 from collections import Counter
-from pkg_py.pk_system_object.etc import PK_UNDERLINE
+from pkg_py.system_object.etc import PK_UNDERLINE
 from pkg_py.functions_split.get_value_completed import get_value_completed
 from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style
 from pkg_py.functions_split.get_list_calculated import get_list_calculated
@@ -50,7 +50,7 @@ from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
 from pkg_py.functions_split.get_pnx_windows_style import get_pnx_windows_style
 from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
 
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.pk_print import pk_print
 from pkg_py.functions_split.get_pnx_list import get_pnx_list
 from pkg_py.functions_split.get_d_working import get_d_working
@@ -79,18 +79,18 @@ def ensure_remote_os_as_nopasswd(**config_remote_os):
                 std_out_list, std_err_list = cmd_to_remote_os_with_pubkey(cmd=cmd, **config_remote_os)
                 if not len(std_err_list) == 0:
                     for std_err_str in std_err_list:
-                        pk_print(working_str=rf'{STAMP_REMOTE_ERROR} {std_err_str}', print_color='red')
+                        pk_print(str_working=rf'{STAMP_REMOTE_ERROR} {std_err_str}', print_color='red')
                 if not len(std_out_list) == 0:
                     for std_out_str in std_out_list:
-                        pk_print(working_str=rf'{STAMP_REMOTE_DEBUG} {std_out_str}')
+                        pk_print(str_working=rf'{STAMP_REMOTE_DEBUG} {std_out_str}')
                 cmd = f"sudo visudo -c"
                 std_out_list, std_err_list = cmd_to_remote_os_with_pubkey(cmd=cmd, **config_remote_os)
                 if not len(std_err_list) == 0:
                     for std_err_str in std_err_list:
-                        pk_print(working_str=rf'{STAMP_REMOTE_ERROR} {std_err_str}', print_color='red')
+                        pk_print(str_working=rf'{STAMP_REMOTE_ERROR} {std_err_str}', print_color='red')
                 if not len(std_out_list) == 0:
                     for std_out_str in std_out_list:
-                        pk_print(working_str=rf'{STAMP_REMOTE_DEBUG} {std_out_str}')
+                        pk_print(str_working=rf'{STAMP_REMOTE_DEBUG} {std_out_str}')
     except:
         import traceback
-        pk_print(working_str=rf"{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''} ", print_color='red')
+        pk_print(str_working=rf"{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''} ", print_color='red')

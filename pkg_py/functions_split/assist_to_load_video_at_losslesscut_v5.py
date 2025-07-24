@@ -3,12 +3,12 @@ from pkg_py.functions_split.set_pk_context_state_milliseconds_for_speed_control_
 
 
 def assist_to_load_video_at_losslesscut_v5(max_files=30):
-    from pkg_py.pk_system_object.local_test_activate import LTA
-    from pkg_py.pk_system_object.state_via_context import SpeedControlContext
-    from pkg_py.pk_system_object.directories import D_DOWNLOADS, D_PKG_PKL
-    from pkg_py.pk_system_object.directories import D_WORKING
-    from pkg_py.pk_system_object.directories_reuseable import D_PROJECT
-    from pkg_py.pk_system_object.files import F_HISTORICAL_PNX
+    from pkg_py.system_object.local_test_activate import LTA
+    from pkg_py.system_object.state_via_context import SpeedControlContext
+    from pkg_py.system_object.directories import D_DOWNLOADS, D_PKG_PKL
+    from pkg_py.system_object.directories import D_WORKING
+    from pkg_py.system_object.directories_reuseable import D_PROJECT
+    from pkg_py.system_object.files import F_HISTORICAL_PNX
     from pkg_py.functions_split.ensure_console_cleared import ensure_console_cleared
     from pkg_py.functions_split.set_pk_context_state import set_pk_context_state
 

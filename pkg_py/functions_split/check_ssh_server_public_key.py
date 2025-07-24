@@ -41,14 +41,14 @@ from pkg_py.functions_split.is_window_title_front import is_window_title_front
 from pkg_py.functions_split.pk_press import pk_press
 from pkg_py.functions_split.cmd_to_os import cmd_to_os
 from pkg_py.functions_split.set_pk_context_state import set_pk_context_state
-from pkg_py.pk_system_object.files import F_POT_PLAYER_MINI_64_EXE
-from pkg_py.pk_system_object.files import F_LOSSLESSCUT_EXE
-from pkg_py.pk_system_object.files import F_HISTORICAL_PNX
-from pkg_py.pk_system_object.files import F_FFMPEG_EXE
-from pkg_py.pk_system_object.encodings import Encoding
-from pkg_py.pk_system_object.directories import D_DOWNLOADS, D_PKG_PKL
-from pkg_py.pk_system_object.print_red import print_red
-from pkg_py.pk_system_object.state_via_database import PkSqlite3DB
+from pkg_py.system_object.files import F_POT_PLAYER_MINI_64_EXE
+from pkg_py.system_object.files import F_LOSSLESSCUT_EXE
+from pkg_py.system_object.files import F_HISTORICAL_PNX
+from pkg_py.system_object.files import F_FFMPEG_EXE
+from pkg_py.system_object.encodings import Encoding
+from pkg_py.system_object.directories import D_DOWNLOADS, D_PKG_PKL
+from pkg_py.system_object.print_red import print_red
+from pkg_py.system_object.state_via_database import PkSqlite3DB
 
 from PIL import Image
 from pathlib import Path
@@ -61,15 +61,15 @@ from cryptography.hazmat.backends import default_backend
 from Cryptodome.Random import get_random_bytes
 from concurrent.futures import ThreadPoolExecutor
 from bs4 import BeautifulSoup
-from pkg_py.pk_system_object.etc import PK_UNDERLINE
+from pkg_py.system_object.etc import PK_UNDERLINE
 from pkg_py.functions_split.is_d import is_d
 from pkg_py.functions_split.is_f import is_f
-from pkg_py.pk_system_object.is_os_windows import is_os_windows
+from pkg_py.system_object.is_os_windows import is_os_windows
 from pkg_py.functions_split.get_pnx_windows_style import get_pnx_windows_style
 from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
 from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style
 
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.pk_print import pk_print
 from pkg_py.functions_split.get_pnx_list import get_pnx_list
 
@@ -93,10 +93,10 @@ def check_ssh_server_public_key(key_public, **config_remote_os):
         std_out_str = stdout.read().decode().strip()
         signiture = "Key exists"
         if signiture == std_out_str:
-            pk_print(working_str="PUBLIC KEY IS ALREADY REGISTERED ON THE REMOTE SERVER.")
+            pk_print(str_working="PUBLIC KEY IS ALREADY REGISTERED ON THE REMOTE SERVER.")
             return 1
         else:
-            pk_print(working_str="PUBLIC KEY IS NOT REGISTERED ON THE REMOTE SERVER.", print_color='red')
+            pk_print(str_working="PUBLIC KEY IS NOT REGISTERED ON THE REMOTE SERVER.", print_color='red')
             return 0
 
     except Exception as e:

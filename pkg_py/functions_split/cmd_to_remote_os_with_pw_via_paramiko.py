@@ -7,9 +7,9 @@ from selenium.webdriver.common.keys import Keys
 from pytube import Playlist
 from pkg_py.functions_split.is_losslesscut_running import is_losslesscut_running
 from functools import partial
-from pkg_py.pk_system_object.stamps import STAMP_TRY_GUIDE
+from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
 
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.pk_print import pk_print
 
 

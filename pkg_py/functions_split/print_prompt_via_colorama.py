@@ -3,7 +3,7 @@
 from enum import Enum
 
 from colorama import Fore
-from pkg_py.pk_system_object.color_map import COLORAMA_CODE_MAP
+from pkg_py.system_object.color_map import COLORAMA_CODE_MAP
 
 
 def print_prompt_via_colorama(prompt: str, colorama_code: Enum, flush, line_feed_mode=1):

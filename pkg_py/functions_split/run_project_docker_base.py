@@ -1,12 +1,12 @@
 import win32con
 import tomllib
-from pkg_py.pk_system_object.get_list_calculated import get_list_calculated
+from pkg_py.system_object.get_list_calculated import get_list_calculated
 from pkg_py.functions_split.get_nx import get_nx
-from pkg_py.pk_system_object.stamps import STAMP_TRY_GUIDE
+from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
 from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
 from pkg_py.functions_split.get_pnx_wsl_unix_style import get_pnx_wsl_unix_style
 
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.pk_print import pk_print
 
 

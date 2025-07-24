@@ -1,4 +1,4 @@
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.pk_print import pk_print
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 
@@ -14,5 +14,5 @@ def generate_token_f(f, initial_str):
         token = initial_str
         if initial_str != "":
             write_str_to_f(msg=f"{token}\n", f=f, mode="w")
-            pk_print(working_str=rf'''token is generated token={token}  {'%%%FOO%%%' if LTA else ''}''',
+            pk_print(str_working=rf'''token is generated token={token}  {'%%%FOO%%%' if LTA else ''}''',
                      print_color='green')

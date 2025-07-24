@@ -1,4 +1,4 @@
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.pk_print import pk_print
 
 
@@ -45,7 +45,7 @@ def copy_pnx_from_local_os_to_remote_os_via_rsync(d_pnx):
             #         # speak_ments(f"타겟의 동기화가 성공 되었습니다", sleep_after_play=0.65, thread_join_mode=True)
             #         print_ment_success("타겟동기화 성공")
             #         GuiUtil.pop_up_as_complete(title_="작업성공보고", ment=f"타겟의 동기화가 성공 되었습니다\n{pnx_todo_new}", auto_click_positive_btn_after_seconds=1)
-            pk_print(working_str="타겟동기화 성공")
+            pk_print(str_working="타겟동기화 성공")
     except:
         pk_print("타겟동기화 실패")
         pk_print(f'''{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}''', print_color='red')

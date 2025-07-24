@@ -9,7 +9,7 @@ import clipboard
 from PySide6.QtWidgets import QApplication
 from pynput import mouse
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.local_test_activate import LTA
 from fastapi import HTTPException
 from enum import Enum
 from pkg_py.functions_split.get_nx import get_nx

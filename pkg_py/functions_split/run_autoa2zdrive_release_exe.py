@@ -63,7 +63,7 @@ def run_autoa2zdrive_release_exe():
             if is_front_window_title(window_title_seg=window_title_seg):
                 ensure_window_to_front(window_title_seg=window_title_seg)
                 break
-        pk_print(working_str=time.time() - start_time)
+        pk_print(str_working=time.time() - start_time)
         if time.time() - start_time > timeout:
             break
         pk_sleep(milliseconds=1000)

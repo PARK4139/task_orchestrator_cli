@@ -10,17 +10,17 @@ from pkg_py.functions_split.get_historical_list import get_historical_list
 from pkg_py.functions_split.is_losslesscut_running import is_losslesscut_running
 from pkg_py.functions_split.is_window_title_front import is_window_title_front
 from pkg_py.functions_split.cmd_to_os import cmd_to_os
-from pkg_py.pk_system_object.stamps import STAMP_ATTEMPTED
-from pkg_py.pk_system_object.directories import D_WORKING
+from pkg_py.system_object.stamps import STAMP_ATTEMPTED
+from pkg_py.system_object.directories import D_WORKING
 
 from functools import partial as functools_partial
 from Cryptodome.Cipher import AES
 from pkg_py.functions_split.kill_self_pk_program import kill_self_pk_program
-from pkg_py.pk_system_object.etc import PK_UNDERLINE
-from pkg_py.pk_system_object.directories import D_PKG_PY
+from pkg_py.system_object.etc import PK_UNDERLINE
+from pkg_py.system_object.directories import D_PKG_PY
 from pkg_py.functions_split.is_d import is_d
 
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.pk_print import pk_print
 
 

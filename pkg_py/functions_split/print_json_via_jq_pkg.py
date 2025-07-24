@@ -28,6 +28,6 @@ def print_json_via_jq_pkg(json_str=None, json_file=None, json_list=None):
                 [print_light_white(line) for line in lines]
         else:
             pk_print(
-                working_str=rf"{inspect.currentframe().f_code.co_name}() 를 사용하려면 json_str/json_file/json_list 파라미터들 중 둘 중 하나만 데이터바인딩이 되어야합니다")
+                str_working=rf"{inspect.currentframe().f_code.co_name}() 를 사용하려면 json_str/json_file/json_list 파라미터들 중 둘 중 하나만 데이터바인딩이 되어야합니다")
     else:
-        pk_print(working_str="리눅스 시스템에서 아직 지원되지 않는 함수입니다")
+        pk_print(str_working="리눅스 시스템에서 아직 지원되지 않는 함수입니다")

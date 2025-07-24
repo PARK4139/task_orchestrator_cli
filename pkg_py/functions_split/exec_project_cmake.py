@@ -1,4 +1,4 @@
-from pkg_py.pk_system_object.local_test_activate import LTA
+from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.pk_print import pk_print
 
 
@@ -21,12 +21,12 @@ def exec_project_cmake(project_pnx, **config_remote_os):
         cmd_to_remote_os_with_pubkey(cmd='sudo apt update', **config_remote_os)
         if not len(std_err_list) == 0:
             for std_err_str in std_err_list:
-                pk_print(working_str=rf'{STAMP_REMOTE_ERROR} {std_err_str}', print_color='red')
+                pk_print(str_working=rf'{STAMP_REMOTE_ERROR} {std_err_str}', print_color='red')
             return
         if not len(std_out_list) == 0:
             for std_out_str in std_out_list:
-                pk_print(working_str=rf'{STAMP_REMOTE_DEBUG} {std_out_str}')
-        pk_print(working_str=rf'''{func_n}()  {'%%%FOO%%%' if LTA else ''}''', print_color='green')
+                pk_print(str_working=rf'{STAMP_REMOTE_DEBUG} {std_out_str}')
+        pk_print(str_working=rf'''{func_n}()  {'%%%FOO%%%' if LTA else ''}''', print_color='green')
     except:
-        pk_print(working_str=rf"{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''} ", print_color='red')
+        pk_print(str_working=rf"{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''} ", print_color='red')
         raise

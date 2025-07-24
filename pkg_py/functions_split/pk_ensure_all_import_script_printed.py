@@ -1,4 +1,4 @@
-from pkg_py.pk_system_object.directories import D_PKG_PY
+from pkg_py.system_object.directories import D_PKG_PY
 from pkg_py.functions_split.get_pnx_list_from_d_working import get_pnxs_from_d_working
 from pkg_py.functions_split.is_f import is_f
 

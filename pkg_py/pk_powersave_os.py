@@ -1,4 +1,4 @@
-# from pkg_py.pk_system_object.500_live_logic import save_power_as_s4, pk_speak, save_screen
+# from pkg_py.system_object.500_live_logic import save_power_as_s4, pk_speak, save_screen
 
 save_screen()
 

@@ -2,7 +2,7 @@ def run_pk_system_process_by_idx_v2(pk_idx, pk_arg_list):
     from pkg_py.functions_split.get_available_pk_python_program_pnx import get_available_pk_python_program_pnx
     from pkg_py.functions_split.pk_print import pk_print
     from pkg_py.functions_split.run_pk_python_program_by_path import run_pk_python_program_by_path
-    from pkg_py.pk_system_object.local_test_activate import LTA
+    from pkg_py.system_object.local_test_activate import LTA
     if pk_arg_list is None:
         pk_arg_list = []
 

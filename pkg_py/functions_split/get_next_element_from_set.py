@@ -15,7 +15,7 @@ def get_next_element_from_set(item_set):
         return next(get_next_element_from_set.iterator)
     except StopIteration:
         # 끝에 도달했을 때 메시지 출력
-        pk_print(working_str="다 돌았습니다")
+        pk_print(str_working="다 돌았습니다")
         # 반복자를 새로 생성
         get_next_element_from_set.iterator = iter(item_set)
         return next(get_next_element_from_set.iterator)
