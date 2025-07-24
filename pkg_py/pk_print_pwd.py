@@ -1,8 +1,8 @@
-from colorama import init as pk_colorama_init
+from pkg_py.functions_split.get_d_working_in_python import get_pwd_in_python
+from pkg_py.functions_split.pk_colorama_init_once import pk_colorama_init_once
 
-# from pkg_py.pk_system_object.500_live_logic import get_d_working_in_python, get_d_working_in_python, pwd
 
 pk_colorama_init_once()
 
-pwd = get_d_working_in_python()
+pwd = get_pwd_in_python()
 print(pwd)

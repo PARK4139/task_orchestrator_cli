@@ -1,7 +1,7 @@
 from pkg_py.functions_split.cmd_to_os import cmd_to_os
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 from pkg_py.functions_split.get_TBD_pnx_working_with_idx_dict import get_TBD_pnx_working_with_idx_dict
-from pkg_py.functions_split.get_d_working_in_python import get_d_working_in_python
+from pkg_py.functions_split.get_d_working_in_python import get_pwd_in_python
 from pkg_py.functions_split.get_list_from_f import get_list_from_f
 from pkg_py.functions_split.get_nx import get_nx
 from pkg_py.functions_split.get_pnx_list import get_pnx_list
@@ -67,7 +67,7 @@ def assist_to_change_d():
         pk_print(f'''first_loop={first_loop} {'%%%FOO%%%' if LTA else ''}''')
 
     while 1:
-        d_working_list = get_pnx_list(with_walking=0, d_working=get_d_working_in_python(), filter_option='d')
+        d_working_list = get_pnx_list(with_walking=0, d_working=get_pwd_in_python(), filter_option='d')
         d_working_with_idx_dict = get_TBD_pnx_working_with_idx_dict(origin_list=d_working_list, minus_list=minus_list,
                                                                     pnx_plus_list=plus_list)
 
@@ -84,7 +84,7 @@ def assist_to_change_d():
             pk_sys_argv = pk_cmd_str.split(" ")
         else:
             pk_cmd = pk_input_validated(str_working='', mode_verbose=0, mode_upper=0, mode_blank_validation=0,
-                                        input_str=rf'''{pk_get_colorful_working_str_with_stamp_enviromnet(func_n=func_n, ment=f'{get_d_working_in_python()} >>>')}''')  # best practice input
+                                        input_str=rf'''{pk_get_colorful_working_str_with_stamp_enviromnet(func_n=func_n, ment=f'{get_pwd_in_python()} >>>')}''')  # best practice input
             pk_cmd_str = pk_cmd.strip()
             pk_sys_argv = pk_cmd_str.split(" ")
 
@@ -106,7 +106,7 @@ def assist_to_change_d():
         if len(pk_sys_argv) == 1:
             if pk_cmd_single_dict['.'] == pk_sys_argv[0]:
                 if is_os_windows():
-                    cmd_to_os(f'explorer.exe {get_d_working_in_python()}')
+                    cmd_to_os(f'explorer.exe {get_pwd_in_python()}')
                 continue
             elif pk_cmd_single_dict['cls'] == pk_sys_argv[0]:  # fail
                 if is_os_windows():
