@@ -1,5 +1,6 @@
 from pkg_py.functions_split.ensure_console_cleared import ensure_console_cleared
-
+from pkg_py.functions_split.pk_lock_os import pk_lock_os
+from pkg_py.functions_split.pk_sleep import pk_sleep
 
 
 def pk_assist_to_lock_os():

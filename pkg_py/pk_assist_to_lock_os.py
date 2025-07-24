@@ -1,16 +1,15 @@
-
-# -*- coding: utf-8 -*-
 if __name__ == '__main__':
     try:
         import traceback
-
+        from pkg_py.functions_split.assist_to_lock_os import pk_assist_to_lock_os
+        from pkg_py.functions_split.chcp_65001 import chcp_65001
+        from pkg_py.functions_split.ensure_do_exception_routine import ensure_do_exception_routine
+        from pkg_py.functions_split.ensure_do_finally_routine import ensure_do_finally_routine
+        from pkg_py.functions_split.is_os_windows import is_os_windows
+        from pkg_py.functions_split.pk_colorama_init_once import pk_colorama_init_once
+        from pkg_py.system_object.directories_reuseable import D_PROJECT
+        from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
         from colorama import init as pk_colorama_init
-
-        #  import chcp_65001, is_os_windows
-        # from pkg_py.system_object.500_live_logic import pk_assist_to_lock_os
-        # from pkg_py.system_object.500_live_logic import pk_copy
-        # from pkg_py.system_object.static_logic import D_PROJECT, UNDERLINE, STAMP_TRY_GUIDE, STAMP_EXCEPTION_DISCOVERED
-        #
 
         pk_colorama_init_once()
 
@@ -24,4 +23,3 @@ if __name__ == '__main__':
 
     finally:
         ensure_do_finally_routine(D_PROJECT=D_PROJECT, __file__=__file__, STAMP_TRY_GUIDE=STAMP_TRY_GUIDE)
-        
