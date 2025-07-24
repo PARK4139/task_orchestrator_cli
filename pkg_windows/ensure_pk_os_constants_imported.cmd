@@ -31,7 +31,7 @@ setx D_PKG_TXT "%D_PK_SYSTEM%\pkg_txt"
 setx F_UV_ZIP "%D_DOWNLOAD%\uv.zip"
 setx F_UV_EXE "%D_PKG_EXE%\uv.exe"
 setx F_PK_ALIAS_MACROS_TXT "%D_PKG_TXT%\pk_alias_macros.txt"
-setx D_AUTO_UTILITY=%D_DOWNLOAD%\auto_utility
+setx D_AUTO_UTILITY "%D_DOWNLOAD%\auto_utility"
 
 @REM ______________________________________ set path
 set PATH=%PATH%;C:\Users\user\Downloads\pk_system\pkg_exe

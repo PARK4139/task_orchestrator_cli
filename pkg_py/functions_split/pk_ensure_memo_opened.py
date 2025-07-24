@@ -9,5 +9,5 @@ def pk_ensure_memo_opened():
     ]
     for f in f_list:
         f = get_pnx_os_style(f)
-        cmd_to_os(cmd=f'code {f}')
+        cmd_to_os(cmd=f'explorer.exe {f}')
     state = True

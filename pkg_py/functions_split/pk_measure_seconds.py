@@ -17,9 +17,8 @@ def pk_measure_seconds(func):
         result = func(*args, **kwargs)  # 원래 함수 실행
         elapsed_seconds = time.time() - time_s
         # pk_colorama_init_once()
-        pk_print(working_str=f"[ @{func_n} ] [ {func.__name__}() ]  elapsed_seconds={elapsed_seconds:.4f}",
-                 print_color='yellow')  # todo 'elapsed_seconds={elapsed_seconds:.4f}' 에 노랗게 해고 싶다.
-        # todo : 파일에 기록되도록 한다.  추후에 통계를 한다.
+        pk_print(working_str=f"[ @{func_n} ] [ {func.__name__}() ]  elapsed_seconds={elapsed_seconds:.4f}",print_color='yellow')  # todo 'elapsed_seconds={elapsed_seconds:.4f}' 에 노랗게 해고 싶다.
+        # todo : 통계자료 수집
         return result  # 원래 함수의 반환값 그대로 반환
 
     return wrapper

@@ -1,4 +1,3 @@
-
 from pkg_py.functions_split.ensure_pk_system_exit_silent import ensure_pk_system_exit_silent
 from pkg_py.functions_split.pk_measure_seconds import pk_measure_seconds
 
@@ -9,7 +8,6 @@ def get_value_completed_v3(message, options):
     from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style
     from pkg_py.functions_split.pk_speak import pk_speak
     from pkg_py.functions_split.is_path_like import is_path_like
-
 
     from prompt_toolkit import prompt
     from prompt_toolkit.completion import WordCompleter, FuzzyCompleter
