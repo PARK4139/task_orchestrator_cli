@@ -1,4 +1,4 @@
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.print import pk_print
 
 
 def add_os_sys_environment_variable(environment_variable_name: str, environment_variable_value: str):

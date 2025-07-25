@@ -1,0 +1,889 @@
+
+"""
+"""Save text to the corresponding history file."""
+"""flag 값이 True가 되면 특정 작업 수행 후 다시 False로 초기화"""
+"""사용자가 Enter 키를 입력하면 flag를 True로 설정"""
+"# .gitignore",
+".git",
+".gitignore",
+".idea",
+".venv",
+"__pycache__",
+"add: new feature for ~~",
+"chore: update dependencies",
+"chore: various improvements and updates across multiple files",
+"docs: update README.md and improved project documentation",
+"feat: add user profile page",
+"fix: resolve issue with ~~",
+"found: problem",
+"pk_system.egg-info",
+"refactor: improve code readability in user module",
+"refactor: improve code readability in ~~",
+"refactor: restructure and update multiple files with improved messages and translations",
+#
+#             "add: new feature for ~~",
+#             "chore: update dependencies",
+#             "chore: various improvements and updates across multiple files",
+#             "docs: update README.md and improved project documentation",
+#             "feat: add user profile page",
+#             "fix: resolve issue with ~~",
+#             "refactor: improve code readability in user module",
+#             "refactor: improve code readability in ~~",
+#             "refactor: restructure and update multiple files with improved messages and translations",
+#             f"feat: auto pushed (made savepoint) by {SCRIPT_NAME} at {get_time_as_("%Y-%m-%d %H:%M")}",
+#     base_dir = os.path.abspath(os.path.dirname(__file__))
+#     history_file = os.path.join(__file__, f"{func_n}.history")
+#     return
+#     return history_file
+# 0. git config set
+# 1. git add
+# 2. git commit
+# 3. git push
+# OS별 실행
+# WSL 환경
+# based on from types import ModuleType
+# cmd_exe_title이 프로세스 cmdline에 포함되어 있는지 확인
+# cmd_to_os(f'taskkill /f /pid {pid}', debug_mode=debug_mode)
+# debug_this_code_operated(ipdb)
+# def get_last_history_file(__file__, func_n):
+# editable = False
+# ensure_pk_system_exit_silent()
+# exec 할 명령
+# f_nx = f_nx
+# first call 에서 options에 값을 넣고, 이후 호출부터는 init_options = [] 로 해야함, 계속 값이 더해짐
+# function_arg_names= [param.name for param in inspect.signature(process_kill).parameters.values()] # fail
+# git commit msg templates
+# if not is_window_opened_exactly(window_title=window_title):
+# ipdb.set_trace()  # 🔍 디버깅 시작 지점
+# main loop run
+# not recommanded way
+# os.system(command=rf"call {DEST_DIR}\pk_push_project_to_github.bat")
+# pk_kill_process_v1(window_title)
+# pk_kill_process_v16(window_title, exact=True)
+# pk_print(f"[PROCESS TERMINATED] PID={pid}, Name={process.info['name']}")
+# pk_print(f"[SKIP] 창 제목 세그먼트 '{cmd_exe_title}'로 찾은 창이 없습니다.", print_color="blue")
+# pk_print(f'''{PkMessages2025.NOT_PREPARED_YET}{'%%%FOO%%%' if LTA else ''}''', print_color='green', mode_verbose=0) # write code here
+# pk_sleep(milliseconds=1000)
+# pk_sleep(seconds=1000)
+# pk_sleep(seconds=500)
+# pk_system_kill_us_keyboard.cmd (run)
+# return text.encode('cp949', errors='replace').decode('cp949')
+# shm.unlink()  # 주석 해제하면 공유 메모리 삭제됨 (프로세스 간 공유 유지하려면 유지)
+# sleep
+# sys.stdout.reconfigure(encoding='utf-8') # fail
+# thread run (in background)
+# title 명령어로 창 제목 지정 (pk_ 접두사 제거된 제목)
+# user input hard cording, autocomplete, fzf, history file
+# user input history, autocomplete, fzf, history file
+# values = values.replace('–', '-')  # 유니코드 EN DASH → 하이픈
+# ① 열린 창 목록 확보 및 CP949 대응 처리
+# ② 제목별로 그룹핑 (윈도우 제목 기준)
+# ③ 각 제목에 대해 1개만 남기고 닫기 시도
+# ✅ 종료 전에 실행
+# 공유 메모리 해제 (필요하면 exec )
+# 기존 공유 메모리 존재 여부 확인
+# 기타 리눅스/유닉스
+# 디렉토리 제외
+# 문자열 전처리
+# 스레드 종료
+# 유사 문자 수동 치환
+# 유사도 높은 첫 번째 타이틀로 선택
+# 전역 스텝 카운터
+# 전역 음성 큐 및 재생 쓰레드 (초기화 1회만)
+# 제외할 파일/디렉토리 이름
+# 종료할 스레드 이름
+# 종료할 스레드 찾기
+# 즉시 모드: 기존 재생 중단 후 바로 실행
+# 첫 번째 매칭된 타이틀을 기준으로 process 검색
+# 최초 1회만 큐 소비 쓰레드 시작
+# 출력용 정렬: 유사한 것 먼저
+# 큐 모드: 순서대로 재생
+# 파일 복사
+# 해당 타이틀을 가진 윈도우들의 PID 직접 수집
+# 현재 exec  중인 모든 스레드 가져오기
+'–': '-',  # EN DASH
+'—': '-',  # EM DASH
+'‘': "'", '’': "'",
+'“': '"', '”': '"',
+'…': '...', '•': '*',
+)
+).start()
+:param sort: True일 경우 알파벳 순 정렬
+:param timeout: 종료 대기 시간 (초)
+:param unique: True일 경우 중복 remove
+:param window_title_seg: 윈도우 제목 일부 문자열
+:return: True (모두 종료됨), False (하나라도 종료 실패)
+:return: 프로세스 이름 리스트
+@pk_measure_seconds
+Args:
+Copy files from src_dir to dst_dir excluding any files or directories
+DEST_DIR = rf"{downloads_path}\auto_utility"
+EXCLUDE_NAMES = {
+None_count = Nones.count(None)
+Nones = [img_name, pid]
+PLAYING_SOUNDS.clear()
+Print and return current alive threads.
+Returns:
+SCRIPT_NAME = Path(__file__).name
+SOURCE_DIR = rf"{downloads_path}\pk_system"
+['taskkill', '/PID', str(pid), '/T', '/F'],
+]
+_, pid = win32process.GetWindowThreadProcessId(hwnd)
+_, status_out = run_command("git status", capture_output=True)
+all_killed = False
+all_killed = True
+and target in " ".join(proc.info.get('cmdline', [])).lower()
+async def pk_kill_process_as_async(f):
+await asyncio.gather(*tasks)  # 모든 프로세스를 비동기적으로 종료
+batch_calling_program = 'start "" call'
+batch_file = get_pnx_os_style(rf'{batch_file_base}/{batch_filename}')
+batch_file_base = D_PROJECT
+batch_filename = rf"pk_push_project_to_github.bat"
+best_match_hwnd, best_match_title, _ = matches[0]
+best_match_title = matches[0][1]
+break
+c = wmi.WMI()
+caption_match = "cmd.exe" in (proc.Caption or "").lower()
+chcp_65001()
+choice = input("실행할 번호를 입력하세요 (Enter로 취소): ").strip()
+closed_hwnds = []
+closed_hwnds.append((hwnd, title))
+cmd = "git add ."
+cmd = "git push"
+cmd = "wsl --shutdown"
+cmd = f'git commit -m "{commit_message}"'
+cmd = f'git config --global user.email "{user_email}"'
+cmd = f'git config --global user.name "{user_name}"'
+cmd = f'python3 {file_to_excute}'
+cmd = f'start "" cmd.exe /k "title {file_title}&& python {file_to_excute}"'
+cmd = f'tasklist /FI "WINDOWTITLE eq {window_title}" /FO CSV'
+cmd_to_os(cmd=cmd)
+cmd_to_os(cmd=cmd, mode="a")
+cmd_to_os(cmd=cmd, mode='a', mode_with_window=1)
+cmd_to_os(cmd=f'{batch_calling_program} "{batch_file}"')
+cmd_to_os(cmd=f'{python_calling_program} "{python_file}"')
+cmd_to_os(cmd=rf'"{f_cmd}"', encoding='utf-8')
+cmd_to_os(cmd=rf'"{f_cmd}"', encoding=Encoding.CP949)
+cmd_to_os(f'taskkill /f /im "{img_name}"')
+cmd_to_os(f'taskkill /f /pid {pid}')
+cmd_to_os(f'wmic process where name="{img_name}" delete ')
+cmd_to_os(f'wmic process where name="{process_img_n}" delete ')
+cmdline = " ".join(proc.info['cmdline']).lower()
+cmdline = ' '.join(proc.info['cmdline']) if proc.info['cmdline'] else ''
+cmdline = process.info.get('cmdline', [])
+code, log_output = run_command('git log -n 20 --pretty=format:%s', capture_output=True)
+code, output = run_command(cmd, capture_output=True)
+commit_message = None
+commit_message = commit_message.strip()
+commit_message = f"feat: auto pushed (made savepoint) by {SCRIPT_NAME} at {get_time_as_("%Y-%m-%d %H:%M")}"
+commit_message = f"feat: auto pushed (made savepoint) by {SCRIPT_NAME}"
+commit_message = get_value_completed(key_hint='commit_message=', values=options)
+commit_message = input("commit_message=").strip()
+commit_message = value
+commit_number = get_next_commit_number()
+content = file_path.read_text().strip()
+continue
+continue  # 권한 오류나 존재하지 않는 프로세스는 무시
+copied_count += 1
+copied_count = 0
+copy_except_blacklist(SOURCE_DIR, DEST_DIR, EXCLUDE_NAMES)
+cpu = proc.cpu_percent()
+cpu = proc.cpu_percent(interval=duration)
+current_threads = threading.enumerate()
+daemon=True
+def copy_and_push_auto_utility():
+def copy_except_blacklist(src_dir, dst_dir, exclude_names):
+def debug_as_ipdb_console(ipdb):
+def debug_call_depth(func_n):
+def debug_call_stack():
+def debug_current_threads(verbose: bool = True) -> list:
+def debug_this_code_operated(ipdb: ModuleType):
+def ensure_cmd_exe_all_closed_in_loop():
+def ensure_cmd_exe_deduplicated():
+def ensure_cmd_exe_deduplicated_all():
+def ensure_cmd_exe_deduplicated_all_in_loop():
+def ensure_git_project_pushed(with_commit_massage=True):
+def enum_handler(hwnd, _):
+def enum_handler(hwnd, matched_hwnds):
+def fail_and_exit(start_time):
+def fallback_choice(pk_file_list: list[str], last_selected: str | None):
+def get_fzf_command():
+def get_history_file_path(file_id: str) -> Path:
+def get_last_history(history_file):
+def get_next_commit_number():
+def get_nx(path: str) -> str:
+def get_pids_by_title_seg(windows_title_seg: str) -> list[int]:
+def get_process_name_list(unique: bool = True, sort: bool = True) -> list:
+def get_refactor_py_file_list():
+def get_text_from_history_file(file_id: str) -> str | None:
+def get_value_via_fzf_or_history_routine(key_name, file_id, editable, init_options=[]):
+def get_values_sanitize_for_cp949(text):
+def get_window_matches(window_title_seg: str):
+def get_window_title(window_title_seg: str) -> str | None:
+def is_a2z_office():
+def is_process_killed(window_title_seg: str, timeout: float = 1.0) -> bool:
+def kill_cmd_exe():
+def kill_pid(pid):
+def kill_pid_psutil(pid):
+def kill_powershell_exe(debug_mode=True):
+def kill_process(img_name=None, pid=None):
+def kill_process_via_wmic(process_img_n=None, debug_mode=True):
+def kill_thread(thread_name):
+def kill_us_keyboard():
+def kill_wsl_exe():
+def listen_enter():
+def main_loop():
+def monitor_process_state(proc, duration=1.0):
+def monitor_process_state(proc, max_sec=2.5, interval=0.5):
+def pk_ensure_process_deduplicated(window_title_seg: str, exact=True):
+def pk_ensure_process_killed(window_title: str):
+def pk_kill_process_by_window_title_seg(window_title_seg: str):
+def pk_kill_process_v1(cmd_exe_title):
+def pk_kill_process_v10(window_title_seg: str):
+def pk_kill_process_v11(window_title_seg: str):
+def pk_kill_process_v12(window_title_seg: str):
+def pk_kill_process_v13(window_title_seg: str):
+def pk_kill_process_v14(window_title_seg: str):
+def pk_kill_process_v15(window_title_seg: str):
+def pk_kill_process_v16(window_title: str, exact: bool = True):
+def pk_kill_process_v16_1(window_title: str, exact: bool = True):
+def pk_kill_process_v17(window_title_seg: str):
+def pk_kill_process_v17_fast(window_title_seg: str):
+def pk_kill_process_v2(cmd_exe_title: str):
+def pk_kill_process_v3(cmd_exe_title: str):
+def pk_kill_process_v5(cmd_exe_title: str):
+def pk_kill_process_v6(cmd_exe_title: str):
+def pk_kill_process_v8(window_title_seg: str):
+def pk_kill_process_v9(window_title_seg: str):
+def pk_run_py_system_process_by_pnx(file_to_excute, file_title):
+def pk_speak_v3(str_working, segment_delay=0.90, queue_mode=False):
+def pk_test_function_name():
+def pk_test_get_value_with_tab_v80():
+def pk_test_get_value_with_tab_v90():
+def pk_test_guide_not_prepared_yet():
+def pk_test_path_normalized():
+def pk_test_pk_python_program_structure():
+def pk_test_stop_with_silent_debugger():
+def pk_test_window_title_debugger():
+def print_status(step_num: int, cmd: str, code: int, output: str) -> str:
+def process_queue():
+def run_command(cmd: str, capture_output=False):
+def save_to_history(contents_to_save: str, history_file):
+def set_text_from_history_file(file_id: str, text: str):
+def stop_all_sounds():
+def test_example_call_batchfile_as_new_window():
+def test_example_call_pythonfile_as_new_window():
+def try_kill_pid(pid):
+depth = debug_call_depth(func_n)
+depth = len(inspect.stack(0))
+dirs[:] = [d for d in dirs if d not in exclude_names]
+downloads_path = os.path.join(os.environ["USERPROFILE"], "Downloads")
+dst = rf"{DEST_DIR}\.gitignore"
+dst_dir (str): Destination directory.
+dst_path = os.path.join(dst_dir, rel_path)
+duration = time.time() - start_time
+editable = False
+editable = True
+editable = True  # pk_option
+elapsed = time.time() - start
+elif "everything up-to-date" in output.lower():
+elif "nothing to commit" in output.lower():
+elif elapsed > 2.5:
+elif is_os_wsl_linux():
+else:
+ensure_cmd_exe_deduplicated_all()
+ensure_console_debuggable(ipdb)
+ensure_do_exception_routine(traceback=traceback, exception=e)
+ensure_do_exception_routine(traceback=traceback, exception=exception)
+ensure_do_finally_routine(D_PROJECT=D_PROJECT, __file__=__file__, STAMP_TRY_GUIDE=STAMP_TRY_GUIDE)
+ensure_pk_system_exit_silent()  # pk_option
+except (ValueError, IndexError):
+except (psutil.AccessDenied, psutil.ZombieProcess, psutil.NoSuchProcess):
+except (psutil.NoSuchProcess, psutil.AccessDenied):
+except (psutil.NoSuchProcess, psutil.AccessDenied, psutil.ZombieProcess):
+except Exception as e:
+except Exception as exception:
+except Exception:
+except FileNotFoundError:
+except ImportError as e:
+except psutil.NoSuchProcess:
+except psutil.TimeoutExpired:
+except subprocess.CalledProcessError:
+except subprocess.TimeoutExpired:
+except:
+exclude_names (set): Set of names (files or folders) to exclude.
+exe = proc.name().lower()
+executor.map(kill_pid, matched_pids)
+executor.map(kill_pid_psutil, matched_pids)
+executor.map(try_kill_pid, matched_pids)
+existing_shm = shared_memory.SharedMemory(name=shm_name)
+existing_shm.close()
+f = get_pnx_os_style(f)
+f = str(Path(f).resolve())
+f"feat: auto pushed (made savepoint) by {SCRIPT_NAME} at {get_time_as_("%Y-%m-%d %H:%M")}",
+f_cmd = get_pnx_os_style(pnx=f_cmd)
+f_cmd = rf"{D_PKG_WINDOWS}/pk_kill_us_keyboard.cmd"
+f_historical = get_history_file(file_id=file_id)
+f_nx = get_nx(f)
+f_obj.write(contents_to_save.strip())
+f_working = value
+fail_and_exit(start_time)
+failed_pids = []
+failed_pids.append(pid)
+file_id = get_file_id(key_name, func_n)
+file_path = get_history_file_path(file_id)
+file_path.write_text("")  # create an empty file
+file_path.write_text(text.strip())
+file_title = file_title.strip()
+finally:
+flag = existing_shm.buf
+flag[0] = 0  # flag를 다시 False로 초기화
+flag[0] = 1  # flag를 True로 변경
+fname = os.path.basename(fpath)
+for _ in range(sleep_seconds):
+for _ in range(steps):
+for file in files:
+for frame in inspect.stack()[1:5]:
+for hwnd in to_close:
+for hwnd, title in matched_hwnds:
+for hwnd, title, is_similar in matches:
+for idx, fpath in enumerate(pk_file_list):
+for line in log_output.splitlines():
+for name in ["fzf", "fzf.exe"]:
+for old, new in replacements.items():
+for pid in matched_pids:
+for pid in pids:
+for player in PLAYING_SOUNDS:
+for proc in c.Win32_Process():
+for proc in c.query("SELECT ProcessId, CommandLine, Caption FROM Win32_Process"):
+for proc in psutil.process_iter(['name']):
+for proc in psutil.process_iter(['pid', 'name', 'cmdline'])
+for proc in psutil.process_iter(['pid', 'name', 'cmdline']):
+for process in psutil.process_iter(['pid', 'name', 'cmdline']):
+for root, dirs, files in os.walk(src_dir):
+for row in reader:
+for seg in working_list:
+for t in thread_list:
+for thread in current_threads:
+for title in values:
+for window_title in grouped:
+from collections import defaultdict
+from concurrent.futures import ThreadPoolExecutor
+from io import StringIO
+from multiprocessing import shared_memory, Lock
+from pathlib import Path
+from pkg_py.functions_split.chcp_65001 import chcp_65001
+from pkg_py.functions_split.cmd_to_os import cmd_to_os
+from pkg_py.functions_split.colorama_init_once import pk_colorama_init_once
+from pkg_py.functions_split.ensure_console_debuggable import ensure_console_debuggable
+from pkg_py.functions_split.ensure_do_exception_routine import ensure_do_exception_routine
+from pkg_py.functions_split.ensure_do_finally_routine import ensure_do_finally_routine
+from pkg_py.functions_split.ensure_os_env_sys_variables_applied import ensure_os_env_sys_variables_applied
+from pkg_py.functions_split.ensure_pk_system_exit_silent import ensure_pk_system_exit_silent
+from pkg_py.functions_split.get_f_historical import get_history_file
+from pkg_py.functions_split.get_file_id import get_file_id
+from pkg_py.functions_split.get_list_calculated import get_list_calculated
+from pkg_py.functions_split.get_list_sorted import get_list_sorted
+from pkg_py.functions_split.get_nx import get_nx
+from pkg_py.functions_split.get_os_n import get_os_n
+from pkg_py.functions_split.get_pids import get_pids
+from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style
+from pkg_py.functions_split.get_time_as_ import get_time_as_
+from pkg_py.functions_split.get_value_completed import get_value_completed
+from pkg_py.functions_split.get_values_from_historical_file import get_values_from_history_file
+from pkg_py.functions_split.get_window_title import get_window_title
+from pkg_py.functions_split.get_window_title_list import get_window_title_list
+from pkg_py.functions_split.is_containing_special_characters_with_thread import is_containing_special_characters_with_thread
+from pkg_py.functions_split.is_os_windows import is_os_windows
+from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
+from pkg_py.functions_split.kill_process_via_taskkill import kill_process_via_taskkill
+from pkg_py.functions_split.measure_seconds import pk_measure_seconds
+from pkg_py.functions_split.press import pk_press
+from pkg_py.functions_split.print import pk_print
+from pkg_py.functions_split.print_iterable_as_vertical import print_iterable_as_vertical
+from pkg_py.functions_split.remove_special_characters import remove_special_characters
+from pkg_py.functions_split.set_values_to_historical_file import set_values_to_historical_file
+from pkg_py.functions_split.sleep import pk_sleep
+from pkg_py.functions_split.speak import pk_speak
+from pkg_py.functions_split.write_like_person import write_like_person
+from pkg_py.pk_interface_graphic_user import get_windows_opened
+from pkg_py.system_object.color_map import PK_ANSI_COLOR_MAP
+from pkg_py.system_object.directories import D_PKG_WINDOWS
+from pkg_py.system_object.directories_reuseable import D_PROJECT
+from pkg_py.system_object.directories_reuseable import D_PROJECT, D_HOME
+from pkg_py.system_object.encodings import Encoding
+from pkg_py.system_object.etc import PK_UNDERLINE
+from pkg_py.system_object.etc import PLAYING_SOUNDS
+from pkg_py.system_object.files import F_PK_WORKSPACE_PY
+from pkg_py.system_object.local_test_activate import LTA
+from pkg_py.system_object.map_massages import PkMessages2025
+from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
+from pkg_py.workspace.pk_workspace import debug_this_code_operated
+from pkg_py.workspace.pk_workspace2 import get_value_via_fzf_or_history
+from types import ModuleType
+func_n = inspect.currentframe().f_code.co_name
+global step_counter
+grouped = defaultdict(list)
+grouped[title].append(title)
+historical_values = get_values_from_history_file(f_historical=f_historical)
+history_dir = Path.home() / ".git_config_history"
+history_dir.mkdir(parents=True, exist_ok=True)
+hwnds = []
+hwnds.append(hwnd)
+if "cmd.exe" in (proc.Caption or "").lower() and get_nx(window_title).lower() in (proc.CommandLine or "").lower():
+if "user" in D_HOME:
+if 'cmd.exe' in (proc.info['name'] or '').lower() and cmd_exe_title.lower() in cmdline.lower():
+if 'cmd.exe' in (proc.info['name'] or '').lower() and window_title.lower() in ' '.join(proc.info['cmdline'] or []).lower():
+if (exact and title == window_title) or (not exact and window_title in title):
+if LTA:
+if None_count == 0:
+if None_count == 1:
+if None_count == 2:
+if __name__ == "__main__":
+if any(protocol in output for protocol in ["To https://", "To http://", "To git@"]):
+if capture_output:
+if cmdline and any(f_nx in cmd for cmd in cmdline):
+if code != 0:
+if code == 0:
+if commit_message == "":
+if elapsed > 2.0:
+if elapsed > 2.5:
+if elapsed > 5.0:
+if exact:
+if exe == "cmd.exe":
+if failed_pids:
+if file in exclude_names:
+if flag[0]:  # flag가 True면 리셋 후 루프 재시작
+if get_os_n() == 'windows':
+if img_name is not None:
+if is_containing_special_characters_with_thread(text=str_working):
+if is_os_windows():
+if is_similar:
+if len(user_email.strip()) == 0:
+if len(user_name.strip()) == 0:
+if limit_of_call_depth >= depth:
+if match:
+if matched_pids:
+if matches:
+if not choice:
+if not closed_hwnds:
+if not file_path.exists():
+if not hasattr(pk_speak_v3, "_queue"):
+if not hwnds:
+if not matched_hwnds:
+if not matched_pids:
+if not matches:
+if not os.path.exists(dst_dir):
+if not pids:
+if not proc.is_running():
+if not str_working:
+if not title:
+if not window_title:
+if os.path.exists(dst):
+if os.path.exists(history_file):
+if pid is not None:
+if pid:
+if pids is not None:
+if proc.info['name'].lower() == "cmd.exe":
+if proc.info['name'].lower() == 'cmd.exe'
+if proc.info['name']:
+if proc.is_running():
+if process.info['cmdline'] and any(cmd_exe_title in cmd for cmd in process.info['cmdline']):
+if process_img_n is not None:
+if queue_mode and not pk_speak_v3._thread_started:
+if queue_mode:
+if sort:
+if status == "FAILED":
+if target in cmdline:
+if target_thread:
+if tasks:
+if thread.name == thread_name:
+if title.lower() == window_title.lower():
+if title:
+if title_match and caption_match:
+if unique:
+if verbose:
+if win32gui.IsWindowVisible(hwnd):
+if window_title.lower() in title.lower():
+if window_title_seg.lower() in title.lower():
+if with_commit_massage == False:
+img_name = img_name.replace("\"", "")
+img_name = img_name.replace("\'", "")
+import asyncio
+import csv
+import glob
+import inspect
+import ipdb
+import logging
+import os
+import psutil
+import queue
+import re
+import shutil
+import subprocess
+import sys
+import threading
+import time
+import traceback
+import win32con
+import win32gui
+import win32process
+import wmi
+init_options = [F_PK_WORKSPACE_PY]
+init_options = get_list_calculated(origin_list=[selected], plus_list=init_options)  # 선택값을 맨 앞으로 정렬
+init_options = get_list_calculated(origin_list=init_options, dedup=True)
+init_options = get_list_calculated(origin_list=init_options, plus_list=historical_values)
+input()  # Enter 입력 대기
+ipdb.set_trace()
+key_name = "commit_message"
+key_name = 'commit_message'
+key_name = 'f_working'
+key_name = 'window_opened'
+kill_process(pid=pid)
+kill_process_via_taskkill(pid=pid)
+kill_process_via_wmic(pid=pid)
+label, color = "FAILED", PK_ANSI_COLOR_MAP['RED']
+label, color = "SKIPPED", PK_ANSI_COLOR_MAP['YELLOW']
+label, color = "SUCCESS", PK_ANSI_COLOR_MAP['GREEN']
+limit_of_call_depth = 10
+list: List of thread names.
+lock = Lock()
+logging.debug(f"[ENUM] hwnd={hwnd}, title='{title}', target='{window_title}'")
+logging.error(f"[ERROR] No valid PID found for window title: '{window_title}'")
+logging.error(f"[EnumWindows ERROR] {e}")
+logging.error(f"[FAILED PIDs] {sorted(failed_pids)}")
+logging.error(f"[FAILED] PID={pid} error: {e}")
+logging.error(f"[IMPORT ERROR] {e}. Please install pywin32.")
+logging.info(f"[CLOSE:EXACT] '{title}' (hwnd={hwnd})")
+logging.info(f"[CLOSE:PARTIAL] '{title}' (hwnd={hwnd})")
+logging.info(f"[HWND->PID] title='{title}' → pid={pid}")
+logging.info(f"[INFO] Closed {len(closed_hwnds)} window(s) for '{window_title}'")
+logging.info(f"[INFO] Found {len(matched_hwnds)} matched window(s) for '{window_title}'")
+logging.info(f"[KILLED] PID={pid} ('{window_title}') exe='{exe}'")
+logging.info(f"[MATCHED:EXACT] '{title}'")
+logging.info(f"[MATCHED:PARTIAL] '{title}'")
+logging.warning(f"[SKIP] No window matched for: '{window_title}' (exact={exact})")
+logging.warning(f"[SKIP] Not killing cmd.exe (PID={pid})")
+logging.warning(f"[WARN] Failed to get PID from hwnd={hwnd}: {e}")
+main_loop()
+mark = " <- 최근 실행" if fpath == last_selected else ""
+match = re.match(r"\[(\d+)\]", line)
+matched_hwnds = []
+matched_hwnds.append((hwnd, title))
+matched_pids = set()
+matched_pids = {
+matched_pids.add(pid)
+matched_pids.add(proc.ProcessId)
+matched_pids.add(proc.info['pid'])
+matches = []
+matches = get_window_matches(window_title_seg)
+matches = get_window_title(windows_title_seg)
+matches.append((hwnd, title))
+matches.append((hwnd, title, similarity))
+matches.sort(key=lambda x: x[2], reverse=True)
+mem = proc.memory_info().rss / (1024 * 1024)
+monitor_process_state(proc)
+monitor_process_state(proc)  # 실시간 모니터링 시작
+monitor_process_state(proc, duration=0.5)
+name = process.info['name']
+name="thread_speak_queue",
+names = []
+names = list(set(names))
+names.append(proc.info['name'])
+names.sort()
+numbers = []
+numbers.append(int(match.group(1)))
+options = [
+os.chdir(batch_file_base)
+os.chdir(path=DEST_DIR)
+os.chdir(python_file_base)
+os.makedirs(dst_dir)
+os.makedirs(os.path.dirname(dst_path), exist_ok=True)
+os.remove(dst)  # 덮어쓰기
+os.system(command=rf"call {DEST_DIR}\pk_push_project_to_github_hybrid.bat")
+os.system(f"title {os.path.basename(__file__)}")  # TBD : 데코레이터로 전환
+output = subprocess.check_output(cmd, shell=True, encoding='cp949', errors='ignore')
+pass
+pass  # 최종 타임아웃 2초 경과 후 포기
+pattern = os.path.join(refactor_dir, "*.py")
+pid = process.info['pid']
+pid = row.get("PID")
+pids = get_pids("cmd.exe")
+pids = get_pids("powershell.exe")
+pids = get_pids("wsl.exe")
+pids = get_pids_by_title_seg(window_title_seg)
+pk_colorama_init_once()
+pk_ensure_process_deduplicated(window_title_seg=window_opened)
+pk_ensure_process_deduplicated(window_title_seg=window_title, exact=True)
+pk_ensure_process_killed(window_title=window_opened)
+pk_kill_process_v17(window_title)
+pk_press("enter")
+pk_print("Enter detected! Restarting loop...", print_color="white")
+pk_print("Enter detected! flag 업데이트됨.", print_color="blue")
+pk_print("listen_enter: 공유 메모리가 존재하지 않음. 종료.", print_color='red')
+pk_print("main_loop: 공유 메모리가 존재하지 않음. 종료.", print_color='red')
+pk_print(f"PK KILL '{best_match_title}' not found (No PIDs)", print_color="red")
+pk_print(f"PK KILL '{best_match_title}' not found", print_color="red")
+pk_print(f"PK KILL '{window_title}' not found", print_color="red")
+pk_print(f"PK KILL ERROR PID={pid} : {e}", print_color="red")
+pk_print(f"PK KILL PID={pid} TIMEOUT_ELAPSED={elapsed:.2f}s", print_color="yellow")
+pk_print(f"PK KILL PID={pid} window_title=...", print_color="green")
+pk_print(f"PK KILL PID={pid} window_title={window_title}", print_color="green")
+pk_print(f"[CLOSE] HWND={hwnd} closed for window_title='{win32gui.GetWindowText(hwnd)}'", print_color="green")
+pk_print(f"[DEBUG] window_title={window_title} {'%%%FOO%%%' if LTA else ''}")
+pk_print(f"[ERROR] {e}", print_color="red")
+pk_print(f"[ERROR] 전체 종료 확인 실패: {e}", print_color="red")
+pk_print(f"[INFO] Found {len(matches)} window(s). Similarity check:", print_color="cyan")
+pk_print(f"[NO MATCH] '{cmd_exe_title}' 프로세스를 찾지 못했습니다.", print_color="red")
+pk_print(f"[NO MATCH] '{cmd_exe_title}'와 일치하는 프로세스를 찾지 못했습니다.", print_color="red")
+pk_print(f"[NO MATCH] '{window_title}'와 일치하는 프로세스를 찾지 못했습니다.", print_color="red")
+pk_print(f"[PK KILL] PID={pid} cmd_exe_title={cmd_exe_title}", print_color="green")
+pk_print(f"[PK KILL] PID={pid} window_title={window_title}", print_color="green")
+pk_print(f"[PROCESS TERMINATED] PID={pid}, Name={process.info['name']}", print_color="green")
+pk_print(f"[PROCESS TERMINATED] 시간 초과 ", print_color='red')
+pk_print(f"[SKIP] No matching process found for '{window_title_seg}'", print_color="yellow")
+pk_print(f"[SKIP] No matching windows for '{window_title}'", print_color="red")
+pk_print(f"[SKIP] No window found for seg='{window_title_seg}'", print_color="yellow")
+pk_print(f"[SURVIVED] HWND={survivor_hwnd} kept alive → '{win32gui.GetWindowText(survivor_hwnd)}'", print_color="yellow")
+pk_print(f"[TASKKILL ERROR] PID={pid}, {e}", print_color="red")
+pk_print(f"[TIMEOUT] PID={pid} taskkill took too long", print_color="yellow")
+pk_print(f"[TIMEOUT] taskkill for PID={pid} timed out", print_color="yellow")
+pk_print(f"[WARN] psutil error: {e}", print_color="yellow")
+pk_print(f"[처리 중] 창 제목='{window_title}' 중복 제거", print_color="cyan")
+pk_print(f"wait for enter  {'%%%FOO%%%' if LTA else ''}", print_color='white')
+pk_print(f"window_title={window_title} {'%%%FOO%%%' if LTA else ''}")
+pk_print(f"{PK_ANSI_COLOR_MAP['GREEN']}here! here! here! here! here! here! here! here! here! here! here! here! {PK_ANSI_COLOR_MAP['RESET']}")
+pk_print(f"{sim_mark} [{hwnd}] {title}", print_color="cyan")
+pk_print(f"‼️ FORCED TIMEOUT: PID={pid} took {elapsed:.2f}s", print_color="red")
+pk_print(f"⚠️ PID={pid} 여전히 실행 중", print_color="yellow")
+pk_print(f"⚠️ PK KILL PID={pid} TIMEOUT_ELAPSED={elapsed:.2f}s", print_color="red")
+pk_print(f"✅ PID={pid} 종료 확인됨", print_color="green")
+pk_print(f"✅ PK KILL PID={pid} title_match={best_match_title}", print_color="green")
+pk_print(f"✅ PK KILL PID={pid} window_title={best_match_title}", print_color="green")
+pk_print(f"✅ PK KILL PID={pid} window_title={window_title}", print_color="green")
+pk_print(f"❌ PK KILL ERROR PID={pid} : {e}", print_color="red")
+pk_print(f"❌ 예외 발생 PID={pid}, error={e}", print_color="red")
+pk_print(f"❗ FAILED PIDs: {sorted(failed_pids)}", print_color="red")
+pk_print(f"👁️ End monitoring PID={proc.pid}", print_color="blue")
+pk_print(f"👁️ Monitor PID={proc.pid}", print_color="blue")
+pk_print(f"👁️ Start monitoring PID={proc.pid}", print_color="blue")
+pk_print(f"🔍 PID={proc.pid} CPU={cpu:.1f}% MEM={mem:.1f}MB TH={th}", print_color="blue")
+pk_print(f"🔍 PID={proc.pid} CPU={cpu:.1f}% MEM={mem:.1f}MB TH={th}", print_color="yellow")
+pk_print(f"🛑 PID={pid} 종료 실패 (TIMEOUT)", print_color="red")
+pk_print(f"🪟 Using best match title: {best_match_title} {'%%%FOO%%%' if LTA else ''}", print_color="cyan")
+pk_print(f'''[{PkMessages2025.DATA}] contents_to_save={contents_to_save} {'%%%FOO%%%' if LTA else ''}''')
+pk_print(f'''[{PkMessages2025.DATA}] history_file={history_file} {'%%%FOO%%%' if LTA else ''}''')
+pk_print(f'''[{PkMessages2025.DATA}] options={init_options} {'%%%FOO%%%' if LTA else ''}''')
+pk_print(f'''[{PkMessages2025.DATA}] value={value} {'%%%FOO%%%' if LTA else ''}''')
+pk_print(f'''cmd={cmd} {'%%%FOO%%%' if LTA else ''}''')
+pk_print(f'''cmd_exe_title={cmd_exe_title}  {'%%%FOO%%%' if LTA else ''}''', print_color="blue")
+pk_print(f'''commit_message={commit_message} {'%%%FOO%%%' if LTA else ''}''')
+pk_print(f'''f_working={f_working} {'%%%FOO%%%' if LTA else ''}''')
+pk_print(f'''window_opened={window_opened} {'%%%FOO%%%' if LTA else ''}''')
+pk_print(f'''window_title={window_title} {'%%%FOO%%%' if LTA else ''}''')
+pk_print(f'''{PkMessages2025.NOT_PREPARED_YET}{'%%%FOO%%%' if LTA else ''}''', print_color='green', mode_verbose=0)
+pk_print(rf"{func_n}() 동작 조건 불충족")
+pk_print(rf"{func_n}() 동작 조건 충족")
+pk_print(rf"기존 공유 메모리 발견, 초기화 생략 shm_name={shm_name}", print_color="green")
+pk_print(rf"새로운 공유 메모리 생성 shm_name={shm_name}", print_color="green")
+pk_print(str_working=rf''' 이 {func_n}()의 인자는 최대 1개 까지 받을 수 있습니다.  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
+pk_print(str_working=rf''' 이 {func_n}()의 인자는 최소 1개의 인자가 요구됩니다.  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
+pk_print(str_working=rf'''{'%%%FOO%%%' if LTA else ''}''', print_color='red')
+pk_print(str_working=rf'''{PK_UNDERLINE}{func_n}()  {'%%%FOO%%%' if LTA else ''}''')
+pk_sleep(milliseconds=200)
+pk_sleep(milliseconds=200)  # 너무 빠르게 반복되지 않도록 약간 대기
+pk_sleep(seconds=1)
+pk_speak(seg, after_delay=delay)
+pk_speak(seg, after_delay=segment_delay)
+pk_speak_v3._queue = queue.Queue()
+pk_speak_v3._queue.put((seg, segment_delay))
+pk_speak_v3._queue.task_done()
+pk_speak_v3._thread_started = False
+pk_speak_v3._thread_started = True
+player.delete()
+player.pause()
+print("[CALL STACK]")
+print("※ fzf 미설치 → fallback 선택 모드 사용")
+print(PK_UNDERLINE)
+print(f"  - name={t.name}, daemon={t.daemon}, alive={t.is_alive()}, ident={t.ident}")
+print(f"  - {frame.function} @ {frame.filename}:{frame.lineno}")
+print(f"LOCAL LEPO : {PK_ANSI_COLOR_MAP['GREEN']}{os.getcwd()}{PK_ANSI_COLOR_MAP['RESET']}")
+print(f"STARTED AT : {PK_ANSI_COLOR_MAP['GREEN']}{time.strftime('%Y-%m-%d %H:%M:%S')}{PK_ANSI_COLOR_MAP['RESET']}")
+print(f"[ {color}{label}{PK_ANSI_COLOR_MAP['RESET']} ] [{step_num}] {cmd}")
+print(f"[COPIED] {rel_path}")
+print(f"[DEBUG] CALL DEPTH ({func_n}): {depth}")
+print(f"[ERROR] Source file not found: {src}")
+print(f"[ERROR] Too deep: depth={depth}")
+print(f"[ERROR] Unexpected error: {e}")
+print(f"[INFO] Active thread count: {len(thread_list)}")
+print(f"[OK] Overwritten:\n{src}\n→ {dst}")
+print(f"[{PkMessages2025.DONE}] {copied_count} file(s) copied to '{dst_dir}'.")
+print(f"[{idx}] {fname}{mark}")
+print(f"[실행 중 - Linux/Unix] {cmd}")
+print(f"[실행 중 - WSL] {cmd}")
+print(f"[실행 중 - Windows] {cmd}")
+print(f"\n{PK_ANSI_COLOR_MAP['RED']}[!] Aborting further steps. Current git status:{PK_ANSI_COLOR_MAP['RESET']}")
+print(f"{PK_ANSI_COLOR_MAP['GREEN']}ALL PROCESS COMPLETED SUCCESSFULLY. TOTAL EXECUTION TIME: {duration:.2f} SECONDS {PK_ANSI_COLOR_MAP['RESET']}")
+print(f"{PK_ANSI_COLOR_MAP['RED']}process failed at {time.strftime('%Y-%m-%d %H:%M:%S')} (elapsed {duration:.2f} sec){PK_ANSI_COLOR_MAP['RESET']}")
+print(f"{thread_name} 스레드가 종료되었습니다.")
+print(f"{thread_name} 스레드를 찾을 수 없습니다.")
+print(output.strip())
+print(status_out.strip())
+print_iterable_as_vertical(item_iterable=sorted(grouped), item_iterable_n="중복 확인 대상 창 제목들")
+print_iterable_as_vertical(item_iterable=values, item_iterable_n="values")
+print_iterable_as_vertical(item_iterable=window_opened_list, item_iterable_n="window_opened_list")
+print_iterable_as_vertical(item_iterable=window_title_list, item_iterable_n="window_title_list")
+proc = psutil.Process(pid)
+proc.info['pid']
+proc.kill()
+proc.terminate()
+proc.terminate()  # 프로세스 종료 요청
+proc.wait(timeout=1)
+proc.wait(timeout=5)  # 종료 완료를 대기, 최대 5초 대기
+proc.wait(timeout=timeout)
+process_img_n = process_img_n.replace("\"", "")
+process_img_n = process_img_n.replace("\'", "")
+process_name = "wsl.exe"
+python_calling_program = 'start "" python'
+python_file = get_pnx_os_style(rf'{python_file_base}/{python_filename}')
+python_file_base = D_PROJECT
+python_filename = rf"pk_push_project_to_github.py"
+reader = csv.DictReader(StringIO(output))
+refactor_dir = os.path.join(os.path.dirname(__file__), "../refactor")
+rel_path = os.path.relpath(src_path, src_dir)
+replacements = {
+result = subprocess.run(cmd, shell=True)
+result = subprocess.run(cmd, shell=True, text=True, capture_output=True)
+return
+return  # 💥 병목 방지용 조기 종료
+return 1
+return 1, str(e)
+return False
+return None
+return True
+return True  # 이미 종료된 것으로 간주
+return [
+return []
+return [t.name for t in thread_list]
+return all_killed
+return content if content else None
+return depth
+return f.read().strip()
+return history_dir / f"history_{file_id}.txt"
+return label
+return matches
+return matches[0][1]
+return matches[0][1] if matches else None
+return max(numbers, default=0) + 1
+return name
+return names
+return os.path.splitext(os.path.basename(path))[0]
+return pk_file_list[int(choice)]
+return result.returncode, ""
+return result.returncode, result.stdout + result.stderr
+return selected
+return sorted(glob.glob(pattern))
+return text
+seg, delay = pk_speak_v3._queue.get()
+selected = get_value_via_fzf_or_history(key_name=key_name, file_id=file_id, options=init_options, editable=editable)
+selected = selected.strip()
+set_text_from_history_file("user_email", user_email)
+set_text_from_history_file("user_name", user_name)
+set_values_to_historical_file(f_historical=f_historical, values=init_options)
+shm = shared_memory.SharedMemory(create=True, size=1, name=shm_name)
+shm = shared_memory.SharedMemory(name=shm_name, create=False)
+shm.buf[0] = 0  # 초기값 False (0)
+shm.close()
+shm_name = "flag_to_detect_enter"
+shutil.copy2(src_path, dst_path)
+shutil.move(src, dst)  # 이동 및 이름 변경
+sim_mark = "✅" if is_similar else "  "
+similarity = window_title_seg.lower() in title.lower()
+sleep_seconds = 3
+src = rf"{DEST_DIR}\.gitignore_for_public"
+src_dir (str): Source directory.
+src_path = os.path.join(root, file)
+start = time.time()
+start_time = time.time()
+status = print_status(step_counter + 1, cmd, code, output)
+stderr=subprocess.DEVNULL,
+stdout=subprocess.DEVNULL,
+stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, timeout=1)
+step_counter += 1
+step_counter = 0
+steps = int(max_sec / interval)
+stop_all_sounds()
+str_working = remove_special_characters(text=str_working)
+str_working = str(str_working).strip()
+subprocess.run(
+subprocess.run(['taskkill', '/PID', pid, '/T', '/F'],
+subprocess.run(['taskkill', '/PID', str(pid), '/T', '/F'],
+subprocess.run([name, "--version"], capture_output=True, check=True)
+subprocess.run(cmd, shell=True)
+survivor_hwnd = hwnds[0]
+sys.exit(1)
+target = get_nx(best_match_title).lower()
+target = get_nx(window_title).lower()
+target = os.path.splitext(os.path.basename(matches[0]))[0].lower()
+target=process_queue,
+target_thread = None
+target_thread = thread
+target_thread.join()
+tasks = []
+tasks.append(terminate_process_async(pid, name, f_nx))
+text = text.replace(old, new)
+th = proc.num_threads()
+thread = threading.Thread(target=listen_enter, daemon=True)
+thread.start()
+thread_list = threading.enumerate()
+threading.Thread(
+time.sleep(interval)
+timeout=1
+title = win32gui.GetWindowText(hwnd)
+title = win32gui.GetWindowText(hwnd).strip()
+title_match = window_title.lower() in (proc.CommandLine or "").lower()
+to_close = hwnds[1:]
+try:
+user_email = get_text_from_history_file("user_email") or ""
+user_email = input("user_email=").strip()
+user_name = get_text_from_history_file("user_name") or ""
+user_name = input("user_name=").strip()
+value = get_value_via_fzf_or_history_routine(key_name=key_name, file_id=file_id, init_options=[], editable=editable)
+value = get_value_via_fzf_or_history_routine(key_name=key_name, file_id=file_id, init_options=init_options, editable=editable)
+value = value or ""
+values = [get_values_sanitize_for_cp949(v) for v in values]
+values = get_windows_opened()
+verbose (bool): If True, prints detailed info.
+while 1:
+while True:
+whose names match those in exclude_names.
+win32gui.EnumWindows(enum_handler, None)
+win32gui.EnumWindows(lambda h, _: enum_handler(h, closed_hwnds), None)
+win32gui.EnumWindows(lambda h, _: enum_handler(h, matched_hwnds), None)
+win32gui.PostMessage(hwnd, win32con.WM_CLOSE, 0, 0)
+window_opened = get_pnx_os_style(window_opened)
+window_opened = get_value_via_fzf_or_history(key_name=key_name, options=values, file_id=get_file_id(key_name, func_n))
+window_opened_list = get_list_sorted(working_list=window_opened_list, mode_asc=1)
+window_opened_list = get_windows_opened()
+window_title = get_window_title(window_title_seg)
+window_title = get_window_title(window_title_seg=cmd_exe_title)
+window_title = get_window_title(window_title_seg=window_title_seg)
+window_title = window_title.strip()
+window_title_list = get_list_sorted(working_list=window_title_list, mode_asc=1)
+window_title_list = get_window_title_list()
+window_title_to_kill = "pk_test.py"  # was..blank problem..
+with ThreadPoolExecutor(max_workers=4) as executor:
+with ThreadPoolExecutor(max_workers=min(4, len(matched_pids))) as executor:
+with lock:
+with open(history_file, "w", encoding="utf-8") as f_obj:
+with open(history_file, encoding="utf-8") as f:
+working_list = [x.strip() for x in str_working.replace(".", ",").split(",") if x.strip()]
+write_like_person("exit")
+}
+주어진 cmd_exe_title과 일치하는 프로세스를 찾아 동기적으로 종료하는 함수
+주어진 cmd_exe_title과 일치하는 프로세스를 찾아 비동기적으로 종료하는 함수
+주어진 window_title_seg에 해당하는 CMD 프로세스가 종료되었는지 확인하고 종료 시도.
+창 제목이 정확히 일치(또는 부분 일치)하는 모든 창에 WM_CLOSE 메시지를 보내 창만 닫는다.
+프로세스 간 공유 메모리를 내부에서 초기화하고 사용하도록 변경
+현재 실행 중인 모든 프로세스의 이름 목록을 반환합니다.
