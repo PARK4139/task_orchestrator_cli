@@ -13,7 +13,7 @@ if __name__ == "__main__":
     try:
         os.chdir(D_PROJECT)
         ensure_git_project_pushed(with_commit_massage=False) # private repo
-        input(PkMessages2025.PRESS_ENTER_TO_PROCEED)
+        # input(PkMessages2025.PRESS_ENTER_TO_PROCEED) # pk_option
 
 
         os.chdir(D_PROJECT_MEMO)

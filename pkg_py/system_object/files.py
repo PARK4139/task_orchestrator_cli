@@ -92,6 +92,7 @@ F_POPPINS_THIN_TTF = rf"{D_PROJECT}/pkg_font/Poppins-Thin.ttf"
 F_POPPINS_THINITALIC_TTF = rf"{D_PROJECT}/pkg_font/Poppins-ThinItalic.ttf"
 F_RUBIKDOODLESHADOW_REGULAR_TTF = rf"{D_PROJECT}/pkg_font/RubikDoodleShadow-Regular.ttf"  # 너무 귀여운 입체감 있는 영어폰트
 F_PYCHARM64_EDITION_2024_03_01_EXE = r"C:/Program Files/JetBrains/PyCharm Community Edition 2024.3.1/bin/pycharm64.exe"
+F_PYCHARM64_EDITION_2024_02_04_EXE = rf"C:/Program Files/JetBrains/PyCharm Community Edition 2024.2.4/bin/pycharm64.exe"
 F_HISTORICAL_PNX = rf'{D_PKG_TXT}/historical_pnx.txt'
 F_HISTORICAL_SEARCH_KEYWORD = rf'{D_PKG_TXT}/historical_search_keyword.txt'
 F_POT_PLAYER_MINI_64_EXE = r"C:\Program Files\DAUM\PotPlayer\PotPlayerMini64.exe"

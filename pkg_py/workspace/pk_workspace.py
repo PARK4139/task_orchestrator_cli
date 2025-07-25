@@ -45,7 +45,7 @@ from pkg_py.functions_split.write_like_person import write_like_person
 from pkg_py.pk_interface_graphic_user import get_windows_opened
 from pkg_py.system_object.color_map import PK_ANSI_COLOR_MAP
 from pkg_py.system_object.directories import D_PKG_WINDOWS
-from pkg_py.system_object.directories_reuseable import D_PROJECT
+from pkg_py.system_object.directories_reuseable import D_PROJECT, D_HOME
 from pkg_py.system_object.encodings import Encoding
 from pkg_py.system_object.etc import PK_UNDERLINE
 from pkg_py.system_object.files import F_PK_WORKSPACE_PY
@@ -631,7 +631,7 @@ def pk_kill_process_v10(window_title_seg: str):
 
 def pk_kill_process_v11(window_title_seg: str):
     import psutil
-    
+
     import time
     from concurrent.futures import ThreadPoolExecutor
 
@@ -706,7 +706,7 @@ def pk_kill_process_v11(window_title_seg: str):
 
 def pk_kill_process_v12(window_title_seg: str):
     import psutil
-    
+
     import time
     from concurrent.futures import ThreadPoolExecutor
 
@@ -797,7 +797,7 @@ def pk_kill_process_v12(window_title_seg: str):
 
 def pk_kill_process_v13(window_title_seg: str):
     import psutil
-    
+
     import time
     from concurrent.futures import ThreadPoolExecutor
 
@@ -968,7 +968,7 @@ def is_process_killed(window_title_seg: str, timeout: float = 1.0) -> bool:
 
 def pk_kill_process_v14(window_title_seg: str):
     import psutil
-    
+
     import time
     from concurrent.futures import ThreadPoolExecutor
 
@@ -1068,7 +1068,7 @@ def pk_kill_process_v14(window_title_seg: str):
 
 def pk_kill_process_v15(window_title_seg: str):
     import psutil
-    
+
     import time
     from concurrent.futures import ThreadPoolExecutor
 
@@ -1277,8 +1277,7 @@ def pk_kill_process_v16(window_title: str, exact: bool = True):
 
 def pk_kill_process_by_window_title_seg(window_title_seg: str):
     import psutil
-    
-    
+
     import time
     from concurrent.futures import ThreadPoolExecutor
 
@@ -2142,3 +2141,10 @@ def debug_call_depth(func_n):
 
 def debug_as_ipdb_console(ipdb):
     ipdb.set_trace()
+
+
+def is_a2z_office():
+    if "user" in D_HOME:
+        return True
+    else:
+        return False

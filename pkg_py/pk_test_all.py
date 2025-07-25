@@ -27,7 +27,6 @@ def run_pytest_file(path: str):
 
 
 if __name__ == "__main__":
-    # TBD : 테스트 TODO.
     test_files = get_pnxs_from_d_working(d_working=D_TESTS)
     test_suffix = 2025
     test_files_filtered = get_list_contained_element(working_list=test_files, suffix=f"_{test_suffix}")

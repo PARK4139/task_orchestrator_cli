@@ -1,6 +1,8 @@
 # dictionary.md
 pk_ : related to my custom prefix
 
+pk_option : optional logic by developer 
+
 a2z_ : related to a2z company business logic
 
 TODO : work to do
