@@ -51,7 +51,7 @@ from pkg_py.functions_split.set_pk_context_state import set_pk_context_state
 from pkg_py.system_object.files import F_POT_PLAYER_MINI_64_EXE, F_HISTORICAL_PNX
 from pkg_py.system_object.files import F_POT_PLAYER_MINI_64_EXE
 from pkg_py.system_object.files import F_LOSSLESSCUT_EXE
-from pkg_py.system_object.directories import D_WORKING
+from pkg_py.system_object.directories import D_PK_WORKING
 from pkg_py.system_object.print_red import print_red
 from pkg_py.system_object.performance_logic import pk_measure_seconds, pk_measure_memory
 from pkg_py.system_object.get_list_calculated import get_list_calculated

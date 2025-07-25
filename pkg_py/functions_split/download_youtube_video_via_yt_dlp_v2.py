@@ -33,8 +33,8 @@ from pkg_py.functions_split.get_pnx_wsl_unix_style import get_pnx_wsl_unix_style
 from pkg_py.functions_split.pk_print import pk_print
 
 
-def download_youtube_video_via_yt_dlp_v2(D_FFMPEG_LOCATION, D_WORKING, ext, url):
-    # from pkg_py.system_object.directories import D_WORKING
+def download_youtube_video_via_yt_dlp_v2(D_FFMPEG_LOCATION, D_PK_WORKING, ext, url):
+    # from pkg_py.system_object.directories import D_PK_WORKING
     #
     import yt_dlp
     import os
@@ -42,7 +42,7 @@ def download_youtube_video_via_yt_dlp_v2(D_FFMPEG_LOCATION, D_WORKING, ext, url)
     ydl_opts = {
         'ffmpeg_location': D_FFMPEG_LOCATION,
         'format': 'bestvideo+bestaudio/best',
-        'outtmpl': os.path.join(D_WORKING, '%(title)s [%(id)s].%(ext)s'),
+        'outtmpl': os.path.join(D_PK_WORKING, '%(title)s [%(id)s].%(ext)s'),
         'quiet': False,
         'noplaylist': True,
         'geo_bypass': True,

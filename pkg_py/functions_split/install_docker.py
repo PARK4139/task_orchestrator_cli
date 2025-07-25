@@ -83,8 +83,8 @@ from pkg_py.system_object.stamps import STAMP_ATTEMPTED
 from pkg_py.system_object.files import F_LOSSLESSCUT_EXE
 from pkg_py.system_object.files import F_FFMPEG_EXE
 from pkg_py.system_object.directories_reuseable import D_PROJECT
-from pkg_py.system_object.directories import D_WORKING, D_DOWNLOADS, D_PKG_PKL
-from pkg_py.system_object.directories import D_PKG_TXT, D_WORKING
+from pkg_py.system_object.directories import D_PK_WORKING, D_DOWNLOADS, D_PKG_PKL
+from pkg_py.system_object.directories import D_PKG_TXT, D_PK_WORKING
 from pkg_py.system_object.directories import D_DOWNLOADS, D_PKG_PKL
 from pkg_py.system_object.map_massages import PkMessages2025
 from pkg_py.system_object.print_red import print_red
@@ -124,7 +124,7 @@ from pkg_py.system_object.stamps import STAMP_TRY_GUIDE, STAMP_UNIT_TEST_EXCEPTI
 from pkg_py.functions_split.get_value_completed import get_value_completed
 from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style
 from pkg_py.functions_split.get_pnx_list import get_pnx_list
-from pkg_py.system_object.directories import D_WORKING, D_DOWNLOADS, D_PKG_PKL, D_PKG_PY
+from pkg_py.system_object.directories import D_PK_WORKING, D_DOWNLOADS, D_PKG_PKL, D_PKG_PY
 from pkg_py.functions_split.is_d import is_d
 from pkg_py.functions_split.is_f import is_f
 from pkg_py.system_object.is_os_windows import is_os_windows

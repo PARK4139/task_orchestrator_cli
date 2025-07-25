@@ -16,7 +16,7 @@ from pkg_py.functions_split.rerun_losslesscut import rerun_losslesscut
 from pkg_py.functions_split.is_window_title_front import is_window_title_front
 from pkg_py.functions_split.write_list_to_f import write_list_to_f
 from pkg_py.system_object.files import F_LOSSLESSCUT_EXE
-from pkg_py.system_object.directories import D_WORKING
+from pkg_py.system_object.directories import D_PK_WORKING
 from pkg_py.system_object.map_massages import PkMessages2025
 from moviepy import VideoFileClip
 from gtts import gTTS

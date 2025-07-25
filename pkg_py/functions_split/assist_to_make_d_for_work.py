@@ -16,7 +16,7 @@ from pkg_py.functions_split.is_window_title_front import is_window_title_front
 from pkg_py.functions_split.is_window_title_opened import is_window_title_opened
 from pkg_py.functions_split.is_window_opened import is_window_opened
 from pkg_py.functions_split.ensure_console_cleared import ensure_console_cleared
-from pkg_py.system_object.directories import D_WORKING
+from pkg_py.system_object.directories import D_PK_WORKING
 from datetime import datetime
 from dataclasses import dataclass
 from collections import Counter

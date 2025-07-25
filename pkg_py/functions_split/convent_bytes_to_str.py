@@ -32,7 +32,7 @@ from pkg_py.functions_split.pk_press import pk_press
 from pkg_py.functions_split.get_list_sorted import get_list_sorted
 from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
 from pkg_py.system_object.files import F_HISTORICAL_PNX
-from pkg_py.system_object.directories import D_WORKING
+from pkg_py.system_object.directories import D_PK_WORKING
 from pkg_py.system_object.directories import D_DOWNLOADS, D_PKG_PKL
 from pkg_py.system_object.state_via_context import SpeedControlContext
 from pathlib import Path

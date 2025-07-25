@@ -1,7 +1,7 @@
 import inspect
 
 from pkg_py.functions_split.get_file_id import get_file_id
-from pkg_py.system_object.directories import D_WORKING
+from pkg_py.system_object.directories import D_PK_WORKING
 from pkg_py.system_object.files import F_PK_WORKSPACE_PY
 from pkg_py.workspace.pk_workspace import get_value_via_fzf_or_history_routine
 

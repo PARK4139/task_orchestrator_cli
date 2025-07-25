@@ -11,7 +11,7 @@ from pkg_py.functions_split.is_losslesscut_running import is_losslesscut_running
 from pkg_py.functions_split.is_window_title_front import is_window_title_front
 from pkg_py.functions_split.cmd_to_os import cmd_to_os
 from pkg_py.system_object.stamps import STAMP_ATTEMPTED
-from pkg_py.system_object.directories import D_WORKING
+from pkg_py.system_object.directories import D_PK_WORKING
 
 from functools import partial as functools_partial
 from Cryptodome.Cipher import AES

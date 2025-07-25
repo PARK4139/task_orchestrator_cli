@@ -38,7 +38,7 @@ from pkg_py.functions_split.get_list_sorted import get_list_sorted
 from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
 from pkg_py.system_object.stamps import STAMP_ATTEMPTED
 from pkg_py.system_object.files import F_POT_PLAYER_MINI_64_EXE
-from pkg_py.system_object.directories import D_PKG_TXT, D_WORKING
+from pkg_py.system_object.directories import D_PKG_TXT, D_PK_WORKING
 from pkg_py.system_object.directories import D_DOWNLOADS, D_PKG_PKL
 from pkg_py.system_object.map_massages import PkMessages2025
 from pkg_py.system_object.state_via_context import SpeedControlContext

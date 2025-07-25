@@ -113,8 +113,8 @@ def download_video_mp4(url: str):
             print_magenta("except:2024-04-12 1750")
             print_magenta(rf'''cmd : {cmd}''')
 
-        if not os.path.exists(D_DOWNLOADING):
-            os.makedirs(D_DOWNLOADING)
+        if not os.path.exists(D_PK_DOWNLOADSING):
+            os.makedirs(D_PK_DOWNLOADSING)
 
         pk_print("다운로드 f 이동 시도 중...", print_color='blue')
         file = ""
@@ -129,7 +129,7 @@ def download_video_mp4(url: str):
                     file = line
 
             src = os.path.abspath(file)
-            src_renamed = rf"{D_DOWNLOADING}\{os.path.basename(file)}"
+            src_renamed = rf"{D_PK_DOWNLOADSING}\{os.path.basename(file)}"
 
             pk_print(f'src_renamed : {src_renamed}', print_color='blue')
             if src == os.getcwd():  # 여기 또 os.getcwd() 있는 부분 수정하자..
@@ -150,7 +150,7 @@ def download_video_mp4(url: str):
             pk_print(f'''{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
         pk_print(rf'다운로드 결과 확인 중...', print_color='blue')
         try:
-            src_moved = rf'{D_DOWNLOADING}\{file}'
+            src_moved = rf'{D_PK_DOWNLOADSING}\{file}'
             pk_print(rf'''src_moved : {src_moved}''', print_color='blue')
 
             # 무조건 재생

@@ -41,7 +41,7 @@ def download_youtube_thumbnails_from_youtube_channel_main_page_url(youtube_chann
     youtube_video_url_list = get_videos_urls_from_youtube_channel_main_page(
         youtube_channel_main_page_url=youtube_channel_main_page_url)
     channel_n = get_channel_n(channel_url=youtube_channel_main_page_url)
-    d_dst = rf'{D_WORKING_EXTERNAL}/thumbnails/{channel_n}'
+    d_dst = rf'{D_PK_WORKING_EXTERNAL}/thumbnails/{channel_n}'
     # dst = get_pnx_unix_style(pnx=dst)
     d_dst = get_pnx_os_style(pnx=d_dst)
     ensure_pnx_made(d_dst, mode="d")

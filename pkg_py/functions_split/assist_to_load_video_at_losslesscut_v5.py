@@ -6,7 +6,7 @@ def assist_to_load_video_at_losslesscut_v5(max_files=30):
     from pkg_py.system_object.local_test_activate import LTA
     from pkg_py.system_object.state_via_context import SpeedControlContext
     from pkg_py.system_object.directories import D_DOWNLOADS, D_PKG_PKL
-    from pkg_py.system_object.directories import D_WORKING
+    from pkg_py.system_object.directories import D_PK_WORKING
     from pkg_py.system_object.directories_reuseable import D_PROJECT
     from pkg_py.system_object.files import F_HISTORICAL_PNX
     from pkg_py.functions_split.ensure_console_cleared import ensure_console_cleared
@@ -48,7 +48,7 @@ def assist_to_load_video_at_losslesscut_v5(max_files=30):
         #     return
         historical_pnx_list = get_historical_list(f=F_HISTORICAL_PNX)
         option_values = historical_pnx_list + get_list_sorted(
-            working_list=[get_d_working(), D_WORKING, D_PROJECT, D_DOWNLOADS], mode_asc=1)
+            working_list=[get_d_working(), D_PK_WORKING, D_PROJECT, D_DOWNLOADS], mode_asc=1)
         d_working = get_value_completed(key_hint='d_working=', values=option_values)
         d_working = get_pnx_os_style(pnx=d_working)
         d_working = d_working.strip()

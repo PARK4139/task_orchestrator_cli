@@ -40,7 +40,7 @@ from pkg_py.functions_split.set_pk_context_state import set_pk_context_state
 from pkg_py.functions_split.ensure_console_cleared import ensure_console_cleared
 from pkg_py.system_object.stamps import STAMP_ATTEMPTED
 from pkg_py.system_object.files import F_POT_PLAYER_MINI_64_EXE
-from pkg_py.system_object.directories import D_WORKING
+from pkg_py.system_object.directories import D_PK_WORKING
 from pkg_py.system_object.state_via_database import PkSqlite3DB
 from pkg_py.system_object.is_os_windows import is_os_windows
 from paramiko import SSHClient, AutoAddPolicy

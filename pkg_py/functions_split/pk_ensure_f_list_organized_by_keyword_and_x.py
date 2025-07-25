@@ -1,4 +1,4 @@
-from pkg_py.system_object.directories import D_WORKING, D_DOWNLOADS
+from pkg_py.system_object.directories import D_PK_WORKING, D_DOWNLOADS
 from pkg_py.system_object.directories_reuseable import D_PROJECT
 from pkg_py.functions_split.get_value_completed import get_value_completed
 from pkg_py.functions_split.pk_print import pk_print
@@ -10,7 +10,7 @@ def pk_ensure_f_list_organized_by_keyword_and_x():
     try:
         while 1:
             d_working = get_value_completed(key_hint='d_working=',
-                                            values=[os.getcwd(), D_WORKING, D_PROJECT, D_DOWNLOADS])
+                                            values=[os.getcwd(), D_PK_WORKING, D_PROJECT, D_DOWNLOADS])
             keyword_to_organize_list = get_values_completed(key_hint='keyword_to_organize_list=',
                                                             values=[['seg', 'SEG']])
             x_to_organize_list = get_values_completed(key_hint='x_to_organize_list=', values=[['mp4', 'mkv', 'avi'],

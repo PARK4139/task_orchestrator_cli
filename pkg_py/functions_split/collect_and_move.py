@@ -43,7 +43,7 @@ from pkg_py.functions_split.cmd_to_os import cmd_to_os
 from pkg_py.system_object.files import F_POT_PLAYER_MINI_64_EXE
 from pkg_py.system_object.files import F_HISTORICAL_PNX
 from pkg_py.system_object.encodings import Encoding
-from pkg_py.system_object.directories import D_WORKING
+from pkg_py.system_object.directories import D_PK_WORKING
 from pkg_py.system_object.state_via_context import SpeedControlContext
 from pkg_py.system_object.local_test_activate import LTA
 from PIL import Image

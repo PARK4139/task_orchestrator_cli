@@ -6,9 +6,9 @@ if __name__ == "__main__":
         # from pkg_py.system_object.500_live_logic import pk_copy, pk_ensure_f_list_organized_by_ngram, get_value_completed
         #, STAMP_TRY_GUIDE, D_PROJECT, STAMP_UNIT_TEST_EXCEPTION_DISCOVERED
         #
-        # from pkg_py.system_object.static_logic import D_DOWNLOADS, D_PROJECT, D_WORKING
+        # from pkg_py.system_object.static_logic import D_DOWNLOADS, D_PROJECT, D_PK_WORKING
 
-        d_working = get_value_completed(key_hint ='d_working=', values=[os.getcwd(), D_WORKING, D_PROJECT, D_DOWNLOADS])
+        d_working = get_value_completed(key_hint ='d_working=', values=[os.getcwd(), D_PK_WORKING, D_PROJECT, D_DOWNLOADS])
         token_splitter_pattern = get_value_completed(key_hint='token_splitter_pattern=', values=[
             r"\s+",  # 공백 기준으로 나눔
             r"[_]",  # 언더바(_) 기준으로 나눔

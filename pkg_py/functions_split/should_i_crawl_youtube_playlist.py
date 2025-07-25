@@ -48,8 +48,8 @@ from pkg_py.functions_split.pk_print_state import pk_print_state
 from pkg_py.system_object.etc import PkFilter
 from pkg_py.system_object.stamps import STAMP_ATTEMPTED
 from pkg_py.system_object.files import F_HISTORICAL_PNX
-from pkg_py.system_object.directories import D_WORKING
-from pkg_py.system_object.directories import D_PKG_TXT, D_WORKING
+from pkg_py.system_object.directories import D_PK_WORKING
+from pkg_py.system_object.directories import D_PKG_TXT, D_PK_WORKING
 from pkg_py.system_object.map_massages import PkMessages2025
 from pkg_py.system_object.print_red import print_red
 from pkg_py.system_object.state_via_context import SpeedControlContext

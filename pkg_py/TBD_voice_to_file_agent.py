@@ -48,7 +48,7 @@ MCP 형식은 다음과 같다:
 {
   "tool": "list_files",
   "params": {
-    "path": "D_WORKING",
+    "path": "D_PK_WORKING",
     "extension": ".py"
   }
 }

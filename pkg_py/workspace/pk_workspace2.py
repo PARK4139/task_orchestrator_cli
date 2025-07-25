@@ -1,3 +1,5 @@
+import os
+
 from pkg_py.functions_split.ensure_pnx_made import ensure_pnx_made
 from pkg_py.functions_split.ensure_window_to_front import ensure_window_to_front
 from pkg_py.functions_split.get_f_historical import get_history_file
@@ -252,3 +254,63 @@ def reload_python_program_as_hot_reloader():
             # pk_sleep(seconds=2) # pk_option
             pk_sleep(seconds=3)  # pk_option
             # pk_sleep(seconds=5) # pk_option
+
+def ensure_window_os_variable_path_deduplicated():
+    import os
+
+    current_path = os.environ.get("PATH", "")
+    path_list = current_path.split(";")
+
+    seen = set()
+    cleaned_paths = []
+
+    for path in path_list:
+        path = path.strip()
+        if path and path.lower() not in seen:
+            seen.add(path.lower())
+            cleaned_paths.append(path)
+
+    final_path = ";".join(cleaned_paths)
+
+    if len(final_path) > 1024:
+        print("[WARNING] PATH is too long. 'setx' may truncate it.")
+
+    result = os.system(f'setx PATH "{final_path}"')
+    if result == 0:
+        print("[SUCCESS] System PATH deduplicated and updated successfully.")
+    else:
+        print("[ERROR] Failed to update system PATH.")
+
+    print("\n[PATH] Final deduplicated PATH entries:")
+    for i, p in enumerate(cleaned_paths, 1):
+        print(f"[PATH_ENTRY {str(i).zfill(2)}] {p}")
+
+
+
+def update_system_path_with_deduplication(additional_path: str = None):
+    import os
+
+    current_path = os.environ.get("PATH", "")
+    path_list = current_path.split(";")
+
+    seen = set()
+    cleaned_paths = []
+
+    for path in path_list:
+        path = path.strip()
+        if path and path.lower() not in seen:
+            seen.add(path.lower())
+            cleaned_paths.append(path)
+
+    if additional_path:
+        ap = additional_path.strip()
+        if ap and ap.lower() not in seen:
+            cleaned_paths.append(ap)
+
+    final_path = ";".join(cleaned_paths)
+
+    if len(final_path) > 1024:
+        print("PATH too long! setx may truncate it.")
+
+    os.system(f'setx PATH "{final_path}"')
+    print("PATH updated with deduplication.")

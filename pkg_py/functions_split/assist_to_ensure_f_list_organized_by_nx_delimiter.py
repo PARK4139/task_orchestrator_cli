@@ -9,7 +9,7 @@ def pk_assist_to_ensure_f_list_organized_by_nx_delimiter():
 
     pk_colorama_init_once()
 
-    option_values = [D_WORKING, D_PROJECT, D_DOWNLOADS]
+    option_values = [D_PK_WORKING, D_PROJECT, D_DOWNLOADS]
     while 1:
         d_working = get_value_completed(key_hint='d_working=', values=option_values)
         option_values.append(d_working)

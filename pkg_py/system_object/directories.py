@@ -3,21 +3,16 @@ import os
 from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style
 from pkg_py.system_object.directories_reuseable import D_PROJECT, D_HOME, D_PROJECT_PARENTS
 
-D_C_DRIVE = rf'C:/'
-D_D_DRIVE = rf'D:/'
-D_F_DRIVE = rf'F:/'
-D_G_DRIVE = rf'G:/'
-D_H_DRIVE = rf'H:/'
-D_I_DRIVE = rf'I:/'
-D_J_DRIVE = rf'J:/'
+
 D_DOWNLOADS = rf'{D_HOME}/Downloads'
-D_WORKING = rf"{D_DOWNLOADS}/pk_working"
+D_PK_SYSTEM = rf"{D_DOWNLOADS}/pk_system"
+D_PK_WORKING = rf"{D_DOWNLOADS}/pk_working"
 D_PK_MEMO = rf"{D_DOWNLOADS}/pk_memo"
-D_WORKING_EXTERNAL = rf"G:/Downloads/pk_working"
+D_PK_WORKING_EXTERNAL = rf"G:/Downloads/pk_working"
 D_VENV = rf'{D_PROJECT}/.venv'
 D_XLS_TO_MERGE = rf'{D_PROJECT}/pkg_xls/to_merge'
 D_XLS_MERGED = rf'{D_PROJECT}/pkg_xls/merged'
-D_VIDEOES_MERGED = rf"{D_WORKING}/pk_video_merged"
+D_VIDEOES_MERGED = rf"{D_PK_WORKING}/pk_video_merged"
 D_DESKTOP = rf'{D_HOME}/Desktop'
 D_PK_RECYCLE_BIN = rf"{D_DESKTOP}/pk_recycle_bin"
 D_PROJECT_VSTEST = rf'{D_PROJECT}/project_vstest'
@@ -41,11 +36,11 @@ D_PKG_DPL = rf'{D_PROJECT}/pkg_dpl'
 D_PKG_CLOUD = rf'{D_PROJECT_FASTAPI}/pkg_cloud'
 D_PKG_WINDOWS = rf'{D_PROJECT}/pkg_windows'
 D_HOW = rf"{D_DOWNLOADS}/pk_working/pk_how"
-D_EMPTY = rf"{D_WORKING}/pk_empty"
-D_DOWNLOADING = rf"{D_WORKING}/pk_downloading"
+D_EMPTY = rf"{D_PK_WORKING}/pk_empty"
+D_PK_DOWNLOADSING = rf"{D_PK_WORKING}/pk_downloading"
 D_CODING_TEST_RESULT = rf'{D_PROJECT}/pkg_coding_test_submit'
 D_CLASSIFIED = rf"{D_DOWNLOADS}/pk_working"  # TODO : deprecate
-D_ARCHIVED_EXTERNAL = rf"{D_WORKING_EXTERNAL}/pk_archived"
+D_ARCHIVED_EXTERNAL = rf"{D_PK_WORKING_EXTERNAL}/pk_archived"
 D_ARCHIVED = rf"{D_DOWNLOADS}/pk_working/pk_archived"
 D_PK_TEMP = rf"{D_HOME}/pk_temp"
 D_PKG_PKL = rf"{D_PROJECT}/pkg_pkl"
@@ -55,11 +50,17 @@ D_WORKSPACE = rf"{D_PKG_PY}/workspace"
 D_FUNCTIONS_SPLIT = rf"{D_PKG_PY}/functions_split"
 D_SYSTEM_OBJECT = rf"{D_PKG_PY}/system_object"
 D_PKG_HISTORY = rf"{D_PROJECT}/pkg_history"
+D_AUTO_UTILITY = rf"{D_DOWNLOADS}\auto_utility"
 
 D_PKG_PK = rf'{D_PROJECT_PARENTS}/pk_memo/pkg_pk'
 D_PROJECT_MEMO = rf"{D_PROJECT_PARENTS}/pk_memo"
 
-# external device directory
+# drive directory
 D_DEPRECATED_EXTERNAL = rf"G:/pk_deprecated"
-
-
+D_C_DRIVE = rf'C:/'
+D_D_DRIVE = rf'D:/'
+D_F_DRIVE = rf'F:/'
+D_G_DRIVE = rf'G:/'
+D_H_DRIVE = rf'H:/'
+D_I_DRIVE = rf'I:/'
+D_J_DRIVE = rf'J:/'

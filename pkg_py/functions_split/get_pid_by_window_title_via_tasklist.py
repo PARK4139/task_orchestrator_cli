@@ -40,7 +40,7 @@ from pkg_py.functions_split.write_list_to_f import write_list_to_f
 from pkg_py.functions_split.set_pk_context_state import set_pk_context_state
 from pkg_py.system_object.files import F_FFMPEG_EXE
 from pkg_py.system_object.encodings import Encoding
-from pkg_py.system_object.directories import D_WORKING
+from pkg_py.system_object.directories import D_PK_WORKING
 from pkg_py.system_object.map_massages import PkMessages2025
 from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.system_object.get_list_calculated import get_list_calculated

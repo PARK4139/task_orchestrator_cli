@@ -17,7 +17,7 @@ from pkg_py.functions_split.pk_press import pk_press
 
 from pkg_py.functions_split.write_list_to_f import write_list_to_f
 from pkg_py.system_object.stamps import STAMP_ATTEMPTED
-from pkg_py.system_object.directories import D_WORKING
+from pkg_py.system_object.directories import D_PK_WORKING
 from pkg_py.system_object.directories import D_PKG_TXT
 from pkg_py.system_object.state_via_database import PkSqlite3DB
 from passlib.context import CryptContext

@@ -1,7 +1,7 @@
 import os
 import sys
 
-# from pkg_py.system_object.static_logic import D_WORKING
+# from pkg_py.system_object.static_logic import D_PK_WORKING
 
 # colorama 설정 (Windows에서 색상 출력 지원)
 try:
@@ -13,7 +13,7 @@ except ImportError:
 
 # [OPTION]
 # d_working = r"D:\pkg_classified"
-d_working = D_WORKING
+d_working = D_PK_WORKING
 
 def print_debug(message):
     """디버깅 메시지 출력 (회색)"""

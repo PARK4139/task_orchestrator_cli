@@ -83,7 +83,7 @@ from pkg_py.system_object.stamps import STAMP_ATTEMPTED
 from pkg_py.system_object.files import F_LOSSLESSCUT_EXE
 from pkg_py.system_object.encodings import Encoding
 from pkg_py.system_object.directories_reuseable import D_PROJECT
-from pkg_py.system_object.directories import D_WORKING
+from pkg_py.system_object.directories import D_PK_WORKING
 from pkg_py.system_object.map_massages import PkMessages2025
 from pkg_py.system_object.state_via_context import SpeedControlContext
 from PIL import Image, ImageFont, ImageDraw, ImageFilter

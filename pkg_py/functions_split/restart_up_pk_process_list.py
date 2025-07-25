@@ -2,7 +2,7 @@ from pkg_py.functions_split.cmd_to_os import cmd_to_os
 from pkg_py.system_object.is_os_windows import is_os_windows
 
 from pkg_py.system_object.directories import D_PKG_PY
-from pkg_py.system_object.directories import D_WORKING
+from pkg_py.system_object.directories import D_PK_WORKING
 from pkg_py.system_object.directories_reuseable import D_PROJECT
 from pkg_py.functions_split.is_os_windows import is_os_windows
 from pkg_py.functions_split.get_nx import get_nx
@@ -155,7 +155,7 @@ def restart_up_pk_process_list():
     # pnx
     pnx_list = [
         D_PROJECT,
-        D_WORKING,
+        D_PK_WORKING,
         # MEMO_TRASH_BIN_TXT,
         F_MEMO_HOW_PK,
         F_MEMO_WORK_PK,

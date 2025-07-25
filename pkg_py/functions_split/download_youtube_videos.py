@@ -15,7 +15,7 @@ from pkg_py.functions_split.mark_url_as_done import mark_url_as_done
 from pkg_py.functions_split.open_pnx_by_ext import ensure_pnx_opened_by_ext
 from pkg_py.functions_split.pk_print import pk_print
 from pkg_py.system_object.directories import D_PKG_TXT
-from pkg_py.system_object.directories import D_WORKING
+from pkg_py.system_object.directories import D_PK_WORKING
 from pkg_py.system_object.files import F_FFMPEG_EXE
 from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.system_object.map_massages import PkMessages2025
@@ -25,7 +25,7 @@ from pkg_py.system_object.state_via_database import PkSqlite3DB
 def download_youtube_videos(urls=None):
     # from pkg_py.system_object.state_via_database import PkSqlite3DB
     # from pkg_py.system_object.map_massages import PkMessages2025
-    # , D_WORKING
+    # , D_PK_WORKING
     # from pkg_py.system_object.files import F_FFMPEG_EXE
     #
     # from pkg_py.system_object.files_and_directories_logic import get_pnx_os_style, get_nx
@@ -89,9 +89,9 @@ def download_youtube_videos(urls=None):
             info, title, clip_id, ext = get_youtube_video_metadata(yt_dlp=yt_dlp, url=url)
 
             output_filename = f"{title} [{clip_id}].{ext}"
-            f_output = os.path.join(D_WORKING, output_filename)
+            f_output = os.path.join(D_PK_WORKING, output_filename)
 
-            f_pnx_downloaded = get_f_contained_feature_str(feature_str=output_filename, d_pnx=D_WORKING)
+            f_pnx_downloaded = get_f_contained_feature_str(feature_str=output_filename, d_pnx=D_PK_WORKING)
             if f_pnx_downloaded and f_pnx_downloaded.lower().endswith(tuple(extensions_allowed)):
                 pk_print(f"download skip for {clip_id}({f_pnx_downloaded})", print_color="yellow")
                 mark_url_as_done(f_func_txt, original_url=url)
@@ -101,10 +101,10 @@ def download_youtube_videos(urls=None):
                     ensure_pnx_opened_by_ext(pnx=f_pnx_downloaded)
                 continue
 
-            download_youtube_video_via_yt_dlp_v2(D_FFMPEG_LOCATION, D_WORKING, ext, url)
+            download_youtube_video_via_yt_dlp_v2(D_FFMPEG_LOCATION, D_PK_WORKING, ext, url)
 
             # 병합된 최종 파일 존재 여부 확인
-            f_pnx_downloaded = get_f_contained_feature_str(feature_str=output_filename, d_pnx=D_WORKING)
+            f_pnx_downloaded = get_f_contained_feature_str(feature_str=output_filename, d_pnx=D_PK_WORKING)
             if f_pnx_downloaded and f_pnx_downloaded.lower().endswith(tuple(extensions_allowed)):
                 pk_print(f"download complete {clip_id}({f_pnx_downloaded})", print_color="green")
                 mark_url_as_done(f_func_txt, original_url=url)

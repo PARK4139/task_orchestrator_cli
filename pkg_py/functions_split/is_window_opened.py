@@ -8,7 +8,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from pkg_py.functions_split.ensure_window_to_front import ensure_window_to_front
 from pkg_py.functions_split.is_losslesscut_running import is_losslesscut_running
 from pkg_py.functions_split.cmd_to_os import cmd_to_os
-from pkg_py.system_object.directories import D_PKG_TXT, D_WORKING
+from pkg_py.system_object.directories import D_PKG_TXT, D_PK_WORKING
 from pkg_py.system_object.local_test_activate import LTA
 from pathlib import Path
 from datetime import datetime

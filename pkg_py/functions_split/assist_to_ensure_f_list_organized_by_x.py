@@ -7,7 +7,7 @@ def pk_assist_to_ensure_f_list_organized_by_x():
     import os
 
     while 1:
-        d_working = get_value_completed(key_hint='d_working=', values=[os.getcwd(), D_WORKING, D_PROJECT, D_DOWNLOADS])
+        d_working = get_value_completed(key_hint='d_working=', values=[os.getcwd(), D_PK_WORKING, D_PROJECT, D_DOWNLOADS])
         # ext_set = {".webm"}
         ext_set = get_extension_set_from_d(d_working)
         for ext in ext_set:

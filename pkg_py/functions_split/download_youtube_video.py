@@ -24,7 +24,7 @@ from pkg_py.functions_split.pk_print import pk_print
 from pkg_py.functions_split.remove_lines_within_keyword_from_f import remove_lines_within_keyword_from_f
 from pkg_py.functions_split.write_list_to_f import write_list_to_f
 from pkg_py.system_object.directories import D_PKG_TXT
-from pkg_py.system_object.directories import D_WORKING
+from pkg_py.system_object.directories import D_PK_WORKING
 from pkg_py.system_object.etc import PK_BLANK
 from pkg_py.system_object.files import F_FFMPEG_EXE
 from pkg_py.system_object.local_test_activate import LTA
@@ -40,7 +40,7 @@ def download_youtube_video():
         import os
         import sys
 
-        d_pnx = D_WORKING
+        d_pnx = D_PK_WORKING
         func_n = inspect.currentframe().f_code.co_name
         f_func_n_txt = rf'{D_PKG_TXT}/{func_n}.txt'  # success log 기록 # 불필요함.  success 이면 f_historical 에서 삭제되도록 함.
 

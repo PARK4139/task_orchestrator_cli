@@ -75,7 +75,7 @@ from pkg_py.system_object.files import F_POT_PLAYER_MINI_64_EXE, F_HISTORICAL_PN
 from pkg_py.system_object.files import F_POT_PLAYER_MINI_64_EXE
 from pkg_py.system_object.files import F_HISTORICAL_PNX
 from pkg_py.system_object.files import F_FFMPEG_EXE
-from pkg_py.system_object.directories import D_PKG_TXT, D_WORKING
+from pkg_py.system_object.directories import D_PKG_TXT, D_PK_WORKING
 from pkg_py.system_object.print_red import print_red
 from pkg_py.system_object.state_via_database import PkSqlite3DB
 from pkg_py.system_object.local_test_activate import LTA
@@ -102,7 +102,7 @@ from pkg_py.system_object.etc import PkFilter, PK_UNDERLINE
 from pkg_py.system_object.etc import PK_UNDERLINE
 from pkg_py.functions_split.get_value_completed import get_value_completed
 from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style
-from pkg_py.system_object.directories import D_WORKING, D_DOWNLOADS, D_PKG_PKL, D_PKG_PY
+from pkg_py.system_object.directories import D_PK_WORKING, D_DOWNLOADS, D_PKG_PKL, D_PKG_PY
 from pkg_py.functions_split.get_list_calculated import get_list_calculated
 from pkg_py.functions_split.is_f import is_f
 from pkg_py.system_object.is_os_windows import is_os_windows

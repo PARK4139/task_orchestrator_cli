@@ -37,7 +37,7 @@ from pkg_py.functions_split.get_list_sorted import get_list_sorted
 from pkg_py.functions_split.set_pk_context_state import set_pk_context_state
 from pkg_py.system_object.etc import PkFilter
 from pkg_py.system_object.encodings import Encoding
-from pkg_py.system_object.directories import D_WORKING
+from pkg_py.system_object.directories import D_PK_WORKING
 from pkg_py.system_object.state_via_database import PkSqlite3DB
 from pkg_py.system_object.local_test_activate import LTA
 from os.path import dirname

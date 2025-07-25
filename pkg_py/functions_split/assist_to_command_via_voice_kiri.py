@@ -39,7 +39,7 @@ from datetime import date
 from cryptography.hazmat.backends import default_backend
 from Cryptodome.Random import get_random_bytes
 from pkg_py.functions_split.assist_to_load_video_at_losslesscut import pk_ensure_video_loaded_at_losslesscut
-from pkg_py.system_object.directories import D_WORKING, D_PKG_PKL, D_PKG_PY
+from pkg_py.system_object.directories import D_PK_WORKING, D_PKG_PKL, D_PKG_PY
 from pkg_py.system_object.directories import D_PKG_PY
 from pkg_py.system_object.is_os_windows import is_os_windows
 
@@ -172,7 +172,7 @@ def assist_to_command_via_voice_kiri():
                 pk_sleep(seconds=random.randint(a=200, b=500))
                 pk_print_and_speak("Ending the conversation. Goodbye!")
             elif any(keyword in str_working for keyword in ["업무_d_생성", '업무_d_']):
-                make_d_with_timestamp(d_nx=rf"생산관리", dst=rf"{D_WORKING}")
+                make_d_with_timestamp(d_nx=rf"생산관리", dst=rf"{D_PK_WORKING}")
                 assist_to_make_d_for_work()
             elif any(keyword in str_working for keyword in ["sound interactive mode"]):
                 # guide_todo(days=1)  # todo : add : 등록된 스케쥴시간확인

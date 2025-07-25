@@ -23,7 +23,7 @@ from pkg_py.functions_split.is_window_title_opened import is_window_title_opened
 from pkg_py.functions_split.pk_press import pk_press
 
 from pkg_py.functions_split.cmd_to_os import cmd_to_os
-from pkg_py.system_object.directories import D_WORKING
+from pkg_py.system_object.directories import D_PK_WORKING
 from pkg_py.system_object.map_massages import PkMessages2025
 from PIL import Image
 from functools import partial as functools_partial

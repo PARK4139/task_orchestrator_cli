@@ -66,7 +66,7 @@ from pkg_py.functions_split.write_list_to_f import write_list_to_f
 from pkg_py.functions_split.get_list_sorted import get_list_sorted
 from pkg_py.system_object.etc import PkFilter
 from pkg_py.system_object.encodings import Encoding
-from pkg_py.system_object.directories import D_WORKING
+from pkg_py.system_object.directories import D_PK_WORKING
 from pkg_py.system_object.state_via_database import PkSqlite3DB
 from pkg_py.system_object.get_list_calculated import get_list_calculated
 from PIL import Image

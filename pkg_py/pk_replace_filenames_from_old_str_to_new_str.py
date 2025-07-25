@@ -1,6 +1,6 @@
 __author__ = 'pk == junghoon.park'
 
-# from pkg_py.system_object.directories import D_WORKING
+# from pkg_py.system_object.directories import D_PK_WORKING
 #
 #, STAMP_UNIT_TEST_EXCEPTION_DISCOVERED
 # from pkg_py.system_object.etc import PK_UNDERLINE
@@ -20,7 +20,7 @@ if __name__ == "__main__":
 
         pk_colorama_init_once()
 
-        d_working = pk_input(str_working=rf'd_working=', limit_seconds=60, return_default=D_WORKING, get_input_validated=get_pnx_validated)
+        d_working = pk_input(str_working=rf'd_working=', limit_seconds=60, return_default=D_PK_WORKING, get_input_validated=get_pnx_validated)
         while 1:
             old_str = pk_input(str_working="old_str=", limit_seconds=60, return_default='%%%OLD_STR%%%', get_input_validated=get_nx_validated)
             old_str = get_no_blank_str_working_validated(old_str)

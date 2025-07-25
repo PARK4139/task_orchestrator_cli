@@ -4,7 +4,7 @@ from pkg_py.functions_split.get_nx import get_nx
 from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style
 from pkg_py.functions_split.get_time_as_ import get_time_as_
 from pkg_py.system_object.directories import D_PKG_TXT, D_PKG_JSON, D_DOWNLOADS, D_PKG_PK, D_PKG_TOML, D_PKG_WINDOWS, \
-    D_PKG_DB, D_DESKTOP, D_PKG_PY, D_PK_RECYCLE_BIN
+    D_PKG_DB, D_DESKTOP, D_PKG_PY, D_PK_RECYCLE_BIN, D_PKG_EXE
 from pkg_py.system_object.directories_reuseable import D_PROJECT
 
 F_VPC_MAMNAGEMENT_MAP_TOML = f'{D_PKG_TOML}/vpc_mamnagement_map.toml'
@@ -99,6 +99,6 @@ F_POT_PLAYER_MINI_64_EXE = r"C:\Program Files\DAUM\PotPlayer\PotPlayerMini64.exe
 F_TEMP_TXT = rf"{D_DESKTOP}/pk_temp_{get_time_as_("now")}_{get_nx(__file__)}.txt"
 F_TEST_PY = rf"{D_PKG_PY}/pk_test.py"
 F_PK_WORKSPACE_PY = get_pnx_os_style(rf"{D_PKG_PY}/workspace/pk_workspace.py")
-
-
-
+F_UV_ZIP = rf"{D_DOWNLOADS}\uv.zip"
+F_UV_EXE = rf"{D_PKG_EXE}\uv.exe"
+F_PK_ALIAS_MACROS_TXT = rf"{D_PKG_TXT}\pk_alias_macros.txt"

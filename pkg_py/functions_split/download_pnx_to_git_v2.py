@@ -17,7 +17,7 @@ from pkg_py.functions_split.pk_print_state import pk_print_state
 from pkg_py.functions_split.cmd_to_os import cmd_to_os
 
 from pkg_py.functions_split.set_pk_context_state import set_pk_context_state
-from pkg_py.system_object.directories import D_WORKING
+from pkg_py.system_object.directories import D_PK_WORKING
 
 from PIL import Image
 from mutagen.mp3 import MP3

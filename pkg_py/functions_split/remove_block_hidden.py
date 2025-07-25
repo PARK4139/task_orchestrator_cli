@@ -35,7 +35,7 @@ from pkg_py.functions_split.ensure_console_cleared import ensure_console_cleared
 from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
 from pkg_py.system_object.stamps import STAMP_ATTEMPTED
 from pkg_py.system_object.encodings import Encoding
-from pkg_py.system_object.directories import D_WORKING
+from pkg_py.system_object.directories import D_PK_WORKING
 
 from passlib.context import CryptContext
 from os import path

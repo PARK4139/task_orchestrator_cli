@@ -99,7 +99,7 @@ def classify_pnx_by_special_keyword(d_src, special_keyword, with_walking):
         if special_keyword != "":
             special_dirs_promised.append(special_keyword)
         for special_pnx in special_dirs_promised:
-            ensure_pnx_made(rf"{D_WORKING_EXTERNAL}\{special_pnx}", mode="d")
+            ensure_pnx_made(rf"{D_PK_WORKING_EXTERNAL}\{special_pnx}", mode="d")
         pnxs_searched = []
         if is_d(d_src):
             if with_walking == True:
@@ -117,7 +117,7 @@ def classify_pnx_by_special_keyword(d_src, special_keyword, with_walking):
             str_working=rf'''len(pnxs_searched)="{len(pnxs_searched)}"  {'%%%FOO%%%' if LTA else ''}''')  # 검색된 f 개수
         dst = None
         for index, special_dir in enumerate(special_dirs_promised):
-            dst = rf"{D_WORKING_EXTERNAL}\{special_dirs_promised[index]}"
+            dst = rf"{D_PK_WORKING_EXTERNAL}\{special_dirs_promised[index]}"
             for pnx_searched in pnxs_searched:
                 if special_dir in os.path.basename(pnx_searched):
                     move_pnx(pnx=pnx_searched, d_dst=dst)

@@ -37,7 +37,7 @@ from pkg_py.functions_split.pk_print_once import pk_print_once
 from pkg_py.system_object.files import F_POT_PLAYER_MINI_64_EXE
 from pkg_py.system_object.encodings import Encoding
 from pkg_py.system_object.directories_reuseable import D_PROJECT
-from pkg_py.system_object.directories import D_WORKING
+from pkg_py.system_object.directories import D_PK_WORKING
 from pkg_py.system_object.state_via_context import SpeedControlContext
 from pkg_py.system_object.is_os_windows import is_os_windows
 

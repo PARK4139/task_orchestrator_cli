@@ -35,7 +35,7 @@ from pkg_py.functions_split.pk_print_state import pk_print_state
 from pkg_py.system_object.etc import PkFilter
 from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
 from pkg_py.system_object.stamps import STAMP_ATTEMPTED
-from pkg_py.system_object.directories import D_WORKING
+from pkg_py.system_object.directories import D_PK_WORKING
 from passlib.context import CryptContext
 from moviepy import VideoFileClip
 from gtts import gTTS
