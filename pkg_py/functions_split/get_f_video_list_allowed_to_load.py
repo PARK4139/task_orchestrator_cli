@@ -77,7 +77,7 @@ def get_f_video_list_allowed_to_load(ext_list_allowed, d_working):
     if LTA:
         pk_print(f'''ext_list_allowed={ext_list_allowed}  {'%%%FOO%%%' if LTA else ''}''')
     f_video_list_allowed = []
-    pnx_list = get_pnx_list_from_d_working(d_working=d_working, with_walking=0)
+    pnx_list = get_pnxs_from_d_working(d_working=d_working, with_walking=0)
     write_list_to_f(working_list=pnx_list, f=F_VIDEO_LIST_ALLOWED_TO_LOAD_TXT, mode='w')
 
     for f in get_list_from_f(F_VIDEO_LIST_ALLOWED_TO_LOAD_TXT):

@@ -95,7 +95,7 @@
 # from pkg_py.functions_split.get_pk_wsl_mount_d import get_pk_wsl_mount_d
 # from pkg_py.functions_split.get_pk_wsl_mount_d_v1 import get_pk_wsl_mount_d_v1
 # from pkg_py.functions_split.get_pnx_list import get_pnx_list
-# from pkg_py.functions_split.get_pnx_list_from_d_working import get_pnxs_from_d_working
+# from pkg_py.functions_split.get_pnxs_from_d_working import get_pnxs_from_d_working
 # from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style
 # from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style
 # from pkg_py.functions_split.get_pnx_windows_style import get_pnx_windows_style

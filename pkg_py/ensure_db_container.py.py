@@ -1,6 +1,4 @@
-#!/usr/bin/env python   # shebang
-# -*- coding: utf-8 -*- # encoding declaration
-__author__ = 'pk == junghoon.park'
+
 
 import os
 import subprocess
@@ -130,11 +128,8 @@ if __name__ == "__main__":
         else:
             sys.exit(1)
 
-    except Exception as ex:
-        print_red(PK_UNDERLINE)
-        for line in traceback.format_exception_only(type(ex), ex):
-            print_red(f"{STAMP_UNIT_TEST_EXCEPTION_DISCOVERED} {line.strip()}")
-        print_red(PK_UNDERLINE)
+    except Exception as exception:
+        ensure_do_exception_routine(traceback=traceback, exception=exception)
         sys.exit(1)
     finally:
         ensure_do_finally_routine(D_PROJECT=D_PROJECT, __file__=__file__, STAMP_TRY_GUIDE=STAMP_TRY_GUIDE)

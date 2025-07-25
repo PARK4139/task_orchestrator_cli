@@ -1,6 +1,4 @@
-#!/usr/bin/env python   # shebang
-# -*- coding: utf-8 -*- # encoding declaration
-__author__ = 'pk == junghoon.park'
+
 
 import traceback
 

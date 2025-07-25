@@ -14,11 +14,7 @@ def get_device_name_identified():
     return 
 
 
-
-
-import os  
-
-
+import os
 
 os.system("start /max C:\Users\pk\Downloads\pk_working\pk_ensure_ide_installed\pkg_rdp\192.168.0.19(pk_desktop).rdp")
 

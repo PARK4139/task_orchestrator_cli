@@ -1,15 +1,11 @@
-#!/usr/bin/env python   # shebang
-# -*- coding: utf-8 -*- # encoding declaration
-__author__ = 'pk == junghoon.park'
-
-import sys
 import traceback
 
-from colorama import init as pk_colorama_init
-
-# from pkg_py.system_object.500_live_logic import ensure_pk_wsl_distro_installed
-#, STAMP_TRY_GUIDE, D_PROJECT, STAMP_UNIT_TEST_EXCEPTION_DISCOVERED
-#, print_red
+from pkg_py.functions_split.ensure_do_exception_routine import ensure_do_exception_routine
+from pkg_py.functions_split.ensure_do_finally_routine import ensure_do_finally_routine
+from pkg_py.functions_split.ensure_pk_wsl_distro_installed import ensure_pk_wsl_distro_installed
+from pkg_py.functions_split.pk_colorama_init_once import pk_colorama_init_once
+from pkg_py.system_object.directories_reuseable import D_PROJECT
+from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
 
 pk_colorama_init_once()
 
@@ -17,11 +13,7 @@ if __name__ == "__main__":
     try:
         if not ensure_pk_wsl_distro_installed():
             raise RuntimeError("WSL 배포판 설치/이름 변경에 실패했습니다.")
-    except Exception as ex:
-        print_red(PK_UNDERLINE)
-        for line in traceback.format_exception_only(type(ex), ex):
-            print_red(f"{STAMP_UNIT_TEST_EXCEPTION_DISCOVERED} {line.strip()}")
-        print_red(PK_UNDERLINE)
-        sys.exit(1)
+    except Exception as exception:
+        ensure_do_exception_routine(traceback=traceback, exception=exception)
     finally:
         ensure_do_finally_routine(D_PROJECT=D_PROJECT, __file__=__file__, STAMP_TRY_GUIDE=STAMP_TRY_GUIDE)

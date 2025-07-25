@@ -2,6 +2,7 @@ from pkg_py.workspace.pk_workspace2 import update_system_path_with_deduplication
 
 
 def ensure_os_env_sys_variables_applied():
+    # 아...이거 좋은데. python 설치에 의존됨... 결국 batch 로 작성을 해야하나?
     from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style
     from pkg_py.system_object.directories import (
         D_PKG_EXE, D_PKG_TXT, D_PKG_WINDOWS, D_PK_MEMO, D_DOWNLOADS,
@@ -114,7 +115,7 @@ def ensure_os_env_sys_variables_applied():
         )
         pk_print(formatted, print_color="cyan")
 
-    # ▶ [PATH] 중복 제거 후 출력
+    # [PATH] 중복 제거 후 출력
     pk_print("\n[PATH] Current PATH entries (session)", print_color="cyan")
     path_entries = os.environ.get("PATH", "").split(";")
     seen = set()

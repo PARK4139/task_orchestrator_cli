@@ -2,12 +2,12 @@ if __name__ == "__main__":
     try:
         import traceback
 
-        # from pkg_py.system_object.500_live_logic import pk_copy, LTA, get_pnx_list_from_d_working, is_f, get_nx, ensure_pnx_removed
+        # from pkg_py.system_object.500_live_logic import pk_copy, LTA, get_pnxs_from_d_working, is_f, get_nx, ensure_pnx_removed
         #, STAMP_TRY_GUIDE, D_PROJECT, STAMP_UNIT_TEST_EXCEPTION_DISCOVERED
         #
 
         d_working = fr"C:\Users\WIN10PROPC3\Downloads\working directory for pkg_py pnx restoration via recuva"
-        for pnx in get_pnx_list_from_d_working(d_working, with_walking=0):
+        for pnx in get_pnxs_from_d_working(d_working, with_walking=0):
             if is_f(pnx):
                 try:
                     with open(pnx, "rb") as f:

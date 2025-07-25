@@ -3,7 +3,7 @@ import sys
 
 #  import pk_sleep, add_to_potplayer_playlist
 from pkg_py.functions_split.pk_print import pk_print
-# from pkg_py.system_object.500_live_logic import get_pnx_list_from_d_working
+# from pkg_py.system_object.500_live_logic import get_pnxs_from_d_working
 from pkg_py.pk_core_class import PkSqlite3DB
 
 from colorama import init as pk_colorama_init
@@ -29,7 +29,7 @@ if __name__ == "__main__":
             sys.exit("pk system quit")
 
         # 초기 상태 설정
-        previous_state = get_pnx_list_from_d_working(d_working=working_directory_to_play_contents)
+        previous_state = get_pnxs_from_d_working(d_working=working_directory_to_play_contents)
         loop_cnt = 0
         while True:
             loop_cnt += 1
@@ -41,7 +41,7 @@ if __name__ == "__main__":
                 print(f"[{loop_cnt}] 변경 사항 확인 중...")
 
                 # 현재 파일 상태 조회
-                new_state = get_pnx_list_from_d_working(working_directory_to_play_contents)
+                new_state = get_pnxs_from_d_working(working_directory_to_play_contents)
 
                 # 추가된 파일만 추출
                 added_files = list(set(new_state) - set(previous_state))
