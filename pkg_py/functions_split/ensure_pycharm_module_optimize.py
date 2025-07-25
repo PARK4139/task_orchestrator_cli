@@ -34,6 +34,7 @@ def ensure_pycharm_module_optimize():
 
     # d_working = rf"{environ['USERPROFILE']}\Downloads\pk_system\pkg_py\workspace"
     d_working = rf"{environ['USERPROFILE']}\Downloads\pk_system\pkg_py\functions_split"
+    d_working = rf"{environ['USERPROFILE']}\Downloads\pk_system\pkg_py"
     func_n = inspect.currentframe().f_code.co_name
     db = PkSqlite3DB()
     PROCESS_NAME = PkMacroRoutines.ENSURE_PYCHARM_CODE_OPTIMIZED

@@ -139,7 +139,7 @@
 # from pkg_py.functions_split.load_f_video_on_losslesscut import load_f_video_on_losslesscut
 # from pkg_py.functions_split.load_logged_set import load_logged_set
 # from pkg_py.functions_split.move_window_to_front_via_pid import move_window_to_front_via_pid
-# from pkg_py.functions_split.ensure_pnx_opened_by_ext import ensure_pnx_opened_by_ext
+# from pkg_py.functions_split.open_pnx_by_ext import ensure_pnx_opened_by_ext
 # from pkg_py.functions_split.pk_ensure_all_import_script_printed import pk_ensure_modules_printed
 # from pkg_py.functions_split.pk_ensure_functions_splited import pk_ensure_functions_splited
 # from pkg_py.functions_split.pk_ensure_functions_splited_v2 import pk_ensure_functions_splited_v2

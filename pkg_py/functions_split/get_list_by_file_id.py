@@ -4,7 +4,7 @@ def get_list_by_file_id(file_id, editable=False):
     from pkg_py.functions_split.get_f_historical import get_history_file
     from pkg_py.functions_split.ensure_pnx_made import ensure_pnx_made
     from pkg_py.functions_split.pk_print import pk_print
-    from pkg_py.functions_split.ensure_pnx_opened_by_ext import ensure_pnx_opened_by_ext
+    from pkg_py.functions_split.open_pnx_by_ext import ensure_pnx_opened_by_ext
     import os
     import traceback
     f_historical = get_history_file(file_id)

@@ -7,10 +7,6 @@ if __name__ == "__main__":
         os.system(f"title {os.path.basename(__file__)}")  # TBD : 데코레이터로 전환
         while 1:
             should_i_search_to_chatGPT()
-            print()
-            print()
-            print()
-            print()
         if LTA:
             ensure_console_debuggable()
     except Exception as exception:

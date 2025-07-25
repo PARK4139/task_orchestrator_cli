@@ -32,7 +32,7 @@ from pkg_py.functions_split.ensure_window_to_front import ensure_window_to_front
 from pkg_py.functions_split.get_f_historical import get_history_file
 from pkg_py.functions_split.get_file_id import get_file_id
 from pkg_py.functions_split.get_nx import get_nx
-from pkg_py.functions_split.ensure_pnx_opened_by_ext import ensure_pnx_opened_by_ext
+from pkg_py.functions_split.open_pnx_by_ext import ensure_pnx_opened_by_ext
 from pkg_py.functions_split.pk_measure_seconds import pk_measure_seconds
 from pkg_py.functions_split.pk_print import pk_print
 from pkg_py.functions_split.pk_sleep import pk_sleep
