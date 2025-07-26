@@ -21,29 +21,48 @@ def ensure_function_name_python_file_created():
 
     func_n = inspect.currentframe().f_code.co_name
 
+    D_PKG_PY = get_pnx_os_style(D_PKG_PY)
+    D_FUNCTIONS_SPLIT = get_pnx_os_style(D_FUNCTIONS_SPLIT)
+
     while True:
         # 1. 디렉토리 경로 입력 받기
         d_working = get_value_completed(
             key_hint='d_working=',
             values=[D_PKG_PY, D_FUNCTIONS_SPLIT]
         )
+        d_working = get_pnx_os_style(d_working)
         if not os.path.isdir(d_working):
             logging.info(f"[{PkMessages2025.PATH_NOT_FOUND}] {d_working}")
             continue
 
         # 2. 파일명 입력 받기 (.py 확장자 자동 부여)
-        key_name = 'python_file_name'
-        func_n = inspect.currentframe().f_code.co_name
-        file_id = get_file_id(key_name, func_n)
-        editable = False
-        # editable = True
-        init_options = ["pk_ensure_", "ensure_"]
-        value = get_value_via_fzf_or_history_routine(key_name=key_name, file_id=file_id, init_options=init_options, editable=editable)
-        f_n = value
-        if not value.endswith(".py"):
-            value += ".py"
-        python_file_name = value
-        ensure_printed(f'''python_file_name={python_file_name} {'%%%FOO%%%' if LTA else ''}''')
+        python_file_name = None
+        # editable = False
+        editable = True
+        f_n = None
+
+        if d_working ==D_PKG_PY:
+            key_name = 'pk_python_file_name'
+            func_n = inspect.currentframe().f_code.co_name
+            file_id = get_file_id(key_name, func_n)
+            init_options = ["pk_ensure_", ]
+            value = get_value_via_fzf_or_history_routine(key_name=key_name, file_id=file_id, init_options=init_options, editable=editable)
+            f_n = value
+            if not value.endswith(".py"):
+                value += ".py"
+            python_file_name = get_pnx_os_style(value)
+            ensure_printed(f'''python_file_name={python_file_name} {'%%%FOO%%%' if LTA else ''}''')
+        elif d_working ==D_FUNCTIONS_SPLIT:
+            key_name = 'python_file_name'
+            func_n = inspect.currentframe().f_code.co_name
+            file_id = get_file_id(key_name, func_n)
+            init_options = ["ensure_"]
+            value = get_value_via_fzf_or_history_routine(key_name=key_name, file_id=file_id, init_options=init_options, editable=editable)
+            f_n = value
+            if not value.endswith(".py"):
+                value += ".py"
+            python_file_name = value
+            ensure_printed(f'''python_file_name={python_file_name} {'%%%FOO%%%' if LTA else ''}''')
 
 
         counter = 1
