@@ -57,8 +57,8 @@ def get_sub_pnx_list(pnx, txt_to_exclude_list=None, with_walking=1):
                         break  # f 경로에 제외할 문자열이 있으면 추가하지 않음
                 else:
                     # f 경로에 제외할 문자열이 없다면 f_list에 추가
-                    # pk_print(str_working=rf'''item_pnx       ="{item_pnx}"  {'%%%FOO%%%' if LTA else ''}''')
-                    # pk_print(str_working=rf'''txt_to_exclude="{txt_to_exclude}"  {'%%%FOO%%%' if LTA else ''}''')
+                    # ensure_printed(str_working=rf'''item_pnx       ="{item_pnx}"  {'%%%FOO%%%' if LTA else ''}''')
+                    # ensure_printed(str_working=rf'''txt_to_exclude="{txt_to_exclude}"  {'%%%FOO%%%' if LTA else ''}''')
                     f_list.append([item_pnx, os.path.getmtime(item_pnx)])
 
         # print_list_as_vertical(texts=d_list, list_name='d_list')

@@ -9,7 +9,7 @@ if __name__ == '__main__':
     try:
         import traceback
 
-        # from pkg_py.system_object.500_live_logic import pk_copy, a2z_assist_to_analize_addup_issue
+        # from pkg_py.system_object.500_live_logic import copy, a2z_assist_to_analize_addup_issue
         #
         # from pkg_py.system_object.static_logic import D_PROJECT, UNDERLINE, STAMP_TRY_GUIDE, STAMP_EXCEPTION_DISCOVERED
 

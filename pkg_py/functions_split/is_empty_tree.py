@@ -14,9 +14,9 @@ from prompt_toolkit.styles import Style
 from pkg_py.functions_split.print_iterable_as_vertical import print_iterable_as_vertical
 from pkg_py.functions_split.get_d_working import get_d_working
 from pkg_py.functions_split.is_window_title_opened import is_window_title_opened
-from pkg_py.functions_split.pk_print_state import pk_print_state
+from pkg_py.functions_split.print_state import print_state
 
-from pkg_py.functions_split.write_list_to_f import write_list_to_f
+from pkg_py.functions_split.ensure_list_written_to_f import ensure_list_written_to_f
 from pkg_py.system_object.directories_reuseable import D_PROJECT
 from pkg_py.system_object.directories import D_DOWNLOADS, D_PKG_PKL
 from passlib.context import CryptContext
@@ -26,26 +26,26 @@ from dirsync import sync
 from datetime import datetime
 from colorama import init as pk_colorama_init
 from bs4 import BeautifulSoup
-from pkg_py.functions_split.assist_to_load_video_at_losslesscut import pk_ensure_video_loaded_at_losslesscut
+from pkg_py.functions_split.assist_to_load_video_at_losslesscut import ensure_video_loaded_at_losslesscut
 from pkg_py.system_object.directories import D_PKG_PY
 
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
 def is_empty_tree(d):
     import os
 
-    pk_print(f"d={d}  {'%%%FOO%%%' if LTA else ''}")
+    ensure_printed(f"d={d}  {'%%%FOO%%%' if LTA else ''}")
 
     try:
         with os.scandir(d) as entries:
             for entry in entries:
                 if entry.is_file():
-                    pk_print(rf"is not empty d {d}")
+                    ensure_printed(rf"is not empty d {d}")
                     return 0
-        pk_print(rf"is not empty d 있습니다.{d}")
+        ensure_printed(rf"is not empty d 있습니다.{d}")
         return 1
     except:
-        # pk_print(f"{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}", print_color='red')
+        # ensure_printed(f"{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}", print_color='red')
         return 0

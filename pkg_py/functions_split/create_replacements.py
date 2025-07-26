@@ -18,7 +18,7 @@ from os import path
 from mutagen.mp3 import MP3
 from functools import partial as functools_partial
 from bs4 import ResultSet
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
 def create_replacements(extracted_words, size):

@@ -19,10 +19,10 @@ def reconnect_to_qcy_h3_anc_headset_via_bluetooth():  # toogle_to_qcy_h3_anc_hea
             ensure_window_to_front(window_title_seg=window_title_seg)
         else:
             break
-        # pk_print(str_working=time.time() - time_s)
+        # ensure_printed(str_working=time.time() - time_s)
         if time.time() - time_s > time_limit:
             break
-        pk_sleep(seconds=0.5)
+        ensure_slept(seconds=0.5)
 
     # string 더블 클릭
     click_string(string="QCY H3 ANC HEADSET", doubleclick_mode=True)

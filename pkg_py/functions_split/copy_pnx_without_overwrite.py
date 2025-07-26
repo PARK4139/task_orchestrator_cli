@@ -37,7 +37,7 @@ from pkg_py.functions_split.is_losslesscut_running import is_losslesscut_running
 from pkg_py.functions_split.rerun_losslesscut import rerun_losslesscut
 from pkg_py.functions_split.is_window_title_opened import is_window_title_opened
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.cmd_to_os import cmd_to_os
 from pkg_py.functions_split.get_list_sorted import get_list_sorted
 from pkg_py.functions_split.set_pk_context_state import set_pk_context_state
@@ -63,7 +63,7 @@ from pkg_py.functions_split.get_pnx_wsl_unix_style import get_pnx_wsl_unix_style
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.get_pnx_list import get_pnx_list
 
 
@@ -92,8 +92,8 @@ def copy_pnx_without_overwrite(pnx, dst):
             pnx_new = rf"{dst}\{pnx_n}{pnx_x}"
             pattern = r'\d{4}_\d{2}_\d{2}_(월|화|수|목|금|토|일)_\d{2}_\d{2}_\d{2}_\d{3}'
             pnx_n = re.sub(pattern=pattern, repl='', string=pnx_n)
-            pk_print(str_working=rf'''pnx="{pnx}"  {'%%%FOO%%%' if LTA else ''}''')
-            pk_print(str_working=rf'''dst="{dst}"  {'%%%FOO%%%' if LTA else ''}''')
+            ensure_printed(str_working=rf'''pnx="{pnx}"  {'%%%FOO%%%' if LTA else ''}''')
+            ensure_printed(str_working=rf'''dst="{dst}"  {'%%%FOO%%%' if LTA else ''}''')
             dst_nx = None
             if not does_pnx_exist(pnx=pnx_new):
                 dst_nx = rf"{dst}\{pnx_n}{pnx_x}"
@@ -101,6 +101,6 @@ def copy_pnx_without_overwrite(pnx, dst):
                 dst_nx = rf"{dst}\{pnx_n}{time_pattern_with_underbar}{random.randint(10, 99)}{pnx_x}"
             shutil.copytree(src=pnx, dst=dst_nx)
         except:
-            pk_print(f'''{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
+            ensure_printed(f'''{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
     else:
         print(f"소스 경로 '{pnx}'는 f도 d도 아닙니다.")

@@ -26,7 +26,7 @@ from pkg_py.functions_split.ensure_window_to_front import ensure_window_to_front
 from pkg_py.functions_split.is_losslesscut_running import is_losslesscut_running
 from pkg_py.functions_split.get_f_video_to_load import get_f_video_to_load
 from pkg_py.functions_split.get_d_working import get_d_working
-from pkg_py.functions_split.write_list_to_f import write_list_to_f
+from pkg_py.functions_split.ensure_list_written_to_f import ensure_list_written_to_f
 from pkg_py.functions_split.get_list_sorted import get_list_sorted
 from pkg_py.system_object.files import F_POT_PLAYER_MINI_64_EXE
 from pkg_py.system_object.files import F_LOSSLESSCUT_EXE
@@ -50,7 +50,7 @@ from pkg_py.functions_split.is_f import is_f
 from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
 def is_prompt_on_screen(prompt):

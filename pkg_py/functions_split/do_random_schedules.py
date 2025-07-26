@@ -7,7 +7,7 @@ from pytube import Playlist
 from pynput import mouse
 from pkg_py.functions_split.get_historical_list import get_historical_list
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.system_object.etc import PkFilter
 from pkg_py.system_object.files import F_POT_PLAYER_MINI_64_EXE
 

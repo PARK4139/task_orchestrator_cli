@@ -5,7 +5,7 @@ from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
 from pkg_py.functions_split.is_os_windows import is_os_windows
 from pkg_py.functions_split.get_pnx_windows_style import get_pnx_windows_style
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 
 
@@ -48,7 +48,7 @@ def get_pk_wsl_mount_d_v1(windows_path, path_to_mount):
         if does_pnx_exist(pnx=mount_point):
             print(f"{mount_point} is mounted successfully.")
     elif is_os_windows():
-        pk_print(f'''get_pk_wsl_mount_d is not supported in Windows. {'%%%FOO%%%' if LTA else ''}''')
+        ensure_printed(f'''get_pk_wsl_mount_d is not supported in Windows. {'%%%FOO%%%' if LTA else ''}''')
     else:
         # (순수 Linux 등, WSL도 아니고 Windows도 아닌 경우 별도 처리 없음)
         pass

@@ -38,9 +38,9 @@ from pkg_py.functions_split.get_f_loading_nx_by_pattern import get_f_loading_nx_
 from pkg_py.functions_split.ensure_window_to_front import ensure_window_to_front
 from pkg_py.functions_split.get_video_filtered_list import get_video_filtered_list
 from pkg_py.functions_split.is_window_title_opened import is_window_title_opened
-from pkg_py.functions_split.pk_print_state import pk_print_state
-from pkg_py.functions_split.pk_print_once import pk_print_once
-from pkg_py.functions_split.write_list_to_f import write_list_to_f
+from pkg_py.functions_split.print_state import print_state
+from pkg_py.functions_split.ensure_printed_once import ensure_printed_once
+from pkg_py.functions_split.ensure_list_written_to_f import ensure_list_written_to_f
 from pkg_py.system_object.etc import PkFilter
 from pkg_py.system_object.stamps import STAMP_ATTEMPTED
 from pkg_py.system_object.files import F_LOSSLESSCUT_EXE
@@ -58,7 +58,7 @@ from Cryptodome.Cipher import AES
 from collections import defaultdict, Counter
 from base64 import b64encode
 from base64 import b64decode
-from pkg_py.functions_split.assist_to_load_video_at_losslesscut import pk_ensure_video_loaded_at_losslesscut
+from pkg_py.functions_split.assist_to_load_video_at_losslesscut import ensure_video_loaded_at_losslesscut
 from pkg_py.functions_split.kill_self_pk_program import kill_self_pk_program
 from pkg_py.system_object.etc import PK_UNDERLINE
 from pkg_py.system_object.directories import D_PKG_PY
@@ -68,14 +68,14 @@ from pkg_py.functions_split.is_os_windows import is_os_windows
 from pkg_py.functions_split.get_pnx_windows_style import get_pnx_windows_style
 
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.get_d_working import get_d_working
 
 
 def is_current_hostname(hostname):
     current_hostname = get_hostname()
-    pk_print(str_working=rf'''hostname="{hostname}"  {'%%%FOO%%%' if LTA else ''}''')
-    pk_print(str_working=rf'''current_hostname="{current_hostname}"  {'%%%FOO%%%' if LTA else ''}''')
+    ensure_printed(str_working=rf'''hostname="{hostname}"  {'%%%FOO%%%' if LTA else ''}''')
+    ensure_printed(str_working=rf'''current_hostname="{current_hostname}"  {'%%%FOO%%%' if LTA else ''}''')
     if current_hostname == hostname:
         return 1
     else:

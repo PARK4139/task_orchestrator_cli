@@ -70,9 +70,9 @@ from pkg_py.functions_split.load_f_video_on_losslesscut import load_f_video_on_l
 from pkg_py.functions_split.is_window_title_front import is_window_title_front
 from pkg_py.functions_split.is_window_opened import is_window_opened
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
-from pkg_py.functions_split.pk_press import pk_press
-from pkg_py.functions_split.pk_print_state import pk_print_state
-from pkg_py.functions_split.pk_print_once import pk_print_once
+from pkg_py.functions_split.press import press
+from pkg_py.functions_split.print_state import print_state
+from pkg_py.functions_split.ensure_printed_once import ensure_printed_once
 from pkg_py.functions_split.set_pk_context_state import set_pk_context_state
 from pkg_py.functions_split.ensure_console_cleared import ensure_console_cleared
 from pkg_py.system_object.files import F_LOSSLESSCUT_EXE
@@ -118,10 +118,10 @@ from pkg_py.functions_split.get_pnx_windows_style import get_pnx_windows_style
 from pkg_py.functions_split.is_os_windows import is_os_windows
 from pkg_py.functions_split.get_pnx_wsl_unix_style import get_pnx_wsl_unix_style
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.get_pnx_list import get_pnx_list
 
 
@@ -135,7 +135,7 @@ def is_letters_cnt_zero(f):
             if len(contents) == 0:
                 return 1
     except FileNotFoundError:
-        pk_print(str_working="f을 찾을 수 없습니다.")
+        ensure_printed(str_working="f을 찾을 수 없습니다.")
         return 0
     except UnicodeDecodeError:
 
@@ -146,6 +146,6 @@ def is_letters_cnt_zero(f):
                 return 1
         return 0
     except:
-        pk_print(f'''{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
-        pk_print(str_working="오류가 발생했습니다.")
+        ensure_printed(f'''{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
+        ensure_printed(str_working="오류가 발생했습니다.")
         return 0

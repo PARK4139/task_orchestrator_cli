@@ -1,5 +1,5 @@
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
 def ensure_vpc_jetpack(**config_remote_os):
@@ -7,5 +7,5 @@ def ensure_vpc_jetpack(**config_remote_os):
 
     a, b = cmd_to_remote_os(cmd='todo', **config_remote_os)
     if 'Ubuntu' not in a:
-        pk_print(f'''ubuntu is not installed({a}) {'%%%FOO%%%' if LTA else ''}''', print_color='red')
+        ensure_printed(f'''ubuntu is not installed({a}) {'%%%FOO%%%' if LTA else ''}''', print_color='red')
         raise

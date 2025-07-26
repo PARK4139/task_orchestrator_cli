@@ -1,7 +1,7 @@
 
 
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
 def is_empty_d(d_src, debug_mode=True):
@@ -14,5 +14,5 @@ def is_empty_d(d_src, debug_mode=True):
         else:
             return 0
     except:
-        pk_print(f'''{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
+        ensure_printed(f'''{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
         return None

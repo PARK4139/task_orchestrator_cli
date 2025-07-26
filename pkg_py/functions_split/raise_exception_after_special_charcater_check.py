@@ -67,10 +67,10 @@ from pkg_py.functions_split.is_losslesscut_running import is_losslesscut_running
 from pkg_py.functions_split.rerun_losslesscut import rerun_losslesscut
 from pkg_py.functions_split.load_f_video_on_losslesscut import load_f_video_on_losslesscut
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
-from pkg_py.functions_split.pk_press import pk_press
-from pkg_py.functions_split.pk_print_once import pk_print_once
+from pkg_py.functions_split.press import press
+from pkg_py.functions_split.ensure_printed_once import ensure_printed_once
 from pkg_py.functions_split.cmd_to_os import cmd_to_os
-from pkg_py.functions_split.write_list_to_f import write_list_to_f
+from pkg_py.functions_split.ensure_list_written_to_f import ensure_list_written_to_f
 from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
 from pkg_py.system_object.files import F_POT_PLAYER_MINI_64_EXE
 from pkg_py.system_object.files import F_LOSSLESSCUT_EXE
@@ -118,7 +118,7 @@ from pkg_py.functions_split.get_pnx_wsl_unix_style import get_pnx_wsl_unix_style
 from pkg_py.functions_split.get_pnx_windows_style import get_pnx_windows_style
 
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
 def raise_exception_after_special_charcater_check(value, inspect_currentframe_f_code_co_name,

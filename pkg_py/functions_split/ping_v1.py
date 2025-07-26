@@ -4,7 +4,7 @@ from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.system_object.encodings import Encoding
 from pkg_py.functions_split.is_os_windows import is_os_windows
 from pkg_py.functions_split.cmd_to_os import cmd_to_os
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
 def ping_v1(ip):
@@ -12,7 +12,7 @@ def ping_v1(ip):
     # pk : 다만 평균속도가 1초로 느린편
 
     if not ip:
-        pk_print(f'''ping {ip} ''', print_color='red')
+        ensure_printed(f'''ping {ip} ''', print_color='red')
         return 0
     signiture = None
     if is_os_windows():
@@ -25,7 +25,7 @@ def ping_v1(ip):
     for line in std_list:
         if any(signiture in line for signiture in signiture_list):
             if LTA:
-                pk_print(f'''ping {ip} ''', print_color='green')
+                ensure_printed(f'''ping {ip} ''', print_color='green')
             return 1
-    pk_print(f'''ping {ip} ''', print_color='red')
+    ensure_printed(f'''ping {ip} ''', print_color='red')
     return 0

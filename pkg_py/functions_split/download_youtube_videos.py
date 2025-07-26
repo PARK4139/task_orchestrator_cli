@@ -13,7 +13,7 @@ from pkg_py.functions_split.get_youtube_video_metadata import get_youtube_video_
 from pkg_py.functions_split.is_os_windows import is_os_windows
 from pkg_py.functions_split.mark_url_as_done import mark_url_as_done
 from pkg_py.functions_split.open_pnx_by_ext import ensure_pnx_opened_by_ext
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.system_object.directories import D_PKG_TXT
 from pkg_py.system_object.directories import D_PK_WORKING
 from pkg_py.system_object.files import F_FFMPEG_EXE
@@ -65,7 +65,7 @@ def download_youtube_videos(urls=None):
 
         value = db.get_values(db_id=db_id)
         if value != PkMessages2025.YES:
-            pk_print("🚫 사용자 요청으로 종료합니다.", print_color="yellow")
+            ensure_printed("🚫 사용자 요청으로 종료합니다.", print_color="yellow")
             return
 
         urls_raw = get_list_from_f(f_func_txt)
@@ -74,18 +74,18 @@ def download_youtube_videos(urls=None):
         ])
 
         if not urls:
-            pk_print("❗ URL이 입력되지 않았습니다.", print_color="red")
+            ensure_printed("❗ URL이 입력되지 않았습니다.", print_color="red")
             return
 
     for url in urls:
         url = url.strip()
 
         if url.startswith("#"):
-            pk_print(f"주석 처리된 URL, 건너뜀: {url}", print_color="yellow")
+            ensure_printed(f"주석 처리된 URL, 건너뜀: {url}", print_color="yellow")
             continue
 
         try:
-            pk_print(f"메타데이터 수집 중... {url}")
+            ensure_printed(f"메타데이터 수집 중... {url}")
             info, title, clip_id, ext = get_youtube_video_metadata(yt_dlp=yt_dlp, url=url)
 
             output_filename = f"{title} [{clip_id}].{ext}"
@@ -93,7 +93,7 @@ def download_youtube_videos(urls=None):
 
             f_pnx_downloaded = get_f_contained_feature_str(feature_str=output_filename, d_pnx=D_PK_WORKING)
             if f_pnx_downloaded and f_pnx_downloaded.lower().endswith(tuple(extensions_allowed)):
-                pk_print(f"download skip for {clip_id}({f_pnx_downloaded})", print_color="yellow")
+                ensure_printed(f"download skip for {clip_id}({f_pnx_downloaded})", print_color="yellow")
                 mark_url_as_done(f_func_txt, original_url=url)
 
                 value = db.get_values(db_id='download_option')
@@ -106,17 +106,17 @@ def download_youtube_videos(urls=None):
             # 병합된 최종 파일 존재 여부 확인
             f_pnx_downloaded = get_f_contained_feature_str(feature_str=output_filename, d_pnx=D_PK_WORKING)
             if f_pnx_downloaded and f_pnx_downloaded.lower().endswith(tuple(extensions_allowed)):
-                pk_print(f"download complete {clip_id}({f_pnx_downloaded})", print_color="green")
+                ensure_printed(f"download complete {clip_id}({f_pnx_downloaded})", print_color="green")
                 mark_url_as_done(f_func_txt, original_url=url)
 
                 value = db.get_values(db_id='download_option')
                 if value == PkMessages2025.play:
-                    pk_print(f'''f_pnx_downloaded={f_pnx_downloaded} {'%%%FOO%%%' if LTA else ''}''')
+                    ensure_printed(f'''f_pnx_downloaded={f_pnx_downloaded} {'%%%FOO%%%' if LTA else ''}''')
                     ensure_pnx_opened_by_ext(pnx=f_pnx_downloaded)
             else:
-                pk_print(f"❗ 병합된 최종 파일이 존재하지 않음: {f_output}", print_color="red")
+                ensure_printed(f"❗ 병합된 최종 파일이 존재하지 않음: {f_output}", print_color="red")
 
         except Exception:
-            pk_print(f"❌ 예외 발생: {url}\n{traceback.format_exc()}", print_color="red")
+            ensure_printed(f"❌ 예외 발생: {url}\n{traceback.format_exc()}", print_color="red")
 
-    pk_print("🎬 전체 다운로드 작업 완료!", print_color="green")
+    ensure_printed("🎬 전체 다운로드 작업 완료!", print_color="green")

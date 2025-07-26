@@ -1,7 +1,7 @@
 
 
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
 def get_ip_available_list_v4(timeout_ms=500, max_workers=None):
@@ -24,5 +24,5 @@ def get_ip_available_list_v4(timeout_ms=500, max_workers=None):
 
     # 성공한 IP만 추출
     ip_connected_list = [ip for ip, ok in results if ok]
-    pk_print(f'''ip_connected_list={ip_connected_list} {'%%%FOO%%%' if LTA else ''}''')
+    ensure_printed(f'''ip_connected_list={ip_connected_list} {'%%%FOO%%%' if LTA else ''}''')
     return ip_connected_list

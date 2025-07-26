@@ -4,9 +4,9 @@ if __name__ == "__main__":
         import traceback
 
         #  import assist_to_command_via_voice_kiri
-        from pkg_py.functions_split.pk_print import pk_print
+        from pkg_py.functions_split.ensure_printed import ensure_printed
         #, D_PROJECT
-        # from pkg_py.system_object.500_live_logic import pk_copy
+        # from pkg_py.system_object.500_live_logic import copy
         # from pkg_py.system_object.static_logic import STAMP_TRY_GUIDE, STAMP_EXCEPTION_DISCOVERED
 
         assist_to_command_via_voice_kiri()

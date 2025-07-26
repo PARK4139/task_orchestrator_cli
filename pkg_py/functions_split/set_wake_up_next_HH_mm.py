@@ -23,7 +23,7 @@ from fastapi import HTTPException
 from enum import Enum
 from datetime import datetime
 from base64 import b64decode
-from pkg_py.functions_split.assist_to_load_video_at_losslesscut import pk_ensure_video_loaded_at_losslesscut
+from pkg_py.functions_split.assist_to_load_video_at_losslesscut import ensure_video_loaded_at_losslesscut
 from pkg_py.functions_split.is_f import is_f
 from pkg_py.functions_split.get_pnx_windows_style import get_pnx_windows_style
 from pkg_py.functions_split.is_os_windows import is_os_windows
@@ -31,7 +31,7 @@ from pkg_py.functions_split.get_pnx_wsl_unix_style import get_pnx_wsl_unix_style
 from pkg_py.functions_split.get_pnx_windows_style import get_pnx_windows_style
 
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.get_pnx_list import get_pnx_list
 
 
@@ -62,11 +62,11 @@ def set_wake_up_next_HH_mm(HH, mm):
     cmd = f'schtasks /create /tn "{task_name}" /tr "cmd.exe /c exit" /sc once /st {wake_time_str} /f /it'
 
     # 실제 os 명령 exec  함수(sample: os.system) 대신 아래처럼 가정
-    pk_print(f'{STAMP_DEBUG} CMD: {cmd}', print_color="blue")
+    ensure_printed(f'{STAMP_DEBUG} CMD: {cmd}', print_color="blue")
     # sample: os.system(cmd)
 
     # 현재 시각과 예약 시각 출력
     current_time_str = now.strftime("%Y-%m-%d %H:%M:%S")
     readable_target_str = target_time.strftime("%Y-%m-%d %H:%M:%S")
-    pk_print(f'현재 시간: {current_time_str}, 컴퓨터 깨우기 예약 시각: {readable_target_str} {'%%%FOO%%%' if LTA else ''}',
+    ensure_printed(f'현재 시간: {current_time_str}, 컴퓨터 깨우기 예약 시각: {readable_target_str} {'%%%FOO%%%' if LTA else ''}',
              print_color="blue")

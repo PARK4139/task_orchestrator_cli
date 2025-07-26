@@ -3,7 +3,7 @@ from typing import Any
 from typing import Optional
 
 from pkg_py.functions_split.get_value_completed import get_value_completed
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.system_object.files import F_PK_DB
 
@@ -69,7 +69,7 @@ class PkSqlite3DB:
         cur.execute("SELECT answer FROM pk_table_state WHERE id = ?", (db_id,))
         row = cur.fetchone()
         value = row[0] if row else None
-        pk_print(f'''db_id=value : {db_id}={value} {'%%%FOO%%%' if LTA else ''}''', print_color="green")
+        ensure_printed(f'''db_id=value : {db_id}={value} {'%%%FOO%%%' if LTA else ''}''', print_color="green")
         return value
 
     def default_input_func(self, message: str, answer_options: list[str]) -> str:
@@ -157,7 +157,7 @@ class PkSqlite3DB:
         except (json.JSONDecodeError, TypeError):
             value = raw_value  # JSON 형식이 아니면 원본 그대로 반환
 
-        pk_print(f'''db_id={db_id}, value={value} {'%%%FOO%%%' if LTA else ''}''', print_color="green")
+        ensure_printed(f'''db_id={db_id}, value={value} {'%%%FOO%%%' if LTA else ''}''', print_color="green")
         return value
 
     def get_values_v2(self, db_id: str) -> Optional[Any]:
@@ -190,7 +190,7 @@ class PkSqlite3DB:
                     value = int(lowered)
                 else:
                     value = raw_value  # fallback 그대로 반환
-        pk_print(
+        ensure_printed(
             f'''[get_values_v2] db_id={db_id}, value={value}, type={type(value)}, repr={repr(value)} {'%%%FOO%%%' if LTA else ''}''',
             print_color="green"
         )

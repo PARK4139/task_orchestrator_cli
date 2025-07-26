@@ -2,7 +2,7 @@
 
 from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.system_object.encodings import Encoding
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
 def cmd_to_os_v_1_0_1(cmd: str, mode="", encoding=None):
@@ -16,9 +16,9 @@ def cmd_to_os_v_1_0_1(cmd: str, mode="", encoding=None):
 
     std_list = []
     if mode == "a":
-        pk_print(str_working=rf'''cmd="{cmd}" mode="async"  {'%%%FOO%%%' if LTA else ''}''')
+        ensure_printed(str_working=rf'''cmd="{cmd}" mode="async"  {'%%%FOO%%%' if LTA else ''}''')
     else:
-        pk_print(str_working=rf'''cmd="{cmd}" mode="동기"  {'%%%FOO%%%' if LTA else ''}''')
+        ensure_printed(str_working=rf'''cmd="{cmd}" mode="동기"  {'%%%FOO%%%' if LTA else ''}''')
     if encoding != Encoding.UTF8:
         encoding = Encoding.CP949  # UTF8 가 아니면 CP949 로 강제
     if mode == "a":  # async
@@ -40,19 +40,19 @@ def cmd_to_os_v_1_0_1(cmd: str, mode="", encoding=None):
             if stdout:
                 for std_str in stdout.splitlines():
                     std_list.append(std_str.strip())
-                    # pk_print(f"STD_OUT: {std_str.strip()}", print_color='green')
-                    pk_print(f"STD_OUT: {std_str.strip()}")
+                    # ensure_printed(f"STD_OUT: {std_str.strip()}", print_color='green')
+                    ensure_printed(f"STD_OUT: {std_str.strip()}")
             if stderr:
                 for std_str in stderr.splitlines():
                     std_list.append(std_str.strip())
-                    pk_print(f"STD_ERR: {std_str.strip()}", print_color='red')
+                    ensure_printed(f"STD_ERR: {std_str.strip()}", print_color='red')
         except:
-            pk_print(f'''[{func_n}()] {traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
+            ensure_printed(f'''[{func_n}()] {traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
 
         finally:
             try:
                 if process and process.poll() is None:
                     process.terminate()
             except:
-                pk_print(f'''[{func_n}()] {traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
+                ensure_printed(f'''[{func_n}()] {traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
         return std_list

@@ -15,7 +15,7 @@ def get_video_filtered_list_v4(
 
     from pkg_py.system_object.directories import D_PKG_PKL
     from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
-    from pkg_py.functions_split.pk_print import pk_print
+    from pkg_py.functions_split.ensure_printed import ensure_printed
     from pkg_py.functions_split.get_pk_wsl_mount_d import get_pk_wsl_mount_d
     func_n = inspect.currentframe().f_code.co_name
 
@@ -35,17 +35,17 @@ def get_video_filtered_list_v4(
                 cache = pickle.load(f)
             if time.time() - cache.get("timestamp", 0) < cache_ttl:
                 if verbose:
-                    pk_print(f"[CACHE] using video list cache from {f_cache}", print_color='cyan')
+                    ensure_printed(f"[CACHE] using video list cache from {f_cache}", print_color='cyan')
                 return cache["video_list"]
         except Exception as e:
             if verbose:
-                pk_print(f"[CACHE] failed to load cache ({e}), will refresh", print_color='yellow')
+                ensure_printed(f"[CACHE] failed to load cache ({e}), will refresh", print_color='yellow')
 
     # --- 파일 목록 가져오기 ---
     try:
         file_list = [os.path.join(d_working, f) for f in os.listdir(d_working)]
     except Exception as e:
-        pk_print(f"[ERROR] Failed to read files from {d_working}: {e}", print_color='red')
+        ensure_printed(f"[ERROR] Failed to read files from {d_working}: {e}", print_color='red')
         return []
 
     ext_set = set(ext.lower() for ext in ext_allowed_list)
@@ -76,9 +76,9 @@ def get_video_filtered_list_v4(
                     "video_list": filtered_list
                 }, f)
             if verbose:
-                pk_print(f"[CACHE] refreshed video list and saved to {f_cache}", print_color='green')
+                ensure_printed(f"[CACHE] refreshed video list and saved to {f_cache}", print_color='green')
         except Exception as e:
             if verbose:
-                pk_print(f"[CACHE] failed to save cache ({e})", print_color='red')
+                ensure_printed(f"[CACHE] failed to save cache ({e})", print_color='red')
 
     return filtered_list

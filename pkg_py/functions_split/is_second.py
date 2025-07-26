@@ -36,10 +36,10 @@ from queue import Queue, Empty
 from prompt_toolkit import PromptSession
 from pkg_py.functions_split.is_losslesscut_running import is_losslesscut_running
 from pkg_py.functions_split.is_window_opened import is_window_opened
-from pkg_py.functions_split.pk_press import pk_press
-from pkg_py.functions_split.pk_print_once import pk_print_once
+from pkg_py.functions_split.press import press
+from pkg_py.functions_split.ensure_printed_once import ensure_printed_once
 from pkg_py.functions_split.cmd_to_os import cmd_to_os
-from pkg_py.functions_split.write_list_to_f import write_list_to_f
+from pkg_py.functions_split.ensure_list_written_to_f import ensure_list_written_to_f
 
 from pkg_py.functions_split.set_pk_context_state import set_pk_context_state
 from pkg_py.functions_split.ensure_console_cleared import ensure_console_cleared
@@ -60,7 +60,7 @@ from datetime import datetime
 from dataclasses import dataclass
 from bs4 import BeautifulSoup
 from base64 import b64encode
-from pkg_py.functions_split.assist_to_load_video_at_losslesscut import pk_ensure_video_loaded_at_losslesscut
+from pkg_py.functions_split.assist_to_load_video_at_losslesscut import ensure_video_loaded_at_losslesscut
 from pkg_py.system_object.etc import PK_UNDERLINE
 from pkg_py.functions_split.get_value_completed import get_value_completed
 from pkg_py.functions_split.is_d import is_d

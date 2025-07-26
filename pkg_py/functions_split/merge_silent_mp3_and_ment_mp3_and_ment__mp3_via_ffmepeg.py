@@ -1,4 +1,4 @@
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
 def merge_silent_mp3_and_ment_mp3_and_ment__mp3_via_ffmepeg(ment_mp3, ment__mp3):
@@ -13,7 +13,7 @@ def merge_silent_mp3_and_ment_mp3_and_ment__mp3_via_ffmepeg(ment_mp3, ment__mp3)
     """
     silent_mp3 = F_SILENT_MP3
     if not os.path.exists(silent_mp3):
-        pk_print(rf"사일런트 mp3 f({silent_mp3})이 없습니다")
+        ensure_printed(rf"사일런트 mp3 f({silent_mp3})이 없습니다")
         raise
     if not os.path.exists(ment_mp3):
         cmd = rf'echo y | "ffmpeg" -i "concat:{os.path.abspath(silent_mp3)}|{os.path.abspath(ment__mp3)}" -acodec copy -metadata "title=Some Song" "{os.path.abspath(ment_mp3)}" -map_metadata 0:-1  >nul 2>&1'

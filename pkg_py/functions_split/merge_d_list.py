@@ -44,7 +44,7 @@ from pkg_py.functions_split.rerun_losslesscut import rerun_losslesscut
 from pkg_py.functions_split.load_f_video_on_losslesscut import load_f_video_on_losslesscut
 from pkg_py.functions_split.is_window_opened import is_window_opened
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 from pkg_py.system_object.etc import PkFilter
 from pkg_py.system_object.files import F_POT_PLAYER_MINI_64_EXE
@@ -65,7 +65,7 @@ from cryptography.hazmat.backends import default_backend
 from Cryptodome.Cipher import AES
 from collections import Counter
 from bs4 import ResultSet
-from pkg_py.functions_split.assist_to_load_video_at_losslesscut import pk_ensure_video_loaded_at_losslesscut
+from pkg_py.functions_split.assist_to_load_video_at_losslesscut import ensure_video_loaded_at_losslesscut
 from pkg_py.system_object.etc import PkFilter, PK_UNDERLINE
 from pkg_py.functions_split.get_value_completed import get_value_completed
 from pkg_py.system_object.directories import D_PKG_PY
@@ -75,10 +75,10 @@ from pkg_py.functions_split.get_pnx_wsl_unix_style import get_pnx_wsl_unix_style
 from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
 from pkg_py.functions_split.is_os_windows import is_os_windows
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.get_pnx_list import get_pnx_list
 
 
@@ -94,7 +94,7 @@ def merge_d_list(d_list: List[str]):
     d_list = [x.strip("\"") for x in d_list]  # 리스트 각 요소 strip("\""),  [""A""] from ["A"]
     d_list = [x.strip("\'") for x in d_list]  # 리스트 각 요소 strip("\'),  ["'A'""] from ["A"]
 
-    pk_print(f'''d_list={d_list}  {'%%%FOO%%%' if LTA else ''}''')
+    ensure_printed(f'''d_list={d_list}  {'%%%FOO%%%' if LTA else ''}''')
 
     if 0 == len(d_list):
         pk_speak_v2("pnx가 아무것도 입력되지 않았습니다", comma_delay=0.98)
@@ -132,18 +132,18 @@ def merge_d_list(d_list: List[str]):
         #         speak_ments("하나 이상의 pnx가 존재하지 않습니다", sleep_after_play=0.65)
         #         return
 
-        pk_print("빈 트리 리프d별로 해체한 뒤 remove")
+        ensure_printed("빈 트리 리프d별로 해체한 뒤 remove")
         f_list_to_move = []
         for index, d in enumerate(d_list):
             for root, _, f_nx_list in os.walk(d, topdown=True):
                 for f_nx in f_nx_list:
                     f_list_to_move.append(rf"{root}\{f_nx}")
-        [pk_print(rf'f_to_move : {f_to_move}') for f_to_move in f_list_to_move]
-        pk_print(f'''type(f_list_to_move)={type(f_list_to_move)}  {'%%%FOO%%%' if LTA else ''}''')
-        pk_print(f'''len(f_list_to_move)={len(f_list_to_move)}  {'%%%FOO%%%' if LTA else ''}''')
+        [ensure_printed(rf'f_to_move : {f_to_move}') for f_to_move in f_list_to_move]
+        ensure_printed(f'''type(f_list_to_move)={type(f_list_to_move)}  {'%%%FOO%%%' if LTA else ''}''')
+        ensure_printed(f'''len(f_list_to_move)={len(f_list_to_move)}  {'%%%FOO%%%' if LTA else ''}''')
         dst = rf"{os.path.dirname(d_list[0])}\{os.path.basename(d_list[0]).replace("_$merged", "")}_$merged"
         ensure_pnx_made(dst, mode="d")
-        pk_print(rf'dst : {dst}')
+        ensure_printed(rf'dst : {dst}')
 
         for f_to_move in f_list_to_move:
             move_pnx(pnx=f_to_move, d_dst=dst)
@@ -187,12 +187,12 @@ def merge_d_list(d_list: List[str]):
                         if f_cnt == 0:
                             d_list_to_move.append(rf"{root}\{d_nx}")
 
-            [pk_print(sample) for sample in d_list_to_move]
-            pk_print(f'''d_list_to_move={d_list_to_move}''')
-            pk_print(rf'''type(d_list_to_move)={type(d_list_to_move)}''')
-            pk_print(rf'''len(d_list_to_move)={len(d_list_to_move)}''')
+            [ensure_printed(sample) for sample in d_list_to_move]
+            ensure_printed(f'''d_list_to_move={d_list_to_move}''')
+            ensure_printed(rf'''type(d_list_to_move)={type(d_list_to_move)}''')
+            ensure_printed(rf'''len(d_list_to_move)={len(d_list_to_move)}''')
 
-            pk_print(rf'dst : {dst}')
+            ensure_printed(rf'dst : {dst}')
             ensure_pnx_made(dst, mode="d")
 
             if len(d_list_to_move) == 0:

@@ -24,8 +24,8 @@ from prompt_toolkit import PromptSession
 from pkg_py.functions_split.print_iterable_as_vertical import print_iterable_as_vertical
 from pkg_py.functions_split.rerun_losslesscut import rerun_losslesscut
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
-from pkg_py.functions_split.pk_press import pk_press
-from pkg_py.functions_split.pk_print_once import pk_print_once
+from pkg_py.functions_split.press import press
+from pkg_py.functions_split.ensure_printed_once import ensure_printed_once
 
 
 from pkg_py.functions_split.set_pk_context_state import set_pk_context_state
@@ -48,10 +48,10 @@ from pkg_py.functions_split.get_pnx_wsl_unix_style import get_pnx_wsl_unix_style
 from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
 from pkg_py.functions_split.is_os_windows import is_os_windows
 from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.get_d_working import get_d_working
 
 
@@ -80,7 +80,7 @@ def assist_to_run_project_cmake():
 
     project_pnx = D_PROJECT_CMAKE
 
-    pk_print(f'''{STAMP_TRY_GUIDE} ssh -p {port} {user_n}@{ip} {'%%%FOO%%%' if LTA else ''}''')
+    ensure_printed(f'''{STAMP_TRY_GUIDE} ssh -p {port} {user_n}@{ip} {'%%%FOO%%%' if LTA else ''}''')
 
     std_out_list, std_err_list = cmd_to_remote_os_with_pubkey(cmd=rf"sudo apt update", **config_remote_os)
     std_out_list, std_err_list = cmd_to_remote_os_with_pubkey(cmd=rf"echo y | sudo apt install build-essential",

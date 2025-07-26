@@ -1,4 +1,4 @@
-from pkg_py.functions_split.pk_paste import pk_paste
+from pkg_py.functions_split.paste import paste
 
 
 def get_str_from_clipboard():

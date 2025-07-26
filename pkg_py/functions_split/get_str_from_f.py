@@ -1,6 +1,6 @@
 from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.system_object.encodings import Encoding
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
 def get_str_from_f(f):
@@ -10,7 +10,7 @@ def get_str_from_f(f):
 
     func_n = inspect.currentframe().f_code.co_name
 
-    pk_print(f'''f={f}''')
+    ensure_printed(f'''f={f}''')
 
     if f is None:
         return ""
@@ -24,5 +24,5 @@ def get_str_from_f(f):
                     return ""
                 return content
     except:
-        pk_print(f'''{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}" ''', print_color='red')
+        ensure_printed(f'''{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}" ''', print_color='red')
         return ""

@@ -1,4 +1,4 @@
-from pkg_py.workspace.pk_workspace import copy_and_push_auto_utility
+from pkg_py.functions_split.ensure_auto_utility_copied_and_pushed import ensure_auto_utility_copied_and_pushed
 
 if __name__ == "__main__":
-    copy_and_push_auto_utility()
+    ensure_auto_utility_copied_and_pushed()

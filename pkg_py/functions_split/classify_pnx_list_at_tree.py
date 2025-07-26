@@ -16,14 +16,14 @@ from pkg_py.system_object.print_red import print_red
 from PIL import Image
 from datetime import timedelta
 from pkg_py.functions_split.get_pnx_wsl_unix_style import get_pnx_wsl_unix_style
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
 def classify_pnx_list_at_tree(d_working, mode, with_walking, debug_mode=True):
-    pk_print(str_working=rf'''d="{d_working}" mode="{mode}"  {'%%%FOO%%%' if LTA else ''}''')
+    ensure_printed(str_working=rf'''d="{d_working}" mode="{mode}"  {'%%%FOO%%%' if LTA else ''}''')
 
     if mode == 'f':
         # todo : ref : f이 너무 많을떄(file_cnt_limit이 100개(?) 넘어가면) without_walking=True

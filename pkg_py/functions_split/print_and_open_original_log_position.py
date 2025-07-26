@@ -28,7 +28,7 @@ from pkg_py.functions_split.get_pnx_list import get_pnx_list
 from pkg_py.functions_split.get_list_calculated import get_list_calculated
 
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
 def print_and_open_original_log_position(area_id, course_id, vehicle_id, steering_date=None):
@@ -42,7 +42,7 @@ def print_and_open_original_log_position(area_id, course_id, vehicle_id, steerin
     course_id = course_id if course_id is not None else foo
 
     func_n = inspect.currentframe().f_code.co_name
-    pk_print(str_working=rf'''{func_n}()  {'%%%FOO%%%' if LTA else ''}''', print_color='blue')
+    ensure_printed(str_working=rf'''{func_n}()  {'%%%FOO%%%' if LTA else ''}''', print_color='blue')
     data_required = {}
     data_required["차량"] = vehicle_id
     data_required["지역"] = area_id
@@ -59,9 +59,9 @@ def print_and_open_original_log_position(area_id, course_id, vehicle_id, steerin
     # issue_file_name = issue_log_index_data["_f_ 위치"].split('/')[-1]
     # origin_log_file_name = get_origin_log_file_name(issue_file_name)
     original_log_position = rf"\\192.168.1.33\02_Orignal\{data_required['차량']}\{data_required['지역']}\{data_required['주행일자']}\{data_required['코스']}"
-    pk_print(str_working=rf'''original_log_position="{original_log_position}"  {'%%%FOO%%%' if LTA else ''}''',
+    ensure_printed(str_working=rf'''original_log_position="{original_log_position}"  {'%%%FOO%%%' if LTA else ''}''',
              print_color='blue')
     if foo not in original_log_position:
         cmd_to_os(cmd=rf'explorer "{original_log_position}" ')
     else:
-        pk_print(f'''수집한 오리지널 로그_f_의 경로가 온전하지 않습니다.''', print_color='red')
+        ensure_printed(f'''수집한 오리지널 로그_f_의 경로가 온전하지 않습니다.''', print_color='red')

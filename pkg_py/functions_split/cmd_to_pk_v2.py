@@ -1,10 +1,10 @@
 
 
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
-def pk_ensure_pk_system_started_v2(index_map):
+def ensure_pk_system_started_v2(index_map):
     #
     # , guide_pk_error_mssage
     try:
@@ -14,11 +14,11 @@ def pk_ensure_pk_system_started_v2(index_map):
         import glob
 
         if LTA:
-            pk_print(f"len(sys.argv)={len(sys.argv)} {'%%%FOO%%%' if LTA else ''}")
+            ensure_printed(f"len(sys.argv)={len(sys.argv)} {'%%%FOO%%%' if LTA else ''}")
 
         if len(sys.argv) == 1:
             if LTA:
-                pk_print(f'인자가 {len(sys.argv)}개 입력되었습니다 {"%%%FOO%%%" if LTA else ""}')
+                ensure_printed(f'인자가 {len(sys.argv)}개 입력되었습니다 {"%%%FOO%%%" if LTA else ""}')
             print_pk_ls(index_map=index_map)  # 업데이트 필요
             return
 
@@ -36,7 +36,7 @@ def pk_ensure_pk_system_started_v2(index_map):
             if arg1 in index_map:
                 pk_file_to_run = index_map[arg1]
                 if LTA:
-                    pk_print(f"[INFO] 실행할 파일: {pk_file_to_run}")
+                    ensure_printed(f"[INFO] 실행할 파일: {pk_file_to_run}")
                 run_pk_python_program_by_path(pk_file_to_run, sys.argv[2:])
                 return
             else:

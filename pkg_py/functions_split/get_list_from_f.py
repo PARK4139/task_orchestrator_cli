@@ -1,14 +1,14 @@
 def get_list_from_f(f):
     from pkg_py.system_object.local_test_activate import LTA
     from pkg_py.system_object.encodings import Encoding
-    from pkg_py.functions_split.pk_print import pk_print
+    from pkg_py.functions_split.ensure_printed import ensure_printed
     from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style
 
     import os
     import traceback
 
     f = get_pnx_os_style(f)
-    pk_print(f'''f={f}''')
+    ensure_printed(f'''f={f}''')
 
     if f is None:
         return []
@@ -25,4 +25,4 @@ def get_list_from_f(f):
                     return []
                 return lines
     except:
-        pk_print(f'''{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}" ''', print_color='red')
+        ensure_printed(f'''{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}" ''', print_color='red')

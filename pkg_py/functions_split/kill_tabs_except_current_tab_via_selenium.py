@@ -14,7 +14,7 @@ from moviepy import VideoFileClip
 from pkg_py.functions_split.get_value_completed import get_value_completed
 from pkg_py.functions_split.get_pnx_list import get_pnx_list
 from pkg_py.functions_split.get_pnx_windows_style import get_pnx_windows_style
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
 def kill_tabs_except_current_tab_via_selenium(driver):
@@ -24,8 +24,8 @@ def kill_tabs_except_current_tab_via_selenium(driver):
             driver.switch_to.window(window)
             # press("ctrl", "w"5)
             driver.close()  # 탭 닫기
-            pk_sleep(seconds=0.1)
-        #     pk_sleep(milliseconds=random.randint(a=22, b=2222))
-        # pk_sleep(milliseconds=random.randint(a=22, b=2222))
+            ensure_slept(seconds=0.1)
+        #     ensure_slept(milliseconds=random.randint(a=22, b=2222))
+        # ensure_slept(milliseconds=random.randint(a=22, b=2222))
 
     driver.switch_to.window(current_window)

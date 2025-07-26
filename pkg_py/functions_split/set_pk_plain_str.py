@@ -5,7 +5,7 @@ from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
 def set_pk_plain_str(f_token, plain_str, f_key):
@@ -21,8 +21,8 @@ def set_pk_plain_str(f_token, plain_str, f_key):
         with open(f_token, "w", encoding="utf-8") as f_obj:
             toml.dump(o, f_obj)
         if LTA:
-            pk_print(f'''token set. {f_token} {'%%%FOO%%%' if LTA else ''}''', print_color='green')
+            ensure_printed(f'''token set. {f_token} {'%%%FOO%%%' if LTA else ''}''', print_color='green')
     else:
         if LTA:
-            pk_print(f'''len(get_list_from_f(f_token))={len(get_list_from_f(f_token))} {'%%%FOO%%%' if LTA else ''}''')
-        pk_print(f'''token is already set {f_token} {'%%%FOO%%%' if LTA else ''}''')
+            ensure_printed(f'''len(get_list_from_f(f_token))={len(get_list_from_f(f_token))} {'%%%FOO%%%' if LTA else ''}''')
+        ensure_printed(f'''token is already set {f_token} {'%%%FOO%%%' if LTA else ''}''')

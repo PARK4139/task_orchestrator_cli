@@ -6,10 +6,10 @@ from os.path import dirname
 from functools import lru_cache
 from pkg_py.functions_split.kill_self_pk_program import kill_self_pk_program
 from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
 def move_pnx_list_pattern_via_hard_coded():
@@ -61,7 +61,7 @@ def move_pnx_list_pattern_via_hard_coded():
 
     # 확인
     print_iterable_as_vertical(item_iterable=pnxs_and_pnxs_new, item_iterable_n="바꿀 대상")
-    pk_print(str_working=rf'''len(pnxs_and_pnxs_new)="{len(pnxs_and_pnxs_new)}"  {'%%%FOO%%%' if LTA else ''}''')
+    ensure_printed(str_working=rf'''len(pnxs_and_pnxs_new)="{len(pnxs_and_pnxs_new)}"  {'%%%FOO%%%' if LTA else ''}''')
 
     # 적용
     rename_pnxs(pnx_list=pnxs_and_pnxs_new)

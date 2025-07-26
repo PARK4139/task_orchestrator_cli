@@ -1,5 +1,5 @@
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
 def kill_window_by_title_via_wind32con(window_title):
@@ -13,14 +13,14 @@ def kill_window_by_title_via_wind32con(window_title):
                 current_window_title = win32gui.GetWindowText(hwnd)
                 if current_window_title == window_title:
                     win32gui.PostMessage(hwnd, win32con.WM_CLOSE, 0, 0)
-                    pk_print(f'close window ({window_title})', print_color='blue')
+                    ensure_printed(f'close window ({window_title})', print_color='blue')
                     return 0  # 창을 찾았으면 더 이상 탐색하지 않음
         except:
-            pk_print(f"{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}", print_color='red')
+            ensure_printed(f"{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}", print_color='red')
         return 1  # 계속 탐색
 
     try:
         # 모든 창을 탐색하여 해당 제목을 찾음
         win32gui.EnumWindows(enum_windows_callback, None)
     except:
-        pk_print(f"{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}", print_color='red')
+        ensure_printed(f"{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}", print_color='red')

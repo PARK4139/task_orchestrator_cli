@@ -31,7 +31,7 @@ from pkg_py.functions_split.get_video_filtered_list import get_video_filtered_li
 from pkg_py.functions_split.get_d_working import get_d_working
 
 from pkg_py.functions_split.cmd_to_os import cmd_to_os
-from pkg_py.functions_split.write_list_to_f import write_list_to_f
+from pkg_py.functions_split.ensure_list_written_to_f import ensure_list_written_to_f
 from pkg_py.system_object.files import F_POT_PLAYER_MINI_64_EXE, F_HISTORICAL_PNX
 from pkg_py.system_object.files import F_LOSSLESSCUT_EXE
 from pkg_py.system_object.files import F_FFMPEG_EXE

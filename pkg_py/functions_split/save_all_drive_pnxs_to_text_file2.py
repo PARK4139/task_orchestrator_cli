@@ -43,10 +43,10 @@ from pkg_py.functions_split.get_d_working import get_d_working
 from pkg_py.functions_split.is_window_title_opened import is_window_title_opened
 from pkg_py.functions_split.is_window_opened import is_window_opened
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
-from pkg_py.functions_split.pk_press import pk_press
-from pkg_py.functions_split.pk_print_state import pk_print_state
+from pkg_py.functions_split.press import press
+from pkg_py.functions_split.print_state import print_state
 from pkg_py.functions_split.cmd_to_os import cmd_to_os
-from pkg_py.functions_split.write_list_to_f import write_list_to_f
+from pkg_py.functions_split.ensure_list_written_to_f import ensure_list_written_to_f
 from pkg_py.functions_split.get_list_sorted import get_list_sorted
 
 from pkg_py.functions_split.ensure_console_cleared import ensure_console_cleared
@@ -79,10 +79,10 @@ from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
 from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style
 from pkg_py.functions_split.get_pnx_windows_style import get_pnx_windows_style
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.get_pnx_list import get_pnx_list
 
 
@@ -130,7 +130,7 @@ def save_all_drive_pnxs_to_text_file2():  # 루프 수정필요 # 이 함수는 
             drive = f"{letter}:\\"
             if os.path.exists(drive):
                 drives.append(drive)
-        pk_print(str_working=rf'''drives="{drives}"  {'%%%FOO%%%' if LTA else ''}''')
+        ensure_printed(str_working=rf'''drives="{drives}"  {'%%%FOO%%%' if LTA else ''}''')
         return drives
 
     # 3. 드라이브에서 f 검색하고 처리하기
@@ -148,18 +148,18 @@ def save_all_drive_pnxs_to_text_file2():  # 루프 수정필요 # 이 함수는 
         temp = set()
         # 모든 드라이브에서 f 탐색
         for drive in drives:
-            pk_print(str_working=rf'''drive="{drive}"  {'%%%FOO%%%' if LTA else ''}''')
+            ensure_printed(str_working=rf'''drive="{drive}"  {'%%%FOO%%%' if LTA else ''}''')
             for foldername, subfolders, filenames in os.walk(drive):
                 for filename in filenames:
                     file_pnx = os.path.join(foldername, filename)
-                    # pk_print(string = rf'''file_pnx="{file_pnx}"  {'%%%FOO%%%' if LTA else ''}''')
+                    # ensure_printed(string = rf'''file_pnx="{file_pnx}"  {'%%%FOO%%%' if LTA else ''}''')
                     cnt_files = cnt_files - 1
                     pnxs.append(file_pnx)
                     if cnt_files == 0:
-                        # pk_print(string = rf'''file_pnx="{file_pnx}"  {'%%%FOO%%%' if LTA else ''}''')
+                        # ensure_printed(string = rf'''file_pnx="{file_pnx}"  {'%%%FOO%%%' if LTA else ''}''')
                         cnt_files = limit
                         cnt_txt_files = cnt_txt_files + 1
-                        # pk_print(string = rf'''cnt_txt_files="{cnt_txt_files}"  {'%%%FOO%%%' if LTA else ''}''')
+                        # ensure_printed(string = rf'''cnt_txt_files="{cnt_txt_files}"  {'%%%FOO%%%' if LTA else ''}''')
                         output_pnx_txt_before = rf"{D_PKG_TXT}\{func_n}_{cnt_txt_files - 1}.txt"
                         temp = get_list_from_f(f=output_pnx_txt_before)
                         if None != temp:
@@ -167,7 +167,7 @@ def save_all_drive_pnxs_to_text_file2():  # 루프 수정필요 # 이 함수는 
                                 cnt_txt_files = cnt_txt_files - 1
 
                         output_pnx_txt = rf"{D_PKG_TXT}\{func_n}_{cnt_txt_files}.txt"
-                        # pk_print(string = rf'''output_pnx_txt="{output_pnx_txt}"  {'%%%FOO%%%' if LTA else ''}''')
+                        # ensure_printed(string = rf'''output_pnx_txt="{output_pnx_txt}"  {'%%%FOO%%%' if LTA else ''}''')
                         # if any(exclude_path in file_pnx for exclude_path in exclude_paths):
                         #     continue
                         with open(output_pnx_txt, 'w', encoding='utf-8') as f:
@@ -181,11 +181,11 @@ def save_all_drive_pnxs_to_text_file2():  # 루프 수정필요 # 이 함수는 
                                 else:
                                     if not pnx.strip() == "":
                                         f.write(f'{pnx}\n')
-                                        pk_print(
+                                        ensure_printed(
                                             str_working=rf'''cnt="{cnt}" pnxs="{pnx}" output_pnx_txt="{output_pnx_txt}"  {'%%%FOO%%%' if LTA else ''}''')
                                     else:
-                                        pk_print(f'''없다''')
-        pk_print(str_working=rf'''temp="{temp}"  {'%%%FOO%%%' if LTA else ''}''')
+                                        ensure_printed(f'''없다''')
+        ensure_printed(str_working=rf'''temp="{temp}"  {'%%%FOO%%%' if LTA else ''}''')
 
     # exec
     exclude_paths_txt = rf'{D_PKG_TXT}\{func_n}_exclude_paths.txt'

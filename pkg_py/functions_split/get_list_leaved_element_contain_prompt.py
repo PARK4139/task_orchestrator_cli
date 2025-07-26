@@ -15,7 +15,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from prompt_toolkit.styles import Style
 from pkg_py.functions_split.ensure_window_to_front import ensure_window_to_front
 from pkg_py.functions_split.get_video_filtered_list import get_video_filtered_list
-from pkg_py.functions_split.pk_print_once import pk_print_once
+from pkg_py.functions_split.ensure_printed_once import ensure_printed_once
 from pkg_py.functions_split.ensure_console_cleared import ensure_console_cleared
 from pkg_py.system_object.etc import PkFilter
 from pkg_py.system_object.map_massages import PkMessages2025

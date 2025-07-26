@@ -14,7 +14,7 @@ if __name__ == '__main__':
 
         while 1:
             analize_tree(d_src=rf"D:\pk_classifying")
-            pk_sleep(hours=3)
+            ensure_slept(hours=3)
         # ___________________________________________________________________________
     except Exception as exception:
         ensure_do_exception_routine(traceback=traceback, exception=exception)

@@ -7,7 +7,7 @@ from pkg_py.functions_split.get_list_removed_by_removing_runtine import get_list
 from pkg_py.functions_split.get_list_removed_element_contain_prompt import get_list_removed_element_contain_prompt
 from pkg_py.functions_split.get_list_via_user_input import get_list_via_user_input
 from pkg_py.functions_split.is_window_opened import is_window_opened
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.print_iterable_as_vertical import print_iterable_as_vertical
 from pkg_py.system_object.directories_reuseable import D_PROJECT
 from pkg_py.system_object.local_test_activate import LTA
@@ -22,7 +22,7 @@ def download_youtube_list(via_f_txt=None, video_url_list=None):
     ensure_pnx_made(pnx=f_func_n_txt, mode="f")
 
     if via_f_txt is None and video_url_list is None:
-        pk_print(rf"{func_n}() 동작 조건 불충족")
+        ensure_printed(rf"{func_n}() 동작 조건 불충족")
         return
 
     if via_f_txt is True and video_url_list is None:
@@ -37,12 +37,12 @@ def download_youtube_list(via_f_txt=None, video_url_list=None):
     elif video_url_list is not None:
         video_url_list = video_url_list
     else:
-        pk_print(f'''  {'%%%FOO%%%' if LTA else ''} ''', print_color='red')
+        ensure_printed(f'''  {'%%%FOO%%%' if LTA else ''} ''', print_color='red')
         return
 
     video_url_list = get_list_removed_by_removing_runtine(working_list=video_url_list)
     print_iterable_as_vertical(item_iterable=video_url_list, item_iterable_n="urls")
-    pk_print(rf'''len(urls)="{len(video_url_list)}"''')
+    ensure_printed(rf'''len(urls)="{len(video_url_list)}"''')
     if len(video_url_list) == 0:
         return
     string_playlist_positive = 'list='
@@ -51,12 +51,12 @@ def download_youtube_list(via_f_txt=None, video_url_list=None):
             encoded_url = quote(url, safe=':/?&=')
             from pytube import Playlist
             playlist = Playlist(encoded_url)
-            pk_print(str_working=rf'''playlist="{playlist}"  {'%%%FOO%%%' if LTA else ''}''')
-            pk_print(str_working=rf'''playlist.title="{playlist.title}"  {'%%%FOO%%%' if LTA else ''}''')
-            pk_print(
+            ensure_printed(str_working=rf'''playlist="{playlist}"  {'%%%FOO%%%' if LTA else ''}''')
+            ensure_printed(str_working=rf'''playlist.title="{playlist.title}"  {'%%%FOO%%%' if LTA else ''}''')
+            ensure_printed(
                 str_working=rf'''len(playlist.video_urls)="{len(playlist.video_urls)}"  {'%%%FOO%%%' if LTA else ''}''')
             for index, video in enumerate(playlist.videos, start=1):
-                pk_print(str_working=rf'''video.watch_url="{video.watch_url}"  {'%%%FOO%%%' if LTA else ''}''')
+                ensure_printed(str_working=rf'''video.watch_url="{video.watch_url}"  {'%%%FOO%%%' if LTA else ''}''')
                 download_youtube_videos(urls=[video.watch_url])
         else:
             download_youtube_videos(urls=[url])

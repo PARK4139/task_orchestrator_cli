@@ -39,7 +39,7 @@ def rename_pnxs_from_________to_______2______via_hard_coded():
     #
     # # 확인
     # print_list_as_vertical(working_list=pnxs_and_pnxs_new, items_name="바꿀 대상")
-    # pk_print(str_working=rf'''len(pnxs_and_pnxs_new)="{len(pnxs_and_pnxs_new)}"  {'%%%FOO%%%' if LTA else ''}''')
+    # ensure_printed(str_working=rf'''len(pnxs_and_pnxs_new)="{len(pnxs_and_pnxs_new)}"  {'%%%FOO%%%' if LTA else ''}''')
     #
     # # 적용
     # rename_pnxs(pnxs=pnxs_and_pnxs_new)

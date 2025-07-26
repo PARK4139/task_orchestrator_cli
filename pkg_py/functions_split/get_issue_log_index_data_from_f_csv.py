@@ -3,7 +3,7 @@
 from tkinter import UNDERLINE
 
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
 def get_issue_log_index_data_from_f_csv(line_order, issues_list_csv):
@@ -13,10 +13,10 @@ def get_issue_log_index_data_from_f_csv(line_order, issues_list_csv):
     line_order = int(line_order)
     nth_row = get_nth_row(df, n=line_order)
     if nth_row is not None:
-        pk_print(str_working=rf'''{PK_UNDERLINE}n="{line_order}"  {'%%%FOO%%%' if LTA else ''}''')
+        ensure_printed(str_working=rf'''{PK_UNDERLINE}n="{line_order}"  {'%%%FOO%%%' if LTA else ''}''')
         for col in columns_required:
             if col in df.columns:  # 열이 존재하는 경우만 출력 # todo get은 get 기능만 출력은 따로..
-                pk_print(f"{col}: {nth_row[col]}")
+                ensure_printed(f"{col}: {nth_row[col]}")
                 # 필요한 것만 추가
                 if col == "_f_ 위치":
                     data_required["_f_ 위치"] = nth_row[col]

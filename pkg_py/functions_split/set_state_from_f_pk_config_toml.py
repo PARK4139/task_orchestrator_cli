@@ -42,8 +42,8 @@ from pkg_py.functions_split.load_f_video_on_losslesscut import load_f_video_on_l
 from pkg_py.functions_split.is_window_title_front import is_window_title_front
 from pkg_py.functions_split.get_d_working import get_d_working
 from pkg_py.functions_split.is_window_title_opened import is_window_title_opened
-from pkg_py.functions_split.pk_print_state import pk_print_state
-from pkg_py.functions_split.pk_print_once import pk_print_once
+from pkg_py.functions_split.print_state import print_state
+from pkg_py.functions_split.ensure_printed_once import ensure_printed_once
 
 from pkg_py.functions_split.cmd_to_os import cmd_to_os
 from pkg_py.system_object.files import F_LOSSLESSCUT_EXE
@@ -65,15 +65,15 @@ from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style
 from pkg_py.system_object.local_test_activate import LTA
 
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.get_pnx_list import get_pnx_list
 
 
 def set_state_from_f_pk_config_toml(pk_state_address, pk_state_value):
     pk_toml_address_list = pk_state_address.split('/')
     if LTA:
-        pk_print(f'''pk_state_address={pk_state_address} {'%%%FOO%%%' if LTA else ''}''')
-        pk_print(f'''pk_state_value={pk_state_value} {'%%%FOO%%%' if LTA else ''}''')
+        ensure_printed(f'''pk_state_address={pk_state_address} {'%%%FOO%%%' if LTA else ''}''')
+        ensure_printed(f'''pk_state_value={pk_state_value} {'%%%FOO%%%' if LTA else ''}''')
     level_1_dict_n = ""
     level_2_dict_n = ""
     level_3_dict_n = ""
@@ -83,7 +83,7 @@ def set_state_from_f_pk_config_toml(pk_state_address, pk_state_value):
         level_3_dict_n = pk_toml_address_list[2]
     except:
         if LTA:
-            pk_print(f'''{len(pk_toml_address_list)} is idx limit. in setter {'%%%FOO%%%' if LTA else ''}''')
+            ensure_printed(f'''{len(pk_toml_address_list)} is idx limit. in setter {'%%%FOO%%%' if LTA else ''}''')
 
     level_1_dict = {}
     level_2_dict = {}
@@ -91,14 +91,14 @@ def set_state_from_f_pk_config_toml(pk_state_address, pk_state_value):
     try:
         level_1_dict = toml.load(F_PK_CONFIG_TOML)[level_1_dict_n]
     except KeyError:
-        pk_print(f'''level_1_dict={level_1_dict}에 해당하는 key 가 없어 생성합니다. {'%%%FOO%%%' if LTA else ''}''')
+        ensure_printed(f'''level_1_dict={level_1_dict}에 해당하는 key 가 없어 생성합니다. {'%%%FOO%%%' if LTA else ''}''')
         level_1_dict = toml.load(F_PK_CONFIG_TOML)[level_1_dict]
         with open(F_PK_CONFIG_TOML, "w") as f:
             toml.dump(level_1_dict, f)
     try:
         level_2_dict = level_1_dict[level_2_dict_n]
     except KeyError:
-        pk_print(f'''level_2_dict_n={level_2_dict_n}에 해당하는 key 가 없어 생성합니다. {'%%%FOO%%%' if LTA else ''}''')
+        ensure_printed(f'''level_2_dict_n={level_2_dict_n}에 해당하는 key 가 없어 생성합니다. {'%%%FOO%%%' if LTA else ''}''')
         level_1_dict[level_2_dict_n] = pk_state_value
         with open(F_PK_CONFIG_TOML, "w") as f:
             toml.dump(level_1_dict, f)
@@ -109,7 +109,7 @@ def set_state_from_f_pk_config_toml(pk_state_address, pk_state_value):
     try:
         level_3_dict = level_2_dict[level_3_dict_n]
     except KeyError:
-        pk_print(f'''level_3_dict_n={level_3_dict_n}에 해당하는 key 가 없어 생성합니다. {'%%%FOO%%%' if LTA else ''}''')
+        ensure_printed(f'''level_3_dict_n={level_3_dict_n}에 해당하는 key 가 없어 생성합니다. {'%%%FOO%%%' if LTA else ''}''')
         level_2_dict[level_3_dict_n] = pk_state_value
         with open(F_PK_CONFIG_TOML, "w") as f:
             toml.dump(level_2_dict, f)

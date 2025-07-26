@@ -39,10 +39,10 @@ from pkg_py.functions_split.get_f_video_to_load import get_f_video_to_load
 from pkg_py.functions_split.load_f_video_on_losslesscut import load_f_video_on_losslesscut
 from pkg_py.functions_split.get_d_working import get_d_working
 from pkg_py.functions_split.is_window_opened import is_window_opened
-from pkg_py.functions_split.pk_press import pk_press
-from pkg_py.functions_split.pk_print_state import pk_print_state
-from pkg_py.functions_split.pk_print import pk_print
-from pkg_py.functions_split.write_list_to_f import write_list_to_f
+from pkg_py.functions_split.press import press
+from pkg_py.functions_split.print_state import print_state
+from pkg_py.functions_split.ensure_printed import ensure_printed
+from pkg_py.functions_split.ensure_list_written_to_f import ensure_list_written_to_f
 from pkg_py.system_object.etc import PkFilter
 from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
 from pkg_py.system_object.files import F_LOSSLESSCUT_EXE
@@ -75,7 +75,7 @@ from pkg_py.functions_split.is_os_windows import is_os_windows
 from pkg_py.functions_split.get_pnx_windows_style import get_pnx_windows_style
 
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.get_pnx_list import get_pnx_list
 from pkg_py.functions_split.get_d_working import get_d_working
 
@@ -88,9 +88,9 @@ def ensure_wsl_distro_session(wsl_distro_n):
             if not is_wsl_distro_started(wsl_distro_n):
                 subprocess.Popen(f"wsl -d {wsl_distro_n}", creationflags=subprocess.CREATE_NO_WINDOW)
             if is_wsl_distro_started(wsl_distro_n):
-                pk_print(
+                ensure_printed(
                     f'''{wsl_distro_n} is started already in wsl with keeping session {'%%%FOO%%%' if LTA else ''}''')
             else:
-                pk_print(f'''{wsl_distro_n} is not started in wsl with keeping session {'%%%FOO%%%' if LTA else ''}''',
+                ensure_printed(f'''{wsl_distro_n} is not started in wsl with keeping session {'%%%FOO%%%' if LTA else ''}''',
                          print_color='red')
                 raise

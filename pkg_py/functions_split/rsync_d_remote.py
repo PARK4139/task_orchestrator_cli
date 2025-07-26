@@ -5,14 +5,14 @@ import mutagen
 from urllib.parse import urlparse
 from selenium.webdriver.common.action_chains import ActionChains
 from PySide6.QtWidgets import QApplication
-from pkg_py.functions_split.pk_print_once import pk_print_once
+from pkg_py.functions_split.ensure_printed_once import ensure_printed_once
 from pkg_py.functions_split.get_list_sorted import get_list_sorted
 from pkg_py.system_object.etc import PkFilter
 from functools import partial
 from dataclasses import dataclass
 from base64 import b64decode
 from pkg_py.system_object.directories import D_PKG_PY
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 
 

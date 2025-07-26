@@ -48,11 +48,11 @@ from pkg_py.functions_split.rerun_losslesscut import rerun_losslesscut
 from pkg_py.functions_split.get_video_filtered_list import get_video_filtered_list
 from pkg_py.functions_split.is_window_title_front import is_window_title_front
 from pkg_py.functions_split.is_window_title_opened import is_window_title_opened
-from pkg_py.functions_split.pk_print_state import pk_print_state
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.print_state import print_state
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 from pkg_py.functions_split.cmd_to_os import cmd_to_os
-from pkg_py.functions_split.write_list_to_f import write_list_to_f
+from pkg_py.functions_split.ensure_list_written_to_f import ensure_list_written_to_f
 from pkg_py.functions_split.get_list_sorted import get_list_sorted
 from pkg_py.functions_split.set_pk_context_state import set_pk_context_state
 from pkg_py.system_object.files import F_POT_PLAYER_MINI_64_EXE
@@ -90,10 +90,10 @@ from pkg_py.system_object.is_os_windows import is_os_windows
 from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style
 from pkg_py.functions_split.get_pnx_wsl_unix_style import get_pnx_wsl_unix_style
 from pkg_py.functions_split.get_pnx_wsl_unix_style import get_pnx_wsl_unix_style
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.get_d_working import get_d_working
 
 
@@ -104,9 +104,9 @@ def convert_mp4_to_webm(src):
     func_n = inspect.currentframe().f_code.co_name
     '''테스트 필요'''
 
-    pk_print(f'from : {src}', print_color='blue')
+    ensure_printed(f'from : {src}', print_color='blue')
     file_edited = f'{os.path.splitext(os.path.basename(src))[0]}.webm'
-    pk_print(f'to   : {file_edited}', print_color='blue')
+    ensure_printed(f'to   : {file_edited}', print_color='blue')
 
     path_started = os.getcwd()
     os.system("chcp 65001 >nul")

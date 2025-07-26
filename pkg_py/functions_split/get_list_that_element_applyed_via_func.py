@@ -20,7 +20,7 @@ from pkg_py.system_object.local_test_activate import LTA
 from functools import partial as functools_partial
 from concurrent.futures import ThreadPoolExecutor
 from base64 import b64decode
-from pkg_py.functions_split.assist_to_load_video_at_losslesscut import pk_ensure_video_loaded_at_losslesscut
+from pkg_py.functions_split.assist_to_load_video_at_losslesscut import ensure_video_loaded_at_losslesscut
 from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style
 from pkg_py.functions_split.is_os_windows import is_os_windows
 from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style

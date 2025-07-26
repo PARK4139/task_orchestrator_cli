@@ -1,5 +1,5 @@
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
 def get_installed_wsl_distros():
@@ -11,7 +11,7 @@ def get_installed_wsl_distros():
         std_list = output.splitlines()
         for std_str in std_list:
             if LTA:
-                pk_print(std_str)
+                ensure_printed(std_str)
         distros = []
         for line in std_list[1:]:
             line = line.strip()
@@ -21,7 +21,7 @@ def get_installed_wsl_distros():
                 line = line[1:].strip()
             parts = re.split(r'\s{2,}', line)
             if LTA:
-                pk_print(f'''parts={parts} {'%%%FOO%%%' if LTA else ''}''')
+                ensure_printed(f'''parts={parts} {'%%%FOO%%%' if LTA else ''}''')
             if len(parts) >= 3:
                 name, state, version = parts[0], parts[1], parts[2]
                 distros.append({
@@ -31,5 +31,5 @@ def get_installed_wsl_distros():
                 })
         return distros
     except subprocess.CalledProcessError as e:
-        pk_print(f"Failed to list WSL distros: {e}", print_color='red')
+        ensure_printed(f"Failed to list WSL distros: {e}", print_color='red')
         return []

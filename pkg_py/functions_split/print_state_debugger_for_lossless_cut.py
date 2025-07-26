@@ -40,14 +40,14 @@ from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.get_pnx_list import get_pnx_list
 
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
 def print_state_debugger_for_lossless_cut(stamp, state_running, state_loading, state_loaded, state_playing):
     if LTA:
-        pk_print(f'''state_running={state_running} {'%%%FOO%%%' if LTA else ''}''')
-        pk_print(f'''state_loading={state_loading} {'%%%FOO%%%' if LTA else ''}''')
-        pk_print(f'''state_loaded={state_loaded} {'%%%FOO%%%' if LTA else ''}''')
-        pk_print(f'''state_playing={state_playing} {'%%%FOO%%%' if LTA else ''}''')
-        pk_print(stamp)
+        ensure_printed(f'''state_running={state_running} {'%%%FOO%%%' if LTA else ''}''')
+        ensure_printed(f'''state_loading={state_loading} {'%%%FOO%%%' if LTA else ''}''')
+        ensure_printed(f'''state_loaded={state_loaded} {'%%%FOO%%%' if LTA else ''}''')
+        ensure_printed(f'''state_playing={state_playing} {'%%%FOO%%%' if LTA else ''}''')
+        ensure_printed(stamp)
         input('press enter')

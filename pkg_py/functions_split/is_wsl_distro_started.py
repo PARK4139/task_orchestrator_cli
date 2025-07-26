@@ -4,7 +4,7 @@
 
 from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.cmd_to_os import cmd_to_os
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
 def is_wsl_distro_started(wsl_distro_n):
@@ -17,6 +17,6 @@ def is_wsl_distro_started(wsl_distro_n):
         if signiture in line:
             if signiture2 in line:
                 if LTA:
-                    pk_print(f'''{wsl_distro_n} is started in wsl {'%%%FOO%%%' if LTA else ''}''', print_color='green')
+                    ensure_printed(f'''{wsl_distro_n} is started in wsl {'%%%FOO%%%' if LTA else ''}''', print_color='green')
                 return 1
     return 0

@@ -2,7 +2,7 @@
 
 from pkg_py.system_object.directories import D_DOWNLOADS
 from pkg_py.system_object.directories_reuseable import D_PROJECT
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.is_window_opened import is_window_opened
 from pkg_py.functions_split.get_d_working import get_d_working
 
@@ -35,7 +35,7 @@ def gather_pnxs_special():
         if line.strip() != "":
             storages.append(line.strip())
 
-    pk_print(rf'archive_py 는 storage 목록 에서 제외')
+    ensure_printed(rf'archive_py 는 storage 목록 에서 제외')
     withouts = ['archive_py']
     for storage in storages:
         for without in withouts:
@@ -44,28 +44,28 @@ def gather_pnxs_special():
     for storage in storages:
         print(storage)
 
-    pk_print(rf'이동할 storage 목록 중간점검 출력 시도')
+    ensure_printed(rf'이동할 storage 목록 중간점검 출력 시도')
     for storage in storages:
         print(os.path.abspath(storage))
 
     if not storages:
-        pk_print(rf'이동할 storage 목록 이 없어 storage 이동을 할 수 없습니다')
+        ensure_printed(rf'이동할 storage 목록 이 없어 storage 이동을 할 수 없습니다')
     else:
-        pk_print(rf'이동할 storage 목록 출력 시도')
+        ensure_printed(rf'이동할 storage 목록 출력 시도')
         for storage in storages:
             print(os.path.abspath(storage))
-        pk_print(rf'목적지 생성 시도')
+        ensure_printed(rf'목적지 생성 시도')
         if not os.path.exists(dst):
             os.makedirs(dst)
         for storage in storages:
             # print(src)
             try:
-                pk_print(rf'storage 이동 시도')
+                ensure_printed(rf'storage 이동 시도')
                 move_pnx(storage, dst)
             except FileNotFoundError:
-                pk_print(f'''{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
+                ensure_printed(f'''{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
 
             except Exception as e:
-                pk_print(f'''{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
+                ensure_printed(f'''{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
 
     pk_chdir(starting_d)

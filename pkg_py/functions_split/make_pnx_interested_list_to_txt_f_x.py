@@ -72,15 +72,15 @@ def make_pnx_interested_list_to_txt_f_x(pnx_interested_list=None, string_exclude
                 continue  # 'pnx_exclude'에 포함되면 건너뛰기
             # 'exclude' 목록에 포함되지 않으면 'pnx_processed_list'에 추가
             pnx_processed_list.append(pnx_with_walking)
-            # pk_print(str_working=rf'''len(pnx_processed_list)="{len(pnx_processed_list)}"  {'%%%FOO%%%' if LTA else ''}''')
+            # ensure_printed(str_working=rf'''len(pnx_processed_list)="{len(pnx_processed_list)}"  {'%%%FOO%%%' if LTA else ''}''')
             if write_cnt == write_cnt_limit % 2 == 0:
                 file_cnt = file_cnt + 1
                 print_iterable_as_vertical(item_iterable=pnx_processed_list, item_iterable_n="pnx_processed_list")
                 # func_n_file_cnt_txt = rf"{D_PKG_TXT}\{func_n}_{file_cnt}.txt"
-                # write_list_to_file(texts=pnx_processed_list, pnx=func_n_file_cnt_txt, mode="w")
+                # ensure_list_written_to_file(texts=pnx_processed_list, pnx=func_n_file_cnt_txt, mode="w")
             func_n_file_cnt_txt = rf"{D_PKG_TXT}\{func_n}_{file_cnt}.txt"
-            # pk_print(str_working=rf'''write_cnt="{write_cnt}"  {'%%%FOO%%%' if LTA else ''}''')
-            write_str_to_f(msg=f"{pnx_with_walking}\n", f=func_n_file_cnt_txt, mode="a")
+            # ensure_printed(str_working=rf'''write_cnt="{write_cnt}"  {'%%%FOO%%%' if LTA else ''}''')
+            ensure_str_writen_to_f(msg=f"{pnx_with_walking}\n", f=func_n_file_cnt_txt, mode="a")
             write_cnt = write_cnt + 1
             if write_cnt == write_cnt_limit % 2 == 0:
                 window_title = rf"{func_n}_{file_cnt}"

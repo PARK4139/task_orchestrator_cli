@@ -48,10 +48,10 @@ from pkg_py.functions_split.load_f_video_on_losslesscut import load_f_video_on_l
 from pkg_py.functions_split.is_window_title_front import is_window_title_front
 from pkg_py.functions_split.get_d_working import get_d_working
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 from pkg_py.functions_split.cmd_to_os import cmd_to_os
-from pkg_py.functions_split.write_list_to_f import write_list_to_f
+from pkg_py.functions_split.ensure_list_written_to_f import ensure_list_written_to_f
 from pkg_py.functions_split.get_list_sorted import get_list_sorted
 
 from pkg_py.functions_split.ensure_console_cleared import ensure_console_cleared
@@ -89,7 +89,7 @@ from pkg_py.functions_split.get_pnx_windows_style import get_pnx_windows_style
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.get_pnx_list import get_pnx_list
 from pkg_py.functions_split.get_d_working import get_d_working
 
@@ -111,14 +111,14 @@ def ensure_wsl_usb_ip_connection_established(wsl_distro_n, config_remote_os):
         if all(str_positive in std_str for str_positive in signiture_list):
             match = pattern.search(std_str)
             if not match:
-                pk_print(f'''{signiture_list}가 없습니다.  {'%%%FOO%%%' if LTA else ''}" ''', print_color='red')
+                ensure_printed(f'''{signiture_list}가 없습니다.  {'%%%FOO%%%' if LTA else ''}" ''', print_color='red')
                 raise
-            pk_print(str_working=rf'''match="{match}"  {'%%%FOO%%%' if LTA else ''}''')
+            ensure_printed(str_working=rf'''match="{match}"  {'%%%FOO%%%' if LTA else ''}''')
             bus_id = match.group()
     if bus_id is None:
-        pk_print(f'''bus_id=None  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
+        ensure_printed(f'''bus_id=None  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
         raise
-    pk_print(str_working=rf'''bus_id={bus_id}  {'%%%FOO%%%' if LTA else ''}''', print_color="green")
+    ensure_printed(str_working=rf'''bus_id={bus_id}  {'%%%FOO%%%' if LTA else ''}''', print_color="green")
 
     cmd_to_os(cmd="wsl --shutdown", encoding='utf-16')
 

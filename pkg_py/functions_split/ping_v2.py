@@ -6,7 +6,7 @@ from pkg_py.system_object.is_os_windows import is_os_windows
 from pkg_py.functions_split.is_os_windows import is_os_windows
 
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
 def ping_v2(ip, timeout_ms=1000):
@@ -14,7 +14,7 @@ def ping_v2(ip, timeout_ms=1000):
     import subprocess
 
     if not ip:
-        pk_print(f'ping {ip}', print_color='red')
+        ensure_printed(f'ping {ip}', print_color='red')
         return 0
 
     # OS별 ping 명령어 및 성공 시그널 정의
@@ -51,8 +51,8 @@ def ping_v2(ip, timeout_ms=1000):
     for line in stdout.splitlines():
         if any(sig in line for sig in signatures):
             if LTA:
-                pk_print(f'ping {ip}', print_color='green')
+                ensure_printed(f'ping {ip}', print_color='green')
             return 1
 
-    pk_print(f'ping {ip}', print_color='red')
+    ensure_printed(f'ping {ip}', print_color='red')
     return 0

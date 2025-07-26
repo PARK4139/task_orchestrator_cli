@@ -19,7 +19,7 @@ from selenium.webdriver.chrome.service import Service
 from pkg_py.functions_split.get_historical_list import get_historical_list
 from pkg_py.functions_split.get_f_video_to_load import get_f_video_to_load
 from pkg_py.functions_split.get_video_filtered_list import get_video_filtered_list
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 from pkg_py.functions_split.set_pk_context_state import set_pk_context_state
 from pkg_py.system_object.files import F_LOSSLESSCUT_EXE
@@ -57,7 +57,7 @@ def crawl_youtube_playlist(url: str):
         page_src = driver.page_source
         from bs4 import BeautifulSoup
         soup = BeautifulSoup(page_src, "lxml")
-        pk_sleep(seconds=0.0001)
+        ensure_slept(seconds=0.0001)
         process_bar.update(total_percent)
     driver.close()
 

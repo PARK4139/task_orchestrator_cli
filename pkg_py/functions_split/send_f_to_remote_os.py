@@ -45,9 +45,9 @@ from pkg_py.functions_split.ensure_window_to_front import ensure_window_to_front
 from pkg_py.functions_split.rerun_losslesscut import rerun_losslesscut
 from pkg_py.functions_split.is_window_title_opened import is_window_title_opened
 from pkg_py.functions_split.is_window_opened import is_window_opened
-from pkg_py.functions_split.pk_print_state import pk_print_state
+from pkg_py.functions_split.print_state import print_state
 from pkg_py.functions_split.cmd_to_os import cmd_to_os
-from pkg_py.functions_split.write_list_to_f import write_list_to_f
+from pkg_py.functions_split.ensure_list_written_to_f import ensure_list_written_to_f
 from pkg_py.functions_split.get_list_sorted import get_list_sorted
 from pkg_py.functions_split.ensure_console_cleared import ensure_console_cleared
 from pkg_py.system_object.etc import PkFilter
@@ -90,7 +90,7 @@ from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.get_d_working import get_d_working
 
 
@@ -105,7 +105,7 @@ def send_f_to_remote_os(f_local_src, f_remote_dst, **config_remote_os):
 
     f_local_src = get_pnx_os_style(f_local_src)
     if not os.path.exists(f_local_src):
-        pk_print(f"{f_local_src} can not send, for not found", print_color='red')
+        ensure_printed(f"{f_local_src} can not send, for not found", print_color='red')
         raise
 
     ssh = None
@@ -117,20 +117,20 @@ def send_f_to_remote_os(f_local_src, f_remote_dst, **config_remote_os):
         sftp = ssh.open_sftp()
 
         # send f_local
-        pk_print(f"started to send f{(f_local_src)} to remote os({config_remote_os['ip']})")
+        ensure_printed(f"started to send f{(f_local_src)} to remote os({config_remote_os['ip']})")
         sftp.put(f_local_src, f_remote_dst)
 
         # f 전송 상태 확인
         f_local_size = os.path.getsize(f_local_src)
         f_remote_size = sftp.stat(f_remote_dst).st_size
         if f_local_size == f_remote_size:
-            pk_print(f"send pnx ({f_remote_dst})", print_color="green")
+            ensure_printed(f"send pnx ({f_remote_dst})", print_color="green")
             return 1  # 성공 시 True 반환
         else:
-            pk_print(f"send pnx ({f_remote_dst})", print_color='red')
+            ensure_printed(f"send pnx ({f_remote_dst})", print_color='red')
             raise
     except Exception as e:
-        pk_print(f"send pnx : {e}", print_color='red')
+        ensure_printed(f"send pnx : {e}", print_color='red')
         raise
     finally:
         # 리소스 정리
@@ -139,4 +139,4 @@ def send_f_to_remote_os(f_local_src, f_remote_dst, **config_remote_os):
         if ssh:
             ssh.close()
         if LTA:
-            pk_print(str_working="SSH connection closed.")
+            ensure_printed(str_working="SSH connection closed.")

@@ -1,16 +1,11 @@
-# -*- coding: utf-8 -*-  # todo : ref : python 3.x 하위버전 호환을 위한코드
-__author__ = 'pk_system'
+
 
 import inspect
 import os
 import time
 from typing import TypeVar
 
-# , pk_deprecated_get_d_current_n_like_person, get_tree_depth_level, get_pnx_list_with_mtime_without_f_list_to_exclude, kill_powershell_exe, get_token_from_txt_f, get_hostname, get_d_working, chcp_65001, get_os_n, kill_wsl_exe, LTA, print_function_run_measure_seconds_via_timeit
-# from pkg_py.system_object.500_live_logic import run_pk_release_server
-#, print_red, print_yellow
-
-#, D_PKG_TXT, D_PROJECT
+ 
 
 T = TypeVar('T')  # todo : ref : 타입 힌팅 설정
 
@@ -31,16 +26,16 @@ def print_measure_seconds_performance_nth_for_비교군1(function):
     def wrapper(**kwargs):  # **kwargs, keyword argument, dictionary 로 parameter 를 받음. named parameter / positional parameter 를 받을 사용가능?
         # def wrapper(*args):# *args, arguments, tuple 로 parameter 를 받음.
         # def wrapper():
-        pk_print(str_working=rf'''{PK_UNDERLINE}{func_n}() %%%FOO%%%''', print_color='blue')
-        pk_print(str_working=rf'''test_loop_limit="{test_loop_limit}" %%%FOO%%%''', print_color="blue")
-        pk_print(str_working=rf'''is_first_test_lap="{is_first_test_lap}" %%%FOO%%%''', print_color="blue")
+        ensure_printed(str_working=rf'''{PK_UNDERLINE}{func_n}() %%%FOO%%%''', print_color='blue')
+        ensure_printed(str_working=rf'''test_loop_limit="{test_loop_limit}" %%%FOO%%%''', print_color="blue")
+        ensure_printed(str_working=rf'''is_first_test_lap="{is_first_test_lap}" %%%FOO%%%''', print_color="blue")
         if test_loop_limit == 1:
             is_first_test_lap = False
             # speak_ment(ment=ment, after_delay=1) # 너무느려
         seconds = []
 
         for i in range(0, test_loop_limit):
-            pk_print(str_working=rf'''{PK_UNDERLINE}{i} 번째 테스트 %%%FOO%%%''', print_color="blue")
+            ensure_printed(str_working=rf'''{PK_UNDERLINE}{i} 번째 테스트 %%%FOO%%%''', print_color="blue")
             time_s = time.time()
             try:
                 # todo : ref : set argument counts
@@ -53,27 +48,27 @@ def print_measure_seconds_performance_nth_for_비교군1(function):
                 mesured_seconds = time_e - time_s
                 seconds.append(round(mesured_seconds, 2))
             except:
-                pk_print(str_working=f'{PK_UNDERLINE}예외발생 s\n\n', print_color="blue")
-                pk_print(f'''{traceback.format_exc()} %%%FOO%%%''', print_color='red')
-                pk_print(str_working=f'{PK_UNDERLINE}예외발생 e\n\n', print_color="blue")
+                ensure_printed(str_working=f'{PK_UNDERLINE}예외발생 s\n\n', print_color="blue")
+                ensure_printed(f'''{traceback.format_exc()} %%%FOO%%%''', print_color='red')
+                ensure_printed(str_working=f'{PK_UNDERLINE}예외발생 e\n\n', print_color="blue")
 
-                pk_print(str_working=f'{PK_UNDERLINE}[Debugging Note] s\n', print_color="blue")
+                ensure_printed(str_working=f'{PK_UNDERLINE}[Debugging Note] s\n', print_color="blue")
                 f_current= get_f_current_n()
                 d_current=pk_deprecated_get_d_current_n_like_person()
                 print_yellow(prompt=f'f_current={f_current}\n d_current={d_current}\n')
-                pk_print(str_working=f'{PK_UNDERLINE}[Debugging Note] e\n', print_color="blue")
+                ensure_printed(str_working=f'{PK_UNDERLINE}[Debugging Note] e\n', print_color="blue")
 
                 # ment = ment + f'{StateManageUNDERLINE_PROMISED}테스트 진행할 명령어를 입력하세요+++ s'
-                # pk_print(ment=ment, print_color='blue')
+                # ensure_printed(ment=ment, print_color='blue')
                 # hold_console()  # cmd /k
                 ipdb.set_trace()  # 디버깅을 시작할 지점 # 파이썬 환경이 그대로 이어짐
 
         if len(seconds) == test_loop_limit:
-            pk_print(f'''"{UNDERLINE}시간성능측정 테스트 결과 보고"''', print_color="blue")
-            pk_print(str_working=rf'''test_loop_limit="{test_loop_limit}" %%%FOO%%%''', print_color="blue")
-            pk_print(str_working=rf'''seconds={seconds} %%%FOO%%%''', print_color="blue")
+            ensure_printed(f'''"{UNDERLINE}시간성능측정 테스트 결과 보고"''', print_color="blue")
+            ensure_printed(str_working=rf'''test_loop_limit="{test_loop_limit}" %%%FOO%%%''', print_color="blue")
+            ensure_printed(str_working=rf'''seconds={seconds} %%%FOO%%%''', print_color="blue")
             seconds_average = sum(seconds) / len(seconds)
-            pk_print(str_working=rf'''seconds_average="{seconds_average}" %%%FOO%%%''', print_color="blue")
+            ensure_printed(str_working=rf'''seconds_average="{seconds_average}" %%%FOO%%%''', print_color="blue")
             global 비교군1_결과
             비교군1_결과 = {'test_loop_limit': test_loop_limit, 'seconds_average': seconds_average}
             is_first_test_lap = 1
@@ -91,15 +86,15 @@ def measure_seconds_performance_nth_for_비교군2(function):
     def wrapper(**kwargs):  # **kwargs, keyword argument, dictionary 로 parameter 를 받음. named parameter / positional parameter 를 받을 사용가능?
         # def wrapper(*args):# *args, arguments, tuple 로 parameter 를 받음.
         # def wrapper():
-        pk_print(str_working=rf'''{PK_UNDERLINE}{func_n}() %%%FOO%%%''', print_color='blue')
-        pk_print(str_working=rf'''test_loop_limit="{test_loop_limit}" %%%FOO%%%''', print_color="blue")
-        pk_print(str_working=rf'''StateManageis_first_test_lap="{is_first_test_lap}" %%%FOO%%%''', print_color="blue")
+        ensure_printed(str_working=rf'''{PK_UNDERLINE}{func_n}() %%%FOO%%%''', print_color='blue')
+        ensure_printed(str_working=rf'''test_loop_limit="{test_loop_limit}" %%%FOO%%%''', print_color="blue")
+        ensure_printed(str_working=rf'''StateManageis_first_test_lap="{is_first_test_lap}" %%%FOO%%%''', print_color="blue")
         if is_first_test_lap:
             is_first_test_lap = False
             # speak_ment(ment=ment, after_delay=1) # 너무느려
         seconds = []
         for i in range(0, test_loop_limit):
-            pk_print(str_working=rf'''{PK_UNDERLINE}{i} 번째 테스트 %%%FOO%%%''', print_color="blue")
+            ensure_printed(str_working=rf'''{PK_UNDERLINE}{i} 번째 테스트 %%%FOO%%%''', print_color="blue")
             time_s = time.time()
             try:
                 # todo : ref : function argument setting
@@ -113,27 +108,27 @@ def measure_seconds_performance_nth_for_비교군2(function):
                 # seconds_performance_test_results.append(f"{round(mesured_seconds, 2)}sec")
                 seconds.append(round(mesured_seconds, 2))
             except:
-                pk_print(str_working=f'{PK_UNDERLINE}예외발생 s\n\n', print_color="blue")
-                pk_print(f'''{traceback.format_exc()} %%%FOO%%%''', print_color='red')
-                pk_print(str_working=f'{PK_UNDERLINE}예외발생 e\n\n', print_color="blue")
+                ensure_printed(str_working=f'{PK_UNDERLINE}예외발생 s\n\n', print_color="blue")
+                ensure_printed(f'''{traceback.format_exc()} %%%FOO%%%''', print_color='red')
+                ensure_printed(str_working=f'{PK_UNDERLINE}예외발생 e\n\n', print_color="blue")
 
-                pk_print(str_working=f'{PK_UNDERLINE}[Debugging Note] s\n', print_color="blue")
+                ensure_printed(str_working=f'{PK_UNDERLINE}[Debugging Note] s\n', print_color="blue")
                 f_current= get_f_current_n()
                 d_current=pk_deprecated_get_d_current_n_like_person()
                 print_yellow(prompt=f'f_current={f_current}\n d_current={d_current}\n')
-                pk_print(str_working=f'{PK_UNDERLINE}[Debugging Note] e\n', print_color="blue")
+                ensure_printed(str_working=f'{PK_UNDERLINE}[Debugging Note] e\n', print_color="blue")
 
                 # ment = ment + f'{StateManageUNDERLINE_PROMISED}테스트 진행할 명령어를 입력하세요+++ s'
-                # pk_print(ment=ment, print_color='blue')
+                # ensure_printed(ment=ment, print_color='blue')
                 # hold_console()  # cmd /k
                 ipdb.set_trace()  # 디버깅을 시작할 지점 # 파이썬 환경이 그대로 이어짐
 
         if len(seconds) == test_loop_limit:
-            pk_print(f'''"{UNDERLINE}시간성능측정 테스트 결과 보고"''', print_color="blue")
-            pk_print(str_working=rf'''test_loop_limit="{test_loop_limit}" %%%FOO%%%''', print_color="blue")
-            pk_print(str_working=rf'''seconds={seconds} %%%FOO%%%''', print_color="blue")
+            ensure_printed(f'''"{UNDERLINE}시간성능측정 테스트 결과 보고"''', print_color="blue")
+            ensure_printed(str_working=rf'''test_loop_limit="{test_loop_limit}" %%%FOO%%%''', print_color="blue")
+            ensure_printed(str_working=rf'''seconds={seconds} %%%FOO%%%''', print_color="blue")
             seconds_average = sum(seconds) / len(seconds)
-            pk_print(str_working=rf'''seconds_average="{seconds_average}" %%%FOO%%%''', print_color="blue")
+            ensure_printed(str_working=rf'''seconds_average="{seconds_average}" %%%FOO%%%''', print_color="blue")
             global 비교군2_결과
             비교군2_결과 = {'test_loop_limit': test_loop_limit, 'seconds_average': seconds_average}
             is_first_test_lap = 1
@@ -161,9 +156,9 @@ def run_비교군2():
 def print_report_compared_functions_exec_time(function1, function2):
     function1()
     function2()
-    pk_print(str_working=rf'''{PK_UNDERLINE}비교군 코드 대조 %%%FOO%%%''', print_color='blue')
-    pk_print(str_working=rf'''비교군1_결과="{비교군1_결과}" %%%FOO%%%''', print_color="blue")
-    pk_print(str_working=rf'''비교군2_결과="{비교군2_결과}" %%%FOO%%%''', print_color="blue")
+    ensure_printed(str_working=rf'''{PK_UNDERLINE}비교군 코드 대조 %%%FOO%%%''', print_color='blue')
+    ensure_printed(str_working=rf'''비교군1_결과="{비교군1_결과}" %%%FOO%%%''', print_color="blue")
+    ensure_printed(str_working=rf'''비교군2_결과="{비교군2_결과}" %%%FOO%%%''', print_color="blue")
     # results = [
     #     비교군1_결과['seconds_average'],
     #     비교군2_결과['seconds_average'],
@@ -171,17 +166,17 @@ def print_report_compared_functions_exec_time(function1, function2):
     # fastest_time = min(results)
     # slowest_time = max(results)
     # fastest_time_index = results.index(fastest_time)
-    # pk_print(string = rf'''slowest_time="{slowest_time}" %%%FOO%%%''', print_color="blue")
-    # pk_print(string = rf'''fastest_time="{fastest_time}" %%%FOO%%%''', print_color="blue")
-    # pk_print(string = rf'''fastest_time_index="{fastest_time_index}" %%%FOO%%%''', print_color="blue")
+    # ensure_printed(string = rf'''slowest_time="{slowest_time}" %%%FOO%%%''', print_color="blue")
+    # ensure_printed(string = rf'''fastest_time="{fastest_time}" %%%FOO%%%''', print_color="blue")
+    # ensure_printed(string = rf'''fastest_time_index="{fastest_time_index}" %%%FOO%%%''', print_color="blue")
     results = {
         "비교군1_결과": 비교군1_결과['seconds_average'],
         "비교군2_결과": 비교군2_결과['seconds_average'],
     }
     fastest = min(results, key=results.get)
-    pk_print(str_working=rf'''fastest="{fastest}" %%%FOO%%%''')
-    pk_print(str_working=rf'''results[fastest]="{results[fastest]}" %%%FOO%%%''')
-    pk_print(f'가장 빠른 시간은 "{fastest}" 입니다', print_color="blue")
+    ensure_printed(str_working=rf'''fastest="{fastest}" %%%FOO%%%''')
+    ensure_printed(str_working=rf'''results[fastest]="{results[fastest]}" %%%FOO%%%''')
+    ensure_printed(f'가장 빠른 시간은 "{fastest}" 입니다', print_color="blue")
 
 
 def main():
@@ -333,18 +328,18 @@ if __name__ == '__main__':
         # red
         import traceback
 
-        pk_print(str_working=f'{PK_UNDERLINE}예외발생 s\n\n', print_color='red')
-        pk_print(str_working=f'{traceback.format_exc()}\n', print_color='red')
-        pk_print(str_working=f'{PK_UNDERLINE}예외발생 e\n\n', print_color='red')
+        ensure_printed(str_working=f'{PK_UNDERLINE}예외발생 s\n\n', print_color='red')
+        ensure_printed(str_working=f'{traceback.format_exc()}\n', print_color='red')
+        ensure_printed(str_working=f'{PK_UNDERLINE}예외발생 e\n\n', print_color='red')
 
         # yellow
         f_current= get_f_current_n()
         d_current=pk_deprecated_get_d_current_n_like_person()
-        pk_print(str_working=f'{PK_UNDERLINE}[Debugging Note] s\n', print_color="yellow")
-        pk_print(str_working=f'f_current={f_current}\nd_current={d_current}\n', print_color="yellow")
-        pk_print(str_working=f'{PK_UNDERLINE}[Debugging Note] e\n', print_color="yellow")
+        ensure_printed(str_working=f'{PK_UNDERLINE}[Debugging Note] s\n', print_color="yellow")
+        ensure_printed(str_working=f'f_current={f_current}\nd_current={d_current}\n', print_color="yellow")
+        ensure_printed(str_working=f'{PK_UNDERLINE}[Debugging Note] e\n', print_color="yellow")
         ensure_do_finally_routine(D_PROJECT=D_PROJECT, __file__=__file__, STAMP_TRY_GUIDE=STAMP_TRY_GUIDE)
-        pk_print(script_to_run_python_program_in_venv)
+        ensure_printed(script_to_run_python_program_in_venv)
 
         # debug
         import ipdb
@@ -510,9 +505,9 @@ class DataStructureUtil:
     @staticmethod
     def is_two_lists_equal(list1, list2):
         #, D_PROJECT 
-        from pkg_py.functions_split.pk_print import pk_print
+        from pkg_py.functions_split.ensure_printed import ensure_printed
         func_n = inspect.currentframe().f_code.co_name
-        pk_print(str_working=rf'''{PK_UNDERLINE}{func_n}() %%%FOO%%%''')
+        ensure_printed(str_working=rf'''{PK_UNDERLINE}{func_n}() %%%FOO%%%''')
         # 두 리스트의 요소들이 동일한지만 확인 # 하나라도 발견되면 탐색 중지 # 두 리스트의 동일 인덱스에서 진행하다 달라도 다른거다
         if len(list1) != len(list2):
             print(f"두 리스트의 줄 수가 다릅니다 {len(list1)}, {len(list2)}")
@@ -589,8 +584,8 @@ class PkProgramPerformanceOptimizingUtil:
         """
         for HH in range(24, 0, -1):
             for mm in range(0, 60):
-                pk_print(f'{int(HH)}시')
-                pk_print(f'{int(mm)}분 입니다')
+                ensure_printed(f'{int(HH)}시')
+                ensure_printed(f'{int(mm)}분 입니다')
 
     @staticmethod
     def gen_dictionary_for_monitor_pnx_edited_and_back_up(directory_pnx):
@@ -627,14 +622,14 @@ class PkProgramPerformanceOptimizingUtil:
         dirnames_and_trees = DataStructureUtil.get_nested_list_sorted_by_column_index(nested_list=dirnames_and_trees, column_index=1, decending_order=True)  # tree depth를 의미하는 column_index=1 에 대한 내림차순 정렬
         dirnames_and_trees = DataStructureUtil.get_nested_list_removed_row_that_have_nth_element_dulplicated_by_column_index(nested_list=dirnames_and_trees, column_index=0)  # from [[]] to [[]] # from [[1 2]] to [[1, 2]] # from [ [str str] [str str] ]  to  [ [str, str], [str, str]]
         dirnames = [x[0] for x in dirnames_and_trees]  # dirnames_and_trees 의 첫번째 컬럼인 dirname 만 추출
-        pk_print("딕셔너리 초기화용 코드 시작")
+        ensure_printed("딕셔너리 초기화용 코드 시작")
         print("dictionary_based_on_tri_structure = {")
         [print(rf'    r"{dirname}":"{index}빠릿{index}" ,') for index, dirname in enumerate(dirnames)]
         print("}")
         # print(rf'dirnames : {dirnames}')
         print(rf'type(dirnames) : {type(dirnames)}')
         print(rf'len(dirnames) : {len(dirnames)}')
-        pk_print("딕셔너리 초기화용 코드 종료")
+        ensure_printed("딕셔너리 초기화용 코드 종료")
         # ipdb.set_trace()
 
     dictionary_for_monitoring_performance = {
@@ -809,12 +804,12 @@ class PkProgramPerformanceOptimizingUtil:
 #
 #     @staticmethod
 #     async def preprocess_after_request(request):
-#         # pk_print(f"{str(request.url)} 로 라우팅 시도 중...")
+#         # ensure_printed(f"{str(request.url)} 로 라우팅 시도 중...")
 #         pass
 #
 #     @staticmethod
 #     async def preprocess_before_response_return(request, response):
-#         # pk_print(f"{str(request.url)} 로 라우팅 되었습니다")
+#         # ensure_printed(f"{str(request.url)} 로 라우팅 되었습니다")
 #         pass
 #
 #     @staticmethod
@@ -828,7 +823,7 @@ class PkProgramPerformanceOptimizingUtil:
 #             make_pnx(pnx=json_file, mode="f")
 #             if os.path.exists(json_file):
 #                 if is_letters_cnt_zero(pnx=json_file) == True:
-#                     write_str_to_f(pnx=json_file, txt_str="[]\n")  # 이러한 형태로 객체를 받을 수 있도록 작성해 두어야 받을 수 있음.
+#                     ensure_str_writen_to_f(pnx=json_file, txt_str="[]\n")  # 이러한 형태로 객체를 받을 수 있도록 작성해 두어야 받을 수 있음.
 #                 else:
 #                     if not os.path.isfile(json_file):
 #                         with open(json_file, "w", encoding='utf-8') as f:
@@ -1013,10 +1008,10 @@ class PkProgramPerformanceOptimizingUtil:
 #             db_pnx = DB_YAML
 #             # db_template =db_template
 #             func_n = inspect.currentframe().f_code.co_name
-#             pk_print(str_working=rf'''{PK_UNDERLINE}{func_n}() %%%FOO%%%''')
+#             ensure_printed(str_working=rf'''{PK_UNDERLINE}{func_n}() %%%FOO%%%''')
 #             if not os.path.exists(os.path.dirname(db_pnx)):
 #                 os.makedirs(os.path.dirname(db_pnx))  # 이거 파일도 만들어지나? 테스트 해보니 안만들어짐 디렉토리만 만들어짐
-#             # pk_print("db 파일 존재 검사 시도")
+#             # ensure_printed("db 파일 존재 검사 시도")
 #             if not os.path.isfile(db_pnx):
 #                 # with open(db_pnx, "w") as f2:
 #                 #     toml.dump(db_template, f2)
@@ -1031,7 +1026,7 @@ class PkProgramPerformanceOptimizingUtil:
 #     def read_db_toml():
 #         try:
 #             func_n = inspect.currentframe().f_code.co_name
-#             pk_print(str_working=rf'''{PK_UNDERLINE}{func_n}() %%%FOO%%%''')
+#             ensure_printed(str_working=rf'''{PK_UNDERLINE}{func_n}() %%%FOO%%%''')
 #             print("DB 의 모든 자료를 가져왔습니다")
 #             return toml.load(DB_YAML)
 #         except:
@@ -1043,7 +1038,7 @@ class PkProgramPerformanceOptimizingUtil:
 #
 #     @staticmethod
 #     def select_db_toml(key):
-#         # pk_print(f"{inspect.currentframe().f_code.co_name}()")
+#         # ensure_printed(f"{inspect.currentframe().f_code.co_name}()")
 #         try:
 #             key = str(key)
 #             db_pnx = DB_YAML
@@ -1065,12 +1060,12 @@ class PkProgramPerformanceOptimizingUtil:
 #             db_pnx = DB_YAML
 #             key: str = str(key)
 #             func_n = inspect.currentframe().f_code.co_name
-#             pk_print(str_working=rf'''{PK_UNDERLINE}{func_n}() %%%FOO%%%''')
+#             ensure_printed(str_working=rf'''{PK_UNDERLINE}{func_n}() %%%FOO%%%''')
 #             # 기존의 DB 의 데이터
 #             with open(db_pnx, 'r', encoding='utf-8') as f:
 #                 db = toml.load(f)
-#                 # pk_print("DB 업데이트 전 ")
-#                 # pk_print(context=str(db))
+#                 # ensure_printed("DB 업데이트 전 ")
+#                 # ensure_printed(context=str(db))
 #
 #             # 데이터 업데이트
 #             if key in db:
@@ -1087,8 +1082,8 @@ class PkProgramPerformanceOptimizingUtil:
 #             # DB 변경 확인
 #             # with open(db_pnx, 'r') as f:
 #             #     db = toml.load(f)
-#             #     pk_print("DB 변경 확인")
-#             #     pk_print(context=str(db))
+#             #     ensure_printed("DB 변경 확인")
+#             #     ensure_printed(context=str(db))
 #         except:
 #             print_light_black(f"{traceback.format_exc()}")
 #
@@ -1098,13 +1093,13 @@ class PkProgramPerformanceOptimizingUtil:
 #             key = str(key)
 #             db_pnx = DB_YAML
 #             func_n = inspect.currentframe().f_code.co_name
-#             pk_print(str_working=rf'''{PK_UNDERLINE}{func_n}() %%%FOO%%%''')
+#             ensure_printed(str_working=rf'''{PK_UNDERLINE}{func_n}() %%%FOO%%%''')
 #             db_pnx = DB_YAML
 #             # 기존의 DB 의 데이터
 #             with open(db_pnx, 'r', encoding='utf-8') as f:
 #                 db = toml.load(f)
-#                 # pk_print("DB 업데이트 전 ")
-#                 # pk_print(context=str(db))
+#                 # ensure_printed("DB 업데이트 전 ")
+#                 # ensure_printed(context=str(db))
 #
 #             # 데이터 삽입
 #             if key in db:
@@ -1121,8 +1116,8 @@ class PkProgramPerformanceOptimizingUtil:
 #             # DB 변경 확인
 #             # with open(db_pnx, 'r') as f:
 #             #     db = toml.load(f)
-#             #     pk_print("DB 변경 확인")
-#             #     pk_print(context=str(db))
+#             #     ensure_printed("DB 변경 확인")
+#             #     ensure_printed(context=str(db))
 #         except:
 #             print_light_black(f"{traceback.format_exc()}")
 #
@@ -1130,7 +1125,7 @@ class PkProgramPerformanceOptimizingUtil:
 #     def back_up_db_toml():
 #         try:
 #             func_n = inspect.currentframe().f_code.co_name
-#             pk_print(str_working=rf'''{PK_UNDERLINE}{func_n}() %%%FOO%%%''')
+#             ensure_printed(str_working=rf'''{PK_UNDERLINE}{func_n}() %%%FOO%%%''')
 #             compress_pnx_via_bz(DB_YAML)
 #         except:
 #             print_light_black(f"{traceback.format_exc()}")
@@ -1139,7 +1134,7 @@ class PkProgramPerformanceOptimizingUtil:
 #     def delete_db_toml():
 #         try:
 #             func_n = inspect.currentframe().f_code.co_name
-#             pk_print(str_working=rf'''{PK_UNDERLINE}{func_n}() %%%FOO%%%''')
+#             ensure_printed(str_working=rf'''{PK_UNDERLINE}{func_n}() %%%FOO%%%''')
 #             convert_as_zip_with_timestamp(DB_YAML)
 #         except:
 #             print_light_black(f"{traceback.format_exc()}")
@@ -1147,7 +1142,7 @@ class PkProgramPerformanceOptimizingUtil:
 #     @staticmethod
 #     def is_accesable_local_database():
 #         func_n = inspect.currentframe().f_code.co_name
-#         pk_print(str_working=rf'''{PK_UNDERLINE}{func_n}() %%%FOO%%%''')
+#         ensure_printed(str_working=rf'''{PK_UNDERLINE}{func_n}() %%%FOO%%%''')
 #         if not os.path.exists(DB_YAML):
 #             DbTomlUtil.create_db_toml()
 #             return False
@@ -1230,7 +1225,7 @@ class PkProgramPerformanceOptimizingUtil:
 #     @staticmethod
 #     def get_commutation_management_validated(commutation_management):
 #         func_n = inspect.currentframe().f_code.co_name
-#         pk_print(str_working=rf'''{PK_UNDERLINE}{func_n}() %%%FOO%%%''')
+#         ensure_printed(str_working=rf'''{PK_UNDERLINE}{func_n}() %%%FOO%%%''')
 #
 #         # CommutationManagement 클래스의 필드 개수 확인
 #         field_count = len(CommutationManageCommutationManagement.__table__.c)
@@ -1257,7 +1252,7 @@ class PkProgramPerformanceOptimizingUtil:
 #     @staticmethod
 #     def validate_commutation_management(commutation_management):
 #         func_n = inspect.currentframe().f_code.co_name
-#         pk_print(str_working=rf'''{PK_UNDERLINE}{func_n}() %%%FOO%%%''')
+#         ensure_printed(str_working=rf'''{PK_UNDERLINE}{func_n}() %%%FOO%%%''')
 #         CommutationManageget_commutation_management_validated(commutation_management)
 #
 #     class CommutationManagementCreate(CommutationManagementBase):
@@ -1303,21 +1298,21 @@ class PkProgramPerformanceOptimizingUtil:
 #     @staticmethod
 #     def validate_id(value):
 #         func_n = inspect.currentframe().f_code.co_name
-#         pk_print(str_working=rf'''{PK_UNDERLINE}{func_n}() %%%FOO%%%''')
+#         ensure_printed(str_working=rf'''{PK_UNDERLINE}{func_n}() %%%FOO%%%''')
 #         raise_exception_after_special_charcater_check(value, inspect.currentframe().f_code.co_name)
 #         return True
 #
 #     @staticmethod
 #     def validate_name(value):
 #         func_n = inspect.currentframe().f_code.co_name
-#         pk_print(str_working=rf'''{PK_UNDERLINE}{func_n}() %%%FOO%%%''')
+#         ensure_printed(str_working=rf'''{PK_UNDERLINE}{func_n}() %%%FOO%%%''')
 #         raise_exception_after_special_charcater_check(value, inspect.currentframe().f_code.co_name)
 #         return True
 #
 #     @staticmethod
 #     def validate_phone_no(value):
 #         func_n = inspect.currentframe().f_code.co_name
-#         pk_print(str_working=rf'''{PK_UNDERLINE}{func_n}() %%%FOO%%%''')
+#         ensure_printed(str_working=rf'''{PK_UNDERLINE}{func_n}() %%%FOO%%%''')
 #         # r'^\d{3}-\d{3,4}-\d{4}$'
 #         # r'^\d{2}-\d{3,4}-\d{4}$' 둘다
 #         if not re.match(r'^\d{2,3}-\d{3,4}-\d{4}$', value):
@@ -1327,13 +1322,13 @@ class PkProgramPerformanceOptimizingUtil:
 #     @staticmethod
 #     def validate_time_to_go_to_office(value):
 #         func_n = inspect.currentframe().f_code.co_name
-#         pk_print(str_working=rf'''{PK_UNDERLINE}{func_n}() %%%FOO%%%''')
+#         ensure_printed(str_working=rf'''{PK_UNDERLINE}{func_n}() %%%FOO%%%''')
 #         return True
 #
 #     @staticmethod
 #     def validate_time_to_leave_office(value):
 #         func_n = inspect.currentframe().f_code.co_name
-#         pk_print(str_working=rf'''{PK_UNDERLINE}{func_n}() %%%FOO%%%''')
+#         ensure_printed(str_working=rf'''{PK_UNDERLINE}{func_n}() %%%FOO%%%''')
 #         return True
 
 
@@ -1398,7 +1393,7 @@ class PkProgramPerformanceOptimizingUtil:
 #     @staticmethod
 #     def get_customer_service_board_validated(customer_service_board):
 #         func_n = inspect.currentframe().f_code.co_name
-#         pk_print(str_working=rf'''{PK_UNDERLINE}{func_n}() %%%FOO%%%''')
+#         ensure_printed(str_working=rf'''{PK_UNDERLINE}{func_n}() %%%FOO%%%''')
 #
 #         # CustomerServiceBoard 클래스의 필드 개수 확인
 #         field_count = len(CustomerServiceBoardUtil.CustomerServiceBoard.__table__.c)
@@ -1426,7 +1421,7 @@ class PkProgramPerformanceOptimizingUtil:
 #     @staticmethod
 #     def validate_customer_service_board(customer_service_board):
 #         func_n = inspect.currentframe().f_code.co_name
-#         pk_print(str_working=rf'''{PK_UNDERLINE}{func_n}() %%%FOO%%%''')
+#         ensure_printed(str_working=rf'''{PK_UNDERLINE}{func_n}() %%%FOO%%%''')
 #         CustomerServiceBoardUtil.get_customer_service_board_validated(customer_service_board)
 #
 #     class CustomerServiceBoardCreate(CustomerServiceBoardBase):
@@ -1481,7 +1476,7 @@ class PkProgramPerformanceOptimizingUtil:
 #     @staticmethod
 #     def is_customer_service_board_joined_by_id(id, request):
 #         func_n = inspect.currentframe().f_code.co_name
-#         pk_print(str_working=rf'''{PK_UNDERLINE}{func_n}() %%%FOO%%%''')
+#         ensure_printed(str_working=rf'''{PK_UNDERLINE}{func_n}() %%%FOO%%%''')
 #
 #         result = MySqlUtil.get_session_local().query(CustomerServiceBoardUtil.CustomerServiceBoard).filter(CustomerServiceBoardUtil.CustomerServiceBoard.id == id).limit(2)
 #         for customer_service_board in result:
@@ -1499,21 +1494,21 @@ class PkProgramPerformanceOptimizingUtil:
 #     @staticmethod
 #     def validate_id(value):
 #         func_n = inspect.currentframe().f_code.co_name
-#         pk_print(str_working=rf'''{PK_UNDERLINE}{func_n}() %%%FOO%%%''')
+#         ensure_printed(str_working=rf'''{PK_UNDERLINE}{func_n}() %%%FOO%%%''')
 #         raise_exception_after_special_charcater_check(value, inspect.currentframe().f_code.co_name)
 #         return True
 #
 #     @staticmethod
 #     def validate_writer(value):
 #         func_n = inspect.currentframe().f_code.co_name
-#         pk_print(str_working=rf'''{PK_UNDERLINE}{func_n}() %%%FOO%%%''')
+#         ensure_printed(str_working=rf'''{PK_UNDERLINE}{func_n}() %%%FOO%%%''')
 #         raise_exception_after_special_charcater_check(value, inspect.currentframe().f_code.co_name)
 #         return True
 #
 #     @staticmethod
 #     def validate_title(value):
 #         func_n = inspect.currentframe().f_code.co_name
-#         pk_print(str_working=rf'''{PK_UNDERLINE}{func_n}() %%%FOO%%%''')
+#         ensure_printed(str_working=rf'''{PK_UNDERLINE}{func_n}() %%%FOO%%%''')
 #         raise_exception_after_special_charcater_check(value, inspect.currentframe().f_code.co_name, ignore_list=["@"])
 #         CustomerServiceBoardUtil.validate_title(value)
 #         pattern = r'^[\w\.-]+@[\w\.-]+\.\w+$'
@@ -1527,7 +1522,7 @@ class PkProgramPerformanceOptimizingUtil:
 #     @staticmethod
 #     def validate_contents(value):
 #         func_n = inspect.currentframe().f_code.co_name
-#         pk_print(str_working=rf'''{PK_UNDERLINE}{func_n}() %%%FOO%%%''')
+#         ensure_printed(str_working=rf'''{PK_UNDERLINE}{func_n}() %%%FOO%%%''')
 #         # r'^\d{3}-\d{3,4}-\d{4}$'
 #         # r'^\d{2}-\d{3,4}-\d{4}$' 둘다
 #         if not re.match(r'^\d{2,3}-\d{3,4}-\d{4}$', value):
@@ -1537,13 +1532,13 @@ class PkProgramPerformanceOptimizingUtil:
 #     @staticmethod
 #     def validate_date_reg(value):
 #         func_n = inspect.currentframe().f_code.co_name
-#         pk_print(str_working=rf'''{PK_UNDERLINE}{func_n}() %%%FOO%%%''')
+#         ensure_printed(str_working=rf'''{PK_UNDERLINE}{func_n}() %%%FOO%%%''')
 #         return True
 #
 #     @staticmethod
 #     def validate_del_yn(value):
 #         func_n = inspect.currentframe().f_code.co_name
-#         pk_print(str_working=rf'''{PK_UNDERLINE}{func_n}() %%%FOO%%%''')
+#         ensure_printed(str_working=rf'''{PK_UNDERLINE}{func_n}() %%%FOO%%%''')
 #         return True
 
 

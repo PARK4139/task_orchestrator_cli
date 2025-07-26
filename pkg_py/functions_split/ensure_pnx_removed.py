@@ -2,14 +2,14 @@ def ensure_pnx_removed(pnx):
     from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
     from pkg_py.functions_split.get_nx import get_nx
     from pkg_py.functions_split.move_pnx_to_pk_recycle_bin import move_pnx_to_pk_recycle_bin
-    from pkg_py.functions_split.pk_print import pk_print
+    from pkg_py.functions_split.ensure_printed import ensure_printed
     from pkg_py.system_object.local_test_activate import LTA
 
     import os
     import inspect
     func_n = inspect.currentframe().f_code.co_name
     if not does_pnx_exist(pnx):
-        pk_print(f'''삭제할 {get_nx(pnx)} 가 없습니다. {'%%%FOO%%%' if LTA else ''}''')
+        ensure_printed(f'''삭제할 {get_nx(pnx)} 가 없습니다. {'%%%FOO%%%' if LTA else ''}''')
         return
     if does_pnx_exist(pnx):
         # 1
@@ -26,6 +26,6 @@ def ensure_pnx_removed(pnx):
         # 3
         move_pnx_to_pk_recycle_bin(pnx)
     if not os.path.exists(pnx):
-        pk_print(rf"[{func_n}] pnx={pnx} {'%%%FOO%%%' if LTA else ''}", print_color='green')
+        ensure_printed(rf"[{func_n}] pnx={pnx} {'%%%FOO%%%' if LTA else ''}", print_color='green')
     else:
-        pk_print(rf"[{func_n}] pnx={pnx} {'%%%FOO%%%' if LTA else ''}", print_color='red')
+        ensure_printed(rf"[{func_n}] pnx={pnx} {'%%%FOO%%%' if LTA else ''}", print_color='red')

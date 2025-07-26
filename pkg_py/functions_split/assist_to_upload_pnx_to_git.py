@@ -59,10 +59,10 @@ from pkg_py.functions_split.get_video_filtered_list import get_video_filtered_li
 from pkg_py.functions_split.get_d_working import get_d_working
 from pkg_py.functions_split.is_window_opened import is_window_opened
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 from pkg_py.functions_split.cmd_to_os import cmd_to_os
-from pkg_py.functions_split.write_list_to_f import write_list_to_f
+from pkg_py.functions_split.ensure_list_written_to_f import ensure_list_written_to_f
 from pkg_py.functions_split.get_list_sorted import get_list_sorted
 from pkg_py.system_object.stamps import STAMP_ATTEMPTED
 from pkg_py.system_object.files import F_LOSSLESSCUT_EXE
@@ -92,7 +92,7 @@ from cryptography.hazmat.backends import default_backend
 from collections import defaultdict, Counter
 from bs4 import BeautifulSoup
 from pkg_py.functions_split.get_nx import get_nx
-from pkg_py.functions_split.assist_to_load_video_at_losslesscut import pk_ensure_video_loaded_at_losslesscut
+from pkg_py.functions_split.assist_to_load_video_at_losslesscut import ensure_video_loaded_at_losslesscut
 from pkg_py.system_object.stamps import STAMP_TRY_GUIDE, STAMP_UNIT_TEST_EXCEPTION_DISCOVERED
 from pkg_py.functions_split.get_pnx_list import get_pnx_list
 from pkg_py.system_object.directories import D_PKG_PY
@@ -105,16 +105,16 @@ from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
 from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style
 from pkg_py.functions_split.get_pnx_windows_style import get_pnx_windows_style
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.get_pnx_list import get_pnx_list
 from pkg_py.functions_split.get_d_working import get_d_working
 
 
 def assist_to_upload_pnx_to_git(d_working, git_repo_url, branch_n):
-    pk_print(f'''d_working={d_working} {'%%%FOO%%%' if LTA else ''}''')
+    ensure_printed(f'''d_working={d_working} {'%%%FOO%%%' if LTA else ''}''')
     loop_cnt = 1
     while 1:
         try:
@@ -126,12 +126,12 @@ def assist_to_upload_pnx_to_git(d_working, git_repo_url, branch_n):
                 loop_cnt = loop_cnt + 1
             if not ensure_d_size_stable(d_working, limit_seconds=30):
                 if ensure_d_size_stable(d_working, limit_seconds=30):
-                    pk_print("📂 change stable after 📂 change detected")
+                    ensure_printed("📂 change stable after 📂 change detected")
                     commit_msg = ensure_input_preprocessed(str_working=f"commit_msg=", upper_seconds_limit=60,
                                                            return_default=f"feat: make save point by auto at {get_time_as_('%Y-%m-%d %H:%M')}")
                     push_pnx_to_github(d_working=d_working, git_repo_url=git_repo_url, commit_msg=commit_msg,
                                        branch_n=branch_n)
         except:
             import traceback
-            pk_print(f'''{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
+            ensure_printed(f'''{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
             break

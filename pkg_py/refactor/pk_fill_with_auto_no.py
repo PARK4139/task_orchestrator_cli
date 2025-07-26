@@ -1,7 +1,7 @@
 
 
 if __name__ == '__main__':
-    from pkg_py.functions_split.pk_print import pk_print
+    from pkg_py.functions_split.ensure_printed import ensure_printed
     try:
 
         # , D_PROJECT
@@ -26,11 +26,11 @@ if __name__ == '__main__':
         # template_str = get_list_f_temp() # todo
         # template_str = get_str_from_f(f=f)
 
-        pk_print(str_working=rf'''{PK_UNDERLINE} %%%FOO%%%''')
+        ensure_printed(str_working=rf'''{PK_UNDERLINE} %%%FOO%%%''')
         result = replace_with_auto_no(template_str=template_str, word_monitored='%%%FOO%%%', auto_cnt_starting_no=0)
-        pk_print(result)
-        pk_print(str_working=rf'''{PK_UNDERLINE} %%%FOO%%%''')
+        ensure_printed(result)
+        ensure_printed(str_working=rf'''{PK_UNDERLINE} %%%FOO%%%''')
 
 
     except:
-        pk_print("202312071431")
+        ensure_printed("202312071431")

@@ -30,7 +30,7 @@ from pkg_py.functions_split.get_nx import get_nx
 from pkg_py.functions_split.get_list_calculated import get_list_calculated
 from pkg_py.functions_split.get_pnx_wsl_unix_style import get_pnx_wsl_unix_style
 
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
 def download_youtube_video_via_yt_dlp_v2(D_FFMPEG_LOCATION, D_PK_WORKING, ext, url):
@@ -53,5 +53,5 @@ def download_youtube_video_via_yt_dlp_v2(D_FFMPEG_LOCATION, D_PK_WORKING, ext, u
         'merge_output_format': ext,
     }
     with yt_dlp.YoutubeDL(ydl_opts) as ydl:
-        pk_print(f"downloading via ydl...   ({url})", print_color="blue")
+        ensure_printed(f"downloading via ydl...   ({url})", print_color="blue")
         ydl.download([url])

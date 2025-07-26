@@ -5,7 +5,7 @@
 import traceback
 
 if __name__ == '__main__':
-    #  import pk_deprecated_get_d_current_n_like_person, get_f_current_n, kill_us_keyboard
+    #  import deprecated_get_d_current_n_like_person, get_f_current_n, kill_us_keyboard
     #
     #, STAMP_TRY_GUIDE, STAMP_PYTHON_DEBUGGING_NOTE, STAMP_EXCEPTION_DISCOVERED, D_PROJECT
 
@@ -17,10 +17,10 @@ if __name__ == '__main__':
         ensure_do_finally_routine(D_PROJECT=D_PROJECT, __file__=__file__, STAMP_TRY_GUIDE=STAMP_TRY_GUIDE)
         traceback_format_exc_list = traceback.format_exc().split("\n")
 
-        pk_print(str_working=f'{PK_UNDERLINE}', print_color='red')
+        ensure_printed(str_working=f'{PK_UNDERLINE}', print_color='red')
         for traceback_format_exc_str in traceback_format_exc_list:
-            pk_print(str_working=f'{STAMP_EXCEPTION_DISCOVERED} {traceback_format_exc_str}', print_color='red')
-        pk_print(str_working=f'{PK_UNDERLINE}', print_color='red')
+            ensure_printed(str_working=f'{STAMP_EXCEPTION_DISCOVERED} {traceback_format_exc_str}', print_color='red')
+        ensure_printed(str_working=f'{PK_UNDERLINE}', print_color='red')
 
         
 

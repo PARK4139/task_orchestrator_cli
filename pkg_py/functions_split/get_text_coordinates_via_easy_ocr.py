@@ -28,7 +28,7 @@ from base64 import b64encode
 from pkg_py.functions_split.get_pnx_list import get_pnx_list
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
 def get_text_coordinates_via_easy_ocr(string):  # 한글인식 잘 안되는 듯하다
@@ -48,8 +48,8 @@ def get_text_coordinates_via_easy_ocr(string):  # 한글인식 잘 안되는 듯
     # 중심 좌표 구하기
     if get_center_of_bounding_box(coordinates_bounding_box) is not None:
         center_x, center_y = get_center_of_bounding_box(coordinates_bounding_box)
-        # pk_print(string = rf'''center_x="{center_x}"  {'%%%FOO%%%' if LTA else ''}''')
-        # pk_print(string = rf'''center_y="{center_y}"  {'%%%FOO%%%' if LTA else ''}''')
-        pk_print(f'''"text_coordinates = ({center_x}, {center_y})"''')
+        # ensure_printed(string = rf'''center_x="{center_x}"  {'%%%FOO%%%' if LTA else ''}''')
+        # ensure_printed(string = rf'''center_y="{center_y}"  {'%%%FOO%%%' if LTA else ''}''')
+        ensure_printed(f'''"text_coordinates = ({center_x}, {center_y})"''')
         return center_x, center_y
     return None

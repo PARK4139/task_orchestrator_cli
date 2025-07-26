@@ -55,10 +55,10 @@ from pkg_py.functions_split.rerun_losslesscut import rerun_losslesscut
 from pkg_py.functions_split.get_f_video_to_load import get_f_video_to_load
 from pkg_py.functions_split.get_d_working import get_d_working
 from pkg_py.functions_split.is_window_opened import is_window_opened
-from pkg_py.functions_split.pk_print_once import pk_print_once
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed_once import ensure_printed_once
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
-from pkg_py.functions_split.write_list_to_f import write_list_to_f
+from pkg_py.functions_split.ensure_list_written_to_f import ensure_list_written_to_f
 from pkg_py.functions_split.get_list_sorted import get_list_sorted
 
 from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
@@ -104,11 +104,11 @@ from pkg_py.functions_split.get_pnx_wsl_unix_style import get_pnx_wsl_unix_style
 from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
 from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.get_pnx_list import get_pnx_list
 
 
@@ -125,5 +125,5 @@ def make_matrix_console():
         for line in lines:
             if "" != line:
                 if os.getcwd() != line:
-                    pk_print(lines, print_color='blue')
-        pk_sleep(seconds=60)
+                    ensure_printed(lines, print_color='blue')
+        ensure_slept(seconds=60)

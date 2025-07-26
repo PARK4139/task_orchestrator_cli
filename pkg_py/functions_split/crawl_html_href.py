@@ -1,14 +1,14 @@
 from tkinter import UNDERLINE
 
 
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
 def crawl_html_href(url: str):
     import inspect
     import random
 
-    pk_print(f"{UNDERLINE}{inspect.currentframe().f_code.co_name}", print_color='blue')
+    ensure_printed(f"{UNDERLINE}{inspect.currentframe().f_code.co_name}", print_color='blue')
     # 최하단으로 스크롤 이동 처리를 추가로 해야함. 그렇지 않으면 기대하는 모든 영상을 크롤링 할 수 없음..귀찮..지만 처리했다.
 
     browser_debug_mode = False
@@ -17,21 +17,21 @@ def crawl_html_href(url: str):
     url = url.strip()
 
     # driver 설정
-    pk_print(f"get_driver_selenium(browser_debug_mode=True) 수행 중...", print_color='blue')
+    ensure_printed(f"get_driver_selenium(browser_debug_mode=True) 수행 중...", print_color='blue')
     driver = get_driver_selenium(browser_debug_mode=browser_debug_mode)
 
-    pk_print(f"driver.get(target_url) 수행 중...", print_color='blue')
+    ensure_printed(f"driver.get(target_url) 수행 중...", print_color='blue')
     target_url = url
     driver.get(target_url)
 
     # 자동제어 브라우저 화면 초기 로딩 random.randint(1,n) 초만큼 명시적 대기
     n = 2
     seconds = random.randint(1, n)
-    pk_print(f"자동제어 브라우저 화면 초기 로딩 중... {seconds} seconds", print_color='blue')
+    ensure_printed(f"자동제어 브라우저 화면 초기 로딩 중... {seconds} seconds", print_color='blue')
     driver.implicitly_wait(seconds)  # 처음페이지 로딩이 끝날 때까지 약 random.randint(1,n)초 대기
 
     # 최하단으로 자동 스크롤, 페이지 최하단에서 더이상 로딩될 dom 객체가 없을 때 까지
-    pk_print("스크롤 최하단으로 이동 중...", print_color='blue')
+    ensure_printed("스크롤 최하단으로 이동 중...", print_color='blue')
     scroll_cnt = 0
     previous_scroll_h = None
     current_scroll_h = None
@@ -46,7 +46,7 @@ def crawl_html_href(url: str):
         n = 6  # success
         if len(scroll_maxs_monitored) == n:
             if all(scroll_maxs_monitored) == True:  # [bool] bool list 내 요소가 모두 true 인지 확인
-                pk_print(str_working="스크롤 최하단으로 이동되었습니다", print_color='blue')
+                ensure_printed(str_working="스크롤 최하단으로 이동되었습니다", print_color='blue')
                 break
 
         # previous_scroll_h 업데이트
@@ -59,14 +59,14 @@ def crawl_html_href(url: str):
         driver.execute_script(
             "window.scrollTo(0, document.documentElement.scrollHeight);")  # JavaScript 로 스크롤 최하단으로 이동, 유튜브용 코드?
         # sleep(seconds=2)  # 스크롤에 의한 추가적인 dom 객체 로딩 대기, 여러가지 예제를 보니, 일반적으로 2 초 정도 두는 것 같음. 2초 내에 로딩이 되지 않을 때도 있는데.
-        pk_sleep(milliseconds=500)  # 스크롤에 의한 추가적인 dom 객체 로딩 대기, success, 지금껏 문제 없었음.
+        ensure_slept(milliseconds=500)  # 스크롤에 의한 추가적인 dom 객체 로딩 대기, success, 지금껏 문제 없었음.
 
         # previous_scroll_h=driver.execute_script("return document.body.scrollHeight")
         current_scroll_h = driver.execute_script("return document.documentElement.scrollHeight")
 
         scroll_cnt = scroll_cnt + 1
 
-        pk_print(
+        ensure_printed(
             f'{scroll_cnt}번 째 스크롤 성공 previous_scroll_h : {previous_scroll_h} current_scroll_h : {current_scroll_h}   previous_scroll_h==current_scroll_h : {previous_scroll_h == current_scroll_h}',
             print_color='blue')
 
@@ -89,19 +89,19 @@ def crawl_html_href(url: str):
     # images=soup.find_all("img")
     # for img in images:
     #     img_url=img.get("src")
-    #     pk_print(str_working="Image URL:", img_url)
+    #     ensure_printed(str_working="Image URL:", img_url)
     #
     # 스크립트 태그 크롤링
     # scripts=soup.find_all("script")
     # for script in scripts:
     #     script_url=script.get("src")
-    #     pk_print(str_working="Script URL:", script_url)
+    #     ensure_printed(str_working="Script URL:", script_url)
     #
     # # 스타일시트 크롤링
     # stylesheets=soup.find_all("link", rel="stylesheet")
     # for stylesheet in stylesheets:
     #     stylesheet_url=stylesheet.get("href")
-    #     pk_print(str_working="Stylesheet URL:", stylesheet_url)
+    #     ensure_printed(str_working="Stylesheet URL:", stylesheet_url)
 
     # 특정 태그의 class 가 "어쩌구" 인
     # div_tags=soup.find_all("div", class_="어쩌구")
@@ -112,7 +112,7 @@ def crawl_html_href(url: str):
     # for a_tag in a_tags:
     #     hrefs=a_tag.get("href")
     #     if hrefs is not None and hrefs != "":
-    #         # pk_print(str_working="href", hrefs)
+    #         # ensure_printed(str_working="href", hrefs)
     #         results=f"{results}{hrefs}\n"
 
     # 변수에 저장 via selector

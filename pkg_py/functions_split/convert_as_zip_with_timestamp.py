@@ -45,7 +45,7 @@ from pkg_py.functions_split.load_f_video_on_losslesscut import load_f_video_on_l
 from pkg_py.functions_split.get_video_filtered_list import get_video_filtered_list
 from pkg_py.functions_split.is_window_opened import is_window_opened
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
-from pkg_py.functions_split.pk_print_once import pk_print_once
+from pkg_py.functions_split.ensure_printed_once import ensure_printed_once
 
 from pkg_py.functions_split.cmd_to_os import cmd_to_os
 from pkg_py.functions_split.get_list_sorted import get_list_sorted
@@ -65,7 +65,7 @@ from datetime import timedelta
 from datetime import datetime, timedelta
 from cryptography.hazmat.primitives import padding
 from collections import Counter
-from pkg_py.functions_split.assist_to_load_video_at_losslesscut import pk_ensure_video_loaded_at_losslesscut
+from pkg_py.functions_split.assist_to_load_video_at_losslesscut import ensure_video_loaded_at_losslesscut
 from pkg_py.system_object.etc import PK_UNDERLINE
 from pkg_py.functions_split.get_pnx_list import get_pnx_list
 from pkg_py.functions_split.get_list_calculated import get_list_calculated
@@ -77,7 +77,7 @@ from pkg_py.functions_split.get_pnx_wsl_unix_style import get_pnx_wsl_unix_style
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.get_d_working import get_d_working
 
 
@@ -92,25 +92,25 @@ def convert_as_zip_with_timestamp(f):
         target_basename = os.path.basename(f).split(".")[0]
         target_zip = rf'$zip_{target_basename}.zip'
         target_yyyy_mm_dd_HH_MM_SS_zip = rf'{target_basename} - {get_time_as_("%Y %m %d %H %M %S")}.zip'
-        # pk_print(rf'# target_dirname_dirname 로 이동')
+        # ensure_printed(rf'# target_dirname_dirname 로 이동')
         pk_chdir(target_dirname_dirname)
-        # pk_print(rf'부모d로 백업')
+        # ensure_printed(rf'부모d로 백업')
         cmd = f'bandizip.exe c "{target_zip}" "{f}"'
         cmd_to_os_like_person_as_admin(cmd)
-        # pk_print(rf'이름변경')
+        # ensure_printed(rf'이름변경')
         cmd = f'ren "{target_zip}" "$deleted_{target_yyyy_mm_dd_HH_MM_SS_zip}"'
         cmd_to_os_like_person_as_admin(cmd)
-        # pk_print(rf'부모d에서 백업될 d로 이동')
+        # ensure_printed(rf'부모d에서 백업될 d로 이동')
         cmd = f'move "$deleted_{target_yyyy_mm_dd_HH_MM_SS_zip}" "{target_dirname}"'
         cmd_to_os_like_person_as_admin(cmd)
-        # pk_print(rf'백업될 d로 이동')
+        # ensure_printed(rf'백업될 d로 이동')
         pk_chdir(target_dirname)
-        # pk_print(str_working="os.getcwd()")
-        # pk_print(os.getcwd())
-        # pk_print(str_working="원본f삭제")
+        # ensure_printed(str_working="os.getcwd()")
+        # ensure_printed(os.getcwd())
+        # ensure_printed(str_working="원본f삭제")
         os.remove(f)
     except:
-        pk_print(f'''{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
+        ensure_printed(f'''{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
     finally:
-        pk_print(rf'프로젝트 d로 이동')
+        ensure_printed(rf'프로젝트 d로 이동')
         pk_chdir(starting_d)

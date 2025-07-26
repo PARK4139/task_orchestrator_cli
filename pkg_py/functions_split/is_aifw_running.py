@@ -25,12 +25,12 @@ from selenium.common.exceptions import ElementClickInterceptedException
 from prompt_toolkit import PromptSession
 from pkg_py.functions_split.is_window_opened import is_window_opened
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
-from pkg_py.functions_split.pk_press import pk_press
-from pkg_py.functions_split.pk_print_state import pk_print_state
-from pkg_py.functions_split.pk_print_once import pk_print_once
+from pkg_py.functions_split.press import press
+from pkg_py.functions_split.print_state import print_state
+from pkg_py.functions_split.ensure_printed_once import ensure_printed_once
 
 from pkg_py.functions_split.cmd_to_os import cmd_to_os
-from pkg_py.functions_split.write_list_to_f import write_list_to_f
+from pkg_py.functions_split.ensure_list_written_to_f import ensure_list_written_to_f
 from pkg_py.functions_split.get_list_sorted import get_list_sorted
 from pkg_py.system_object.files import F_POT_PLAYER_MINI_64_EXE, F_HISTORICAL_PNX
 from pkg_py.system_object.files import F_HISTORICAL_PNX
@@ -43,7 +43,7 @@ from datetime import datetime, time
 from cryptography.hazmat.backends import default_backend
 from Cryptodome.Cipher import AES
 from colorama import init as pk_colorama_init
-from pkg_py.functions_split.assist_to_load_video_at_losslesscut import pk_ensure_video_loaded_at_losslesscut
+from pkg_py.functions_split.assist_to_load_video_at_losslesscut import ensure_video_loaded_at_losslesscut
 from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style
 from pkg_py.functions_split.get_pnx_list import get_pnx_list
 from pkg_py.functions_split.get_list_calculated import get_list_calculated

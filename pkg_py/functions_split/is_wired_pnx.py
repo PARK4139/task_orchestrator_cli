@@ -70,8 +70,8 @@ from pkg_py.functions_split.ensure_window_to_front import ensure_window_to_front
 from pkg_py.functions_split.load_f_video_on_losslesscut import load_f_video_on_losslesscut
 from pkg_py.functions_split.get_video_filtered_list import get_video_filtered_list
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
-from pkg_py.functions_split.pk_press import pk_press
-from pkg_py.functions_split.pk_print_state import pk_print_state
+from pkg_py.functions_split.press import press
+from pkg_py.functions_split.print_state import print_state
 
 from pkg_py.functions_split.get_list_sorted import get_list_sorted
 
@@ -113,7 +113,7 @@ from colorama import init as pk_colorama_init
 from collections import Counter
 from bs4 import BeautifulSoup
 from pkg_py.functions_split.get_nx import get_nx
-from pkg_py.functions_split.assist_to_load_video_at_losslesscut import pk_ensure_video_loaded_at_losslesscut
+from pkg_py.functions_split.assist_to_load_video_at_losslesscut import ensure_video_loaded_at_losslesscut
 from pkg_py.functions_split.kill_self_pk_program import kill_self_pk_program
 from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style
 from pkg_py.functions_split.get_pnx_list import get_pnx_list
@@ -131,7 +131,7 @@ from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.get_pnx_list import get_pnx_list
 from pkg_py.functions_split.get_d_working import get_d_working
 
@@ -145,7 +145,7 @@ def is_wired_pnx(pnx):
     # wired 이상한 pnx 인지 확인
     # required 가 나은 것 같은데
     if pnx == "":
-        pk_print(f'''입력된 pnx가 "" 입니다 pnx={pnx} {'%%%FOO%%%' if LTA else ''}''', print_color='red')
+        ensure_printed(f'''입력된 pnx가 "" 입니다 pnx={pnx} {'%%%FOO%%%' if LTA else ''}''', print_color='red')
         return 1
     connected_drives = []
     for drive_letter in string.ascii_uppercase:
@@ -153,8 +153,8 @@ def is_wired_pnx(pnx):
         if os.path.exists(drive_path):
             connected_drives.append(drive_path)
             if pnx == drive_path:
-                pk_print(f'''입력된 pnx는 너무 광범위하여 진행할 수 없도록 설정되어 있습니다  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
+                ensure_printed(f'''입력된 pnx는 너무 광범위하여 진행할 수 없도록 설정되어 있습니다  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
                 return 1
     if not os.path.exists(pnx):
-        pk_print(f'''입력된 pnx가 존재하지 않습니다 pnx={pnx} {'%%%FOO%%%' if LTA else ''}''')
+        ensure_printed(f'''입력된 pnx가 존재하지 않습니다 pnx={pnx} {'%%%FOO%%%' if LTA else ''}''')
         return 1

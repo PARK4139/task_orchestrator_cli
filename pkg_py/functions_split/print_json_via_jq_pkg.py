@@ -2,7 +2,7 @@ import toml
 import clipboard
 from pkg_py.functions_split.get_nx import get_nx
 
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
 def print_json_via_jq_pkg(json_str=None, json_file=None, json_list=None):
@@ -27,7 +27,7 @@ def print_json_via_jq_pkg(json_str=None, json_file=None, json_list=None):
                 lines = cmd_to_os_like_person_as_admin(cmd=rf'echo "{json_list}" | "{F_JQ_WIN64_EXE}" ')
                 [print_light_white(line) for line in lines]
         else:
-            pk_print(
+            ensure_printed(
                 str_working=rf"{inspect.currentframe().f_code.co_name}() 를 사용하려면 json_str/json_file/json_list 파라미터들 중 둘 중 하나만 데이터바인딩이 되어야합니다")
     else:
-        pk_print(str_working="리눅스 시스템에서 아직 지원되지 않는 함수입니다")
+        ensure_printed(str_working="리눅스 시스템에서 아직 지원되지 않는 함수입니다")

@@ -1,4 +1,4 @@
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
 def init_db_container():
@@ -15,10 +15,10 @@ def init_db_container():
     for i in range(10):
         try:
             with socket.create_connection((host, port), timeout=5):
-                pk_print(f"MariaDB reachable at {host}:{port}")
+                ensure_printed(f"MariaDB reachable at {host}:{port}")
                 break
         except Exception:
-            pk_print(f"Waiting for MariaDB... ({i + 1}/10)", print_color='yellow')
+            ensure_printed(f"Waiting for MariaDB... ({i + 1}/10)", print_color='yellow')
             time.sleep(2)
     else:
         raise RuntimeError(f"MariaDB not reachable at {host}:{port}")

@@ -35,7 +35,7 @@ from pkg_py.functions_split.get_pnx_wsl_unix_style import get_pnx_wsl_unix_style
 from pkg_py.functions_split.get_pnx_windows_style import get_pnx_windows_style
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
 def convert_mp4_to_wav(pnx):
@@ -44,9 +44,9 @@ def convert_mp4_to_wav(pnx):
 
     func_n = inspect.currentframe().f_code.co_name
     '''테스트 필요'''
-    pk_print(f'from : {pnx}', print_color='blue')
+    ensure_printed(f'from : {pnx}', print_color='blue')
     file_edited = f'{os.path.splitext(os.path.basename(pnx))[0]}.wav'
-    pk_print(f'to   : {file_edited}', print_color='blue')
+    ensure_printed(f'to   : {file_edited}', print_color='blue')
 
     path_started = os.getcwd()
 

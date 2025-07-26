@@ -18,14 +18,14 @@ from base64 import b64encode
 from pkg_py.functions_split.get_nx import get_nx
 from pkg_py.functions_split.get_pnx_windows_style import get_pnx_windows_style
 
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
 def print_pk_ls_v2(index_map: dict):
     #
     import os
 
-    pk_print("실행 가능한 pk_ 프로그램 목록:")
+    ensure_printed("실행 가능한 pk_ 프로그램 목록:")
     for idx, path in index_map.items():
         nx = os.path.basename(path)
-        pk_print(f"[{idx}] {nx}")
+        ensure_printed(f"[{idx}] {nx}")

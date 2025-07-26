@@ -7,7 +7,7 @@ from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
 from pkg_py.functions_split.get_pnx_wsl_unix_style import get_pnx_wsl_unix_style
 
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
 def run_project_docker_base(f, dockerfile_script_list):
@@ -33,13 +33,13 @@ def run_project_docker_base(f, dockerfile_script_list):
     ensure_ssh_public_key_to_remote_os(**config_remote_os)
     ensure_remote_os_as_nopasswd(**config_remote_os)
     if LTA:
-        pk_print(f'''{STAMP_TRY_GUIDE} ssh -p {port} {user_n}@{ip} {'%%%FOO%%%' if LTA else ''}''')
+        ensure_printed(f'''{STAMP_TRY_GUIDE} ssh -p {port} {user_n}@{ip} {'%%%FOO%%%' if LTA else ''}''')
 
     # make dockerfile
     ensure_pnx_made(pnx=f, mode='f')
 
     # write dockerfile
-    write_dockerfile(f=f, f_dockerfile_script_list=dockerfile_script_list)
+    ensure_dockerfile_writen(f=f, f_dockerfile_script_list=dockerfile_script_list)
 
     # send dockerfile via scp
     cmd_to_remote_os(
@@ -85,7 +85,7 @@ def run_project_docker_base(f, dockerfile_script_list):
                      **config_remote_os)
     std_out_str, std_err_str = cmd_to_remote_os(cmd=rf"ls ~/Downloads/{os.path.basename(D_PROJECT)}/{f_nx}",
                                                 **config_remote_os)
-    pk_print(f'''std_out_str={std_out_str} {'%%%FOO%%%' if LTA else ''}''')
+    ensure_printed(f'''std_out_str={std_out_str} {'%%%FOO%%%' if LTA else ''}''')
     raise
     # cmd_to_remote_os(cmd=rf"ls", **config_remote_os)
     # cmd_to_remote_os(cmd=rf"ls ~/Downloads/{os.path.basename(D_PROJECT)}/{f_nx}", **config_remote_os)
@@ -123,7 +123,7 @@ def run_project_docker_base(f, dockerfile_script_list):
         cmd=f"docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' {docker_container_n}")  # 이거되나?
     # std_out_list, std_err_list = cmd_to_remote_os_with_pubkey(cmd=f"docker inspect -f '{{{{range .NetworkSettings.Networks}}}}{{{{.IPAddress}}}}{{{{end}}}}' {f_docker_container_name}")
     docker_ip = std_out_list[0]
-    pk_print(f'''docker_ip="{docker_ip}"  {'%%%FOO%%%' if LTA else ''}''')
+    ensure_printed(f'''docker_ip="{docker_ip}"  {'%%%FOO%%%' if LTA else ''}''')
 
     # wsl 내부 docker deamon 제어(wsl 외부에서)
     # Docker SDK # TCP로 노출 또는 Unix 소켓

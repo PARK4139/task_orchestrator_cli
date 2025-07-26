@@ -31,7 +31,7 @@ from prompt_toolkit.styles import Style
 from prompt_toolkit import PromptSession
 from pkg_py.functions_split.print_iterable_as_vertical import print_iterable_as_vertical
 from pkg_py.functions_split.rerun_losslesscut import rerun_losslesscut
-from pkg_py.functions_split.pk_print_state import pk_print_state
+from pkg_py.functions_split.print_state import print_state
 
 from pkg_py.functions_split.get_list_sorted import get_list_sorted
 from pkg_py.functions_split.set_pk_context_state import set_pk_context_state

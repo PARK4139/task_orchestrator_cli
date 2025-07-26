@@ -1,4 +1,4 @@
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
 def is_losslesscut_playing(threshold=5.0, check_duration=3, second_interval=1):
@@ -8,7 +8,7 @@ def is_losslesscut_playing(threshold=5.0, check_duration=3, second_interval=1):
     for _ in range(check_duration):
         cpu_usage = get_cpu_usage(interval=1.0, process_n="LosslessCut")
         if cpu_usage is None:
-            pk_print(f'''cpu_usage is None''', print_color='red')
+            ensure_printed(f'''cpu_usage is None''', print_color='red')
             return 0  # exec  중이 아니면 False
 
         cpu_usages.append(cpu_usage)

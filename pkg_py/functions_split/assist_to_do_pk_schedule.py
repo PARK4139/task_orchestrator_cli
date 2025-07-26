@@ -95,9 +95,9 @@ from pkg_py.functions_split.is_window_title_front import is_window_title_front
 from pkg_py.functions_split.get_d_working import get_d_working
 from pkg_py.functions_split.is_window_title_opened import is_window_title_opened
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
-from pkg_py.functions_split.pk_press import pk_press
-from pkg_py.functions_split.pk_print_state import pk_print_state
-from pkg_py.functions_split.pk_print_once import pk_print_once
+from pkg_py.functions_split.press import press
+from pkg_py.functions_split.print_state import print_state
+from pkg_py.functions_split.ensure_printed_once import ensure_printed_once
 
 from pkg_py.functions_split.cmd_to_os import cmd_to_os
 from pkg_py.functions_split.get_list_sorted import get_list_sorted
@@ -157,7 +157,7 @@ from bs4 import BeautifulSoup
 from base64 import b64encode
 from base64 import b64decode
 from pkg_py.functions_split.get_nx import get_nx
-from pkg_py.functions_split.assist_to_load_video_at_losslesscut import pk_ensure_video_loaded_at_losslesscut
+from pkg_py.functions_split.assist_to_load_video_at_losslesscut import ensure_video_loaded_at_losslesscut
 from pkg_py.functions_split.kill_self_pk_program import kill_self_pk_program
 from pkg_py.system_object.etc import PkFilter, PK_UNDERLINE
 from pkg_py.system_object.stamps import STAMP_TRY_GUIDE, STAMP_UNIT_TEST_EXCEPTION_DISCOVERED
@@ -170,23 +170,23 @@ from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style
 from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
 from pkg_py.functions_split.is_os_windows import is_os_windows
 from pkg_py.functions_split.get_pnx_windows_style import get_pnx_windows_style
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.get_d_working import get_d_working
 
 
 def assist_to_do_pk_schedule():
     from colorama import init as pk_colorama_init
 
-    pk_colorama_init_once()
+    colorama_init_once()
 
     loop_cnt = 0
     while 1:
         ment = f'pk scheduler loop {loop_cnt} is started'
-        pk_print(f"{ment}")
+        ensure_printed(f"{ment}")
         if loop_cnt == 0:
             # speak_ment_experimental(ment=ment, comma_delay=0.98, thread_join_mode=True)
             guide_to_check_routines()
@@ -222,7 +222,7 @@ def assist_to_do_pk_schedule():
                     pk_state_value=daily_greeting)
         if daily_greeting:
             ment = f'{yyyy} happy today! good lock for you!'
-            pk_print(f'''{ment} {'%%%FOO%%%' if LTA else ''}''', print_color='green')
+            ensure_printed(f'''{ment} {'%%%FOO%%%' if LTA else ''}''', print_color='green')
 
         # if is_midnight():  # 자정이면 초기화
         #     state_toml = toml.load(F_PK_CONFIG_TOML)["state_pk_schedule"]
@@ -241,7 +241,7 @@ def assist_to_do_pk_schedule():
                 state_yearly_greeting = 1
             if state_yearly_greeting == 1:
                 ment = f'{yyyy} happy new year! good lock for you!'
-                pk_print(f'''{ment} {'%%%FOO%%%' if LTA else ''}''', print_color='green')
+                ensure_printed(f'''{ment} {'%%%FOO%%%' if LTA else ''}''', print_color='green')
                 pk_speak(str_working=ment)
 
         if is_christmas():
@@ -260,7 +260,7 @@ def assist_to_do_pk_schedule():
                 return 1
             if state_yearly_greeting == 1:
                 ment = f'{yyyy} happy christmas! good lock for you!'
-                pk_print(f'''{ment} {'%%%FOO%%%' if LTA else ''}''', print_color='green')
+                ensure_printed(f'''{ment} {'%%%FOO%%%' if LTA else ''}''', print_color='green')
                 pk_speak(str_working=ment)
 
         # mkr_매시간 한시간에한번
@@ -366,7 +366,7 @@ def assist_to_do_pk_schedule():
         # - 즉시 시스템 종료 시도 기능
         # - 시간 시현기능 기능(autugui 이용)
         #   ment ='pc 정밀검사를 한번 수행해주세요'
-        #   pk_print(ment)
+        #   ensure_printed(ment)
         # - 하드코딩된 스케줄 작업 수행 기능
         # - 미세먼지 웹스크래핑 기능
         # - 초미세먼지 웹스크래핑 기능
@@ -377,7 +377,7 @@ def assist_to_do_pk_schedule():
         # - 음악재생 기능
         # - 영상재생 기능
 
-        pk_sleep(milliseconds=200)
+        ensure_slept(milliseconds=200)
         ment = f'pk scheduler loop {loop_cnt} is ended'
-        pk_print(f"{ment}")
+        ensure_printed(f"{ment}")
         loop_cnt = loop_cnt + 1

@@ -1,13 +1,13 @@
 from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.is_d import is_d
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
 def is_leaf_d(d):
     import traceback
 
     import os
-    pk_print(f'''d={d}  {'%%%FOO%%%' if LTA else ''}''')
+    ensure_printed(f'''d={d}  {'%%%FOO%%%' if LTA else ''}''')
     try:
         contents = os.listdir(d)
         if len(contents) > 0:
@@ -18,4 +18,4 @@ def is_leaf_d(d):
                 return 0
         return 1
     except:
-        pk_print(f'''{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
+        ensure_printed(f'''{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}''', print_color='red')

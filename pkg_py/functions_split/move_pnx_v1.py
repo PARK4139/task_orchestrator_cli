@@ -2,7 +2,7 @@ from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.is_d import is_d
 from pkg_py.functions_split.is_f import is_f
 from pkg_py.functions_split.get_nx import get_nx
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 
 
@@ -32,19 +32,19 @@ def move_pnx_v1(pnx, d_dst, with_overwrite=0, sequential_mode=0, timestamp_mode=
                 if not does_pnx_exist(pnx_with_timestamp):
                     shutil.move(src=pnx_with_timestamp, dst=d_dst)
                 if LTA:
-                    pk_print(str_working=rf'''time_pattern="{time_pattern}"  {'%%%FOO%%%' if LTA else ''}''')
-                    pk_print(
+                    ensure_printed(str_working=rf'''time_pattern="{time_pattern}"  {'%%%FOO%%%' if LTA else ''}''')
+                    ensure_printed(
                         str_working=rf'''src_type="{src_type:5s}" pnx_with_timestamp="{pnx_with_timestamp:<150}" dst="{d_dst:<50}" {'%%%FOO%%%' if LTA else ''}''',
                         print_color='green')
-                    pk_print(
+                    ensure_printed(
                         str_working=rf'''src_type={src_type} pnx_with_timestamp={pnx_with_timestamp.replace('\n', ''):<150} dst={d_dst.replace('\n', ''):<50}  {'%%%FOO%%%' if LTA else ''}''',
                         print_color='green')
-                pk_print(
+                ensure_printed(
                     str_working=rf'''src_type={src_type} pnx_with_timestamp={pnx_with_timestamp:<150} dst={d_dst:<50}  {'%%%FOO%%%' if LTA else ''}'''.replace(
                         '\n', ''), print_color='green')
         elif with_overwrite == 1:
             if not is_f(pnx):
-                pk_print(f"Source file does not exist: {pnx}")
+                ensure_printed(f"Source file does not exist: {pnx}")
 
             d_dst = os.path.dirname(d_dst)
             if d_dst and not os.path.exists(d_dst):
@@ -53,9 +53,9 @@ def move_pnx_v1(pnx, d_dst, with_overwrite=0, sequential_mode=0, timestamp_mode=
                 if os.path.exists(d_dst):
                     os.remove(d_dst)  # Remove the existing file
                 shutil.move(pnx, d_dst)
-                pk_print(f"Successfully moved '{pnx}' to '{d_dst}'", print_color='green')
+                ensure_printed(f"Successfully moved '{pnx}' to '{d_dst}'", print_color='green')
             except Exception as e:
-                pk_print(f"Failed to move file: {e}")
+                ensure_printed(f"Failed to move file: {e}")
 
     except:
-        pk_print(f'''{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
+        ensure_printed(f'''{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}''', print_color='red')

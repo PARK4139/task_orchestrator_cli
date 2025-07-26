@@ -1,6 +1,6 @@
 import os
 
-from pkg_py.workspace.pk_workspace import ensure_git_project_pushed
+# from pkg_py.workspace.pk_workspace import ensure_git_project_pushed
 
 if __name__ == "__main__":
     try:
@@ -12,7 +12,7 @@ if __name__ == "__main__":
         from pkg_py.functions_split.get_pk_token import get_pk_token
         from pkg_py.functions_split.get_time_as_ import get_time_as_
         from pkg_py.functions_split.get_value_completed import get_value_completed
-        from pkg_py.functions_split.pk_colorama_init_once import pk_colorama_init_once
+        from pkg_py.functions_split.colorama_init_once import colorama_init_once
         from pkg_py.functions_split.push_pnx_to_github import push_pnx_to_github
         from pkg_py.system_object.directories import D_PKG_TOML, D_PROJECT_MEMO
         from pkg_py.system_object.directories_reuseable import D_PROJECT

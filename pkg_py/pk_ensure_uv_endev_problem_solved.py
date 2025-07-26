@@ -9,7 +9,7 @@ from colorama import init as pk_colorama_init
 #, STAMP_TRY_GUIDE, D_PROJECT, STAMP_UNIT_TEST_EXCEPTION_DISCOVERED
 #, print_red
 
-pk_colorama_init_once()
+colorama_init_once()
 
 if __name__ == "__main__":
     try:

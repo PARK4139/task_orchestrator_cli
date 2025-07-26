@@ -9,7 +9,7 @@ import colorama
 from selenium.common.exceptions import WebDriverException
 from selenium.common.exceptions import ElementClickInterceptedException
 from prompt_toolkit import PromptSession
-from pkg_py.functions_split.write_list_to_f import write_list_to_f
+from pkg_py.functions_split.ensure_list_written_to_f import ensure_list_written_to_f
 from pkg_py.functions_split.ensure_console_cleared import ensure_console_cleared
 from pkg_py.system_object.etc import PkFilter
 
@@ -21,7 +21,7 @@ from pkg_py.functions_split.is_f import is_f
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
 def classify_pnxs_to_pk_image(pnx, without_walking=True):
@@ -30,7 +30,7 @@ def classify_pnxs_to_pk_image(pnx, without_walking=True):
 
     # target_pnx가 유효한 _d_인지 확인
     if is_f(pnx=pnx):
-        pk_print(f"{pnx} 는 정리할 수 있는 _d_가 아닙니다")
+        ensure_printed(f"{pnx} 는 정리할 수 있는 _d_가 아닙니다")
         return
 
     # f과 _d_ get
@@ -56,5 +56,5 @@ def classify_pnxs_to_pk_image(pnx, without_walking=True):
         if file_x in [ext.replace(".", "") for ext in x_allowed]:  # x_allowed의 확장자와 비교
             ensure_pnx_made(dst, mode="d")
             move_pnx(pnx=file_pnx, d_dst=dst)
-            pk_print(str_working=rf'''file_pnx="{file_pnx}"  {'%%%FOO%%%' if LTA else ''}''')
-    pk_print(str_working=rf'''dst="{dst}"  {'%%%FOO%%%' if LTA else ''}''')
+            ensure_printed(str_working=rf'''file_pnx="{file_pnx}"  {'%%%FOO%%%' if LTA else ''}''')
+    ensure_printed(str_working=rf'''dst="{dst}"  {'%%%FOO%%%' if LTA else ''}''')

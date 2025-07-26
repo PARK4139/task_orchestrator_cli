@@ -1,4 +1,4 @@
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
 def analize_tree(d_src):
@@ -17,6 +17,6 @@ def analize_tree(d_src):
             except Exception as e:
                 print(f"f 크기를 확인할 수 없습니다: {f}. 오류: {e}")
     if largest_f:
-        pk_print(f'''largest_f={largest_f}''')
+        ensure_printed(f'''largest_f={largest_f}''')
     else:
-        pk_print(str_working="d에 f이 없거나 f 크기를 확인할 수 없습니다.")
+        ensure_printed(str_working="d에 f이 없거나 f 크기를 확인할 수 없습니다.")

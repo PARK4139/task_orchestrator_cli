@@ -1,5 +1,5 @@
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
 def click_img_via_autogui(img, x_cal=0, y_cal=0):
@@ -14,8 +14,8 @@ def click_img_via_autogui(img, x_cal=0, y_cal=0):
         try:
             x, y = pyautogui.locateCenterOnScreen(image=img, confidence=0.7, grayscale=True)
         except pyautogui.ImageNotFoundException:
-            pk_print(rf"이미지찾기", print_color='red')
-            # pk_print(f"{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}", print_color='red')
+            ensure_printed(rf"이미지찾기", print_color='red')
+            # ensure_printed(f"{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}", print_color='red')
             break
         if x is not None and y is not None:
             x_cal = x_cal
@@ -34,10 +34,10 @@ def click_img_via_autogui(img, x_cal=0, y_cal=0):
             x, y = initial_position
             duration = 0
             move_mouse(x_abs=x, y_abs=y, duration=duration)
-            # pk_print(rf"이미지중앙좌표클릭 ({x}, {y})  {'%%%FOO%%%' if LTA else ''}", print_color='green')
+            # ensure_printed(rf"이미지중앙좌표클릭 ({x}, {y})  {'%%%FOO%%%' if LTA else ''}", print_color='green')
             break
 
-        pk_print(f'''이미지중앙좌표클릭  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
+        ensure_printed(f'''이미지중앙좌표클릭  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
         if img_finding_loop_cnt == img_finding_loop_cnt_limit:
-            pk_print(f'''이미지중앙좌표클릭  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
+            ensure_printed(f'''이미지중앙좌표클릭  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
             break

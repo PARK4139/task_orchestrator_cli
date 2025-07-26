@@ -72,8 +72,8 @@ from pkg_py.functions_split.get_video_filtered_list import get_video_filtered_li
 from pkg_py.functions_split.is_window_title_front import is_window_title_front
 from pkg_py.functions_split.get_d_working import get_d_working
 from pkg_py.functions_split.is_window_title_opened import is_window_title_opened
-from pkg_py.functions_split.pk_print_state import pk_print_state
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.print_state import print_state
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
 from pkg_py.functions_split.set_pk_context_state import set_pk_context_state
@@ -88,7 +88,7 @@ from pkg_py.system_object.directories import D_PKG_TXT, D_PK_WORKING
 from pkg_py.system_object.map_massages import PkMessages2025
 from pkg_py.system_object.print_red import print_red
 from pkg_py.system_object.state_via_context import SpeedControlContext
-from pkg_py.system_object.performance_logic import pk_measure_seconds, pk_measure_memory
+from pkg_py.system_object.performance_logic import measure_seconds, pk_measure_memory
 from pkg_py.system_object.is_os_windows import is_os_windows
 from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.system_object.get_list_calculated import get_list_calculated
@@ -111,7 +111,7 @@ from bs4 import ResultSet
 from bs4 import BeautifulSoup
 from base64 import b64encode
 from pkg_py.functions_split.get_nx import get_nx
-from pkg_py.functions_split.assist_to_load_video_at_losslesscut import pk_ensure_video_loaded_at_losslesscut
+from pkg_py.functions_split.assist_to_load_video_at_losslesscut import ensure_video_loaded_at_losslesscut
 from pkg_py.functions_split.get_value_completed import get_value_completed
 from pkg_py.system_object.directories import D_PKG_PY
 from pkg_py.functions_split.get_list_calculated import get_list_calculated
@@ -126,7 +126,7 @@ from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.get_pnx_list import get_pnx_list
 from pkg_py.functions_split.get_d_working import get_d_working
 
@@ -145,5 +145,5 @@ def print_class_field_and_value(class_n):  # print 보다는 get 으로 바꾸�
             cmd_usage_explanations.append(f"{key}{" " * (len(longest_field) - len(key))}: {value}")
     cmd_usage_explanations.append('\n')
     for cmd_usage_explanation in cmd_usage_explanations:
-        pk_print(str_working=cmd_usage_explanation)
+        ensure_printed(str_working=cmd_usage_explanation)
     cmd_usage_explanations.append('\n')

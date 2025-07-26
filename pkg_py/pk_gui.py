@@ -3,9 +3,9 @@ from functools import partial
 
 from pkg_py.system_object.directories_reuseable import D_PROJECT
 from pkg_py.system_object.etc import PK_UNDERLINE
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.get_f_current_n import get_f_current_n
-from pkg_py.functions_split.pk_deprecated_get_d_current_n_like_person import pk_deprecated_get_d_current_n_like_person
+from pkg_py.functions_split.deprecated_get_d_current_n_like_person import deprecated_get_d_current_n_like_person
 
 if __name__ == '__main__':
     debug_mode = True
@@ -26,7 +26,7 @@ if __name__ == '__main__':
             input_box_text_default="______________",
         )
         if txt_clicked == _2025.NEGATIVE:
-            pk_print(str_working=f'  for txt_clicked != _2025.POSITIVE', print_color='red')
+            ensure_printed(str_working=f'  for txt_clicked != _2025.POSITIVE', print_color='red')
             sys.exit(1)
         user_input = txt_written
         # ipdb.set_trace()
@@ -43,11 +43,11 @@ if __name__ == '__main__':
             input_box_text_default=question,
         )
         if txt_clicked == _2025.NEGATIVE:
-            pk_print(f'''{_2025.NEGATIVE} pressed %%%FOO%%%''', print_color='red')
+            ensure_printed(f'''{_2025.NEGATIVE} pressed %%%FOO%%%''', print_color='red')
             sys.exit(1)
         if txt_clicked ==    _2025.POSITIVE:
-            pk_print(f'''txt_clicked={txt_clicked} %%%FOO%%%''', print_color="blue")
-            pk_print(f'''txt_written={txt_written} %%%FOO%%%''', print_color="blue")
+            ensure_printed(f'''txt_clicked={txt_clicked} %%%FOO%%%''', print_color="blue")
+            ensure_printed(f'''txt_written={txt_written} %%%FOO%%%''', print_color="blue")
         else:
             # break
             pass
@@ -60,18 +60,18 @@ if __name__ == '__main__':
         # red
         import traceback
 
-        pk_print(str_working=f'{PK_UNDERLINE}예외발생 s\n\n', print_color='red')
-        pk_print(str_working=f'{traceback.format_exc()}\n', print_color='red')
-        pk_print(str_working=f'{PK_UNDERLINE}예외발생 e\n\n', print_color='red')
+        ensure_printed(str_working=f'{PK_UNDERLINE}예외발생 s\n\n', print_color='red')
+        ensure_printed(str_working=f'{traceback.format_exc()}\n', print_color='red')
+        ensure_printed(str_working=f'{PK_UNDERLINE}예외발생 e\n\n', print_color='red')
 
         # yellow
         f_current= get_f_current_n()
         d_current=pk_deprecated_get_d_current_n_like_person()
-        pk_print(str_working=f'{PK_UNDERLINE}[Debugging Note] s\n', print_color="yellow")
-        pk_print(str_working=f'f_current={f_current}\nd_current={d_current}\n', print_color="yellow")
-        pk_print(str_working=f'{PK_UNDERLINE}[Debugging Note] e\n', print_color="yellow")
+        ensure_printed(str_working=f'{PK_UNDERLINE}[Debugging Note] s\n', print_color="yellow")
+        ensure_printed(str_working=f'f_current={f_current}\nd_current={d_current}\n', print_color="yellow")
+        ensure_printed(str_working=f'{PK_UNDERLINE}[Debugging Note] e\n', print_color="yellow")
         ensure_do_finally_routine(D_PROJECT=D_PROJECT, __file__=__file__, STAMP_TRY_GUIDE=STAMP_TRY_GUIDE)
-        pk_print(script_to_run_python_program_in_venv)
+        ensure_printed(script_to_run_python_program_in_venv)
 
         # debug
         import ipdb

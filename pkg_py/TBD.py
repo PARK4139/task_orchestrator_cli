@@ -10,7 +10,7 @@ import traceback
 # 사용하지 않는 함수를 찾아내 지울 수 있다.
 # file 호출된 함수명을 작성한다. (횟수 아니고 함수명 의 개수만으로 되겠음.
 
-
+pk_ensure_function_name_python_file_created
 
 # pk_system 실행기
 # ctrl r        cmd      1      ->       pk_python_macro
@@ -104,7 +104,7 @@ def get_latest_tracking_only_from_sqlite_xc_status_db():
     """
     df_latest = pd.read_sql(query, conn)
     conn.close()
-    pk_print(f"📌 최신 업무트래킹 기준으로 {len(df_latest)}개 장비 조회됨", print_color='blue')
+    ensure_printed(f"📌 최신 업무트래킹 기준으로 {len(df_latest)}개 장비 조회됨", print_color='blue')
     return df_latest
 
 
@@ -151,7 +151,7 @@ def _TEST_CASE_장비현황_로컬DB에서_최신현황만_CSV파일로_저장()
 
     df_latest.to_csv(f_save_csv, index=False, encoding="utf-8-sig")
     if does_pnx_exist(f_save_csv):
-        pk_print(f"최신 현황 CSV 저장 완료 → {f_save_csv}", print_color="green")
+        ensure_printed(f"최신 현황 CSV 저장 완료 → {f_save_csv}", print_color="green")
         cmd_to_os(rf'explorer {f_save_csv}')
     return f_save_csv
 
@@ -213,7 +213,7 @@ def _TEST_CASE_장비현황_로컬DB에서_최신현황만_CSV파일로_저장_A
     df_all.to_csv(f_save_csv, index=False, encoding="utf-8-sig")
 
     if does_pnx_exist(f_save_csv):
-        pk_print(f"✅ 전체 장비현황 CSV 저장 완료 (v6, Serial 수식처리 적용) → {f_save_csv}", print_color="green")
+        ensure_printed(f"✅ 전체 장비현황 CSV 저장 완료 (v6, Serial 수식처리 적용) → {f_save_csv}", print_color="green")
         cmd_to_os(rf'explorer {f_save_csv}')
 
     return f_save_csv
@@ -247,7 +247,7 @@ def _TEST_CASE_타임루프제어():
     while 1:
         if time.time() - time_s > time_limit:
             return False
-        pk_sleep(seconds=0.5)
+        ensure_slept(seconds=0.5)
 
 
 def test_string_handling():
@@ -291,7 +291,7 @@ def _TEST_CASE_시간확인_v1():
                         if is_minute(mm=12):
                             state_time_to_system_sleep = 1
                             break
-        pk_sleep(seconds=1)
+        ensure_slept(seconds=1)
 
 
 def _TEST_CASE_시간확인():
@@ -303,7 +303,7 @@ def _TEST_CASE_시간확인_v2():
 
 
 def _TEST_CASE_출력하고TTS():
-    pk_print_and_speak("Playing music...")
+    ensure_printed_and_speak("Playing music...")
 
 
 def _TEST_CASE_어시스트_스케쥴():
@@ -354,7 +354,7 @@ def _EXCUTE_UNIT_TEST():
     # run_venv_in_cmd_exe()
     # should_i_do(ment="알송을 종료할까요?", function=partial(taskkill, 'ALSong.exe'),  auto_click_negative_btn_after_seconds=15)
     # should_i_enter_to_power_saving_mode()
-    # pk_sleep(min=50, show_mode=True) # console 에  #   카운트다운이 되면서 출력이 되도록 하자.
+    # ensure_slept(min=50, show_mode=True) # console 에  #   카운트다운이 되면서 출력이 되도록 하자.
     # speak_ment_experimental(ment='자자', comma_delay=0.43, thread_join_mode=True)
     # speak_ment_experimental(ment=f'{get_time_as_('%H')}시 입니다', comma_delay=0.43, thread_join_mode=True)
     # speak_today_time_info()
@@ -410,10 +410,10 @@ def _EXCUTE_UNIT_TEST():
     # todo : think : 추출한 magnets를 {search_keyword}.txt 에 저장
 
     # todo : df control
-    # pk_print(f"{df.head()}") # df 로깅 (df 내 데이터 유무 확인)
-    # pk_print(f"{df.columns.tolist()}") # df 로깅 (df 내의 모든 컬럼명 출력)
-    # pk_print(f"{len(df)}") # df 로깅 (df 전체 행의 줄이 몇개인지 출력)
-    # pk_print(f"{df.iloc[0]}") # df 로깅 (df 내의 첫번째 줄만 출력)
+    # ensure_printed(f"{df.head()}") # df 로깅 (df 내 데이터 유무 확인)
+    # ensure_printed(f"{df.columns.tolist()}") # df 로깅 (df 내의 모든 컬럼명 출력)
+    # ensure_printed(f"{len(df)}") # df 로깅 (df 전체 행의 줄이 몇개인지 출력)
+    # ensure_printed(f"{df.iloc[0]}") # df 로깅 (df 내의 첫번째 줄만 출력)
 
     # todo : pop_sound.wav 음질 향상을 위한 음향제어
     # import librosa
@@ -424,7 +424,7 @@ def _EXCUTE_UNIT_TEST():
     # # 1. 오디오 f 로드
     # def load_audio(f):
     #     signal, sr = librosa.load(f, sr=None)
-    #     pk_print(f"Loaded audio with shape: {signal.shape}, Sample Rate: {sr}")
+    #     ensure_printed(f"Loaded audio with shape: {signal.shape}, Sample Rate: {sr}")
     #     return signal, sr
 
     # # 2. 저역 통과 필터
@@ -474,7 +474,7 @@ def _EXCUTE_UNIT_TEST():
     #
     #     # Step 5: Save processed audio
     #     sf.write(output_f, processed_signal, sr)
-    #     pk_print(f"Processed audio saved to {output_f}")
+    #     ensure_printed(f"Processed audio saved to {output_f}")
     #
     # # 7. exec
     #     # 입력 f과 출력 f 경로 설정
@@ -516,7 +516,7 @@ def _EXCUTE_UNIT_TEST():
 
     # _TEST_CASE_어시스트_스케쥴()
     _TEST_CASE_출력하고TTS()
-    pk_print('단위테스트', print_color='green')
+    ensure_printed('단위테스트', print_color='green')
 
 
 if __name__ == "__main__":
@@ -599,10 +599,10 @@ def _TEST_CASE_프로젝트_FASTAPI():
 # necessary >  mandantory
 
 
-# from colorama import init as pk_colorama_init # pk_print() 함수에서 import 하면 엄청 느려짐
-# pk_colorama_init_once() # colorama 초기화 # [97m[ 출력예방 # 색상전이를 막을 수 있음, 최적화를 한다면 연산되어 콘솔에 출력되는 것을 모두 중단처리. CliUtilStateUtil.is_op_mode == True 에서 동작하도록 하는 것도 방법이다.
+# from colorama import init as pk_colorama_init # ensure_printed() 함수에서 import 하면 엄청 느려짐
+# colorama_init_once() # colorama 초기화 # [97m[ 출력예방 # 색상전이를 막을 수 있음, 최적화를 한다면 연산되어 콘솔에 출력되는 것을 모두 중단처리. CliUtilStateUtil.is_op_mode == True 에서 동작하도록 하는 것도 방법이다.
 # 혹시나 싶었는데 console_blurred 에서 팝업 기능과 충돌이 되는 것으로 보인다.
-# pk_print_v1 를 여러번 호출을 하면 호출횟수의 증가에 따라 속도저하 문제가 있음.-> pk_print_v2
+# ensure_printed_v1 를 여러번 호출을 하면 호출횟수의 증가에 따라 속도저하 문제가 있음.-> ensure_printed_v2
 
 
 # todo

@@ -3,7 +3,7 @@
 
 
 if __name__ == '__main__':
-    #  import pk_deprecated_get_d_current_n_like_person, get_f_current_n, chcp_65001, get_os_n
+    #  import deprecated_get_d_current_n_like_person, get_f_current_n, chcp_65001, get_os_n
     #, print_yellow
     #, D_PKG_WINDOWS
     import threading
@@ -36,13 +36,13 @@ if __name__ == '__main__':
                 sleep_seconds = 3
                 for _ in range(sleep_seconds):
                     if flag_to_detect_enter:
-                        pk_print("Enter detected Restarting loop...", print_color="blue")
+                        ensure_printed("Enter detected Restarting loop...", print_color="blue")
 
                         # todo
                         print("todo")
 
                         flag_to_detect_enter = 0
-                        pk_print(f"wait for enter %%%FOO%%%", print_color='white')
+                        ensure_printed(f"wait for enter %%%FOO%%%", print_color='white')
                         break
                     time.sleep(1)
 

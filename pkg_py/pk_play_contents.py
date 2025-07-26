@@ -1,8 +1,8 @@
 import os
 import sys
 
-#  import pk_sleep, add_to_potplayer_playlist
-from pkg_py.functions_split.pk_print import pk_print
+#  import sleep, add_to_potplayer_playlist
+from pkg_py.functions_split.ensure_printed import ensure_printed
 # from pkg_py.system_object.500_live_logic import get_pnxs_from_d_working
 from pkg_py.pk_core_class import PkSqlite3DB
 
@@ -16,7 +16,7 @@ if pkg_path not in sys.path:
 
 if __name__ == "__main__":
     try:
-        pk_colorama_init_once()
+        colorama_init_once()
 
         pk_db = PkSqlite3DB()
         db_id = 'working_directory_to_play_contents'
@@ -54,15 +54,15 @@ if __name__ == "__main__":
 
                 previous_state = new_state
 
-            pk_sleep(minutes=5)  # 5분 대기
+            ensure_slept(minutes=5)  # 5분 대기
 
     except Exception as e:
         import traceback
 
         traceback.print_exc()
         # 예외 처리
-        pk_print(f'{UNDERLINE}예외발생 s\n\n', print_color='red')
-        pk_print(f'{traceback.format_exc()}\n', print_color='red')
-        pk_print(f'{UNDERLINE}예외발생 e\n\n', print_color='red')
+        ensure_printed(f'{UNDERLINE}예외발생 s\n\n', print_color='red')
+        ensure_printed(f'{traceback.format_exc()}\n', print_color='red')
+        ensure_printed(f'{UNDERLINE}예외발생 e\n\n', print_color='red')
         ensure_do_finally_routine(D_PROJECT=D_PROJECT, __file__=__file__, STAMP_TRY_GUIDE=STAMP_TRY_GUIDE)
-        pk_print(script_to_run_python_program_in_venv)
+        ensure_printed(script_to_run_python_program_in_venv)

@@ -2,8 +2,8 @@
 
 from pkg_py.system_object.local_test_activate import LTA
 
-from pkg_py.functions_split.pk_print import pk_print
-from pkg_py.functions_split.pk_press import pk_press
+from pkg_py.functions_split.ensure_printed import ensure_printed
+from pkg_py.functions_split.press import press
 from pkg_py.functions_split.is_window_opened import is_window_opened
 from pkg_py.functions_split.ensure_window_to_front import ensure_window_to_front
 
@@ -13,7 +13,7 @@ def cmd_to_os_via_powershell_exe(cmd, console_keep_mode=False, admin_mode=False)
 
     # | clip 을 하여도 값을 읽어오기 어려운 경우가 있음
     window_title_seg = rf'PowerShell'
-    pk_print(str_working=rf'''cmd="{cmd}"  {'%%%FOO%%%' if LTA else ''}''')
+    ensure_printed(str_working=rf'''cmd="{cmd}"  {'%%%FOO%%%' if LTA else ''}''')
     if not is_window_opened(window_title_seg=window_title_seg):
         # run_cmd_exe()
         if admin_mode == False:
@@ -35,11 +35,11 @@ def cmd_to_os_via_powershell_exe(cmd, console_keep_mode=False, admin_mode=False)
             std_output_stream = get_str_from_clipboard()
             break
         # 5초가 지났는지 확인
-        # pk_print(str_working=time.time() - time_s)
+        # ensure_printed(str_working=time.time() - time_s)
         if time.time() - time_s > time_limit:
-            pk_print(str_working="5 seconds passed. Exiting loop.")
+            ensure_printed(str_working="5 seconds passed. Exiting loop.")
             break
-        pk_sleep(seconds=0.5)  # CPU 점유율을 낮추기 위해 약간의 대기
+        ensure_slept(seconds=0.5)  # CPU 점유율을 낮추기 위해 약간의 대기
 
     if console_keep_mode == False:
         time_limit = 5
@@ -52,9 +52,9 @@ def cmd_to_os_via_powershell_exe(cmd, console_keep_mode=False, admin_mode=False)
                     copy_and_paste_with_keeping_clipboard(prompt="exit")
                     pk_press("enter")
                 break
-            # pk_print(str_working=time.time() - time_s)
+            # ensure_printed(str_working=time.time() - time_s)
             if time.time() - time_s > time_limit:
-                pk_print(str_working="5 seconds passed. Exiting loop.")
+                ensure_printed(str_working="5 seconds passed. Exiting loop.")
                 break
-            pk_sleep(seconds=0.5)  # CPU 점유율을 낮추기 위해 약간의 대기
+            ensure_slept(seconds=0.5)  # CPU 점유율을 낮추기 위해 약간의 대기
     return std_output_stream

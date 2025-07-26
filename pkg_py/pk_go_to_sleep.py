@@ -1,15 +1,15 @@
 if __name__ == "__main__":
     try:
         import traceback
-        # from pkg_py.system_object.500_live_logic import pk_back_up_pnx, kill_os, is_office_pc, is_internet_connected, save_power_as_s3, pk_kill_process_as_async, pk_run_process_as_async, restart_f_list_with_new_window_as_async
-        # from pkg_py.system_object.500_live_logic import pk_back_up_pnx_without_venv_and_idea
-        # from pkg_py.system_object.500_live_logic import pk_copy, is_day
+        # from pkg_py.system_object.500_live_logic import back_up_pnx, kill_os, is_office_pc, is_internet_connected, save_power_as_s3, pk_kill_process_as_async, pk_run_process_as_async, restart_f_list_with_new_window_as_async
+        # from pkg_py.system_object.500_live_logic import back_up_pnx_without_venv_and_idea
+        # from pkg_py.system_object.500_live_logic import copy, is_day
         # from pkg_py.system_object.500_live_logic import assist_to_upload_pnx_to_git, get_time_as_, get_pk_token
         #
         # from pkg_py.system_object.static_logic import D_ARCHIVED, D_PKG_PY
         from colorama import init as pk_colorama_init
 
-        # from pkg_py.system_object.500_live_logic import pk_deprecated_get_d_current_n_like_person, get_f_current_n, pk_copy, assist_to_upload_pnx_to_git, get_time_as_, get_pk_token, ensure_input_preprocessed, ensure_d_size_stable, push_pnx_to_github, LTA
+        # from pkg_py.system_object.500_live_logic import deprecated_get_d_current_n_like_person, get_f_current_n, pk_copy, assist_to_upload_pnx_to_git, get_time_as_, get_pk_token, ensure_input_preprocessed, ensure_d_size_stable, push_pnx_to_github, LTA
         #
         # from pkg_py.system_object.static_logic import D_PROJECT, UNDERLINE, STAMP_TRY_GUIDE, STAMP_PYTHON_DEBUGGING_NOTE, STAMP_EXCEPTION_DISCOVERED, D_PKG_TOML
         # from pkg_py.system_object.static_logic import D_PROJECT
@@ -23,7 +23,7 @@ if __name__ == "__main__":
 
         # 2. puload to github
         if is_internet_connected():
-            pk_colorama_init_once()
+            colorama_init_once()
             git_repo_url = get_pk_token(f_token=rf"{D_PKG_TOML}/pk_token_pk_system_github_repo_url.toml", initial_str="")
             commit_msg = ensure_input_preprocessed(str_working=f"commit_msg=", upper_seconds_limit=30, return_default=f"feat: auto pushed by pk_system at {get_time_as_("%Y-%m-%d %H:%M")}")
             push_pnx_to_github(d_working=D_PROJECT, git_repo_url=git_repo_url, commit_msg=commit_msg, branch_n='dev')

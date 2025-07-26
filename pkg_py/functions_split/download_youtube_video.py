@@ -20,9 +20,9 @@ from pkg_py.functions_split.is_os_windows import is_os_windows
 from pkg_py.functions_split.is_url import is_url
 from pkg_py.functions_split.normalize_youtube_url import normalize_youtube_url
 from pkg_py.functions_split.open_pnx_by_ext import ensure_pnx_opened_by_ext
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.remove_lines_within_keyword_from_f import remove_lines_within_keyword_from_f
-from pkg_py.functions_split.write_list_to_f import write_list_to_f
+from pkg_py.functions_split.ensure_list_written_to_f import ensure_list_written_to_f
 from pkg_py.system_object.directories import D_PKG_TXT
 from pkg_py.system_object.directories import D_PK_WORKING
 from pkg_py.system_object.etc import PK_BLANK
@@ -86,7 +86,7 @@ def download_youtube_video():
             youtube_clip_id = youtube_video_url_from_clipboard.split("v=")[-1]
             if is_f_contained_feature_str(feature_str=youtube_clip_id, d_pnx=d_pnx):
                 youtube_clip_id_stamp = f"[{youtube_clip_id}]"
-                pk_print(f"{youtube_clip_id_stamp} is already downloaded, {youtube_video_url_from_clipboard}",
+                ensure_printed(f"{youtube_clip_id_stamp} is already downloaded, {youtube_video_url_from_clipboard}",
                          print_color="green")
 
                 value = pk_db.get_values(db_id='download_option')
@@ -120,11 +120,11 @@ def download_youtube_video():
                 continue
 
             if is_f_contained_feature_str(feature_str=youtube_clip_id_stamp, d_pnx=d_pnx):
-                pk_print(f"{youtube_clip_id_stamp} is already downloaded, {historical_url}", print_color="green")
+                ensure_printed(f"{youtube_clip_id_stamp} is already downloaded, {historical_url}", print_color="green")
                 pk_db = PkSqlite3DB()
                 db_id = 'download_option'
                 value = pk_db.get_values(db_id=db_id)
-                pk_print(f'''db_id=value : {db_id}={value} {'%%%FOO%%%' if LTA else ''}''', print_color="green")
+                ensure_printed(f'''db_id=value : {db_id}={value} {'%%%FOO%%%' if LTA else ''}''', print_color="green")
 
                 # play or skip video
                 if value == PkMessages2025.play:
@@ -146,7 +146,7 @@ def download_youtube_video():
         if answer.lower() == "x" or answer.lower() == "exit" or answer.lower() == "q" or answer.lower() == "quit":
             sys.exit(0)
         url = answer
-        write_list_to_f(f=f_historical, working_list=[url] + historical_lines, mode="w")
+        ensure_list_written_to_f(f=f_historical, working_list=[url] + historical_lines, mode="w")
         url = url.replace(marker_for_clipboard, "")
 
         if not does_pnx_exist(pnx=f_historical):
@@ -157,11 +157,11 @@ def download_youtube_video():
         working_list = get_list_removed_empty(working_list=working_list)
         working_list = get_list_striped_element(working_list=working_list)
         urls = [url] + working_list
-        pk_print(str_working=str(len(urls)))
+        ensure_printed(str_working=str(len(urls)))
         urls = get_list_removed_empty(working_list=urls)
-        pk_print(str_working=str(len(urls)))
+        ensure_printed(str_working=str(len(urls)))
         if len(urls) == 0:
-            pk_print(f'''len(urls)={len(urls)}  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
+            ensure_printed(f'''len(urls)={len(urls)}  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
             return
 
         if is_os_windows():
@@ -170,7 +170,7 @@ def download_youtube_video():
 
             youtube_clip_id_stamp = f"[{youtube_clip_id}]"
             if is_f_contained_feature_str(feature_str=youtube_clip_id_stamp, d_pnx=d_pnx):
-                pk_print(f"{youtube_clip_id_stamp} is already downloaded, {url}", print_color="green")
+                ensure_printed(f"{youtube_clip_id_stamp} is already downloaded, {url}", print_color="green")
                 pk_db = PkSqlite3DB()
                 db_id = 'download_option'
                 value = pk_db.get_values(db_id=db_id)
@@ -200,19 +200,19 @@ def download_youtube_video():
                         youtube_clip_id_stamp = f"[{youtube_clip_id}]"
                         clip_title = info.get('title')
                         url_list = [str(url)]
-                        pk_print(f'''clip_id={youtube_clip_id} {'%%%FOO%%%' if LTA else ''}''')
-                        pk_print(f'''clip_title={clip_title} {'%%%FOO%%%' if LTA else ''}''')
+                        ensure_printed(f'''clip_id={youtube_clip_id} {'%%%FOO%%%' if LTA else ''}''')
+                        ensure_printed(f'''clip_title={clip_title} {'%%%FOO%%%' if LTA else ''}''')
 
                         # skip download
                         if is_f_contained_feature_str(feature_str=youtube_clip_id_stamp, d_pnx=d_pnx):
-                            pk_print(f"{youtube_clip_id_stamp} is already downloaded, {clip_title}({url})",
+                            ensure_printed(f"{youtube_clip_id_stamp} is already downloaded, {clip_title}({url})",
                                      print_color="green")
 
                             # play/skip decision
                             pk_db = PkSqlite3DB()
                             db_id = 'download_option'
                             value = pk_db.get_values(db_id=db_id)
-                            pk_print(f'''db_id=value : {db_id}={value} {'%%%FOO%%%' if LTA else ''}''',
+                            ensure_printed(f'''db_id=value : {db_id}={value} {'%%%FOO%%%' if LTA else ''}''',
                                      print_color="green")
                             if value == PkMessages2025.play:
                                 # play video
@@ -234,7 +234,7 @@ def download_youtube_video():
 
                         # check f after download
                         if is_f_contained_feature_str(feature_str=youtube_clip_id_stamp, d_pnx=d_pnx):
-                            pk_print(f"f saved in '{d_pnx}'. {url}", print_color="green")
+                            ensure_printed(f"f saved in '{d_pnx}'. {url}", print_color="green")
 
                             # remove f in f_historical after download
                             remove_lines_within_keyword_from_f(f=f_historical, keyword=youtube_clip_id)
@@ -246,11 +246,11 @@ def download_youtube_video():
             except:
                 import traceback
                 traceback.print_exc()
-                pk_print(f'''Download {url} \n {traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}" ''',
+                ensure_printed(f'''Download {url} \n {traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}" ''',
                          print_color='red')
     except SystemExit as e:
         if e.code == 0:
-            pk_print('[정상 종료됨: SystemExit(0)]', print_color='green')
+            ensure_printed('[정상 종료됨: SystemExit(0)]', print_color='green')
             sys.exit(0)
         else:
             raise  # 비정상 종료는 그대로 propagate

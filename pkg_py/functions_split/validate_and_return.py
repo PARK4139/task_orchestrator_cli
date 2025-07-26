@@ -43,7 +43,7 @@ from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style
 from pkg_py.functions_split.get_pnx_windows_style import get_pnx_windows_style
 from pkg_py.system_object.local_test_activate import LTA
 
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.get_d_working import get_d_working
 
 
@@ -53,14 +53,14 @@ def validate_and_return(value: str):
     func_n = inspect.currentframe().f_code.co_name
     func_n = inspect.currentframe().f_code.co_name
     try:
-        pk_print(rf'[벨리데이션 테스트 결과] [value={value}] [type(value)={type(value)}] [len(value)={len(value)}]')
+        ensure_printed(rf'[벨리데이션 테스트 결과] [value={value}] [type(value)={type(value)}] [len(value)={len(value)}]')
     except:
         pass
     if value is None:
-        pk_print(rf'[벨리데이션 테스트 결과] [value=None]')
+        ensure_printed(rf'[벨리데이션 테스트 결과] [value=None]')
         return 0
     if value == "":
-        pk_print(rf'[벨리데이션 테스트 결과] [value=공백]')
+        ensure_printed(rf'[벨리데이션 테스트 결과] [value=공백]')
         return 0
     # if 전화번호만 같아 보이는지
     # if 특수문자만 같아 보이는지

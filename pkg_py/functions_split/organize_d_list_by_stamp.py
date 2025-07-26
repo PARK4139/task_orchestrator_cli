@@ -45,7 +45,7 @@ from pkg_py.functions_split.ensure_window_to_front import ensure_window_to_front
 from pkg_py.functions_split.is_losslesscut_running import is_losslesscut_running
 from pkg_py.functions_split.get_d_working import get_d_working
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
-from pkg_py.functions_split.write_list_to_f import write_list_to_f
+from pkg_py.functions_split.ensure_list_written_to_f import ensure_list_written_to_f
 from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
 from pkg_py.system_object.files import F_POT_PLAYER_MINI_64_EXE
 from pkg_py.system_object.files import F_LOSSLESSCUT_EXE
@@ -72,7 +72,7 @@ from bs4 import BeautifulSoup
 from base64 import b64encode
 from base64 import b64decode
 from pkg_py.functions_split.get_nx import get_nx
-from pkg_py.functions_split.assist_to_load_video_at_losslesscut import pk_ensure_video_loaded_at_losslesscut
+from pkg_py.functions_split.assist_to_load_video_at_losslesscut import ensure_video_loaded_at_losslesscut
 from pkg_py.functions_split.kill_self_pk_program import kill_self_pk_program
 from pkg_py.system_object.etc import PK_UNDERLINE
 from pkg_py.functions_split.get_value_completed import get_value_completed
@@ -85,7 +85,7 @@ from pkg_py.functions_split.is_os_windows import is_os_windows
 from pkg_py.functions_split.get_pnx_wsl_unix_style import get_pnx_wsl_unix_style
 
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
 def organize_d_list_by_stamp(d: str):
@@ -129,9 +129,9 @@ def organize_d_list_by_stamp(d: str):
 
                     d_src = os.path.join(root, d_nx)
                     d_dst = os.path.join(d_stamp, d_nx)
-                    pk_print(f'''d_dst={d_dst} d_src={d_src}  {'%%%FOO%%%' if LTA else ''}''')
+                    ensure_printed(f'''d_dst={d_dst} d_src={d_src}  {'%%%FOO%%%' if LTA else ''}''')
                     try:
                         os.rename(d_src, d_dst)
                     except:
-                        pk_print(
+                        ensure_printed(
                             f'''d_dst does exists already. 아마도 이동 안할것 d_dst={d_dst}  {'%%%FOO%%%' if LTA else ''}''')  # todo : 동작 모니터링 필요

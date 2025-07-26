@@ -10,7 +10,7 @@ import cv2
 from seleniumbase import Driver
 from selenium.webdriver.common.by import By
 from pkg_py.functions_split.get_f_video_to_load import get_f_video_to_load
-from pkg_py.functions_split.pk_print_once import pk_print_once
+from pkg_py.functions_split.ensure_printed_once import ensure_printed_once
 
 from pkg_py.functions_split.cmd_to_os import cmd_to_os
 from pkg_py.system_object.files import F_LOSSLESSCUT_EXE
@@ -25,7 +25,7 @@ from base64 import b64decode
 from pkg_py.functions_split.get_nx import get_nx
 from pkg_py.functions_split.get_pnx_windows_style import get_pnx_windows_style
 
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
 def is_losslesscut_running_v3(F_CACHE):
@@ -42,7 +42,7 @@ def is_losslesscut_running_v3(F_CACHE):
         ensure_pnx_made(pnx=F_CACHE, mode='f')
         std_list = cmd_to_os(cmd='tasklist.exe | findstr "LosslessCut.exe"')
         status = len(std_list) > 0
-        pk_print(f"status={status}", print_color='green')
+        ensure_printed(f"status={status}", print_color='green')
         save_cash_to_f_pkl(F_CACHE, status=status)
     else:
         try:
@@ -51,14 +51,14 @@ def is_losslesscut_running_v3(F_CACHE):
                 cache = pickle.load(f)
             if time.time() - cache["timestamp"] < CACHE_TTL_SECONDS:
                 status = cache["status"]
-                pk_print(f"[CACHE] LosslessCut is {'running' if status else 'not running'}", print_color='blue')
+                ensure_printed(f"[CACHE] LosslessCut is {'running' if status else 'not running'}", print_color='blue')
                 return status
             else:
                 std_list = cmd_to_os(cmd='tasklist.exe | findstr "LosslessCut.exe"')
                 status = len(std_list) > 0
-                pk_print(f"status={status}", print_color='green')
+                ensure_printed(f"status={status}", print_color='green')
                 save_cash_to_f_pkl(F_CACHE, status=status)
-                pk_print(f"{get_nx(f_losslesscut_exe)} is {'running' if status else 'not running'}",
+                ensure_printed(f"{get_nx(f_losslesscut_exe)} is {'running' if status else 'not running'}",
                          print_color='green' if status else 'red')
                 return status
         except Exception:

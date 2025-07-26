@@ -51,7 +51,7 @@ from functools import partial
 from functools import lru_cache
 from enum import Enum
 from bs4 import BeautifulSoup
-from pkg_py.functions_split.assist_to_load_video_at_losslesscut import pk_ensure_video_loaded_at_losslesscut
+from pkg_py.functions_split.assist_to_load_video_at_losslesscut import ensure_video_loaded_at_losslesscut
 from pkg_py.functions_split.get_value_completed import get_value_completed
 from pkg_py.functions_split.is_d import is_d
 from pkg_py.functions_split.is_f import is_f
@@ -60,7 +60,7 @@ from pkg_py.functions_split.get_pnx_wsl_unix_style import get_pnx_wsl_unix_style
 from pkg_py.functions_split.get_pnx_windows_style import get_pnx_windows_style
 
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.get_d_working import get_d_working
 
 
@@ -79,7 +79,7 @@ def get_magnets_set_from_nyaa_si_v1(nyaa_si_supplier, search_keyword, driver):  
         driver = get_driver_selenium(browser_debug_mode=False)
 
     url = f'https://nyaa.si/user/{nyaa_si_supplier}?f=0&c=0_0&q={get_str_encoded_url(search_keyword)}'
-    pk_print(f'''url={url}  {'%%%FOO%%%' if LTA else ''}''')
+    ensure_printed(f'''url={url}  {'%%%FOO%%%' if LTA else ''}''')
 
     driver.get(url)
     page_src = driver.page_source
@@ -90,9 +90,9 @@ def get_magnets_set_from_nyaa_si_v1(nyaa_si_supplier, search_keyword, driver):  
     total_cnt_of_f_torrent_list = get_total_cnt_of_f_torrent_list(h3_text=soup.find("h3").text.strip())
     if total_cnt_of_f_torrent_list:
         page_number_last = math.ceil(total_cnt_of_f_torrent_list / files_per_page)
-        pk_print(f'''files_per_page={files_per_page}  {'%%%FOO%%%' if LTA else ''}''')
-        pk_print(f'''displayable_magnets_cnt_per_page={files_per_page}  {'%%%FOO%%%' if LTA else ''}''')
-        pk_print(f'''page_number_last={page_number_last}  {'%%%FOO%%%' if LTA else ''}''')
+        ensure_printed(f'''files_per_page={files_per_page}  {'%%%FOO%%%' if LTA else ''}''')
+        ensure_printed(f'''displayable_magnets_cnt_per_page={files_per_page}  {'%%%FOO%%%' if LTA else ''}''')
+        ensure_printed(f'''page_number_last={page_number_last}  {'%%%FOO%%%' if LTA else ''}''')
     else:
         page_number_last = get_page_number_last_of_nyaa_si_page(url=url, driver=driver)
 
@@ -103,20 +103,20 @@ def get_magnets_set_from_nyaa_si_v1(nyaa_si_supplier, search_keyword, driver):  
         get_value_completed(key_hint='page_number_end_to_download=', values=page_number_str_list))
 
     magnets_set = set()
-    pk_print(f'''page_number_end_to_download={page_number_end_to_download}  {'%%%FOO%%%' if LTA else ''}''',
+    ensure_printed(f'''page_number_end_to_download={page_number_end_to_download}  {'%%%FOO%%%' if LTA else ''}''',
              print_color="blue")
     for page_number in range(page_number_start_to_download, page_number_end_to_download + 1):
         url_page = f'{url}&p={page_number}'
         url_decoded = get_str_url_decoded(str_working=url_page)
-        pk_print(str_working=rf'''url_page={url_page:60s}  url_decoded={url_decoded}  {'%%%FOO%%%' if LTA else ''}''')
+        ensure_printed(str_working=rf'''url_page={url_page:60s}  url_decoded={url_decoded}  {'%%%FOO%%%' if LTA else ''}''')
         driver.get(url_page)
         WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.TAG_NAME, "body")))
-        pk_sleep(milliseconds=random.randint(200, 333))
+        ensure_slept(milliseconds=random.randint(200, 333))
         page_src = driver.page_source
         soup = BeautifulSoup(page_src, "html.parser")
-        # pk_print(f'''soup={soup}  {'%%%FOO%%%' if LTA else ''}''')
+        # ensure_printed(f'''soup={soup}  {'%%%FOO%%%' if LTA else ''}''')
         magnet_links = {a["href"] for a in soup.find_all("a", href=True) if a["href"].startswith("magnet:")}
-        pk_print(f'''Found {len(magnet_links)} magnet links on page {page_number}''')
+        ensure_printed(f'''Found {len(magnet_links)} magnet links on page {page_number}''')
         magnets_set |= magnet_links
-    pk_print(f'''len(magnets_set)={len(magnets_set)}  {'%%%FOO%%%' if LTA else ''}''')
+    ensure_printed(f'''len(magnets_set)={len(magnets_set)}  {'%%%FOO%%%' if LTA else ''}''')
     return magnets_set

@@ -73,7 +73,7 @@ if __name__ == '__main__':
         # cloudflare sequrity challange : try : fail
         # search_url_in_browser(url = url, driver=driver)
         # click tag as with text as '방송 토렌트 - 토렌트큐큐 - TORRENTQQ'
-        # pk_sleep(milliseconds=4000)  # 정적웹소스 다운로드 대기
+        # ensure_slept(milliseconds=4000)  # 정적웹소스 다운로드 대기
         # click_tag_as_with_tag_text(driver=driver, tag_name='h3', tag_text='방송 토렌트 - 토렌트큐큐 - TORRENTQQ')
         # cloudflare sequrity challange
         # try_solve_cloudflare_sequrity(driver)

@@ -19,10 +19,10 @@ from pkg_py.functions_split.ensure_do_finally_routine import ensure_do_finally_r
 from pkg_py.functions_split.ensure_do_exception_routine import ensure_do_exception_routine
 from pkg_py.functions_split.ensure_console_debuggable import ensure_console_debuggable
 
-pk_colorama_init_once()
+colorama_init_once()
 
 
-def pk_replace_filename_and_directory_name():
+def replace_filename_and_directory_name():
     func_n = inspect.currentframe().f_code.co_name
 
     key_name = "d_working"

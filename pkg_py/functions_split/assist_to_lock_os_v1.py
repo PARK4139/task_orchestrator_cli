@@ -62,10 +62,10 @@ from pkg_py.functions_split.get_f_loading_nx_by_pattern import get_f_loading_nx_
 from pkg_py.functions_split.ensure_window_to_front import ensure_window_to_front
 from pkg_py.functions_split.is_losslesscut_running import is_losslesscut_running
 from pkg_py.functions_split.get_video_filtered_list import get_video_filtered_list
-from pkg_py.functions_split.pk_press import pk_press
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.press import press
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
-from pkg_py.functions_split.write_list_to_f import write_list_to_f
+from pkg_py.functions_split.ensure_list_written_to_f import ensure_list_written_to_f
 
 from pkg_py.functions_split.set_pk_context_state import set_pk_context_state
 from pkg_py.functions_split.ensure_console_cleared import ensure_console_cleared
@@ -101,7 +101,7 @@ from bs4 import ResultSet
 from bs4 import BeautifulSoup
 from base64 import b64encode
 from pkg_py.functions_split.get_nx import get_nx
-from pkg_py.functions_split.assist_to_load_video_at_losslesscut import pk_ensure_video_loaded_at_losslesscut
+from pkg_py.functions_split.assist_to_load_video_at_losslesscut import ensure_video_loaded_at_losslesscut
 from pkg_py.functions_split.kill_self_pk_program import kill_self_pk_program
 from pkg_py.system_object.stamps import STAMP_TRY_GUIDE, STAMP_UNIT_TEST_EXCEPTION_DISCOVERED
 from pkg_py.system_object.etc import PK_UNDERLINE
@@ -113,14 +113,14 @@ from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
 from pkg_py.functions_split.is_os_windows import is_os_windows
 from pkg_py.functions_split.get_pnx_windows_style import get_pnx_windows_style
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.get_d_working import get_d_working
 
 
-def pk_assist_to_lock_os_v1():
+def assist_to_lock_os_v1():
     from datetime import datetime
     last_cleared_hour = -1  # 아직 클리어된 적 없음을 의미
 
@@ -136,4 +136,4 @@ def pk_assist_to_lock_os_v1():
         if (now.hour == 0 and now.minute >= 12) or (0 < now.hour < 5) or (now.hour == 5 and now.minute <= 30):
             pk_lock_os()
 
-        pk_sleep(milliseconds=10000)
+        ensure_slept(milliseconds=10000)

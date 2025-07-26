@@ -1,6 +1,6 @@
 
 continue
-def pk_kill_process_v5(cmd_exe_title: str):
+def kill_process_v5(cmd_exe_title: str):
 except Exception as e:
 except Exception:
 except subprocess.TimeoutExpired:
@@ -14,11 +14,11 @@ import psutil
 import subprocess
 matched_pids = set()
 matched_pids.add(proc.info['pid'])
-pk_print(f"[ERROR] {e}", print_color="red")
-pk_print(f"[NO MATCH] '{window_title}'와 일치하는 프로세스를 찾지 못했습니다.", print_color="red")
-pk_print(f"[PK KILL] PID={pid} window_title={window_title}", print_color="green")
-pk_print(f"[TIMEOUT] PID={pid} taskkill took too long", print_color="yellow")
-pk_print(f"window_title={window_title} {'%%%FOO%%%' if LTA else ''}")
+ensure_printed(f"[ERROR] {e}", print_color="red")
+ensure_printed(f"[NO MATCH] '{window_title}'와 일치하는 프로세스를 찾지 못했습니다.", print_color="red")
+ensure_printed(f"[PK KILL] PID={pid} window_title={window_title}", print_color="green")
+ensure_printed(f"[TIMEOUT] PID={pid} taskkill took too long", print_color="yellow")
+ensure_printed(f"window_title={window_title} {'%%%FOO%%%' if LTA else ''}")
 return
 stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, timeout=1)
 subprocess.run(['taskkill', '/PID', str(pid), '/T', '/F'],

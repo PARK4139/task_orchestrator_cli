@@ -1,5 +1,5 @@
 from pkg_py.functions_split.get_nx import get_nx
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style
 
 
@@ -32,20 +32,20 @@ def compare_vpc_tree(f_vpc_tree_answer_list, f_vpc_ref_tree2_list, ignore_list):
     removed_files = list(ref_paths - measured_paths)
 
     # 추가된 f 출력
-    pk_print(
+    ensure_printed(
         f"{STAMP_INFO} {get_nx(f_vpc_ref_tree2_list)} 에 추가된 f (+{len(added_files)} EA) : 참고 : ({get_nx(f_vpc_tree_answer_list)}[원격지_f_]와 {get_nx(f_vpc_ref_tree2_list)}[로컬_f_]의 트리비교)",
         print_color='blue')
     for file in sorted(added_files):
-        pk_print(file)
+        ensure_printed(file)
 
     # 누락된 f 출력
     # 누락 파악이 더 중요.
-    pk_print(
+    ensure_printed(
         f"{STAMP_ERROR} {get_nx(f_vpc_ref_tree2_list)} 에서 누락된 f (-{len(removed_files)} EA) : 참고 : ({get_nx(f_vpc_tree_answer_list)}[원격지_f_]와 {get_nx(f_vpc_ref_tree2_list)}[로컬_f_]의 트리비교)",
         print_color='red')
     for file in sorted(removed_files):
-        pk_print(f"{file}", print_color='red')
+        ensure_printed(f"{file}", print_color='red')
     if len(removed_files) == 0:
-        pk_print(
+        ensure_printed(
             f"{STAMP_SUCCEEDED} {get_nx(f_vpc_ref_tree2_list)} 에서 누락된 f이 없습니다 : 참고 : ({get_nx(f_vpc_tree_answer_list)}와 {get_nx(f_vpc_ref_tree2_list)}의 트리비교)",
             print_color='green')

@@ -14,8 +14,8 @@ from selenium.webdriver.common.action_chains import ActionChains
 from pkg_py.functions_split.ensure_window_to_front import ensure_window_to_front
 from pkg_py.functions_split.get_f_video_to_load import get_f_video_to_load
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
-from pkg_py.functions_split.pk_press import pk_press
-from pkg_py.functions_split.pk_print_once import pk_print_once
+from pkg_py.functions_split.press import press
+from pkg_py.functions_split.ensure_printed_once import ensure_printed_once
 from pkg_py.functions_split.cmd_to_os import cmd_to_os
 
 from passlib.context import CryptContext
@@ -29,7 +29,7 @@ from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
 from pkg_py.functions_split.get_pnx_wsl_unix_style import get_pnx_wsl_unix_style
 
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
 def ask_to_google(question: str):
@@ -40,7 +40,7 @@ def ask_to_google(question: str):
     # search in google
     cmd = f'explorer "https://www.google.com/search?q={question}"  >nul'
     cmd_to_os(cmd=cmd)
-    pk_print(f'''{cmd}  {'%%%FOO%%%' if LTA else ''}''', print_color="blue")
+    ensure_printed(f'''{cmd}  {'%%%FOO%%%' if LTA else ''}''', print_color="blue")
 
     # move window to front
     window_title_seg = rf"{question} - Google"

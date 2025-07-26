@@ -120,7 +120,7 @@ class MemberUtil:
     @staticmethod
     def get_member_validated(member):
         func_n = inspect.currentframe().f_code.co_name
-        pk_print(str_working=rf'''{PK_UNDERLINE}{func_n}() %%%FOO%%%''')
+        ensure_printed(str_working=rf'''{PK_UNDERLINE}{func_n}() %%%FOO%%%''')
 
         # Member 클래스의 필드 개수 확인
         field_count = len(MemberUtil.Member.__table__.c)
@@ -152,7 +152,7 @@ class MemberUtil:
     @staticmethod
     def validate_member(member):
         func_n = inspect.currentframe().f_code.co_name
-        pk_print(str_working=rf'''{PK_UNDERLINE}{func_n}() %%%FOO%%%''')
+        ensure_printed(str_working=rf'''{PK_UNDERLINE}{func_n}() %%%FOO%%%''')
         MemberUtil.get_member_validated(member)
 
     class MemberCreate(MemberBase):
@@ -212,7 +212,7 @@ class MemberUtil:
     @staticmethod
     def is_member_joined_by_id(id, request):
         func_n = inspect.currentframe().f_code.co_name
-        pk_print(str_working=rf'''{PK_UNDERLINE}{func_n}() %%%FOO%%%''')
+        ensure_printed(str_working=rf'''{PK_UNDERLINE}{func_n}() %%%FOO%%%''')
 
         result = MySqlUtil.get_session_local().query(MemberUtil.Member).filter(MemberUtil.Member.id == id).limit(2)
         for member in result:
@@ -230,7 +230,7 @@ class MemberUtil:
     @staticmethod
     def is_member_joined(id, pw, request):
         func_n = inspect.currentframe().f_code.co_name
-        pk_print(str_working=rf'''{PK_UNDERLINE}{func_n}() %%%FOO%%%''')
+        ensure_printed(str_working=rf'''{PK_UNDERLINE}{func_n}() %%%FOO%%%''')
 
         # native query
         # sql injection 에 취약,
@@ -258,7 +258,7 @@ class MemberUtil:
     @staticmethod
     def get_member_name_joined(id, pw, request):
         func_n = inspect.currentframe().f_code.co_name
-        pk_print(str_working=rf'''{PK_UNDERLINE}{func_n}() %%%FOO%%%''')
+        ensure_printed(str_working=rf'''{PK_UNDERLINE}{func_n}() %%%FOO%%%''')
         result = MySqlUtil.get_session_local().query(MemberUtil.Member).filter(MemberUtil.Member.id == id, MemberUtil.Member.pw == pw).limit(2)
         member_count = result.count()
         print(rf'''member_count : {member_count}''')
@@ -269,21 +269,21 @@ class MemberUtil:
     @staticmethod
     def validate_id(value):
         func_n = inspect.currentframe().f_code.co_name
-        pk_print(str_working=rf'''{PK_UNDERLINE}{func_n}() %%%FOO%%%''')
+        ensure_printed(str_working=rf'''{PK_UNDERLINE}{func_n}() %%%FOO%%%''')
         Friday.raise_exception_after_special_charcater_check(value, inspect.currentframe().f_code.co_name)
         return True
 
     @staticmethod
     def validate_name(value):
         func_n = inspect.currentframe().f_code.co_name
-        pk_print(str_working=rf'''{PK_UNDERLINE}{func_n}() %%%FOO%%%''')
+        ensure_printed(str_working=rf'''{PK_UNDERLINE}{func_n}() %%%FOO%%%''')
         Friday.raise_exception_after_special_charcater_check(value, inspect.currentframe().f_code.co_name)
         return True
 
     @staticmethod
     def validate_e_mail(value):
         func_n = inspect.currentframe().f_code.co_name
-        pk_print(str_working=rf'''{PK_UNDERLINE}{func_n}() %%%FOO%%%''')
+        ensure_printed(str_working=rf'''{PK_UNDERLINE}{func_n}() %%%FOO%%%''')
         Friday.raise_exception_after_special_charcater_check(value, inspect.currentframe().f_code.co_name, ignore_list=["@"])
         MemberUtil.validate_address_e_mail(value)
         pattern = r'^[\w\.-]+@[\w\.-]+\.\w+$'
@@ -298,7 +298,7 @@ class MemberUtil:
     @staticmethod
     def validate_phone_no(value):
         func_n = inspect.currentframe().f_code.co_name
-        pk_print(str_working=rf'''{PK_UNDERLINE}{func_n}() %%%FOO%%%''')
+        ensure_printed(str_working=rf'''{PK_UNDERLINE}{func_n}() %%%FOO%%%''')
         # r'^\d{3}-\d{3,4}-\d{4}$'
         # r'^\d{2}-\d{3,4}-\d{4}$' 둘다
         if not re.match(r'^\d{2,3}-\d{3,4}-\d{4}$', value):
@@ -309,49 +309,49 @@ class MemberUtil:
     @staticmethod
     def validate_address(value):
         func_n = inspect.currentframe().f_code.co_name
-        pk_print(str_working=rf'''{PK_UNDERLINE}{func_n}() %%%FOO%%%''')
+        ensure_printed(str_working=rf'''{PK_UNDERLINE}{func_n}() %%%FOO%%%''')
 
         return True
 
     @staticmethod
     def validate_birthday(value):
         func_n = inspect.currentframe().f_code.co_name
-        pk_print(str_working=rf'''{PK_UNDERLINE}{func_n}() %%%FOO%%%''')
+        ensure_printed(str_working=rf'''{PK_UNDERLINE}{func_n}() %%%FOO%%%''')
 
         return True
 
     @staticmethod
     def validate_pw(value):
         func_n = inspect.currentframe().f_code.co_name
-        pk_print(str_working=rf'''{PK_UNDERLINE}{func_n}() %%%FOO%%%''')
+        ensure_printed(str_working=rf'''{PK_UNDERLINE}{func_n}() %%%FOO%%%''')
 
         return True
 
     @staticmethod
     def validate_date_joined(value):
         func_n = inspect.currentframe().f_code.co_name
-        pk_print(str_working=rf'''{PK_UNDERLINE}{func_n}() %%%FOO%%%''')
+        ensure_printed(str_working=rf'''{PK_UNDERLINE}{func_n}() %%%FOO%%%''')
 
         return True
 
     @staticmethod
     def validate_date_canceled(value):
         func_n = inspect.currentframe().f_code.co_name
-        pk_print(str_working=rf'''{PK_UNDERLINE}{func_n}() %%%FOO%%%''')
+        ensure_printed(str_working=rf'''{PK_UNDERLINE}{func_n}() %%%FOO%%%''')
 
         return True
 
     @staticmethod
     def validate_date_join(value):
         func_n = inspect.currentframe().f_code.co_name
-        pk_print(str_working=rf'''{PK_UNDERLINE}{func_n}() %%%FOO%%%''')
+        ensure_printed(str_working=rf'''{PK_UNDERLINE}{func_n}() %%%FOO%%%''')
 
         return True
 
     @staticmethod
     def validate_address_e_mail(value):
         func_n = inspect.currentframe().f_code.co_name
-        pk_print(str_working=rf'''{PK_UNDERLINE}{func_n}() %%%FOO%%%''')
+        ensure_printed(str_working=rf'''{PK_UNDERLINE}{func_n}() %%%FOO%%%''')
 
         return True
 
@@ -472,7 +472,7 @@ class FaqBoardUtil:
     @staticmethod
     def get_faq_board_validated(faq_board):
         func_n = inspect.currentframe().f_code.co_name
-        pk_print(str_working=rf'''{PK_UNDERLINE}{func_n}() %%%FOO%%%''')
+        ensure_printed(str_working=rf'''{PK_UNDERLINE}{func_n}() %%%FOO%%%''')
 
         # FaqBoard 클래스의 필드 개수 확인
         field_count = len(FaqBoardUtil.FaqBoard.__table__.c)
@@ -501,7 +501,7 @@ class FaqBoardUtil:
     @staticmethod
     def validate_faq_board(faq_board):
         func_n = inspect.currentframe().f_code.co_name
-        pk_print(str_working=rf'''{PK_UNDERLINE}{func_n}() %%%FOO%%%''')
+        ensure_printed(str_working=rf'''{PK_UNDERLINE}{func_n}() %%%FOO%%%''')
         FaqBoardUtil.get_faq_board_validated(faq_board)
 
     class FaqBoardCreate(FaqBoardBase):
@@ -554,7 +554,7 @@ class FaqBoardUtil:
     @staticmethod
     def is_faq_board_joined_by_id(id, request):
         func_n = inspect.currentframe().f_code.co_name
-        pk_print(str_working=rf'''{PK_UNDERLINE}{func_n}() %%%FOO%%%''')
+        ensure_printed(str_working=rf'''{PK_UNDERLINE}{func_n}() %%%FOO%%%''')
 
         result = MySqlUtil.get_session_local().query(FaqBoardUtil.FaqBoard).filter(FaqBoardUtil.FaqBoard.id == id).limit(2)
         for faq_board in result:
@@ -572,21 +572,21 @@ class FaqBoardUtil:
     @staticmethod
     def validate_id(value):
         func_n = inspect.currentframe().f_code.co_name
-        pk_print(str_working=rf'''{PK_UNDERLINE}{func_n}() %%%FOO%%%''')
+        ensure_printed(str_working=rf'''{PK_UNDERLINE}{func_n}() %%%FOO%%%''')
         Friday.raise_exception_after_special_charcater_check(value, inspect.currentframe().f_code.co_name)
         return True
 
     @staticmethod
     def validate_writer(value):
         func_n = inspect.currentframe().f_code.co_name
-        pk_print(str_working=rf'''{PK_UNDERLINE}{func_n}() %%%FOO%%%''')
+        ensure_printed(str_working=rf'''{PK_UNDERLINE}{func_n}() %%%FOO%%%''')
         Friday.raise_exception_after_special_charcater_check(value, inspect.currentframe().f_code.co_name)
         return True
 
     @staticmethod
     def validate_title(value):
         func_n = inspect.currentframe().f_code.co_name
-        pk_print(str_working=rf'''{PK_UNDERLINE}{func_n}() %%%FOO%%%''')
+        ensure_printed(str_working=rf'''{PK_UNDERLINE}{func_n}() %%%FOO%%%''')
         Friday.raise_exception_after_special_charcater_check(value, inspect.currentframe().f_code.co_name, ignore_list=["@"])
         FaqBoardUtil.validate_title(value)
         pattern = r'^[\w\.-]+@[\w\.-]+\.\w+$'
@@ -601,7 +601,7 @@ class FaqBoardUtil:
     @staticmethod
     def validate_contents(value):
         func_n = inspect.currentframe().f_code.co_name
-        pk_print(str_working=rf'''{PK_UNDERLINE}{func_n}() %%%FOO%%%''')
+        ensure_printed(str_working=rf'''{PK_UNDERLINE}{func_n}() %%%FOO%%%''')
         # r'^\d{3}-\d{3,4}-\d{4}$'
         # r'^\d{2}-\d{3,4}-\d{4}$' 둘다
         if not re.match(r'^\d{2,3}-\d{3,4}-\d{4}$', value):
@@ -612,11 +612,11 @@ class FaqBoardUtil:
     @staticmethod
     def validate_date_reg(value):
         func_n = inspect.currentframe().f_code.co_name
-        pk_print(str_working=rf'''{PK_UNDERLINE}{func_n}() %%%FOO%%%''')
+        ensure_printed(str_working=rf'''{PK_UNDERLINE}{func_n}() %%%FOO%%%''')
         return True
 
     @staticmethod
     def validate_del_yn(value):
         func_n = inspect.currentframe().f_code.co_name
-        pk_print(str_working=rf'''{PK_UNDERLINE}{func_n}() %%%FOO%%%''')
+        ensure_printed(str_working=rf'''{PK_UNDERLINE}{func_n}() %%%FOO%%%''')
         return True

@@ -17,7 +17,7 @@ from tkinter import UNDERLINE
 from PySide6.QtWidgets import QApplication
 from pkg_py.functions_split.is_losslesscut_running import is_losslesscut_running
 from pkg_py.functions_split.is_window_opened import is_window_opened
-from pkg_py.functions_split.pk_press import pk_press
+from pkg_py.functions_split.press import press
 from pkg_py.functions_split.get_list_sorted import get_list_sorted
 from pkg_py.system_object.files import F_FFMPEG_EXE
 from pkg_py.system_object.encodings import Encoding
@@ -36,25 +36,25 @@ from pkg_py.functions_split.get_pnx_wsl_unix_style import get_pnx_wsl_unix_style
 from pkg_py.functions_split.is_os_windows import is_os_windows
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
 def print_built_in_info(thing_curious):
     import inspect
 
     func_n = inspect.currentframe().f_code.co_name
-    pk_print(f"{inspect.currentframe().f_code.co_name} {str(thing_curious.__code__.co_varnames)}")
-    pk_print(str_working="_______________________________________________________________ " + str() + "(" + str(
+    ensure_printed(f"{inspect.currentframe().f_code.co_name} {str(thing_curious.__code__.co_varnames)}")
+    ensure_printed(str_working="_______________________________________________________________ " + str() + "(" + str(
         thing_curious) + ") s")
-    pk_print(str_working="print(inspect.getsource(thing_curious))")
+    ensure_printed(str_working="print(inspect.getsource(thing_curious))")
     print(inspect.getsource(thing_curious))
-    pk_print(str_working="for i in inspect.getmembers(thing_curious_):")
+    ensure_printed(str_working="for i in inspect.getmembers(thing_curious_):")
     for i in inspect.getmembers(thing_curious):
         print(i)
-    pk_print(str_working="print(help(thing_curious))")
+    ensure_printed(str_working="print(help(thing_curious))")
     print(help(thing_curious))
-    pk_print(str_working="[x for x in dir(thing_curious) if '__' not in x]")
+    ensure_printed(str_working="[x for x in dir(thing_curious) if '__' not in x]")
     foo = [x for x in dir(thing_curious) if '__' not in x]
     # dir() 함수는 값 없이 지정된 객체의 모든 속성과 메서드를 반환합니다 .
     # 이 함수는 모든 속성과 메서드를 반환하며, 모든 개체에 대한 기본값인 내장 속성도 반환합니다.
-    pk_print(str_working="[x for x in dir(thing_curious) if '__' not in x]")
+    ensure_printed(str_working="[x for x in dir(thing_curious) if '__' not in x]")

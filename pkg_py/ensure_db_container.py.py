@@ -105,7 +105,7 @@ def ensure_table():
 
 if __name__ == "__main__":
     try:
-        pk_colorama_init_once()
+        colorama_init_once()
 
         log("Checking Docker daemon...")
         try:

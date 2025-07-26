@@ -1,4 +1,4 @@
-def pk_type_v2(text: str, interval: float = 0.1):
+def type_v2(text: str, interval: float = 0.1):
     from pkg_py.functions_split.switch_to_keyboard_mode_to_english_at_windows import switch_to_keyboard_mode_to_english_at_windows
     import pyautogui
     import platform
@@ -6,10 +6,10 @@ def pk_type_v2(text: str, interval: float = 0.1):
     Types given text with optional IME switching on Windows.
     """
     from pkg_py.system_object.local_test_activate import LTA
-    from pkg_py.functions_split.print import pk_print
+    from pkg_py.functions_split.ensure_printed import ensure_printed
 
     if text is None:
-        pk_print(f'''text is None {'%%%FOO%%%' if LTA else ''}''')
+        ensure_printed(f'''text is None {'%%%FOO%%%' if LTA else ''}''')
 
         return
 
@@ -23,4 +23,4 @@ def pk_type_v2(text: str, interval: float = 0.1):
         print(f"[info] Unknown OS: {system}. IME switching skipped.")
 
     pyautogui.write(text, interval=interval)
-    pk_print(str_working=rf'''Typed: "{text}"  {'%%%FOO%%%' if LTA else ''}''')
+    ensure_printed(str_working=rf'''Typed: "{text}"  {'%%%FOO%%%' if LTA else ''}''')

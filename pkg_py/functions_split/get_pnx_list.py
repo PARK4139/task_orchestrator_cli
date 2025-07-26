@@ -33,8 +33,8 @@ def get_pnx_list(with_walking: int, filter_option=None, d_working=None):
         # 출력제한
         print_limit = 100000000
         if len(f_list) <= print_limit:
-            # pk_print(f'''files={files}''')
-            # pk_print(f'''directories={directories}''')
+            # ensure_printed(f'''files={files}''')
+            # ensure_printed(f'''directories={directories}''')
             pass
 
         return pnx_list

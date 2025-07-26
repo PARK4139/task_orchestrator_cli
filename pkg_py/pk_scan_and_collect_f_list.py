@@ -6,12 +6,12 @@ if __name__ == "__main__":
 
     from colorama import init as pk_colorama_init
 
-    # from pkg_py.system_object.500_live_logic import pk_copy, pk_ensure_f_list_scaned_and_collected
+    # from pkg_py.system_object.500_live_logic import copy, pk_ensure_f_list_scaned_and_collected
     #, STAMP_TRY_GUIDE, D_PROJECT, STAMP_UNIT_TEST_EXCEPTION_DISCOVERED
     #, print_red
 
     try:
-        pk_colorama_init_once()
+        colorama_init_once()
 
         pk_ensure_f_list_scaned_and_collected()
     except Exception as ex:
@@ -23,6 +23,6 @@ if __name__ == "__main__":
     finally:
         script_cmd = rf'{D_PROJECT}\.venv\Scripts\activate && python {__file__} && deactivate'
         
-        pk_print(UNDERLINE)
-        pk_print(f"{STAMP_TRY_GUIDE} {script_cmd}")
-        pk_print(UNDERLINE)
+        ensure_printed(UNDERLINE)
+        ensure_printed(f"{STAMP_TRY_GUIDE} {script_cmd}")
+        ensure_printed(UNDERLINE)

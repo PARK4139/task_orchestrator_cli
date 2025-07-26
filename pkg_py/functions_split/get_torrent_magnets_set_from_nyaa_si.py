@@ -10,7 +10,7 @@ from pkg_py.system_object.state_via_database import PkSqlite3DB
 from pkg_py.system_object.is_os_windows import is_os_windows
 
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
 def get_torrent_magnets_set_from_nyaa_si(title_to_search, driver_selenium, exclude_elements_all=None,
@@ -22,13 +22,13 @@ def get_torrent_magnets_set_from_nyaa_si(title_to_search, driver_selenium, exclu
     include_elements_any = include_elements_any or []
     include_elements_all = include_elements_all or []
     func_n = inspect.currentframe().f_code.co_name
-    pk_print(str_working=rf'''{PK_UNDERLINE}{func_n}()  {'%%%FOO%%%' if LTA else ''}''', print_color='blue')
+    ensure_printed(str_working=rf'''{PK_UNDERLINE}{func_n}()  {'%%%FOO%%%' if LTA else ''}''', print_color='blue')
     f_func_n_txt = rf'{D_PROJECT}\pkg_txt\{func_n}.txt'
     query = urllib.parse.quote(f"{title_to_search}")
     url = f'https://nyaa.si/?f=0&c=0_0&q={query}'
-    pk_print(str_working=rf'''url="{url}"  {'%%%FOO%%%' if LTA else ''}''')
+    ensure_printed(str_working=rf'''url="{url}"  {'%%%FOO%%%' if LTA else ''}''')
     url_decoded = get_str_url_decoded(str_working=url)
-    pk_print(str_working=rf'''url_decoded="{url_decoded}"  {'%%%FOO%%%' if LTA else ''}''')
+    ensure_printed(str_working=rf'''url_decoded="{url_decoded}"  {'%%%FOO%%%' if LTA else ''}''')
     driver_selenium.get(url)
 
     # 페이지 소스 RAW
@@ -51,7 +51,7 @@ def get_torrent_magnets_set_from_nyaa_si(title_to_search, driver_selenium, exclu
 
     for magnet in magnets_list:
         decoded_magnet = get_str_url_decoded(magnet)
-        # pk_print(string = rf'''decoded_magnet="{decoded_magnet}"  {'%%%FOO%%%' if LTA else ''}''')
+        # ensure_printed(string = rf'''decoded_magnet="{decoded_magnet}"  {'%%%FOO%%%' if LTA else ''}''')
 
         # 검색 문자열이 URL에 포함되어 있는지 확인
         if is_pattern_in_prompt(prompt=decoded_magnet, pattern=title_to_search):

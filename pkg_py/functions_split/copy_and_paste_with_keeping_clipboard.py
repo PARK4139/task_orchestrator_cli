@@ -1,6 +1,6 @@
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.functions_split.pk_print import pk_print
-from pkg_py.functions_split.pk_press import pk_press
+from pkg_py.functions_split.ensure_printed import ensure_printed
+from pkg_py.functions_split.press import press
 from pkg_py.functions_split.print_iterable_as_vertical import print_iterable_as_vertical
 
 
@@ -17,7 +17,7 @@ def copy_and_paste_with_keeping_clipboard(prompt, wsl_mode=False):
 
     # copy
     pk_copy(str_working=prompt)
-    pk_print(str_working=rf'''prompt={prompt}  {'%%%FOO%%%' if LTA else ''}''')
+    ensure_printed(str_working=rf'''prompt={prompt}  {'%%%FOO%%%' if LTA else ''}''')
 
     # paste
     if wsl_mode == True:

@@ -37,8 +37,8 @@ from pkg_py.functions_split.is_window_title_front import is_window_title_front
 from pkg_py.functions_split.get_d_working import get_d_working
 from pkg_py.functions_split.is_window_title_opened import is_window_title_opened
 from pkg_py.functions_split.is_window_opened import is_window_opened
-from pkg_py.functions_split.pk_press import pk_press
-from pkg_py.functions_split.pk_print_once import pk_print_once
+from pkg_py.functions_split.press import press
+from pkg_py.functions_split.ensure_printed_once import ensure_printed_once
 
 from pkg_py.functions_split.cmd_to_os import cmd_to_os
 from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
@@ -68,6 +68,6 @@ def rerun_pnx(my_name):  # 종료용이름 시작용이름 이 다름 따로 수
 
     func_n = inspect.currentframe().f_code.co_name
     kill_process_via_taskkill(process_name=my_name)
-    pk_sleep(milliseconds=200)  # 최적화 테스트 필요
+    ensure_slept(milliseconds=200)  # 최적화 테스트 필요
     cmd = rf'start "{my_name}"'
     cmd_to_os(cmd=cmd, mode="a")

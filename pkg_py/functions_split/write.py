@@ -2,7 +2,7 @@
 
 
 
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.copy_and_paste_with_keeping_clipboard import copy_and_paste_with_keeping_clipboard
 
 
@@ -10,6 +10,6 @@ def write(string: str, milliseconds=500):
     import inspect
 
     func_n = inspect.currentframe().f_code.co_name
-    pk_sleep(milliseconds=milliseconds)
+    ensure_slept(milliseconds=milliseconds)
     copy_and_paste_with_keeping_clipboard(string)
-    pk_print(rf"{string}", print_color='blue')
+    ensure_printed(rf"{string}", print_color='blue')

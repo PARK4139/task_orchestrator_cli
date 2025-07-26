@@ -1,5 +1,5 @@
 from pkg_py.functions_split.cmd_to_os import cmd_to_os
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
 def get_pids(process_img_n=None, pid=None):
@@ -8,7 +8,7 @@ def get_pids(process_img_n=None, pid=None):
     func_n = inspect.currentframe().f_code.co_name
 
     if process_img_n is not None and pid is not None:
-        pk_print(rf"{func_n}() 동작 조건 불충족")
+        ensure_printed(rf"{func_n}() 동작 조건 불충족")
         return
 
     if process_img_n != None:

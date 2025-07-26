@@ -1,5 +1,5 @@
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
 def get_vpc_type_conected_via_scp(vpc_data_raw):
@@ -37,7 +37,7 @@ def get_vpc_type_conected_via_scp(vpc_data_raw):
             vpc_type = vpc_nvidia_serial.split(f"{PK_BLANK}#")[0]
             return vpc_type
         else:
-            pk_print(str_working=rf'''unkown exception.  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
+            ensure_printed(str_working=rf'''unkown exception.  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
             raise
 
     vpc_core_cnt = vpc_data_raw.vpc_core_cnt
@@ -51,7 +51,7 @@ def get_vpc_type_conected_via_scp(vpc_data_raw):
     elif vpc_core_cnt == vpc_core_cnt_of_evm and processer_name_of_remote_os == vpc_processser_name_of_evm:
         vpc_type = 'evm'
     else:
-        pk_print(
+        ensure_printed(
             str_working=rf'''unkown vpc_type (vpc_ip={vpc_ip}, vpc_core_cnt={vpc_core_cnt}, processer_name_of_remote_os={processer_name_of_remote_os} ).  {'%%%FOO%%%' if LTA else ''}''',
             print_color='red')
         raise

@@ -4,7 +4,7 @@ import datetime
 import clipboard
 from PySide6.QtWidgets import QApplication
 from pkg_py.functions_split.print_iterable_as_vertical import print_iterable_as_vertical
-from pkg_py.functions_split.pk_press import pk_press
+from pkg_py.functions_split.press import press
 from moviepy import VideoFileClip
 from datetime import timedelta
 

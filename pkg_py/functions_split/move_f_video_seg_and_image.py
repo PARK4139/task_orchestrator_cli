@@ -10,14 +10,14 @@ import colorama
 from urllib.parse import quote
 from PySide6.QtWidgets import QApplication
 from prompt_toolkit import PromptSession
-from pkg_py.functions_split.write_list_to_f import write_list_to_f
+from pkg_py.functions_split.ensure_list_written_to_f import ensure_list_written_to_f
 from pkg_py.functions_split.ensure_console_cleared import ensure_console_cleared
 from pkg_py.system_object.is_os_windows import is_os_windows
 from pkg_py.functions_split.is_f import is_f
 from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
 
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
 def move_f_video_seg_and_image(d_working, d_dst_extension_to_move=None):
@@ -58,6 +58,6 @@ def move_f_video_seg_and_image(d_working, d_dst_extension_to_move=None):
                 # f 이동
                 try:
                     shutil.move(f, f_dst)
-                    pk_print(f"f 이동 {f_dst}", print_color='green')
+                    ensure_printed(f"f 이동 {f_dst}", print_color='green')
                 except Exception as e:
-                    pk_print(f"f 이동 {f_dst}. 오류: {e}", print_color='red')
+                    ensure_printed(f"f 이동 {f_dst}. 오류: {e}", print_color='red')

@@ -25,8 +25,8 @@ from pkg_py.functions_split.get_f_loading_nx_by_pattern import get_f_loading_nx_
 from pkg_py.functions_split.is_window_title_opened import is_window_title_opened
 from pkg_py.functions_split.is_window_opened import is_window_opened
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
-from pkg_py.functions_split.pk_press import pk_press
-from pkg_py.functions_split.pk_print_state import pk_print_state
+from pkg_py.functions_split.press import press
+from pkg_py.functions_split.print_state import print_state
 
 from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
 from pkg_py.system_object.files import F_POT_PLAYER_MINI_64_EXE
@@ -51,7 +51,7 @@ from pkg_py.functions_split.get_pnx_windows_style import get_pnx_windows_style
 from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
 
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.get_pnx_list import get_pnx_list
 from pkg_py.functions_split.get_d_working import get_d_working
 
@@ -72,25 +72,25 @@ def ensure_remote_os_as_nopasswd(**config_remote_os):
         signiture = f"{user_n} ALL=(ALL:ALL) NOPASSWD:ALL"
         for std_out_str in std_out_list:
             if signiture in std_out_str:
-                pk_print("THE ENTRY IS ALREADY PRESENT")
+                ensure_printed("THE ENTRY IS ALREADY PRESENT")
                 return 1
             else:
                 cmd = f"echo '{pw}' | sudo -S bash -c \"echo '{user_n} ALL=(ALL:ALL) NOPASSWD:ALL' >> /etc/sudoers\""
                 std_out_list, std_err_list = cmd_to_remote_os_with_pubkey(cmd=cmd, **config_remote_os)
                 if not len(std_err_list) == 0:
                     for std_err_str in std_err_list:
-                        pk_print(str_working=rf'{STAMP_REMOTE_ERROR} {std_err_str}', print_color='red')
+                        ensure_printed(str_working=rf'{STAMP_REMOTE_ERROR} {std_err_str}', print_color='red')
                 if not len(std_out_list) == 0:
                     for std_out_str in std_out_list:
-                        pk_print(str_working=rf'{STAMP_REMOTE_DEBUG} {std_out_str}')
+                        ensure_printed(str_working=rf'{STAMP_REMOTE_DEBUG} {std_out_str}')
                 cmd = f"sudo visudo -c"
                 std_out_list, std_err_list = cmd_to_remote_os_with_pubkey(cmd=cmd, **config_remote_os)
                 if not len(std_err_list) == 0:
                     for std_err_str in std_err_list:
-                        pk_print(str_working=rf'{STAMP_REMOTE_ERROR} {std_err_str}', print_color='red')
+                        ensure_printed(str_working=rf'{STAMP_REMOTE_ERROR} {std_err_str}', print_color='red')
                 if not len(std_out_list) == 0:
                     for std_out_str in std_out_list:
-                        pk_print(str_working=rf'{STAMP_REMOTE_DEBUG} {std_out_str}')
+                        ensure_printed(str_working=rf'{STAMP_REMOTE_DEBUG} {std_out_str}')
     except:
         import traceback
-        pk_print(str_working=rf"{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''} ", print_color='red')
+        ensure_printed(str_working=rf"{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''} ", print_color='red')

@@ -2,7 +2,7 @@ from tkinter import UNDERLINE
 
 from pkg_py.system_object.directories_reuseable import D_PROJECT
 from pkg_py.system_object.encodings import Encoding
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
 def save_all_drive_pnxs_to_txt_f():  # 이 함수는 Everything.exe 를 대체할 f탐색기 용도로 만들었으나 거의 필요 없을 것 같다. 관심d만 확인하는 것으로 충분해 보인다.
@@ -37,8 +37,8 @@ def save_all_drive_pnxs_to_txt_f():  # 이 함수는 Everything.exe 를 대체�
                 f_cnt = f_cnt + 1
                 f.write(str(f_cnt) + " " + os.path.join(root, f_nx) + "\n")
     f.close()  # close() 를 사용하지 않으려면 with 문을 사용하는 방법도 있다.
-    pk_print(f"{UNDERLINE}{UNDERLINE}all_list.txt writing e", print_color='blue')
-    pk_print(f"{UNDERLINE}{UNDERLINE}all_list_proper.txt rewriting s", print_color='blue')
+    ensure_printed(f"{UNDERLINE}{UNDERLINE}all_list.txt writing e", print_color='blue')
+    ensure_printed(f"{UNDERLINE}{UNDERLINE}all_list_proper.txt rewriting s", print_color='blue')
     texts_black = [
         rf"C:\$WinREAgent",
         rf"C:\mingw64",
@@ -74,22 +74,22 @@ def save_all_drive_pnxs_to_txt_f():  # 이 함수는 Everything.exe 를 대체�
             break
         lines_cnt = lines_cnt + 1
         if any(text_black not in line for text_black in texts_black):
-            # pk_print(line)
+            # ensure_printed(line)
             if any(text_white in line for text_white in texts_white):
-                # pk_print(line.split("\n")[0] + " o")
+                # ensure_printed(line.split("\n")[0] + " o")
                 f2.write(line.split("\n")[0] + " o " + "\n")
-                # pk_print('o')
+                # ensure_printed('o')
                 pass
             else:
-                # pk_print(line.split("\n")[0] + " x")
+                # ensure_printed(line.split("\n")[0] + " x")
                 # f2.write(line.split("\n")[0] + " x "+"\n")
-                # pk_print('x')
+                # ensure_printed('x')
                 pass
     f.close()
     f2.close()
-    pk_print(f"{UNDERLINE}{UNDERLINE}all_list_proper.txt rewriting e", print_color='blue')
+    ensure_printed(f"{UNDERLINE}{UNDERLINE}all_list_proper.txt rewriting e", print_color='blue')
 
-    pk_print(f"{UNDERLINE}{UNDERLINE}files opening s", print_color='blue')
+    ensure_printed(f"{UNDERLINE}{UNDERLINE}files opening s", print_color='blue')
     pk_chdir(os.getcwd())
 
     # 윈도우냐 아니냐
@@ -99,8 +99,8 @@ def save_all_drive_pnxs_to_txt_f():  # 이 함수는 Everything.exe 를 대체�
     # os.system("type all_list.txt")
     # os.system("explorer all_list.txt")
     os.system("explorer all_list_proper.txt")
-    pk_print(f"{UNDERLINE}{UNDERLINE}files opening e", print_color='blue')
+    ensure_printed(f"{UNDERLINE}{UNDERLINE}files opening e", print_color='blue')
 
     # os.system('del "'+os.getcwd()+'\\all_list.txt"')
     # mk("all_list.txt")
-    pk_print(f"{UNDERLINE}{UNDERLINE}e", print_color='blue')
+    ensure_printed(f"{UNDERLINE}{UNDERLINE}e", print_color='blue')

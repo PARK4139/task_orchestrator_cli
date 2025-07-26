@@ -18,11 +18,11 @@ from collections import Counter
 from pkg_py.functions_split.get_pnx_list import get_pnx_list
 from pkg_py.functions_split.is_d import is_d
 from pkg_py.functions_split.is_os_windows import is_os_windows
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.get_pnx_list import get_pnx_list
 
 
@@ -33,7 +33,7 @@ def build_pk_project_via_pyinstaller():
     os.chdir(D_PROJECT)
 
     if does_pnx_exist(pnx=D_VENV):
-        pk_print(f"{D_VENV} d가 있습니다")
+        ensure_printed(f"{D_VENV} d가 있습니다")
 
         # 현재d의 불필요한 타겟들을 삭제
         items_useless = [
@@ -69,4 +69,4 @@ def build_pk_project_via_pyinstaller():
         # os.remove(f)
 
     else:
-        pk_print(f"{D_VENV} d가 없습니다")
+        ensure_printed(f"{D_VENV} d가 없습니다")

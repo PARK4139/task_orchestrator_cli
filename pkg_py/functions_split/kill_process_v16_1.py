@@ -3,7 +3,7 @@
 closed_hwnds = []
 closed_hwnds.append((hwnd, title))
 def enum_handler(hwnd, _):
-def pk_kill_process_v16_1(window_title: str, exact: bool = True):
+def kill_process_v16_1(window_title: str, exact: bool = True):
 else:
 except Exception as e:
 if exact:

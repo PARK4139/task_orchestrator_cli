@@ -1,7 +1,7 @@
 
 from pkg_py.functions_split.is_f import is_f
 
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 
 
@@ -14,15 +14,15 @@ def rename_pnx(src, pnx_new):
     # os.rename 사용 중에 d  인 경우는 재귀적으로 변경이 안된다
     try:
         if not does_pnx_exist(pnx=src):
-            pk_print(f'''rename 할 f이 없습니다 {src}''', print_color='red')
+            ensure_printed(f'''rename 할 f이 없습니다 {src}''', print_color='red')
             return
 
         if src == pnx_new:
-            pk_print(f'''현재f명 과 바꾸려는f명 이 같아 rename 하지 않았습니다 src={src} pnx_new={pnx_new}''')
+            ensure_printed(f'''현재f명 과 바꾸려는f명 이 같아 rename 하지 않았습니다 src={src} pnx_new={pnx_new}''')
             return
 
         if does_pnx_exist(pnx=pnx_new):
-            pk_print(f'''dst에 중복된 f이 있습니다. {pnx_new}" ''', print_color='red')
+            ensure_printed(f'''dst에 중복된 f이 있습니다. {pnx_new}" ''', print_color='red')
             return
 
         if is_f(src):
@@ -36,15 +36,15 @@ def rename_pnx(src, pnx_new):
         time_s = time.time()
         while 1:
             if does_pnx_exist(pnx=pnx_new):
-                pk_print(f'''rename {type_name} from {src} to {pnx_new}''', print_color='green')
+                ensure_printed(f'''rename {type_name} from {src} to {pnx_new}''', print_color='green')
                 break
             else:
                 time_e = time.time()
                 time_diff = time_e - time_s
                 if time_diff == time_limit:
                     return 0
-                pk_sleep(milliseconds=waiting_limit)
+                ensure_slept(milliseconds=waiting_limit)
     except:
-        pk_print(
+        ensure_printed(
             str_working=rf'''traceback.format_exc()="{traceback.format_exc()}" rename 확인필요 src={src} pnx_new={pnx_new}  {'%%%FOO%%%' if LTA else ''}''',
             print_color='red')

@@ -3,8 +3,8 @@ import traceback
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 from pkg_py.functions_split.ensure_do_exception_routine import ensure_do_exception_routine
 from pkg_py.functions_split.ensure_do_finally_routine import ensure_do_finally_routine
-from pkg_py.functions_split.pk_print import pk_print
-from pkg_py.functions_split.pk_sleep import pk_sleep
+from pkg_py.functions_split.ensure_printed import ensure_printed
+from pkg_py.functions_split.ensure_slept import ensure_slept
 from pkg_py.system_object.directories_reuseable import D_PROJECT
 from pkg_py.system_object.files import F_MEMO_HOW_PK
 from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
@@ -21,14 +21,14 @@ def found_memo_contents():
 
     f_memo = rf'{F_MEMO_HOW_PK}'
     if not does_pnx_exist(f_memo):
-        pk_print(f'''{f_memo} does not exist %%%FOO%%%''', print_color='red')
+        ensure_printed(f'''{f_memo} does not exist %%%FOO%%%''', print_color='red')
         return
 
     # line_list = get_list_from_f_pnx(f_pnx=f_memo)
     # line_list = get_str_from_list(item_list=line_list)
     # line_str = line_list
-    # pk_print(f'''len(line_list)={len(line_list)} %%%FOO%%%''')
-    # pk_print(f'''len(line_str)={len(line_str)} %%%FOO%%%''')
+    # ensure_printed(f'''len(line_list)={len(line_list)} %%%FOO%%%''')
+    # ensure_printed(f'''len(line_str)={len(line_str)} %%%FOO%%%''')
     # data = line_str
     # txt_highlighted = [
     #     "%%%FOO%%%",
@@ -37,7 +37,7 @@ def found_memo_contents():
     # print_with_highlighted(txt_whole=data, txt_highlighted_list=txt_highlighted)
 
     # txt_str = input("Press Enter to continue...")
-    # write_str_to_f_pnx(txt_str=txt_str, f_pnx=f_memo)
+    # ensure_str_writen_to_f_pnx(txt_str=txt_str, f_pnx=f_memo)
 
     f_monitored_list = [
         f_memo
@@ -45,7 +45,7 @@ def found_memo_contents():
     while 1:
         if ensure_files_stable_after_change(f_list=f_monitored_list, limit_seconds=30):
             print_memo_titles(f=f_memo)
-        pk_sleep(milliseconds=900)
+        ensure_slept(milliseconds=900)
 
 
 if __name__ == "__main__":

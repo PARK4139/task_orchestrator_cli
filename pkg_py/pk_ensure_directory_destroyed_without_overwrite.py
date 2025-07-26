@@ -3,7 +3,7 @@ import shutil
 
 
 # TBD : 테스트 필요
-def pk_ensure_directory_destroyed_without_overwrite(
+def ensure_directory_destroyed_without_overwrite(
         working_dir: str,
         move_empty_dirs: bool = True,
         dest_dirname: str = "_destroyed",

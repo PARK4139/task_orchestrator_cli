@@ -95,9 +95,9 @@ from pkg_py.functions_split.is_f import is_f
 from pkg_py.system_object.is_os_windows import is_os_windows
 from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
 from pkg_py.functions_split.is_os_windows import is_os_windows
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.get_pnx_list import get_pnx_list
 from pkg_py.functions_split.get_d_working import get_d_working
 
@@ -105,5 +105,5 @@ from pkg_py.functions_split.get_d_working import get_d_working
 def kill_os():
     import inspect
 
-    pk_print(f"{inspect.currentframe().f_code.co_name}()")
+    ensure_printed(f"{inspect.currentframe().f_code.co_name}()")
     shutdown_this_computer()

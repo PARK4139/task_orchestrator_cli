@@ -47,7 +47,7 @@ from colorama import init as pk_colorama_init
 from base64 import b64decode
 from pkg_py.functions_split.get_value_completed import get_value_completed
 from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
 def is_target_type_str(target):

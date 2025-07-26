@@ -61,11 +61,11 @@ RUN uv venv && uv pip install -r pyproject.toml && uv pip freeze > uv.lock
 # which uv
 # which pip3
 # which python3
-# uv run python3 pkg_py/pk_print_hello_world.py
-# uv run python pkg_py/pk_print_hello_world.py
-# CMD ["python3", "pkg_py/pk_print_hello_world.py"]
-CMD ["uv", "run", "python3", "pkg_py/pk_print_hello_world.py"]
+# uv run python3 pkg_py/ensure_printed_hello_world.py
+# uv run python pkg_py/ensure_printed_hello_world.py
+# CMD ["python3", "pkg_py/ensure_printed_hello_world.py"]
+CMD ["uv", "run", "python3", "pkg_py/ensure_printed_hello_world.py"]
 # CMD ["uv --version"]
 
 
-uv run python pkg_py/pk_print_hello_world.py
+uv run python pkg_py/ensure_printed_hello_world.py

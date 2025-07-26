@@ -70,11 +70,11 @@ from pkg_py.functions_split.get_d_working import get_d_working
 from pkg_py.functions_split.is_window_title_opened import is_window_title_opened
 from pkg_py.functions_split.is_window_opened import is_window_opened
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
-from pkg_py.functions_split.pk_print_once import pk_print_once
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed_once import ensure_printed_once
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 from pkg_py.functions_split.cmd_to_os import cmd_to_os
-from pkg_py.functions_split.write_list_to_f import write_list_to_f
+from pkg_py.functions_split.ensure_list_written_to_f import ensure_list_written_to_f
 from pkg_py.functions_split.get_list_sorted import get_list_sorted
 from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
 from pkg_py.system_object.files import F_POT_PLAYER_MINI_64_EXE
@@ -85,7 +85,7 @@ from pkg_py.system_object.directories import D_DOWNLOADS, D_PKG_PKL
 from pkg_py.system_object.map_massages import PkMessages2025
 from pkg_py.system_object.print_red import print_red
 from pkg_py.system_object.state_via_database import PkSqlite3DB
-from pkg_py.system_object.performance_logic import pk_measure_seconds, pk_measure_memory
+from pkg_py.system_object.performance_logic import measure_seconds, pk_measure_memory
 from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.system_object.get_list_calculated import get_list_calculated
 from PIL import Image, ImageFilter
@@ -114,11 +114,11 @@ from pkg_py.functions_split.is_os_windows import is_os_windows
 from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style
 from pkg_py.functions_split.get_pnx_windows_style import get_pnx_windows_style
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
 def get_max_pid(process_img_n: str):
@@ -127,6 +127,6 @@ def get_max_pid(process_img_n: str):
     func_n = inspect.currentframe().f_code.co_name
     pids = get_pids(process_img_n=process_img_n)
 
-    pk_print(f'''pids="{pids}"  {'%%%FOO%%%' if LTA else ''}''')
+    ensure_printed(f'''pids="{pids}"  {'%%%FOO%%%' if LTA else ''}''')
 
     return max(pids)

@@ -22,9 +22,9 @@ from Cryptodome.Cipher import AES
 from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
 from pkg_py.functions_split.get_pnx_wsl_unix_style import get_pnx_wsl_unix_style
 from pkg_py.functions_split.get_pnx_windows_style import get_pnx_windows_style
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
 def get_webdriver_options_customed(browser_debug_mode=True, proxy=None):
@@ -71,7 +71,7 @@ def get_webdriver_options_customed(browser_debug_mode=True, proxy=None):
     # ua = UserAgent()
     # user_agent = ua.chrome.replace("en-US", "ko-KR")  # 랜덤 최신 크롬 User-Agent, 생성된 User-Agent에서 언어를 한국어로 변경
     options.add_argument(f"user-agent={user_agent}")
-    pk_print(f'''user_agent={user_agent}''')
+    ensure_printed(f'''user_agent={user_agent}''')
 
     # 자동화 감지 비활성화
     options.add_argument("--disable-blink-features=AutomationControlled")

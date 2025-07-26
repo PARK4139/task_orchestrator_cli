@@ -40,7 +40,7 @@ from pkg_py.functions_split.ensure_window_to_front import ensure_window_to_front
 from pkg_py.functions_split.get_list_removed_none import get_list_removed_none
 from pkg_py.functions_split.get_minuites_and_remaining_secs import get_minuites_and_remaining_secs
 from pkg_py.functions_split.get_time_as_ import get_time_as_
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 from screeninfo import get_monitors
 
 from pkg_py.functions_split.play_wav_f import play_wav_f
@@ -70,7 +70,7 @@ def get_windows_opened_via_win32gui(debug_mode=True):
     win32gui.EnumWindows(enum_windows_callback, None)
 
     if LTA:
-        # pk_print(f'''window_titles = "{window_titles}" %%%FOO%%%''') # pk_options
+        # ensure_printed(f'''window_titles = "{window_titles}" %%%FOO%%%''') # pk_options
         pass
     return window_titles
 
@@ -84,21 +84,21 @@ def get_windows_opened():
 def is_window_open(window_title_seg):
     func_n = inspect.currentframe().f_code.co_name
     if LTA:
-        pk_print(str_working=rf'''%%%FOO%%%''')
+        ensure_printed(str_working=rf'''%%%FOO%%%''')
 
     windows_titles_opened = get_windows_opened()
     windows_titles_opened = get_list_removed_none(items=windows_titles_opened)
 
     for windows_title_opened in windows_titles_opened:
         if LTA:
-            # pk_print(str_working=rf'''windows_title_opened="{windows_title_opened}" %%%FOO%%%''') # pk_option
+            # ensure_printed(str_working=rf'''windows_title_opened="{windows_title_opened}" %%%FOO%%%''') # pk_option
             pass
         if window_title_seg in windows_title_opened:
             if LTA:
-                pk_print(f'''"{windows_title_opened}" 창이 열려 있습니다''')
+                ensure_printed(f'''"{windows_title_opened}" 창이 열려 있습니다''')
             return True
     if LTA:
-        pk_print(f'''"{window_title_seg}" 창이 닫혀 있습니다''')
+        ensure_printed(f'''"{window_title_seg}" 창이 닫혀 있습니다''')
     return False
 
 
@@ -107,8 +107,8 @@ def is_front_window_title(window_title_seg, debug_mode=True):
     front_window_title = get_front_window_title()
     if not front_window_title is None:
         if LTA:
-            pk_print(f'''window_title_seg = "{window_title_seg}"''')
-            pk_print(f'''front_window_title = "{front_window_title}"''')
+            ensure_printed(f'''window_title_seg = "{window_title_seg}"''')
+            ensure_printed(f'''front_window_title = "{front_window_title}"''')
         if window_title_seg in front_window_title:
             return True
     return False
@@ -118,16 +118,16 @@ def is_front_window_title(window_title_seg, debug_mode=True):
 #     import psutil
 #     func_n = inspect.currentframe().f_code.co_name
 #     if LTA:
-#         pk_print(str_working=rf'''%%%FOO%%%''')
+#         ensure_printed(str_working=rf'''%%%FOO%%%''')
 #         if window_title_seg is not None or pid is not None:
-#             pk_print(rf"{func_n}() 동작 조건 충족")
+#             ensure_printed(rf"{func_n}() 동작 조건 충족")
 #         else:
-#             pk_print(rf"{func_n}() 동작 조건 불충족")
+#             ensure_printed(rf"{func_n}() 동작 조건 불충족")
 #             return
 #         if window_title_seg is not None:
-#             pk_print(f'''window_title_seg = "{window_title_seg}" %%%FOO%%%''')
+#             ensure_printed(f'''window_title_seg = "{window_title_seg}" %%%FOO%%%''')
 #         if pid is not None:
-#             pk_print(f'''pid = "{pid}" %%%FOO%%%''')
+#             ensure_printed(f'''pid = "{pid}" %%%FOO%%%''')
 #
 #     if window_title_seg is not None:
 #         while 1:
@@ -135,7 +135,7 @@ def is_front_window_title(window_title_seg, debug_mode=True):
 #                 if not is_front_window_title(window_title_seg=window_title_seg):
 #                     move_window_to_front_v_1_0_0(window_title_seg, debug_mode=debug_mode)
 #                 if is_front_window_title(window_title_seg=window_title_seg):
-#                     pk_print(f'''"{window_title_seg} 창을 앞으로 이동했습니다"''', print_color='blue')
+#                     ensure_printed(f'''"{window_title_seg} 창을 앞으로 이동했습니다"''', print_color='blue')
 #                     break
 #             else:
 #                 return
@@ -143,7 +143,7 @@ def is_front_window_title(window_title_seg, debug_mode=True):
 #         # PID가 숫자인지 확인
 #         if not str(pid).isdigit():
 #             if debug_mode:
-#                 pk_print(f"PID 분석 결과 숫자가 아닌 것으로 판단: {pid} %%%FOO%%%", print_color='red')
+#                 ensure_printed(f"PID 분석 결과 숫자가 아닌 것으로 판단: {pid} %%%FOO%%%", print_color='red')
 #             return
 #
 #         pid = int(pid)  # PID를 정수로 변환
@@ -166,24 +166,24 @@ def is_front_window_title(window_title_seg, debug_mode=True):
 #                         try:
 #                             win32gui.SetForegroundWindow(hwnd)  # 창 활성화
 #                             if debug_mode:
-#                                 pk_print(f"PID {pid}의 창을 활성화했습니다.", print_color='blue')
+#                                 ensure_printed(f"PID {pid}의 창을 활성화했습니다.", print_color='blue')
 #                             break
 #                         except Exception as e:
 #                             if debug_mode:
-#                                 pk_print(f"창 활성화 실패: {e}", print_color='red')
+#                                 ensure_printed(f"창 활성화 실패: {e}", print_color='red')
 #
 #                     # 다음 창 핸들 검색
 #                      # pywin32
 #                     hwnd = win32gui.FindWindowEx(None, hwnd, None, None)
 #                 else:
 #                     if debug_mode:
-#                         pk_print(f"PID {pid}에 해당하는 창 핸들을 찾을 수 없습니다.", print_color='yellow')
+#                         ensure_printed(f"PID {pid}에 해당하는 창 핸들을 찾을 수 없습니다.", print_color='yellow')
 #             else:
 #                 print_cyan(f"{UNDERLINE}프로세스가 exec  중이지 않거나 좀비 상태입니다.")
 #         except psutil.NoSuchProcess:
 #             print_cyan(f"{UNDERLINE}유효하지 않은 PID입니다.")
 #         except Exception as e:
-#             pk_print(f"알 수 없는 오류 발생: {e}", print_color='red')
+#             ensure_printed(f"알 수 없는 오류 발생: {e}", print_color='red')
 
 
 class GuiUtil:
@@ -192,12 +192,12 @@ class GuiUtil:
 
         def update_txt_clicked(self, text_of_clicked_button):
             func_n = inspect.currentframe().f_code.co_name
-            pk_print(str_working=rf'''%%%FOO%%%''')
+            ensure_printed(str_working=rf'''%%%FOO%%%''')
             self.txt_clicked = text_of_clicked_button
 
         def update_txt_clicked_and_close(self, text_of_clicked_button):
             func_n = inspect.currentframe().f_code.co_name
-            pk_print(str_working=rf'''%%%FOO%%%''')
+            ensure_printed(str_working=rf'''%%%FOO%%%''')
             #  import play_wav_f
             play_wav_f(f=F_POP_SOUND_POP_SOUND_WAV)
             self.txt_clicked = text_of_clicked_button
@@ -205,7 +205,7 @@ class GuiUtil:
 
         def set_shortcut(self, key_plus_key: str, function):
             func_n = inspect.currentframe().f_code.co_name
-            pk_print(str_working=rf'''%%%FOO%%%''')
+            ensure_printed(str_working=rf'''%%%FOO%%%''')
             self.shortcut = QShortcut(QKeySequence(key_plus_key), self)
             self.shortcut.activated.connect(function)
 
@@ -227,7 +227,7 @@ class GuiUtil:
 
             # log _________ class_name.function()
             class_name = self.__class__.__name__
-            pk_print(str_working=rf'''{PK_UNDERLINE}class_name="{class_name}/{func_n}()" %%%FOO%%%''')
+            ensure_printed(str_working=rf'''{PK_UNDERLINE}class_name="{class_name}/{func_n}()" %%%FOO%%%''')
 
             try:
                 super().__init__(parent)
@@ -292,7 +292,7 @@ class GuiUtil:
                 btn_to_copy.setStyleSheet("background-color: rgba(0, 0, 0, 0);  color: white;")
                 btn_to_copy.setFocusPolicy(Qt.NoFocus)
                 btn_to_copy.clicked.connect(self.copy_label_text_to_clipboard)
-                # pk_print(context=len(contents.strip()))
+                # ensure_printed(context=len(contents.strip()))
                 if 30 < len(prompt.strip()):
                     # btn_to_copy.setStyleSheet("text-align: left; font-size: 8px")
                     btn_to_copy.setStyleSheet("text-align: left; font-size: 16px")
@@ -439,8 +439,8 @@ class GuiUtil:
 
                 # 레이아웃 설정
                 self.layout_horizontal = QGridLayout()
-                pk_print(str_working=rf'''self.btns="{self.btns}" %%%FOO%%%''')
-                pk_print(str_working=rf'''len(self.btns)="{len(self.btns)}" %%%FOO%%%''')
+                ensure_printed(str_working=rf'''self.btns="{self.btns}" %%%FOO%%%''')
+                ensure_printed(str_working=rf'''len(self.btns)="{len(self.btns)}" %%%FOO%%%''')
                 try:
                     if len(self.btns) > 0 and self.btns[0]:  # btns 리스트의 길이가 0보다 크고, 첫 번째 요소가 True인 경우
                         self.layout_horizontal.addWidget(self.btn_positive, 0, 0)
@@ -531,7 +531,7 @@ class GuiUtil:
     class CustomDialog():
         def __init__(self, q_application: QApplication, q_wiget: QWidget, is_app_instance_mode=False, is_exec_mode=True):
             func_n = inspect.currentframe().f_code.co_name
-            pk_print(str_working=rf'''%%%FOO%%%''')
+            ensure_printed(str_working=rf'''%%%FOO%%%''')
             """
             이 함수는 특별한 사용요구사항이 있습니다
             pyside6 앱 내에서 해당 함수를 호출할때는 is_app_instance_mode 를 파라미터에 넣지 않고 쓰는 것을 default 로 디자인했습니다.
@@ -584,7 +584,7 @@ class GuiUtil:
         def __init__(self, q_application):
 
             func_n = inspect.currentframe().f_code.co_name
-            pk_print(str_working=rf'''%%%FOO%%%''')
+            ensure_printed(str_working=rf'''%%%FOO%%%''')
 
             f = F_POP_SOUND_POP_SOUND_WAV
             if os.path.exists(f):
@@ -1027,14 +1027,14 @@ class GuiUtil:
         #         self.label11.setText(f"keyboard event monitor:\nKey_0 : Key_0 ")
         # deprecated test
         # def inputbox_changed(self):
-        #     pk_print("inputbox 텍스트 change event 감지 되었습니다")
+        #     ensure_printed("inputbox 텍스트 change event 감지 되었습니다")
         #     print(self.inputbox.ment())
         #
         # def inputbox_edit_finished(self):
-        #     pk_print("inputbox edit finish event 감지 되었습니다")
+        #     ensure_printed("inputbox edit finish event 감지 되었습니다")
         #
         # def inputbox_return_pressed(self):
-        #     pk_print("inputbox return pressed event 감지 되었습니다")
+        #     ensure_printed("inputbox return pressed event 감지 되었습니다")
 
         def get_btn_name_with_shortcut_name(self, button_name_without_shortcut):
             # 버튼명과 shourtcut 명을 을 적당한 간격으로 띄워서 string 으로 반환하는 코드, 폰트 가 고정폭폰트 가 아니면 무용지물인 함수
@@ -1180,7 +1180,7 @@ class GuiUtil:
         # @rpa_program_method_decorator
         # def should_i_reboot_this_computer(self):
         #     func_n = inspect.currentframe().f_code.co_name
-        #     pk_print(str_working=rf'''%%%FOO%%%''')
+        #     ensure_printed(str_working=rf'''%%%FOO%%%''')
         #     should_i_reboot_this_computer()
 
         # @QtCore.Slot()
@@ -1190,19 +1190,19 @@ class GuiUtil:
         # @rpa_program_method_decorator
         # def should_i_show_animation_information_from_web(self):
         #     func_n = inspect.currentframe().f_code.co_name
-        #     pk_print(str_working=rf'''%%%FOO%%%''')
+        #     ensure_printed(str_working=rf'''%%%FOO%%%''')
         #     should_i_show_animation_information_from_web()
 
         # @rpa_program_method_decorator
         # def should_i_exit_this_program(self):
         #     func_n = inspect.currentframe().f_code.co_name
-        #     pk_print(str_working=rf'''%%%FOO%%%''')
+        #     ensure_printed(str_working=rf'''%%%FOO%%%''')
         #     should_i_exit_this_program()
 
         # @rpa_program_method_decorator
         # def should_i_find_direction_via_naver_map(self):
         #     func_n = inspect.currentframe().f_code.co_name
-        #     pk_print(str_working=rf'''%%%FOO%%%''')
+        #     ensure_printed(str_working=rf'''%%%FOO%%%''')
         #     should_i_find_direction_via_naver_map()
 
         # @rpa_program_method_decorator
@@ -1212,13 +1212,13 @@ class GuiUtil:
         # @rpa_program_method_decorator
         # def should_i_download_youtube_as_webm(self):
         #     func_n = inspect.currentframe().f_code.co_name
-        #     pk_print(str_working=rf'''%%%FOO%%%''')
+        #     ensure_printed(str_working=rf'''%%%FOO%%%''')
         #     should_i_download_youtube_as_webm()
 
         # @rpa_program_method_decorator
         # def should_i_download_youtube_as_webm_alt(self):
         #     func_n = inspect.currentframe().f_code.co_name
-        #     pk_print(str_working=rf'''%%%FOO%%%''')
+        #     ensure_printed(str_working=rf'''%%%FOO%%%''')
         #     should_i_download_youtube_as_webm_alt()
 
         # @rpa_program_method_decorator
@@ -1228,7 +1228,7 @@ class GuiUtil:
         # # @rpa_program_method_decorator
         # # def should_i_shutdown_this_computer(self):
         # #     func_n = inspect.currentframe().f_code.co_name
-        # #     pk_print(str_working=rf'''%%%FOO%%%''')
+        # #     ensure_printed(str_working=rf'''%%%FOO%%%''')
         # #     should_i_shutdown_this_computer()
         #
         # @rpa_program_method_decorator
@@ -1246,13 +1246,13 @@ class GuiUtil:
         # # @rpa_program_method_decorator
         # # def should_i_back_up_target(self):
         # #     func_n = inspect.currentframe().f_code.co_name
-        # #     pk_print(str_working=rf'''%%%FOO%%%''')
+        # #     ensure_printed(str_working=rf'''%%%FOO%%%''')
         # #     should_i_back_up_target()
         #
         # # @rpa_program_method_decorator
         # # def should_i_start_test(self):
         # #     func_n = inspect.currentframe().f_code.co_name
-        # #     pk_print(str_working=rf'''%%%FOO%%%''')
+        # #     ensure_printed(str_working=rf'''%%%FOO%%%''')
         # #     should_i_start_test_core()
         #
         # @rpa_program_method_decorator
@@ -1263,25 +1263,25 @@ class GuiUtil:
         # @rpa_program_method_decorator
         # def should_i_enter_to_power_saving_mode(self):
         #     func_n = inspect.currentframe().f_code.co_name
-        #     pk_print(str_working=rf'''%%%FOO%%%''')
+        #     ensure_printed(str_working=rf'''%%%FOO%%%''')
         #     should_i_enter_to_power_saving_mode()
         #
         # @rpa_program_method_decorator
         # def should_i_translate_eng_to_kor(self):
         #     func_n = inspect.currentframe().f_code.co_name
-        #     pk_print(str_working=rf'''%%%FOO%%%''')
+        #     ensure_printed(str_working=rf'''%%%FOO%%%''')
         #     should_i_translate_eng_to_kor()
         #
         # @rpa_program_method_decorator
         # def should_i_translate_kor_to_eng(self):
         #     func_n = inspect.currentframe().f_code.co_name
-        #     pk_print(str_working=rf'''%%%FOO%%%''')
+        #     ensure_printed(str_working=rf'''%%%FOO%%%''')
         #     should_i_translate_kor_to_eng()
 
         # @rpa_program_method_decorator
         # def should_i_empty_trash_can(self):
         #     func_n = inspect.currentframe().f_code.co_name
-        #     pk_print(str_working=rf'''%%%FOO%%%''')
+        #     ensure_printed(str_working=rf'''%%%FOO%%%''')
         #     should_i_do(string="쓰레기통을 비울까요?", function=empty_recycle_bin, auto_click_negative_btn_after_seconds=10)
 
         # @rpa_program_method_decorator
@@ -1295,73 +1295,73 @@ class GuiUtil:
         # # @rpa_program_method_decorator
         # # def should_i_connect_to_rdp1(self):
         # #     func_n = inspect.currentframe().f_code.co_name
-        # #     pk_print(str_working=rf'''%%%FOO%%%''')
+        # #     ensure_printed(str_working=rf'''%%%FOO%%%''')
         # #     mstsc()
         # #
         # # @rpa_program_method_decorator
         # # def should_i_record_macro(self):
         # #     func_n = inspect.currentframe().f_code.co_name
-        # #     pk_print(str_working=rf'''%%%FOO%%%''')
+        # #     ensure_printed(str_working=rf'''%%%FOO%%%''')
         # #     should_i_record_macro()
         # #
         # # @rpa_program_method_decorator
         # # def should_i_classify_special_files(self):
         # #     func_n = inspect.currentframe().f_code.co_name
-        # #     pk_print(str_working=rf'''%%%FOO%%%''')
+        # #     ensure_printed(str_working=rf'''%%%FOO%%%''')
         # #     should_i_classify_special_files()
         # #
         # # @rpa_program_method_decorator
         # # def should_i_gather_empty_directory(self):
         # #     func_n = inspect.currentframe().f_code.co_name
-        # #     pk_print(str_working=rf'''%%%FOO%%%''')
+        # #     ensure_printed(str_working=rf'''%%%FOO%%%''')
         # #     should_i_gather_empty_directory()
         #
         # # @rpa_program_method_decorator
         # # def should_i_gather_useless_files(self):
         # #     func_n = inspect.currentframe().f_code.co_name
-        # #     pk_print(str_working=rf'''%%%FOO%%%''')
+        # #     ensure_printed(str_working=rf'''%%%FOO%%%''')
         # #     should_i_gather_pnxs_useless()
         #
         # # @rpa_program_method_decorator
         # # def should_i_merge_directories(self):
         # #     func_n = inspect.currentframe().f_code.co_name
-        # #     pk_print(str_working=rf'''%%%FOO%%%''')
+        # #     ensure_printed(str_working=rf'''%%%FOO%%%''')
         # #     should_i_merge_directories()
         # #
         # # @rpa_program_method_decorator
         # # def should_i_convert_mkv_to_wav(self):
         # #     func_n = inspect.currentframe().f_code.co_name
-        # #     pk_print(str_working=rf'''%%%FOO%%%''')
+        # #     ensure_printed(str_working=rf'''%%%FOO%%%''')
         # #     should_i_convert_mkv_to_wav()
         #
         # @rpa_program_method_decorator
         # def should_i_crawl_a_tag_href(self):
         #     func_n = inspect.currentframe().f_code.co_name
-        #     pk_print(str_working=rf'''%%%FOO%%%''')
+        #     ensure_printed(str_working=rf'''%%%FOO%%%''')
         #     should_i_crawl_a_tag_href()
         #
         # @rpa_program_method_decorator
         # def should_i_crawl_youtube_video_title_and_url(self):
         #     func_n = inspect.currentframe().f_code.co_name
-        #     pk_print(str_working=rf'''%%%FOO%%%''')
+        #     ensure_printed(str_working=rf'''%%%FOO%%%''')
         #     should_i_crawl_youtube_video_title_and_url()
         #
         # @rpa_program_method_decorator
         # def should_i_crawl_youtube_playlist(self):
         #     func_n = inspect.currentframe().f_code.co_name
-        #     pk_print(str_working=rf'''%%%FOO%%%''')
+        #     ensure_printed(str_working=rf'''%%%FOO%%%''')
         #     should_i_crawl_youtube_playlist()
         #
         # @rpa_program_method_decorator
         # def should_i_explorer(self):
         #     func_n = inspect.currentframe().f_code.co_name
-        #     pk_print(str_working=rf'''%%%FOO%%%''')
+        #     ensure_printed(str_working=rf'''%%%FOO%%%''')
         #     should_i_explorer()
         #
         # @rpa_program_method_decorator
         # def should_i_sync(self):
         #     func_n = inspect.currentframe().f_code.co_name
-        #     pk_print(str_working=rf'''%%%FOO%%%''')
+        #     ensure_printed(str_working=rf'''%%%FOO%%%''')
         #     should_i_sync()
         #
         # @rpa_program_method_decorator
@@ -1373,7 +1373,7 @@ class GuiUtil:
         #     download_video_from_web2()
         #
         # def toogle_rpa_window(self):
-        #     # pk_print(f"def {inspect.currentframe().f_code.co_name}() is called...")
+        #     # ensure_printed(f"def {inspect.currentframe().f_code.co_name}() is called...")
         #     if self.isHidden() and not self.isVisible():
         #         # console_blurred 프로그램 창 활성화
         #         self.move_pyside6_window_to_front()
@@ -1917,7 +1917,7 @@ class GuiUtil:
             btn_list = ["확인"]
         if platform.system() == 'Windows':
             func_n = inspect.currentframe().f_code.co_name
-            pk_print(str_working=rf'''%%%FOO%%%''')
+            ensure_printed(str_working=rf'''%%%FOO%%%''')
             f = F_POP_SOUND_POP_SOUND_WAV
             if os.path.exists(f):
                 #  import play_wav_f
@@ -1971,7 +1971,7 @@ def should_i_do(prompt: str, function: Callable = None, auto_click_negative_btn_
     if not btn_list:
         btn_list = [PkMessages2025.POSITIVE, PkMessages2025.NEGATIVE]
     func_n = inspect.currentframe().f_code.co_name
-    pk_print(str_working=rf'''%%%FOO%%%''')
+    ensure_printed(str_working=rf'''%%%FOO%%%''')
 
     # gui pop sound
     f = F_POP_SOUND_POP_SOUND_WAV
@@ -2010,7 +2010,7 @@ def should_i_do(prompt: str, function: Callable = None, auto_click_negative_btn_
 
 # def should_i_back_up_target():  # please_type_abspath_to_back_up
 #     func_n = inspect.currentframe().f_code.co_name
-#     pk_print(str_working=rf'''%%%FOO%%%''')
+#     ensure_printed(str_working=rf'''%%%FOO%%%''')
 #     loop_cnt = 0
 #     while 1:
 #         if loop_cnt == 0:
@@ -2031,7 +2031,7 @@ def should_i_do(prompt: str, function: Callable = None, auto_click_negative_btn_
 #
 # def should_i_start_test_core():
 #     func_n = inspect.currentframe().f_code.co_name
-#     pk_print(str_working=rf'''%%%FOO%%%''')
+#     ensure_printed(str_working=rf'''%%%FOO%%%''')
 #     while 1:
 #         dialog = GuiUtil.CustomQdialog(string="테스트를 시작할까요?", btns=["시작하기", "시작하지 않기"])
 #         dialog.exec()
@@ -2045,7 +2045,7 @@ def should_i_do(prompt: str, function: Callable = None, auto_click_negative_btn_
 #
 # def should_i_enter_to_power_saving_mode():
 #     func_n = inspect.currentframe().f_code.co_name
-#     pk_print(str_working=rf'''%%%FOO%%%''')
+#     ensure_printed(str_working=rf'''%%%FOO%%%''')
 #     txt_clicked, function, txt_written = should_i_do(
 #         string="절전모드로 진입할까요?",
 #         btns=["진입", "아니,"                  " 그냥 닫아", "10분 뒤 진입", "20분 뒤 진입", "30분 뒤 진입", "1시간 뒤 진입", "진입취소해줘"],
@@ -2082,7 +2082,7 @@ def should_i_do(prompt: str, function: Callable = None, auto_click_negative_btn_
 #
 # def should_i_translate_eng_to_kor():
 #     func_n = inspect.currentframe().f_code.co_name
-#     pk_print(str_working=rf'''%%%FOO%%%''')
+#     ensure_printed(str_working=rf'''%%%FOO%%%''')
 #     while 1:
 #         dialog = GuiUtil.CustomQdialog(string="WRITE SOMETHING YOU WANT TO TRANSLATE", btns=["Translate this to Korean", "Don't"], input_box_mode=True)
 #         dialog.exec()
@@ -2096,7 +2096,7 @@ def should_i_do(prompt: str, function: Callable = None, auto_click_negative_btn_
 #
 # def should_i_translate_kor_to_eng():
 #     func_n = inspect.currentframe().f_code.co_name
-#     pk_print(str_working=rf'''%%%FOO%%%''')
+#     ensure_printed(str_working=rf'''%%%FOO%%%''')
 #     while 1:
 #         dialog = GuiUtil.CustomQdialog(string='번역하고 싶은 내용을 입력하세요', btns=["영어로 번역", "번역하지 않기"], input_box_mode=True)
 #         dialog.exec()
@@ -2110,7 +2110,7 @@ def should_i_do(prompt: str, function: Callable = None, auto_click_negative_btn_
 #
 # def should_i_exit_this_program():
 #     func_n = inspect.currentframe().f_code.co_name
-#     pk_print(str_working=rf'''%%%FOO%%%''')
+#     ensure_printed(str_working=rf'''%%%FOO%%%''')
 #     while 1:
 #         # dialog = GuiUtil.CustomQdialog(context="앱을 종료할까요?", buttons=["종료", "종료하지 않기"])
 #         dialog = GuiUtil.CustomQdialog(string="프로그램을 종료할까요?", btns=["종료", "종료하지 않기"])
@@ -2129,7 +2129,7 @@ def should_i_do(prompt: str, function: Callable = None, auto_click_negative_btn_
 #
 # def should_i_find_direction_via_naver_map():
 #     func_n = inspect.currentframe().f_code.co_name
-#     pk_print(str_working=rf'''%%%FOO%%%''')
+#     ensure_printed(str_working=rf'''%%%FOO%%%''')
 #     while 1:
 #         dialog = GuiUtil.CustomQdialog(string="어디로 길을 찾아드릴까요?", btns=["찾아줘", "찾아주지 않아도 되"], input_box_mode=True)
 #         dialog.exec()
@@ -2144,7 +2144,7 @@ def should_i_do(prompt: str, function: Callable = None, auto_click_negative_btn_
 #
 # def should_i_connect_to_rdp1():
 #     func_n = inspect.currentframe().f_code.co_name
-#     pk_print(str_working=rf'''%%%FOO%%%''')
+#     ensure_printed(str_working=rf'''%%%FOO%%%''')
 #     while 1:
 #         dialog = GuiUtil.CustomQdialog(string='rdp1에 원격접속할까요?', btns=[YES, NO])
 #         dialog.exec()
@@ -2159,7 +2159,7 @@ def should_i_do(prompt: str, function: Callable = None, auto_click_negative_btn_
 #
 # def should_i_record_macro():
 #     func_n = inspect.currentframe().f_code.co_name
-#     pk_print(str_working=rf'''%%%FOO%%%''')
+#     ensure_printed(str_working=rf'''%%%FOO%%%''')
 #     while 1:
 #         dialog = GuiUtil.CustomQdialog(string="매크로 레코드를 어떻게 시작할까요?", btns=["새로 시작하기", "이어서 시작하기", "시작하지 않기"])
 #         dialog.exec()
@@ -2183,7 +2183,7 @@ def should_i_do(prompt: str, function: Callable = None, auto_click_negative_btn_
 #
 # def should_i_download_youtube_as_webm():
 #     func_n = inspect.currentframe().f_code.co_name
-#     pk_print(str_working=rf'''%%%FOO%%%''')
+#     ensure_printed(str_working=rf'''%%%FOO%%%''')
 #     text_previous_from_clipboard = None
 #     while 1:
 #         if text_previous_from_clipboard != clipboard.paste():
@@ -2200,7 +2200,7 @@ def should_i_do(prompt: str, function: Callable = None, auto_click_negative_btn_
 #
 # def should_i_merge_directories():
 #     func_n = inspect.currentframe().f_code.co_name
-#     pk_print(str_working=rf'''%%%FOO%%%''')
+#     ensure_printed(str_working=rf'''%%%FOO%%%''')
 #     previous_text = ""
 #     while 1:
 #         previous_text = clipboard.paste()
@@ -2219,7 +2219,7 @@ def should_i_do(prompt: str, function: Callable = None, auto_click_negative_btn_
 #
 # def should_i_convert_mkv_to_wav():
 #     func_n = inspect.currentframe().f_code.co_name
-#     pk_print(str_working=rf'''%%%FOO%%%''')
+#     ensure_printed(str_working=rf'''%%%FOO%%%''')
 #     while 1:
 #         dialog = GuiUtil.CustomQdialog(string="convert 할 MKV파일경로를 입력하세요", btns=["입력", "입력하지 않기"], input_box_mode=True, auto_click_negative_btn_after_seconds=10)
 #         dialog.exec()
@@ -2234,7 +2234,7 @@ def should_i_do(prompt: str, function: Callable = None, auto_click_negative_btn_
 #
 # def should_i_gather_empty_directory():
 #     func_n = inspect.currentframe().f_code.co_name
-#     pk_print(str_working=rf'''%%%FOO%%%''')
+#     ensure_printed(str_working=rf'''%%%FOO%%%''')
 #     while 1:
 #         dialog = GuiUtil.CustomQdialog(string="빈폴더를 순회하며 수집할 pnx를 입력하세요", btns=["입력", "입력하지 않기"], input_box_mode=True)
 #         dialog.exec()
@@ -2268,7 +2268,7 @@ def should_i_do(prompt: str, function: Callable = None, auto_click_negative_btn_
 #
 # def should_i_gather_pnxs_useless():
 #     func_n = inspect.currentframe().f_code.co_name
-#     pk_print(str_working=rf'''%%%FOO%%%''')
+#     ensure_printed(str_working=rf'''%%%FOO%%%''')
 #     try:
 #         txt_clicked, function, txt_written = should_i_do(
 #             string="pnx를 순회하며 텍스트파일에 정의된 불필요한 파일을 약속된 pnx로 모을까요?",
@@ -2283,9 +2283,9 @@ def should_i_do(prompt: str, function: Callable = None, auto_click_negative_btn_
 #             pnx = pnx.strip()
 #             pnx = pnx.replace("\"", "")
 #             pnx = pnx.replace("\'", "")
-#             pk_print(f'''pnxs={pnx} %%%FOO%%%''')
+#             ensure_printed(f'''pnxs={pnx} %%%FOO%%%''')
 #             if pnx == "":
-#                 pk_print(f'''pnx가 입력되지 않았습니다 %%%FOO%%%''')
+#                 ensure_printed(f'''pnx가 입력되지 않았습니다 %%%FOO%%%''')
 #                 return
 #             connected_drives = []
 #             for drive_letter in string.ascii_uppercase:
@@ -2293,10 +2293,10 @@ def should_i_do(prompt: str, function: Callable = None, auto_click_negative_btn_
 #                 if os.path.exists(drive_path):
 #                     connected_drives.append(drive_path)
 #                     if pnx == drive_path:
-#                         pk_print(f'''입력된 pnx는 너무 광범위하여 진행할 수 없도록 설정되어 있습니다 %%%FOO%%%''')
+#                         ensure_printed(f'''입력된 pnx는 너무 광범위하여 진행할 수 없도록 설정되어 있습니다 %%%FOO%%%''')
 #                         return
 #             if not os.path.exists(pnx):
-#                 pk_print(f'''입력된 pnx가 존재하지 않습니다 %%%FOO%%%''')
+#                 ensure_printed(f'''입력된 pnx가 존재하지 않습니다 %%%FOO%%%''')
 #                 return
 #             gather_pnxs_useless(src=pnx)
 #         return
@@ -2306,7 +2306,7 @@ def should_i_do(prompt: str, function: Callable = None, auto_click_negative_btn_
 #
 # def should_i_gather_special_files():
 #     func_n = inspect.currentframe().f_code.co_name
-#     pk_print(str_working=rf'''%%%FOO%%%''')
+#     ensure_printed(str_working=rf'''%%%FOO%%%''')
 #     """분류되지 않은 하나의 폴더로 모음"""
 #     # while 1:
 #     #     dialog = GuiUtil.CustomQdialog(ment="pnx를 순회하며 특별한 파일을 약속된 폴더로 모을까요?", buttons=["모으기", "모으지 않기"], is_input_text_box=True)
@@ -2355,7 +2355,7 @@ def should_i_do(prompt: str, function: Callable = None, auto_click_negative_btn_
 #
 # def should_i_classify_special_files():
 #     func_n = inspect.currentframe().f_code.co_name
-#     pk_print(str_working=rf'''%%%FOO%%%''')
+#     ensure_printed(str_working=rf'''%%%FOO%%%''')
 #     """분류된 여러 폴더로 모음"""
 #     is_nested_loop_broken = False
 #     previous_abspath = ""
@@ -2380,7 +2380,7 @@ def should_i_do(prompt: str, function: Callable = None, auto_click_negative_btn_
 #                     if os.path.exists(drive_path):
 #                         connected_drives.append(drive_path)
 #                         if pnx_todo == drive_path:
-#                             pk_print(str_working="입력된 pnx는 너무 광범위하여 진행할 수 없도록 설정되어 있습니다")
+#                             ensure_printed(str_working="입력된 pnx는 너무 광범위하여 진행할 수 없도록 설정되어 있습니다")
 #                             is_nested_loop_broken = True
 #                             break
 #                 if not os.path.exists(pnx_todo):
@@ -2457,7 +2457,7 @@ def print_as_gui(ment: str, input_text_default="", auto_click_positive_btn_after
     if not btn_list:
         btn_list = ["확인"]
     func_n = inspect.currentframe().f_code.co_name
-    pk_print(str_working=rf'''%%%FOO%%%''')
+    ensure_printed(str_working=rf'''%%%FOO%%%''')
     """
     이 함수는 특별한 사용요구사항이 있습니다
     pyside6 앱 내에서 해당 함수를 호출할때는 is_app_instance_mode 를 파라미터에 넣지 않고 쓰는 것을 default 로 디자인했습니다.
@@ -2473,12 +2473,12 @@ def print_as_gui(ment: str, input_text_default="", auto_click_positive_btn_after
     # if is_app_instance_mode == True:
     #     app_foo: QApplication = QApplication()
     # if input_text_default == "":
-    #     pk_print(f"{inspect.currentframe().f_code.co_name}()")
+    #     ensure_printed(f"{inspect.currentframe().f_code.co_name}()")
     #     is_input_text_box = False
     # else:
     #     is_input_text_box = True
     # dialog = GuiUtil.CustomQdialog(ment=f"{context}", buttons=["확인"], is_input_box=is_input_text_box, input_box_text_default=input_text_default)
-    # pk_print(f"{inspect.currentframe().f_code.co_name}()")
+    # ensure_printed(f"{inspect.currentframe().f_code.co_name}()")
     # dialog.exec()
     # txt_clicked = dialog.txt_clicked
     # if txt_clicked == "":
@@ -2504,7 +2504,7 @@ def print_as_gui(ment: str, input_text_default="", auto_click_positive_btn_after
 # THIS IS BAD FUNCTION... I SHOULD CHECK TYPE, WHEN I MADE THIS
 def get_display_info():
     func_n = inspect.currentframe().f_code.co_name
-    pk_print(str_working=rf'''%%%FOO%%%''')
+    ensure_printed(str_working=rf'''%%%FOO%%%''')
     # 디스플레이 정보 가져오기  # pyautogui.size?() 로 대체할것.
     global height, width
     for infos in get_monitors():
@@ -2522,7 +2522,7 @@ def get_display_info():
 
 def get_display_setting():
     func_n = inspect.currentframe().f_code.co_name
-    pk_print(str_working=rf'''%%%FOO%%%''')
+    ensure_printed(str_working=rf'''%%%FOO%%%''')
     height = ''
     width = ''
     for monitor_info in get_monitors():

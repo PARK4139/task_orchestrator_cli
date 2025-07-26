@@ -12,7 +12,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from prompt_toolkit.styles import Style
 from pkg_py.functions_split.is_window_opened import is_window_opened
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.system_object.directories import D_PK_WORKING
 from pkg_py.system_object.map_massages import PkMessages2025
 from pkg_py.system_object.local_test_activate import LTA
@@ -23,7 +23,7 @@ from fastapi import HTTPException
 from datetime import timedelta
 from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style
 from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 from pkg_py.functions_split.get_pnx_list import get_pnx_list
 

@@ -45,8 +45,8 @@ from pkg_py.functions_split.load_f_video_on_losslesscut import load_f_video_on_l
 from pkg_py.functions_split.is_window_title_front import is_window_title_front
 from pkg_py.functions_split.get_d_working import get_d_working
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
-from pkg_py.functions_split.pk_press import pk_press
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.press import press
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
 from pkg_py.system_object.stamps import STAMP_ATTEMPTED
@@ -65,7 +65,7 @@ from collections import Counter
 from bs4 import ResultSet
 from bs4 import BeautifulSoup
 from base64 import b64decode
-from pkg_py.functions_split.assist_to_load_video_at_losslesscut import pk_ensure_video_loaded_at_losslesscut
+from pkg_py.functions_split.assist_to_load_video_at_losslesscut import ensure_video_loaded_at_losslesscut
 from pkg_py.system_object.stamps import STAMP_TRY_GUIDE, STAMP_UNIT_TEST_EXCEPTION_DISCOVERED
 from pkg_py.functions_split.get_value_completed import get_value_completed
 from pkg_py.system_object.directories import D_PKG_PY
@@ -86,13 +86,13 @@ def download_video_from_web_via_chrome_extension():
         f_png = rf"{D_PROJECT}\pkg_png\download_video_via_chrome_extensions.png"
         click_center_of_img_recognized_by_mouse_left(img_pnx=f_png, loop_limit_cnt=10)
 
-        pk_sleep(1000)
+        ensure_slept(1000)
 
         pk_press("tab")
-        pk_sleep(30)
+        ensure_slept(30)
 
         pk_press("enter")
-        pk_sleep(30)
+        ensure_slept(30)
 
         pk_press("ctrl", "shift", "tab")
 

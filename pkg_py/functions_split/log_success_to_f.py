@@ -1,6 +1,6 @@
 from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.system_object.encodings import Encoding
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
 def log_success_to_f(FEATURE_NICK_NAME, FEATURE_ID, FEATURE_REMOVAL_ID, f):
@@ -22,7 +22,7 @@ def log_success_to_f(FEATURE_NICK_NAME, FEATURE_ID, FEATURE_REMOVAL_ID, f):
         for item in working_list:
             if hashed_stamp_success in item:
                 working_list.remove(item)
-                pk_print(f"{FEATURE_ID} removed from working_list.")
+                ensure_printed(f"{FEATURE_ID} removed from working_list.")
 
         working_list.append(f"{hashed_stamp_success} {FEATURE_ID:30s} {FEATURE_NICK_NAME} ")
 
@@ -35,4 +35,4 @@ def log_success_to_f(FEATURE_NICK_NAME, FEATURE_ID, FEATURE_REMOVAL_ID, f):
     except:
         import traceback
         DESCRIPTION = f"log {FEATURE_ID} \n {traceback.format_exc()}"
-        pk_print(f"{DESCRIPTION}  {'%%%FOO%%%' if LTA else ''}", print_color='red')
+        ensure_printed(f"{DESCRIPTION}  {'%%%FOO%%%' if LTA else ''}", print_color='red')

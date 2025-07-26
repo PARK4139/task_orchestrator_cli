@@ -42,10 +42,10 @@ from pkg_py.functions_split.is_d import is_d
 from pkg_py.system_object.is_os_windows import is_os_windows
 from pkg_py.functions_split.is_os_windows import is_os_windows
 from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.get_pnx_list import get_pnx_list
 
 
@@ -57,5 +57,5 @@ def click_tag_as_with_tag_text(driver, tag_name, tag_text):
         actions = ActionChains(driver)
         actions.move_to_element(h3_element).click().perform()
     except Exception as e:
-        pk_print(f'''click {tag_name} tag with text as {tag_text} fail  {'%%%FOO%%%' if LTA else ''}''',
+        ensure_printed(f'''click {tag_name} tag with text as {tag_text} fail  {'%%%FOO%%%' if LTA else ''}''',
                  print_color='red')

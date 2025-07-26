@@ -6,7 +6,7 @@ from pkg_py.system_object.color_map import PK_ANSI_COLOR_MAP
 
 
 def get_txt_highlighted(txt_whole, config_highlight_dict):
-    # pk_colorama_init_once()
+    # colorama_init_once()
 
     reset_code = PK_ANSI_COLOR_MAP["RESET_CODE"]
     # 색칠할 영역 추출 (위치 정보 포함)

@@ -46,7 +46,7 @@ from pkg_py.functions_split.load_f_video_on_losslesscut import load_f_video_on_l
 from pkg_py.functions_split.get_video_filtered_list import get_video_filtered_list
 from pkg_py.functions_split.is_window_title_front import is_window_title_front
 from pkg_py.functions_split.is_window_opened import is_window_opened
-from pkg_py.functions_split.pk_print_state import pk_print_state
+from pkg_py.functions_split.print_state import print_state
 
 from pkg_py.functions_split.cmd_to_os import cmd_to_os
 from pkg_py.functions_split.get_list_sorted import get_list_sorted
@@ -70,7 +70,7 @@ from collections import Counter
 from bs4 import ResultSet
 from base64 import b64encode
 from pkg_py.functions_split.get_nx import get_nx
-from pkg_py.functions_split.assist_to_load_video_at_losslesscut import pk_ensure_video_loaded_at_losslesscut
+from pkg_py.functions_split.assist_to_load_video_at_losslesscut import ensure_video_loaded_at_losslesscut
 from pkg_py.functions_split.kill_self_pk_program import kill_self_pk_program
 from pkg_py.system_object.directories import D_PKG_PY
 from pkg_py.functions_split.is_f import is_f
@@ -81,7 +81,7 @@ from pkg_py.functions_split.get_pnx_windows_style import get_pnx_windows_style
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.get_d_working import get_d_working
 
 
@@ -138,7 +138,7 @@ def compress_pnx_without_venv_and_idea_via_rar(pnx, d_dst, with_timestamp=1):
     pk_chdir(p)
 
     # todo 압축대상의 용량 확인
-    pk_print("압축대상의 용량이 1GB 이상이면 1분 이상 걸릴 수 있습니다", print_color='blue')
+    ensure_printed("압축대상의 용량이 1GB 이상이면 1분 이상 걸릴 수 있습니다", print_color='blue')
 
     # compress by rar (".venv" 및 ".idea" 제외)
     f_rar_wsl = get_pnx_wsl_unix_style(pnx=f_rar)
@@ -156,10 +156,10 @@ def compress_pnx_without_venv_and_idea_via_rar(pnx, d_dst, with_timestamp=1):
     # del
     if LTA:
         # todo 불필요한 거 최종적으로 삭제하려면 찾아야 한다.
-        pk_print(f'''dst_nx={dst_nx} {'%%%FOO%%%' if LTA else ''}''')
-        pk_print(f'''f_rar_new={f_rar_new} {'%%%FOO%%%' if LTA else ''}''')
-        pk_print(f'''dst_nx={dst_nx} {'%%%FOO%%%' if LTA else ''}''')
-        pk_print(f'''f_rar_wsl={f_rar_wsl}  {'%%%FOO%%%' if LTA else ''}''', print_color="blue")
+        ensure_printed(f'''dst_nx={dst_nx} {'%%%FOO%%%' if LTA else ''}''')
+        ensure_printed(f'''f_rar_new={f_rar_new} {'%%%FOO%%%' if LTA else ''}''')
+        ensure_printed(f'''dst_nx={dst_nx} {'%%%FOO%%%' if LTA else ''}''')
+        ensure_printed(f'''f_rar_wsl={f_rar_wsl}  {'%%%FOO%%%' if LTA else ''}''', print_color="blue")
     # move_pnx_to_trash_bin(src=f_rar_new)
     move_pnx_to_pk_recycle_bin(pnx=dst_nx)
     move_pnx_to_pk_recycle_bin(pnx=f_rar_wsl)
@@ -170,7 +170,7 @@ def compress_pnx_without_venv_and_idea_via_rar(pnx, d_dst, with_timestamp=1):
     # logging
     if does_pnx_exist(pnx=f_rar_new_timestamp):
         STAMP_func_n = rf'[{inspect.currentframe().f_code.co_name}()]'
-        pk_print(
+        ensure_printed(
             str_working=rf'''{STAMP_func_n} f_rar_new_timestamp={f_rar_new_timestamp}  {'%%%FOO%%%' if LTA else ''}''',
             print_color='green')
     return f_rar_new_timestamp

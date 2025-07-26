@@ -1,17 +1,21 @@
-from pkg_py.functions_split.get_f_historical import get_history_file
-from pkg_py.functions_split.get_file_id import get_file_id
-from pkg_py.functions_split.pk_measure_seconds import pk_measure_seconds
+from pkg_py.functions_split.ensure_py_system_process_ran_by_pnx import ensure_py_system_process_ran_by_pnx
+from pkg_py.functions_split.measure_seconds import measure_seconds
 
 
-@pk_measure_seconds
+@measure_seconds
 def ensure_pk_system_started_v5():
+    from pkg_py.functions_split.fallback_choice import fallback_choice
+    from pkg_py.functions_split.get_f_historical import get_history_file
+    from pkg_py.functions_split.get_file_id import get_file_id
+    from pkg_py.functions_split.get_fzf_command import get_fzf_command
+    from pkg_py.functions_split.get_last_history import get_last_history
+    from pkg_py.functions_split.get_refactor_py_file_list import get_refactor_py_file_list
+    from pkg_py.functions_split.save_to_history import save_to_history
     from pkg_py.system_object.local_test_activate import LTA
-    from pkg_py.system_object.directories import D_PKG_HISTORY
 
     from pkg_py.functions_split.ensure_window_to_front import ensure_window_to_front
 
-    from pkg_py.functions_split.pk_sleep import pk_sleep
-    from pkg_py.workspace.pk_workspace import get_refactor_py_file_list, fallback_choice, save_to_history, get_last_history, get_fzf_command, pk_run_py_system_process_by_pnx
+    from pkg_py.functions_split.ensure_slept import ensure_slept
 
     import os
     import subprocess
@@ -79,8 +83,8 @@ def ensure_pk_system_started_v5():
         if file_title.startswith("pk_"):
             file_title = file_title[3:]
 
-        pk_run_py_system_process_by_pnx(file_to_excute, file_title)
-        pk_sleep(milliseconds=500)
+            ensure_py_system_process_ran_by_pnx(file_to_excute, file_title)
+        ensure_slept(milliseconds=500)
         if LTA:
             ensure_window_to_front(window_title_seg=rf"file_to_excute")  # pk_option
             # ensure_window_to_front(window_title_seg=rf"{func_n.replace("_v5", "")}")  # pk_option

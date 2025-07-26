@@ -25,7 +25,7 @@ from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style
 from pkg_py.functions_split.get_pnx_wsl_unix_style import get_pnx_wsl_unix_style
 from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style
 
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
 def get_wsl_distro_info_std_list() -> list[str]:
@@ -44,5 +44,5 @@ def get_wsl_distro_info_std_list() -> list[str]:
         }
         return std_list
     except Exception as e:
-        pk_print(f"Failed to get WSL details: {e}", print_color='red')
+        ensure_printed(f"Failed to get WSL details: {e}", print_color='red')
         return []

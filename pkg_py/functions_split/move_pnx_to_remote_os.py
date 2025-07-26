@@ -6,8 +6,8 @@ from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.cmd_to_os import cmd_to_os
 
 from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style
-from pkg_py.functions_split.pk_print import pk_print
-from pkg_py.functions_split.pk_press import pk_press
+from pkg_py.functions_split.ensure_printed import ensure_printed
+from pkg_py.functions_split.press import press
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 from pkg_py.functions_split.is_window_opened import is_window_opened
 from pkg_py.functions_split.ensure_window_to_front import ensure_window_to_front
@@ -22,7 +22,7 @@ def move_pnx_to_remote_os(pnx, dst='~/Downloads', **config_remote_os):
     user_n = config_remote_os['user_n']
 
     if not does_pnx_exist(pnx=pnx):
-        pk_print(f'''does not exist pnx to send {'%%%FOO%%%' if LTA else ''}''')
+        ensure_printed(f'''does not exist pnx to send {'%%%FOO%%%' if LTA else ''}''')
         return
 
     pnx = get_pnx_unix_style(pnx)
@@ -32,17 +32,17 @@ def move_pnx_to_remote_os(pnx, dst='~/Downloads', **config_remote_os):
 
     cmd_to_os(cmd=cmd)  # warning : pw 물은 채로 정지
     window_title_seg = r"C:\Windows\system32\cmd"
-    # pk_sleep(milliseconds=2000) # success : but late
-    # pk_sleep(milliseconds=1000) # success : but late
-    pk_sleep(milliseconds=500)
+    # ensure_slept(milliseconds=2000) # success : but late
+    # ensure_slept(milliseconds=1000) # success : but late
+    ensure_slept(milliseconds=500)
     while 1:
         if is_window_opened(window_title_seg=window_title_seg):
             ensure_window_to_front(window_title_seg=window_title_seg)
-            # pk_sleep(milliseconds=500)  # success : but late
-            # pk_sleep(milliseconds=200)
-            pk_sleep(milliseconds=100)
-            write_like_person(str_working=pw)
-            pk_sleep(milliseconds=100)
+            # ensure_slept(milliseconds=500)  # success : but late
+            # ensure_slept(milliseconds=200)
+            ensure_slept(milliseconds=100)
+            ensure_writen_like_person(str_working=pw)
+            ensure_slept(milliseconds=100)
             pk_press("enter")
             break
-    pk_sleep(milliseconds=500)
+    ensure_slept(milliseconds=500)

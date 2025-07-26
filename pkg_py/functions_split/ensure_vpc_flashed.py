@@ -12,9 +12,9 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
 from prompt_toolkit.styles import Style
 from pkg_py.functions_split.get_historical_list import get_historical_list
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
-from pkg_py.functions_split.write_list_to_f import write_list_to_f
+from pkg_py.functions_split.ensure_list_written_to_f import ensure_list_written_to_f
 from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
 from pkg_py.system_object.state_via_context import SpeedControlContext
 
@@ -25,20 +25,20 @@ from fastapi import HTTPException
 from datetime import date
 from cryptography.hazmat.backends import default_backend
 from collections import Counter
-from pkg_py.functions_split.assist_to_load_video_at_losslesscut import pk_ensure_video_loaded_at_losslesscut
+from pkg_py.functions_split.assist_to_load_video_at_losslesscut import ensure_video_loaded_at_losslesscut
 from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
 from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
 from pkg_py.system_object.local_test_activate import LTA
 
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.get_d_working import get_d_working
 
 
 def ensure_vpc_flashed(wsl_data, vpc_data, config_remote_os):
     import time
 
-    # pk_print(str_working=rf'''flash 를 진행하기 위해서 불필요한 창들을 끕니다  {'%%%FOO%%%' if LTA else ''}''', print_color='blue')
+    # ensure_printed(str_working=rf'''flash 를 진행하기 위해서 불필요한 창들을 끕니다  {'%%%FOO%%%' if LTA else ''}''', print_color='blue')
     # answer = input(rf"{get_stamp_func_n(func_n=func_n)} >")
     # cmd_to_os(cmd=rf'taskkill /f /im "cmd.exe" ', debug_mode=False)
     # process_kill_wsl_exe(debug_mode=False)
@@ -46,7 +46,7 @@ def ensure_vpc_flashed(wsl_data, vpc_data, config_remote_os):
     # process_kill_powershell_exe(debug_mode=False)
 
     wsl_window_title_seg = f"{wsl_data.vpc_user_n}@{wsl_data.HOSTNAME}"
-    pk_print(str_working=rf'''wsl_window_title_seg="{wsl_window_title_seg}"  {'%%%FOO%%%' if LTA else ''}''')
+    ensure_printed(str_working=rf'''wsl_window_title_seg="{wsl_window_title_seg}"  {'%%%FOO%%%' if LTA else ''}''')
 
     # sudo find -type f -name "flash.sh"
     # sudo find . -type f -name "flash.sh" # f 찾기 #재귀적으로
@@ -121,7 +121,7 @@ def ensure_vpc_flashed(wsl_data, vpc_data, config_remote_os):
                 elapsed_seconds = time.time() - time_s
                 elapsed_minutes = elapsed_seconds / 60
 
-                pk_print(
+                ensure_printed(
                     str_working=rf'''FLASH : This function took {elapsed_minutes} minutes  {'%%%FOO%%%' if LTA else ''}''',
                     print_color="green")
                 # todo : elapsed_minutes 이걸 f에 매번 기록, 공정시간 자동통계
@@ -249,6 +249,6 @@ def ensure_vpc_flashed(wsl_data, vpc_data, config_remote_os):
             # sudo ./flash.sh -r -k APP -G EVM_flash_241125.img jetson-xavier mmcblk0p1
             pass
     else:
-        pk_print(f'''unknown vpc_data.identifier ({vpc_data.vpc_identifier}) {'%%%FOO%%%' if LTA else ''}''',
+        ensure_printed(f'''unknown vpc_data.identifier ({vpc_data.vpc_identifier}) {'%%%FOO%%%' if LTA else ''}''',
                  print_color='red')
         raise

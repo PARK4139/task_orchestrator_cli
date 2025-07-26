@@ -8,7 +8,7 @@ def ensure_keyboard_mouse_macro(macro_routine):
     from pkg_py.refactor.ensure_keyboard_mouse_macro import PkMacroRoutines
     from pkg_py.functions_split.ensure_elapsed_time_logged import ensure_elapsed_time_logged
     from pkg_py.functions_split.ensure_start_time_logged import ensure_start_time_logged
-    from pkg_py.functions_split.pk_print import pk_print
+    from pkg_py.functions_split.ensure_printed import ensure_printed
     from pkg_py.functions_split import ensure_pycharm_module_optimize
     func_n = inspect.currentframe().f_code.co_name
     db = PkSqlite3DB()
@@ -24,7 +24,7 @@ def ensure_keyboard_mouse_macro(macro_routine):
     if macro_routine == PkMacroRoutines.ENSURE_PYCHARM_CODE_OPTIMIZED:
         ensure_pycharm_module_optimize()
     else:
-        pk_print(f'''{PkMessages2025.NOT_PREPARED_YET}{'%%%FOO%%%' if LTA else ''}''', print_color='green', mode_verbose=0)
+        ensure_printed(f'''{PkMessages2025.NOT_PREPARED_YET}{'%%%FOO%%%' if LTA else ''}''', print_color='green', mode_verbose=0)
 
     logging.info(f"[{PkMessages2025.DONE}] {macro_routine}")
 

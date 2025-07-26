@@ -18,7 +18,7 @@ from PySide6.QtWidgets import QApplication
 from pkg_py.functions_split.get_historical_list import get_historical_list
 from pkg_py.functions_split.is_losslesscut_running import is_losslesscut_running
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
-from pkg_py.functions_split.pk_press import pk_press
+from pkg_py.functions_split.press import press
 from pkg_py.system_object.files import F_FFMPEG_EXE
 from pkg_py.system_object.state_via_context import SpeedControlContext
 from pkg_py.system_object.get_list_calculated import get_list_calculated

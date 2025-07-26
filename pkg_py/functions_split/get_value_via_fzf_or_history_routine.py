@@ -3,7 +3,7 @@ def get_value_via_fzf_or_history_routine(key_name, file_id, editable, init_optio
     from pkg_py.functions_split.get_list_calculated import get_list_calculated
     from pkg_py.functions_split.get_value_via_fzf_or_history import get_value_via_fzf_or_history
     from pkg_py.functions_split.get_values_from_historical_file import get_values_from_history_file
-    from pkg_py.functions_split.print import pk_print
+    from pkg_py.functions_split.ensure_printed import ensure_printed
     from pkg_py.functions_split.set_values_to_historical_file import set_values_to_historical_file
     from pkg_py.system_object.local_test_activate import LTA
     from pkg_py.system_object.map_massages import PkMessages2025
@@ -12,7 +12,7 @@ def get_value_via_fzf_or_history_routine(key_name, file_id, editable, init_optio
     f_historical = get_history_file(file_id=file_id)
     historical_values = get_values_from_history_file(f_historical=f_historical)
     init_options = get_list_calculated(origin_list=init_options, plus_list=historical_values)
-    pk_print(f'''[{PkMessages2025.DATA}] options={init_options} {'%%%FOO%%%' if LTA else ''}''')
+    ensure_printed(f'''[{PkMessages2025.DATA}] options={init_options} {'%%%FOO%%%' if LTA else ''}''')
     init_options = get_list_calculated(origin_list=init_options, dedup=True)
     selected = get_value_via_fzf_or_history(key_name=key_name, file_id=file_id, options=init_options, editable=editable)
     selected = selected.strip()

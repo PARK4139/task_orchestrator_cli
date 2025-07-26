@@ -15,7 +15,7 @@ from selenium.common.exceptions import WebDriverException
 from pkg_py.functions_split.get_historical_list import get_historical_list
 from pkg_py.functions_split.get_f_video_to_load import get_f_video_to_load
 from pkg_py.functions_split.is_window_opened import is_window_opened
-from pkg_py.functions_split.pk_press import pk_press
+from pkg_py.functions_split.press import press
 
 from pkg_py.functions_split.set_pk_context_state import set_pk_context_state
 from pkg_py.system_object.etc import PkFilter
@@ -30,7 +30,7 @@ from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.get_pnx_list import get_pnx_list
 
 
@@ -42,9 +42,9 @@ def get_pk_config(key: str, initial: str) -> str:
     if not os.path.exists(path):
         with open(path, 'w', encoding='utf-8') as f:
             f.write(initial)
-        pk_print(f"[Config] Initialized '{key}' with default '{initial}' in {path}")
+        ensure_printed(f"[Config] Initialized '{key}' with default '{initial}' in {path}")
         return initial
     with open(path, 'r', encoding='utf-8') as f:
         value = f.readline().strip() or initial
-    pk_print(f"[Config] Loaded '{key}' = '{value}'")
+    ensure_printed(f"[Config] Loaded '{key}' = '{value}'")
     return value

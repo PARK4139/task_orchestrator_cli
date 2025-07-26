@@ -27,7 +27,7 @@ from pkg_py.functions_split.get_f_loading_nx_by_pattern import get_f_loading_nx_
 from pkg_py.functions_split.rerun_losslesscut import rerun_losslesscut
 from pkg_py.functions_split.get_f_video_to_load import get_f_video_to_load
 from pkg_py.functions_split.load_f_video_on_losslesscut import load_f_video_on_losslesscut
-from pkg_py.functions_split.write_list_to_f import write_list_to_f
+from pkg_py.functions_split.ensure_list_written_to_f import ensure_list_written_to_f
 
 from pkg_py.functions_split.ensure_console_cleared import ensure_console_cleared
 from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
@@ -44,7 +44,7 @@ from colorama import init as pk_colorama_init
 from collections import Counter
 from bs4 import ResultSet
 from pkg_py.functions_split.get_nx import get_nx
-from pkg_py.functions_split.assist_to_load_video_at_losslesscut import pk_ensure_video_loaded_at_losslesscut
+from pkg_py.functions_split.assist_to_load_video_at_losslesscut import ensure_video_loaded_at_losslesscut
 from pkg_py.functions_split.kill_self_pk_program import kill_self_pk_program
 from pkg_py.system_object.etc import PkFilter, PK_UNDERLINE
 from pkg_py.functions_split.get_pnx_list import get_pnx_list
@@ -52,11 +52,11 @@ from pkg_py.functions_split.is_d import is_d
 from pkg_py.system_object.is_os_windows import is_os_windows
 from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
 from pkg_py.functions_split.is_os_windows import is_os_windows
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
 def download_from_youtube_to_webm(urls):
@@ -88,7 +88,7 @@ def download_from_youtube_to_webm(urls):
         except IndexError:
             pass
         except Exception:
-            pk_print(f'''{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
+            ensure_printed(f'''{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
             pass
 
         # urls 중복remove(ordered way)
@@ -105,7 +105,7 @@ def download_from_youtube_to_webm(urls):
 
         only_clip_id = ''
         for i in urls:
-            pk_print(i, print_color='blue')
+            ensure_printed(i, print_color='blue')
             only_clip_id = i
 
         if len(urls) == 0:
@@ -118,32 +118,32 @@ def download_from_youtube_to_webm(urls):
         for url in urls:
             url = url.strip()  # url에 공백이 있어도 다운로드 가능하도록 설정
             if '&list=' in url:
-                pk_print(f' clips mode')
+                ensure_printed(f' clips mode')
                 from pytube import Playlist
                 playlist = Playlist(url)  # 이걸로도 parsing 기능 수행 생각 중
-                pk_print(f"predicted clips cnt : {len(playlist.video_urls)}", print_color='blue')
+                ensure_printed(f"predicted clips cnt : {len(playlist.video_urls)}", print_color='blue')
                 pk_speak_v2(str_working=f"{len(playlist.video_urls)}개의 다운로드 목록이 확인되었습니다", comma_delay=0.98)
                 # os.system(f'echo "여기서부터 비디오 리스트 시작 {url}" >> success_yt_dlp.log')
                 for video_id in playlist.video_urls:
                     try:
                         download_video_f(video_id)
                     except Exception:
-                        pk_print(f'''{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
+                        ensure_printed(f'''{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
                         continue
                 # os.system(f'echo "여기서부터 비디오 리스트 종료 {url}" >> success_yt_dlp.log')
             else:
                 if parse_youtube_video_id(url) is not None:
-                    pk_print(f'{UNDERLINE}youtube video id parsing mode')
+                    ensure_printed(f'{UNDERLINE}youtube video id parsing mode')
                     try:
                         download_video_f(f'https://www.youtube.com/watch?v={parse_youtube_video_id(url)}')
                     except Exception:
-                        pk_print(f'''{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
+                        ensure_printed(f'''{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
                         continue
                 else:
-                    pk_print(f'{UNDERLINE}experimental mode with clip id only')
+                    ensure_printed(f'{UNDERLINE}experimental mode with clip id only')
                     download_video_mp4(f'https://www.youtube.com/watch?v={only_clip_id}')
                     try:
-                        pk_print(rf'''try:2024-04-12 18:04''', print_color='blue')
+                        ensure_printed(rf'''try:2024-04-12 18:04''', print_color='blue')
                         url_parts_useless = [
                             "https://youtu.be/",
                             "https://www.youtube.com/shorts/",
@@ -155,8 +155,8 @@ def download_from_youtube_to_webm(urls):
                                     download_video_f(url=url.split(useless_str)[1])
                         except Exception:
                             download_video_f(url)
-                            pk_print(f'''{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
+                            ensure_printed(f'''{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
                     except Exception:
-                        pk_print(f'''{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
+                        ensure_printed(f'''{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
                     continue
         break

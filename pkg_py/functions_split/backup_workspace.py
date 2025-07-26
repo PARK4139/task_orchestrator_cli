@@ -1,12 +1,12 @@
-from pkg_py.functions_split.pk_measure_seconds import pk_measure_seconds
+from pkg_py.functions_split.measure_seconds import measure_seconds
 
 
-@pk_measure_seconds
+@measure_seconds
 def backup_workspace(D_PKG_ARCHIVED, d_working, func_n):
     import traceback
     from pkg_py.system_object.local_test_activate import LTA
     from pkg_py.functions_split.ensure_do_exception_routine import ensure_do_exception_routine
-    from pkg_py.functions_split.pk_print import pk_print
+    from pkg_py.functions_split.ensure_printed import ensure_printed
     import logging
     import os
     import tarfile
@@ -30,16 +30,16 @@ def backup_workspace(D_PKG_ARCHIVED, d_working, func_n):
 
         target_size_mb = get_dir_size(d_working) / (1024 * 1024)
         if target_size_mb > 100:
-            pk_print(
+            ensure_printed(
                 f"[ALERT] 백업 대상 폴더({d_working})의 크기가 100MB를 초과했습니다: {target_size_mb:.2f} MB"
             )
             answer = input("계속 진행하시겠습니까? (y/n): ").strip().lower()
             if answer not in ("y", "yes"):
-                pk_print("[INFO] 백업을 중단합니다.")
+                ensure_printed("[INFO] 백업을 중단합니다.")
                 return None
 
-        pk_print(f'''[{PkMessages2025.DATA}] d_working={d_working} {'%%%FOO%%%' if LTA else ''}''')
-        pk_print(f'''[{PkMessages2025.DATA}] D_PKG_ARCHIVED={D_PKG_ARCHIVED} {'%%%FOO%%%' if LTA else ''}''')
+        ensure_printed(f'''[{PkMessages2025.DATA}] d_working={d_working} {'%%%FOO%%%' if LTA else ''}''')
+        ensure_printed(f'''[{PkMessages2025.DATA}] D_PKG_ARCHIVED={D_PKG_ARCHIVED} {'%%%FOO%%%' if LTA else ''}''')
         os.makedirs(D_PKG_ARCHIVED, exist_ok=True)
         timestamp = datetime.now().strftime('%Y_%m%d_%H%M_%S')
         base_name = os.path.basename(d_working)

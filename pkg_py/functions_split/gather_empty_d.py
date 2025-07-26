@@ -1,6 +1,6 @@
 from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.is_d import is_d
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
 def gather_empty_d(d_working: str, d_dst=None):
@@ -15,7 +15,7 @@ def gather_empty_d(d_working: str, d_dst=None):
     ensure_pnx_made(pnx=d_dst, mode="d")  # 대상 d 생성
 
     if not is_d(d_working):
-        pk_print(f"'{d_working}' is not a valid d.", print_color='red')
+        ensure_printed(f"'{d_working}' is not a valid d.", print_color='red')
         return
 
     #  1. 빈 d를 찾아 이동 (한 번만 exec )
@@ -24,7 +24,7 @@ def gather_empty_d(d_working: str, d_dst=None):
             move_pnx(pnx=root, d_dst=d_dst)
 
     #  2. 빈 트리(리프 d)를 이동 후 remove
-    pk_print(f"d_working={d_working}  {'%%%FOO%%%' if LTA else ''}")
+    ensure_printed(f"d_working={d_working}  {'%%%FOO%%%' if LTA else ''}")
 
     if is_empty_tree(d_working):  # d_src 전체를 검사
         for root, d_nx_list, _ in os.walk(d_working, topdown=True):

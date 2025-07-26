@@ -30,8 +30,8 @@ from pkg_py.functions_split.ensure_window_to_front import ensure_window_to_front
 from pkg_py.functions_split.is_window_title_front import is_window_title_front
 from pkg_py.functions_split.is_window_title_opened import is_window_title_opened
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
-from pkg_py.functions_split.pk_press import pk_press
-from pkg_py.functions_split.pk_print_once import pk_print_once
+from pkg_py.functions_split.press import press
+from pkg_py.functions_split.ensure_printed_once import ensure_printed_once
 
 from pkg_py.functions_split.cmd_to_os import cmd_to_os
 from pkg_py.functions_split.get_list_sorted import get_list_sorted
@@ -56,7 +56,7 @@ from pkg_py.functions_split.is_d import is_d
 from pkg_py.functions_split.get_pnx_wsl_unix_style import get_pnx_wsl_unix_style
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.get_d_working import get_d_working
 
 
@@ -89,13 +89,13 @@ def translate_eng_to_kor(question: str):
             click_center_of_img_recognized_by_mouse_left(img_pnx=f_png, is_zoom_toogle_mode=True, loop_limit_cnt=100)
 
             # 번역할 내용 작성
-            write_fast(question)
+            ensure_writen_fast(question)
 
             # 글자수가 많으면 text to voice icon 이 잘려서 보이지 않음. 이는 이미지의 객체 인식이 불가능해지는데
             # 스크롤를 내려서 이미지 인식을 가능토록
             if len(question) > 45:
                 pyautogui.vscroll(-15)
-            pk_sleep(30)
+            ensure_slept(30)
 
             # text to voice icon
             f_png = rf"{D_PROJECT}\pkg_png\text to voice icon.png"

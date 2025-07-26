@@ -4,11 +4,11 @@ import traceback
 
 from colorama import init as pk_colorama_init
 
-# from pkg_py.system_object.500_live_logic import ensure_tmux_pk_session_removed, get_nx, get_value_completed, get_pk_wsl_mount_d, get_pnx_list, is_os_linux, pk_sleep, pk_speak
+# from pkg_py.system_object.500_live_logic import ensure_tmux_pk_session_removed, get_nx, get_value_completed, get_pk_wsl_mount_d, get_pnx_list, is_os_linux, ensure_slept, pk_speak
 # from pkg_py.system_object.static_logic import D_PKG_PY, UNDERLINE, STAMP_TRY_GUIDE, D_PROJECT, STAMP_UNIT_TEST_EXCEPTION_DISCOVERED
 #, print_red
 
-pk_colorama_init_once()
+colorama_init_once()
 
 if __name__ == "__main__":
     try:
@@ -19,7 +19,7 @@ if __name__ == "__main__":
         d_pk_wsl_mount = get_pk_wsl_mount_d(windows_path=windows_path, path_to_mount='Downloads/pk_working')
         # d_pk_wsl_mount = get_pk_wsl_mount_d(windows_path=d_working, path_to_mount=path_to_mount)
         
-        pk_sleep(100000)
+        ensure_slept(100000)
         if is_os_linux():
             # cmd_to_os('exit')
             # available_pk_python_program_pnx = get_pnx_from_fzf(D_PKG_PY)

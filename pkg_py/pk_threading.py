@@ -17,11 +17,11 @@ if __name__ == "__main__":
 
         def loop1():
             global flag_to_detect_enter
-            pk_print(f"%%%FOO%%%", print_color='green')
+            ensure_printed(f"%%%FOO%%%", print_color='green')
             while 1:
                 input()
                 flag = True
-                pk_print(f"%%%FOO%%%", print_color='green')
+                ensure_printed(f"%%%FOO%%%", print_color='green')
 
 
         def loop2():
@@ -30,9 +30,9 @@ if __name__ == "__main__":
                 print(11111111111111111111111111111111111)
                 if flag_to_detect_enter:
                     flag = False
-                    pk_print(f"%%%FOO%%%", print_color='blue')
+                    ensure_printed(f"%%%FOO%%%", print_color='blue')
                     break
-                pk_print(f"%%%FOO%%%", print_color='blue')
+                ensure_printed(f"%%%FOO%%%", print_color='blue')
                 time.sleep(5)
 
 

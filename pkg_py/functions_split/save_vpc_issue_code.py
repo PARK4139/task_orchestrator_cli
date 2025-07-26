@@ -16,7 +16,7 @@ from urllib.parse import urlparse
 from telegram import Bot
 from selenium.webdriver.common.by import By
 from pkg_py.functions_split.load_f_video_on_losslesscut import load_f_video_on_losslesscut
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 from pkg_py.functions_split.get_list_sorted import get_list_sorted
 from pkg_py.functions_split.set_pk_context_state import set_pk_context_state
@@ -34,8 +34,8 @@ from pkg_py.functions_split.get_list_calculated import get_list_calculated
 from pkg_py.system_object.local_test_activate import LTA
 
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
 def save_vpc_issue_code(issue_code):
-    pk_print(f'''issu_code is saved {'%%%FOO%%%' if LTA else ''}''')
+    ensure_printed(f'''issu_code is saved {'%%%FOO%%%' if LTA else ''}''')

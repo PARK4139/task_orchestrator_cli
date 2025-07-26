@@ -42,7 +42,7 @@ from selenium.common.exceptions import WebDriverException
 from pkg_py.functions_split.get_f_loading_nx_by_pattern import get_f_loading_nx_by_pattern
 from pkg_py.functions_split.get_video_filtered_list import get_video_filtered_list
 from pkg_py.functions_split.is_window_title_front import is_window_title_front
-from pkg_py.functions_split.pk_print_once import pk_print_once
+from pkg_py.functions_split.ensure_printed_once import ensure_printed_once
 
 from pkg_py.functions_split.cmd_to_os import cmd_to_os
 
@@ -68,7 +68,7 @@ from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style
 from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style
 
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
 def ensure_launch_container(docker_cmd: list, container: str, name: str, pwd: str, port: int, data_dir: str):
@@ -78,9 +78,9 @@ def ensure_launch_container(docker_cmd: list, container: str, name: str, pwd: st
     mount_arg = f"{data_dir}:/var/lib/mysql"
     try:
         subprocess.run(docker_cmd + ['inspect', container], check=True, stdout=subprocess.DEVNULL)
-        pk_print(f"Container '{container}' already running")
+        ensure_printed(f"Container '{container}' already running")
     except subprocess.CalledProcessError:
-        pk_print(f"Creating container '{container}'...", print_color='yellow')
+        ensure_printed(f"Creating container '{container}'...", print_color='yellow')
         try:
             subprocess.run([
                 *docker_cmd, 'run', '-d',
@@ -92,7 +92,7 @@ def ensure_launch_container(docker_cmd: list, container: str, name: str, pwd: st
                 'mariadb:10.6'
             ], check=True)
         except subprocess.CalledProcessError as e:
-            pk_print(f"Failed to create MariaDB container: {e}", print_color='red')
+            ensure_printed(f"Failed to create MariaDB container: {e}", print_color='red')
             raise
-        pk_print('Waiting 20s for DB initialization')
+        ensure_printed('Waiting 20s for DB initialization')
         time.sleep(20)

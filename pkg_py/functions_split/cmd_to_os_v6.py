@@ -2,7 +2,7 @@ def cmd_to_os_v6(cmd: str, mode="", encoding=None, mode_with_window=1):
     from pkg_py.system_object.local_test_activate import LTA
     from pkg_py.system_object.encodings import Encoding
     from pkg_py.system_object.stamps import STAMP_ATTEMPTED
-    from pkg_py.functions_split.pk_print import pk_print
+    from pkg_py.functions_split.ensure_printed import ensure_printed
     from pkg_py.functions_split.print_iterable_as_vertical import print_iterable_as_vertical
 
     def decode_with_fallback(byte_data, primary_encoding):
@@ -18,7 +18,7 @@ def cmd_to_os_v6(cmd: str, mode="", encoding=None, mode_with_window=1):
     if mode == "a":
         mode = 'async'
     if LTA:
-        pk_print(str_working=rf'''{STAMP_ATTEMPTED} {cmd} encoding={encoding:5s} mode={mode}''')
+        ensure_printed(rf'''{STAMP_ATTEMPTED} {cmd} encoding={encoding:5s} mode={mode}''')
     std_list = []
     if mode == "async":
         if mode_with_window:
@@ -57,7 +57,7 @@ def cmd_to_os_v6(cmd: str, mode="", encoding=None, mode_with_window=1):
 
         except Exception:
             import traceback
-            pk_print(f'''{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
+            ensure_printed(f'''{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
 
         finally:
             try:
@@ -70,6 +70,6 @@ def cmd_to_os_v6(cmd: str, mode="", encoding=None, mode_with_window=1):
 
             except Exception:
                 import traceback
-                pk_print(f'''{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
+                ensure_printed(f'''{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
 
         return std_list

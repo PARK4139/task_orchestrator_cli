@@ -45,7 +45,7 @@ from pkg_py.functions_split.get_pnx_wsl_unix_style import get_pnx_wsl_unix_style
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
 def copy_pnx_with_overwrite(pnx, dst):
@@ -69,7 +69,7 @@ def copy_pnx_with_overwrite(pnx, dst):
         pnx = get_pnx_os_style(pnx=pnx)
         pnx = pnx.replace("\"", "")
         if pnx.strip() == "":
-            pk_print(str_working=rf''' {'%%%FOO%%%' if LTA else ''}''', print_color='red')
+            ensure_printed(str_working=rf''' {'%%%FOO%%%' if LTA else ''}''', print_color='red')
             return
         pnx_p = get_p(pnx)
         pnx_n = get_n(pnx)
@@ -94,6 +94,6 @@ def copy_pnx_with_overwrite(pnx, dst):
         # remove
         move_pnx_to_pk_recycle_bin(pnx=f_zip_new)
     except:
-        pk_print(f'''{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
+        ensure_printed(f'''{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
 
         pk_chdir(D_PROJECT)

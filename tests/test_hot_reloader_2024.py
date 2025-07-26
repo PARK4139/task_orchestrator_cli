@@ -29,8 +29,8 @@ class GetmtimeSeq:
 def disable_side_effects(monkeypatch):
     monkeypatch.setattr('pkg_py.system_object.500_live_logic.get_pnx_os_style', lambda x: x)
     monkeypatch.setattr('os.path.exists', lambda path: True)
-    monkeypatch.setattr('pkg_py.system_object.print_util.pk_print', lambda *args, **kwargs: None)
-    monkeypatch.setattr('pkg_py.system_object.500_live_logic.pk_sleep', lambda secs: None)
+    monkeypatch.setattr('pkg_py.system_object.print_util.ensure_printed', lambda *args, **kwargs: None)
+    monkeypatch.setattr('pkg_py.system_object.500_live_logic.ensure_slept', lambda secs: None)
 
 
 def test_변경없을_때_True반환():
@@ -67,7 +67,7 @@ def test_변경있을_때_False반환():
     monkeypatch.undo()
 
 def test_불안정은_false(monkeypatch):
-    # f_list, get_pnx_os_style, pk_print, pk_sleep, os.path.exists 등의 픽스처 세팅은 앞과 동일합니다.
+    # f_list, get_pnx_os_style, ensure_printed, ensure_slept, os.path.exists 등의 픽스처 세팅은 앞과 동일합니다.
     f_list = ['file1', 'file2']
     # 두 번째 체크에서 변경 발생
     maps = [

@@ -4,7 +4,7 @@ from pkg_py.system_object.stamps import STAMP_LIST, STAMP_TUPLE, STAMP_DICT, STA
 def print_iterable_as_vertical(item_iterable, item_iterable_n=None, mode_verbose=1):
     import inspect
     from pkg_py.system_object.local_test_activate import LTA
-    from pkg_py.functions_split.pk_print import pk_print
+    from pkg_py.functions_split.ensure_printed import ensure_printed
     if mode_verbose == 1:
         # 변수 이름 자동 추출 시도
         if item_iterable_n is None:
@@ -36,13 +36,13 @@ def print_iterable_as_vertical(item_iterable, item_iterable_n=None, mode_verbose
             open_bracket, kill_bracket = '[', ']'
 
         # todo : dict 일때 key 는 나오는데 value 안나옴. value 나오도록 업그레이드
-        # pk_print(f'''{STAMP_DATA_TYPE} {item_iterable_n}={open_bracket}''')
-        pk_print(f'''{STAMP_DATA_TYPE} {open_bracket}''')
+        # ensure_printed(f'''{STAMP_DATA_TYPE} {item_iterable_n}={open_bracket}''')
+        ensure_printed(f'''{STAMP_DATA_TYPE} {open_bracket}''')
         for idx, item in enumerate(item_iterable):
             item_str = str(item).replace("\n", "")
-            pk_print(
+            ensure_printed(
                 f'''{STAMP_DATA_TYPE}     {item_iterable_n[:5]}...[{idx}]={item_str}  {'%%%FOO%%%' if LTA else ''}''')
-        pk_print(f'''{STAMP_DATA_TYPE} {kill_bracket}''')
+        ensure_printed(f'''{STAMP_DATA_TYPE} {kill_bracket}''')
 
     elif mode_verbose == 0:
         for idx, item in enumerate(item_iterable):

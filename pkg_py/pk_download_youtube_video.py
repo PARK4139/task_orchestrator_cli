@@ -2,7 +2,7 @@ import os
 import sys
 
 from pkg_py.functions_split.download_youtube_video import download_youtube_video
-from pkg_py.functions_split.pk_colorama_init_once import pk_colorama_init_once
+from pkg_py.functions_split.colorama_init_once import colorama_init_once
 from pkg_py.system_object.map_massages import PkMessages2025
 from pkg_py.system_object.state_via_database import PkSqlite3DB
 
@@ -15,7 +15,7 @@ if pkg_path not in sys.path:
 
 if __name__ == "__main__":
     try:
-        pk_colorama_init_once()
+        colorama_init_once()
 
         pk_db = PkSqlite3DB()
         db_id = 'download_option'

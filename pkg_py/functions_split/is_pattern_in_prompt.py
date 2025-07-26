@@ -58,30 +58,30 @@ from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style
 from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
 
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
 def is_pattern_in_prompt(prompt: str, pattern: any, with_case_ignored=True):
     import inspect
     import re
 
-    # pk_print(string = rf'''string="{string}"  {'%%%FOO%%%' if LTA else ''}''')
-    # pk_print(string = rf'''regex="{regex}"  {'%%%FOO%%%' if LTA else ''}''')
+    # ensure_printed(string = rf'''string="{string}"  {'%%%FOO%%%' if LTA else ''}''')
+    # ensure_printed(string = rf'''regex="{regex}"  {'%%%FOO%%%' if LTA else ''}''')
     func_n = inspect.currentframe().f_code.co_name
-    pk_print(str_working=rf'''{PK_UNDERLINE}{func_n}()  {'%%%FOO%%%' if LTA else ''}''')
+    ensure_printed(str_working=rf'''{PK_UNDERLINE}{func_n}()  {'%%%FOO%%%' if LTA else ''}''')
     if with_case_ignored == True:
         pattern = re.compile(pattern, re.IGNORECASE)
     else:
         pattern = re.compile(pattern)
     m = pattern.search(prompt)
     if m:
-        # pk_print("function name   here here here")
-        # pk_print(rf"contents: {contents}")
-        # pk_print(rf"regex: {regex}")
-        # pk_print(rf"True")
+        # ensure_printed("function name   here here here")
+        # ensure_printed(rf"contents: {contents}")
+        # ensure_printed(rf"regex: {regex}")
+        # ensure_printed(rf"True")
         return 1
     else:
-        # pk_print(rf"contents: {contents}")
-        # pk_print(rf"regex: {regex}")
-        # pk_print(rf"False")
+        # ensure_printed(rf"contents: {contents}")
+        # ensure_printed(rf"regex: {regex}")
+        # ensure_printed(rf"False")
         return 0

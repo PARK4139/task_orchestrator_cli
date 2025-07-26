@@ -2,6 +2,9 @@ from pkg_py.functions_split.get_pk_program_language import get_pk_program_langua
 
 
 class PkMessages2025:
+    FAILED = None
+    COPIED = None
+    CREATED = None
     SKIP = None
     FILE_GEN_TIME_STABLE_MODE = None
     LOOP_MODE_N_SECONDS_INTERVAL = None
@@ -189,10 +192,13 @@ class PkMessages2025:
         "KILL": {"kr": "죽이다", "en": "KILL"},
         "PROCESS": {"kr": "프로세스", "en": "PROCESS"},
         "VIA_HISTORICAL_FILE": {"kr": "파일 히스토리로 입력", "en": "INPUT VIA HISTORICAL FILE"},
-        "PRESS_ENTER_TO_PROCEED": {  "kr": "진행하려면 Enter 를 누르세요",  "en": "Press Enter to proceed"},
-        "LOOP_MODE_N_SECONDS_INTERVAL": {"kr": "n 초마다 반복되는 루프 모드","en": "Loop mode triggered every n seconds"},
-        "FILE_GEN_TIME_STABLE_MODE": {"kr": "파일 생성 시간이 안정된 경우에만 작동하는 모드","en": "Mode that activates only when the file's generation time is stable"        },
-        "SKIP": {"kr": "넘기기","en": "SKIP"        },
+        "PRESS_ENTER_TO_PROCEED": {"kr": "진행하려면 Enter 를 누르세요", "en": "Press Enter to proceed"},
+        "LOOP_MODE_N_SECONDS_INTERVAL": {"kr": "n 초마다 반복되는 루프 모드", "en": "Loop mode triggered every n seconds"},
+        "FILE_GEN_TIME_STABLE_MODE": {"kr": "파일 생성 시간이 안정된 경우에만 작동하는 모드", "en": "Mode that activates only when the file's generation time is stable"},
+        "SKIP": {"kr": "넘기기", "en": "SKIP"},
+        "CREATED": {"kr": "생성", "en": "CREATED"},
+        "COPIED": {"kr": "복사된", "en": "COPIED"},
+        "FAILED": {"kr": "실패된", "en": "FAILED"},
 
     }
 

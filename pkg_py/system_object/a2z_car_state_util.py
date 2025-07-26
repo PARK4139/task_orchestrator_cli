@@ -1,5 +1,5 @@
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.print_pk_divider import print_pk_divider
 
 
@@ -48,7 +48,7 @@ class A2zCarDataStructure:
 
             except:
                 import traceback
-                pk_print(str_working=rf"{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''} ", print_color='red')
+                ensure_printed(str_working=rf"{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''} ", print_color='red')
 
         def print_remote_device_data_field_all(self, instance_name, with_none=0):
             if instance_name is None:
@@ -56,9 +56,9 @@ class A2zCarDataStructure:
             print_pk_divider('%%%FOO%%%')
             if with_none == 1:
                 for key, value in self.__dict__.items():
-                    pk_print(f'''{instance_name}.{key}={value} {'%%%FOO%%%' if LTA else ''}''', print_color='blue')
+                    ensure_printed(f'''{instance_name}.{key}={value} {'%%%FOO%%%' if LTA else ''}''', print_color='blue')
             else:
                 for key, value in self.__dict__.items():
                     if value is not None:
-                        pk_print(f'''{instance_name}.{key}={value} {'%%%FOO%%%' if LTA else ''}''', print_color='blue')
+                        ensure_printed(f'''{instance_name}.{key}={value} {'%%%FOO%%%' if LTA else ''}''', print_color='blue')
             print_pk_divider('%%%FOO%%%')

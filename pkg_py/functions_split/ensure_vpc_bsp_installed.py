@@ -20,7 +20,7 @@ from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
 def ensure_vpc_bsp_installed(vpc_data, config_remote_os):
@@ -54,6 +54,6 @@ def ensure_vpc_bsp_installed(vpc_data, config_remote_os):
         # sudo find -type f -name "Tegra_LINUX_Sample-Root-Filesystem_R32.7.5_aarch64.tbz2"
         pass
     else:
-        pk_print(f'''unknown vpc_data.identifier ({vpc_data.vpc_identifier}) {'%%%FOO%%%' if LTA else ''}''',
+        ensure_printed(f'''unknown vpc_data.identifier ({vpc_data.vpc_identifier}) {'%%%FOO%%%' if LTA else ''}''',
                  print_color='red')
         raise

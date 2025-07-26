@@ -4,7 +4,7 @@ def is_window_open_via_win32gui(window_title):
         if win32gui.IsWindowVisible(hwnd):
             # 창의 제목을 확인
             if window_title in win32gui.GetWindowText(hwnd):
-                # pk_print(f'''{win32gui.GetWindowText(hwnd)}"''')
+                # ensure_printed(f'''{win32gui.GetWindowText(hwnd)}"''')
                 lparam.append(hwnd)
 
     # 열린 창들을 확인

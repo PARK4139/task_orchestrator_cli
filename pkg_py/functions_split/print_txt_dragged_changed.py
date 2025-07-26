@@ -1,5 +1,5 @@
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
 def print_txt_dragged_changed():
@@ -13,7 +13,7 @@ def print_txt_dragged_changed():
     #         question_list = question.split("\n")
     #         question_list = get_list_striped_element(working_list=question_list, mode='rstrip')
     #         for question in question_list:
-    #             pk_print(f'''[question_layer] {question}  {'%%%FOO%%%' if LTA else ''}''', print_color="blue")
+    #             ensure_printed(f'''[question_layer] {question}  {'%%%FOO%%%' if LTA else ''}''', print_color="blue")
     #     print()
     #     print()
     #     print()
@@ -25,7 +25,7 @@ def print_txt_dragged_changed():
             self.drag_ing_state = False
             self.is_dragging = False
             self.start_listener()
-            pk_print(str_working="track drag state.")
+            ensure_printed(str_working="track drag state.")
 
         def start_listener(self):
             with mouse.Listener(
@@ -48,7 +48,7 @@ def print_txt_dragged_changed():
                             question_list = question.split("\n")
                             question_list = get_list_striped_element(working_list=question_list, mode='rstrip')
                             for question in question_list:
-                                pk_print(f'''[dragged_text_layer] {question}  {'%%%FOO%%%' if LTA else ''}''',
+                                ensure_printed(f'''[dragged_text_layer] {question}  {'%%%FOO%%%' if LTA else ''}''',
                                          print_color="blue")
                             print()
                             print()

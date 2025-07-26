@@ -1,5 +1,5 @@
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
 def check_installed_wsl():
@@ -16,14 +16,14 @@ def check_installed_wsl():
             output = result.stdout.decode('utf-16')
             return [line.replace(" ", "") for line in output.splitlines() if line.strip()]
         except Exception as e:
-            pk_print(f"Failed to get WSL names: {e}", print_color='red')
+            ensure_printed(f"Failed to get WSL names: {e}", print_color='red')
             return []
 
     state_wsl_installed = None
     wsl_cmd_map_dict = {}
     wsl_distro_n_list = get_wsl_distro_n_list()
     if not wsl_distro_n_list:
-        pk_print("No WSL distros found.", print_color='yellow')
+        ensure_printed("No WSL distros found.", print_color='yellow')
         state_wsl_installed = 0
         return state_wsl_installed, wsl_cmd_map_dict
 
@@ -47,7 +47,7 @@ def check_installed_wsl():
         cmd_value = ["wsl", "-d", name]
         wsl_cmd_map_dict[cmd_key] = cmd_value
         if LTA:
-            pk_print(f"Added: {cmd_key} = {cmd_value} ({state}, v{version})")
+            ensure_printed(f"Added: {cmd_key} = {cmd_value} ({state}, v{version})")
         state_wsl_installed = 1
 
     # shutdown 명령 수동 등록

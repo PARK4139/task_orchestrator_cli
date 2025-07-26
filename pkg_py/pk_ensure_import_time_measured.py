@@ -11,7 +11,7 @@ def measure_time_to_import_module_via_time():
         "playwright.sync_api as sync_playwright", "bs4.BeautifulSoup", "bs4.ResultSet", "dirsync.sync", "fastapi.HTTPException", "gtts.gTTS", "moviepy.VideoFileClip", "pynput.mouse", "pytube.Playlist", "selenium.webdriver.chrome.options as Options", "selenium.webdriver.common.by as By",
 
         # 사용자 정의 모듈
-        "legacy.CustomErrorUtil", "legacy.DataStructureUtil", "pkg_py.interface_cmd_line.pk_print", "pkg_py.interface_cmd_line.print_light_black", "pkg_py.interface_cmd_line.print_cyan", "pkg_py.interface_cmd_line.print_with_underline", "pkg_py.interface_cmd_line.print_red", "pkg_py.interface_cmd_line.print_magenta", "pkg_py.interface_cmd_line.print_light_white",
+        "legacy.CustomErrorUtil", "legacy.DataStructureUtil", "pkg_py.interface_cmd_line.ensure_printed", "pkg_py.interface_cmd_line.print_light_black", "pkg_py.interface_cmd_line.print_cyan", "pkg_py.interface_cmd_line.print_with_underline", "pkg_py.interface_cmd_line.print_red", "pkg_py.interface_cmd_line.print_magenta", "pkg_py.interface_cmd_line.print_light_white",
         "pkg_py.interface_cmd_line.ColoramaUtil", "pkg_py.interface_cmd_line.print_ment_via_colorama",
         "pkg_py.interface_cmd_line.print_success", "pkg_py.interface_cmd_line.print_light_yellow", "pkg_py.interface_cmd_line.print_yellow",
         "pkg_py.constants.USERPROFILE", "pkg_py.constants.HOSTNAME", "pkg_py.constants.PK_UNDERLINE",
@@ -52,16 +52,16 @@ def measure_time_to_exec_function_via_cprofile():
     import cProfile
     import inspect
     func_n = inspect.currentframe().f_code.co_name
-    pk_print(str_working=rf'''{PK_UNDERLINE}{func_n}() s %%%FOO%%%''', print_color='blue')
+    ensure_printed(str_working=rf'''{PK_UNDERLINE}{func_n}() s %%%FOO%%%''', print_color='blue')
     cProfile.run('function_to_test()')
-    pk_print(str_working=rf'''{PK_UNDERLINE}{func_n}() e %%%FOO%%%''', print_color='blue')
+    ensure_printed(str_working=rf'''{PK_UNDERLINE}{func_n}() e %%%FOO%%%''', print_color='blue')
 
 
 def measure_time_to_exec_function_via_time():
     import time
     import inspect
     func_n = inspect.currentframe().f_code.co_name
-    pk_print(str_working=rf'''{PK_UNDERLINE}{func_n}() s %%%FOO%%%''', print_color='blue')
+    ensure_printed(str_working=rf'''{PK_UNDERLINE}{func_n}() s %%%FOO%%%''', print_color='blue')
     debug_mode = True
     total_start = time.time()
     try:
@@ -71,7 +71,7 @@ def measure_time_to_exec_function_via_time():
     except Exception as e:
         print(f"Exception occurred: {e}")
     print(f"Total execution time: {time.time() - total_start:.2f} seconds")
-    pk_print(str_working=rf'''{PK_UNDERLINE}{func_n}() e %%%FOO%%%''', print_color='blue')
+    ensure_printed(str_working=rf'''{PK_UNDERLINE}{func_n}() e %%%FOO%%%''', print_color='blue')
 
 
 if __name__ == '__main__':
@@ -87,18 +87,18 @@ if __name__ == '__main__':
         # red
         import traceback
 
-        pk_print(str_working=f'{PK_UNDERLINE}예외발생 s\n\n', print_color='red')
-        pk_print(str_working=f'{traceback.format_exc()}\n', print_color='red')
-        pk_print(str_working=f'{PK_UNDERLINE}예외발생 e\n\n', print_color='red')
+        ensure_printed(str_working=f'{PK_UNDERLINE}예외발생 s\n\n', print_color='red')
+        ensure_printed(str_working=f'{traceback.format_exc()}\n', print_color='red')
+        ensure_printed(str_working=f'{PK_UNDERLINE}예외발생 e\n\n', print_color='red')
 
         # yellow
         f_current = get_f_current_n()
         d_current = pk_deprecated_get_d_current_n_like_person()
-        pk_print(str_working=f'{PK_UNDERLINE}[Debugging Note] s\n', print_color="yellow")
-        pk_print(str_working=f'f_current={f_current}\nd_current={d_current}\n', print_color="yellow")
-        pk_print(str_working=f'{PK_UNDERLINE}[Debugging Note] e\n', print_color="yellow")
+        ensure_printed(str_working=f'{PK_UNDERLINE}[Debugging Note] s\n', print_color="yellow")
+        ensure_printed(str_working=f'f_current={f_current}\nd_current={d_current}\n', print_color="yellow")
+        ensure_printed(str_working=f'{PK_UNDERLINE}[Debugging Note] e\n', print_color="yellow")
         ensure_do_finally_routine(D_PROJECT=D_PROJECT, __file__=__file__, STAMP_TRY_GUIDE=STAMP_TRY_GUIDE)
-        pk_print(script_to_run_python_program_in_venv)
+        ensure_printed(script_to_run_python_program_in_venv)
 
         # debug
         import ipdb

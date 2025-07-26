@@ -2,7 +2,7 @@
 cmdline = " ".join(proc.info['cmdline']).lower()
 continue
 def kill_pid_psutil(pid):
-def pk_kill_process_v10(window_title_seg: str):
+def kill_process_v10(window_title_seg: str):
 elapsed = time.time() - start
 else:
 except (psutil.NoSuchProcess, psutil.AccessDenied):
@@ -22,12 +22,12 @@ import time
 matched_pids = set()
 matched_pids.add(proc.info['pid'])
 pass  # 최종 타임아웃 2초 경과 후 포기
-pk_print(f"PK KILL '{window_title}' not found", print_color="red")
-pk_print(f"PK KILL ERROR PID={pid} : {e}", print_color="red")
-pk_print(f"PK KILL PID={pid} TIMEOUT_ELAPSED={elapsed:.2f}s", print_color="yellow")
-pk_print(f"PK KILL PID={pid} window_title=...", print_color="green")
-pk_print(f"[ERROR] {e}", print_color="red")
-pk_print(f"window_title={window_title} {'%%%FOO%%%' if LTA else ''}")
+ensure_printed(f"PK KILL '{window_title}' not found", print_color="red")
+ensure_printed(f"PK KILL ERROR PID={pid} : {e}", print_color="red")
+ensure_printed(f"PK KILL PID={pid} TIMEOUT_ELAPSED={elapsed:.2f}s", print_color="yellow")
+ensure_printed(f"PK KILL PID={pid} window_title=...", print_color="green")
+ensure_printed(f"[ERROR] {e}", print_color="red")
+ensure_printed(f"window_title={window_title} {'%%%FOO%%%' if LTA else ''}")
 proc = psutil.Process(pid)
 proc.kill()
 proc.terminate()

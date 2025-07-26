@@ -58,11 +58,11 @@ def make_pnx_interested_list_to_txt_f(pnx_interested_list=None, string_exclude=N
 
     pnx_processed_list = []
     f_func_n_txt = rf"{D_PKG_TXT}\{func_n}.txt"
-    write_str_to_f(msg=f"", f=f_func_n_txt, mode="w")  # 내용 초기화
+    ensure_str_writen_to_f(msg=f"", f=f_func_n_txt, mode="w")  # 내용 초기화
     for pnx_interested in pnx_interested_list:
         pnxs_with_walking = get_pnx_list(d_working=pnx_interested, filter_option="f", with_walking=1)
         for pnx_with_walking in pnxs_with_walking:
             if any(pnx_exclude in pnx_with_walking for pnx_exclude in string_exclude):
                 continue
             pnx_processed_list.append(pnx_with_walking)
-            write_str_to_f(msg=f"{pnx_with_walking}\n", f=f_func_n_txt, mode="a")
+            ensure_str_writen_to_f(msg=f"{pnx_with_walking}\n", f=f_func_n_txt, mode="a")

@@ -1,5 +1,5 @@
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
 def ensure_input_preprocessed(str_working, upper_seconds_limit, return_default):
@@ -11,8 +11,8 @@ def ensure_input_preprocessed(str_working, upper_seconds_limit, return_default):
     while 1:
         elapsed = time.time() - pk_time_s
         if elapsed >= upper_seconds_limit:
-            pk_print(f'''elapsed >= upper_seconds_limit {'%%%FOO%%%' if LTA else ''}''')
-            pk_print(f'''user_input={user_input} {'%%%FOO%%%' if LTA else ''}''')
+            ensure_printed(f'''elapsed >= upper_seconds_limit {'%%%FOO%%%' if LTA else ''}''')
+            ensure_printed(f'''user_input={user_input} {'%%%FOO%%%' if LTA else ''}''')
             if not user_input:
                 return return_default
             else:

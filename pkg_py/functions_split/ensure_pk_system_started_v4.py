@@ -1,9 +1,13 @@
-@pk_measure_seconds
+@measure_seconds
 def ensure_pk_system_started_v4():
     # based on fzf.exe or fzf (with fallback)
     import inspect
 
-    from pkg_py.workspace import get_fzf_command, get_last_history, save_to_history, fallback_choice, get_last_history_file
+    from pkg_py.workspace import get_last_history_file
+    from pkg_py.functions_split import get_last_history
+    from pkg_py.functions_split import get_fzf_command
+    from pkg_py.functions_split import fallback_choice
+    from pkg_py.functions_split import save_to_history
 
     import os
     import sys

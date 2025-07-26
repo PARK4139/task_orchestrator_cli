@@ -5,7 +5,7 @@ def ensure_windows_closed():
 
     from pkg_py.functions_split.ensure_func_info_saved import ensure_func_info_saved
     from pkg_py.system_object.map_massages import PkMessages2025
-    from pkg_py.functions_split.pk_print import pk_print
+    from pkg_py.functions_split.ensure_printed import ensure_printed
 
     import win32com.client
 
@@ -22,16 +22,16 @@ def ensure_windows_closed():
         shell = win32com.client.Dispatch("Shell.Application")
         windows = shell.Windows()
         path_to_windows = {}
-        pk_print("Window explorer.exe 중복창 탐지 중...")
+        ensure_printed("Window explorer.exe 중복창 탐지 중...")
         for window in windows:
             try:
                 hwnd = window.HWND  # 창의 핸들값 가져오기
                 if not hwnd:
-                    pk_print(f"HWND를 찾을 수 없는 창: {window.Name}", print_color='red')
+                    ensure_printed(f"HWND를 찾을 수 없는 창: {window.Name}", print_color='red')
                     continue
                 current_path = window.Document.Folder.Self.Path
                 if not current_path:
-                    pk_print("경로를 확인할 수 없는 창이 발견됨", print_color='red')
+                    ensure_printed("경로를 확인할 수 없는 창이 발견됨", print_color='red')
                     continue
 
                 # 경로 정규화
@@ -41,21 +41,21 @@ def ensure_windows_closed():
                 path_to_windows.setdefault(normalized_path, []).append((hwnd, window))
 
             except Exception as e:
-                pk_print(f"창 처리 중 오류 발생: {e}", print_color='red')
+                ensure_printed(f"창 처리 중 오류 발생: {e}", print_color='red')
                 continue
 
         # 중복된 창 닫기
         for path, win_list in path_to_windows.items():
             if len(win_list) > 1:
-                pk_print(f"[중복창 탐지] {len(win_list)}개 창 중복 path={path}")
+                ensure_printed(f"[중복창 탐지] {len(win_list)}개 창 중복 path={path}")
                 for hwnd, window in win_list[1:]:  # 첫 번째 창을 제외한 나머지 창 닫기
                     try:
-                        window.Quit()  # pk_print(f"[중복창 닫기] hwnd={hwnd} path={path}")
+                        window.Quit()  # ensure_printed(f"[중복창 닫기] hwnd={hwnd} path={path}")
                         win32gui.PostMessage(hwnd, win32con.WM_CLOSE, 0, 0)  # 추가적으로 윈도우 강제 닫기 시도
 
-                        pk_print(f"[중복창 닫기] window={window} hwnd={hwnd} path={path}", print_color="green")
+                        ensure_printed(f"[중복창 닫기] window={window} hwnd={hwnd} path={path}", print_color="green")
                     except:
-                        pk_print(f"[중복창 닫기] window={window} hwnd={hwnd} path={path}", print_color='red')
+                        ensure_printed(f"[중복창 닫기] window={window} hwnd={hwnd} path={path}", print_color='red')
         func_data = {
             "n": func_n,
             "state": PkMessages2025.success,
@@ -63,6 +63,6 @@ def ensure_windows_closed():
         }
         ensure_func_info_saved(func_n, func_data)
     except Exception as e:
-        pk_print(f"오류 발생: {traceback.format_exc()}", print_color='red')
+        ensure_printed(f"오류 발생: {traceback.format_exc()}", print_color='red')
     finally:
         pythoncom.CoUninitialize()  # COM 해제

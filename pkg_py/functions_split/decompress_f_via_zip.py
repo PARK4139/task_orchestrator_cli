@@ -22,8 +22,8 @@ from pkg_py.functions_split.is_losslesscut_running import is_losslesscut_running
 from pkg_py.functions_split.rerun_losslesscut import rerun_losslesscut
 from pkg_py.functions_split.get_video_filtered_list import get_video_filtered_list
 from pkg_py.functions_split.get_d_working import get_d_working
-from pkg_py.functions_split.press import pk_press
-from pkg_py.functions_split.write_list_to_f import ensure_list_written_to_f
+from pkg_py.functions_split.press import press
+from pkg_py.functions_split.ensure_list_written_to_f import ensure_list_written_to_f
 from pkg_py.system_object.files import F_POT_PLAYER_MINI_64_EXE
 from os.path import dirname
 from functools import lru_cache
@@ -38,10 +38,10 @@ from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
 from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style
 
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.functions_split.print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
-def pk_decompress_f_via_zip(f):
+def decompress_f_via_zip(f):
     import inspect
     import os
     import zipfile
@@ -58,4 +58,4 @@ def pk_decompress_f_via_zip(f):
         if not os.path.exists(pnx_p):
             os.makedirs(pnx_p)
         zip_ref.extractall(pnx_p)
-        pk_print(str_working=rf'''pnx_p="{pnx_p}"  {'%%%FOO%%%' if LTA else ''}''')
+        ensure_printed(str_working=rf'''pnx_p="{pnx_p}"  {'%%%FOO%%%' if LTA else ''}''')

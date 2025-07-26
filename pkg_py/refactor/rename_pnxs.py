@@ -1,4 +1,4 @@
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
 def rename_pnxs(pnx_list):
@@ -10,4 +10,4 @@ def rename_pnxs(pnx_list):
             pnx_new = pnx[1]
             rename_pnx(src=src, pnx_new=pnx_new)
         except:
-            pk_print(f"{traceback.format_exc()}", print_color='red')
+            ensure_printed(f"{traceback.format_exc()}", print_color='red')

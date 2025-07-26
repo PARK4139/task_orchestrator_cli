@@ -1,4 +1,4 @@
-from pkg_py.functions_split.pk_speak import pk_speak
+from pkg_py.functions_split.speak import speak
 from pkg_py.system_object.etc import AUDIO_IDS_ALLOWED, VIDEO_IDS_ALLOWED
 
 
@@ -13,7 +13,7 @@ def download_video_f(url: str):
     from pkg_py.system_object.directories import D_PK_DOWNLOADSING
     from pkg_py.system_object.files import F_YT_DLP_EXE
 
-    from pkg_py.functions_split.pk_print import pk_print
+    from pkg_py.functions_split.ensure_printed import ensure_printed
     from pkg_py.system_object.local_test_activate import LTA
 
     import os
@@ -21,10 +21,10 @@ def download_video_f(url: str):
 
     while 1:
         if url.strip() == "":
-            pk_print(f'''  {'%%%FOO%%%' if LTA else ''} {url}" ''', print_color='red')
+            ensure_printed(f'''  {'%%%FOO%%%' if LTA else ''} {url}" ''', print_color='red')
             break
 
-        pk_print(str_working=rf'''url="{url}"  {'%%%FOO%%%' if LTA else ''}''')
+        ensure_printed(str_working=rf'''url="{url}"  {'%%%FOO%%%' if LTA else ''}''')
 
         # 유튜브 다운로더 업데이트 # 다운로드가 안되면 주석 풀어 시도
         # os.system(rf'{YT_DLP_CMD} -U')
@@ -42,20 +42,20 @@ def download_video_f(url: str):
         audio_id = ""
         for line in lines:
             if 'video only' in line or 'audio only' in line:
-                pk_print(line, print_color='blue')
+                ensure_printed(line, print_color='blue')
                 # video_id 설정
                 for id in video_ids_allowed:
                     if id in line:
                         video_id = id
                         if video_id.strip() == "":
-                            pk_print(rf"다운로드 할 수 있는 video_id가 아닙니다 {video_id.strip()}", print_color='blue')
+                            ensure_printed(rf"다운로드 할 수 있는 video_id가 아닙니다 {video_id.strip()}", print_color='blue')
                             break
                 # audio_id 설정
                 for id in audio_ids_allowed:
                     if id in line:
                         audio_id = id
                         if audio_id.strip() == "":
-                            pk_print(rf"다운로드 할 수 있는 audio_id가 아닙니다 {audio_id.strip()}", print_color='blue')
+                            ensure_printed(rf"다운로드 할 수 있는 audio_id가 아닙니다 {audio_id.strip()}", print_color='blue')
                             break
                         break
 
@@ -63,7 +63,7 @@ def download_video_f(url: str):
         # if video_id not in video_ids and audio_id not in audio_ids:
         #     video_id=str(input('video option:'))
         #     audio_id=str(input('audio option:'))
-        #     pk_print(rf'video option: {video_id}  audio option: {audio_id}')
+        #     ensure_printed(rf'video option: {video_id}  audio option: {audio_id}')
         #     speak(rf'video option: {video_id}  audio option: {audio_id}')
         # else:
         #     pass
@@ -85,7 +85,7 @@ def download_video_f(url: str):
         # cmd=rf'{YT_DLP_CMD} x+x "{url}"' # --list-formats 해서 다운로드
         if video_id == "" or audio_id == "" == 1:
             # text="다운로드를 진행할 수 없습니다\n다운로드용 video_id 와 audio_id를 설정 후\nurl을 다시 붙여넣어 다운로드를 다시 시도하세요\n{url}"
-            pk_print(str_working="불완전한 다운로드 명령어가 감지되었습니다....")
+            ensure_printed(str_working="불완전한 다운로드 명령어가 감지되었습니다....")
             pk_speak(str_working="불완전한 다운로드 명령어가 감지되었습니다")
             dialog = GuiUtil.CustomQdialog(
                 prompt=f"에러코드[E004]\n아래의 비디오 아이디를 저장하고 에러코드를 관리자에게 문의해주세요\nvideo id: {url}",
@@ -106,7 +106,7 @@ def download_video_f(url: str):
         if not os.path.exists(D_PK_DOWNLOADSING):
             os.makedirs(D_PK_DOWNLOADSING)
 
-        pk_print(str_working="다운로드 f 이동 시도 중...")
+        ensure_printed(str_working="다운로드 f 이동 시도 중...")
         file = ""
         try:
             clip_id = parse_youtube_video_id(url)
@@ -121,7 +121,7 @@ def download_video_f(url: str):
             src = os.path.abspath(file)
             src_renamed = rf"{D_PK_DOWNLOADSING}\{os.path.basename(file)}"
 
-            pk_print(f'src_renamed : {src_renamed}', print_color='blue')
+            ensure_printed(f'src_renamed : {src_renamed}', print_color='blue')
             if src == os.getcwd():  # 여기 또 os.getcwd() 있는 부분 수정하자..
                 # E001 : exec 불가능한 명령어입력 감지
                 # S001 : 다운로드 가능한 video_id 와 audio_id 를 가용목록에 추가해주세요.
@@ -131,19 +131,19 @@ def download_video_f(url: str):
                     input_box_mode=True,
                     input_box_text_default=url, )
                 dialog.exec()
-                pk_print("cmd", print_color='blue')
-                pk_print(cmd, print_color='blue')
+                ensure_printed("cmd", print_color='blue')
+                ensure_printed(cmd, print_color='blue')
                 break
             # shutil.move(src, storage)
             if src != os.getcwd():  # 여기 또 os.getcwd() 있는 부분 수정하자..
                 move_pnx(src, src_renamed)
 
         except:
-            pk_print(f'''{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
+            ensure_printed(f'''{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
         print(rf'다운로드 결과 확인 중...')
         try:
             src_moved = rf'{D_PK_DOWNLOADSING}\{file}'
-            pk_print(rf'''src_moved : {src_moved}''', print_color='blue')
+            ensure_printed(rf'''src_moved : {src_moved}''', print_color='blue')
 
             # 재생할까요? 불필요하면 주석
             # dialog=GuiUtil.CustomQdialog(ment="다운로드된 영상을 재생할까요?", btns=["재생하기", "재생하지 않기"], auto_click_negative_btn_after_seconds=10)
@@ -160,7 +160,7 @@ def download_video_f(url: str):
             # GuiUtil.pop_up_as_complete(title="작업성공보고", ment=f"다운로드가 성공되었습니다\n{src_moved}", auto_click_positive_btn_after_seconds=2) # 성공 뜨는게 귀찮아서 주석처리함,
 
         except Exception:
-            pk_print(f'''{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
+            ensure_printed(f'''{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
 
         # 다운로드 로깅 처리
         # cmd=f'echo "{url}" >> success_yt_dlp.log'

@@ -4,7 +4,7 @@ import time
 import win32con
 import win32gui
 
-from pkg_py.workspace.pk_workspace import pk_kill_process_v17
+from pkg_py.workspace.pk_workspace import kill_process_v17
 
 
 def open_dummpy_cmd_exe_with_title(window_title):

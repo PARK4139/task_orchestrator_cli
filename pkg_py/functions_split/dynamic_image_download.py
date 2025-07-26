@@ -12,7 +12,7 @@ from pkg_py.system_object.files import F_LOSSLESSCUT_EXE
 from pkg_py.system_object.files import F_FFMPEG_EXE
 from PIL import Image
 from moviepy import VideoFileClip
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 from pkg_py.functions_split.get_d_working import get_d_working
 
@@ -72,7 +72,7 @@ def dynamic_image_download(thumbnail_urls, dst: str, channel_name: str, retry_li
                     retries += 1
                     if not success and retries < retry_limit:
                         print(f"Retrying ({retries}/{retry_limit}) for {url}")
-                        pk_sleep(seconds=delay)  # 지연 시간 추가
+                        ensure_slept(seconds=delay)  # 지연 시간 추가
 
                 # 진행 상황 업데이트
                 pbar.update(1)

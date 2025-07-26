@@ -16,8 +16,8 @@ def get_text_coordinates_via_easy_ocr(string):  # 한글인식 잘 안되는 듯
     # 중심 좌표 구하기
     if get_center_of_bounding_box(coordinates_bounding_box) is not None:
         center_x, center_y = get_center_of_bounding_box(coordinates_bounding_box)
-        # pk_print(str_working=rf'''center_x="{center_x}"  {'%%%FOO%%%' if LTA else ''}''')
-        # pk_print(str_working=rf'''center_y="{center_y}"  {'%%%FOO%%%' if LTA else ''}''')
-        pk_print(f'''"text_coordinates=({center_x}, {center_y})"''')
+        # ensure_printed(str_working=rf'''center_x="{center_x}"  {'%%%FOO%%%' if LTA else ''}''')
+        # ensure_printed(str_working=rf'''center_y="{center_y}"  {'%%%FOO%%%' if LTA else ''}''')
+        ensure_printed(f'''"text_coordinates=({center_x}, {center_y})"''')
         return center_x, center_y
     return None

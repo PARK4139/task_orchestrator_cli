@@ -29,7 +29,7 @@ from pkg_py.functions_split.print_iterable_as_vertical import print_iterable_as_
 from pkg_py.functions_split.ensure_window_to_front import ensure_window_to_front
 from pkg_py.functions_split.get_f_video_to_load import get_f_video_to_load
 from pkg_py.functions_split.get_d_working import get_d_working
-from pkg_py.functions_split.write_list_to_f import write_list_to_f
+from pkg_py.functions_split.ensure_list_written_to_f import ensure_list_written_to_f
 from pkg_py.system_object.map_massages import PkMessages2025
 from pkg_py.system_object.is_os_windows import is_os_windows
 
@@ -42,14 +42,14 @@ from pkg_py.functions_split.get_list_calculated import get_list_calculated
 from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
 from pkg_py.functions_split.get_pnx_windows_style import get_pnx_windows_style
 
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.get_pnx_list import get_pnx_list
 from pkg_py.functions_split.get_d_working import get_d_working
 
 
 def print_wsl_distro_info_std_list() -> list[str]:
     try:
-        pk_print("======== wsl -l -v ========")
+        ensure_printed("======== wsl -l -v ========")
         std_list = get_wsl_distro_info_std_list()
         highlight_config_dict = {
             "green": [
@@ -63,5 +63,5 @@ def print_wsl_distro_info_std_list() -> list[str]:
                                         highlight_config_dict=highlight_config_dict, with_LTA=0)
         return std_list
     except Exception as e:
-        pk_print(f"Failed to get WSL details: {e}", print_color='red')
+        ensure_printed(f"Failed to get WSL details: {e}", print_color='red')
         return []

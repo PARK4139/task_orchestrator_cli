@@ -2,11 +2,11 @@
 
 
 def paste_and_enter():
-    from pkg_py.functions_split.pk_press import pk_press
-    from pkg_py.functions_split.pk_sleep import pk_sleep
+    from pkg_py.functions_split.press import press
+    from pkg_py.functions_split.ensure_slept import ensure_slept
     pk_press("ctrl+v")
-    pk_sleep(200)
+    ensure_slept(200)
     pk_press("enter")
-    # pk_sleep(500)
+    # ensure_slept(500)
 
 

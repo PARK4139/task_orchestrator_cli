@@ -60,9 +60,9 @@ from pkg_py.functions_split.load_f_video_on_losslesscut import load_f_video_on_l
 from pkg_py.functions_split.is_window_title_opened import is_window_title_opened
 from pkg_py.functions_split.is_window_opened import is_window_opened
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
-from pkg_py.functions_split.pk_print_state import pk_print_state
+from pkg_py.functions_split.print_state import print_state
 
-from pkg_py.functions_split.write_list_to_f import write_list_to_f
+from pkg_py.functions_split.ensure_list_written_to_f import ensure_list_written_to_f
 from pkg_py.functions_split.get_list_sorted import get_list_sorted
 from pkg_py.system_object.etc import PkFilter
 from pkg_py.system_object.encodings import Encoding
@@ -87,7 +87,7 @@ from bs4 import ResultSet
 from base64 import b64encode
 from base64 import b64decode
 from pkg_py.functions_split.get_nx import get_nx
-from pkg_py.functions_split.assist_to_load_video_at_losslesscut import pk_ensure_video_loaded_at_losslesscut
+from pkg_py.functions_split.assist_to_load_video_at_losslesscut import ensure_video_loaded_at_losslesscut
 from pkg_py.system_object.etc import PkFilter, PK_UNDERLINE
 from pkg_py.system_object.stamps import STAMP_TRY_GUIDE, STAMP_UNIT_TEST_EXCEPTION_DISCOVERED
 from pkg_py.system_object.etc import PK_UNDERLINE
@@ -96,10 +96,10 @@ from pkg_py.functions_split.get_list_calculated import get_list_calculated
 from pkg_py.functions_split.is_d import is_d
 from pkg_py.functions_split.get_pnx_windows_style import get_pnx_windows_style
 from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.get_d_working import get_d_working
 
 
@@ -129,7 +129,7 @@ def click_tag_by_tag_xpath(driver, tag_name, tag_property, tag_property_value):
             print(f"태그 '{tag_name}' 속성 '{tag_property}={tag_property_value}' 클릭 완료.")
         except ElementClickInterceptedException:
             # 클릭 방해 요소가 있을 경우, 배경 요소 클릭 또는 배경 숨기기
-            pk_print(str_working="클릭 방해 요소 발견, 배경을 클릭하거나 숨기려 시도합니다.")
+            ensure_printed(str_working="클릭 방해 요소 발견, 배경을 클릭하거나 숨기려 시도합니다.")
             remove_block_hidden(driver=driver)
             # driver.execute_script("document.querySelector('.MuiBackdrop-root').style.display = 'none';")  # 배경 숨기기
             tag.click()  # 다시 클릭 시도
@@ -137,5 +137,5 @@ def click_tag_by_tag_xpath(driver, tag_name, tag_property, tag_property_value):
 
     except Exception as e:
         import traceback
-        pk_print(f"{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}", print_color='red')
+        ensure_printed(f"{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}", print_color='red')
         print(f"태그 '{tag_name}' 속성 '{tag_property}={tag_property_value}' 클릭 실패.")

@@ -14,24 +14,24 @@ def open_and_move_wsl_console_to_front(remote_os_distro_n, window_title_seg):
     time_limit = 20
     time_s = time.time()
     while 1:
-        # pk_print(str_working=time.time() - time_s)
+        # ensure_printed(str_working=time.time() - time_s)
         if time.time() - time_s > time_limit:
             break
         if is_window_opened(window_title_seg=window_title_seg):
             break
-        pk_sleep(seconds=0.5)
+        ensure_slept(seconds=0.5)
 
     time_limit = 5
     time_s = time.time()
     while 1:
-        # pk_print(str_working=time.time() - time_s)
+        # ensure_printed(str_working=time.time() - time_s)
         if time.time() - time_s > time_limit:
             break
         if is_front_window_title(window_title_seg=window_title_seg):
             break
         else:
             ensure_window_to_front(window_title_seg=window_title_seg)
-        pk_sleep(seconds=0.5)
+        ensure_slept(seconds=0.5)
         break
 
     # cd

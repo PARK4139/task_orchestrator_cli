@@ -18,5 +18,5 @@ from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
 
 def get_random_int():
     import secrets
-    # pk_print(f"{inspect.currentframe().f_code.co_name}()")
+    # ensure_printed(f"{inspect.currentframe().f_code.co_name}()")
     return secrets.randbelow(100)  # 0부터 99까지의 난수 생성

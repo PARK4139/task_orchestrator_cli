@@ -23,8 +23,8 @@ from selenium.common.exceptions import ElementClickInterceptedException
 from pkg_py.functions_split.ensure_window_to_front import ensure_window_to_front
 from pkg_py.functions_split.get_video_filtered_list import get_video_filtered_list
 from pkg_py.functions_split.is_window_opened import is_window_opened
-from pkg_py.functions_split.pk_press import pk_press
-from pkg_py.functions_split.pk_print_once import pk_print_once
+from pkg_py.functions_split.press import press
+from pkg_py.functions_split.ensure_printed_once import ensure_printed_once
 from pkg_py.functions_split.set_pk_context_state import set_pk_context_state
 from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
 from pkg_py.system_object.files import F_POT_PLAYER_MINI_64_EXE
@@ -47,7 +47,7 @@ from pkg_py.functions_split.get_pnx_wsl_unix_style import get_pnx_wsl_unix_style
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.get_d_working import get_d_working
 
 
@@ -58,22 +58,22 @@ def classify_pnx_by_special_keyword(d_src, special_keyword, with_walking):
     d_src = d_src.strip()
     d_src = d_src.replace("\"", "")
     d_src = d_src.replace("\'", "")
-    pk_print(f'''d_src={d_src} special_keyword={special_keyword}''')
+    ensure_printed(f'''d_src={d_src} special_keyword={special_keyword}''')
     connected_drives = []
     for drive_letter in string.ascii_uppercase:
         drive_path = drive_letter + ":\\"
         if os.path.exists(drive_path):
             connected_drives.append(drive_path)
             if d_src == drive_path:
-                pk_print(str_working=rf'''광범위진행제한 {'%%%FOO%%%' if LTA else ''}''', print_color='red')
+                ensure_printed(str_working=rf'''광범위진행제한 {'%%%FOO%%%' if LTA else ''}''', print_color='red')
                 return
 
     if not os.path.exists(d_src):
-        pk_print(str_working=rf"입력된 d_src 가 존재하지 않습니다 d_src={d_src}", print_color='red')
+        ensure_printed(str_working=rf"입력된 d_src 가 존재하지 않습니다 d_src={d_src}", print_color='red')
         return
 
     if d_src == "":
-        pk_print(f'''  d_src == "" ''', print_color='red')
+        ensure_printed(f'''  d_src == "" ''', print_color='red')
         return
 
     special_dirs_promised = [
@@ -85,15 +85,15 @@ def classify_pnx_by_special_keyword(d_src, special_keyword, with_walking):
 
     special_keyword = special_keyword.strip()
     if special_keyword == "":
-        pk_print(str_working="special_keyword 는 ""일 수 없습니다.", print_color='red')
+        ensure_printed(str_working="special_keyword 는 ""일 수 없습니다.", print_color='red')
         return
     if "\n" in special_keyword:
         f_list = special_keyword.split("\n")
     else:
         f_list = [special_keyword]
     f_nx_list = [get_nx(f) for f in f_list]
-    pk_print(f'''len(f_list)={len(f_list)} {'%%%FOO%%%' if LTA else ''}''')
-    pk_print(f'''f_nx_list={f_nx_list}  {'%%%FOO%%%' if LTA else ''}''')
+    ensure_printed(f'''len(f_list)={len(f_list)} {'%%%FOO%%%' if LTA else ''}''')
+    ensure_printed(f'''f_nx_list={f_nx_list}  {'%%%FOO%%%' if LTA else ''}''')
     for special_keyword in f_list:
         special_keyword = special_keyword.strip()
         if special_keyword != "":
@@ -113,7 +113,7 @@ def classify_pnx_by_special_keyword(d_src, special_keyword, with_walking):
                 # todo : without_waling
                 return
 
-        pk_print(
+        ensure_printed(
             str_working=rf'''len(pnxs_searched)="{len(pnxs_searched)}"  {'%%%FOO%%%' if LTA else ''}''')  # 검색된 f 개수
         dst = None
         for index, special_dir in enumerate(special_dirs_promised):
@@ -122,4 +122,4 @@ def classify_pnx_by_special_keyword(d_src, special_keyword, with_walking):
                 if special_dir in os.path.basename(pnx_searched):
                     move_pnx(pnx=pnx_searched, d_dst=dst)
         special_dirs_promised = []
-        pk_print(str_working=rf'''dst="{dst}"  {'%%%FOO%%%' if LTA else ''}''', print_color='green')
+        ensure_printed(str_working=rf'''dst="{dst}"  {'%%%FOO%%%' if LTA else ''}''', print_color='green')

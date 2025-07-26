@@ -74,10 +74,10 @@ from pkg_py.functions_split.get_video_filtered_list import get_video_filtered_li
 from pkg_py.functions_split.is_window_title_front import is_window_title_front
 from pkg_py.functions_split.is_window_opened import is_window_opened
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
-from pkg_py.functions_split.pk_print_state import pk_print_state
-from pkg_py.functions_split.pk_print_once import pk_print_once
-from pkg_py.functions_split.pk_print import pk_print
-from pkg_py.functions_split.write_list_to_f import write_list_to_f
+from pkg_py.functions_split.print_state import print_state
+from pkg_py.functions_split.ensure_printed_once import ensure_printed_once
+from pkg_py.functions_split.ensure_printed import ensure_printed
+from pkg_py.functions_split.ensure_list_written_to_f import ensure_list_written_to_f
 from pkg_py.functions_split.get_list_sorted import get_list_sorted
 from pkg_py.functions_split.set_pk_context_state import set_pk_context_state
 from pkg_py.functions_split.ensure_console_cleared import ensure_console_cleared
@@ -127,11 +127,11 @@ from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
 from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style
 from pkg_py.functions_split.get_pnx_wsl_unix_style import get_pnx_wsl_unix_style
 from pkg_py.functions_split.get_pnx_windows_style import get_pnx_windows_style
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.get_d_working import get_d_working
 
 
@@ -140,7 +140,7 @@ def print_function_run_measure_seconds_via_timeit(function, repeat):
     특정 함수의 평균 exec  시간을 측정하여 로그로 출력합니다.
     """
     # todo : f에 결과즐 저장해서 통계를 내릴 수 있도록한다.
-    from pkg_py.functions_split.pk_print import pk_print
+    from pkg_py.functions_split.ensure_printed import ensure_printed
     import timeit
     from functools import partial as functools_partial
 
@@ -150,4 +150,4 @@ def print_function_run_measure_seconds_via_timeit(function, repeat):
         func_n = function.__name__
 
     execution_time = timeit.timeit(function, number=repeat)
-    pk_print(f"{func_n}() : {repeat}번 반복 평균 exec  시간: {execution_time:.6f} seconds", print_color='yellow')
+    ensure_printed(f"{func_n}() : {repeat}번 반복 평균 exec  시간: {execution_time:.6f} seconds", print_color='yellow')

@@ -38,7 +38,7 @@ from datetime import timedelta
 from datetime import date
 from cryptography.hazmat.backends import default_backend
 from Cryptodome.Random import get_random_bytes
-from pkg_py.functions_split.assist_to_load_video_at_losslesscut import pk_ensure_video_loaded_at_losslesscut
+from pkg_py.functions_split.assist_to_load_video_at_losslesscut import ensure_video_loaded_at_losslesscut
 from pkg_py.system_object.directories import D_PK_WORKING, D_PKG_PKL, D_PKG_PY
 from pkg_py.system_object.directories import D_PKG_PY
 from pkg_py.system_object.is_os_windows import is_os_windows
@@ -49,7 +49,7 @@ from pkg_py.functions_split.is_os_windows import is_os_windows
 from pkg_py.system_object.local_test_activate import LTA
 
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
 def assist_to_command_via_voice_kiri():
@@ -59,7 +59,7 @@ def assist_to_command_via_voice_kiri():
 
     from colorama import init as pk_colorama_init
     import os
-    pk_colorama_init_once()
+    colorama_init_once()
 
     # ensure wsl
     config_remote_os = {}
@@ -88,7 +88,7 @@ def assist_to_command_via_voice_kiri():
     if is_internet_connected():
         # recognizer=sr.Recognizer()
         # with sr.Microphone() as source:
-        #     pk_print(str_working="음성을 말하세요...")
+        #     ensure_printed(str_working="음성을 말하세요...")
         #     recognizer.adjust_for_ambient_noise(source)
         #     audio=recognizer.listen(source)
         pass
@@ -111,10 +111,10 @@ def assist_to_command_via_voice_kiri():
 
     recognizer = None
     if is_mic_device_connected():
-        pk_print(f'''mic is connected. {'%%%FOO%%%' if LTA else ''}''')
+        ensure_printed(f'''mic is connected. {'%%%FOO%%%' if LTA else ''}''')
         recognizer = sr.Recognizer()
     else:
-        pk_print(f'''mic is disconnected. {'%%%FOO%%%' if LTA else ''}''', print_color='red')
+        ensure_printed(f'''mic is disconnected. {'%%%FOO%%%' if LTA else ''}''', print_color='red')
 
     loop_cnt = 0
     while 1:
@@ -125,7 +125,7 @@ def assist_to_command_via_voice_kiri():
                 "",
             ]
             ice_breaking_ment = get_element_random(working_list=ice_breaking_ments)
-            pk_print_and_speak(ice_breaking_ment)
+            ensure_printed_and_speak(ice_breaking_ment)
         if loop_cnt % 11 == 0:
             ice_breaking_ments = [
                 "please. give a command.",
@@ -134,7 +134,7 @@ def assist_to_command_via_voice_kiri():
                 # get_str_today_day_info(),
             ]
             ice_breaking_ment = get_element_random(working_list=ice_breaking_ments)
-            pk_print_and_speak(ice_breaking_ment)
+            ensure_printed_and_speak(ice_breaking_ment)
 
         try:
             if str_working is None:
@@ -142,16 +142,16 @@ def assist_to_command_via_voice_kiri():
                     # recognizer.adjust_for_ambient_noise(source, duration=1.0)  # 주변 소음 보정 # adjust_for_ambient_noise no attribution
                     while 1:
                         try:
-                            pk_print("지금 말씀하실것을 추천드립니다.", print_color='blue')
+                            ensure_printed("지금 말씀하실것을 추천드립니다.", print_color='blue')
                             # audio = recognizer.listen(source, phrase_time_limit=10)  # 음성 듣기
                             str_working = recognizer.recognize_google(audio, language="ko")  # Google STT
                             break
                         except sr.UnknownValueError:
-                            pk_print(f"UnknownValueError {str_working}")
+                            ensure_printed(f"UnknownValueError {str_working}")
                         except sr.RequestError as e:
-                            pk_print(f"Google Speech Recognition service access", print_color='red')
+                            ensure_printed(f"Google Speech Recognition service access", print_color='red')
             str_working = str_working.replace(' ', '')
-            pk_print(rf"{str_working}", print_color='blue')
+            ensure_printed(rf"{str_working}", print_color='blue')
             if any(keyword in str_working for keyword in ["ipdb"]):
                 import ipdb
                 ipdb.set_trace()
@@ -159,24 +159,24 @@ def assist_to_command_via_voice_kiri():
                 pk_count_down()
             elif any(keyword in str_working for keyword in ["휴지통비워", "휴지통정리", "empty_trash_bin"]):
                 empty_recycle_bin()
-                pk_print_and_speak("I have emptied the trash bin")
+                ensure_printed_and_speak("I have emptied the trash bin")
             elif any(keyword in str_working for keyword in ["플레인", "플래인"]):
-                pk_print_and_speak("yes. i am here")
+                ensure_printed_and_speak("yes. i am here")
             elif any(keyword in str_working for keyword in ["영어공부"]):
-                pk_print_and_speak("What is the weather like?")
-                pk_sleep(seconds=random.randint(a=200, b=500))
-                pk_print_and_speak(
+                ensure_printed_and_speak("What is the weather like?")
+                ensure_slept(seconds=random.randint(a=200, b=500))
+                ensure_printed_and_speak(
                     "I can't directly access weather information, but if you share your location, I can guide you!")
-                pk_sleep(seconds=random.randint(a=200, b=500))
-                pk_print_and_speak("Quit")
-                pk_sleep(seconds=random.randint(a=200, b=500))
-                pk_print_and_speak("Ending the conversation. Goodbye!")
+                ensure_slept(seconds=random.randint(a=200, b=500))
+                ensure_printed_and_speak("Quit")
+                ensure_slept(seconds=random.randint(a=200, b=500))
+                ensure_printed_and_speak("Ending the conversation. Goodbye!")
             elif any(keyword in str_working for keyword in ["업무_d_생성", '업무_d_']):
                 make_d_with_timestamp(d_nx=rf"생산관리", dst=rf"{D_PK_WORKING}")
                 assist_to_make_d_for_work()
             elif any(keyword in str_working for keyword in ["sound interactive mode"]):
                 # guide_todo(days=1)  # todo : add : 등록된 스케쥴시간확인
-                pk_print(str_working="Please give a cmd", print_color='blue')
+                ensure_printed(str_working="Please give a cmd", print_color='blue')
                 # print_and_speak("시키실 일 없으신가요.", after_delay=1.0) #random
                 with sr.Microphone() as source:
                     # recognizer.adjust_for_ambient_noise(source)
@@ -196,7 +196,7 @@ def assist_to_command_via_voice_kiri():
             elif any(keyword in str_working for keyword in ["텔레그램으로 백업"]):
                 import nest_asyncio
                 import asyncio
-                f = pk_back_up_pnx_without_venv_and_idea(pnx_working=D_PROJECT, d_dst=D_ARCHIVED, with_timestamp=0)
+                f = back_up_pnx_without_venv_and_idea(pnx_working=D_PROJECT, d_dst=D_ARCHIVED, with_timestamp=0)
                 nest_asyncio.apply()
                 # asyncio.run(send_f_via_telegram_bot(f)) #  --> limit discovered : 단일파일 50MB 이상은 전송 불가 --> send_f_via_telegram_bot_v2(f)
                 # send_f_via_telegram_bot_v2(f) # -->  fail --> timeout
@@ -248,30 +248,30 @@ def assist_to_command_via_voice_kiri():
                 server_seconds = get_time_as_('%S')
                 pk_speak(f'{server_seconds} seconds')
             elif any(keyword in str_working for keyword in ["날씨"]):
-                pk_print_and_speak("Searching for weather...")
+                ensure_printed_and_speak("Searching for weather...")
                 get_comprehensive_weather_information_from_web()
             elif any(keyword in str_working for keyword in ["음악"]):
                 play_my_sound_track()
-                pk_print_and_speak("Playing music...")
+                ensure_printed_and_speak("Playing music...")
             elif any(keyword in str_working for keyword in ["게임", "미니게임"]):
                 run_up_and_down_game()
-                pk_print_and_speak("Playing mini game...")
+                ensure_printed_and_speak("Playing mini game...")
             elif any(keyword in str_working for keyword in ["exit"]):
                 raise
             elif any(keyword in str_working for keyword in ["비디오"]):
                 play_my_video_track()
-                pk_print_and_speak("Playing video...")
+                ensure_printed_and_speak("Playing video...")
             elif any(keyword in str_working for keyword in ["최대절전모드", "powersave", "sleep"]):
                 save_power_as_s4()
                 return  # return is necceary code, 처리 안시키면 PC 부팅 시 최대절전모드로 무한 진입, 컴퓨터 전원 재연결해야 된다.
             elif any(keyword in str_working for keyword in ["화면보호기", "화면보호"]):
                 save_screen()
             else:
-                pk_print(rf"it was Unknown command", print_color='yellow')  # woas
+                ensure_printed(rf"it was Unknown command", print_color='yellow')  # woas
         except:
-            pk_print_and_speak(f'''{__file__} 코드 exec 중 오류가 발생했습니다" ''', print_color='red')
-            pk_print(f"{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}", print_color='red')
+            ensure_printed_and_speak(f'''{__file__} 코드 exec 중 오류가 발생했습니다" ''', print_color='red')
+            ensure_printed(f"{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}", print_color='red')
             if not is_mic_device_connected():
-                pk_print(f'''mic is disconnected. {'%%%FOO%%%' if LTA else ''}''', print_color='red')
+                ensure_printed(f'''mic is disconnected. {'%%%FOO%%%' if LTA else ''}''', print_color='red')
         loop_cnt += 1
-        pk_sleep(milliseconds=200)
+        ensure_slept(milliseconds=200)

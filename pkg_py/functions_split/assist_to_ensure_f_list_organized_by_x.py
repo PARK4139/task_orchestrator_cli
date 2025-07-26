@@ -3,7 +3,7 @@ from pkg_py.system_object.directories_reuseable import D_PROJECT
 from pkg_py.functions_split.get_value_completed import get_value_completed
 
 
-def pk_assist_to_ensure_f_list_organized_by_x():
+def assist_to_ensure_f_list_organized_by_x():
     import os
 
     while 1:

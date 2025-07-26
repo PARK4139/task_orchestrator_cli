@@ -1,7 +1,7 @@
 from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.cmd_to_os import cmd_to_os
 from pkg_py.functions_split.get_pnx_windows_style import get_pnx_windows_style
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 
@@ -54,9 +54,9 @@ def ensure_vpc_smoke_test(vpc_data):
         f_nx = 'vpc_info_collector.sh'
         std_out_list, std_err_list = cmd_to_remote_os(cmd=f"rm -rf ~/Downloads/{f_nx}", **config_remote_os)
         if std_out_list == [] or std_err_list == []:
-            pk_print(f'''{'%%%FOO%%%' if LTA else ''}''', print_color='green')
+            ensure_printed(f'''{'%%%FOO%%%' if LTA else ''}''', print_color='green')
         else:
-            pk_print(str_working=rf'''{'%%%FOO%%%' if LTA else ''}''', print_color='red')
+            ensure_printed(str_working=rf'''{'%%%FOO%%%' if LTA else ''}''', print_color='red')
             raise
 
         # send f (vpc_info_collector.sh)
@@ -76,9 +76,9 @@ def ensure_vpc_smoke_test(vpc_data):
         # cmd = rf"{remote_f}"
         std_out_list, std_err_list = cmd_to_remote_os(cmd=cmd, **config_remote_os)
         if std_out_list == [] or std_err_list == []:
-            pk_print(f'''{'%%%FOO%%%' if LTA else ''}''', print_color='green')
+            ensure_printed(f'''{'%%%FOO%%%' if LTA else ''}''', print_color='green')
         else:
-            pk_print(str_working=rf'''{'%%%FOO%%%' if LTA else ''}''', print_color='red')
+            ensure_printed(str_working=rf'''{'%%%FOO%%%' if LTA else ''}''', print_color='red')
             return
 
         vpc_id = vpc_id.strip()
@@ -111,18 +111,18 @@ def ensure_vpc_smoke_test(vpc_data):
         f_remote_new = f'/home/nvidia/Downloads/{vpc_id}_smoke_test_report_at_{yymmdd}.txt'
         std_out_list, std_err_list = cmd_to_remote_os(cmd=f"mv {f_remote_src} {f_remote_new}", **config_remote_os)
         if std_out_list == [] or std_err_list == []:
-            pk_print(f'''{'%%%FOO%%%' if LTA else ''}''', print_color='green')
+            ensure_printed(f'''{'%%%FOO%%%' if LTA else ''}''', print_color='green')
         else:
-            pk_print(str_working=rf'''{'%%%FOO%%%' if LTA else ''}''', print_color='red')
+            ensure_printed(str_working=rf'''{'%%%FOO%%%' if LTA else ''}''', print_color='red')
             return
 
         # remove vpc_info_collector.sh
         std_out_list, std_err_list = cmd_to_remote_os(cmd=f"rm -rf ~/Downloads/vpc_info_collector.sh",
                                                       **config_remote_os)
         if std_out_list == [] or std_err_list == []:
-            pk_print(f'''{'%%%FOO%%%' if LTA else ''}''', print_color='green')
+            ensure_printed(f'''{'%%%FOO%%%' if LTA else ''}''', print_color='green')
         else:
-            pk_print(str_working=rf'''{'%%%FOO%%%' if LTA else ''}''', print_color='red')
+            ensure_printed(str_working=rf'''{'%%%FOO%%%' if LTA else ''}''', print_color='red')
             return
 
         # compare vpc tree
@@ -185,9 +185,9 @@ def ensure_vpc_smoke_test(vpc_data):
         std_out_list, std_err_list = cmd_to_remote_os(
             cmd=f"cd ~/works/a2z_wavier_launcher && sudo python3 SystemLogger.py", **config_remote_os)
         if std_out_list == [] or std_err_list == []:
-            pk_print(f'''{'%%%FOO%%%' if LTA else ''}''', print_color='green')
+            ensure_printed(f'''{'%%%FOO%%%' if LTA else ''}''', print_color='green')
         else:
-            pk_print(str_working=rf'''{'%%%FOO%%%' if LTA else ''}''', print_color='red')
+            ensure_printed(str_working=rf'''{'%%%FOO%%%' if LTA else ''}''', print_color='red')
             return
 
         # 로그 확인
@@ -202,7 +202,7 @@ def ensure_vpc_smoke_test(vpc_data):
             question=rf'''AI frame work is restarted, again ? {'%%%FOO%%%' if LTA else ''}''')
 
     except:
-        pk_print(str_working=rf"{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''} ", print_color='red')
+        ensure_printed(str_working=rf"{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''} ", print_color='red')
         return
     finally:
         ensure_pnx_removed(d_temp)

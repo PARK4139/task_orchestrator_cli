@@ -7,12 +7,12 @@ from functools import lru_cache
 from pkg_py.functions_split.get_pnx_wsl_unix_style import get_pnx_wsl_unix_style
 
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
 def ensure_ubuntu_pkg_to_remote_os(ubuntu_pkg_n, **config_remote_os):
     if not is_internet_connected():
-        pk_print(
+        ensure_printed(
             f'''can not install ubuntu pakage ({ubuntu_pkg_n}) for internet not connected  {'%%%FOO%%%' if LTA else ''}''',
             print_color='red')
         raise

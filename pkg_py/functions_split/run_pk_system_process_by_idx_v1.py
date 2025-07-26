@@ -10,7 +10,7 @@ from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
 from pkg_py.functions_split.is_os_windows import is_os_windows
 from pkg_py.functions_split.get_nx import get_nx
 from pkg_py.functions_split.cmd_to_os import cmd_to_os
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
 def run_pk_system_process_by_idx_v1(pk_idx, pk_arg_list):
@@ -23,9 +23,9 @@ def run_pk_system_process_by_idx_v1(pk_idx, pk_arg_list):
     if pk_arg_list is None:
         pk_arg_list = []
     if LTA:
-        pk_print(f'''pk_idx={pk_idx} {'%%%FOO%%%' if LTA else ''}''')
+        ensure_printed(f'''pk_idx={pk_idx} {'%%%FOO%%%' if LTA else ''}''')
         for idx, _ in enumerate(pk_arg_list):
-            pk_print(f'''pk_arg_list[{idx}]={pk_arg_list[idx]} {'%%%FOO%%%' if LTA else ''}''')
+            ensure_printed(f'''pk_arg_list[{idx}]={pk_arg_list[idx]} {'%%%FOO%%%' if LTA else ''}''')
     available_pk_python_program_pnx = get_available_pk_python_program_pnx(pk_idx)
     if pk_arg_list is None:
         pk_arg_list = []  # ✅ 빈 리스트로 대체
@@ -34,14 +34,14 @@ def run_pk_system_process_by_idx_v1(pk_idx, pk_arg_list):
     cmd_to_run = 'uv run python'
     cmd_to_run = 'python'
     if LTA:
-        pk_print(f'''pk_idx={pk_idx} {'%%%FOO%%%' if LTA else ''}''')
-        pk_print(f'''get_nx(pk_python_program_pnx_working)={get_nx(available_pk_python_program_pnx)} {'%%%FOO%%%' if LTA else ''}''')
-        pk_print(f'''cmd_to_run={cmd_to_run} {'%%%FOO%%%' if LTA else ''}''')
+        ensure_printed(f'''pk_idx={pk_idx} {'%%%FOO%%%' if LTA else ''}''')
+        ensure_printed(f'''get_nx(pk_python_program_pnx_working)={get_nx(available_pk_python_program_pnx)} {'%%%FOO%%%' if LTA else ''}''')
+        ensure_printed(f'''cmd_to_run={cmd_to_run} {'%%%FOO%%%' if LTA else ''}''')
     if is_os_windows():
 
         cmd_to_autorun = get_cmd_to_autorun()
         if LTA:
-            pk_print(f'''pk_arg_list={pk_arg_list} {'%%%FOO%%%' if LTA else ''}''')
+            ensure_printed(f'''pk_arg_list={pk_arg_list} {'%%%FOO%%%' if LTA else ''}''')
         arg_cnt_allowed = 2
         while len(pk_arg_list) <= arg_cnt_allowed:
             pk_arg_list.append('')
@@ -60,7 +60,7 @@ def run_pk_system_process_by_idx_v1(pk_idx, pk_arg_list):
             #         cmd_to_os(cmd=cmd, mode_with_window=1)
             cmd_to_os(cmd=cmd, mode='a', mode_with_window=1)
         if LTA:
-            pk_print(f'''{STAMP_TRY_GUIDE} {cmd} {'%%%FOO%%%' if LTA else ''}''')
+            ensure_printed(f'''{STAMP_TRY_GUIDE} {cmd} {'%%%FOO%%%' if LTA else ''}''')
     if is_os_wsl_linux():
 
         tmux_upper_pane_active = True

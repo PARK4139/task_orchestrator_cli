@@ -23,7 +23,7 @@ def crawl_youtube_video_title_and_url(url: str):
         page_src = driver.page_source
         from bs4 import BeautifulSoup
         soup = BeautifulSoup(page_src, "lxml")
-        pk_sleep(seconds=0.0001)
+        ensure_slept(seconds=0.0001)
         process_bar.update(total_percent)
     driver.close()
 

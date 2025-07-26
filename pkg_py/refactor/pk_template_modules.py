@@ -42,11 +42,11 @@
 # from PIL import Image, ImageFilter
 # from PIL import Image, ImageFont, ImageDraw
 # from PIL import Image, ImageFont, ImageDraw, ImageFilter
-# from pkg_py.functions_split.pk_print import pk_print
-# from pkg_ps1.system_object.process import pk_kill_process_by_window_title_seg
+# from pkg_py.functions_split.ensure_printed import ensure_printed
+# from pkg_ps1.system_object.process import kill_process_by_window_title_seg
 # from pkg_py.functions_split import ensure_pycharm_module_optimize
-# from pkg_py.functions_split import pk_ensure_keyboard_mouse_macro
-# from pkg_py.functions_split.assist_to_load_video_at_losslesscut import pk_ensure_video_loaded_at_losslesscut
+# from pkg_py.functions_split import ensure_keyboard_mouse_macro
+# from pkg_py.functions_split.assist_to_load_video_at_losslesscut import ensure_video_loaded_at_losslesscut
 # from pkg_py.functions_split.backup_workspace import backup_workspace
 # from pkg_py.functions_split.check_min_non_null_or_warn import check_min_non_null_or_warn
 # from pkg_py.functions_split.cmd_to_os import cmd_to_os
@@ -140,25 +140,25 @@
 # from pkg_py.functions_split.load_logged_set import load_logged_set
 # from pkg_py.functions_split.move_window_to_front_via_pid import move_window_to_front_via_pid
 # from pkg_py.functions_split.open_pnx_by_ext import ensure_pnx_opened_by_ext
-# from pkg_py.functions_split.pk_ensure_all_import_script_printed import pk_ensure_modules_printed
-# from pkg_py.functions_split.pk_ensure_functions_splited import pk_ensure_functions_splited
-# from pkg_py.functions_split.pk_ensure_functions_splited_v2 import pk_ensure_functions_splited_v2
-# from pkg_py.functions_split.pk_ensure_loop_delayed_at_loop_foot import pk_ensure_loop_delayed_at_loop_foot
-# from pkg_py.functions_split.pk_initialize_and_customize_logging_config import pk_initialize_and_customize_logging_config
-# from pkg_py.functions_split.pk_measure_seconds import pk_measure_seconds
-# from pkg_py.functions_split.pk_press import pk_press
-# from pkg_py.functions_split.pk_press_v2 import pk_press_v2
-# from pkg_py.functions_split.pk_print import pk_print
-# from pkg_py.functions_split.pk_print_once import pk_print_once
-# from pkg_py.functions_split.pk_print_state import pk_print_state
-# from pkg_py.functions_split.pk_replace_f_nx_list_from_old_str_to_new_str import pk_replace_f_nx_list_from_old_str_to_new_str
-# from pkg_py.functions_split.pk_sleep import pk_sleep
-# from pkg_py.functions_split.pk_sleep_v2 import pk_sleep_v2
+# from pkg_py.functions_split.ensure_all_import_script_printed import ensure_modules_printed
+# from pkg_py.functions_split.ensure_functions_splited import ensure_functions_splited
+# from pkg_py.functions_split.ensure_functions_splited_v2 import ensure_functions_splited_v2
+# from pkg_py.functions_split.ensure_loop_delayed_at_loop_foot import ensure_loop_delayed_at_loop_foot
+# from pkg_py.functions_split.initialize_and_customize_logging_config import initialize_and_customize_logging_config
+# from pkg_py.functions_split.measure_seconds import measure_seconds
+# from pkg_py.functions_split.press import press
+# from pkg_py.functions_split.press_v2 import press_v2
+# from pkg_py.functions_split.ensure_printed import ensure_printed
+# from pkg_py.functions_split.print_once import print_once
+# from pkg_py.functions_split.print_state import print_state
+# from pkg_py.functions_split.replace_f_nx_list_from_old_str_to_new_str import replace_f_nx_list_from_old_str_to_new_str
+# from pkg_py.functions_split.ensure_slept import ensure_slept
+# from pkg_py.functions_split.sleep_v2 import sleep_v2
 # 
-# from pkg_py.functions_split.pk_speak import pk_speak
-# from pkg_py.functions_split.pk_speak_v2 import pk_speak_v2
-# from pkg_py.functions_split.pk_type import pk_type
-# from pkg_py.functions_split.pk_type_v2 import pk_type_v2
+# from pkg_py.functions_split.speak import speak
+# from pkg_py.functions_split.speak_v2 import speak_v2
+# from pkg_py.functions_split.type import type
+# from pkg_py.functions_split.type_v2 import type_v2
 # from pkg_py.functions_split.print_and_save_log_to_file import print_and_save_log_to_file
 # from pkg_py.functions_split.print_green import print_green
 # from pkg_py.functions_split.print_iterable_as_vertical import print_iterable_as_vertical
@@ -182,17 +182,17 @@
 # from pkg_py.functions_split.set_values_to_historical_file import set_values_to_historical_file
 # from pkg_py.functions_split.split_by_top_level_def import split_by_top_level_def
 # from pkg_py.functions_split.switch_to_keyboard_mode_to_english_at_windows import switch_to_keyboard_mode_to_english_at_windows
-# from pkg_py.functions_split.write_list_to_f import write_list_to_f
-# from pkg_py.functions_split.write_str_to_f import write_str_to_f
-# from pkg_py.pk_colorful_cli_util import pk_print, pk_print, pk_print, pk_print, pk_print, print_magenta, print_light_white, ColoramaUtil, print_ment_via_colorama, print_success, prijnt_as_log, print_yellow
+# from pkg_py.functions_split.ensure_list_written_to_f import ensure_list_written_to_f
+# from pkg_py.functions_split.ensure_str_writen_to_f import ensure_str_writen_to_f
+# from pkg_py.pk_colorful_cli_util import print, ensure_printed, ensure_printed, ensure_printed, ensure_printed, print_magenta, print_light_white, ColoramaUtil, print_ment_via_colorama, print_success, prijnt_as_log, print_yellow
 # from pkg_py.pk_core_constants import USERPROFILE, HOSTNAME, UNDERLINE, BLANK, BIGGEST_PNXS, SMALLEST_PNXS, PLAYING_SOUNDS, COUNTS_FOR_GUIDE_TO_SLEEP,VIDEO_IDS_ALLOWED, AUDIO_IDS_ALLOWED, STORAGE_VIDEOES_MERGED, PROJECT_PARENTS_D, DESKTOP, DOWNLOADS, PKG_PNG, PKG_DPL, PKG_TXT
 # from pkg_py.pk_interface_graphic_user import GuiUtil, get_display_info, print_as_gui, should_i_do
-# from pkg_py.pk_paste_as_auto import pk_copy
+# from pkg_py.pk_paste_as_auto import copy
 # from pkg_py.system_object.get_list_calculated import get_list_calculated
 # from pkg_py.system_object.local_test_activate import LTA
 # from pkg_py.system_object.is_os_windows import is_os_windows
 # 
-# from pkg_py.system_object.performance_logic import pk_measure_seconds, pk_measure_memory
+# from pkg_py.system_object.performance_logic import measure_seconds, pk_measure_memory
 # from pkg_py.system_object.state_via_context import SpeedControlContext
 # from pkg_py.system_object.state_via_database import PkSqlite3DB
 # from pkg_py.system_object.print_red import print_red
@@ -309,7 +309,7 @@
 # import pandas as pd
 # import paramiko
 # import pickle
-# import pk_core_constants
+# import core_constants
 # # import pkg_py.system_object.static_logic as system_object.static_logic
 # import platform
 # import psutil
@@ -362,4 +362,4 @@
 # import zlib
 # from pkg_py.functions_split.click_mouse_left_btn import click_mouse_left_btn
 # from pkg_py.functions_split.does_text_bounding_box_exist_via_easy_ocr import does_text_bounding_box_exist_via_easy_ocr
-# from pkg_py.functions_split.pk_sleep import pk_sleep
+# from pkg_py.functions_split.ensure_slept import ensure_slept

@@ -2,7 +2,7 @@ from tkinter import UNDERLINE
 
 from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.system_object.directories_reuseable import D_PROJECT
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
 def update_global_pkg_alba():
@@ -31,11 +31,11 @@ def update_global_pkg_alba():
             cmd = f'echo y | xcopy "{local_pkg}" "{global_pkg}" /k /e /h /exclude:{updateignore_txt} >nul'
             os.system(cmd)
 
-            pk_print(f'{cmd}', print_color='blue')
-            pk_print(f"{UNDERLINE}", print_color='blue')
+            ensure_printed(f'{cmd}', print_color='blue')
+            ensure_printed(f"{UNDERLINE}", print_color='blue')
             return "REPLACED global pkg_alba AS local_pkg"
         else:
             return "pkg_alba NOT FOUND AT GLOBAL LOCATION"
 
     except Exception as e:
-        pk_print(f'''{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
+        ensure_printed(f'''{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}''', print_color='red')

@@ -20,7 +20,7 @@ import colorama
 from yt_dlp import YoutubeDL
 from PySide6.QtWidgets import QApplication
 from pkg_py.functions_split.get_historical_list import get_historical_list
-from pkg_py.functions_split.write_list_to_f import write_list_to_f
+from pkg_py.functions_split.ensure_list_written_to_f import ensure_list_written_to_f
 from pkg_py.functions_split.get_list_sorted import get_list_sorted
 
 from pkg_py.system_object.etc import PkFilter

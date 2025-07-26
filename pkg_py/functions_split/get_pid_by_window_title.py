@@ -1,7 +1,7 @@
 def get_pid_by_window_title(window_title_seg):  # 테스트필요
     import psutil
     from pkg_py.functions_split.get_window_title_list import get_window_title_list
-    from pkg_py.functions_split.pk_print import pk_print
+    from pkg_py.functions_split.ensure_printed import ensure_printed
     from pkg_py.system_object.local_test_activate import LTA
     import inspect
     import pygetwindow
@@ -23,14 +23,14 @@ def get_pid_by_window_title(window_title_seg):  # 테스트필요
             process_id = process.info['pid']
             process_window_titles = pygetwindow.getWindowsWithTitle(window_title_match)
 
-            pk_print(f'process_name="{process_name}"  {'%%%FOO%%%' if LTA else ''}')
-            pk_print(f'process_id="{process_id}"  {'%%%FOO%%%' if LTA else ''}')
-            pk_print(f'process_window_titles="{process_window_titles}"  {'%%%FOO%%%' if LTA else ''}')
+            ensure_printed(f'process_name="{process_name}"  {'%%%FOO%%%' if LTA else ''}')
+            ensure_printed(f'process_id="{process_id}"  {'%%%FOO%%%' if LTA else ''}')
+            ensure_printed(f'process_window_titles="{process_window_titles}"  {'%%%FOO%%%' if LTA else ''}')
 
             if process_window_titles:
                 return process_id
         except (psutil.NoSuchProcess, psutil.AccessDenied) as e:
 
-            pk_print(f"Error processing {process.info['pid']}: {e}")
+            ensure_printed(f"Error processing {process.info['pid']}: {e}")
             continue
     return f"No PID found for window title: '{window_title_match}'"

@@ -1,7 +1,7 @@
 import pyautogui
 
-from pkg_py.functions_split.pk_ensure_keyboard_mouse_macro import pk_ensure_keyboard_mouse_macro
-from pkg_py.functions_split.pk_initialize_and_customize_logging_config import pk_initialize_and_customize_logging_config
+from pkg_py.functions_split.ensure_keyboard_mouse_macro import ensure_keyboard_mouse_macro
+from pkg_py.functions_split.initialize_and_customize_logging_config import initialize_and_customize_logging_config
 
 
 class PkMacroRoutines:

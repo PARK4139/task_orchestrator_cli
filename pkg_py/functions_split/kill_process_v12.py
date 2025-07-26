@@ -1,5 +1,5 @@
 
-@pk_measure_seconds
+@measure_seconds
 and target in " ".join(proc.info.get('cmdline', [])).lower()
 break
 cpu = proc.cpu_percent()
@@ -8,7 +8,7 @@ def get_nx(path: str) -> str:
 def get_window_title(window_title_seg: str) -> str | None:
 def kill_pid_psutil(pid):
 def monitor_process_state(proc, max_sec=2.5, interval=0.5):
-def pk_kill_process_v12(window_title_seg: str):
+def kill_process_v12(window_title_seg: str):
 elapsed = time.time() - start
 else:
 except Exception as e:
@@ -35,13 +35,13 @@ matches.append((hwnd, title))
 mem = proc.memory_info().rss / (1024 * 1024)
 monitor_process_state(proc)  # 실시간 모니터링 시작
 pass
-pk_print(f"PK KILL '{window_title}' not found", print_color="red")
-pk_print(f"[ERROR] {e}", print_color="red")
-pk_print(f"window_title={window_title} {'%%%FOO%%%' if LTA else ''}")
-pk_print(f"⚠️ PK KILL PID={pid} TIMEOUT_ELAPSED={elapsed:.2f}s", print_color="red")
-pk_print(f"✅ PK KILL PID={pid} window_title={window_title}", print_color="green")
-pk_print(f"❌ PK KILL ERROR PID={pid} : {e}", print_color="red")
-pk_print(f"🔍 PID={proc.pid} CPU={cpu:.1f}% MEM={mem:.1f}MB TH={th}", print_color="yellow")
+ensure_printed(f"PK KILL '{window_title}' not found", print_color="red")
+ensure_printed(f"[ERROR] {e}", print_color="red")
+ensure_printed(f"window_title={window_title} {'%%%FOO%%%' if LTA else ''}")
+ensure_printed(f"⚠️ PK KILL PID={pid} TIMEOUT_ELAPSED={elapsed:.2f}s", print_color="red")
+ensure_printed(f"✅ PK KILL PID={pid} window_title={window_title}", print_color="green")
+ensure_printed(f"❌ PK KILL ERROR PID={pid} : {e}", print_color="red")
+ensure_printed(f"🔍 PID={proc.pid} CPU={cpu:.1f}% MEM={mem:.1f}MB TH={th}", print_color="yellow")
 proc = psutil.Process(pid)
 proc.info['pid']
 proc.kill()

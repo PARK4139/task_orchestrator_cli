@@ -36,7 +36,7 @@ from pkg_py.functions_split.print_iterable_as_vertical import print_iterable_as_
 from pkg_py.functions_split.get_f_loading_nx_by_pattern import get_f_loading_nx_by_pattern
 from pkg_py.functions_split.is_losslesscut_running import is_losslesscut_running
 from pkg_py.functions_split.get_d_working import get_d_working
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
 from pkg_py.functions_split.set_pk_context_state import set_pk_context_state
@@ -70,7 +70,7 @@ from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
 from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style
 from pkg_py.functions_split.get_pnx_wsl_unix_style import get_pnx_wsl_unix_style
 from pkg_py.functions_split.get_pnx_windows_style import get_pnx_windows_style
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.get_pnx_list import get_pnx_list
@@ -97,15 +97,15 @@ def make_pnx_interested_list_to_f_txt_x(d_working_list, exclusion_list):
                 continue  # 'pnx_exclude'에 포함되면 건너뛰기
             # 'exclude' 목록에 포함되지 않으면 'pnx_processed_list'에 추가
             pnx_processed_list.append(pnx_with_walking)
-            # pk_print(str_working=rf'''len(pnx_processed_list)="{len(pnx_processed_list)}"  {'%%%FOO%%%' if LTA else ''}''')
+            # ensure_printed(str_working=rf'''len(pnx_processed_list)="{len(pnx_processed_list)}"  {'%%%FOO%%%' if LTA else ''}''')
             if write_cnt == write_cnt_limit % 2 == 0:
                 file_cnt = file_cnt + 1
                 # print_iterable_as_vertical(item_iterable=pnx_processed_list, item_iterable_n="pnx_processed_list")
                 # func_n_file_cnt_txt=rf"{D_PKG_TXT}\{func_n}_{file_cnt}.txt"
-                # write_list_to_file(texts=pnx_processed_list, pnx=func_n_file_cnt_txt, mode="w")
+                # ensure_list_written_to_file(texts=pnx_processed_list, pnx=func_n_file_cnt_txt, mode="w")
             func_n_file_cnt_txt = rf"{D_PKG_TXT}\{func_n}_{file_cnt}.txt"
-            # pk_print(str_working=rf'''write_cnt="{write_cnt}"  {'%%%FOO%%%' if LTA else ''}''')
-            write_str_to_f(msg=f"{pnx_with_walking}\n", f=func_n_file_cnt_txt, mode="a")
+            # ensure_printed(str_working=rf'''write_cnt="{write_cnt}"  {'%%%FOO%%%' if LTA else ''}''')
+            ensure_str_writen_to_f(msg=f"{pnx_with_walking}\n", f=func_n_file_cnt_txt, mode="a")
             write_cnt = write_cnt + 1
             if write_cnt == write_cnt_limit % 2 == 0:
                 window_title = rf"{func_n}_{file_cnt}"

@@ -22,7 +22,7 @@ from pkg_py.system_object.state_via_database import PkSqlite3DB
 # from pkg_py.system_object.500_live_logic import cmd_to_os, get_n, remove_pnx_parmanently, does_pnx_exist, get_values_from_historical_file_routine
 #, STAMP_TRY_GUIDE, D_PROJECT, STAMP_UNIT_TEST_EXCEPTION_DISCOVERED, D_PKG_TXT
 
-pk_colorama_init_once()
+colorama_init_once()
 
 if __name__ == "__main__":
     try:

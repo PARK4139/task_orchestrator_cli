@@ -16,7 +16,7 @@ from selenium.webdriver.common.action_chains import ActionChains
 from prompt_toolkit import PromptSession
 from pkg_py.functions_split.is_losslesscut_running import is_losslesscut_running
 from pkg_py.functions_split.get_f_video_to_load import get_f_video_to_load
-from pkg_py.functions_split.pk_print_once import pk_print_once
+from pkg_py.functions_split.ensure_printed_once import ensure_printed_once
 from pkg_py.functions_split.cmd_to_os import cmd_to_os
 from pkg_py.system_object.files import F_POT_PLAYER_MINI_64_EXE
 from pkg_py.system_object.directories import D_PK_WORKING
@@ -41,7 +41,7 @@ from pkg_py.system_object.is_os_windows import is_os_windows
 from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
 from pkg_py.system_object.local_test_activate import LTA
 
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
 def set_wired_connection(vpc_wired_connection, **config_remote_os):
@@ -67,7 +67,7 @@ def set_wired_connection(vpc_wired_connection, **config_remote_os):
             if "\n" in std_err:
                 error_list = std_err.split("\n")
                 for error_str in error_list:
-                    pk_print(f"{STAMP_ERROR}{error_str}", print_color='red')
+                    ensure_printed(f"{STAMP_ERROR}{error_str}", print_color='red')
             else:
-                pk_print(f"{STAMP_ERROR}{std_err}", print_color='red')
+                ensure_printed(f"{STAMP_ERROR}{std_err}", print_color='red')
     cmd_to_remote_os(cmd="sudo systemctl restart NetworkManager", **config_remote_os)

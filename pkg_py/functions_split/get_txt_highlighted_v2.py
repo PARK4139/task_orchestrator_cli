@@ -18,7 +18,7 @@ def get_txt_highlighted_v2(txt_whole, config_highlight_dict):
     import re
     # mkr.
     # from colorama import init as pk_colorama_init
-    # pk_colorama_init_once()
+    # colorama_init_once()
     PK_ANSI_COLOR_MAP = {
         "black": "\033[30m",
         'red': "\033[31m",

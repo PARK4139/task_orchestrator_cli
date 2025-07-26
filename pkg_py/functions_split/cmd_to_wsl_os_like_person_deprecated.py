@@ -1,8 +1,8 @@
 
 
 
-from pkg_py.functions_split.pk_print import pk_print
-from pkg_py.functions_split.pk_press import pk_press
+from pkg_py.functions_split.ensure_printed import ensure_printed
+from pkg_py.functions_split.press import press
 from pkg_py.functions_split.is_window_opened import is_window_opened
 from pkg_py.functions_split.ensure_window_to_front import ensure_window_to_front
 
@@ -18,10 +18,10 @@ def cmd_to_wsl_os_like_person_deprecated(cmd, remote_os_distro_n, wsl_window_tit
         if is_window_opened(window_title_seg=wsl_window_title_seg):
             break
         open_and_move_wsl_console_to_front(remote_os_distro_n=remote_os_distro_n, window_title_seg=wsl_window_title_seg)
-        pk_print(str_working=time.time() - start_time)
+        ensure_printed(str_working=time.time() - start_time)
         if time.time() - start_time > timeout:
             break
-        pk_sleep(seconds=0.5)
+        ensure_slept(seconds=0.5)
 
     std_output_stream = ""
     timeout = 5
@@ -34,11 +34,11 @@ def cmd_to_wsl_os_like_person_deprecated(cmd, remote_os_distro_n, wsl_window_tit
         ensure_window_to_front(window_title_seg=wsl_window_title_seg)
 
         # 5초가 지났는지 확인
-        pk_print(str_working=time.time() - start_time)
+        ensure_printed(str_working=time.time() - start_time)
         if time.time() - start_time > timeout:
-            pk_print(str_working="5 seconds passed. Exiting loop.")
+            ensure_printed(str_working="5 seconds passed. Exiting loop.")
             break
-        pk_sleep(seconds=0.5)  # CPU 점유율을 낮추기 위해 약간의 대기
+        ensure_slept(seconds=0.5)  # CPU 점유율을 낮추기 위해 약간의 대기
 
     if exit_mode == True:
         timeout = 5
@@ -52,10 +52,10 @@ def cmd_to_wsl_os_like_person_deprecated(cmd, remote_os_distro_n, wsl_window_tit
                 break
             else:
                 ensure_window_to_front(window_title_seg=wsl_window_title_seg)
-            pk_print(str_working=time.time() - start_time)
+            ensure_printed(str_working=time.time() - start_time)
             if time.time() - start_time > timeout:
-                pk_print(str_working="5 seconds passed. Exiting loop.")
+                ensure_printed(str_working="5 seconds passed. Exiting loop.")
                 break
-            pk_sleep(seconds=0.5)  # CPU 점유율을 낮추기 위해 약간의 대기
+            ensure_slept(seconds=0.5)  # CPU 점유율을 낮추기 위해 약간의 대기
 
     # return std_output_stream

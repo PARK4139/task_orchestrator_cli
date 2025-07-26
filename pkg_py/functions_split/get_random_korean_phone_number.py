@@ -14,7 +14,7 @@ from datetime import datetime
 from collections import Counter
 from pkg_py.functions_split.get_nx import get_nx
 from pkg_py.functions_split.get_pnx_wsl_unix_style import get_pnx_wsl_unix_style
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 
 from pkg_py.functions_split.get_pnx_list import get_pnx_list

@@ -4,12 +4,12 @@ from pkg_py.system_object.directories_reuseable import D_PROJECT
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.system_object.directories_reuseable import D_PROJECT
 from pkg_py.functions_split.cmd_to_os import cmd_to_os
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 
 
@@ -18,7 +18,7 @@ def gather_f_useless_at_tree(d_working):
 
     dst = rf"D:\[]\[useless]"
     ensure_pnx_made(pnx=dst, mode="d")
-    pk_print(f'''dst={dst}  {'%%%FOO%%%' if LTA else ''}''')
+    ensure_printed(f'''dst={dst}  {'%%%FOO%%%' if LTA else ''}''')
     if not is_empty_d(d_src=dst):
         cmd_to_os(cmd=rf'explorer "{dst}" ', encoding='cp949')
     try:
@@ -47,12 +47,12 @@ def gather_f_useless_at_tree(d_working):
         pk_chdir(D_PROJECT)
 
         if len(useless_f_set) == 0:
-            pk_print(f'''len(useless_f_set)={len(useless_f_set)}  {'%%%FOO%%%' if LTA else ''}''')
+            ensure_printed(f'''len(useless_f_set)={len(useless_f_set)}  {'%%%FOO%%%' if LTA else ''}''')
             return
         else:
             for useless_f in useless_f_set:
                 move_pnx(pnx=useless_f, d_dst=dst)  # todo : fix:외장드라이브에서는 안되는듯
                 # move_pnx_to_trash_bin(src=useless_f)
-        pk_print(str_working=rf'''dst="{dst}"  {'%%%FOO%%%' if LTA else ''}''', print_color='green')
+        ensure_printed(str_working=rf'''dst="{dst}"  {'%%%FOO%%%' if LTA else ''}''', print_color='green')
     except:
-        pk_print(f"{traceback.format_exc()}", print_color='red')
+        ensure_printed(f"{traceback.format_exc()}", print_color='red')

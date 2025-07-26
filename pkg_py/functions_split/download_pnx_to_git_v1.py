@@ -54,9 +54,9 @@ from pkg_py.functions_split.load_f_video_on_losslesscut import load_f_video_on_l
 from pkg_py.functions_split.get_d_working import get_d_working
 from pkg_py.functions_split.is_window_title_opened import is_window_title_opened
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
-from pkg_py.functions_split.pk_press import pk_press
-from pkg_py.functions_split.pk_print_state import pk_print_state
-from pkg_py.functions_split.pk_print_once import pk_print_once
+from pkg_py.functions_split.press import press
+from pkg_py.functions_split.print_state import print_state
+from pkg_py.functions_split.ensure_printed_once import ensure_printed_once
 from pkg_py.functions_split.cmd_to_os import cmd_to_os
 
 from pkg_py.functions_split.ensure_console_cleared import ensure_console_cleared
@@ -80,7 +80,7 @@ from cryptography.hazmat.backends import default_backend
 from Cryptodome.Cipher import AES
 from bs4 import BeautifulSoup
 from pkg_py.functions_split.get_nx import get_nx
-from pkg_py.functions_split.assist_to_load_video_at_losslesscut import pk_ensure_video_loaded_at_losslesscut
+from pkg_py.functions_split.assist_to_load_video_at_losslesscut import ensure_video_loaded_at_losslesscut
 from pkg_py.functions_split.kill_self_pk_program import kill_self_pk_program
 from pkg_py.functions_split.get_list_calculated import get_list_calculated
 from pkg_py.functions_split.is_d import is_d
@@ -93,7 +93,7 @@ from pkg_py.functions_split.get_pnx_wsl_unix_style import get_pnx_wsl_unix_style
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.get_d_working import get_d_working
 
 
@@ -101,7 +101,7 @@ def download_pnx_to_git_v1(d_working, git_repo_url, commit_msg, branch_n):
     import traceback
     from colorama import init as pk_colorama_init
 
-    pk_colorama_init_once()
+    colorama_init_once()
 
     try:
         if not does_pnx_exist(pnx=d_working):
@@ -114,7 +114,7 @@ def download_pnx_to_git_v1(d_working, git_repo_url, commit_msg, branch_n):
             pk_debug_state_for_py_data_type('%%%CLONE%%%', std_list)
 
             if any("fatal:" in line.lower() for line in std_list):
-                pk_print(f"Git clone 실패: {std_list}", print_color='red')
+                ensure_printed(f"Git clone 실패: {std_list}", print_color='red')
                 return
         else:
             pk_chdir(d_dst=d_working)
@@ -122,10 +122,10 @@ def download_pnx_to_git_v1(d_working, git_repo_url, commit_msg, branch_n):
             pk_debug_state_for_py_data_type('%%%PULL%%%', std_list)
 
             if any("fatal:" in line.lower() for line in std_list):
-                pk_print(f"Git pull 실패: {std_list}", print_color='red')
+                ensure_printed(f"Git pull 실패: {std_list}", print_color='red')
                 return
 
-        pk_print(f"Git 작업 완료: {d_working} {'%%%FOO%%%' if LTA else ''}", print_color='green')
+        ensure_printed(f"Git 작업 완료: {d_working} {'%%%FOO%%%' if LTA else ''}", print_color='green')
 
     except Exception:
-        pk_print(f"{traceback.format_exc()} {'%%%FOO%%%' if LTA else ''}", print_color='red')
+        ensure_printed(f"{traceback.format_exc()} {'%%%FOO%%%' if LTA else ''}", print_color='red')

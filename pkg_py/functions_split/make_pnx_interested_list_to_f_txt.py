@@ -12,7 +12,7 @@ from tkinter import UNDERLINE
 from PySide6.QtWidgets import QApplication
 from pkg_py.functions_split.ensure_window_to_front import ensure_window_to_front
 from pkg_py.functions_split.is_window_opened import is_window_opened
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.system_object.directories import D_PKG_TXT
 from pkg_py.system_object.get_list_calculated import get_list_calculated
 
@@ -25,7 +25,7 @@ from pkg_py.system_object.etc import PK_UNDERLINE
 from pkg_py.system_object.directories import D_DOWNLOADS
 from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style
 
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.get_pnx_list import get_pnx_list
 
 
@@ -83,11 +83,11 @@ def make_pnx_interested_list_to_f_txt(pnx_interested_list=None, string_exclude=N
 
     pnx_processed_list = []
     f_func_n_txt = rf"{D_PKG_TXT}\{func_n}.txt"
-    write_str_to_f(msg=f"", f=f_func_n_txt, mode="w")  # 내용 초기화
+    ensure_str_writen_to_f(msg=f"", f=f_func_n_txt, mode="w")  # 내용 초기화
     for pnx_interested in pnx_interested_list:
         pnxs_with_walking = get_pnx_list(d_working=pnx_interested, filter_option="f", with_walking=1)
         for pnx_with_walking in pnxs_with_walking:
             if any(pnx_exclude in pnx_with_walking for pnx_exclude in string_exclude):
                 continue
             pnx_processed_list.append(pnx_with_walking)
-            write_str_to_f(msg=f"{pnx_with_walking}\n", f=f_func_n_txt, mode="a")
+            ensure_str_writen_to_f(msg=f"{pnx_with_walking}\n", f=f_func_n_txt, mode="a")

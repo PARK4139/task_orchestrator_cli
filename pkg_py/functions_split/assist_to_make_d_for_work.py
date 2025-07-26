@@ -24,7 +24,7 @@ from pkg_py.functions_split.kill_self_pk_program import kill_self_pk_program
 from pkg_py.functions_split.is_d import is_d
 from pkg_py.system_object.is_os_windows import is_os_windows
 
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.get_d_working import get_d_working
 
 
@@ -48,4 +48,4 @@ def assist_to_make_d_for_work():
 
 
     except Exception as e:
-        pk_print(f"Error: {str(e)}")
+        ensure_printed(f"Error: {str(e)}")

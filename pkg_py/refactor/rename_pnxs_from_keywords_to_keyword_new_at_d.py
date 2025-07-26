@@ -1,7 +1,7 @@
 from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.system_object.directories import D_PKG_TXT
 from pkg_py.functions_split.get_nx import get_nx
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
 def rename_pnxs_from_keywords_to_keyword_new_at_d(d, mode, with_walking, debug_mode=True):
@@ -28,7 +28,7 @@ def rename_pnxs_from_keywords_to_keyword_new_at_d(d, mode, with_walking, debug_m
     elif mode == "d":
         pnxs = d_list
     else:
-        pk_print(str_working=rf'''mode={mode}  {'%%%FOO%%%' if LTA else ''}''')
+        ensure_printed(str_working=rf'''mode={mode}  {'%%%FOO%%%' if LTA else ''}''')
         return
 
     # pnxs에 "System Volume Information" 있으면 제외
@@ -276,13 +276,13 @@ def rename_pnxs_from_keywords_to_keyword_new_at_d(d, mode, with_walking, debug_m
                    # # '+', '&',
                ] + stamp_title_list + duplicated_stamp_list * 2  # *2 를 해야 stamp 가 충분히 없어집니다.
     # for index, item in enumerate(keywords):
-    #     pk_print(f'''keywords[{index}]={item}  {'%%%FOO%%%' if LTA else ''}''')
+    #     ensure_printed(f'''keywords[{index}]={item}  {'%%%FOO%%%' if LTA else ''}''')
 
     # for index, item in enumerate(stamp_title_list):
-    #     pk_print(f'''stamp_title_list[{index}]={item}  {'%%%FOO%%%' if LTA else ''}''')
+    #     ensure_printed(f'''stamp_title_list[{index}]={item}  {'%%%FOO%%%' if LTA else ''}''')
 
     for index, item in enumerate(duplicated_stamp_list):
-        pk_print(f'''duplicated_stamp_list[{index}]={item}  {'%%%FOO%%%' if LTA else ''}''')
+        ensure_printed(f'''duplicated_stamp_list[{index}]={item}  {'%%%FOO%%%' if LTA else ''}''')
 
     for keyword_removed in keywords_remove_pnxs_unnecessary:
         pnxs = [item for item in pnxs if
@@ -298,14 +298,14 @@ def rename_pnxs_from_keywords_to_keyword_new_at_d(d, mode, with_walking, debug_m
             item_nx = get_nx(pnx=item_pnx_new)
             item_nx_new = item_nx.replace(keyword, keyword_new)  # 누적하여 교체
             item_pnx_new = rf"{item_p}\{item_nx_new}"
-        # pk_print(str_working=rf'''item_pnx="{item_pnx}"  {'%%%FOO%%%' if LTA else ''}''')
-        # pk_print(str_working=rf'''item_pnx_new="{item_pnx_new}"  {'%%%FOO%%%' if LTA else ''}''')
+        # ensure_printed(str_working=rf'''item_pnx="{item_pnx}"  {'%%%FOO%%%' if LTA else ''}''')
+        # ensure_printed(str_working=rf'''item_pnx_new="{item_pnx_new}"  {'%%%FOO%%%' if LTA else ''}''')
         if item_pnx != item_pnx_new:  # item_pnx_와 item_pnx_new가 다르면 추가
             pnxs_and_pnxs_new.append([item_pnx, item_pnx_new])
 
     # 확인
-    pk_print(f'''pnxs_and_pnxs_new={pnxs_and_pnxs_new}  {'%%%FOO%%%' if LTA else ''}''')
-    pk_print(f'''len(pnxs_and_pnxs_new)={len(pnxs_and_pnxs_new)} 바꿀 대상  {'%%%FOO%%%' if LTA else ''}''')
+    ensure_printed(f'''pnxs_and_pnxs_new={pnxs_and_pnxs_new}  {'%%%FOO%%%' if LTA else ''}''')
+    ensure_printed(f'''len(pnxs_and_pnxs_new)={len(pnxs_and_pnxs_new)} 바꿀 대상  {'%%%FOO%%%' if LTA else ''}''')
 
     # 적용
     rename_pnxs(pnx_list=pnxs_and_pnxs_new)

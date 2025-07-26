@@ -25,7 +25,7 @@ def ensure_d_size_consistently_stable(d_monitored, seconds_interval=0.1, check_t
     # 첫 번째 측정
     initial_size = get_d_size(d_monitored)
     for _ in range(check_times):
-        pk_sleep(seconds=seconds_interval)
+        ensure_slept(seconds=seconds_interval)
         current_size = get_d_size(d_monitored)
         if current_size != initial_size:
             return 0  # 크기가 변하면 False 반환

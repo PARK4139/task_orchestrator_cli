@@ -116,10 +116,10 @@ def restart_up_pk_process_list():
         # f_cmd
         # pnx = rf"{D_PROJECT_RELEASE_SERVER}/run_release_server.cmd"
         # pnx = get_pnx_os_style(pnx=pnx)
-        # pk_print(str_working=rf'''pnx="{pnx}"  {'%%%FOO%%%' if LTA else ''}''')
+        # ensure_printed(str_working=rf'''pnx="{pnx}"  {'%%%FOO%%%' if LTA else ''}''')
         # while is_f_locked(pnx):  # 배치f이 잠겨 있는지 확인 후 잠겨 있으면 기다림
-        #     pk_print(f"File is locked, waiting for 1 second...")
-        #     pk_sleep(seconds=1)
+        #     ensure_printed(f"File is locked, waiting for 1 second...")
+        #     ensure_slept(seconds=1)
         # cmd_to_os(cmd=rf'start "" "{pnx}"', encoding=Encoding.UTF8, mode='a')
 
         # login_and_filter_and_export_addup()

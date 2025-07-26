@@ -6,7 +6,7 @@ from pkg_py.system_object.directories_reuseable import D_PROJECT
 
 
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
 def compress_pnx_via_bz(pnx):
@@ -21,7 +21,7 @@ def compress_pnx_via_bz(pnx):
     try:
         while 1:
             ment = rf"백업 {pnx}"
-            pk_print(f" {'%%%FOO%%%' if LTA else ''} {ment}", )
+            ensure_printed(f" {'%%%FOO%%%' if LTA else ''} {ment}", )
 
             # 전처리
             pnx = pnx.replace("\n", "")
@@ -36,12 +36,12 @@ def compress_pnx_via_bz(pnx):
             target_basename = os.path.basename(pnx).split(".")[0]
             target_zip = rf'{target_dirname}\$zip_{target_basename}.zip'
             target_yyyy_mm_dd_hh_mm_ss_zip_basename = rf'{target_basename} - {get_time_as_("%Y %m %d %H %M %S")}.zip'
-            pk_print(f"pnx : {pnx}")
-            pk_print(f"target_dirname : {target_dirname}")
-            pk_print(f"target_dirname_dirname : {target_dirname_dirname}")
-            pk_print(f"target_basename : {target_basename}")
-            pk_print(f"target_zip : {target_zip}")
-            pk_print(f"target_yyyy_mm_dd_HH_MM_SS_zip_basename : {target_yyyy_mm_dd_hh_mm_ss_zip_basename}")
+            ensure_printed(f"pnx : {pnx}")
+            ensure_printed(f"target_dirname : {target_dirname}")
+            ensure_printed(f"target_dirname_dirname : {target_dirname_dirname}")
+            ensure_printed(f"target_basename : {target_basename}")
+            ensure_printed(f"target_zip : {target_zip}")
+            ensure_printed(f"target_yyyy_mm_dd_HH_MM_SS_zip_basename : {target_yyyy_mm_dd_hh_mm_ss_zip_basename}")
 
             cmd = f'bz.exe c "{target_zip}" "{pnx}"'
             cmd_to_os(cmd=cmd)
@@ -81,10 +81,10 @@ def compress_pnx_via_bz(pnx):
                         # pattern='d{4} d{2} d{2} d{2} d{2} d{2}'
                         # pattern=r'\d{4} \d{2} \d{2} \d{2} \d{2} \d{2}'
                         pattern = r'd{4} d{2} d{2} d{2} d{2} d{2}'
-                        # pk_print(line)
+                        # ensure_printed(line)
                         if is_pattern_in_prompt(line, pattern):
-                            pk_print(f"zip f 목록에 대하여 {pattern} 타임스탬프 정규식 테스트를 통과했습니다")
-                            # pk_print(line)
+                            ensure_printed(f"zip f 목록에 대하여 {pattern} 타임스탬프 정규식 테스트를 통과했습니다")
+                            # ensure_printed(line)
                             # 2023-12-03 일 20:03 trouble shooting 성공
                             # 백업 시 타임스탬프에 언더바 넣도록 변경했는데 regex 는 변경 하지 않아서 난 실수 있었음.
                             time_to_backed_up = re.findall(pattern, line)
@@ -99,34 +99,34 @@ def compress_pnx_via_bz(pnx):
                                 if not os.path.exists(target_dirname_old):
                                     os.makedirs(target_dirname_old)
                             except Exception:
-                                pk_print(f'''{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}''',
+                                ensure_printed(f'''{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}''',
                                          print_color='red')
                                 pk_chdir(D_PROJECT)
                                 break
                             # 지금부터 7일 이전의 f만
                             # diff=time_to_backed_up__ - time_current
                             # if diff.days <-7:
-                            # pk_print(f"line : {line}")
+                            # ensure_printed(f"line : {line}")
 
-                            # pk_print(f"1분(60 seconds) 이전의 f자동정리 시도...")
-                            pk_print(f"f자동정리 시도...")
+                            # ensure_printed(f"1분(60 seconds) 이전의 f자동정리 시도...")
+                            ensure_printed(f"f자동정리 시도...")
                             change_min = time_current - datetime.timedelta(seconds=60)
                             diff = time_to_backed_up__ - change_min
                             if 60 < diff.seconds:
                                 try:
                                     file_with_time_stamp_zip = os.path.abspath(line.strip())
                                     file_dirname_old_abspath = os.path.abspath(target_dirname_old)
-                                    pk_print(rf'move "{file_with_time_stamp_zip}" "{file_dirname_old_abspath}"',
+                                    ensure_printed(rf'move "{file_with_time_stamp_zip}" "{file_dirname_old_abspath}"',
                                              print_color='blue')
                                     shutil.move(file_with_time_stamp_zip, file_dirname_old_abspath)
                                 except Exception:
-                                    pk_print(f'''{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}''',
+                                    ensure_printed(f'''{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}''',
                                              print_color='red')
                                     pk_chdir(D_PROJECT)
                                     break
             pk_chdir(D_PROJECT)
-            pk_print(f" {'%%%FOO%%%' if LTA else ''} green {ment}", print_color='blue')
+            ensure_printed(f" {'%%%FOO%%%' if LTA else ''} green {ment}", print_color='blue')
             break
     except:
-        pk_print(f'''{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
+        ensure_printed(f'''{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
         pk_chdir(D_PROJECT)

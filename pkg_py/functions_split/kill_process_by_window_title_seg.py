@@ -1,7 +1,7 @@
 
 # 유사도 높은 첫 번째 타이틀로 선택
 # 해당 타이틀을 가진 윈도우들의 PID 직접 수집
-@pk_measure_seconds
+@measure_seconds
 _, pid = win32process.GetWindowThreadProcessId(hwnd)
 best_match_hwnd, best_match_title, _ = matches[0]
 break
@@ -11,7 +11,7 @@ def enum_handler(hwnd, _):
 def get_window_matches(window_title_seg: str):
 def kill_pid_psutil(pid):
 def monitor_process_state(proc, max_sec=2.5, interval=0.5):
-def pk_kill_process_by_window_title_seg(window_title_seg: str):
+def kill_process_by_window_title_seg(window_title_seg: str):
 elapsed = time.time() - start
 elif elapsed > 2.5:
 else:
@@ -44,20 +44,20 @@ matches.sort(key=lambda x: x[2], reverse=True)
 mem = proc.memory_info().rss / (1024 * 1024)
 monitor_process_state(proc)
 pass
-pk_print(f"PK KILL '{best_match_title}' not found (No PIDs)", print_color="red")
-pk_print(f"[ERROR] {e}", print_color="red")
-pk_print(f"[INFO] Found {len(matches)} window(s). Similarity check:", print_color="cyan")
-pk_print(f"[SKIP] No window found for seg='{window_title_seg}'", print_color="yellow")
-pk_print(f"{sim_mark} [{hwnd}] {title}", print_color="cyan")
-pk_print(f"‼️ FORCED TIMEOUT: PID={pid} took {elapsed:.2f}s", print_color="red")
-pk_print(f"⚠️ PK KILL PID={pid} TIMEOUT_ELAPSED={elapsed:.2f}s", print_color="red")
-pk_print(f"✅ PK KILL PID={pid} title_match={best_match_title}", print_color="green")
-pk_print(f"❌ PK KILL ERROR PID={pid} : {e}", print_color="red")
-pk_print(f"❗ FAILED PIDs: {sorted(failed_pids)}", print_color="red")
-pk_print(f"👁️ End monitoring PID={proc.pid}", print_color="blue")
-pk_print(f"👁️ Start monitoring PID={proc.pid}", print_color="blue")
-pk_print(f"🔍 PID={proc.pid} CPU={cpu:.1f}% MEM={mem:.1f}MB TH={th}", print_color="blue")
-pk_print(f"🪟 Using best match title: {best_match_title} {'%%%FOO%%%' if LTA else ''}", print_color="cyan")
+ensure_printed(f"PK KILL '{best_match_title}' not found (No PIDs)", print_color="red")
+ensure_printed(f"[ERROR] {e}", print_color="red")
+ensure_printed(f"[INFO] Found {len(matches)} window(s). Similarity check:", print_color="cyan")
+ensure_printed(f"[SKIP] No window found for seg='{window_title_seg}'", print_color="yellow")
+ensure_printed(f"{sim_mark} [{hwnd}] {title}", print_color="cyan")
+ensure_printed(f"‼️ FORCED TIMEOUT: PID={pid} took {elapsed:.2f}s", print_color="red")
+ensure_printed(f"⚠️ PK KILL PID={pid} TIMEOUT_ELAPSED={elapsed:.2f}s", print_color="red")
+ensure_printed(f"✅ PK KILL PID={pid} title_match={best_match_title}", print_color="green")
+ensure_printed(f"❌ PK KILL ERROR PID={pid} : {e}", print_color="red")
+ensure_printed(f"❗ FAILED PIDs: {sorted(failed_pids)}", print_color="red")
+ensure_printed(f"👁️ End monitoring PID={proc.pid}", print_color="blue")
+ensure_printed(f"👁️ Start monitoring PID={proc.pid}", print_color="blue")
+ensure_printed(f"🔍 PID={proc.pid} CPU={cpu:.1f}% MEM={mem:.1f}MB TH={th}", print_color="blue")
+ensure_printed(f"🪟 Using best match title: {best_match_title} {'%%%FOO%%%' if LTA else ''}", print_color="cyan")
 proc = psutil.Process(pid)
 proc.kill()
 proc.terminate()

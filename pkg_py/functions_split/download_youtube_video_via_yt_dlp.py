@@ -9,7 +9,7 @@ from pkg_py.functions_split.is_f_contained_feature_str import is_f_contained_fea
 from pkg_py.functions_split.log_success_to_f import log_success_to_f
 from pkg_py.functions_split.normalize_youtube_url import normalize_youtube_url
 from pkg_py.functions_split.open_pnx_by_ext import ensure_pnx_opened_by_ext
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.system_object.directories import D_PKG_TXT
 from pkg_py.system_object.files import F_FFMPEG_EXE
 from pkg_py.system_object.local_test_activate import LTA
@@ -22,7 +22,7 @@ def download_youtube_video_via_yt_dlp(url_list, d_pnx, f_func_n_txt):
     url_list = [normalize_youtube_url(url) for url in url_list]  # Shorts URL 변환
 
     if not does_pnx_exist(pnx=d_pnx):
-        pk_print(f'''d_pnx="{d_pnx}" does not exist. Creating it.''', print_color='red')
+        ensure_printed(f'''d_pnx="{d_pnx}" does not exist. Creating it.''', print_color='red')
 
     # 저품질 성공
     # ydl_opts = {
@@ -83,9 +83,9 @@ def download_youtube_video_via_yt_dlp(url_list, d_pnx, f_func_n_txt):
             feature_str = f"[{clip_id}]"
             if is_f_contained_feature_str(feature_str=feature_str, d_pnx=d_pnx):
                 if LTA:
-                    pk_print(f"{feature_str} found in file system. Skipping download.", print_color="green")
+                    ensure_printed(f"{feature_str} found in file system. Skipping download.", print_color="green")
                 f_downloaded = get_f_contained_feature_str(feature_str=feature_str, d_pnx=d_pnx)
-                pk_print(f'''f_downloaded="{f_downloaded}"  {'%%%FOO%%%' if LTA else ''}''')
+                ensure_printed(f'''f_downloaded="{f_downloaded}"  {'%%%FOO%%%' if LTA else ''}''')
                 if f_downloaded:
                     ensure_pnx_opened_by_ext(pnx=f_downloaded)
                 FEATURE_NICK_NAME = get_video_title_with_ytdlp(clip_id=clip_id)
@@ -98,12 +98,12 @@ def download_youtube_video_via_yt_dlp(url_list, d_pnx, f_func_n_txt):
 
             DESCRIPTION = rf'{url}'
             if LTA:
-                pk_print(f'''{DESCRIPTION}  {'%%%FOO%%%' if LTA else ''}''')
+                ensure_printed(f'''{DESCRIPTION}  {'%%%FOO%%%' if LTA else ''}''')
             url_list = [str(url)]
 
             try:
                 ydl.download(url_list)
-                pk_print(f"f saved in '{d_pnx}'. {url}", print_color="green")
+                ensure_printed(f"f saved in '{d_pnx}'. {url}", print_color="green")
                 FEATURE_NICK_NAME = get_video_title_with_ytdlp(clip_id=clip_id)
                 FEATURE_NICK_NAME = get_url_list_encoded_element(working_list=[FEATURE_NICK_NAME])[0]
                 FEATURE_NICK_NAME = get_str_url_decoded(FEATURE_NICK_NAME)
@@ -111,7 +111,7 @@ def download_youtube_video_via_yt_dlp(url_list, d_pnx, f_func_n_txt):
                                  FEATURE_NICK_NAME=FEATURE_NICK_NAME, f=f_func_n_txt)
             except:
                 import traceback
-                pk_print(f'''Download {url} \n {traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}" ''',
+                ensure_printed(f'''Download {url} \n {traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}" ''',
                          print_color='red')
 
                 continue

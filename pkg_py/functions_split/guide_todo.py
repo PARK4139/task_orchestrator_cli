@@ -13,7 +13,7 @@ from selenium.common.exceptions import ElementClickInterceptedException
 from pytube import Playlist
 from pkg_py.functions_split.is_window_opened import is_window_opened
 
-from pkg_py.functions_split.write_list_to_f import write_list_to_f
+from pkg_py.functions_split.ensure_list_written_to_f import ensure_list_written_to_f
 from pkg_py.functions_split.set_pk_context_state import set_pk_context_state
 from pkg_py.functions_split.ensure_console_cleared import ensure_console_cleared
 from pkg_py.system_object.stamps import STAMP_ATTEMPTED
@@ -29,20 +29,20 @@ from pkg_py.system_object.stamps import STAMP_TRY_GUIDE, STAMP_UNIT_TEST_EXCEPTI
 from pkg_py.system_object.etc import PK_UNDERLINE
 from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style
 from pkg_py.functions_split.is_f import is_f
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
 def guide_todo():
     import re
     from datetime import datetime
-    pk_sleep(milliseconds=1000)
+    ensure_slept(milliseconds=1000)
 
     from colorama import init as pk_colorama_init
-    pk_colorama_init_once()
+    colorama_init_once()
 
     # pnx by os style
     MEMO_DONE_TXT, MEMO_TODO_TXT, MEMO_TRASH_BIN_TXT = map(get_pnx_os_style,
@@ -87,7 +87,7 @@ def guide_todo():
     # todo_lines_list = get_list_removed_element_duplicated(working_list=todo_lines_list)
 
     # rewrite
-    write_list_to_f(working_list=todo_lines_list, f=MEMO_TODO_TXT, mode='w', line_feed_mode=0, head_line_mode=False)
+    ensure_list_written_to_f(working_list=todo_lines_list, f=MEMO_TODO_TXT, mode='w', line_feed_mode=0, head_line_mode=False)
 
     stamp_todo_task_list = []
     # today_task_list = []
@@ -111,7 +111,7 @@ def guide_todo():
                         today_and_past_task_list.append(line)
             task_name = None
             for today_and_past_task in today_and_past_task_list:
-                pk_print(f'''today_and_past_task={today_and_past_task}  {'%%%FOO%%%' if LTA else ''}''')
+                ensure_printed(f'''today_and_past_task={today_and_past_task}  {'%%%FOO%%%' if LTA else ''}''')
                 pattern_date_and_time = re.compile(r'^\[todo\] (\d{4}-\d{2}-\d{2}) \(\w+\) (\d{2}:\d{2}|__:__)')
                 match = pattern_date_and_time.match(today_and_past_task)
                 date_str, time_str = match.groups()
@@ -124,15 +124,15 @@ def guide_todo():
                 else:
                     stamp_time = "__:__"
                 task_name = today_and_past_task.split(stamp_time)[1].split("[")[0].split('"')[1].strip()
-                pk_print(f'{task_name} 수행미션 부여되었습니다 ({date_str} {stamp_time})', print_color='blue')
+                ensure_printed(f'{task_name} 수행미션 부여되었습니다 ({date_str} {stamp_time})', print_color='blue')
                 # speak(f'{task_name} 수행미션 부여되었습니다')
-                pk_print("미션을 완료하셨다면 Enter 키를 눌러주세요...", print_color='white')
+                ensure_printed("미션을 완료하셨다면 Enter 키를 눌러주세요...", print_color='white')
                 # speak("미션을 완료하셨다면 Enter 키를 눌러주세요...")
                 answer = input()
                 answer = answer.strip()
                 if answer == "":
                     prompt_positive = rf"{task_name.replace("\n", "")}를 수행미션완료 처리합니다"
-                    pk_print(prompt_positive)
+                    ensure_printed(prompt_positive)
                     # speak(prompt_positive)
                     today_and_past_task_list.remove(today_and_past_task)
                     # 해당 줄을 주석 처리
@@ -142,14 +142,14 @@ def guide_todo():
                     task_list = get_list_deduplicated(working_list=task_list)
                     task_list.remove(today_and_past_task)
                     task_list.append(line_hashtaged)
-                    write_list_to_f(f=MEMO_TODO_TXT, working_list=task_list, mode="w", line_feed_mode=0)
+                    ensure_list_written_to_f(f=MEMO_TODO_TXT, working_list=task_list, mode="w", line_feed_mode=0)
                 # print(rf"{today_task} {today_task.split(':')[:2]}")
-            pk_print("오늘도 모든 미션을 수행하셨습니다. 수고하셨습니다")
+            ensure_printed("오늘도 모든 미션을 수행하셨습니다. 수고하셨습니다")
             # speak("오늘도 모든 미션을 수행하셨습니다. 수고하셨습니다")
-            pk_sleep(seconds=1)
+            ensure_slept(seconds=1)
         except KeyboardInterrupt:
-            pk_print("프로그램이 사용자에 의해 종료되었습니다.")
+            ensure_printed("프로그램이 사용자에 의해 종료되었습니다.")
             break
         except Exception as e:
-            pk_print(f"오류가 발생했습니다: {e}", print_color='red')
-            pk_sleep(seconds=60)  # 오류 발생 시 1분 후 재시도
+            ensure_printed(f"오류가 발생했습니다: {e}", print_color='red')
+            ensure_slept(seconds=60)  # 오류 발생 시 1분 후 재시도

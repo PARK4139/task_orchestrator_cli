@@ -2,7 +2,7 @@ from pkg_py.functions_split import test_pk_python_program_structure
 from pkg_py.functions_split.debug_this_code_operated import ensure_this_code_operated
 from pkg_py.functions_split.get_file_id import get_file_id
 from pkg_py.functions_split.get_value_via_fzf_or_history_routine import get_value_via_fzf_or_history_routine
-from pkg_py.functions_split.print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.system_object.local_test_activate import LTA
 
 
@@ -37,16 +37,13 @@ def ensure_function_name_python_file_created():
         file_id = get_file_id(key_name, func_n)
         editable = False
         # editable = True
-        if d_working == D_PKG_PY:
-            init_options = ["pk_","pk_ensure_"]
-        else:
-            init_options = ["ensure_"]
+        init_options = ["pk_ensure_", "ensure_"]
         value = get_value_via_fzf_or_history_routine(key_name=key_name, file_id=file_id, init_options=init_options, editable=editable)
         f_n = value
         if not value.endswith(".py"):
             value += ".py"
         python_file_name = value
-        pk_print(f'''python_file_name={python_file_name} {'%%%FOO%%%' if LTA else ''}''')
+        ensure_printed(f'''python_file_name={python_file_name} {'%%%FOO%%%' if LTA else ''}''')
 
 
         counter = 1
@@ -74,7 +71,7 @@ def ensure_function_name_python_file_created():
                 try:
                     with open(F_PK_TEST_PK_PYTHON_PROGRAM_STRUCTURE_PY, 'r', encoding='utf-8') as f_template:
                         template_content = f_template.read()
-                        pk_print(f'''[{PkMessages2025.DATA}] template_content={template_content} {'%%%FOO%%%' if LTA else ''}''')
+                        ensure_printed(f'''[{PkMessages2025.DATA}] template_content={template_content} {'%%%FOO%%%' if LTA else ''}''')
 
                     with open(f_pnx_downloaded, 'w', encoding='utf-8') as f_new:
                         f_new.write(template_content)

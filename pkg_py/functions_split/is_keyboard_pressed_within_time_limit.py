@@ -1,6 +1,6 @@
 
 
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
 def is_keyboard_pressed_within_time_limit(key_plus_key: str, time_limit):
@@ -16,12 +16,12 @@ def is_keyboard_pressed_within_time_limit(key_plus_key: str, time_limit):
     while 1:
         if all(keyboard.is_pressed(key) for key in keys):
             # 단축키 조합이 모두 눌렸을 때 exec 할 코드
-            pk_print(f"{keys[0]}+{keys[1]}", print_color='blue')
+            ensure_printed(f"{keys[0]}+{keys[1]}", print_color='blue')
             return 1
         else:
-            pk_print(f"{key_plus_key} 눌릴때까지 기다리고 있습니다")
+            ensure_printed(f"{key_plus_key} 눌릴때까지 기다리고 있습니다")
             time_e = time.time()
             time_diff = time_e - time_s
             if time_diff == time_limit:
                 return 0
-            pk_sleep(milliseconds=waiting_limit)
+            ensure_slept(milliseconds=waiting_limit)

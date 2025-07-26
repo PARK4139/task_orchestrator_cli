@@ -74,7 +74,7 @@ from colorama import init as pk_colorama_init
 from collections import defaultdict, Counter
 from bs4 import ResultSet
 from bs4 import BeautifulSoup
-from pkg_py.functions_split.assist_to_load_video_at_losslesscut import pk_ensure_video_loaded_at_losslesscut
+from pkg_py.functions_split.assist_to_load_video_at_losslesscut import ensure_video_loaded_at_losslesscut
 from pkg_py.functions_split.kill_self_pk_program import kill_self_pk_program
 from pkg_py.system_object.stamps import STAMP_TRY_GUIDE, STAMP_UNIT_TEST_EXCEPTION_DISCOVERED
 from pkg_py.system_object.etc import PK_UNDERLINE
@@ -86,11 +86,11 @@ from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style
 from pkg_py.functions_split.get_pnx_wsl_unix_style import get_pnx_wsl_unix_style
 from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
 from pkg_py.functions_split.is_os_windows import is_os_windows
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.get_d_working import get_d_working
 
 
@@ -100,7 +100,7 @@ def ensure_remove_pnx_of_remote_os(pnx, **config_remote_os):
     signiture = 'todo'
     for std_out in std_out_list:
         if signiture in std_out:
-            pk_print(f'''remove {pnx} at {config_remote_os['ip']}  {'%%%FOO%%%' if LTA else ''}''', print_color='green')
+            ensure_printed(f'''remove {pnx} at {config_remote_os['ip']}  {'%%%FOO%%%' if LTA else ''}''', print_color='green')
         else:
-            pk_print(f'''remove {pnx} at {config_remote_os['ip']}  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
+            ensure_printed(f'''remove {pnx} at {config_remote_os['ip']}  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
             raise

@@ -1,9 +1,9 @@
 
 
-from pkg_py.functions_split.pk_measure_seconds import pk_measure_seconds
+from pkg_py.functions_split.measure_seconds import measure_seconds
 
 
-@pk_measure_seconds
+@measure_seconds
 def get_driver_selenium(browser_debug_mode):
     from pkg_py.functions_split.get_webdriver_options_customed import get_webdriver_options_customed
     import inspect

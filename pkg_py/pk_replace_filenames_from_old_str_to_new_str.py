@@ -5,12 +5,12 @@ __author__ = 'pk == junghoon.park'
 #, STAMP_UNIT_TEST_EXCEPTION_DISCOVERED
 # from pkg_py.system_object.etc import PK_UNDERLINE
 from pkg_py.functions_split.print_red import print_red
-from pkg_py.functions_split.pk_print import pk_print
-from pkg_py.functions_split.pk_input import pk_input
+from pkg_py.functions_split.ensure_printed import ensure_printed
+from pkg_py.functions_split.input import input
 from pkg_py.functions_split.get_nx_validated import get_nx_validated
 from pkg_py.functions_split.get_no_blank_str_working_validated import get_no_blank_str_working_validated
 from pkg_py.functions_split.get_pnx_validated import get_pnx_validated
-from pkg_py.functions_split.pk_replace_f_nx_list_from_old_str_to_new_str import pk_replace_f_nx_list_from_old_str_to_new_str
+from pkg_py.functions_split.replace_f_nx_list_from_old_str_to_new_str import replace_f_nx_list_from_old_str_to_new_str
 
 if __name__ == "__main__":
     try:
@@ -18,7 +18,7 @@ if __name__ == "__main__":
 
         from colorama import init as pk_colorama_init
 
-        pk_colorama_init_once()
+        colorama_init_once()
 
         d_working = pk_input(str_working=rf'd_working=', limit_seconds=60, return_default=D_PK_WORKING, get_input_validated=get_pnx_validated)
         while 1:

@@ -1,4 +1,4 @@
-from pkg_py.workspace.pk_workspace2 import update_system_path_with_deduplication, ensure_window_os_variable_path_deduplicated
+# from pkg_py.workspace.pk_workspace import update_system_path_with_deduplication, ensure_window_os_variable_path_deduplicated
 
 
 def ensure_os_env_sys_variables_applied():
@@ -13,7 +13,7 @@ def ensure_os_env_sys_variables_applied():
     )
     import os
     import subprocess
-    from pkg_py.functions_split.pk_print import pk_print
+    from pkg_py.functions_split.ensure_printed import ensure_printed
 
     ensure_window_os_variable_path_deduplicated()
 
@@ -57,7 +57,7 @@ def ensure_os_env_sys_variables_applied():
             else:
                 registry_logs.append((key, "Failed to confirm"))
         except subprocess.CalledProcessError as e:
-            pk_print(f"[ERROR] Failed to setx {key}: {e}", print_color="red")
+            ensure_printed(f"[ERROR] Failed to setx {key}: {e}", print_color="red")
 
     # Append D_PKG_EXE to PATH (session)
     D_PKG_EXE = get_pnx_os_style(env_vars['D_PKG_EXE'])
@@ -80,20 +80,20 @@ def ensure_os_env_sys_variables_applied():
         else:
             registry_logs.append(("PATH", "Failed to confirm"))
     except subprocess.CalledProcessError as e:
-        pk_print(f"[ERROR] Failed to update PATH: {e}", print_color="red")
+        ensure_printed(f"[ERROR] Failed to update PATH: {e}", print_color="red")
 
     # ▶ [SESSION] 출력
-    pk_print("\n[SESSION] Environment Variables (Current Session)", print_color="green")
+    ensure_printed("\n[SESSION] Environment Variables (Current Session)", print_color="green")
     for key, value in session_logs:
-        pk_print(f"[SESSION] Set {key.ljust(24)} = {value}", print_color="green")
+        ensure_printed(f"[SESSION] Set {key.ljust(24)} = {value}", print_color="green")
 
     # ▶ [SETX] 출력
-    pk_print("\n[SETX] Environment Variables (Next Session)", print_color="blue")
+    ensure_printed("\n[SETX] Environment Variables (Next Session)", print_color="blue")
     for key, msg in setx_logs:
-        pk_print(f"[SETX]    {key.ljust(24)} {msg}", print_color="blue")
+        ensure_printed(f"[SETX]    {key.ljust(24)} {msg}", print_color="blue")
 
     # ▶ [REGISTRY] 결과 출력
-    pk_print("\n[REGISTRY] Confirmation Results", print_color="cyan")
+    ensure_printed("\n[REGISTRY] Confirmation Results", print_color="cyan")
     parsed_logs = []
     for key, raw_line in registry_logs:
         try:
@@ -113,10 +113,10 @@ def ensure_os_env_sys_variables_applied():
             f"[REGISTRY] {key.ljust(max_key_len)} → "
             f"{reg_type.ljust(max_type_len)}  {reg_value}"
         )
-        pk_print(formatted, print_color="cyan")
+        ensure_printed(formatted, print_color="cyan")
 
     # [PATH] 중복 제거 후 출력
-    pk_print("\n[PATH] Current PATH entries (session)", print_color="cyan")
+    ensure_printed("\n[PATH] Current PATH entries (session)", print_color="cyan")
     path_entries = os.environ.get("PATH", "").split(";")
     seen = set()
     deduped_entries = []
@@ -127,4 +127,4 @@ def ensure_os_env_sys_variables_applied():
             deduped_entries.append(p_clean)
 
     for i, entry in enumerate(deduped_entries, 1):
-        pk_print(f"[PATH_ENTRY {str(i).zfill(2)}] {entry}", print_color="white")
+        ensure_printed(f"[PATH_ENTRY {str(i).zfill(2)}] {entry}", print_color="white")

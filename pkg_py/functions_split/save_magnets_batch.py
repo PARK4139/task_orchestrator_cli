@@ -1,10 +1,10 @@
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
 def save_magnets_batch(magnets):
     #
     from urllib.parse import urlparse, parse_qs, unquote
-    pk_print(f"Saving {len(magnets)} magnets")
+    ensure_printed(f"Saving {len(magnets)} magnets")
     conn = get_db_conn()
     cur = conn.cursor()
     data = [(m, parse_qs(urlparse(unquote(m)).query).get("dn", [""])[0]) for m in magnets]
@@ -12,4 +12,4 @@ def save_magnets_batch(magnets):
     conn.commit()
     cur.close()
     conn.close()
-    pk_print("Batch saved")
+    ensure_printed("Batch saved")

@@ -1,6 +1,6 @@
 from pkg_py.system_object.local_test_activate import LTA
 
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
 def get_videos_urls_from_youtube_channel_main_page(youtube_channel_main_page_url, debug_mode=True):
@@ -13,7 +13,7 @@ def get_videos_urls_from_youtube_channel_main_page(youtube_channel_main_page_url
     while 1:
         driver.execute_script("window.scrollTo(0, document.documentElement.scrollHeight);")
         # sleep(seconds=random.randint(a=2, b=10))
-        pk_sleep(seconds=5)  # 스크롤 사이에 대기시간 추가
+        ensure_slept(seconds=5)  # 스크롤 사이에 대기시간 추가
         new_height = driver.execute_script("return document.documentElement.scrollHeight")
         if new_height == last_height:
             break
@@ -38,7 +38,7 @@ def get_videos_urls_from_youtube_channel_main_page(youtube_channel_main_page_url
 
     video_urls_list = None
     video_urls_list = list(video_urls)
-    pk_print(f'''len(video_urls_list)="{len(video_urls_list)}"  {'%%%FOO%%%' if LTA else ''}''')
+    ensure_printed(f'''len(video_urls_list)="{len(video_urls_list)}"  {'%%%FOO%%%' if LTA else ''}''')
     for idx, url in enumerate(video_urls, start=1):
-        pk_print(f'''f"{idx}: {url}"''')
+        ensure_printed(f'''f"{idx}: {url}"''')
     return video_urls_list

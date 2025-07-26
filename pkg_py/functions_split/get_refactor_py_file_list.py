@@ -1,7 +1,8 @@
-
-def get_refactor_py_file_list():
 import glob
 import os
-pattern = os.path.join(refactor_dir, "*.py")
-refactor_dir = os.path.join(os.path.dirname(__file__), "../refactor")
-return sorted(glob.glob(pattern))
+
+
+def get_refactor_py_file_list():
+    refactor_dir = os.path.join(os.path.dirname(__file__), "../refactor")
+    pattern = os.path.join(refactor_dir, "*.py")
+    return sorted(glob.glob(pattern))

@@ -13,8 +13,8 @@ from prompt_toolkit import PromptSession
 # from project_database.test_project_database import MySqlUtil
 from pkg_py.functions_split.ensure_window_to_front import ensure_window_to_front
 from pkg_py.functions_split.is_window_title_front import is_window_title_front
-from pkg_py.functions_split.pk_press import pk_press
-from pkg_py.functions_split.pk_print_once import pk_print_once
+from pkg_py.functions_split.press import press
+from pkg_py.functions_split.ensure_printed_once import ensure_printed_once
 
 from pkg_py.system_object.etc import PkFilter
 from pkg_py.system_object.directories_reuseable import D_PROJECT
@@ -41,12 +41,12 @@ def find_direction_via_naver_map(destination: str):
         url = "https://map.naver.com/p/directions"
         cmd = f'explorer  "{url}"  >nul'
         cmd_to_os_like_person_as_admin(cmd)
-        pk_sleep(300)
+        ensure_slept(300)
 
         # 크롬 창 활성화
         pid_chrome_exe = get_pids(process_img_n="chrome.exe")  # chrome.exe pid 가져오기
         ensure_window_to_front(pid=pid_chrome_exe)
-        pk_sleep(30)
+        ensure_slept(30)
 
         # 반쪽화면 생성(옵션로직)
         # press("alt", "up")
@@ -55,19 +55,19 @@ def find_direction_via_naver_map(destination: str):
         # 출발지 입력 클릭
         f_png = rf"{D_PROJECT}\pkg_png\find_direction_via_naver_direction.png"
         click_center_of_img_recognized_by_mouse_left(img_pnx=f_png, loop_limit_cnt=100, is_zoom_toogle_mode=True)
-        pk_sleep(30)
+        ensure_slept(30)
 
         # 한가람한양아파트상가 입력
-        write_fast("한가람한양아파트상가")
-        pk_sleep(30)
+        ensure_writen_fast("한가람한양아파트상가")
+        ensure_slept(30)
         pk_press('enter')
-        pk_sleep(300)
+        ensure_slept(300)
         pk_press('tab')
-        pk_sleep(30)
+        ensure_slept(30)
 
         # 목적지 입력
-        write_fast(destination)
-        pk_sleep(30)
+        ensure_writen_fast(destination)
+        ensure_slept(30)
         pk_press('down')
         pk_press('enter')
 

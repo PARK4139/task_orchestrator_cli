@@ -30,7 +30,7 @@ from colorama import init as pk_colorama_init
 from bs4 import BeautifulSoup
 from base64 import b64encode
 from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
 def truncate_tree(d_src):

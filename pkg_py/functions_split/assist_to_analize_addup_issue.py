@@ -5,7 +5,7 @@ from pkg_py.system_object.directories import D_DOWNLOADS
 from pkg_py.system_object.directories import D_PKG_TXT
 
 from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 
 
@@ -28,7 +28,7 @@ def assist_to_analize_addup_issue():  # todo
         expected_url = url
         while 1:
             current_url = driver.current_url
-            pk_sleep(seconds=1)
+            ensure_slept(seconds=1)
             if current_url != expected_url:
                 driver.get(url)
                 print(f"URL 이동 성공 {url}")
@@ -44,9 +44,9 @@ def assist_to_analize_addup_issue():  # todo
                     import traceback
                     func_n = inspect.currentframe().f_code.co_name
                     stamp_func_n = rf'''[{func_n}()]'''
-                    pk_print(f'''{stamp_func_n} {traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}''',
+                    ensure_printed(f'''{stamp_func_n} {traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}''',
                              print_color='red')
-                    pk_print(str_working="페이지 로딩에 실패", print_color='red')
+                    ensure_printed(str_working="페이지 로딩에 실패", print_color='red')
                     return
 
     def write_user_input_by_tag_id(driver, tag_id, user_input):
@@ -142,7 +142,7 @@ def assist_to_analize_addup_issue():  # todo
             if not does_pnx_exist(pnx=src_f):
                 click_tag_by_tag_xpath(driver=driver, tag_name='button', tag_property='text',
                                        tag_property_value='Export')
-            pk_sleep(milliseconds=500)
+            ensure_slept(milliseconds=500)
             if does_pnx_exist(pnx=src_f):
                 break
     # todo : option : 필요 시 주석처리
@@ -150,7 +150,7 @@ def assist_to_analize_addup_issue():  # todo
 
     ensure_pnx_opened_by_ext(issues_list_csv)
 
-    pk_print(str_working='line_order=', print_color='blue')
+    ensure_printed(str_working='line_order=', print_color='blue')
     line_order = input(":")
     issue_log_index_data = get_issue_log_index_data_from_f_csv(line_order=line_order, issues_list_csv=issues_list_csv)
 
@@ -158,7 +158,7 @@ def assist_to_analize_addup_issue():  # todo
     print_template_for_notion_issue_reporting(line_order=line_order, issues_list_csv=issues_list_csv)
 
     # download the issue log
-    pk_print(str_working=rf'''Could I proceed to download the issue log?  {'%%%FOO%%%' if LTA else ''}''',
+    ensure_printed(str_working=rf'''Could I proceed to download the issue log?  {'%%%FOO%%%' if LTA else ''}''',
              print_color='blue')
     input(f"{pk_get_colorful_str_working_with_stamp_enviromnet(func_n=func_n)} >")
 

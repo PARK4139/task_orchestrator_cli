@@ -1,6 +1,6 @@
 
 
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
 def collect_magnet_set_from_nyaa_si_p1(nyaa_si_supplier, search_keyword, driver=None):
@@ -27,7 +27,7 @@ def collect_magnet_set_from_nyaa_si_p1(nyaa_si_supplier, search_keyword, driver=
     def save_magnets_batch(magnets):
 
         #
-        pk_print(f"Saving {len(magnets)} magnets to MariaDB")
+        ensure_printed(f"Saving {len(magnets)} magnets to MariaDB")
         conn = get_db_conn()
         cur = conn.cursor()
         # magnet 링크에서 title 파싱
@@ -38,9 +38,9 @@ def collect_magnet_set_from_nyaa_si_p1(nyaa_si_supplier, search_keyword, driver=
         conn.commit()
         cur.close()
         conn.close()
-        pk_print("Batch saved")
+        ensure_printed("Batch saved")
 
-    pk_print("Starting crawl")
+    ensure_printed("Starting crawl")
     driver = driver or get_driver_selenium(browser_debug_mode=False)
     base = f"https://nyaa.si/user/{nyaa_si_supplier}?f=0&c=0_0&q={get_str_encoded_url(search_keyword)}"
     driver.get(base)
@@ -56,15 +56,15 @@ def collect_magnet_set_from_nyaa_si_p1(nyaa_si_supplier, search_keyword, driver=
             WebDriverWait(driver, 10).until(lambda d: d.find_element(By.TAG_NAME, "body"))
             found = {a["href"] for a in BeautifulSoup(driver.page_source, "html.parser").find_all("a", href=True) if
                      a["href"].startswith("magnet:")}
-            pk_print(f"Page {p}: {len(found)} magnets")
+            ensure_printed(f"Page {p}: {len(found)} magnets")
             batch.extend(found)
             if len(batch) >= 2000:
                 save_magnets_batch(batch)
                 batch.clear()
-            pk_sleep(milliseconds=random.randint(200, 333))
+            ensure_slept(milliseconds=random.randint(200, 333))
         except Exception as e:
-            pk_print(f"Error page {p}: {e}", print_color="red")
+            ensure_printed(f"Error page {p}: {e}", print_color="red")
     if batch:
         save_magnets_batch(batch)
-    pk_print("Done collecting", print_color="green")
+    ensure_printed("Done collecting", print_color="green")
     return None

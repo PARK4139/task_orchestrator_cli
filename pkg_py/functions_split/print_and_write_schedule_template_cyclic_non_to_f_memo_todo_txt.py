@@ -4,8 +4,8 @@
 from tkinter import UNDERLINE
 
 # from project_database.test_project_database import MySqlUtil
-from pkg_py.functions_split.write_list_to_f import write_list_to_f
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_list_written_to_f import ensure_list_written_to_f
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
 def print_and_write_schedule_template_cyclic_non_to_f_memo_todo_txt(stamp_custom, todo_task_name_str, f_txt, specific_year=None, specific_day=None, specific_month=None):
@@ -50,12 +50,12 @@ def print_and_write_schedule_template_cyclic_non_to_f_memo_todo_txt(stamp_custom
     str_list.append(UNDERLINE)
 
     # 디버깅 출력
-    pk_print(str_working="\n".join(str_list))
+    ensure_printed(str_working="\n".join(str_list))
 
-    pk_print("f에 저장을 원하면 enter를 눌러주세요", print_color='blue')
+    ensure_printed("f에 저장을 원하면 enter를 눌러주세요", print_color='blue')
     input(":")
 
     # f에 저장
-    write_list_to_f(working_list=str_list, f=f_txt, mode='a')
+    ensure_list_written_to_f(working_list=str_list, f=f_txt, mode='a')
 
     return 1

@@ -38,7 +38,7 @@ from datetime import date
 from pkg_py.functions_split.get_pnx_list import get_pnx_list
 
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
 def ensure_remote_os_ip_usb_connection(config_remote_os, remote_os_distro_n=None):
@@ -60,16 +60,16 @@ def ensure_remote_os_ip_usb_connection(config_remote_os, remote_os_distro_n=None
         if all(signiture_ in signiture_to_search for signiture_ in signiture_list):
             match = pattern.search(signiture_to_search)
             if not match:
-                pk_print(f'''{signiture_to_search} is not matched in command({cmd}) {'%%%FOO%%%' if LTA else ''}''',
+                ensure_printed(f'''{signiture_to_search} is not matched in command({cmd}) {'%%%FOO%%%' if LTA else ''}''',
                          print_color='red')
-                pk_print(f'''리커버리 모드 진입을 재시도하세요.  {'%%%FOO%%%' if LTA else ''}"''', print_color='red')
+                ensure_printed(f'''리커버리 모드 진입을 재시도하세요.  {'%%%FOO%%%' if LTA else ''}"''', print_color='red')
                 raise
-            pk_print(str_working=rf'''match="{match}"  {'%%%FOO%%%' if LTA else ''}''')
+            ensure_printed(str_working=rf'''match="{match}"  {'%%%FOO%%%' if LTA else ''}''')
             bus_id = match.group()
     if bus_id is None:
-        pk_print(f'''"bus_id 가 None 입니다.  {'%%%FOO%%%' if LTA else ''} "''', print_color='red')
+        ensure_printed(f'''"bus_id 가 None 입니다.  {'%%%FOO%%%' if LTA else ''} "''', print_color='red')
         raise
-    pk_print(str_working=rf'''bus id found, bus_id={bus_id}  {'%%%FOO%%%' if LTA else ''}''', print_color="green")
+    ensure_printed(str_working=rf'''bus id found, bus_id={bus_id}  {'%%%FOO%%%' if LTA else ''}''', print_color="green")
 
     # signiture = "제공된 이름의 배포가 없습니다" or 'xxxx'
     std_list = cmd_to_os(cmd=rf"wsl -d {remote_os_distro_n} -- exit")
@@ -103,11 +103,11 @@ def ensure_remote_os_ip_usb_connection(config_remote_os, remote_os_distro_n=None
     start_time = time.time()
     while 1:
         if is_window_opened(window_title_seg=cmd):
-            pk_print(str_working=rf'''[ATTEMPTED] "wsl attach"  {'%%%FOO%%%' if LTA else ''}''')
+            ensure_printed(str_working=rf'''[ATTEMPTED] "wsl attach"  {'%%%FOO%%%' if LTA else ''}''')
             break
         if time.time() - start_time > timeout:
             return 0
-        pk_sleep(seconds=0.2)
+        ensure_slept(seconds=0.2)
 
     cmd = rf"wsl lsusb"
     time_limit = 10
@@ -118,8 +118,8 @@ def ensure_remote_os_ip_usb_connection(config_remote_os, remote_os_distro_n=None
         std_list = cmd_to_os(cmd=cmd, encoding=Encoding.CP949)
         for signiture_to_search in std_list:
             if signiture_list in signiture_to_search:
-                pk_print(f'''{ment_positive}''', print_color="green")
+                ensure_printed(f'''{ment_positive}''', print_color="green")
                 return 1
         if time.time() - time_s > time_limit:
             return 0
-        pk_sleep(seconds=0.2)
+        ensure_slept(seconds=0.2)

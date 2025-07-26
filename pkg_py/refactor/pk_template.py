@@ -18,7 +18,7 @@
 # values = get_pnx_list(d_working=D_PKG_PY, with_walking=0, filter_option="f")
 # file_to_hot_reload = get_value_from_fzf(key_name=key_name, values=values)
 # file_to_hot_reload = get_pnx_os_style(file_to_hot_reload)
-# pk_print(f'''file_to_hot_reload={file_to_hot_reload} {'%%%FOO%%%' if LTA else ''}''')
+# ensure_printed(f'''file_to_hot_reload={file_to_hot_reload} {'%%%FOO%%%' if LTA else ''}''')
 # _____________________________________________________________________  history
 # key_name = "pk_program_language"
 # pk_program_language = get_values_from_historical_database_routine(db_id = db.get_id(key_name,func_n), key_hint=f'{key_name}=', values_default=["kr", "en"])

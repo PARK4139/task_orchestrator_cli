@@ -60,9 +60,9 @@ from pkg_py.functions_split.get_video_filtered_list import get_video_filtered_li
 from pkg_py.functions_split.is_window_title_front import is_window_title_front
 from pkg_py.functions_split.get_d_working import get_d_working
 from pkg_py.functions_split.is_window_opened import is_window_opened
-from pkg_py.functions_split.pk_print_once import pk_print_once
-from pkg_py.functions_split.pk_print import pk_print
-from pkg_py.functions_split.write_list_to_f import write_list_to_f
+from pkg_py.functions_split.ensure_printed_once import ensure_printed_once
+from pkg_py.functions_split.ensure_printed import ensure_printed
+from pkg_py.functions_split.ensure_list_written_to_f import ensure_list_written_to_f
 from pkg_py.functions_split.get_list_sorted import get_list_sorted
 from pkg_py.system_object.files import F_POT_PLAYER_MINI_64_EXE, F_HISTORICAL_PNX
 from pkg_py.system_object.files import F_HISTORICAL_PNX
@@ -124,11 +124,11 @@ def should_i_search_to_google():
     #     input_box_text_default=question,
     # )
     # if txt_clicked == system_object.static_logic.NEGATIVE:
-    #     pk_print(f'''{system_object.static_logic.NEGATIVE} pressed  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
+    #     ensure_printed(f'''{system_object.static_logic.NEGATIVE} pressed  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
     #     return
     # if txt_clicked == system_object.static_logic.POSITIVE:
-    #     pk_print(f'''txt_clicked={txt_clicked}  {'%%%FOO%%%' if LTA else ''}''', print_color="blue")
-    #     pk_print(f'''txt_written={txt_written}  {'%%%FOO%%%' if LTA else ''}''', print_color="blue")
+    #     ensure_printed(f'''txt_clicked={txt_clicked}  {'%%%FOO%%%' if LTA else ''}''', print_color="blue")
+    #     ensure_printed(f'''txt_written={txt_written}  {'%%%FOO%%%' if LTA else ''}''', print_color="blue")
     #     function()
 
     # todo : ref : as cli

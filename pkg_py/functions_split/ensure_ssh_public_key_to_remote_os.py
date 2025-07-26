@@ -2,7 +2,7 @@
 
 from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
 def ensure_ssh_public_key_to_remote_os(**config_remote_os):
@@ -15,30 +15,30 @@ def ensure_ssh_public_key_to_remote_os(**config_remote_os):
 
     key_public = get_key_public(**config_remote_os)
     if check_ssh_server_public_key(key_public=key_public, **config_remote_os):
-        pk_print("SSH PUBLIC KEY IS ALREADY REGISTERED")
+        ensure_printed("SSH PUBLIC KEY IS ALREADY REGISTERED")
         return
     else:
-        pk_print(str_working="SSH PUBLIC KEY IS NOT REGISTERED", print_color='red')
+        ensure_printed(str_working="SSH PUBLIC KEY IS NOT REGISTERED", print_color='red')
 
     # Paramiko로 SSH 연결
     ssh = paramiko.SSHClient()
     ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
     try:
         ssh.connect(hostname=ip, port=port, username=user_n, password=pw)
-        pk_print(f"{STAMP_TRY_GUIDE} ssh -p {port} {user_n}@{ip} ")
+        ensure_printed(f"{STAMP_TRY_GUIDE} ssh -p {port} {user_n}@{ip} ")
 
         add_public_key_to_remote_via_paramiko(ssh_paramiko=ssh, key_public=key_public)
 
     except paramiko.AuthenticationException as e:
-        pk_print(f"Authentication failed. Please check your user_n and password: {e}", print_color='red')
+        ensure_printed(f"Authentication failed. Please check your user_n and password: {e}", print_color='red')
         raise
     except paramiko.SSHException as e:
-        pk_print(f"SSH connection error: {e}", print_color='red')
+        ensure_printed(f"SSH connection error: {e}", print_color='red')
         raise
     except Exception as e:
-        pk_print(f"An unexpected error occurred: {e}", print_color='red')
+        ensure_printed(f"An unexpected error occurred: {e}", print_color='red')
         raise
     finally:
         ssh.close()
         if LTA:
-            pk_print("SSH connection closed.")
+            ensure_printed("SSH connection closed.")

@@ -2,7 +2,7 @@ import os
 import time
 from datetime import datetime
 
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 # 수정 대상 디렉토리 설정
 target_dir = os.path.expanduser(r'~\Downloads\pk_system\.venv')
@@ -42,12 +42,12 @@ def process_files():
         file_count += len(files)
 
     # 수정 대상 파일 수 출력
-    pk_print(f"Total number of files to process: {file_count}")
+    ensure_printed(f"Total number of files to process: {file_count}")
 
     # 작업 시작 타임스탬프
     start_time = time.time()
     start_timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-    pk_print(f"Task started at: {start_timestamp}")
+    ensure_printed(f"Task started at: {start_timestamp}")
 
     # .venv 디렉토리 내 모든 파일 순회
     processed_count = 0
@@ -55,9 +55,9 @@ def process_files():
         for file_name in files:
             file_path = os.path.join(root, file_name)
             if replace_path_in_file(file_path):
-                pk_print(f"[SUCCESS] {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}: {file_path}", print_color="green")
+                ensure_printed(f"[SUCCESS] {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}: {file_path}", print_color="green")
             else:
-                pk_print(f"[ERROR] {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}: {file_path}", print_color='red')
+                ensure_printed(f"[ERROR] {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}: {file_path}", print_color='red')
             processed_count += 1
 
     # 작업 종료 타임스탬프 및 시간 계산

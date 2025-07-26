@@ -23,7 +23,7 @@ from prompt_toolkit.styles import Style
 from pkg_py.functions_split.load_f_video_on_losslesscut import load_f_video_on_losslesscut
 from pkg_py.functions_split.is_window_title_front import is_window_title_front
 from pkg_py.functions_split.is_window_opened import is_window_opened
-from pkg_py.functions_split.pk_print_once import pk_print_once
+from pkg_py.functions_split.ensure_printed_once import ensure_printed_once
 from pkg_py.system_object.files import F_LOSSLESSCUT_EXE
 from pathlib import Path
 from passlib.context import CryptContext
@@ -34,7 +34,7 @@ from cryptography.hazmat.backends import default_backend
 from pkg_py.functions_split.kill_self_pk_program import kill_self_pk_program
 from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style
 
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.get_pnx_list import get_pnx_list
 
 
@@ -52,5 +52,5 @@ def get_current_program_pid():
         if "" != line.strip():
             pid = line
             pids.append(pid)
-            pk_print(f'pid: {pid}', print_color='blue')
+            ensure_printed(f'pid: {pid}', print_color='blue')
     return pids

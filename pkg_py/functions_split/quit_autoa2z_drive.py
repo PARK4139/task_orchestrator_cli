@@ -26,7 +26,7 @@ from selenium.webdriver.chrome.options import Options
 from pynput import mouse
 # from project_database.test_project_database import MySqlUtil
 from pkg_py.functions_split.is_window_opened import is_window_opened
-from pkg_py.functions_split.pk_press import pk_press
+from pkg_py.functions_split.press import press
 from pkg_py.functions_split.set_pk_context_state import set_pk_context_state
 from pkg_py.system_object.stamps import STAMP_ATTEMPTED
 from pkg_py.system_object.files import F_HISTORICAL_PNX
@@ -41,7 +41,7 @@ from base64 import b64decode
 from pkg_py.functions_split.is_f import is_f
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
 def quit_autoa2z_drive():
@@ -64,7 +64,7 @@ def quit_autoa2z_drive():
 
                     cmd = rf' Stop-Process -Id {pid} -Force'
                     cmd_to_os_via_powershell_exe(cmd=cmd)
-                    write_like_person(str_working='exit')
+                    ensure_writen_like_person(str_working='exit')
                     pk_press("enter")
                 else:
                     break

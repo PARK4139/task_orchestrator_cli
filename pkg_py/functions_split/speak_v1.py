@@ -2,11 +2,11 @@ from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.system_object.directories_reuseable import D_PROJECT
 from pkg_py.functions_split.cmd_to_os import cmd_to_os
 
-from pkg_py.functions_split.print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style
 
 
-def pk_speak_v1(str_working, after_delay=1.00, delimiter=None):
+def speak_v1(str_working, after_delay=1.00, delimiter=None):
     # 최적화 필요
     # 많이 쓸 수록 프로그램이 느려진다
     import os
@@ -25,7 +25,7 @@ def pk_speak_v1(str_working, after_delay=1.00, delimiter=None):
         while 1:
             working_list = []
             if LTA:
-                pk_print(f'''working_list={working_list} {'%%%FOO%%%' if LTA else ''}''')
+                ensure_printed(f'''working_list={working_list} {'%%%FOO%%%' if LTA else ''}''')
             if delimiter in str_working:
                 working_list = str_working.split(delimiter)
                 for str_working in working_list:
@@ -64,13 +64,13 @@ def pk_speak_v1(str_working, after_delay=1.00, delimiter=None):
                 try:
                     silent_mp3 = F_SILENT_MP3
                     if not os.path.exists(silent_mp3):
-                        pk_print(str_working="사일런트 mp3 f이 없습니다", print_color='red')
+                        ensure_printed(str_working="사일런트 mp3 f이 없습니다", print_color='red')
                         break
                     if not os.path.exists(ment_mp3):
                         cmd = rf'echo y | "ffmpeg" -i "concat:{os.path.abspath(silent_mp3)}|{os.path.abspath(ment__mp3)}" -acodec copy -metadata "title=Some Song" "{os.path.abspath(ment_mp3)}" -map_metadata 0:-1  >nul 2>&1'
                         cmd_to_os(cmd)
                 except Exception:
-                    pk_print(f'''{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
+                    ensure_printed(f'''{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
                 try:
                     ment_mp3 = os.path.abspath(ment_mp3)
                     try:
@@ -78,21 +78,21 @@ def pk_speak_v1(str_working, after_delay=1.00, delimiter=None):
                         source.play()
 
                         length_of_mp3 = get_length_of_mp3(ment_mp3)
-                        pk_sleep(seconds=length_of_mp3 * after_delay)
+                        ensure_slept(seconds=length_of_mp3 * after_delay)
                         return length_of_mp3
                     except FileNotFoundError:
-                        pk_print(f"{ment_mp3} 재생할 f이 없습니다")
+                        ensure_printed(f"{ment_mp3} 재생할 f이 없습니다")
                     except:
-                        pk_print(f'''{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
+                        ensure_printed(f'''{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
                         break
-                    pk_print("before_mp3_length_used_in_speak_as_async 업데이트")
+                    ensure_printed("before_mp3_length_used_in_speak_as_async 업데이트")
                     length_of_mp3 = round(float(get_length_of_mp3(ment_mp3)), 1)
                     PREVIOUS_MP3_LENGTH_USED_IN_SPEAK_AS_ASYNC = length_of_mp3
                 except Exception:
-                    pk_print(f'''{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
+                    ensure_printed(f'''{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
 
                 os.system(f'echo y | del /f "{ment__mp3}" >nul 2>&1')
-                pk_print(f"TTS 재생시도")
+                ensure_printed(f"TTS 재생시도")
             break
     except Exception:
-        pk_print(f'''{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
+        ensure_printed(f'''{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}''', print_color='red')

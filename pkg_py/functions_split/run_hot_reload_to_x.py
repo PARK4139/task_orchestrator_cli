@@ -21,7 +21,7 @@ def run_hot_reload_to_x():
     # del
     if does_pnx_exist(pnx=pnx_new):
         cmd_to_os(cmd=rf'echo y | del /f "{pnx_new}"')
-        # pk_sleep(milliseconds=500)
+        # ensure_slept(milliseconds=500)
 
     # copy
     copy_pnx_with_overwrite(pnx=src, dst=dst)

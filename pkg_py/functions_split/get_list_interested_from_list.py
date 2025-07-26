@@ -1,11 +1,11 @@
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
 def get_list_interested_from_list(working_list, string_list_include=[], string_list_exclude=[], except_extensions=[],
                                   ext_list_include=[], string_list_include_any=[]):
     import os
     if working_list is None:
-        pk_print("working_list가 None입니다. 올바른 리스트를 전달하세요.", print_color='red')
+        ensure_printed("working_list가 None입니다. 올바른 리스트를 전달하세요.", print_color='red')
     pnxs_included = []
     for item in working_list:
         if not string_list_include == []:

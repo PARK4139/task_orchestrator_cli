@@ -1,5 +1,5 @@
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
 def copy_pnx_from_local_os_to_remote_os_via_rsync(d_pnx):
@@ -15,7 +15,7 @@ def copy_pnx_from_local_os_to_remote_os_via_rsync(d_pnx):
 
         d_pnx = d_pnx
         d_pnx_new = rf"{d_pnx}_sync"
-        pk_print(f'''d_pnx_new={d_pnx_new}  {'%%%FOO%%%' if LTA else ''}''')
+        ensure_printed(f'''d_pnx_new={d_pnx_new}  {'%%%FOO%%%' if LTA else ''}''')
 
         # 기존 작업 d가 없는 경우
         if not os.path.exists(d_pnx_new):
@@ -45,10 +45,10 @@ def copy_pnx_from_local_os_to_remote_os_via_rsync(d_pnx):
             #         # speak_ments(f"타겟의 동기화가 성공 되었습니다", sleep_after_play=0.65, thread_join_mode=True)
             #         print_ment_success("타겟동기화 성공")
             #         GuiUtil.pop_up_as_complete(title_="작업성공보고", ment=f"타겟의 동기화가 성공 되었습니다\n{pnx_todo_new}", auto_click_positive_btn_after_seconds=1)
-            pk_print(str_working="타겟동기화 성공")
+            ensure_printed(str_working="타겟동기화 성공")
     except:
-        pk_print("타겟동기화 실패")
-        pk_print(f'''{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
+        ensure_printed("타겟동기화 실패")
+        ensure_printed(f'''{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
 
     # sources=[r'C:\Users\seon\Desktop\오리지널',
     #            r'C:\Users\seon\Desktop\오리지널2',

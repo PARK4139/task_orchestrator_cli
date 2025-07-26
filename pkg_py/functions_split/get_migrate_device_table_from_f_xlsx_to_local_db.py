@@ -1,4 +1,4 @@
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
 def get_migrate_device_table_from_f_xlsx_to_local_db():
@@ -31,16 +31,16 @@ def get_migrate_device_table_from_f_xlsx_to_local_db():
     cursor = conn.cursor()
     cursor.execute("SELECT COUNT(*) FROM xc_status;")
     total_rows = cursor.fetchone()[0]
-    pk_print(f"xc_status 테이블 총 {total_rows}행 저장됨", print_color='blue')
+    ensure_printed(f"xc_status 테이블 총 {total_rows}행 저장됨", print_color='blue')
 
-    pk_print("저장된 데이터 미리보기:", print_color='blue')
+    ensure_printed("저장된 데이터 미리보기:", print_color='blue')
     preview_df = pd.read_sql("SELECT * FROM xc_status LIMIT 5", conn)
     print(preview_df)
 
-    pk_print("테이블 컬럼 구조:", print_color='blue')
+    ensure_printed("테이블 컬럼 구조:", print_color='blue')
     cursor.execute("PRAGMA table_info(xc_status);")
     for col in cursor.fetchall():
         print(f"- {col[1]} ({col[2]})")
 
     conn.close()
-    pk_print("마이그레이션 완료: xc_status.db (테이블명: xc_status)", print_color='green')
+    ensure_printed("마이그레이션 완료: xc_status.db (테이블명: xc_status)", print_color='green')

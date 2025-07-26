@@ -18,7 +18,7 @@ from pytube import Playlist
 from PySide6.QtWidgets import QApplication
 from prompt_toolkit.styles import Style
 from pkg_py.functions_split.rerun_losslesscut import rerun_losslesscut
-from pkg_py.functions_split.write_list_to_f import write_list_to_f
+from pkg_py.functions_split.ensure_list_written_to_f import ensure_list_written_to_f
 from pkg_py.system_object.local_test_activate import LTA
 from mutagen.mp3 import MP3
 from dirsync import sync

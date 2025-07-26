@@ -3,7 +3,7 @@ from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 from pkg_py.functions_split.ensure_pnx_made import ensure_pnx_made
 from pkg_py.functions_split.get_historical_list import get_historical_list
 from pkg_py.functions_split.get_value_completed import get_value_completed
-from pkg_py.functions_split.write_list_to_f import ensure_list_written_to_f
+from pkg_py.functions_split.ensure_list_written_to_f import ensure_list_written_to_f
 from pkg_py.system_object.directories_reuseable import D_PROJECT
 
 

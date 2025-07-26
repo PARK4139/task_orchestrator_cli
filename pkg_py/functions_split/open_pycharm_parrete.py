@@ -3,7 +3,7 @@ import logging
 import os
 import time
 
-from pkg_py.pk_paste_as_auto import pk_copy
+from pkg_py.pk_paste_as_auto import copy
 from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.system_object.state_via_database import PkSqlite3DB
 from pkg_py.system_object.map_massages import PkMessages2025
@@ -15,19 +15,19 @@ from pkg_py.functions_split.ensure_pk_system_exit_silent import ensure_pk_system
 from pkg_py.functions_split.ensure_start_time_logged import ensure_start_time_logged
 from pkg_py.functions_split.get_file_id import get_file_id
 from pkg_py.functions_split.get_value_by_file_id import get_value_by_file_id
-from pkg_py.functions_split.pk_sleep import pk_sleep
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_slept import ensure_slept
+from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.get_str_from_f import get_str_from_f
-from pkg_py.functions_split.pk_press import pk_press
-from pkg_py.functions_split.pk_ensure_loop_delayed_at_loop_foot import pk_ensure_loop_delayed_at_loop_foot
-from pkg_py.functions_split.pk_type import pk_type
+from pkg_py.functions_split.press import press
+from pkg_py.functions_split.ensure_loop_delayed_at_loop_foot import ensure_loop_delayed_at_loop_foot
+from pkg_py.functions_split.type import type
 
 
 
 def open_pycharm_parrete():
     pk_press("shift")
-    pk_sleep(100)
+    ensure_slept(100)
     pk_press("shift")
-    pk_sleep(500)
+    ensure_slept(500)
 
 

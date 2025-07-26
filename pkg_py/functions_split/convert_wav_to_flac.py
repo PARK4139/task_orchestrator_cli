@@ -23,7 +23,7 @@ from prompt_toolkit import PromptSession
 from pkg_py.functions_split.ensure_window_to_front import ensure_window_to_front
 from pkg_py.functions_split.load_f_video_on_losslesscut import load_f_video_on_losslesscut
 from pkg_py.functions_split.is_window_title_opened import is_window_title_opened
-from pkg_py.functions_split.pk_print_once import pk_print_once
+from pkg_py.functions_split.ensure_printed_once import ensure_printed_once
 
 from pkg_py.functions_split.set_pk_context_state import set_pk_context_state
 from pkg_py.functions_split.ensure_console_cleared import ensure_console_cleared
@@ -41,7 +41,7 @@ from pkg_py.functions_split.get_pnx_windows_style import get_pnx_windows_style
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.get_pnx_list import get_pnx_list
 from pkg_py.functions_split.get_d_working import get_d_working
 
@@ -57,9 +57,9 @@ def convert_wav_to_flac(pnx_wav):
 
     os.system("chcp 65001 >nul")
 
-    pk_print(f'from : {pnx_wav}', print_color='blue')
+    ensure_printed(f'from : {pnx_wav}', print_color='blue')
     file_edited = f'{os.path.splitext(os.path.basename(pnx_wav))[0]}.flac'
-    pk_print(f'to   : {file_edited}', print_color='blue')
+    ensure_printed(f'to   : {file_edited}', print_color='blue')
 
     ffmpeg_exe = F_FFMPEG_EXE
     destination = 'storage'
@@ -68,5 +68,5 @@ def convert_wav_to_flac(pnx_wav):
     except Exception as e:
         pass
     pk_chdir(destination)
-    pk_print(f'"{ffmpeg_exe}" -i "{pnx_wav}" -c:a flac "{file_edited}"        를 수행합니다.', print_color='blue')
+    ensure_printed(f'"{ffmpeg_exe}" -i "{pnx_wav}" -c:a flac "{file_edited}"        를 수행합니다.', print_color='blue')
     subprocess.check_output(f'"{ffmpeg_exe}" -i "{pnx_wav}" -c:a flac "{file_edited}"', shell=True)

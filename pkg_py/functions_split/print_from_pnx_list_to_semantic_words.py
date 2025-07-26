@@ -1,5 +1,5 @@
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
 def print_from_pnx_list_to_semantic_words(pnx):
@@ -34,4 +34,4 @@ def print_from_pnx_list_to_semantic_words(pnx):
         korean_words = extract_korean_words(item_pnx)
         special_korean_words = special_korean_words + korean_words
     word_count = Counter(special_korean_words)
-    pk_print(str_working=rf'''word_count="{word_count}"  {'%%%FOO%%%' if LTA else ''}''')
+    ensure_printed(str_working=rf'''word_count="{word_count}"  {'%%%FOO%%%' if LTA else ''}''')

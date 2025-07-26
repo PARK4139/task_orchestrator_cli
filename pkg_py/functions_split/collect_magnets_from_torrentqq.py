@@ -17,8 +17,8 @@ from pynput import mouse
 from pkg_py.functions_split.print_iterable_as_vertical import print_iterable_as_vertical
 from pkg_py.functions_split.is_window_title_front import is_window_title_front
 from pkg_py.functions_split.is_window_title_opened import is_window_title_opened
-from pkg_py.functions_split.pk_print_once import pk_print_once
-from pkg_py.functions_split.write_list_to_f import write_list_to_f
+from pkg_py.functions_split.ensure_printed_once import ensure_printed_once
+from pkg_py.functions_split.ensure_list_written_to_f import ensure_list_written_to_f
 from pkg_py.system_object.files import F_POT_PLAYER_MINI_64_EXE
 from pkg_py.system_object.directories import D_PKG_TXT
 from PIL import Image
@@ -31,7 +31,7 @@ from pkg_py.system_object.is_os_windows import is_os_windows
 from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
 
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
 def collect_magnets_from_torrentqq(search_keyword=None, driver=None, via_f_txt=True):
@@ -63,18 +63,18 @@ def collect_magnets_from_torrentqq(search_keyword=None, driver=None, via_f_txt=T
         filtered_list = get_list_contained_with_stamp_from_f(f=collect_magnets_from_nyaa_si_txt, STAMP=STAMP_TORRENTQQ)
 
         # 전처리
-        pk_print(f'''search_keyword_list={filtered_list}  {'%%%FOO%%%' if LTA else ''}''')
+        ensure_printed(f'''search_keyword_list={filtered_list}  {'%%%FOO%%%' if LTA else ''}''')
         filtered_list = get_list_removed_element_contain_prompt(working_list=filtered_list,
                                                                 prompt="#")  # 시작 문자가 '#'인 요소를 remove
-        pk_print(f'''search_keyword_list={filtered_list}  {'%%%FOO%%%' if LTA else ''}''')
+        ensure_printed(f'''search_keyword_list={filtered_list}  {'%%%FOO%%%' if LTA else ''}''')
         filtered_list = get_list_striped_element(working_list=filtered_list)
-        pk_print(f'''search_keyword_list={filtered_list}  {'%%%FOO%%%' if LTA else ''}''')
+        ensure_printed(f'''search_keyword_list={filtered_list}  {'%%%FOO%%%' if LTA else ''}''')
         filtered_list = get_list_removed_empty(working_list=filtered_list)
-        pk_print(f'''search_keyword_list={filtered_list}  {'%%%FOO%%%' if LTA else ''}''')
+        ensure_printed(f'''search_keyword_list={filtered_list}  {'%%%FOO%%%' if LTA else ''}''')
         filtered_list = get_list_deduplicated(working_list=filtered_list)
-        pk_print(f'''search_keyword_list={filtered_list}  {'%%%FOO%%%' if LTA else ''}''')
+        ensure_printed(f'''search_keyword_list={filtered_list}  {'%%%FOO%%%' if LTA else ''}''')
         print_iterable_as_vertical(item_iterable=filtered_list, item_iterable_n='search_keyword_list')
-        pk_print(str_working=rf'''len(search_keyword_list)="{len(filtered_list)}"  {'%%%FOO%%%' if LTA else ''}''')
+        ensure_printed(str_working=rf'''len(search_keyword_list)="{len(filtered_list)}"  {'%%%FOO%%%' if LTA else ''}''')
 
         # if driver is None:
         #     driver = get_driver_selenium_solved_cloudflare_sequrity()
@@ -91,21 +91,21 @@ def collect_magnets_from_torrentqq(search_keyword=None, driver=None, via_f_txt=T
                 1] if "&dn=" in magnet else "")]
             magnets_list = [magnet for magnet in sorted(magnets_list, key=lambda magnet: magnet.split("&mgt_url=")[
                 1] if "&mgt_url=" in magnet else "")]
-            write_list_to_f(f=magnets_txt, working_list=magnets_list, mode="a")
+            ensure_list_written_to_f(f=magnets_txt, working_list=magnets_list, mode="a")
 
             # magnets 중복remove
             magnets_list = get_list_from_f(f=magnets_txt)
             magnets_list = get_list_striped_element(working_list=magnets_list)
             magnets_list = get_list_removed_empty(working_list=magnets_list)
             magnets_list = get_list_deduplicated(working_list=magnets_list)
-            write_list_to_f(f=magnets_txt, working_list=magnets_list, mode="w")
+            ensure_list_written_to_f(f=magnets_txt, working_list=magnets_list, mode="w")
 
         # search_keyword_list 목록추가, search_keyword_list 중복remove
         filtered_list = get_list_from_f(f=collect_magnets_from_nyaa_si_txt) + filtered_list
         filtered_list = get_list_striped_element(working_list=filtered_list)
         filtered_list = get_list_removed_empty(working_list=filtered_list)
         filtered_list = get_list_deduplicated(working_list=filtered_list)
-        write_list_to_f(f=collect_magnets_from_nyaa_si_txt, working_list=filtered_list, mode="w")
+        ensure_list_written_to_f(f=collect_magnets_from_nyaa_si_txt, working_list=filtered_list, mode="w")
 
     except:
         traceback.print_exc(file=sys.stdout)

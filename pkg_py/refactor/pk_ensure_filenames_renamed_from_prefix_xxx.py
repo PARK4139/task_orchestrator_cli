@@ -8,7 +8,7 @@ from pkg_py.functions_split.ensure_do_finally_routine import ensure_do_finally_r
 from pkg_py.functions_split.get_file_id import get_file_id
 from pkg_py.functions_split.get_value_completed import get_value_completed
 from pkg_py.functions_split.get_values_from_historical_file_routine import get_values_from_historical_file_routine
-from pkg_py.functions_split.pk_initialize_and_customize_logging_config import pk_initialize_and_customize_logging_config
+from pkg_py.functions_split.initialize_and_customize_logging_config import initialize_and_customize_logging_config
 from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.system_object.map_massages import PkMessages2025
 from pkg_py.system_object.directories import D_FUNCTIONS_SPLIT
@@ -48,7 +48,7 @@ def rename_files(d_working, rename_map, dry_run=True):
     return updated_rename_map
 
 
-def pk_ensure_filenames_renamed_from_prefix_xxx(mode=None):
+def ensure_filenames_renamed_from_prefix_xxx(mode=None):
     func_n = inspect.currentframe().f_code.co_name
     if LTA:
         d_working = D_FUNCTIONS_SPLIT

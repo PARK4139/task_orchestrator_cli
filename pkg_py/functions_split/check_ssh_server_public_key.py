@@ -38,7 +38,7 @@ from pkg_py.functions_split.rerun_losslesscut import rerun_losslesscut
 from pkg_py.functions_split.get_f_video_to_load import get_f_video_to_load
 from pkg_py.functions_split.load_f_video_on_losslesscut import load_f_video_on_losslesscut
 from pkg_py.functions_split.is_window_title_front import is_window_title_front
-from pkg_py.functions_split.pk_press import pk_press
+from pkg_py.functions_split.press import press
 from pkg_py.functions_split.cmd_to_os import cmd_to_os
 from pkg_py.functions_split.set_pk_context_state import set_pk_context_state
 from pkg_py.system_object.files import F_POT_PLAYER_MINI_64_EXE
@@ -70,7 +70,7 @@ from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
 from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style
 
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.get_pnx_list import get_pnx_list
 
 
@@ -93,16 +93,16 @@ def check_ssh_server_public_key(key_public, **config_remote_os):
         std_out_str = stdout.read().decode().strip()
         signiture = "Key exists"
         if signiture == std_out_str:
-            pk_print(str_working="PUBLIC KEY IS ALREADY REGISTERED ON THE REMOTE SERVER.")
+            ensure_printed(str_working="PUBLIC KEY IS ALREADY REGISTERED ON THE REMOTE SERVER.")
             return 1
         else:
-            pk_print(str_working="PUBLIC KEY IS NOT REGISTERED ON THE REMOTE SERVER.", print_color='red')
+            ensure_printed(str_working="PUBLIC KEY IS NOT REGISTERED ON THE REMOTE SERVER.", print_color='red')
             return 0
 
     except Exception as e:
-        pk_print(f"{STAMP_ERROR} {e}", print_color='red')
+        ensure_printed(f"{STAMP_ERROR} {e}", print_color='red')
         raise
     finally:
         ssh.close()
         if LTA:
-            pk_print(rf"SSH connection closed.")
+            ensure_printed(rf"SSH connection closed.")

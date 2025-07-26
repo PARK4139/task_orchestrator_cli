@@ -19,10 +19,10 @@ def ensure_pycharm_module_optimize():
     from pkg_py.functions_split.move_pycharm_cursor_to_file import move_pycharm_cursor_to_file
     from pkg_py.functions_split.open_pycharm_parrete import open_pycharm_parrete
     from pkg_py.functions_split.paste_and_enter import paste_and_enter
-    from pkg_py.functions_split.pk_ensure_loop_delayed_at_loop_foot import pk_ensure_loop_delayed_at_loop_foot
+    from pkg_py.functions_split.ensure_loop_delayed_at_loop_foot import ensure_loop_delayed_at_loop_foot
     from pkg_py.functions_split.press_ctrl_alt_l_nth import press_ctrl_alt_l_nth
     from pkg_py.refactor.pk_ensure_keyboard_mouse_macro import PkMacroRoutines
-    from pkg_py.pk_paste_as_auto import pk_copy
+    from pkg_py.pk_paste_as_auto import copy
     from pkg_py.system_object.local_test_activate import LTA
     from pkg_py.system_object.state_via_database import PkSqlite3DB
     from pkg_py.system_object.map_massages import PkMessages2025

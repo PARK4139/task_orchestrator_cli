@@ -6,7 +6,7 @@ from pkg_py.functions_split.get_fzf_command import get_fzf_command
 from pkg_py.functions_split.get_last_history import get_last_history
 from pkg_py.functions_split.get_nx import get_nx
 from pkg_py.functions_split.open_pnx_by_ext import ensure_pnx_opened_by_ext
-from pkg_py.functions_split.print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.save_to_history import save_to_history
 from pkg_py.system_object.directories import D_PKG_HISTORY
 from pkg_py.system_object.local_test_activate import LTA
@@ -19,7 +19,7 @@ def get_value_from_fzf_routine(file_id, options, editable):
     history_file = get_history_file(file_id=file_id)
 
     last_selected = get_last_history(history_file)
-    pk_print(f'''[{PkMessages2025.DATA}] last_selected={last_selected} {'%%%FOO%%%' if LTA else ''}''')
+    ensure_printed(f'''[{PkMessages2025.DATA}] last_selected={last_selected} {'%%%FOO%%%' if LTA else ''}''')
     selected_value = None
     fzf_cmd = get_fzf_command()
 
@@ -61,7 +61,7 @@ def get_value_from_fzf_routine(file_id, options, editable):
         else:
             selected_value = query
 
-        pk_print(f'''[{PkMessages2025.DATA}] selected_value={selected_value} {'%%%FOO%%%' if LTA else ''}''')
+        ensure_printed(f'''[{PkMessages2025.DATA}] selected_value={selected_value} {'%%%FOO%%%' if LTA else ''}''')
 
         if not selected_value:
             print("Selection was cancelled.")
@@ -78,6 +78,6 @@ def get_value_from_fzf_routine(file_id, options, editable):
         print(f"[WARN] Entered value is not in the option list: {selected_value}")
 
     contents_to_save = selected_value
-    pk_print(f'''[{PkMessages2025.DATA}] contents_to_save={contents_to_save} {'%%%FOO%%%' if LTA else ''}''')
+    ensure_printed(f'''[{PkMessages2025.DATA}] contents_to_save={contents_to_save} {'%%%FOO%%%' if LTA else ''}''')
     save_to_history(contents_to_save=contents_to_save, history_file=history_file)
     return selected_value

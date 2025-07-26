@@ -7,9 +7,9 @@ from pkg_py.system_object.files import F_FFMPEG_EXE
 from dataclasses import dataclass
 from pkg_py.functions_split.get_value_completed import get_value_completed
 from pkg_py.functions_split.is_f import is_f
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
 def classify_pnx_list_to_pn_dir(d_working):
@@ -18,7 +18,7 @@ def classify_pnx_list_to_pn_dir(d_working):
     for pnx_nx in os.listdir(d_working):
         pnx_item = os.path.join(d_working, pnx_nx)
         if is_f(pnx_item):
-            pk_print(f'''pnx_item={pnx_item}''')
+            ensure_printed(f'''pnx_item={pnx_item}''')
             f_n_d = os.path.join(d_working, pnx_nx)
             f_n_d_pn = get_pn(f_n_d)
 

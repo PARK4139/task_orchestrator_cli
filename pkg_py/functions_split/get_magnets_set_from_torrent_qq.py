@@ -1,5 +1,5 @@
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.print_iterable_as_vertical import print_iterable_as_vertical
 
 
@@ -11,13 +11,13 @@ def get_magnets_set_from_torrent_qq(search_keyword, driver=None):
         from bs4 import BeautifulSoup
 
         from colorama import init as pk_colorama_init
-        pk_colorama_init_once()
+        colorama_init_once()
 
         magnet_link_set = set()
-        pk_print(f'''search_keyword={search_keyword}  {'%%%FOO%%%' if LTA else ''}''')
+        ensure_printed(f'''search_keyword={search_keyword}  {'%%%FOO%%%' if LTA else ''}''')
 
         if search_keyword == "":
-            pk_print(f"search_keyword is blank")
+            ensure_printed(f"search_keyword is blank")
             return magnet_link_set
 
         if driver is None:
@@ -35,17 +35,17 @@ def get_magnets_set_from_torrent_qq(search_keyword, driver=None):
         body = get_bs4_element_ResultSet(driver=driver, tag_n="body")
         str_negative = '잠시만 기다려'
         if str_negative in body:
-            pk_print(f'''cloudflare sequrity  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
+            ensure_printed(f'''cloudflare sequrity  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
             return magnet_link_set
 
         # search "torrentqq347.com" in browser
         url = f'https://torrentqq356.com/search?q={search_keyword}'
         url_encoded = get_str_encoded_url(str_working=url)
-        pk_print(f'''url={url:20}  url_encoded={url_encoded:20} {'%%%FOO%%%' if LTA else ''}''')
+        ensure_printed(f'''url={url:20}  url_encoded={url_encoded:20} {'%%%FOO%%%' if LTA else ''}''')
         # driver_get_url_in_browser_and_wait_loaded(url=url, driver=driver) #fail
         driver_get_url_in_browser(url=url, driver=driver)  # go to list page
         div_row_at_row = get_bs4_element_ResultSet(driver=driver, tag_n="div", class_n="row at-row")
-        # pk_print(f'''div_row_at_row={div_row_at_row}  {'%%%FOO%%%' if LTA else ''}''')
+        # ensure_printed(f'''div_row_at_row={div_row_at_row}  {'%%%FOO%%%' if LTA else ''}''')
 
         # move to detail page
         detail_page_link_list = []
@@ -58,16 +58,16 @@ def get_magnets_set_from_torrent_qq(search_keyword, driver=None):
         keywords_required = search_keyword.split(" ")
         detail_page_link_matched_list = []
         for title, href in detail_page_link_list:
-            pk_print(f'''title={title:80s}  href={href}''')
+            ensure_printed(f'''title={title:80s}  href={href}''')
             detail_page_link_matched_list.append((title, href))
         # print_iterable_as_vertical(item_iterable=detail_page_link_list, item_iterable_n="detail_page_link_list")
         if len(detail_page_link_matched_list) == 0:
-            pk_print(f'''detail page links not matched  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
+            ensure_printed(f'''detail page links not matched  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
             return magnet_link_set
         print_iterable_as_vertical(item_iterable=detail_page_link_matched_list, item_iterable_n="link_matched_list")
         for title, href in detail_page_link_matched_list:
             # driver_get_url_as_browser_tab_via_js(driver, href)
-            pk_print(
+            ensure_printed(
                 f'''driver.title={driver.title} keywords_required={keywords_required} {'%%%FOO%%%' if LTA else ''}''')
             if not is_all_included_in_prompt(prompt=title, txt_list=keywords_required):
                 continue
@@ -76,7 +76,7 @@ def get_magnets_set_from_torrent_qq(search_keyword, driver=None):
             body = get_bs4_element_ResultSet(driver=driver, tag_n="body")
             string_negative = '잠시만 기다리십시오…torrentqq'
             if string_negative in body:
-                pk_print(f'''{string_negative} in bs4_element_ResultSet ''', print_color='red')
+                ensure_printed(f'''{string_negative} in bs4_element_ResultSet ''', print_color='red')
                 continue
             href_list = []
             title_list = []
@@ -111,27 +111,27 @@ def get_magnets_set_from_torrent_qq(search_keyword, driver=None):
                 magnet_path = re.search(r"'(.+?)'", onclick)
                 if magnet_path:
                     mgt_url = f"{base_url}{magnet_path.group(1)}"
-                    pk_print(f'''mgt_url={mgt_url}  {'%%%FOO%%%' if LTA else ''}''')
+                    ensure_printed(f'''mgt_url={mgt_url}  {'%%%FOO%%%' if LTA else ''}''')
                     # driver_get_url_in_browser(url=href, driver=driver)
                     # kill_tabs_except_current_tab_via_selenium(driver)  # 나머지 탭 닫기
                     script_tag_list = get_bs4_element_ResultSet(driver=driver, tag_n="script")
                     for script_tag in script_tag_list:
-                        pk_print(f'''script_tag={script_tag}  {'%%%FOO%%%' if LTA else ''}''')
+                        ensure_printed(f'''script_tag={script_tag}  {'%%%FOO%%%' if LTA else ''}''')
                         if script_tag and "magnet:?" in script_tag.text:
                             magnet_link = script_tag.text.split('"')[1]
                             magnet_url_customed = f"{magnet_link}&dn={search_keyword_without_useless}"
-                            pk_print(f'''magnet_url_customed={magnet_url_customed:80s}  {'%%%FOO%%%' if LTA else ''}''')
+                            ensure_printed(f'''magnet_url_customed={magnet_url_customed:80s}  {'%%%FOO%%%' if LTA else ''}''')
                             magnet_link_set.add(magnet_url_customed)
                         else:
                             if mgt_url and "/magnet/" in mgt_url:
                                 magnet_url_customed = f"{driver.title}&mgt_url={mgt_url}"
-                                pk_print(f'''magnet_url_customed={magnet_url_customed}  {'%%%FOO%%%' if LTA else ''}''')
+                                ensure_printed(f'''magnet_url_customed={magnet_url_customed}  {'%%%FOO%%%' if LTA else ''}''')
                                 magnet_link_set.add(magnet_url_customed)
                             else:
-                                pk_print(f'''magnet_link not found''', print_color='red')
+                                ensure_printed(f'''magnet_link not found''', print_color='red')
 
                 else:
-                    pk_print(f'''magnet_link does not exist''', print_color='red')
+                    ensure_printed(f'''magnet_link does not exist''', print_color='red')
                 break
         print_iterable_as_vertical(item_iterable=magnet_link_set, item_iterable_n="magnet_link_set")
 

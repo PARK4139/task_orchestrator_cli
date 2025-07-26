@@ -26,7 +26,7 @@ def is_window_opened(window_title_seg):
 
     for windows_title_opened in windows_titles_opened:
         if window_title_seg in windows_title_opened:
-            # pk_print(f'''{windows_title_opened}" 창이 열려 있습니다''')
+            # ensure_printed(f'''{windows_title_opened}" 창이 열려 있습니다''')
             return 1
-    # pk_print(f'''{window_title_seg}" 창이 닫혀 있습니다''')
+    # ensure_printed(f'''{window_title_seg}" 창이 닫혀 있습니다''')
     return 0

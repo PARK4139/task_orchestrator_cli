@@ -25,8 +25,8 @@ from pkg_py.functions_split.get_historical_list import get_historical_list
 from pkg_py.functions_split.get_video_filtered_list import get_video_filtered_list
 from pkg_py.functions_split.is_window_title_front import is_window_title_front
 from pkg_py.functions_split.is_window_title_opened import is_window_title_opened
-from pkg_py.functions_split.pk_press import pk_press
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.press import press
+from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.cmd_to_os import cmd_to_os
 from pkg_py.functions_split.get_list_sorted import get_list_sorted
 

@@ -1,5 +1,5 @@
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
 def exec_project_cmake(project_pnx, **config_remote_os):
@@ -21,12 +21,12 @@ def exec_project_cmake(project_pnx, **config_remote_os):
         cmd_to_remote_os_with_pubkey(cmd='sudo apt update', **config_remote_os)
         if not len(std_err_list) == 0:
             for std_err_str in std_err_list:
-                pk_print(str_working=rf'{STAMP_REMOTE_ERROR} {std_err_str}', print_color='red')
+                ensure_printed(str_working=rf'{STAMP_REMOTE_ERROR} {std_err_str}', print_color='red')
             return
         if not len(std_out_list) == 0:
             for std_out_str in std_out_list:
-                pk_print(str_working=rf'{STAMP_REMOTE_DEBUG} {std_out_str}')
-        pk_print(str_working=rf'''{func_n}()  {'%%%FOO%%%' if LTA else ''}''', print_color='green')
+                ensure_printed(str_working=rf'{STAMP_REMOTE_DEBUG} {std_out_str}')
+        ensure_printed(str_working=rf'''{func_n}()  {'%%%FOO%%%' if LTA else ''}''', print_color='green')
     except:
-        pk_print(str_working=rf"{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''} ", print_color='red')
+        ensure_printed(str_working=rf"{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''} ", print_color='red')
         raise

@@ -62,7 +62,7 @@ from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
 from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style
 from pkg_py.functions_split.is_os_windows import is_os_windows
 
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.get_pnx_list import get_pnx_list
 
 
@@ -72,7 +72,7 @@ def print_current_mouse_abs_info():
     import ipdb
     func_n = inspect.currentframe().f_code.co_name
     x, y = get_current_mouse_abs_info()
-    pk_print(f'''x="{x}"''')
-    pk_print(f'''y="{y}"''')
+    ensure_printed(f'''x="{x}"''')
+    ensure_printed(f'''y="{y}"''')
 
     ipdb.set_trace()

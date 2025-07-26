@@ -1,7 +1,7 @@
 import win32com.client
 from pkg_py.functions_split.set_pk_context_state import set_pk_context_state
 from bs4 import ResultSet
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
 def get_data_from_f_toml(f):

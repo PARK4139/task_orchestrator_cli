@@ -24,7 +24,7 @@ def guide_to_check_routines():
     # ment='루틴을 가이드합니다'
     # speak(ment=ment)
 
-    # pk_sleep(milliseconds=50)
+    # ensure_slept(milliseconds=50)
 
     # ment: str="\n".join(routines)
     # print_as_gui(ment=ment, auto_click_positive_btn_after_seconds=10)

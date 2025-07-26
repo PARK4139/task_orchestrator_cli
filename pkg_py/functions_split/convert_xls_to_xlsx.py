@@ -1,6 +1,6 @@
 from pkg_py.system_object.encodings import Encoding
 
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
 def convert_xls_to_xlsx(f_xls):
@@ -22,10 +22,10 @@ def convert_xls_to_xlsx(f_xls):
     try:
         if ".xls" == get_x(f_xls):
             if not os.path.exists(f_xls):
-                pk_print(f"{func_n}() {get_x(f_xls)} 는 처리할 수 없는 확장자입니다.", print_color='red')
+                ensure_printed(f"{func_n}() {get_x(f_xls)} 는 처리할 수 없는 확장자입니다.", print_color='red')
                 return
     except CustomErrorUtil as e:
-        pk_print(f"{func_n}() {get_x(f_xls)} 는 처리할 수 없는 확장자입니다.", print_color='red')
+        ensure_printed(f"{func_n}() {get_x(f_xls)} 는 처리할 수 없는 확장자입니다.", print_color='red')
         return
 
     try:
@@ -78,5 +78,5 @@ def convert_xls_to_xlsx(f_xls):
         # print_ment_blue(df)
 
     except Exception as e:
-        pk_print(f"{func_n}() \n {traceback.format_exc()}", print_color='red')
+        ensure_printed(f"{func_n}() \n {traceback.format_exc()}", print_color='red')
     print_success(f"{func_n}(), success")

@@ -69,9 +69,9 @@ from pkg_py.functions_split.is_window_title_front import is_window_title_front
 from pkg_py.functions_split.is_window_title_opened import is_window_title_opened
 from pkg_py.functions_split.is_window_opened import is_window_opened
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
-from pkg_py.functions_split.pk_press import pk_press
-from pkg_py.functions_split.pk_print_once import pk_print_once
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.press import press
+from pkg_py.functions_split.ensure_printed_once import ensure_printed_once
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 from pkg_py.functions_split.set_pk_context_state import set_pk_context_state
 from pkg_py.functions_split.ensure_console_cleared import ensure_console_cleared
@@ -113,7 +113,7 @@ from bs4 import ResultSet
 from bs4 import BeautifulSoup
 from base64 import b64decode
 from pkg_py.functions_split.get_nx import get_nx
-from pkg_py.functions_split.assist_to_load_video_at_losslesscut import pk_ensure_video_loaded_at_losslesscut
+from pkg_py.functions_split.assist_to_load_video_at_losslesscut import ensure_video_loaded_at_losslesscut
 from pkg_py.system_object.stamps import STAMP_TRY_GUIDE, STAMP_UNIT_TEST_EXCEPTION_DISCOVERED
 from pkg_py.system_object.directories import D_PKG_PY
 from pkg_py.functions_split.get_list_calculated import get_list_calculated
@@ -127,7 +127,7 @@ from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.get_d_working import get_d_working
 
 
@@ -145,17 +145,17 @@ def kill_chrome_tab_duplicated():
         if is_window_opened(window_title_seg=window_title):
             ensure_window_to_front(window_title_seg=window_title)
 
-        pk_print(str_working=rf'''loop_out_cnt="{loop_out_cnt}"  {'%%%FOO%%%' if LTA else ''}''')
-        pk_print(str_working=rf'''loop_limit="{loop_limit}"  {'%%%FOO%%%' if LTA else ''}''')
+        ensure_printed(str_working=rf'''loop_out_cnt="{loop_out_cnt}"  {'%%%FOO%%%' if LTA else ''}''')
+        ensure_printed(str_working=rf'''loop_limit="{loop_limit}"  {'%%%FOO%%%' if LTA else ''}''')
 
         # 탭을 전환하고 URL을 가져옵니다.
         pk_press("ctrl", "l")
-        pk_sleep(milliseconds=5)
+        ensure_slept(milliseconds=5)
         url_dragged = get_txt_dragged()
 
         # 중복 여부 확인
         if url_dragged in chrome_tab_urls_processed:
-            pk_print(str_working=rf'''URL already processed: "{url_dragged}"  {'%%%FOO%%%' if LTA else ''}''')
+            ensure_printed(str_working=rf'''URL already processed: "{url_dragged}"  {'%%%FOO%%%' if LTA else ''}''')
             pk_press("ctrl", "tab")  # 다음 탭으로 이동
             loop_out_cnt += 1
             if loop_out_cnt >= loop_limit:
@@ -164,23 +164,23 @@ def kill_chrome_tab_duplicated():
 
         # 다음 탭으로 전환 후 URL 가져오기
         pk_press("ctrl", "tab")
-        pk_sleep(milliseconds=5)
+        ensure_slept(milliseconds=5)
         pk_press("ctrl", "l")
-        pk_sleep(milliseconds=5)
+        ensure_slept(milliseconds=5)
         url_dragged_new = get_txt_dragged()
 
-        pk_print(str_working=rf'''url_dragged="{url_dragged}"  {'%%%FOO%%%' if LTA else ''}''')
-        pk_print(str_working=rf'''url_dragged_new="{url_dragged_new}"  {'%%%FOO%%%' if LTA else ''}''')
+        ensure_printed(str_working=rf'''url_dragged="{url_dragged}"  {'%%%FOO%%%' if LTA else ''}''')
+        ensure_printed(str_working=rf'''url_dragged_new="{url_dragged_new}"  {'%%%FOO%%%' if LTA else ''}''')
 
         # 중복된 URL이면 탭 닫기
         if url_dragged == url_dragged_new:
-            pk_print(str_working=rf'''Closing duplicate tab for URL: "{url_dragged}"  {'%%%FOO%%%' if LTA else ''}''')
+            ensure_printed(str_working=rf'''Closing duplicate tab for URL: "{url_dragged}"  {'%%%FOO%%%' if LTA else ''}''')
             pk_press("ctrl", "w")  # 탭 닫기
             continue
 
         # 처리된 URL을 리스트에 추가
         chrome_tab_urls_processed.append(url_dragged)
-        pk_print(
+        ensure_printed(
             str_working=rf'''chrome_tab_urls_processed="{chrome_tab_urls_processed}"  {'%%%FOO%%%' if LTA else ''}''')
 
         # 최대 반복 횟수 초과 시 종료

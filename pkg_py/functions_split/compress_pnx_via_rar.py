@@ -8,7 +8,7 @@ from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style
 from pkg_py.functions_split.get_pnx_wsl_unix_style import get_pnx_wsl_unix_style
 
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.get_d_working import get_d_working
 
 
@@ -18,7 +18,7 @@ from pkg_py.functions_split.get_nx import get_nx
 from pkg_py.functions_split.cmd_to_os import cmd_to_os
 from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style
 from pkg_py.functions_split.get_pnx_wsl_unix_style import get_pnx_wsl_unix_style
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.get_d_working import get_d_working
 
 
@@ -56,15 +56,15 @@ def compress_pnx_via_rar(src, dst, with_timestamp=1):
     dst_nx_timestamp_rar = rf"{dst}/{n}{timestamp}.{rar}"
 
     # 로깅
-    # pk_print(str_working=rf'''dst="{dst}"  {'%%%FOO%%%' if LTA else ''}''')
-    # pk_print(str_working=rf'''pnx="{pnx}"  {'%%%FOO%%%' if LTA else ''}''')
-    # pk_print(str_working=rf'''p="{p}"  {'%%%FOO%%%' if LTA else ''}''')
-    # pk_print(str_working=rf'''n="{n}"  {'%%%FOO%%%' if LTA else ''}''')
-    # pk_print(str_working=rf'''nx="{nx}"  {'%%%FOO%%%' if LTA else ''}''')
-    # pk_print(str_working=rf'''x="{x}"  {'%%%FOO%%%' if LTA else ''}''')
-    # pk_print(str_working=rf'''dst_nx_rar="{dst_nx_rar}"  {'%%%FOO%%%' if LTA else ''}''')
-    # pk_print(str_working=rf'''dst_nx_timestamp_rar="{dst_nx_timestamp_rar}"  {'%%%FOO%%%' if LTA else ''}''')
-    # pk_print(string = rf'''dst_nx_timestamp_rar="{dst_nx_timestamp_rar}"  {'%%%FOO%%%' if LTA else ''}''')
+    # ensure_printed(str_working=rf'''dst="{dst}"  {'%%%FOO%%%' if LTA else ''}''')
+    # ensure_printed(str_working=rf'''pnx="{pnx}"  {'%%%FOO%%%' if LTA else ''}''')
+    # ensure_printed(str_working=rf'''p="{p}"  {'%%%FOO%%%' if LTA else ''}''')
+    # ensure_printed(str_working=rf'''n="{n}"  {'%%%FOO%%%' if LTA else ''}''')
+    # ensure_printed(str_working=rf'''nx="{nx}"  {'%%%FOO%%%' if LTA else ''}''')
+    # ensure_printed(str_working=rf'''x="{x}"  {'%%%FOO%%%' if LTA else ''}''')
+    # ensure_printed(str_working=rf'''dst_nx_rar="{dst_nx_rar}"  {'%%%FOO%%%' if LTA else ''}''')
+    # ensure_printed(str_working=rf'''dst_nx_timestamp_rar="{dst_nx_timestamp_rar}"  {'%%%FOO%%%' if LTA else ''}''')
+    # ensure_printed(string = rf'''dst_nx_timestamp_rar="{dst_nx_timestamp_rar}"  {'%%%FOO%%%' if LTA else ''}''')
 
     # 삭제
     move_pnx_to_pk_recycle_bin(pnx=pn_rar)
@@ -86,9 +86,9 @@ def compress_pnx_via_rar(src, dst, with_timestamp=1):
     # rename
     rename_pnx(src=dst_nx_rar, pnx_new=dst_nx_timestamp_rar)
 
-    pk_print(str_working=rf'''wsl_pn_rar="{wsl_pn_rar}"  {'%%%FOO%%%' if LTA else ''}''')
+    ensure_printed(str_working=rf'''wsl_pn_rar="{wsl_pn_rar}"  {'%%%FOO%%%' if LTA else ''}''')
     dst_nx = rf"{dst}/{nx}"
-    pk_print(str_working=rf'''desktop_nx="{dst_nx}"  {'%%%FOO%%%' if LTA else ''}''')
+    ensure_printed(str_working=rf'''desktop_nx="{dst_nx}"  {'%%%FOO%%%' if LTA else ''}''')
 
     # remove
     move_pnx_to_pk_recycle_bin(pnx=dst_nx)
@@ -98,8 +98,8 @@ def compress_pnx_via_rar(src, dst, with_timestamp=1):
     os.chdir(d_working)
 
     # logging
-    pk_print(str_working=rf'''dst_nx_rar="{dst_nx_rar}"  {'%%%FOO%%%' if LTA else ''}''')
-    pk_print(str_working=rf'''[{func_n}] dst_nx_timestamp_rar="{dst_nx_timestamp_rar}"  {'%%%FOO%%%' if LTA else ''}''',
+    ensure_printed(str_working=rf'''dst_nx_rar="{dst_nx_rar}"  {'%%%FOO%%%' if LTA else ''}''')
+    ensure_printed(str_working=rf'''[{func_n}] dst_nx_timestamp_rar="{dst_nx_timestamp_rar}"  {'%%%FOO%%%' if LTA else ''}''',
              print_color='green')
 
     return dst_nx_timestamp_rar

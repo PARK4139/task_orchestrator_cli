@@ -39,11 +39,11 @@ from PySide6.QtWidgets import QApplication
 from prompt_toolkit.styles import Style
 from pkg_py.functions_split.is_losslesscut_running import is_losslesscut_running
 from pkg_py.functions_split.is_window_title_front import is_window_title_front
-from pkg_py.functions_split.press import pk_press
-from pkg_py.functions_split.print_once import pk_print_once
-from pkg_py.functions_split.print import pk_print
+from pkg_py.functions_split.press import press
+from pkg_py.functions_split.ensure_printed_once import ensure_printed_once
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
-from pkg_py.functions_split.write_list_to_f import ensure_list_written_to_f
+from pkg_py.functions_split.ensure_list_written_to_f import ensure_list_written_to_f
 from pkg_py.functions_split.get_list_sorted import get_list_sorted
 from pkg_py.system_object.etc import PkFilter
 from pkg_py.system_object.files import F_POT_PLAYER_MINI_64_EXE, F_HISTORICAL_PNX
@@ -82,23 +82,23 @@ from pkg_py.functions_split.is_os_windows import is_os_windows
 from pkg_py.functions_split.get_pnx_wsl_unix_style import get_pnx_wsl_unix_style
 from pkg_py.functions_split.get_pnx_windows_style import get_pnx_windows_style
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.functions_split.print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.functions_split.print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.get_d_working import get_d_working
 
 
-def pk_input_v1(str_working, limit_seconds, return_default, get_input_validated=None):
+def input_v1(str_working, limit_seconds, return_default, get_input_validated=None):
     import sys
     import threading
     import time
     from queue import Queue, Empty
 
-    pk_print(f'''str_working={str_working} {'%%%FOO%%%' if LTA else ''}''')
-    pk_print(f'''limit_seconds={limit_seconds} {'%%%FOO%%%' if LTA else ''}''')
-    pk_print(f'''return_default={return_default} {'%%%FOO%%%' if LTA else ''}''')
-    pk_print(f'''get_input_validated={get_input_validated} {'%%%FOO%%%' if LTA else ''}''')
+    ensure_printed(f'''str_working={str_working} {'%%%FOO%%%' if LTA else ''}''')
+    ensure_printed(f'''limit_seconds={limit_seconds} {'%%%FOO%%%' if LTA else ''}''')
+    ensure_printed(f'''return_default={return_default} {'%%%FOO%%%' if LTA else ''}''')
+    ensure_printed(f'''get_input_validated={get_input_validated} {'%%%FOO%%%' if LTA else ''}''')
     input_queue = Queue()
 
     def read_input():
@@ -121,17 +121,17 @@ def pk_input_v1(str_working, limit_seconds, return_default, get_input_validated=
                 user_input = input_queue.get(timeout=1)
                 print()  # 줄 바꿈
                 if get_input_validated and not get_input_validated(user_input):
-                    pk_print("[RETRY] 유효하지 않은 입력입니다. 다시 시도해주세요.", print_color='red')
+                    ensure_printed("[RETRY] 유효하지 않은 입력입니다. 다시 시도해주세요.", print_color='red')
                     return pk_input(str_working, limit_seconds, return_default, get_input_validated)
                 return user_input
             except Empty:
                 remaining = limit_seconds - int(time.time() - start_time)
                 print(f"\r⏳ remaining seconds : {remaining:2d} {str_working}{user_input}", end="", flush=True)
         print()  # 줄 바꿈 (시간 초과 시)
-        pk_print(f"[TIMEOUT] 입력 시간 초과 → 기본값 반환: {return_default}", print_color='red')
+        ensure_printed(f"[TIMEOUT] 입력 시간 초과 → 기본값 반환: {return_default}", print_color='red')
         return return_default
 
     except KeyboardInterrupt:
         print()  # 줄 바꿈
-        pk_print("[INTERRUPT] 사용자 입력 취소됨 → 기본값 반환", print_color='red')
+        ensure_printed("[INTERRUPT] 사용자 입력 취소됨 → 기본값 반환", print_color='red')
         return return_default

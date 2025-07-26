@@ -1,9 +1,9 @@
 from pkg_py.functions_split.ensure_console_cleared import ensure_console_cleared
-from pkg_py.functions_split.pk_lock_os import pk_lock_os
-from pkg_py.functions_split.pk_sleep import pk_sleep
+from pkg_py.functions_split.lock_os import lock_os
+from pkg_py.functions_split.ensure_slept import ensure_slept
 
 
-def pk_assist_to_lock_os():
+def assist_to_lock_os():
     from datetime import datetime, time
 
     def parse_time_ranges(text_list):
@@ -54,4 +54,4 @@ def pk_assist_to_lock_os():
         if is_now_in_time_ranges(now_time, all_time_blocks):
             pk_lock_os()
 
-        pk_sleep(milliseconds=10000)
+        ensure_slept(milliseconds=10000)

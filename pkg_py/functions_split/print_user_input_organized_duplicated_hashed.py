@@ -1,4 +1,4 @@
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
 def print_user_input_organized_duplicated_hashed():
@@ -18,7 +18,7 @@ def print_user_input_organized_duplicated_hashed():
                                        input_box_text_default=input_box_txt_default)
         dialog.exec()
         btn_txt_clicked = dialog.btn_txt_clicked
-        pk_print(btn_txt_clicked, print_color='blue')
+        ensure_printed(btn_txt_clicked, print_color='blue')
         if btn_txt_clicked == "진행":
             user_input = dialog.input_box.text()
             texts = user_input.split("#")

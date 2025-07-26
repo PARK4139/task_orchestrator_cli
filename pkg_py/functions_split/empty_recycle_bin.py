@@ -3,7 +3,7 @@
 
 
 
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
 def empty_recycle_bin():
@@ -21,7 +21,7 @@ def empty_recycle_bin():
     # )
 
     # 가끔 휴지통을 열어볼까요?
-    # pk_print(str_working="숨김 휴지통 열기")
+    # ensure_printed(str_working="숨김 휴지통 열기")
     # cmd='explorer c:\$RECYCLE.BIN'
     # run_via_cmd_exe(cmd=cmd)
     # 외장하드 숨김 휴지통 을 보여드릴까요
@@ -31,4 +31,4 @@ def empty_recycle_bin():
     # explorer f:\$RECYCLE.BIN
 
     # speak_ment_experimental(f'휴지통을 비웠습니다', comma_delay=0.98, thread_join_mode=True)
-    pk_print(f'''휴지통을 비웠습니다"''')
+    ensure_printed(f'''휴지통을 비웠습니다"''')

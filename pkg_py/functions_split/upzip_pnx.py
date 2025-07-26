@@ -6,7 +6,7 @@ from pkg_py.system_object.map_massages import PkMessages2025
 from concurrent.futures import ThreadPoolExecutor
 
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
 def upzip_pnx(pnx):
@@ -20,7 +20,7 @@ def upzip_pnx(pnx):
             pnx = pnx.replace("\"", "")
 
             if pnx.strip() == "":
-                pk_print(str_working="백업할 대상이 입력되지 않았습니다")
+                ensure_printed(str_working="백업할 대상이 입력되지 않았습니다")
                 break
 
             pnx_dirname = os.path.dirname(pnx)
@@ -37,12 +37,12 @@ def upzip_pnx(pnx):
                     cmd = rf'echo y | del /f "{target_zip}"'
                     cmd_to_os_like_person_as_admin(cmd)
                 else:
-                    pk_print("압축해제 후 압축f을 삭제에 실패")
+                    ensure_printed("압축해제 후 압축f을 삭제에 실패")
             else:
-                pk_print("압축해제할 f이 없었습니다")
+                ensure_printed("압축해제할 f이 없었습니다")
             pk_chdir(D_PROJECT)
             print_success("압축해제 성공")
             break
     except:
-        pk_print(f'''{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
+        ensure_printed(f'''{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
         pk_chdir(D_PROJECT)

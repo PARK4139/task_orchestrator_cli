@@ -27,7 +27,7 @@ from datetime import date
 from colorama import init as pk_colorama_init
 from pkg_py.functions_split.get_value_completed import get_value_completed
 from pkg_py.functions_split.get_list_calculated import get_list_calculated
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
 def print_and_write_schedule_template_cyclic_to_f_memo_todo_txt(

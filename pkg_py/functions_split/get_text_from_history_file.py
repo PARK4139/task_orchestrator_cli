@@ -1,3 +1,6 @@
+from pkg_py.functions_split.get_history_file_path import get_history_file_path
+
+
 def get_text_from_history_file(file_id: str) -> str | None:
     file_path = get_history_file_path(file_id)
     if not file_path.exists():

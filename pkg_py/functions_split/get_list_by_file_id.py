@@ -3,7 +3,7 @@ def get_list_by_file_id(file_id, editable=False):
     from pkg_py.system_object.encodings import Encoding
     from pkg_py.functions_split.get_f_historical import get_history_file
     from pkg_py.functions_split.ensure_pnx_made import ensure_pnx_made
-    from pkg_py.functions_split.pk_print import pk_print
+    from pkg_py.functions_split.ensure_printed import ensure_printed
     from pkg_py.functions_split.open_pnx_by_ext import ensure_pnx_opened_by_ext
     import os
     import traceback
@@ -12,7 +12,7 @@ def get_list_by_file_id(file_id, editable=False):
     ensure_pnx_made(pnx=f_historical, mode='f')
     if editable == True:
         ensure_pnx_opened_by_ext(pnx=f_historical)
-    pk_print(f'''f={f}''')
+    ensure_printed(f'''f={f}''')
 
     if f is None:
         return []
@@ -25,6 +25,6 @@ def get_list_by_file_id(file_id, editable=False):
                     return []
                 return lines
     except:
-        pk_print(f'''{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}" ''', print_color='red')
+        ensure_printed(f'''{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}" ''', print_color='red')
 
 

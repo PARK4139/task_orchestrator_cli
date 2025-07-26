@@ -1,26 +1,3 @@
-
-# from pkg_py.workspace.pk_workspace import copy_and_push_auto_utility
-# from pkg_py.workspace.pk_workspace import debug_this_code_operated
-# from pkg_py.workspace.pk_workspace import debug_this_code_operated, debug_as_ipdb_console
-# from pkg_py.workspace.pk_workspace import ensure_cmd_exe_deduplicated
-# from pkg_py.workspace.pk_workspace import ensure_cmd_exe_deduplicated, ensure_cmd_exe_deduplicated_all
-# from pkg_py.workspace.pk_workspace import ensure_cmd_exe_deduplicated, ensure_cmd_exe_deduplicated_all, ensure_cmd_exe_deduplicated_all_in_loop
-# from pkg_py.workspace.pk_workspace import ensure_git_project_pushed
-# from pkg_py.workspace.pk_workspace import ensure_git_project_pushed, copy_and_push_auto_utility
-# from pkg_py.workspace.pk_workspace import ensure_window_os_variable_path_deduplicated
-# from pkg_py.workspace.pk_workspace import get_refactor_py_file_list, fallback_choice, save_to_history, get_last_history, get_fzf_command, pk_run_py_system_process_by_pnx
-# from pkg_py.workspace.pk_workspace import get_value_via_fzf_or_history
-# from pkg_py.workspace.pk_workspace import get_value_via_fzf_or_history_routine
-# from pkg_py.workspace.pk_workspace import is_a2z_office
-# from pkg_py.workspace.pk_workspace import kill_cmd_exe
-# from pkg_py.workspace.pk_workspace import pk_ensure_process_killed, is_process_killed
-# from pkg_py.workspace.pk_workspace import pk_kill_process_by_window_title_seg
-# from pkg_py.workspace.pk_workspace import pk_run_py_system_process_by_pnx
-# from pkg_py.workspace.pk_workspace import pk_speak_v3
-# from pkg_py.workspace.pk_workspace import pk_speak_v3, debug_this_code_operated
-# from pkg_py.workspace.pk_workspace import pk_test_pk_python_program_structure, ensure_git_project_pushed
-# from pkg_py.workspace.pk_workspace import save_to_history, fallback_choice, get_fzf_command, get_last_history
-# from pkg_py.workspace.pk_workspace import update_system_path_with_deduplication, ensure_window_os_variable_path_deduplicated
 from BlurWindow.blurWindow import GlobalBlur
 from Cryptodome.Cipher import AES
 from Cryptodome.Random import get_random_bytes
@@ -93,17 +70,16 @@ from os.path import dirname
 from paramiko import SSHClient, AutoAddPolicy
 from passlib.context import CryptContext
 from pathlib import Path
-from pkg_ps1.system_object.process import pk_kill_process_by_window_title_seg
+from pkg_ps1.system_object.process import kill_process_by_window_title_seg
 from pkg_py import system_object
 from pkg_py.ensure_python_program_reloaded_as_hot_reloader import reload_python_program_as_hot_reloader
 from pkg_py.functions_split import ensure_pycharm_module_optimize
 from pkg_py.functions_split.add_todo import add_todo
 from pkg_py.functions_split.assist_to_analize_addup_issue import assist_to_analize_addup_issue
-from pkg_py.functions_split.assist_to_load_video_at_losslesscut import pk_ensure_video_loaded_at_losslesscut
+from pkg_py.functions_split.assist_to_load_video_at_losslesscut import ensure_video_loaded_at_losslesscut
 from pkg_py.functions_split.assist_to_load_video_at_losslesscut_v5 import assist_to_load_video_at_losslesscut_v5
-from pkg_py.functions_split.assist_to_lock_os import pk_assist_to_lock_os
+from pkg_py.functions_split.assist_to_lock_os import assist_to_lock_os
 from pkg_py.functions_split.backup_workspace import backup_workspace
-from pkg_py.functions_split.cd import pk_cd
 from pkg_py.functions_split.chcp_65001 import chcp_65001
 from pkg_py.functions_split.check_min_non_null_or_warn import check_min_non_null_or_warn
 from pkg_py.functions_split.close_pycharm_tab import close_pycharm_tab
@@ -111,19 +87,14 @@ from pkg_py.functions_split.cmd_to_os import cmd_to_os
 from pkg_py.functions_split.cmd_to_os_like_person import cmd_to_os_like_person
 from pkg_py.functions_split.cmd_to_os_like_person_as_admin import cmd_to_os_like_person_as_admin
 from pkg_py.functions_split.cmd_to_os_v6 import cmd_to_os_v6
-from pkg_py.functions_split.colorama_init_once import pk_colorama_init_once
 from pkg_py.functions_split.compress_pnx_via_bz import compress_pnx_via_bz
-from pkg_py.functions_split.copy import pk_copy
 from pkg_py.functions_split.copy_and_paste_with_keeping_clipboard import copy_and_paste_with_keeping_clipboard
-from pkg_py.functions_split.debug_state_for_py_data_type import pk_debug_state_for_py_data_type
-from pkg_py.functions_split.deprecated_get_d_current_n_like_person import pk_deprecated_get_d_current_n_like_person
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 from pkg_py.functions_split.download_youtube_list import download_youtube_list
 from pkg_py.functions_split.download_youtube_video import download_youtube_video
 from pkg_py.functions_split.download_youtube_video_via_yt_dlp import download_youtube_video_via_yt_dlp
 from pkg_py.functions_split.download_youtube_video_via_yt_dlp_v2 import download_youtube_video_via_yt_dlp_v2
 from pkg_py.functions_split.download_youtube_videos import download_youtube_videos
-from pkg_py.functions_split.ensure_all_import_script_printed import ensure_modules_printed
 from pkg_py.functions_split.ensure_console_cleared import ensure_console_cleared
 from pkg_py.functions_split.ensure_console_debuggable import ensure_console_debuggable
 from pkg_py.functions_split.ensure_do_exception_routine import ensure_do_exception_routine
@@ -132,15 +103,10 @@ from pkg_py.functions_split.ensure_elapsed_time_logged import ensure_elapsed_tim
 from pkg_py.functions_split.ensure_f_list_change_stable import ensure_files_stable_after_change
 from pkg_py.functions_split.ensure_func_info_loaded import ensure_func_info_loaded
 from pkg_py.functions_split.ensure_func_info_saved import ensure_func_info_saved
-from pkg_py.functions_split.ensure_functions_splited import pk_ensure_functions_splited
-from pkg_py.functions_split.ensure_functions_splited_v2 import pk_ensure_functions_splited_v2
-from pkg_py.functions_split.ensure_keyboard_mouse_macro import pk_ensure_keyboard_mouse_macro
-from pkg_py.functions_split.ensure_loop_delayed_at_loop_foot import pk_ensure_loop_delayed_at_loop_foot
-from pkg_py.functions_split.ensure_memo_opened import pk_ensure_memo_opened
 from pkg_py.functions_split.ensure_os_env_sys_variables_applied import ensure_os_env_sys_variables_applied
 from pkg_py.functions_split.ensure_os_path_added import ensure_os_path_added
 from pkg_py.functions_split.ensure_pk_system_exit_silent import ensure_pk_system_exit_silent
-from pkg_py.functions_split.ensure_pk_system_started import pk_ensure_pk_system_started
+from pkg_py.functions_split.ensure_pk_system_started import ensure_pk_system_started
 from pkg_py.functions_split.ensure_pk_system_started_v5 import ensure_pk_system_started_v5
 from pkg_py.functions_split.ensure_pk_wsl_distro_installed import ensure_pk_wsl_distro_installed
 from pkg_py.functions_split.ensure_pnx_made import ensure_pnx_made
@@ -161,7 +127,6 @@ from pkg_py.functions_split.extend_pycharm_code import extend_pycharm_code
 from pkg_py.functions_split.get_TBD_pnx_working_with_idx_dict import get_TBD_pnx_working_with_idx_dict
 from pkg_py.functions_split.get_available_pk_python_program_pnx import get_available_pk_python_program_pnx
 from pkg_py.functions_split.get_cmd_to_autorun import get_cmd_to_autorun
-from pkg_py.functions_split.get_colorful_str_working_with_stamp_enviromnet import pk_get_colorful_str_working_with_stamp_enviromnet
 from pkg_py.functions_split.get_d_working import get_d_working
 from pkg_py.functions_split.get_d_working_in_python import get_pwd_in_python
 from pkg_py.functions_split.get_driver_selenium_solved_cloudflare_sequrity import get_driver_selenium_solved_cloudflare_sequrity
@@ -249,9 +214,6 @@ from pkg_py.functions_split.get_youtube_clip_id import get_youtube_clip_id
 from pkg_py.functions_split.get_youtube_video_metadata import get_youtube_video_metadata
 from pkg_py.functions_split.guide_pk_error_mssage import guide_pk_error_mssage
 from pkg_py.functions_split.guide_to_use_pk_system_process import guide_to_use_pk_system_process
-from pkg_py.functions_split.initialize_and_customize_logging_config import pk_initialize_and_customize_logging_config
-from pkg_py.functions_split.input import pk_input
-from pkg_py.functions_split.input_validated import pk_input_validated
 from pkg_py.functions_split.is_containing_special_characters_with_thread import is_containing_special_characters_with_thread
 from pkg_py.functions_split.is_d import is_d
 from pkg_py.functions_split.is_f import is_f
@@ -267,18 +229,14 @@ from pkg_py.functions_split.is_url import is_url
 from pkg_py.functions_split.is_window_opened import is_window_opened
 from pkg_py.functions_split.is_window_title_front import is_window_title_front
 from pkg_py.functions_split.is_window_title_opened import is_window_title_opened
-from pkg_py.functions_split.jarvis import run_jarvis
 from pkg_py.functions_split.kill_losslesscut import kill_losslesscut
-from pkg_py.functions_split.kill_pk_program_list import pk_kill_pk_program_list
 from pkg_py.functions_split.kill_process_via_taskkill import kill_process_via_taskkill
 from pkg_py.functions_split.kill_self_pk_program import kill_self_pk_program
 from pkg_py.functions_split.kill_window_like_person import kill_window_like_person
 from pkg_py.functions_split.load_f_video_on_losslesscut import load_f_video_on_losslesscut
 from pkg_py.functions_split.load_logged_set import load_logged_set
-from pkg_py.functions_split.lock_os import pk_lock_os
 from pkg_py.functions_split.log_success_to_f import log_success_to_f
 from pkg_py.functions_split.mark_url_as_done import mark_url_as_done
-from pkg_py.functions_split.measure_seconds import pk_measure_seconds
 from pkg_py.functions_split.move_cursor_to_text_location import move_cursor_to_text_location
 from pkg_py.functions_split.move_cursor_to_top_of_pycarm_code import move_cursor_to_top_of_pycarm_code
 from pkg_py.functions_split.move_pnx import move_pnx
@@ -290,17 +248,46 @@ from pkg_py.functions_split.normalize_youtube_url import normalize_youtube_url
 from pkg_py.functions_split.open_pnx_by_ext import ensure_pnx_opened_by_ext
 from pkg_py.functions_split.open_pycharm_parrete import open_pycharm_parrete
 from pkg_py.functions_split.parse_youtube_video_id import parse_youtube_video_id
-from pkg_py.functions_split.paste import pk_paste
 from pkg_py.functions_split.paste_and_enter import paste_and_enter
 from pkg_py.functions_split.ping import ping
 from pkg_py.functions_split.ping_v3 import ping_v3
+from pkg_py.functions_split.cd import cd
+from pkg_py.functions_split.colorama_init_once import colorama_init_once
+from pkg_py.functions_split.copy import copy
+from pkg_py.functions_split.debug_state_for_py_data_type import debug_state_for_py_data_type
+from pkg_py.functions_split.deprecated_get_d_current_n_like_person import deprecated_get_d_current_n_like_person
+from pkg_py.functions_split.ensure_all_import_script_printed import ensure_modules_printed
+from pkg_py.functions_split.ensure_functions_splited import ensure_functions_splited
+from pkg_py.functions_split.ensure_functions_splited_v2 import ensure_functions_splited_v2
+from pkg_py.functions_split.ensure_keyboard_mouse_macro import ensure_keyboard_mouse_macro
+from pkg_py.functions_split.ensure_loop_delayed_at_loop_foot import ensure_loop_delayed_at_loop_foot
+from pkg_py.functions_split.ensure_memo_opened import ensure_memo_opened
+from pkg_py.functions_split.get_colorful_str_working_with_stamp_enviromnet import get_colorful_str_working_with_stamp_enviromnet
+from pkg_py.functions_split.initialize_and_customize_logging_config import initialize_and_customize_logging_config
+from pkg_py.functions_split.input import input
+from pkg_py.functions_split.input_validated import input_validated
+from pkg_py.functions_split.jarvis import run_jarvis
+from pkg_py.functions_split.kill_pk_program_list import kill_pk_program_list
+from pkg_py.functions_split.lock_os import lock_os
+from pkg_py.functions_split.measure_seconds import measure_seconds
+from pkg_py.functions_split.paste import paste
+from pkg_py.functions_split.press import press
+from pkg_py.functions_split.press_v2 import press_v2
+from pkg_py.functions_split.ensure_printed import ensure_printed
+from pkg_py.functions_split.print_and_speak import print_and_speak
+from pkg_py.functions_split.print_once import print_once
+from pkg_py.functions_split.print_state import print_state
+from pkg_py.functions_split.replace_f_nx_list_from_old_str_to_new_str import replace_f_nx_list_from_old_str_to_new_str
+from pkg_py.functions_split.run_process_v2 import run_process_v2
+from pkg_py.functions_split.ensure_slept import ensure_slept
+from pkg_py.functions_split.sleep_v2 import sleep_v2
+from pkg_py.functions_split.speak import speak
+from pkg_py.functions_split.toggle_pk_config_key import toggle_pk_config_key
+from pkg_py.functions_split.type import type
+from pkg_py.functions_split.type_v2 import type_v2
 from pkg_py.functions_split.play_wav_f import play_wav_f
-from pkg_py.functions_split.press import pk_press
 from pkg_py.functions_split.press_ctrl_alt_l_nth import press_ctrl_alt_l_nth
-from pkg_py.functions_split.press_v2 import pk_press_v2
-from pkg_py.functions_split.print import pk_print
 from pkg_py.functions_split.print_and_save_log_to_file import print_and_save_log_to_file
-from pkg_py.functions_split.print_and_speak import pk_print_and_speak
 from pkg_py.functions_split.print_and_write_schedule_template_cyclic_to_f_memo_todo_txt import print_and_write_schedule_template_cyclic_to_f_memo_todo_txt
 from pkg_py.functions_split.print_cyan import print_cyan
 from pkg_py.functions_split.print_green import print_green
@@ -310,21 +297,18 @@ from pkg_py.functions_split.print_light_blue import print_light_blue
 from pkg_py.functions_split.print_light_white import print_light_white
 from pkg_py.functions_split.print_magenta import print_magenta
 from pkg_py.functions_split.print_memo_titles import print_memo_titles
-from pkg_py.functions_split.print_once import pk_print_once
 from pkg_py.functions_split.print_pk_divider import print_pk_divider
 from pkg_py.functions_split.print_pk_ls import print_pk_ls
 from pkg_py.functions_split.print_pk_ls_v4 import print_pk_ls_v4
 from pkg_py.functions_split.print_pk_ver import print_pk_ver
 from pkg_py.functions_split.print_prompt_via_colorama import print_prompt_via_colorama
 from pkg_py.functions_split.print_red import print_red
-from pkg_py.functions_split.print_state import pk_print_state
 from pkg_py.functions_split.print_success import print_success
 from pkg_py.functions_split.print_yellow import print_yellow
 from pkg_py.functions_split.push_pnx_to_github import push_pnx_to_github
 from pkg_py.functions_split.remove_lines_within_keyword_from_f import remove_lines_within_keyword_from_f
 from pkg_py.functions_split.remove_pnx_parmanently import remove_pnx_parmanently
 from pkg_py.functions_split.remove_special_characters import remove_special_characters
-from pkg_py.functions_split.replace_f_nx_list_from_old_str_to_new_str import pk_replace_f_nx_list_from_old_str_to_new_str
 from pkg_py.functions_split.rerun_losslesscut import rerun_losslesscut
 from pkg_py.functions_split.restore_workspace_from_latest_archive import restore_workspace_from_latest_archive
 from pkg_py.functions_split.run_cmd_exe import run_cmd_exe
@@ -332,7 +316,6 @@ from pkg_py.functions_split.run_losslesscut import run_losslesscut
 from pkg_py.functions_split.run_pk_python_program_by_path import run_pk_python_program_by_path
 from pkg_py.functions_split.run_pk_system_process_by_idx import run_pk_system_process_by_idx
 from pkg_py.functions_split.run_pk_system_process_by_idx_v2 import run_pk_system_process_by_idx_v2
-from pkg_py.functions_split.run_process_v2 import pk_run_process_v2
 from pkg_py.functions_split.sanitize_filename import sanitize_filename
 from pkg_py.functions_split.save_d_to_f import save_d_to_f
 from pkg_py.functions_split.save_logged_set import save_logged_set
@@ -341,22 +324,16 @@ from pkg_py.functions_split.set_pk_context_state import set_pk_context_state
 from pkg_py.functions_split.set_pk_context_state_milliseconds_for_speed_control_forcely import set_pk_context_state_milliseconds_for_speed_control_forcely
 from pkg_py.functions_split.set_values_to_historical_file import set_values_to_historical_file
 from pkg_py.functions_split.should_i_search_to_chatGPT import should_i_search_to_chatGPT
-from pkg_py.functions_split.sleep import pk_sleep
-from pkg_py.functions_split.sleep_v2 import pk_sleep_v2
-from pkg_py.functions_split.speak import pk_speak
 from pkg_py.functions_split.split_by_top_level_def import split_by_top_level_def
 from pkg_py.functions_split.switch_to_keyboard_mode_to_english_at_windows import switch_to_keyboard_mode_to_english_at_windows
 from pkg_py.functions_split.todo import todo
-from pkg_py.functions_split.toggle_pk_config_key import pk_toggle_pk_config_key
-from pkg_py.functions_split.type import pk_type
-from pkg_py.functions_split.type_v2 import pk_type_v2
 from pkg_py.functions_split.write_like_person import write_like_person
 from pkg_py.functions_split.write_list_to_f import write_list_to_f
 from pkg_py.functions_split.write_str_to_f import write_str_to_f
 from pkg_py.pk_core_class import PkSqlite3DB
 from pkg_py.pk_interface_graphic_user import GuiUtil
 from pkg_py.pk_interface_graphic_user import get_windows_opened
-from pkg_py.pk_paste_as_auto import pk_copy
+from pkg_py.pk_paste_as_auto import copy
 from pkg_py.refactor.A300_pk_ensure_modules_imported_front import clean_import_block
 from pkg_py.refactor.ensure_keyboard_mouse_macro import PkMacroRoutines
 from pkg_py.refactor.pk_ensure_functions_splited import restore_workspace_from_latest_archive, split_by_top_level_def, backup_workspace
@@ -408,7 +385,7 @@ from pkg_py.system_object.etc import PK_UNDERLINE
 from pkg_py.system_object.etc import PLAYING_SOUNDS
 from pkg_py.system_object.etc import PkFilter
 from pkg_py.system_object.etc import PkFilter, PK_UNDERLINE
-from pkg_py.system_object.etc import pk_
+from pkg_py.system_object.etc import
 from pkg_py.system_object.files import ( F_UV_EXE, F_UV_ZIP, F_PK_ALIAS_MACROS_TXT, )
 from pkg_py.system_object.files import F_FFMPEG_EXE
 from pkg_py.system_object.files import F_HISTORICAL_PNX
@@ -429,7 +406,7 @@ from pkg_py.system_object.get_list_calculated import get_list_calculated
 from pkg_py.system_object.is_os_windows import is_os_windows
 from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.system_object.map_massages import PkMessages2025
-from pkg_py.system_object.performance_logic import pk_measure_seconds, pk_measure_memory
+from pkg_py.system_object.performance_logic import measure_seconds, pk_measure_memory
 from pkg_py.system_object.print_red import print_red
 from pkg_py.system_object.stamps import STAMP_ATTEMPTED
 from pkg_py.system_object.stamps import STAMP_DEBUG, STAMP_INTERACTIVE, STAMP_SUCCEEDED, STAMP_INFO, STAMP_TEST, STAMP_ERROR
@@ -441,6 +418,28 @@ from pkg_py.system_object.stamps import STAMP_TRY_GUIDE, STAMP_UNIT_TEST_EXCEPTI
 from pkg_py.system_object.state_via_context import SpeedControlContext
 from pkg_py.system_object.state_via_database import PkSqlite3DB
 from pkg_py.workspace import get_fzf_command, get_last_history, save_to_history, fallback_choice, get_last_history_file
+# from pkg_py.workspace.pk_workspace import copy_and_push_auto_utility
+# from pkg_py.workspace.pk_workspace import debug_this_code_operated
+# from pkg_py.workspace.pk_workspace import debug_this_code_operated, debug_as_ipdb_console
+# from pkg_py.workspace.pk_workspace import ensure_cmd_exe_deduplicated
+# from pkg_py.workspace.pk_workspace import ensure_cmd_exe_deduplicated, ensure_cmd_exe_deduplicated_all
+# from pkg_py.workspace.pk_workspace import ensure_cmd_exe_deduplicated, ensure_cmd_exe_deduplicated_all, ensure_cmd_exe_deduplicated_all_in_loop
+# from pkg_py.workspace.pk_workspace import ensure_git_project_pushed
+# from pkg_py.workspace.pk_workspace import ensure_git_project_pushed, copy_and_push_auto_utility
+# from pkg_py.workspace.pk_workspace import get_refactor_py_file_list, fallback_choice, save_to_history, get_last_history, get_fzf_command, ensure_py_system_process_ran_by_pnx
+# from pkg_py.workspace.pk_workspace import get_value_via_fzf_or_history_routine
+# from pkg_py.workspace.pk_workspace import is_a2z_office
+# from pkg_py.workspace.pk_workspace import kill_cmd_exe
+# from pkg_py.workspace.pk_workspace import ensure_process_killed, is_process_killed
+# from pkg_py.workspace.pk_workspace import kill_process_by_window_title_seg
+# from pkg_py.workspace.pk_workspace import ensure_py_system_process_ran_by_pnx
+# from pkg_py.workspace.pk_workspace import speak_v3
+# from pkg_py.workspace.pk_workspace import speak_v3, debug_this_code_operated
+# from pkg_py.workspace.pk_workspace import test_pk_python_program_structure, ensure_git_project_pushed
+# from pkg_py.workspace.pk_workspace import save_to_history, fallback_choice, get_fzf_command, get_last_history
+# from pkg_py.workspace.pk_workspace import ensure_window_os_variable_path_deduplicated
+# from pkg_py.workspace.pk_workspace import get_value_via_fzf_or_history
+# from pkg_py.workspace.pk_workspace import update_system_path_with_deduplication, ensure_window_os_variable_path_deduplicated
 from prompt_toolkit import PromptSession
 from prompt_toolkit import prompt
 from prompt_toolkit.completion import WordCompleter

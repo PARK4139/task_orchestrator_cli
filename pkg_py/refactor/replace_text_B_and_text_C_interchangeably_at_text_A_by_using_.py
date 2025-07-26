@@ -25,12 +25,12 @@ from datetime import datetime
 from colorama import init as pk_colorama_init
 from bs4 import ResultSet
 from bs4 import BeautifulSoup
-from pkg_py.functions_split.assist_to_load_video_at_losslesscut import pk_ensure_video_loaded_at_losslesscut
+from pkg_py.functions_split.assist_to_load_video_at_losslesscut import ensure_video_loaded_at_losslesscut
 from pkg_py.functions_split.get_pnx_windows_style import get_pnx_windows_style
 from pkg_py.functions_split.get_pnx_windows_style import get_pnx_windows_style
 
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
 def replace_text_B_and_text_C_interchangeably_at_text_A_by_using_(____text_A, ____text_B, ____text_C, _____and):
@@ -46,7 +46,7 @@ def replace_text_B_and_text_C_interchangeably_at_text_A_by_using_(____text_A, __
     if ____text_C == "":
         ____text_A = ____text_A.replace(____text_B, ____text_C)
     elif text_special in ____text_C:
-        pk_print(str_working="text_A 에서 " + ____text_B + " 를 총" + str(text_B_cnt) + "개 발견하였습니다")
+        ensure_printed(str_working="text_A 에서 " + ____text_B + " 를 총" + str(text_B_cnt) + "개 발견하였습니다")
         foo_list = ____text_A.split(____text_B)
         if ____text_B in ____text_C:
             foo_cmt = 0

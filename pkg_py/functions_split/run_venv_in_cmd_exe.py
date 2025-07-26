@@ -42,11 +42,11 @@ from pkg_py.functions_split.get_historical_list import get_historical_list
 from pkg_py.functions_split.is_losslesscut_running import is_losslesscut_running
 from pkg_py.functions_split.load_f_video_on_losslesscut import load_f_video_on_losslesscut
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
-from pkg_py.functions_split.pk_press import pk_press
-from pkg_py.functions_split.pk_print_state import pk_print_state
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.press import press
+from pkg_py.functions_split.print_state import print_state
+from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.cmd_to_os import cmd_to_os
-from pkg_py.functions_split.write_list_to_f import write_list_to_f
+from pkg_py.functions_split.ensure_list_written_to_f import ensure_list_written_to_f
 from pkg_py.functions_split.get_list_sorted import get_list_sorted
 from pkg_py.functions_split.set_pk_context_state import set_pk_context_state
 from pkg_py.functions_split.ensure_console_cleared import ensure_console_cleared
@@ -59,7 +59,7 @@ from pkg_py.system_object.directories_reuseable import D_PROJECT
 from pkg_py.system_object.directories import D_PK_WORKING
 from pkg_py.system_object.directories import D_PKG_TXT, D_PK_WORKING
 from pkg_py.system_object.state_via_context import SpeedControlContext
-from pkg_py.system_object.performance_logic import pk_measure_seconds, pk_measure_memory
+from pkg_py.system_object.performance_logic import measure_seconds, pk_measure_memory
 
 from pathlib import Path
 from paramiko import SSHClient, AutoAddPolicy
@@ -83,7 +83,7 @@ from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
 from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.get_d_working import get_d_working
 
 
@@ -114,7 +114,7 @@ def run_venv_in_cmd_exe():
     script_list = script_str.split(CRLF)
     script_list = get_list_replaced_element_from_str_to_str(working_list=script_list, from_str='    ', to_str='')
     ensure_pnx_made(pnx=f_cmd, mode='f', script_list=script_list)
-    pk_print(rf"set PYTHONPATH={D_PROJECT}", print_color='blue')
+    ensure_printed(rf"set PYTHONPATH={D_PROJECT}", print_color='blue')
     # cmd_to_os(cmd=rf'notepad "{activate_bat}"')
     # cmd_to_os(cmd=rf'notepad "{f_pn_bat}"')
     cmd_to_os(cmd=rf'start call "{f_cmd}" ', encoding=Encoding.UTF8, mode='a')

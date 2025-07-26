@@ -10,7 +10,7 @@ from pkg_py.system_object.directories_reuseable import D_PROJECT
 
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
 def run_pk_release_server(port):
@@ -30,15 +30,15 @@ def run_pk_release_server(port):
         return
 
     server_ip = "localhost"
-    pk_print(f'''server_ip={server_ip}''')
-    pk_print(f'''server_port={port}''')
+    ensure_printed(f'''server_ip={server_ip}''')
+    ensure_printed(f'''server_port={port}''')
 
     # bat_pnx=rf'{USERPROFILE}\Downloads\pk_system\pk_system_http_server_run.cmd'
     # cmd=rf'start cmd.exe /k "{bat_pnx}"'
 
     cmd = rf'start cmd.exe /k python "{py_pnx}"'
     cmd_to_os(cmd=cmd, mode="a")
-    # pk_print(f'''{cmd} [Negative]"''')
+    # ensure_printed(f'''{cmd} [Negative]"''')
 
     url = rf'http://{server_ip}:{port}'
     cmd = rf" explorer {url}/"

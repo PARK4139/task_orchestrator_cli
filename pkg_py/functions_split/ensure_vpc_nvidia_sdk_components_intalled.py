@@ -1,5 +1,5 @@
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
 def ensure_vpc_nvidia_sdk_components_intalled(vpc_data):
@@ -25,7 +25,7 @@ def ensure_vpc_nvidia_sdk_components_intalled(vpc_data):
             # #팀Laptop 4.6.5 로 flash 해도 4.6.6 이 INSTALLATION_가 됨.
             pass
         else:
-            pk_print(f'''unknown vpc_data.identifier ({vpc_data.vpc_identifier}) {'%%%FOO%%%' if LTA else ''}''',
+            ensure_printed(f'''unknown vpc_data.identifier ({vpc_data.vpc_identifier}) {'%%%FOO%%%' if LTA else ''}''',
                      print_color='red')
             raise
     elif vpc_data.vpc_with_flash_image == 1:

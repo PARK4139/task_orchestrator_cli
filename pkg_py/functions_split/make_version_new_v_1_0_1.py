@@ -12,7 +12,7 @@ from pkg_py.functions_split.is_losslesscut_running import is_losslesscut_running
 from pkg_py.functions_split.is_window_title_opened import is_window_title_opened
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 from pkg_py.functions_split.cmd_to_os import cmd_to_os
-from pkg_py.functions_split.write_list_to_f import write_list_to_f
+from pkg_py.functions_split.ensure_list_written_to_f import ensure_list_written_to_f
 from pkg_py.system_object.directories_reuseable import D_PROJECT
 from functools import partial as functools_partial
 from fastapi import HTTPException
@@ -25,7 +25,7 @@ from pkg_py.functions_split.get_list_calculated import get_list_calculated
 from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
 def make_version_new_v_1_0_1(via_f_txt=False, working_list=None, debug_mode=True):
@@ -55,7 +55,7 @@ def make_version_new_v_1_0_1(via_f_txt=False, working_list=None, debug_mode=True
         else:
             next_version = "1.0.0"
         next_versioned_pnx = f"{name}_v{next_version}{ext}"
-        pk_print(f'''next_versioned_pnx="{next_versioned_pnx}" ''', print_color='white')
+        ensure_printed(f'''next_versioned_pnx="{next_versioned_pnx}" ''', print_color='white')
         return next_versioned_pnx
 
     def cp_and_mv_with_version(src, debug_mode=True):
@@ -63,14 +63,14 @@ def make_version_new_v_1_0_1(via_f_txt=False, working_list=None, debug_mode=True
         # make new version
         # cp
         if not does_pnx_exist(src):
-            pk_print(f"{src} f을 찾을 수 없습니다.")
+            ensure_printed(f"{src} f을 찾을 수 없습니다.")
             return
         src_nx = get_nx(src)
         f_next_versioned_nx = get_next_versioned_nx(src_nx)
         shutil.copy2(src, f_next_versioned_nx)
-        pk_print(f'''src="{src}"''')
-        pk_print(f'''f_next_versioned_nx="{f_next_versioned_nx}"''')
-        pk_print(f"''{src}'를  {f_next_versioned_nx}'로 copied.")
+        ensure_printed(f'''src="{src}"''')
+        ensure_printed(f'''f_next_versioned_nx="{f_next_versioned_nx}"''')
+        ensure_printed(f"''{src}'를  {f_next_versioned_nx}'로 copied.")
         f = src
         f_nx = get_nx(f)
         f_n = get_n(f)
@@ -90,15 +90,15 @@ def make_version_new_v_1_0_1(via_f_txt=False, working_list=None, debug_mode=True
         f_list_versioned_required.remove(f_next_versioned_nx)  # 최신버전제외
         print_iterable_as_vertical(item_iterable=f_list_versioned_required, item_iterable_n="f_list_versioned_required")
 
-        pk_print(f'''f="{f}"''')
-        pk_print(f'''f_n="{f_n}"''')
-        pk_print(f'''f_x="{f_x}"''')
-        pk_print(f'''len(f_list_versioned_required)={len(f_list_versioned_required)}''')
-        pk_print(f'''len(f_list_versioned_required) >= 1="{len(f_list_versioned_required) >= 1}"''')
+        ensure_printed(f'''f="{f}"''')
+        ensure_printed(f'''f_n="{f_n}"''')
+        ensure_printed(f'''f_x="{f_x}"''')
+        ensure_printed(f'''len(f_list_versioned_required)={len(f_list_versioned_required)}''')
+        ensure_printed(f'''len(f_list_versioned_required) >= 1="{len(f_list_versioned_required) >= 1}"''')
         if len(f_list_versioned_required) > 1:
             for f in f_list_versioned_required:
                 shutil.move(f, dst)
-                pk_print(f"'{f}' moved to '{dst}'")
+                ensure_printed(f"'{f}' moved to '{dst}'")
 
     if via_f_txt == True and working_list is None:
         working_list = get_list_from_f(f=f_func_n_txt)
@@ -108,7 +108,7 @@ def make_version_new_v_1_0_1(via_f_txt=False, working_list=None, debug_mode=True
             item_str = get_str_replaced_from_str_to_str_new(item_str=item_str, from_str='PROJECT_D', to_str=D_PROJECT)
             # item=get_pnx_windows_style(pnx=item)
             item_str = get_pnx_unix_style(pnx=item_str)
-            pk_print(f'''item_str="{item_str}"''')
+            ensure_printed(f'''item_str="{item_str}"''')
             cp_and_mv_with_version(item_str)
     if via_f_txt is not True and working_list is not None:
         for f in working_list:

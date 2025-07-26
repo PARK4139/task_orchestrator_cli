@@ -1,9 +1,9 @@
-def pk_speak_v3(str_working, segment_delay=0.90, queue_mode=False):
+def speak_v3(str_working, segment_delay=0.90, queue_mode=False):
     import threading
     import queue
 
     from pkg_py.functions_split.is_containing_special_characters_with_thread import is_containing_special_characters_with_thread
-    from pkg_py.functions_split.speak import pk_speak
+    from pkg_py.functions_split.speak import speak
     from pkg_py.functions_split.remove_special_characters import remove_special_characters
     from pkg_py.system_object.etc import PLAYING_SOUNDS
 

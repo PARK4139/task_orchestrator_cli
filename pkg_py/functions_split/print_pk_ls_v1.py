@@ -3,7 +3,7 @@ def print_pk_ls_v1():
     from pkg_py.functions_split.get_nx import get_nx
     from pkg_py.functions_split.get_pnx_list import get_pnx_list
     from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style
-    from pkg_py.functions_split.pk_print import pk_print
+    from pkg_py.functions_split.ensure_printed import ensure_printed
     from pkg_py.system_object.local_test_activate import LTA
     from pkg_py.system_object.directories import D_PKG_PY
 
@@ -13,6 +13,6 @@ def print_pk_ls_v1():
     pnx_working_with_idx_dict = get_TBD_pnx_working_with_idx_dict(origin_list=pnx_list, minus_list=list_b)
 
     if LTA:
-        pk_print(f'''{'%%%FOO%%%' if LTA else ''}''')
+        ensure_printed(f'''{'%%%FOO%%%' if LTA else ''}''')
     for idx, pnx_working in enumerate(pnx_working_with_idx_dict):
         print(f'pk {idx} {get_nx(pnx_working_with_idx_dict[idx])}')

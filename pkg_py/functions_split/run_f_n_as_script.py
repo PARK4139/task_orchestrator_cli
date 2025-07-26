@@ -2,7 +2,7 @@ from pkg_py.system_object.directories import D_PKG_PY
 from pkg_py.system_object.directories_reuseable import D_PROJECT
 from pkg_py.system_object.encodings import Encoding
 from pkg_py.functions_split.cmd_to_os import cmd_to_os
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style
 
 
@@ -36,7 +36,7 @@ def run_f_n_as_script():  # todo : chore : add parameter
     script_list = script_str.split(CRLF)
     script_list = get_list_replaced_element_from_str_to_str(working_list=script_list, from_str='    ', to_str='')
     ensure_pnx_made(pnx=f_pn_cmd, mode='f', script_list=script_list)
-    pk_print(rf"set PYTHONPATH={D_PROJECT}", print_color='blue')
+    ensure_printed(rf"set PYTHONPATH={D_PROJECT}", print_color='blue')
     # cmd_to_os(cmd=rf'notepad "{activate_bat}"')
     # cmd_to_os(cmd=rf'notepad "{f_pn_cmd}"')
     cmd_to_os(cmd=rf'start call "{f_pn_cmd}" ', encoding=Encoding.UTF8, mode='a')

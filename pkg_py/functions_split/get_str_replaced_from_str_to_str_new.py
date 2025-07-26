@@ -3,18 +3,18 @@ from tkinter import UNDERLINE
 from selenium.webdriver.chrome.options import Options
 from pkg_py.functions_split.is_losslesscut_running import is_losslesscut_running
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
-from pkg_py.functions_split.pk_print_state import pk_print_state
+from pkg_py.functions_split.print_state import print_state
 from pkg_py.functions_split.set_pk_context_state import set_pk_context_state
 from gtts import gTTS
 from pkg_py.system_object.etc import PK_UNDERLINE
 
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
 def get_str_replaced_from_str_to_str_new(item_str, from_str, to_str):
-    pk_print(f'''item_str="{item_str}"''')
-    pk_print(f'''from_str="{from_str}"''')
-    pk_print(f'''to_str="{to_str}"''')
+    ensure_printed(f'''item_str="{item_str}"''')
+    ensure_printed(f'''from_str="{from_str}"''')
+    ensure_printed(f'''to_str="{to_str}"''')
     if not isinstance(item_str, str):
         raise TypeError("item_str must be a string.")
     if not isinstance(from_str, str):
@@ -22,5 +22,5 @@ def get_str_replaced_from_str_to_str_new(item_str, from_str, to_str):
     if not isinstance(to_str, str):
         raise TypeError("to_str must be a string.")
     item_str = item_str.replace(from_str, to_str)
-    pk_print(f'''item_str="{item_str}"''')
+    ensure_printed(f'''item_str="{item_str}"''')
     return item_str

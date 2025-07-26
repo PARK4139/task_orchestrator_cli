@@ -1,4 +1,4 @@
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
 def driver_get_url_in_browser_and_wait_loaded(url, driver):
@@ -23,6 +23,6 @@ def driver_get_url_in_browser_and_wait_loaded(url, driver):
                 latest_time = response_time
                 latest_url = request_url
 
-    pk_print(f"가장 늦게 로드된 요소 URL: {latest_url}")
-    pk_print(f"로드 완료 시간: {latest_time}")
+    ensure_printed(f"가장 늦게 로드된 요소 URL: {latest_url}")
+    ensure_printed(f"로드 완료 시간: {latest_time}")
     return latest_url, latest_time

@@ -10,7 +10,7 @@ from seleniumbase import Driver
 from selenium.webdriver.support.ui import WebDriverWait
 from pkg_py.functions_split.rerun_losslesscut import rerun_losslesscut
 from pkg_py.functions_split.is_window_opened import is_window_opened
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.cmd_to_os import cmd_to_os
 from pkg_py.system_object.encodings import Encoding
 from pkg_py.system_object.get_list_calculated import get_list_calculated

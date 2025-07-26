@@ -1,6 +1,6 @@
 from pkg_py.system_object.local_test_activate import LTA
 
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
 def reboot_vpc(**config_remote_os):
@@ -9,6 +9,6 @@ def reboot_vpc(**config_remote_os):
     ip = config_remote_os['ip']
     while 1:
         if not ping(ip):
-            pk_print(f'''ping ({ip}) {'%%%FOO%%%' if LTA else ''}''', print_color='green')
+            ensure_printed(f'''ping ({ip}) {'%%%FOO%%%' if LTA else ''}''', print_color='green')
             return
-        pk_sleep(milliseconds=20)
+        ensure_slept(milliseconds=20)

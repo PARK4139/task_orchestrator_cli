@@ -41,8 +41,8 @@ from pkg_py.functions_split.is_losslesscut_running import is_losslesscut_running
 from pkg_py.functions_split.rerun_losslesscut import rerun_losslesscut
 from pkg_py.functions_split.get_f_video_to_load import get_f_video_to_load
 from pkg_py.functions_split.is_window_opened import is_window_opened
-from pkg_py.functions_split.pk_print_state import pk_print_state
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.print_state import print_state
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 from pkg_py.functions_split.set_pk_context_state import set_pk_context_state
 from pkg_py.system_object.etc import PkFilter
@@ -59,7 +59,7 @@ from datetime import datetime
 from datetime import date
 from cryptography.hazmat.backends import default_backend
 from base64 import b64encode
-from pkg_py.functions_split.assist_to_load_video_at_losslesscut import pk_ensure_video_loaded_at_losslesscut
+from pkg_py.functions_split.assist_to_load_video_at_losslesscut import ensure_video_loaded_at_losslesscut
 from pkg_py.system_object.etc import PK_UNDERLINE
 from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style
 from pkg_py.functions_split.get_list_calculated import get_list_calculated
@@ -68,11 +68,11 @@ from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
 from pkg_py.functions_split.is_os_windows import is_os_windows
 from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style
 from pkg_py.functions_split.get_pnx_windows_style import get_pnx_windows_style
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
 def get_comprehensive_weather_information_from_web():
@@ -104,7 +104,7 @@ def get_comprehensive_weather_information_from_web():
                     global ment_about_pm_ranking
                     ment_about_pm_ranking = ment
                     target_url = f'https://www.dustrank.com/air/air_dong_detail.php?addcode=41173103'
-                    pk_print(rf'''target_url="{target_url}"  {'%%%FOO%%%' if LTA else ''}''')
+                    ensure_printed(rf'''target_url="{target_url}"  {'%%%FOO%%%' if LTA else ''}''')
                     driver.get(target_url)
                     page_src = driver.page_source
                     from bs4 import BeautifulSoup
@@ -134,10 +134,10 @@ def get_comprehensive_weather_information_from_web():
 
                     global results_about_pm_ranking
                     results_about_pm_ranking = results
-                    pk_print(
+                    ensure_printed(
                         str_working=rf'''results_about_pm_ranking="{results_about_pm_ranking}"  {'%%%FOO%%%' if LTA else ''}''')
                 except:
-                    pk_print(f'''{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
+                    ensure_printed(f'''{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
                     # driver.close()
                     driver.quit()
 
@@ -150,7 +150,7 @@ def get_comprehensive_weather_information_from_web():
                 global title
                 title = ment
                 target_url = 'https://search.naver.com/search.naver?where=nexearch&sm=tab_etc&qvt=0&query=전국초미세먼지'
-                pk_print(target_url, print_color='blue')
+                ensure_printed(target_url, print_color='blue')
                 driver.get(target_url)
                 page_src = driver.page_source
                 from bs4 import BeautifulSoup
@@ -177,7 +177,7 @@ def get_comprehensive_weather_information_from_web():
                 results___ = results_
                 global results_about_nationwide_ultrafine_dust
                 results_about_nationwide_ultrafine_dust = results___
-                pk_print(
+                ensure_printed(
                     str_working=rf'''results_about_nationwide_ultrafine_dust="{results_about_nationwide_ultrafine_dust}"  {'%%%FOO%%%' if LTA else ''}''')
 
             async def crawl_naver_weather():
@@ -189,7 +189,7 @@ def get_comprehensive_weather_information_from_web():
                 global ment_about_naver_weather
                 ment_about_naver_weather = ment
                 target_url = 'https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=1&ie=utf8&query=동안구+관양동+날씨'
-                pk_print(target_url, print_color='blue')
+                ensure_printed(target_url, print_color='blue')
                 driver.get(target_url)
                 page_src = driver.page_source
                 from bs4 import BeautifulSoup
@@ -226,7 +226,7 @@ def get_comprehensive_weather_information_from_web():
 
                 global results_about_naver_weather
                 results_about_naver_weather = results
-                pk_print(
+                ensure_printed(
                     str_working=rf'''results_about_naver_weather="{results_about_naver_weather}"  {'%%%FOO%%%' if LTA else ''}''')
 
             async def crawl_geo_info():
@@ -238,7 +238,7 @@ def get_comprehensive_weather_information_from_web():
                 ment_about_geo = ment
                 # target_url='https://map.naver.com/p'
                 target_url = 'https://www.google.com/search?q=현재위치'
-                pk_print(target_url, print_color='blue')
+                ensure_printed(target_url, print_color='blue')
                 driver.get(target_url)
                 page_src = driver.page_source
                 from bs4 import BeautifulSoup
@@ -252,7 +252,7 @@ def get_comprehensive_weather_information_from_web():
 
                 global results_about_geo
                 results_about_geo = results
-                pk_print(str_working=rf'''results_about_geo="{results_about_geo}"  {'%%%FOO%%%' if LTA else ''}''')
+                ensure_printed(str_working=rf'''results_about_geo="{results_about_geo}"  {'%%%FOO%%%' if LTA else ''}''')
 
             def run_async_loop1():
                 import asyncio
@@ -263,7 +263,7 @@ def get_comprehensive_weather_information_from_web():
                     asyncio.set_event_loop(loop)
                     loop.run_until_complete(crawl_pm_ranking())
                 except:
-                    pk_print(f'''{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
+                    ensure_printed(f'''{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
 
             def run_async_loop2():
                 import asyncio
@@ -282,7 +282,7 @@ def get_comprehensive_weather_information_from_web():
             def run_async_loop4():
                 import asyncio
                 func_n = inspect.currentframe().f_code.co_name
-                # pk_print(f"def {inspect.currentframe().f_code.co_name}() is running...")
+                # ensure_printed(f"def {inspect.currentframe().f_code.co_name}() is running...")
                 func_n = inspect.currentframe().f_code.co_name
                 loop = asyncio.new_event_loop()
                 asyncio.set_event_loop(loop)
@@ -323,4 +323,4 @@ def get_comprehensive_weather_information_from_web():
             dialog4.show()
             break
     except:
-        pk_print(f'''{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
+        ensure_printed(f'''{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}''', print_color='red')

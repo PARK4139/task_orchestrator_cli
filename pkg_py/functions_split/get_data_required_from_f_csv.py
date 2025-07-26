@@ -13,14 +13,14 @@ from pkg_py.functions_split.is_window_title_front import is_window_title_front
 from pkg_py.system_object.map_massages import PkMessages2025
 
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
 def get_data_required_from_f_csv(line_order):
     import inspect
 
     func_n = inspect.currentframe().f_code.co_name
-    pk_print(str_working=rf'''{func_n}()  {'%%%FOO%%%' if LTA else ''}''', print_color='blue')
+    ensure_printed(str_working=rf'''{func_n}()  {'%%%FOO%%%' if LTA else ''}''', print_color='blue')
     df = get_df_from_issues_list_csv_deprecated()
     columns_required = df.columns.tolist()  # 전부
     # columns_required=['주행일자','해결 여부', '문제점 상세',  'SW 버전', 'f 위치', '발생시각', '문제모듈', '개입(크루)',  'Crew 요청사항', '피드백 조치','차량', '지역', '코스', '날씨', 'Crew', '위치(UTM_E)', '위치(UTM_N)', '위치(Azimuth)', '위치(Altitude)','시작 Frame', '종료 Frame','개입(점검)', '위험도', 'DB 분석피드백', 'Comment','수정 여부', '수정 내용', '교육자료', '특이 DB', 'f 크기', ] # 중요도 높은것 앞으로 변경된
@@ -29,10 +29,10 @@ def get_data_required_from_f_csv(line_order):
     data_required = {}
     nth_row = get_nth_row(df, n=line_order)
     if nth_row is not None:
-        pk_print(str_working=rf'''{PK_UNDERLINE}n="{line_order}"  {'%%%FOO%%%' if LTA else ''}''')
+        ensure_printed(str_working=rf'''{PK_UNDERLINE}n="{line_order}"  {'%%%FOO%%%' if LTA else ''}''')
         for col in columns_required:
             if col in df.columns:  # 열이 존재하는 경우만 출력 # todo : chore : get은 get 기능만 출력은 따로..
-                pk_print(f"{col}: {nth_row[col]}", print_color='blue')
+                ensure_printed(f"{col}: {nth_row[col]}", print_color='blue')
                 # 필요한 것만 추가
                 if col == "f 위치":
                     data_required["f 위치"] = nth_row[col]

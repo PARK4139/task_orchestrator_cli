@@ -7,7 +7,7 @@ import easyocr
 import clipboard
 from selenium.webdriver.common.keys import Keys
 from pkg_py.functions_split.print_iterable_as_vertical import print_iterable_as_vertical
-from pkg_py.functions_split.pk_print_state import pk_print_state
+from pkg_py.functions_split.print_state import print_state
 from pkg_py.functions_split.cmd_to_os import cmd_to_os
 from pkg_py.system_object.etc import PkFilter
 from pkg_py.system_object.files import F_HISTORICAL_PNX

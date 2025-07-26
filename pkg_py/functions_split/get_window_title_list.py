@@ -1,10 +1,10 @@
 def get_window_title_list(process_img_n=None):
-    # test result = 0.000 passed via @pk_measure_seconds at 250413
+    # test result = 0.000 passed via @measure_seconds at 250413
 
     import win32gui
     import win32process
 
-    from pkg_py.functions_split.pk_print import pk_print
+    from pkg_py.functions_split.ensure_printed import ensure_printed
     from pkg_py.system_object.local_test_activate import LTA
 
     import traceback
@@ -18,9 +18,9 @@ def get_window_title_list(process_img_n=None):
         # 프로세스 목록에서 이름으로 PID 찾기
         pids = [p.info['pid'] for p in psutil.process_iter(['name', 'pid']) if p.info['name'] == process_img_n]
         if LTA:
-            pk_print(f"Found PIDs : '{process_img_n}': {pids}")
+            ensure_printed(f"Found PIDs : '{process_img_n}': {pids}")
         if not pids:
-            pk_print(f"Process '{process_img_n}' not found.")
+            ensure_printed(f"Process '{process_img_n}' not found.")
             return titles
 
         # PID에 연결된 창 검색
@@ -48,6 +48,6 @@ def get_window_title_list(process_img_n=None):
 
             win32gui.EnumWindows(enum_windows_callback, None)
         except Exception as e:
-            pk_print(f'''{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
+            ensure_printed(f'''{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
 
         return window_titles

@@ -4,7 +4,7 @@ import sys
 from pkg_py.functions_split.get_list_contained_element import get_list_contained_element
 from pkg_py.functions_split.get_pnxs_from_d_working import get_pnxs_from_d_working
 from pkg_py.functions_split.get_str_from_list import get_str_from_list
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.system_object.directories import D_TESTS
 
 
@@ -18,12 +18,12 @@ def run_pytest_file(path: str):
     else:
         cmd_list = ["pytest", path]
     cmd = get_str_from_list(working_list=cmd_list, item_connector=" ")
-    pk_print(f"[RUNNING] {cmd}")
+    ensure_printed(f"[RUNNING] {cmd}")
     result = subprocess.run(cmd_list)
     if result.returncode != 0:
-        pk_print(f"[FAIL] 테스트 실패: {path}")
+        ensure_printed(f"[FAIL] 테스트 실패: {path}")
     else:
-        pk_print(f"[PASS] 테스트 성공: {path}")
+        ensure_printed(f"[PASS] 테스트 성공: {path}")
 
 
 if __name__ == "__main__":
@@ -31,14 +31,14 @@ if __name__ == "__main__":
     test_suffix = 2025
     test_files_filtered = get_list_contained_element(working_list=test_files, suffix=f"_{test_suffix}")
 
-    pk_print(f"[STARTED] TEST files of {D_TESTS}")
+    ensure_printed(f"[STARTED] TEST files of {D_TESTS}")
 
     tested_file_cnt = 0
     for file in test_files_filtered:
-        pk_print(f"[DETECTED] {file}")
+        ensure_printed(f"[DETECTED] {file}")
         run_pytest_file(file)
         tested_file_cnt += 1
 
     skipped_file_cnt = len(test_files) - tested_file_cnt
 
-    pk_print(f"[ENDED] TEST VIA PYTEST {tested_file_cnt}EA files of {D_TESTS} (skipped {skipped_file_cnt} files of len({len(test_files)})")
+    ensure_printed(f"[ENDED] TEST VIA PYTEST {tested_file_cnt}EA files of {D_TESTS} (skipped {skipped_file_cnt} files of len({len(test_files)})")

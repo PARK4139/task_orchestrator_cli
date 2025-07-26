@@ -53,9 +53,9 @@ from PySide6.QtWidgets import QApplication
 from pkg_py.functions_split.get_historical_list import get_historical_list
 from pkg_py.functions_split.ensure_window_to_front import ensure_window_to_front
 from pkg_py.functions_split.rerun_losslesscut import rerun_losslesscut
-from pkg_py.functions_split.pk_press import pk_press
-from pkg_py.functions_split.pk_print_state import pk_print_state
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.press import press
+from pkg_py.functions_split.print_state import print_state
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 from pkg_py.functions_split.get_list_sorted import get_list_sorted
 
@@ -86,7 +86,7 @@ from pkg_py.functions_split.get_pnx_wsl_unix_style import get_pnx_wsl_unix_style
 from pkg_py.functions_split.get_pnx_windows_style import get_pnx_windows_style
 from pkg_py.functions_split.is_os_windows import is_os_windows
 
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
 def move_chrome_tab_by_url(url):
@@ -104,12 +104,12 @@ def move_chrome_tab_by_url(url):
                 if loop_cnt == loop_limit:
                     return
                 loop_cnt = loop_cnt + 1
-                pk_sleep(milliseconds=15)
+                ensure_slept(milliseconds=15)
                 pk_press("ctrl", "l")
-                pk_sleep(milliseconds=15)
+                ensure_slept(milliseconds=15)
                 url_dragged = get_text_dragged()
                 if url_dragged == url:
-                    pk_print(f'''url_to_move = "{url}"''')
-                    pk_print(f'''url_dragged = "{url_dragged}"''')
+                    ensure_printed(f'''url_to_move = "{url}"''')
+                    ensure_printed(f'''url_dragged = "{url_dragged}"''')
                     break
                 pass

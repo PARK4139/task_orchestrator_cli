@@ -28,7 +28,7 @@ from pkg_py.functions_split.is_os_windows import is_os_windows
 from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style
 from pkg_py.functions_split.get_pnx_wsl_unix_style import get_pnx_wsl_unix_style
 
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.get_pnx_list import get_pnx_list
 
 
@@ -37,16 +37,16 @@ def ensure_docker_env():
     import subprocess
 
     if not command_exists('docker'):
-        pk_print('Docker missing: installing...', print_color='yellow')
+        ensure_printed('Docker missing: installing...', print_color='yellow')
         subprocess.run(['sudo', 'apt-get', 'update'], check=True)
         subprocess.run(['sudo', 'apt-get', 'install', '-y', 'docker.io'], check=True)
     else:
-        pk_print('Docker exists')
+        ensure_printed('Docker exists')
     # 데몬 예외처리
     try:
         subprocess.run(['docker', 'info'], check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     except subprocess.CalledProcessError:
-        pk_print('Docker daemon not running. Attempting to start...', print_color='yellow')
+        ensure_printed('Docker daemon not running. Attempting to start...', print_color='yellow')
         # 시스템에 따라 service 또는 systemctl (WSL Ubuntu22.04는 systemctl, 18.04는 service)
         import platform
         start_cmd = ['sudo', 'service', 'docker', 'start']
@@ -56,13 +56,13 @@ def ensure_docker_env():
             try:
                 subprocess.run(['sudo', 'systemctl', 'start', 'docker'], check=True)
             except Exception as e2:
-                pk_print(f'Docker daemon failed to start: {e}\n{e2}', print_color='red')
+                ensure_printed(f'Docker daemon failed to start: {e}\n{e2}', print_color='red')
                 raise RuntimeError("Docker daemon could not be started!")
         # 재확인
         try:
             subprocess.run(['docker', 'info'], check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-            pk_print("Docker daemon started successfully.")
+            ensure_printed("Docker daemon started successfully.")
         except subprocess.CalledProcessError:
-            pk_print("Docker daemon is still not running. Please check manually.", print_color="red")
+            ensure_printed("Docker daemon is still not running. Please check manually.", print_color="red")
             raise RuntimeError("Docker daemon is not running!")
     return ['docker']

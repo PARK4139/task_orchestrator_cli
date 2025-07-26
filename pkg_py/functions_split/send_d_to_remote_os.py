@@ -12,7 +12,7 @@ from pkg_py.functions_split.get_f_loading_nx_by_pattern import get_f_loading_nx_
 from pkg_py.functions_split.ensure_window_to_front import ensure_window_to_front
 from pkg_py.functions_split.is_window_title_opened import is_window_title_opened
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
-from pkg_py.functions_split.pk_print_once import pk_print_once
+from pkg_py.functions_split.ensure_printed_once import ensure_printed_once
 from pkg_py.functions_split.cmd_to_os import cmd_to_os
 from pkg_py.functions_split.set_pk_context_state import set_pk_context_state
 from pkg_py.system_object.stamps import STAMP_ATTEMPTED
@@ -28,7 +28,7 @@ from pkg_py.system_object.is_os_windows import is_os_windows
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
 def send_d_to_remote_os(d_local_src, d_remote_dst, **config_remote_os):
@@ -53,7 +53,7 @@ def send_d_to_remote_os(d_local_src, d_remote_dst, **config_remote_os):
         f_zip_local = get_pnx_os_style(pnx=f_zip_local)
         shutil.make_archive(base_name=f_zip_local.replace(".zip", ""), format="zip", root_dir=d_local_src)
         if does_pnx_exist(f_zip_local):
-            pk_print(f"compress d from d_local to f_zip_local({f_zip_local})")
+            ensure_printed(f"compress d from d_local to f_zip_local({f_zip_local})")
 
         f_zip_remote = os.path.join(d_remote_dst, f_zip_nx).replace("\\", "/")
 
@@ -63,9 +63,9 @@ def send_d_to_remote_os(d_local_src, d_remote_dst, **config_remote_os):
         sftp = ssh.open_sftp()
 
         # send d as f_zip
-        pk_print(f"start to send d as f_zip from {f_zip_local} to {f_zip_remote}")
+        ensure_printed(f"start to send d as f_zip from {f_zip_local} to {f_zip_remote}")
         sftp.put(f_zip_local, f_zip_remote)
-        pk_print(f"send d as f_zip from {f_zip_local} to {f_zip_remote}", print_color="green")
+        ensure_printed(f"send d as f_zip from {f_zip_local} to {f_zip_remote}", print_color="green")
 
         # decompress in remote
         cmd = f"unzip -o {f_zip_remote} -d {d_remote_dst}"
@@ -86,4 +86,4 @@ def send_d_to_remote_os(d_local_src, d_remote_dst, **config_remote_os):
         if os.path.exists(f_zip_local):
             os.remove(f_zip_local)
         if LTA:
-            pk_print("SSH connection closed.")
+            ensure_printed("SSH connection closed.")

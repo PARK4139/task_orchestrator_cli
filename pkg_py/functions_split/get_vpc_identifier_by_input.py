@@ -25,7 +25,7 @@ from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
 from pkg_py.functions_split.get_pnx_wsl_unix_style import get_pnx_wsl_unix_style
 
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.get_pnx_list import get_pnx_list
 
 
@@ -39,5 +39,5 @@ def get_vpc_identifier_by_input(input_ment, vpc_type):
             state_nick_name_passed = 1
         if state_nick_name_passed == 1:
             if LTA:
-                pk_print(f'''vpc_identifier={vpc_identifier} {'%%%FOO%%%' if LTA else ''}''')
+                ensure_printed(f'''vpc_identifier={vpc_identifier} {'%%%FOO%%%' if LTA else ''}''')
             return vpc_identifier

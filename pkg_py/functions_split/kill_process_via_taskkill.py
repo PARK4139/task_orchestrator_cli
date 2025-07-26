@@ -21,7 +21,7 @@ from pkg_py.system_object.directories import D_PKG_PY
 from pkg_py.functions_split.is_d import is_d
 
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
 def kill_process_via_taskkill(process_name=None, pid=None, debug_mode=True):
@@ -30,9 +30,9 @@ def kill_process_via_taskkill(process_name=None, pid=None, debug_mode=True):
     func_n = inspect.currentframe().f_code.co_name
 
     if process_name is not None or pid is not None:
-        pk_print(rf"{func_n}() 동작 조건 충족")
+        ensure_printed(rf"{func_n}() 동작 조건 충족")
     else:
-        pk_print(rf"{func_n}() 동작 조건 불충족")
+        ensure_printed(rf"{func_n}() 동작 조건 불충족")
         return
 
     cmd = None

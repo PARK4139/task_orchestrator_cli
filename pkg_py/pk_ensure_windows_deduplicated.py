@@ -8,11 +8,11 @@ if __name__ == '__main__':
         from pkg_py.system_object.etc import PK_UNDERLINE
         from pkg_py.system_object.stamps import STAMP_TRY_GUIDE, STAMP_PYTHON_DEBUGGING_NOTE, STAMP_EXCEPTION_DISCOVERED
         from pkg_py.functions_split.is_os_windows import is_os_windows
-        from pkg_py.functions_split.pk_print import pk_print
+        from pkg_py.functions_split.ensure_printed import ensure_printed
         from pkg_py.functions_split.ensure_windows_deduplicated import ensure_windows_deduplicated
         from pkg_py.functions_split.chcp_65001 import chcp_65001
         from pkg_py.functions_split.get_f_current_n import get_f_current_n
-        from pkg_py.functions_split.pk_deprecated_get_d_current_n_like_person import pk_deprecated_get_d_current_n_like_person
+        from pkg_py.functions_split.deprecated_get_d_current_n_like_person import deprecated_get_d_current_n_like_person
 
         if is_os_windows():
             chcp_65001()

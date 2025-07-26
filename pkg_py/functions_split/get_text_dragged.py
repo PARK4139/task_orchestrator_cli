@@ -1,8 +1,8 @@
 
 
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.functions_split.pk_print import pk_print
-from pkg_py.functions_split.pk_press import pk_press
+from pkg_py.functions_split.ensure_printed import ensure_printed
+from pkg_py.functions_split.press import press
 
 
 def get_text_dragged():
@@ -19,7 +19,7 @@ def get_text_dragged():
     # 클립보드에서 변수에 저장
     text_dragged = pk_paste()
 
-    pk_print(str_working=rf'''text_dragged="{text_dragged}"  {'%%%FOO%%%' if LTA else ''}''')
+    ensure_printed(str_working=rf'''text_dragged="{text_dragged}"  {'%%%FOO%%%' if LTA else ''}''')
 
     # 클립보드 복원
     clipboard.copy(clipboard_current_contents)

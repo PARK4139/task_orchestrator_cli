@@ -52,9 +52,9 @@ from pkg_py.functions_split.is_window_title_front import is_window_title_front
 from pkg_py.functions_split.get_d_working import get_d_working
 from pkg_py.functions_split.is_window_opened import is_window_opened
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
-from pkg_py.functions_split.pk_press import pk_press
+from pkg_py.functions_split.press import press
 
-from pkg_py.functions_split.write_list_to_f import write_list_to_f
+from pkg_py.functions_split.ensure_list_written_to_f import ensure_list_written_to_f
 from pkg_py.functions_split.ensure_console_cleared import ensure_console_cleared
 from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
 from pkg_py.system_object.stamps import STAMP_ATTEMPTED
@@ -90,7 +90,7 @@ from pkg_py.functions_split.get_pnx_wsl_unix_style import get_pnx_wsl_unix_style
 from pkg_py.functions_split.is_os_windows import is_os_windows
 from pkg_py.functions_split.get_pnx_wsl_unix_style import get_pnx_wsl_unix_style
 from pkg_py.functions_split.get_pnx_windows_style import get_pnx_windows_style
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 from pkg_py.functions_split.get_d_working import get_d_working
 
@@ -110,7 +110,7 @@ def get_f_changed_list_from_d_interested_list(d_interested_list, monitoring_inte
     # 필요한 속성만 참조
     Observer = watchdog_observers.Observer
     FileSystemEventHandler = watchdog_events.FileSystemEventHandler
-    pk_print = pkg_cli.pk_print
+    ensure_printed = pkg_cli.ensure_printed
     DOWNLOADS = D_DOWNLOADS
 
     d_interested_list = [get_pnx_os_style(d) for d in d_interested_list]
@@ -124,26 +124,26 @@ def get_f_changed_list_from_d_interested_list(d_interested_list, monitoring_inte
             self.change_cnt_limit = change_cnt_limit
 
         def on_created(self, event):
-            pk_print(f"f_created={event.src_path}")
+            ensure_printed(f"f_created={event.src_path}")
             self.f_changed_list.append(event.src_path)
             self.f_change_level += 1
             self.check_limit()
 
         def on_deleted(self, event):
-            pk_print(f"f_deleted={event.src_path}")
+            ensure_printed(f"f_deleted={event.src_path}")
             self.f_changed_list.append(event.src_path)
             self.f_change_level += 1
             self.check_limit()
 
         def on_modified(self, event):
-            pk_print(f"f_modified={event.src_path}")
+            ensure_printed(f"f_modified={event.src_path}")
             self.f_changed_list.append(event.src_path)
             self.f_change_level += 1
             self.check_limit()
 
         def check_limit(self):
             if self.change_cnt_limit is not None and self.f_change_level >= self.change_cnt_limit:
-                pk_print("Change limit reached. Stopping observer.")
+                ensure_printed("Change limit reached. Stopping observer.")
                 self.observer.stop()  # Stop the observer instead of raising an exception
 
     event_handler = FileChangeHandler(change_cnt_limit)
@@ -152,7 +152,7 @@ def get_f_changed_list_from_d_interested_list(d_interested_list, monitoring_inte
     for d in d_interested_list:
         observer.schedule(event_handler, d, recursive=True)
 
-    pk_print(
+    ensure_printed(
         rf"[DETECT F_CHANGED LOOP STARTED] monitoring_interval={monitoring_interval}, len(d_interested_list)={len(d_interested_list)}",
         print_color='blue')
 
@@ -163,11 +163,11 @@ def get_f_changed_list_from_d_interested_list(d_interested_list, monitoring_inte
         while 1:
             if time_limit is not None and (time.time() - start_time > time_limit):
                 break
-            pk_sleep(seconds=monitoring_interval)
+            ensure_slept(seconds=monitoring_interval)
     except StopIteration:
         pass
     except KeyboardInterrupt:
-        pk_print("Monitoring stopped by user.")
+        ensure_printed("Monitoring stopped by user.")
 
     observer.stop()
     observer.join()

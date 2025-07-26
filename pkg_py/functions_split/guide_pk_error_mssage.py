@@ -1,11 +1,11 @@
 
 
-from pkg_py.functions_split.pk_measure_seconds import pk_measure_seconds
+from pkg_py.functions_split.measure_seconds import measure_seconds
 
 
-@pk_measure_seconds
+@measure_seconds
 def guide_pk_error_mssage():
     from pkg_py.system_object.map_massages import PkMessages2025
     from pkg_py.system_object.local_test_activate import LTA
-    from pkg_py.functions_split.pk_print import pk_print
-    pk_print(f'''{PkMessages2025.NOT_PREPARED_YET}{'%%%FOO%%%' if LTA else ''}''', print_color='green', mode_verbose=0)
+    from pkg_py.functions_split.ensure_printed import ensure_printed
+    ensure_printed(f'''{PkMessages2025.NOT_PREPARED_YET}{'%%%FOO%%%' if LTA else ''}''', print_color='green', mode_verbose=0)

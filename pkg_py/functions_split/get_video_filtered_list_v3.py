@@ -2,7 +2,7 @@ from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
 
 from pkg_py.system_object.directories import D_PKG_PKL
 from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
 def get_video_filtered_list_v3(d_working, ext_allowed_list, video_ignored_keyword_list):
@@ -31,7 +31,7 @@ def get_video_filtered_list_v3(d_working, ext_allowed_list, video_ignored_keywor
             with open(F_CACHE, "rb") as f:
                 cache = pickle.load(f)
             if time.time() - cache["timestamp"] < CACHE_TTL_SECONDS:
-                pk_print(f"[CACHE] using video list cache from {F_CACHE}", print_color='cyan')
+                ensure_printed(f"[CACHE] using video list cache from {F_CACHE}", print_color='cyan')
                 return cache["video_list"]
         except Exception:
             pass  # 손상된 캐시는 무시
@@ -40,7 +40,7 @@ def get_video_filtered_list_v3(d_working, ext_allowed_list, video_ignored_keywor
     try:
         f_list = [os.path.join(d_working, f) for f in os.listdir(d_working)]
     except Exception as e:
-        pk_print(f"[ERROR] Failed to read files from {d_working}: {e}", print_color='red')
+        ensure_printed(f"[ERROR] Failed to read files from {d_working}: {e}", print_color='red')
         return []
 
     filtered = [
@@ -58,5 +58,5 @@ def get_video_filtered_list_v3(d_working, ext_allowed_list, video_ignored_keywor
             "video_list": filtered
         }, f_obj)
 
-    pk_print(f"[CACHE] refreshed video list and saved to {F_CACHE}", print_color='green')
+    ensure_printed(f"[CACHE] refreshed video list and saved to {F_CACHE}", print_color='green')
     return filtered

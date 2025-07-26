@@ -5,7 +5,7 @@ def kill_us_keyboard():
     import threading
     from multiprocessing import shared_memory, Lock
 
-    pk_colorama_init_once()
+    colorama_init_once()
 
     if get_os_n() == 'windows':
         chcp_65001()
@@ -16,9 +16,9 @@ def kill_us_keyboard():
     try:
         # 기존 공유 메모리 존재 여부 확인
         shm = shared_memory.SharedMemory(name=shm_name, create=False)
-        pk_print(rf"기존 공유 메모리 발견, 초기화 생략 shm_name={shm_name}", print_color="green")
+        ensure_printed(rf"기존 공유 메모리 발견, 초기화 생략 shm_name={shm_name}", print_color="green")
     except FileNotFoundError:
-        pk_print(rf"새로운 공유 메모리 생성 shm_name={shm_name}", print_color="green")
+        ensure_printed(rf"새로운 공유 메모리 생성 shm_name={shm_name}", print_color="green")
         shm = shared_memory.SharedMemory(create=True, size=1, name=shm_name)
         shm.buf[0] = 0  # 초기값 False (0)
 
@@ -28,14 +28,14 @@ def kill_us_keyboard():
             existing_shm = shared_memory.SharedMemory(name=shm_name)
             flag = existing_shm.buf
         except FileNotFoundError:
-            pk_print("listen_enter: 공유 메모리가 존재하지 않음. 종료.", print_color='red')
+            ensure_printed("listen_enter: 공유 메모리가 존재하지 않음. 종료.", print_color='red')
             return
 
         while 1:
             input()  # Enter 입력 대기
             with lock:
                 flag[0] = 1  # flag를 True로 변경
-                pk_print("Enter detected! flag 업데이트됨.", print_color="blue")
+                ensure_printed("Enter detected! flag 업데이트됨.", print_color="blue")
 
         existing_shm.close()
 
@@ -45,7 +45,7 @@ def kill_us_keyboard():
             existing_shm = shared_memory.SharedMemory(name=shm_name)
             flag = existing_shm.buf
         except FileNotFoundError:
-            pk_print("main_loop: 공유 메모리가 존재하지 않음. 종료.", print_color='red')
+            ensure_printed("main_loop: 공유 메모리가 존재하지 않음. 종료.", print_color='red')
             return
 
         while 1:
@@ -59,7 +59,7 @@ def kill_us_keyboard():
             for _ in range(sleep_seconds):
                 with lock:
                     if flag[0]:  # flag가 True면 리셋 후 루프 재시작
-                        pk_print("Enter detected! Restarting loop...", print_color="white")
+                        ensure_printed("Enter detected! Restarting loop...", print_color="white")
 
                         # pk_system_kill_us_keyboard.cmd (run)
                         f_cmd = rf"{D_PKG_WINDOWS}/pk_kill_us_keyboard.cmd"
@@ -67,9 +67,9 @@ def kill_us_keyboard():
                         cmd_to_os(cmd=rf'"{f_cmd}"', encoding='utf-8')
 
                         flag[0] = 0  # flag를 다시 False로 초기화
-                        pk_print(f"wait for enter  {'%%%FOO%%%' if LTA else ''}", print_color='white')
+                        ensure_printed(f"wait for enter  {'%%%FOO%%%' if LTA else ''}", print_color='white')
                         break
-                pk_sleep(seconds=1)
+                ensure_slept(seconds=1)
 
         existing_shm.close()
 

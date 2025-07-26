@@ -28,8 +28,8 @@ from selenium.common.exceptions import WebDriverException
 from PySide6.QtWidgets import QApplication
 from prompt_toolkit.styles import Style
 from pkg_py.functions_split.is_window_title_front import is_window_title_front
-from pkg_py.functions_split.pk_press import pk_press
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.press import press
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 from pkg_py.functions_split.cmd_to_os import cmd_to_os
 
@@ -45,7 +45,7 @@ from datetime import timedelta
 from Cryptodome.Cipher import AES
 from concurrent.futures import ThreadPoolExecutor
 from pkg_py.functions_split.get_nx import get_nx
-from pkg_py.functions_split.assist_to_load_video_at_losslesscut import pk_ensure_video_loaded_at_losslesscut
+from pkg_py.functions_split.assist_to_load_video_at_losslesscut import ensure_video_loaded_at_losslesscut
 from pkg_py.functions_split.kill_self_pk_program import kill_self_pk_program
 from pkg_py.functions_split.get_value_completed import get_value_completed
 from pkg_py.system_object.directories import D_PKG_PY
@@ -53,9 +53,9 @@ from pkg_py.functions_split.get_list_calculated import get_list_calculated
 from pkg_py.system_object.is_os_windows import is_os_windows
 from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
 from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
 def get_img_when_img_recognized_succeed(img_abspath, recognize_loop_limit_cnt=0, is_zoom_toogle_mode=False):
@@ -88,19 +88,19 @@ def get_img_when_img_recognized_succeed(img_abspath, recognize_loop_limit_cnt=0,
             # open cv 설치했는데 적용안되고 있음. 재부팅도 하였는 데도 안됨.
             # xy_infos_of_imgs=pyautogui.locateOnScreen(img_abspath, confidence=0.7, grayscale=True)
             # debug_as_gui(xy_infos_of_imgs is None)
-            pk_print("화면 이미지 인식 시도 중...")
+            ensure_printed("화면 이미지 인식 시도 중...")
             loop_cnt = loop_cnt + 1
             try:
                 img = pyautogui.locateOnScreen(img_abspath, confidence=0.7, grayscale=True)
-                pk_print(type(img), print_color='blue')
-                pk_print(img, print_color='blue')
-                pk_print(img is not None, print_color='blue')
+                ensure_printed(type(img), print_color='blue')
+                ensure_printed(img, print_color='blue')
+                ensure_printed(img is not None, print_color='blue')
                 if img is not None:
                     return img
                 else:
-                    pk_print(f"화면 이미지 분석 중...")
-                    pk_print(img_abspath, print_color='blue')
-                    pk_sleep(milliseconds=15)
+                    ensure_printed(f"화면 이미지 분석 중...")
+                    ensure_printed(img_abspath, print_color='blue')
+                    ensure_slept(milliseconds=15)
                     if is_zoom_toogle_mode == True:
                         if chrome_zoom_step == 14:
                             chrome_zoom_step = 0
@@ -111,25 +111,25 @@ def get_img_when_img_recognized_succeed(img_abspath, recognize_loop_limit_cnt=0,
                             pk_press('ctrl', '+')
                             chrome_zoom_step = chrome_zoom_step + 1
             except pyautogui.ImageNotFoundException:
-                pk_print(f"{loop_cnt}번의 화면인식시도를 했지만 인식하지 못하였습니다")
+                ensure_printed(f"{loop_cnt}번의 화면인식시도를 했지만 인식하지 못하였습니다")
                 pass
     else:
         while 1:
             loop_cnt = loop_cnt + 1
-            pk_print("화면 이미지 인식 시도 중...")
+            ensure_printed("화면 이미지 인식 시도 중...")
             if recognize_loop_limit_cnt == loop_cnt:
-                pk_print(f"{loop_cnt}번의 화면인식시도를 했지만 인식하지 못하였습니다")
+                ensure_printed(f"{loop_cnt}번의 화면인식시도를 했지만 인식하지 못하였습니다")
                 return None
             try:
                 img = pyautogui.locateOnScreen(img_abspath, confidence=0.7, grayscale=True)
-                pk_print(type(img), print_color='blue')
-                pk_print(img, print_color='blue')
-                pk_print(img is not None, print_color='blue')
+                ensure_printed(type(img), print_color='blue')
+                ensure_printed(img, print_color='blue')
+                ensure_printed(img is not None, print_color='blue')
                 if img is not None:
                     return img
             except:
-                pk_print(img_abspath, print_color='blue')
-                pk_sleep(milliseconds=10)
+                ensure_printed(img_abspath, print_color='blue')
+                ensure_slept(milliseconds=10)
                 if is_zoom_toogle_mode == True:
                     if chrome_zoom_step == 14:
                         chrome_zoom_step = 0

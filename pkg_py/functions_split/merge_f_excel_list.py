@@ -30,10 +30,10 @@ from bs4 import BeautifulSoup
 from pkg_py.system_object.is_os_windows import is_os_windows
 from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style
 from pkg_py.functions_split.get_pnx_windows_style import get_pnx_windows_style
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
 def merge_f_excel_list(d):
@@ -94,10 +94,10 @@ def merge_f_excel_list(d):
             # open_pnx(merged_file)
             ensure_pnx_opened_by_ext(pnx=f_merged)
         except PermissionError:
-            pk_print(f'''{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
-            pk_print(f"{func_n}() 엑셀f이 열려있을 수 있습니다. 닫고 머지를 다시 시도해 주세요", print_color='red')
+            ensure_printed(f'''{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
+            ensure_printed(f"{func_n}() 엑셀f이 열려있을 수 있습니다. 닫고 머지를 다시 시도해 주세요", print_color='red')
         except Exception as e:
-            pk_print(f'''{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
-            pk_print(f"{func_n}() \n {traceback.format_exc()}", print_color='red')
+            ensure_printed(f'''{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
+            ensure_printed(f"{func_n}() \n {traceback.format_exc()}", print_color='red')
     except:
-        pk_print(f'''{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
+        ensure_printed(f'''{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}''', print_color='red')

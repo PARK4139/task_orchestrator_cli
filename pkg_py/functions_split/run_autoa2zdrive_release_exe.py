@@ -6,12 +6,12 @@ from pkg_py.functions_split.is_window_opened import is_window_opened
 from pkg_py.functions_split.cmd_to_os import cmd_to_os
 
 
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
 from pkg_py.functions_split.cmd_to_os import cmd_to_os
 
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.is_window_opened import is_window_opened
 from pkg_py.functions_split.ensure_window_to_front import ensure_window_to_front
 
@@ -37,7 +37,7 @@ def run_autoa2zdrive_release_exe():
                 break
             if time.time() - start_time > timeout:
                 break
-            pk_sleep(seconds=1)
+            ensure_slept(seconds=1)
         break
 
     # 자동닫힘 여부확인 # 40초 동안에
@@ -48,7 +48,7 @@ def run_autoa2zdrive_release_exe():
             break
         if time.time() - start_time > timeout:
             break
-        pk_sleep(seconds=1)
+        ensure_slept(seconds=1)
 
     # 40초 동안에 안열리면 VS code exec
     window_title_seg = "AutoA2ZDrive_Release.exe"
@@ -63,7 +63,7 @@ def run_autoa2zdrive_release_exe():
             if is_front_window_title(window_title_seg=window_title_seg):
                 ensure_window_to_front(window_title_seg=window_title_seg)
                 break
-        pk_print(str_working=time.time() - start_time)
+        ensure_printed(str_working=time.time() - start_time)
         if time.time() - start_time > timeout:
             break
-        pk_sleep(milliseconds=1000)
+        ensure_slept(milliseconds=1000)

@@ -29,7 +29,7 @@ from prompt_toolkit.styles import Style
 from prompt_toolkit import PromptSession
 # from project_database.test_project_database import MySqlUtil
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
-from pkg_py.functions_split.pk_print_state import pk_print_state
+from pkg_py.functions_split.print_state import print_state
 from pkg_py.functions_split.ensure_console_cleared import ensure_console_cleared
 from pkg_py.system_object.etc import PkFilter
 from pkg_py.system_object.files import F_POT_PLAYER_MINI_64_EXE
@@ -57,17 +57,17 @@ from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style
 from pkg_py.functions_split.get_pnx_windows_style import get_pnx_windows_style
 
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
 def print_function_info(thing_curious):
     import inspect
 
     func_n = inspect.currentframe().f_code.co_name
-    pk_print(f"{inspect.currentframe().f_code.co_name} {str(thing_curious.__code__.co_varnames)}")
+    ensure_printed(f"{inspect.currentframe().f_code.co_name} {str(thing_curious.__code__.co_varnames)}")
     print(help(thing_curious))
-    pk_print(f'# of the Arguments : {thing_curious.__code__.co_argcount}')
-    # pk_print(f'Name of the Arguments : {thing_curious.__code__.co_varnames}')
-    pk_print(str_working="┌>print via getsource s")
+    ensure_printed(f'# of the Arguments : {thing_curious.__code__.co_argcount}')
+    # ensure_printed(f'Name of the Arguments : {thing_curious.__code__.co_varnames}')
+    ensure_printed(str_working="┌>print via getsource s")
     print(inspect.getsource(thing_curious))
-    pk_print(str_working="└>print via getsource e")
+    ensure_printed(str_working="└>print via getsource e")

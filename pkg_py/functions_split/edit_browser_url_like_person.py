@@ -9,7 +9,7 @@ import inspect
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.common.exceptions import WebDriverException
 from pkg_py.functions_split.rerun_losslesscut import rerun_losslesscut
-from pkg_py.functions_split.pk_press import pk_press
+from pkg_py.functions_split.press import press
 
 from pkg_py.functions_split.get_list_sorted import get_list_sorted
 from pkg_py.system_object.directories_reuseable import D_PROJECT
@@ -31,4 +31,4 @@ def edit_browser_url_like_person():
     pk_press("right"
     5)
     write("/")
-    pk_sleep(milliseconds=random.randint(a=12, b=23))
+    ensure_slept(milliseconds=random.randint(a=12, b=23))

@@ -21,4 +21,4 @@ def move_pnx_from_remote_os_to_local(pnx, d_dst=None, **config_remote_os):
     d_dst = d_dst or D_DOWNLOADS
     d_dst = get_pnx_unix_style(d_dst)
     cmd_to_os(cmd=f'scp -P {port} -r {user_n}@{ip}:"{pnx}" "{d_dst}"')
-    pk_sleep(milliseconds=500)
+    ensure_slept(milliseconds=500)

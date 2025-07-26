@@ -1,12 +1,12 @@
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
 def print_preview(categorized_f_dict):
     from colorama import init as pk_colorama_init
-    pk_colorama_init_once()
+    colorama_init_once()
 
-    pk_print(f'''[ ngram 기반 분류결과(preview) ] {'%%%FOO%%%' if LTA else ''}''', print_color='blue')
+    ensure_printed(f'''[ ngram 기반 분류결과(preview) ] {'%%%FOO%%%' if LTA else ''}''', print_color='blue')
     # f_print_mode = get_value_completed(message='f_print_mode=', option_values=["o","x"])
     for group, files in categorized_f_dict.items():
         # print(f"\n\U0001F4C2 {group} = []")

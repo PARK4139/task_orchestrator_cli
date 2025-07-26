@@ -2,20 +2,20 @@ import traceback
 
 import ipdb
 
-from pkg_py.functions_split.pk_jarvis import run_jarvis
+from pkg_py.functions_split.jarvis import run_jarvis
 from pkg_py.functions_split.ensure_do_exception_routine import ensure_do_exception_routine
 from pkg_py.functions_split.ensure_do_finally_routine import ensure_do_finally_routine
-from pkg_py.functions_split.pk_speak import pk_speak
+from pkg_py.functions_split.speak import speak
 from pkg_py.system_object.directories_reuseable import D_PROJECT
 from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
-from pkg_py.workspace.pk_workspace import debug_this_code_operated, debug_as_ipdb_console
+# from pkg_py.workspace.pk_workspace import debug_this_code_operated, debug_as_ipdb_console
 
 
-def pk_test():
+def test():
     from pkg_py.functions_split.ensure_pk_system_exit_silent import ensure_pk_system_exit_silent
-    from pkg_py.functions_split.pk_colorama_init_once import pk_colorama_init_once
+    from pkg_py.functions_split.colorama_init_once import colorama_init_once
 
-    pk_colorama_init_once()
+    colorama_init_once()
 
     while True:
         debug_this_code_operated(ipdb=ipdb)

@@ -7,13 +7,13 @@ if __name__ == "__main__":
         from pkg_py.system_object.directories_reuseable import D_PROJECT
         from pkg_py.system_object.etc import PK_UNDERLINE
         from pkg_py.system_object.stamps import STAMP_TRY_GUIDE, STAMP_UNIT_TEST_EXCEPTION_DISCOVERED
-        from pkg_py.functions_split.pk_print import pk_print
-        from pkg_py.functions_split.assist_to_load_video_at_losslesscut import pk_ensure_video_loaded_at_losslesscut
+        from pkg_py.functions_split.ensure_printed import ensure_printed
+        from pkg_py.functions_split.assist_to_load_video_at_losslesscut import ensure_video_loaded_at_losslesscut
         from pkg_py.functions_split.kill_self_pk_program import kill_self_pk_program
         from pkg_py.functions_split.ensure_do_finally_routine import ensure_do_finally_routine
-        from pkg_py.functions_split.pk_colorama_init_once import pk_colorama_init_once
+        from pkg_py.functions_split.colorama_init_once import colorama_init_once
 
-        pk_colorama_init_once()
+        colorama_init_once()
 
         pk_ensure_video_loaded_at_losslesscut()
 

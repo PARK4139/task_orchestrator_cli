@@ -14,7 +14,7 @@ from pkg_py.functions_split.is_d import is_d
 from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style
 
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
 def get_vpc_identifier(**config_remote_os):
@@ -26,7 +26,7 @@ def get_vpc_identifier(**config_remote_os):
         elif vpc_nvidia_serial in nick_name:
             nvidia_serial = nvidia_serial.replace(PK_BLANK, "_")
             return nvidia_serial
-    pk_print(
+    ensure_printed(
         str_working=rf'''vpc_identifier not found in {get_vpc_identifier_and_vpc_nvidia_serial_map()} ).  {'%%%FOO%%%' if LTA else ''}''',
         print_color='red')
     raise

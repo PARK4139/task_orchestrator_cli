@@ -1,6 +1,6 @@
 from pkg_py.system_object.directories_reuseable import D_PROJECT
 
-from pkg_py.functions_split.pk_print import pk_print
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
 def sum_via_txt_f():
@@ -19,6 +19,6 @@ def sum_via_txt_f():
     for text in texts:
         if text is not None:
             total += int(text.strip())
-    [pk_print(item) for item in texts]
-    pk_print(f'''len(texts)={len(texts)}''')
-    pk_print(f'''total={total}''')
+    [ensure_printed(item) for item in texts]
+    ensure_printed(f'''len(texts)={len(texts)}''')
+    ensure_printed(f'''total={total}''')

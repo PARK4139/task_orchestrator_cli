@@ -92,8 +92,8 @@ def is_containing_special_characters_with_thread(text: str):
     # print(rf'len(result_list) : {len(result_list)}')
 
     if all(result_list):
-        # pk_print(str_working="쓰레드 작업결과 result_list의 모든 요소가 True이므로 True를 반환합니다")
+        # ensure_printed(str_working="쓰레드 작업결과 result_list의 모든 요소가 True이므로 True를 반환합니다")
         return 1
     else:
-        # pk_print(str_working="쓰레드 작업결과 result_list에 False인 요소가 있어 False를 반환합니다")
+        # ensure_printed(str_working="쓰레드 작업결과 result_list에 False인 요소가 있어 False를 반환합니다")
         pass
