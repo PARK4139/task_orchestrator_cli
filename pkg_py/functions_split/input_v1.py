@@ -39,7 +39,7 @@ from PySide6.QtWidgets import QApplication
 from prompt_toolkit.styles import Style
 from pkg_py.functions_split.is_losslesscut_running import is_losslesscut_running
 from pkg_py.functions_split.is_window_title_front import is_window_title_front
-from pkg_py.functions_split.press import press
+from pkg_py.functions_split.ensure_pressed import ensure_pressed
 from pkg_py.functions_split.ensure_printed_once import ensure_printed_once
 from pkg_py.functions_split.ensure_printed import ensure_printed
 

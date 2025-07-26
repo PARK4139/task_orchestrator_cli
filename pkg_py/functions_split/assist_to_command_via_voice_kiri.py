@@ -24,7 +24,7 @@ from pkg_py.functions_split.get_historical_list import get_historical_list
 from pkg_py.functions_split.get_video_filtered_list import get_video_filtered_list
 from pkg_py.functions_split.is_window_title_front import is_window_title_front
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
-from pkg_py.functions_split.cmd_to_os import cmd_to_os
+from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_excuted_to_os
 from pkg_py.functions_split.get_list_sorted import get_list_sorted
 from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
 from pkg_py.system_object.directories_reuseable import D_PROJECT
@@ -38,7 +38,7 @@ from datetime import timedelta
 from datetime import date
 from cryptography.hazmat.backends import default_backend
 from Cryptodome.Random import get_random_bytes
-from pkg_py.functions_split.assist_to_load_video_at_losslesscut import ensure_video_loaded_at_losslesscut
+from pkg_py.functions_split.ensure_video_loaded_at_losslesscut import ensure_video_loaded_at_losslesscut
 from pkg_py.system_object.directories import D_PK_WORKING, D_PKG_PKL, D_PKG_PY
 from pkg_py.system_object.directories import D_PKG_PY
 from pkg_py.system_object.is_os_windows import is_os_windows
@@ -83,7 +83,7 @@ def assist_to_command_via_voice_kiri():
 
     if not is_os_windows():
         cmd = 'sudo apt install mpg123'
-        cmd_to_os(cmd=cmd)
+        ensure_command_excuted_to_os(cmd=cmd)
 
     if is_internet_connected():
         # recognizer=sr.Recognizer()
@@ -231,22 +231,22 @@ def assist_to_command_via_voice_kiri():
                 youtube_channel_main_page_url = youtube_channel_main_page_url.strip()
                 download_youtube_thumbnails_from_youtube_channel_main_page_url(youtube_channel_main_page_url)
             elif any(keyword in str_working for keyword in ["오늘무슨날", "무슨날"]):
-                pk_speak('today is christmas. happy christmas')
-                pk_speak('today is newyear')
+                ensure_spoken('today is christmas. happy christmas')
+                ensure_spoken('today is newyear')
             elif any(keyword in str_working for keyword in ["오늘날짜", "날짜"]):
                 speak_today_info_as_korean()
             elif any(keyword in str_working for keyword in ["요일", "오늘요일", "몇요일"]):
-                pk_speak(f'{get_weekday_as_english()}')
+                ensure_spoken(f'{get_weekday_as_english()}')
             elif any(keyword in str_working for keyword in ["시간", "몇시야", "몇시"]):
                 HH = get_time_as_('%H')
                 mm = get_time_as_('%M')
-                pk_speak(f'{int(HH)} hour {int(mm)} minutes')
+                ensure_spoken(f'{int(HH)} hour {int(mm)} minutes')
             elif any(keyword in str_working for keyword in ["몇분이야", "몇분", "몇분"]):
                 mm = get_time_as_('%M')
-                pk_speak(f'{int(mm)} minutes')
+                ensure_spoken(f'{int(mm)} minutes')
             elif any(keyword in str_working for keyword in ["몇초야", "몇초"]):
                 server_seconds = get_time_as_('%S')
-                pk_speak(f'{server_seconds} seconds')
+                ensure_spoken(f'{server_seconds} seconds')
             elif any(keyword in str_working for keyword in ["날씨"]):
                 ensure_printed_and_speak("Searching for weather...")
                 get_comprehensive_weather_information_from_web()

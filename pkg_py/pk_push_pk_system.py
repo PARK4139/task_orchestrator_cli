@@ -1,8 +1,6 @@
 import os
 
-from pkg_py.functions_split.ensure_console_debuggable import ensure_console_debuggable
-from pkg_py.system_object.local_test_activate import LTA
-# from pkg_py.workspace.pk_workspace import test_pk_python_program_structure, ensure_git_project_pushed
+from pkg_py.functions_split.ensure_git_project_pushed import ensure_git_project_pushed
 
 if __name__ == "__main__":
     try:
@@ -25,12 +23,12 @@ if __name__ == "__main__":
         # python_file = get_pnx_os_style(rf'{python_file_base}/{python_filename}')
         # python_calling_program = 'start "" cmd /c python'
         # os.chdir(python_file_base)
-        # cmd_to_os(cmd=f'{python_calling_program} "{python_file}"')
+        # ensure_command_excuted_to_os(cmd=f'{python_calling_program} "{python_file}"')
         # window_title_to_kill = python_filename
         # pk_ensure_process_killed(window_title=get_nx(window_title_to_kill)) # pk_option
 
         os.chdir(D_PROJECT)
-        ensure_git_project_pushed()
+        ensure_git_project_pushed(with_commit_massage=False)
 
         # SCRIPT_NAME = Path(__file__).name
         # colorama_init_once()

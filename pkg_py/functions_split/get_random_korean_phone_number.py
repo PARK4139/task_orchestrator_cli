@@ -5,7 +5,7 @@ import os
 import ipdb
 import asyncio
 from selenium.webdriver.support import expected_conditions as EC
-from pkg_py.functions_split.cmd_to_os import cmd_to_os
+from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_excuted_to_os
 from pkg_py.system_object.local_test_activate import LTA
 from gtts import gTTS
 from enum import Enum

@@ -36,12 +36,12 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.action_chains import ActionChains
 from prompt_toolkit import PromptSession
 # from project_database.test_project_database import MySqlUtil
-from pkg_py.functions_split.print_iterable_as_vertical import print_iterable_as_vertical
+from pkg_py.functions_split.ensure_iterable_printed_as_vertical import ensure_iterable_printed_as_vertical
 from pkg_py.functions_split.is_losslesscut_running import is_losslesscut_running
-from pkg_py.functions_split.rerun_losslesscut import rerun_losslesscut
+from pkg_py.functions_split.ensure_losslesscut_reran import ensure_losslesscut_reran
 from pkg_py.functions_split.get_f_video_to_load import get_f_video_to_load
 from pkg_py.functions_split.is_window_opened import is_window_opened
-from pkg_py.functions_split.print_state import print_state
+from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.ensure_printed import ensure_printed
 
 from pkg_py.functions_split.set_pk_context_state import set_pk_context_state
@@ -59,7 +59,7 @@ from datetime import datetime
 from datetime import date
 from cryptography.hazmat.backends import default_backend
 from base64 import b64encode
-from pkg_py.functions_split.assist_to_load_video_at_losslesscut import ensure_video_loaded_at_losslesscut
+from pkg_py.functions_split.ensure_video_loaded_at_losslesscut import ensure_video_loaded_at_losslesscut
 from pkg_py.system_object.etc import PK_UNDERLINE
 from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style
 from pkg_py.functions_split.get_list_calculated import get_list_calculated
@@ -306,7 +306,7 @@ def get_comprehensive_weather_information_from_web():
             thread3.join()
             thread4.join()
 
-            pk_speak_v2(str_working='날씨에 대한 웹크롤링 및 데이터 분석이 성공되었습니다', comma_delay=0.98)
+            ensure_spoken_v2(str_working='날씨에 대한 웹크롤링 및 데이터 분석이 성공되었습니다', comma_delay=0.98)
             # 함수가 break 로 끝이 나면 창들이 창을 닫아야 dialog 들이 사라지도록 dialog 를 global 처리를 해두었음.
             global dialog4
             global dialog3

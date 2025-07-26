@@ -3,13 +3,13 @@
 from pkg_py.functions_split.ensure_window_to_front import ensure_window_to_front
 from pkg_py.functions_split.is_window_opened import is_window_opened
 
-from pkg_py.functions_split.cmd_to_os import cmd_to_os
+from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_excuted_to_os
 
 
 from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
-from pkg_py.functions_split.cmd_to_os import cmd_to_os
+from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_excuted_to_os
 
 from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.is_window_opened import is_window_opened
@@ -31,7 +31,7 @@ def run_autoa2zdrive_release_exe():
         if not is_window_opened(window_title_seg=window_title_seg):
             pnx = rf"{D_DESKTOP}\AutoA2ZDrive\AutoA2ZDrive_Release.exe"
             cmd = rf' explorer "{pnx}" '
-            cmd_to_os(cmd=cmd, mode="a")
+            ensure_command_excuted_to_os(cmd=cmd, mode="a")
         while 1:
             if is_window_opened(window_title_seg=window_title_seg):
                 break
@@ -57,7 +57,7 @@ def run_autoa2zdrive_release_exe():
     while 1:
         if not is_window_opened(window_title_seg=window_title_seg):
             cmd = rf' explorer "C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\Common7\IDE\devenv.exe" '
-            cmd_to_os(cmd=cmd, mode="a")
+            ensure_command_excuted_to_os(cmd=cmd, mode="a")
             break
         while 1:
             if is_front_window_title(window_title_seg=window_title_seg):

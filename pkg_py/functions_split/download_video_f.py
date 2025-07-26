@@ -1,10 +1,10 @@
-from pkg_py.functions_split.speak import speak
+from pkg_py.functions_split.ensure_spoken import ensure_spoken
 from pkg_py.system_object.etc import AUDIO_IDS_ALLOWED, VIDEO_IDS_ALLOWED
 
 
 def download_video_f(url: str):
-    from pkg_py.functions_split.cmd_to_os import cmd_to_os
-    from pkg_py.functions_split.cmd_to_os_like_person_as_admin import cmd_to_os_like_person_as_admin
+    from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_excuted_to_os
+    from pkg_py.functions_split.ensure_command_excuted_to_os_like_person_as_admin import ensure_command_excuted_to_os_like_person_as_admin
     from pkg_py.functions_split.is_pattern_in_prompt import is_pattern_in_prompt
     from pkg_py.functions_split.move_pnx import move_pnx
     from pkg_py.functions_split.parse_youtube_video_id import parse_youtube_video_id
@@ -33,8 +33,8 @@ def download_video_f(url: str):
         # lines=subprocess.check_output(rf'{YT_DLP_CMD} -F {url}', shell=True).decode('utf-8').split("\n")
 
         cmd = rf'{F_YT_DLP_EXE} -F {url}'
-        # lines=cmd_to_os_like_person_as_admin(cmd=cmd)
-        lines = cmd_to_os(cmd=cmd)
+        # lines=ensure_command_excuted_to_os_like_person_as_admin(cmd=cmd)
+        lines = ensure_command_excuted_to_os(cmd=cmd)
         # 순서는 우선순위에 입각해 설정되었다. 순서를 바꾸어서는 안된다.
 
         video_ids_allowed = VIDEO_IDS_ALLOWED
@@ -86,7 +86,7 @@ def download_video_f(url: str):
         if video_id == "" or audio_id == "" == 1:
             # text="다운로드를 진행할 수 없습니다\n다운로드용 video_id 와 audio_id를 설정 후\nurl을 다시 붙여넣어 다운로드를 다시 시도하세요\n{url}"
             ensure_printed(str_working="불완전한 다운로드 명령어가 감지되었습니다....")
-            pk_speak(str_working="불완전한 다운로드 명령어가 감지되었습니다")
+            ensure_spoken(str_working="불완전한 다운로드 명령어가 감지되었습니다")
             dialog = GuiUtil.CustomQdialog(
                 prompt=f"에러코드[E004]\n아래의 비디오 아이디를 저장하고 에러코드를 관리자에게 문의해주세요\nvideo id: {url}",
                 btn_list=["확인"],
@@ -98,7 +98,7 @@ def download_video_f(url: str):
             break
 
         try:
-            lines = cmd_to_os_like_person_as_admin(cmd=cmd)
+            lines = ensure_command_excuted_to_os_like_person_as_admin(cmd=cmd)
         except:
             print_magenta("except:2024-04-12 1750")
             print_magenta(rf'''cmd : {cmd}''')
@@ -155,7 +155,7 @@ def download_video_f(url: str):
             # 무조건 재생
             text_editor = 'explorer.exe'
             cmd = f'{text_editor} "{src_moved}" '
-            cmd_to_os(cmd=cmd)
+            ensure_command_excuted_to_os(cmd=cmd)
 
             # GuiUtil.pop_up_as_complete(title="작업성공보고", ment=f"다운로드가 성공되었습니다\n{src_moved}", auto_click_positive_btn_after_seconds=2) # 성공 뜨는게 귀찮아서 주석처리함,
 

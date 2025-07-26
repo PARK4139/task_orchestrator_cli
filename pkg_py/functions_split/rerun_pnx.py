@@ -32,15 +32,15 @@ from selenium.webdriver.chrome.service import Service
 from selenium.common.exceptions import ElementClickInterceptedException
 from pkg_py.functions_split.get_historical_list import get_historical_list
 from pkg_py.functions_split.is_losslesscut_running import is_losslesscut_running
-from pkg_py.functions_split.rerun_losslesscut import rerun_losslesscut
+from pkg_py.functions_split.ensure_losslesscut_reran import ensure_losslesscut_reran
 from pkg_py.functions_split.is_window_title_front import is_window_title_front
 from pkg_py.functions_split.get_d_working import get_d_working
 from pkg_py.functions_split.is_window_title_opened import is_window_title_opened
 from pkg_py.functions_split.is_window_opened import is_window_opened
-from pkg_py.functions_split.press import press
+from pkg_py.functions_split.ensure_pressed import ensure_pressed
 from pkg_py.functions_split.ensure_printed_once import ensure_printed_once
 
-from pkg_py.functions_split.cmd_to_os import cmd_to_os
+from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_excuted_to_os
 from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
 from pkg_py.system_object.files import F_HISTORICAL_PNX
 
@@ -67,7 +67,7 @@ def rerun_pnx(my_name):  # 종료용이름 시작용이름 이 다름 따로 수
     import inspect
 
     func_n = inspect.currentframe().f_code.co_name
-    kill_process_via_taskkill(process_name=my_name)
+    ensure_process_killed_via_taskkill(process_name=my_name)
     ensure_slept(milliseconds=200)  # 최적화 테스트 필요
     cmd = rf'start "{my_name}"'
-    cmd_to_os(cmd=cmd, mode="a")
+    ensure_command_excuted_to_os(cmd=cmd, mode="a")

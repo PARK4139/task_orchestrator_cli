@@ -5,7 +5,7 @@ import functools
 from selenium.webdriver.support.ui import WebDriverWait
 from pkg_py.functions_split.ensure_window_to_front import ensure_window_to_front
 from pkg_py.functions_split.is_window_opened import is_window_opened
-from pkg_py.functions_split.cmd_to_os import cmd_to_os
+from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_excuted_to_os
 from pkg_py.system_object.directories_reuseable import D_PROJECT
 
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
@@ -37,14 +37,14 @@ def run_pk_release_server(port):
     # cmd=rf'start cmd.exe /k "{bat_pnx}"'
 
     cmd = rf'start cmd.exe /k python "{py_pnx}"'
-    cmd_to_os(cmd=cmd, mode="a")
+    ensure_command_excuted_to_os(cmd=cmd, mode="a")
     # ensure_printed(f'''{cmd} [Negative]"''')
 
     url = rf'http://{server_ip}:{port}'
     cmd = rf" explorer {url}/"
-    cmd_to_os(cmd=cmd, mode="a")
+    ensure_command_excuted_to_os(cmd=cmd, mode="a")
     kill_chrome_tab_duplicated()
     move_chrome_tab_by_url(url=url)
 
     cmd = rf' netstat -ano | find "{port}" '
-    cmd_to_os(cmd=cmd, mode="a")
+    ensure_command_excuted_to_os(cmd=cmd, mode="a")

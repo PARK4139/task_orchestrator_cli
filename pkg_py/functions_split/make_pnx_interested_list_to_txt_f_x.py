@@ -1,9 +1,9 @@
 
 
-from pkg_py.functions_split.print_iterable_as_vertical import print_iterable_as_vertical
+from pkg_py.functions_split.ensure_iterable_printed_as_vertical import ensure_iterable_printed_as_vertical
 from pkg_py.system_object.directories import D_PKG_TXT
 from pkg_py.functions_split.get_pnx_list import get_pnx_list
-from pkg_py.functions_split.print_iterable_as_vertical import print_iterable_as_vertical
+from pkg_py.functions_split.ensure_iterable_printed_as_vertical import ensure_iterable_printed_as_vertical
 
 
 def make_pnx_interested_list_to_txt_f_x(pnx_interested_list=None, string_exclude=None):
@@ -75,7 +75,7 @@ def make_pnx_interested_list_to_txt_f_x(pnx_interested_list=None, string_exclude
             # ensure_printed(str_working=rf'''len(pnx_processed_list)="{len(pnx_processed_list)}"  {'%%%FOO%%%' if LTA else ''}''')
             if write_cnt == write_cnt_limit % 2 == 0:
                 file_cnt = file_cnt + 1
-                print_iterable_as_vertical(item_iterable=pnx_processed_list, item_iterable_n="pnx_processed_list")
+                ensure_iterable_printed_as_vertical(item_iterable=pnx_processed_list, item_iterable_n="pnx_processed_list")
                 # func_n_file_cnt_txt = rf"{D_PKG_TXT}\{func_n}_{file_cnt}.txt"
                 # ensure_list_written_to_file(texts=pnx_processed_list, pnx=func_n_file_cnt_txt, mode="w")
             func_n_file_cnt_txt = rf"{D_PKG_TXT}\{func_n}_{file_cnt}.txt"

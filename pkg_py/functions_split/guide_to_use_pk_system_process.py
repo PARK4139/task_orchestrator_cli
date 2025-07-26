@@ -1,9 +1,9 @@
 
 
-from pkg_py.functions_split.measure_seconds import measure_seconds
+from pkg_py.functions_split.ensure_seconds_measured import ensure_seconds_measured
 
 
-@measure_seconds
+@ensure_seconds_measured
 def guide_to_use_pk_system_process(pk_system_process_pnx_list, nx_by_user_input):
     from pkg_py.system_object.local_test_activate import LTA
     from pkg_py.system_object.stamps import STAMP_TRY_GUIDE

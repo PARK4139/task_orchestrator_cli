@@ -17,7 +17,7 @@ test_loop_limit = 1
 is_first_test_lap = 1
 
 @staticmethod
-def print_measure_seconds_performance_nth_for_비교군1(function):
+def print_ensure_seconds_measured_performance_nth_for_비교군1(function):
     """시간성능 측정용 코드 as 데코레이터"""
     func_n = inspect.currentframe().f_code.co_name
 
@@ -77,7 +77,7 @@ def print_measure_seconds_performance_nth_for_비교군1(function):
 
 
 @staticmethod
-def measure_seconds_performance_nth_for_비교군2(function):
+def ensure_seconds_measured_performance_nth_for_비교군2(function):
     """시간성능 측정용 코드 as 데코레이터"""
     func_n = inspect.currentframe().f_code.co_name
 
@@ -136,7 +136,7 @@ def measure_seconds_performance_nth_for_비교군2(function):
     return wrapper
 
 
-@print_measure_seconds_performance_nth_for_비교군1
+@print_ensure_seconds_measured_performance_nth_for_비교군1
 def run_비교군1():
     if not LTA:
         return
@@ -145,7 +145,7 @@ def run_비교군1():
         pass
 
 
-@measure_seconds_performance_nth_for_비교군2
+@ensure_seconds_measured_performance_nth_for_비교군2
 def run_비교군2():
     if not LTA:
         return
@@ -317,7 +317,7 @@ if __name__ == '__main__':
         # ___________________________________________________________________________
         # todo : ref : 평균시간 측정 via timeit
         
-        print_function_run_measure_seconds_via_timeit(function=main, repeat=1)
+        print_function_run_ensure_seconds_measured_via_timeit(function=main, repeat=1)
 
         # todo : ref : 비교군 간 비교
         # function1 = run_비교군1
@@ -325,12 +325,7 @@ if __name__ == '__main__':
         # compare_mean_times(function1=function1, function2=function2)
 
     except Exception as e:
-        # red
-        import traceback
-
-        ensure_printed(str_working=f'{PK_UNDERLINE}예외발생 s\n\n', print_color='red')
-        ensure_printed(str_working=f'{traceback.format_exc()}\n', print_color='red')
-        ensure_printed(str_working=f'{PK_UNDERLINE}예외발생 e\n\n', print_color='red')
+        
 
         # yellow
         f_current= get_f_current_n()

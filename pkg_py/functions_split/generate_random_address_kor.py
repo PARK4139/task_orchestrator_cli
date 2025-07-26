@@ -12,7 +12,7 @@ from urllib.parse import quote, urlparse
 from selenium.webdriver.chrome.options import Options
 from PySide6.QtWidgets import QApplication
 from prompt_toolkit.styles import Style
-from pkg_py.functions_split.rerun_losslesscut import rerun_losslesscut
+from pkg_py.functions_split.ensure_losslesscut_reran import ensure_losslesscut_reran
 from pkg_py.functions_split.is_window_title_front import is_window_title_front
 from pkg_py.functions_split.ensure_list_written_to_f import ensure_list_written_to_f
 from pkg_py.system_object.files import F_LOSSLESSCUT_EXE

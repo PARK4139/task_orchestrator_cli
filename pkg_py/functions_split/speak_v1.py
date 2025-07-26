@@ -1,6 +1,6 @@
 from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.system_object.directories_reuseable import D_PROJECT
-from pkg_py.functions_split.cmd_to_os import cmd_to_os
+from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_excuted_to_os
 
 from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style
@@ -29,7 +29,7 @@ def speak_v1(str_working, after_delay=1.00, delimiter=None):
             if delimiter in str_working:
                 working_list = str_working.split(delimiter)
                 for str_working in working_list:
-                    pk_speak_v2(str_working=str_working, comma_delay=0.98)
+                    ensure_spoken_v2(str_working=str_working, comma_delay=0.98)
                 break
             if type(str_working) == str:
                 cache_mp3 = get_pnx_os_style(rf'{D_PROJECT}/pkg_mp3')
@@ -68,7 +68,7 @@ def speak_v1(str_working, after_delay=1.00, delimiter=None):
                         break
                     if not os.path.exists(ment_mp3):
                         cmd = rf'echo y | "ffmpeg" -i "concat:{os.path.abspath(silent_mp3)}|{os.path.abspath(ment__mp3)}" -acodec copy -metadata "title=Some Song" "{os.path.abspath(ment_mp3)}" -map_metadata 0:-1  >nul 2>&1'
-                        cmd_to_os(cmd)
+                        ensure_command_excuted_to_os(cmd)
                 except Exception:
                     ensure_printed(f'''{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
                 try:

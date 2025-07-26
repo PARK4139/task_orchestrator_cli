@@ -12,6 +12,6 @@ def is_user_input_required(user_input: str):
     if is_only_no(user_input):
         user_input = int(user_input)
     else:
-        pk_speak_v2("you can input only number, please input only number again", comma_delay=0.98)
+        ensure_spoken_v2("you can input only number, please input only number again", comma_delay=0.98)
         return None
     return user_input

@@ -44,7 +44,7 @@ def ensure_pk_wsl_distro_installed():
             ensure_printed(f"'{DEFAULT_DISTRO}' 배포판을 online 목록에서 찾았습니다.")
         ensure_printed(f"'{DEFAULT_DISTRO}' 배포판을 설치합니다...")
         try:
-            cmd_to_os_with_splited_arg(["wsl", "--install", "-d", DEFAULT_DISTRO])
+            ensure_command_excuted_to_os_with_splited_arg(["wsl", "--install", "-d", DEFAULT_DISTRO])
         except Exception as e:
             print_red(f"설치 명령 실패: {e}")
             return False
@@ -57,14 +57,14 @@ def ensure_pk_wsl_distro_installed():
     install_path = Path(D_DOWNLOADS) / PK_WSL_DISTRO_N  # import 설치 디렉토리
     try:
         ensure_printed(f"'{DEFAULT_DISTRO}' 배포판을 '{tar_path}'로 export합니다.")
-        cmd_to_os_with_splited_arg(["wsl", "--export", DEFAULT_DISTRO, str(tar_path)])
+        ensure_command_excuted_to_os_with_splited_arg(["wsl", "--export", DEFAULT_DISTRO, str(tar_path)])
 
         ensure_printed(f"'{DEFAULT_DISTRO}' 배포판을 unregister 합니다.")
-        cmd_to_os_with_splited_arg(["wsl", "--unregister", DEFAULT_DISTRO])
+        ensure_command_excuted_to_os_with_splited_arg(["wsl", "--unregister", DEFAULT_DISTRO])
 
         ensure_printed(f"'{tar_path}'를 '{install_path}'에 import하여 '{PK_WSL_DISTRO_N}'으로 등록합니다.")
         install_path.mkdir(parents=True, exist_ok=True)
-        cmd_to_os_with_splited_arg(["wsl", "--import", PK_WSL_DISTRO_N, str(install_path), str(tar_path)])
+        ensure_command_excuted_to_os_with_splited_arg(["wsl", "--import", PK_WSL_DISTRO_N, str(install_path), str(tar_path)])
     except Exception as e:
         print_red(f"export/import 중 오류: {e}")
         return False

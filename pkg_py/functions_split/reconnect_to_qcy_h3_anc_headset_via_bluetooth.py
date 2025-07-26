@@ -19,11 +19,11 @@ import colorama
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
-from pkg_py.functions_split.print_iterable_as_vertical import print_iterable_as_vertical
+from pkg_py.functions_split.ensure_iterable_printed_as_vertical import ensure_iterable_printed_as_vertical
 from pkg_py.functions_split.ensure_window_to_front import ensure_window_to_front
 from pkg_py.functions_split.is_window_title_opened import is_window_title_opened
 from pkg_py.functions_split.is_window_opened import is_window_opened
-from pkg_py.functions_split.print_state import print_state
+from pkg_py.functions_split.ensure_state_printed import ensure_state_printed
 
 from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
 from pkg_py.system_object.files import F_POT_PLAYER_MINI_64_EXE
@@ -59,7 +59,7 @@ def reconnect_to_qcy_h3_anc_headset_via_bluetooth():  # toogle_to_qcy_h3_anc_hea
 
     # Bluetooth 설정창 띄우기
     cmd = 'start ms-settings:bluetooth'
-    cmd_to_os_like_person_as_admin(cmd=cmd)
+    ensure_command_excuted_to_os_like_person_as_admin(cmd=cmd)
     window_title_seg = "설정"
     timeout = 10
     start_time = time.time()

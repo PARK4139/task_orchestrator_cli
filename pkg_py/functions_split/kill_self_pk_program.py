@@ -13,4 +13,4 @@ def kill_self_pk_program(self_f):
     ]
     f_list = get_list_that_element_applyed_via_func(func=get_pnx_os_style, working_list=f_list)
     for f in f_list:
-        pk_kill_process_by_window_title_seg(window_title_seg=get_nx(f))
+        ensure_process_killed_by_window_title_seg(window_title_seg=get_nx(f))

@@ -42,15 +42,15 @@ from selenium.webdriver.common.action_chains import ActionChains
 from queue import Queue, Empty
 from pytube import Playlist
 from prompt_toolkit.styles import Style
-from pkg_py.functions_split.print_iterable_as_vertical import print_iterable_as_vertical
-from pkg_py.functions_split.rerun_losslesscut import rerun_losslesscut
-from pkg_py.functions_split.load_f_video_on_losslesscut import load_f_video_on_losslesscut
+from pkg_py.functions_split.ensure_iterable_printed_as_vertical import ensure_iterable_printed_as_vertical
+from pkg_py.functions_split.ensure_losslesscut_reran import ensure_losslesscut_reran
+from pkg_py.functions_split.ensure_f_video_loaded_on_losslesscut import ensure_f_video_loaded_on_losslesscut
 from pkg_py.functions_split.is_window_title_front import is_window_title_front
 from pkg_py.functions_split.get_d_working import get_d_working
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 from pkg_py.functions_split.ensure_printed import ensure_printed
 
-from pkg_py.functions_split.cmd_to_os import cmd_to_os
+from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_excuted_to_os
 from pkg_py.functions_split.ensure_list_written_to_f import ensure_list_written_to_f
 from pkg_py.functions_split.get_list_sorted import get_list_sorted
 
@@ -101,12 +101,12 @@ def ensure_wsl_usb_ip_connection_established(wsl_distro_n, config_remote_os):
     ensure_usbipd_installed(config_remote_os)
 
     cmd = "usbipd list"  # watch -n 1 usbipd.exe list
-    std_list = cmd_to_os(cmd=cmd, encoding=Encoding.UTF8)
+    std_list = ensure_command_excuted_to_os(cmd=cmd, encoding=Encoding.UTF8)
     bus_id = None
     # signiture_list=["APX", "Attached" or "Shared"]
     signiture_list = ["APX"]
     pattern = re.compile(r"\d+-\d")  # "2-3 패턴" # 2-12 는 안될듯 업데이트 필요
-    print_iterable_as_vertical(item_iterable=std_list, item_iterable_n='lines')
+    ensure_iterable_printed_as_vertical(item_iterable=std_list, item_iterable_n='lines')
     for std_str in std_list:
         if all(str_positive in std_str for str_positive in signiture_list):
             match = pattern.search(std_str)
@@ -120,22 +120,22 @@ def ensure_wsl_usb_ip_connection_established(wsl_distro_n, config_remote_os):
         raise
     ensure_printed(str_working=rf'''bus_id={bus_id}  {'%%%FOO%%%' if LTA else ''}''', print_color="green")
 
-    cmd_to_os(cmd="wsl --shutdown", encoding='utf-16')
+    ensure_command_excuted_to_os(cmd="wsl --shutdown", encoding='utf-16')
 
-    std_list = cmd_to_os(cmd=rf"wsl -d {wsl_distro_n} -- exit", encoding='utf-16')
+    std_list = ensure_command_excuted_to_os(cmd=rf"wsl -d {wsl_distro_n} -- exit", encoding='utf-16')
     if check_signiture_in_loop(time_limit=10, working_list=std_list, signiture="제공된 이름의 배포가 없습니다",
                                signiture_found_ment=rf"'{cmd}' 할수없었습니다"):
         raise
 
-    std_list = cmd_to_os(cmd="wsl -l -v", encoding='utf-16')
-    cmd_to_os(cmd=rf"usbipd unbind -b {bus_id}", encoding='utf-16')
-    cmd_to_os(cmd=rf"usbipd bind -b {bus_id}", encoding='utf-16')
-    # cmd_to_os_like_person(cmd=rf"usbipd attach --wsl --busid {bus_id} --auto-attach")
-    cmd_to_os(cmd=rf'start "" usbipd attach --wsl --busid {bus_id} --auto-attach')
+    std_list = ensure_command_excuted_to_os(cmd="wsl -l -v", encoding='utf-16')
+    ensure_command_excuted_to_os(cmd=rf"usbipd unbind -b {bus_id}", encoding='utf-16')
+    ensure_command_excuted_to_os(cmd=rf"usbipd bind -b {bus_id}", encoding='utf-16')
+    # ensure_command_excuted_to_os_like_person(cmd=rf"usbipd attach --wsl --busid {bus_id} --auto-attach")
+    ensure_command_excuted_to_os(cmd=rf'start "" usbipd attach --wsl --busid {bus_id} --auto-attach')
 
     # usb/ip attached to wsl
     # signiture="제공된 이름의 배포가 없습니다" or 'xxxx'
-    std_list = cmd_to_os(cmd=rf"wsl -d {wsl_distro_n} lsusb", encoding='utf-16')  # watch -n 1 lsusb
+    std_list = ensure_command_excuted_to_os(cmd=rf"wsl -d {wsl_distro_n} lsusb", encoding='utf-16')  # watch -n 1 lsusb
     if check_signiture_in_loop(time_limit=10, working_list=std_list, signiture="제공된 이름의 배포가 없습니다",
                                signiture_found_ment="wsl 에 attach 할수없었습니다"):
         raise

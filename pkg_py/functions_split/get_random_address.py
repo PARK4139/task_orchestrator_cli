@@ -23,7 +23,7 @@ from prompt_toolkit.styles import Style
 from prompt_toolkit import PromptSession
 # from project_database.test_project_database import MySqlUtil
 from pkg_py.functions_split.get_f_loading_nx_by_pattern import get_f_loading_nx_by_pattern
-from pkg_py.functions_split.rerun_losslesscut import rerun_losslesscut
+from pkg_py.functions_split.ensure_losslesscut_reran import ensure_losslesscut_reran
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 from pkg_py.functions_split.ensure_list_written_to_f import ensure_list_written_to_f
 

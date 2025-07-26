@@ -16,7 +16,7 @@ from selenium.webdriver.common.by import By
 from pkg_py.functions_split.ensure_window_to_front import ensure_window_to_front
 from pkg_py.functions_split.get_video_filtered_list import get_video_filtered_list
 from pkg_py.functions_split.is_window_title_opened import is_window_title_opened
-from pkg_py.functions_split.cmd_to_os import cmd_to_os
+from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_excuted_to_os
 
 from functools import lru_cache
 from datetime import timedelta
@@ -32,8 +32,8 @@ from pkg_py.functions_split.is_os_windows import is_os_windows
 def run_powershell_exe_as_admin():
     import inspect
     func_n = inspect.currentframe().f_code.co_name
-    # cmd_to_os('PowerShell -cmd "Start-Process powershell"')
-    cmd_to_os('powershell -cmd "Start-Process powershell -Verb RunAs"')
+    # ensure_command_excuted_to_os('PowerShell -cmd "Start-Process powershell"')
+    ensure_command_excuted_to_os('powershell -cmd "Start-Process powershell -Verb RunAs"')
     window_title_seg = "관리자: Windows PowerShell"
     while 1:
         if not is_front_window_title(window_title_seg=window_title_seg):

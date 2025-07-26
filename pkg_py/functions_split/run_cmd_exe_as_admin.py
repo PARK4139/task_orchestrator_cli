@@ -6,7 +6,7 @@ def run_cmd_exe_as_admin():
     try:
         while 1:
             # run.exe 관리자모드로 exec
-            cmd_to_os_like_person_as_admin('PowerShell -cmd "Start-Process cmd -Verb RunAs"')
+            ensure_command_excuted_to_os_like_person_as_admin('PowerShell -cmd "Start-Process cmd -Verb RunAs"')
 
             # 네 클릭
             # f_png=rf"{PROJECT_D}\pkg_png\run cmd exe.png"

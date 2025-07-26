@@ -2,7 +2,7 @@ import yt_dlp
 import re
 
 from pkg_py.system_object.map_massages import PkMessages2025
-from pkg_py.functions_split.cmd_to_os import cmd_to_os
+from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_excuted_to_os
 from pkg_py.system_object.directories_reuseable import D_PROJECT
 
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
@@ -56,7 +56,7 @@ def download_pnx_to_git_v3(d_working, git_repo_url, commit_msg, branch_n):
         d_git = rf"{d_working}/.git"
 
         if not does_pnx_exist(pnx=d_git):
-            std_list = cmd_to_os(f'git clone -b {branch_n} {git_repo_url} {d_working}')
+            std_list = ensure_command_excuted_to_os(f'git clone -b {branch_n} {git_repo_url} {d_working}')
             pk_debug_state_for_py_data_type('%%%CLONE%%%', std_list)
 
             if any("fatal:" in line.lower() for line in std_list):
@@ -64,26 +64,26 @@ def download_pnx_to_git_v3(d_working, git_repo_url, commit_msg, branch_n):
                 return
         else:
             pk_chdir(d_dst=d_working)
-            std_list = cmd_to_os(f'git pull origin {branch_n}')
+            std_list = ensure_command_excuted_to_os(f'git pull origin {branch_n}')
             pk_debug_state_for_py_data_type('%%%PULL%%%', std_list)
 
             if any("couldn't find remote ref" in line.lower() for line in std_list):
                 ensure_printed(f"브랜치 '{branch_n}' 이(가) 원격 레포지토리에 없습니다.", print_color='red')
                 if ask_user_yes_no(f"브랜치 '{branch_n}' 를 새로 만드시겠습니까?"):
-                    std_list = cmd_to_os(f'git checkout -b {branch_n}')
+                    std_list = ensure_command_excuted_to_os(f'git checkout -b {branch_n}')
                     pk_debug_state_for_py_data_type('%%%CHECKOUT_NEW_BRANCH%%%', std_list)
 
-                    std_list = cmd_to_os(f'git push -u origin {branch_n}')
+                    std_list = ensure_command_excuted_to_os(f'git push -u origin {branch_n}')
                     pk_debug_state_for_py_data_type('%%%PUSH_NEW_BRANCH%%%', std_list)
 
                     if any("error:" in line.lower() or "failed to push" in line.lower() for line in std_list):
                         ensure_printed(f"브랜치 푸시 실패: {std_list}", print_color='red')
 
                         if ask_user_yes_no("커밋이 없어서 푸시에 실패한 것 같습니다. 빈 커밋을 생성할까요?"):
-                            std_list = cmd_to_os('git commit --allow-empty -m "init empty commit"')
+                            std_list = ensure_command_excuted_to_os('git commit --allow-empty -m "init empty commit"')
                             pk_debug_state_for_py_data_type('%%%EMPTY_COMMIT%%%', std_list)
 
-                            std_list = cmd_to_os(f'git push -u origin {branch_n}')
+                            std_list = ensure_command_excuted_to_os(f'git push -u origin {branch_n}')
                             pk_debug_state_for_py_data_type('%%%PUSH_AFTER_EMPTY_COMMIT%%%', std_list)
 
                             if any("error:" in line.lower() or "failed to push" in line.lower() for line in std_list):

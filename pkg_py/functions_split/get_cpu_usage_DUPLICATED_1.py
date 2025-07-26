@@ -25,12 +25,12 @@ from selenium.webdriver.chrome.options import Options
 from selenium.common.exceptions import WebDriverException
 from pynput import mouse
 from pkg_py.functions_split.get_historical_list import get_historical_list
-from pkg_py.functions_split.rerun_losslesscut import rerun_losslesscut
+from pkg_py.functions_split.ensure_losslesscut_reran import ensure_losslesscut_reran
 from pkg_py.functions_split.is_window_title_front import is_window_title_front
 from pkg_py.functions_split.is_window_title_opened import is_window_title_opened
-from pkg_py.functions_split.print_state import print_state
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
-from pkg_py.functions_split.cmd_to_os import cmd_to_os
+from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_excuted_to_os
 from pkg_py.functions_split.get_list_sorted import get_list_sorted
 from pkg_py.system_object.stamps import STAMP_ATTEMPTED
 from pkg_py.system_object.encodings import Encoding

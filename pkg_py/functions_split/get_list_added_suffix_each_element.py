@@ -14,9 +14,9 @@ from urllib.parse import urlparse
 from prompt_toolkit.styles import Style
 from pkg_py.functions_split.ensure_window_to_front import ensure_window_to_front
 from pkg_py.functions_split.is_losslesscut_running import is_losslesscut_running
-from pkg_py.functions_split.rerun_losslesscut import rerun_losslesscut
+from pkg_py.functions_split.ensure_losslesscut_reran import ensure_losslesscut_reran
 
-from pkg_py.functions_split.cmd_to_os import cmd_to_os
+from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_excuted_to_os
 from pkg_py.system_object.stamps import STAMP_ATTEMPTED
 from pkg_py.system_object.files import F_HISTORICAL_PNX
 from pkg_py.system_object.print_red import print_red
@@ -25,7 +25,7 @@ from passlib.context import CryptContext
 from gtts import gTTS
 from dirsync import sync
 from bs4 import ResultSet
-from pkg_py.functions_split.assist_to_load_video_at_losslesscut import ensure_video_loaded_at_losslesscut
+from pkg_py.functions_split.ensure_video_loaded_at_losslesscut import ensure_video_loaded_at_losslesscut
 from pkg_py.functions_split.kill_self_pk_program import kill_self_pk_program
 from pkg_py.functions_split.get_value_completed import get_value_completed
 from pkg_py.functions_split.is_d import is_d

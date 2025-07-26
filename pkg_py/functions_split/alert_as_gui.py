@@ -3,7 +3,7 @@ import pickle
 import cv2
 import colorama
 import chardet
-from pkg_py.functions_split.rerun_losslesscut import rerun_losslesscut
+from pkg_py.functions_split.ensure_losslesscut_reran import ensure_losslesscut_reran
 from pkg_py.functions_split.is_window_title_front import is_window_title_front
 from pkg_py.system_object.stamps import STAMP_ATTEMPTED
 from datetime import datetime

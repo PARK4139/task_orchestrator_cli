@@ -1,6 +1,6 @@
 
 
-from pkg_py.functions_split.print_iterable_as_vertical import print_iterable_as_vertical
+from pkg_py.functions_split.ensure_iterable_printed_as_vertical import ensure_iterable_printed_as_vertical
 
 
 def make_shellscript_version_new_via_hard_coded_v_1_0_1():
@@ -81,4 +81,4 @@ def make_shellscript_version_new_via_hard_coded_v_1_0_1():
     for file_pnx in file_pnxs:
         copy_with_version(file_pnx)
 
-    print_iterable_as_vertical(item_iterable=file_pnxs, item_iterable_n="다운로드완료")
+    ensure_iterable_printed_as_vertical(item_iterable=file_pnxs, item_iterable_n="다운로드완료")

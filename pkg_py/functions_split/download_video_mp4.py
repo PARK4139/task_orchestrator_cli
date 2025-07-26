@@ -22,12 +22,12 @@ from zipfile import BadZipFile
 from selenium.common.exceptions import WebDriverException
 from pkg_py.functions_split.get_historical_list import get_historical_list
 from pkg_py.functions_split.ensure_window_to_front import ensure_window_to_front
-from pkg_py.functions_split.rerun_losslesscut import rerun_losslesscut
+from pkg_py.functions_split.ensure_losslesscut_reran import ensure_losslesscut_reran
 from pkg_py.functions_split.get_f_video_to_load import get_f_video_to_load
 from pkg_py.functions_split.is_window_title_front import is_window_title_front
-from pkg_py.functions_split.print_state import print_state
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
-from pkg_py.functions_split.cmd_to_os import cmd_to_os
+from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_excuted_to_os
 from pkg_py.functions_split.ensure_list_written_to_f import ensure_list_written_to_f
 from pkg_py.system_object.etc import PkFilter
 from pkg_py.system_object.files import F_HISTORICAL_PNX
@@ -68,7 +68,7 @@ def download_video_mp4(url: str):
         ensure_printed(str_working=rf'''url="{url}"  {'%%%FOO%%%' if LTA else ''}''')
         video_id = ''
         cmd = rf'{F_YT_DLP_EXE} -F {url}'
-        lines = cmd_to_os(cmd=cmd)
+        lines = ensure_command_excuted_to_os(cmd=cmd)
 
         video_ids_allowed = VIDEO_IDS_ALLOWED
         audio_ids_allowed = AUDIO_IDS_ALLOWED
@@ -96,7 +96,7 @@ def download_video_mp4(url: str):
         if video_id == "" or audio_id == "" == 1:
             # text="다운로드를 진행할 수 없습니다\n다운로드용 video_id 와 audio_id를 설정 후\nurl을 다시 붙여넣어 다운로드를 다시 시도하세요\n{url}"
             ensure_printed("불완전한 다운로드 명령어가 감지되었습니다....", print_color='blue')
-            pk_speak_v2(str_working="불완전한 다운로드 명령어가 감지되었습니다", comma_delay=0.98)
+            ensure_spoken_v2(str_working="불완전한 다운로드 명령어가 감지되었습니다", comma_delay=0.98)
             dialog = GuiUtil.CustomQdialog(
                 prompt=f"에러코드[E004]\n아래의 비디오 아이디를 저장하고 에러코드를 관리자에게 문의해주세요\nvideo id: {url}",
                 btn_list=["확인"],
@@ -108,7 +108,7 @@ def download_video_mp4(url: str):
             break
 
         try:
-            lines = cmd_to_os_like_person_as_admin(cmd=cmd)
+            lines = ensure_command_excuted_to_os_like_person_as_admin(cmd=cmd)
         except:
             print_magenta("except:2024-04-12 1750")
             print_magenta(rf'''cmd : {cmd}''')
@@ -156,7 +156,7 @@ def download_video_mp4(url: str):
             # 무조건 재생
             text_editor = 'explorer.exe'
             cmd = f'{text_editor} "{src_moved}" '
-            cmd_to_os(cmd=cmd)
+            ensure_command_excuted_to_os(cmd=cmd)
 
         except Exception:
             ensure_printed(f'''{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}''', print_color='red')

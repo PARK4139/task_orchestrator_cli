@@ -14,7 +14,7 @@ from pynput import mouse
 from prompt_toolkit import PromptSession
 from pkg_py.functions_split.ensure_window_to_front import ensure_window_to_front
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
-from pkg_py.functions_split.press import press
+from pkg_py.functions_split.ensure_pressed import ensure_pressed
 
 from pkg_py.functions_split.ensure_list_written_to_f import ensure_list_written_to_f
 from pkg_py.functions_split.set_pk_context_state import set_pk_context_state
@@ -24,7 +24,7 @@ from pkg_py.system_object.directories_reuseable import D_PROJECT
 from pkg_py.system_object.directories import D_PK_WORKING
 from os.path import dirname
 from base64 import b64encode
-from pkg_py.functions_split.assist_to_load_video_at_losslesscut import ensure_video_loaded_at_losslesscut
+from pkg_py.functions_split.ensure_video_loaded_at_losslesscut import ensure_video_loaded_at_losslesscut
 from pkg_py.functions_split.kill_self_pk_program import kill_self_pk_program
 from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style
 from pkg_py.functions_split.is_d import is_d
@@ -47,12 +47,12 @@ def translate_kor_to_eng(question: str):
                 question = question.strip('""')
             except AttributeError:
                 break
-            pk_press("win", "m")
+            ensure_pressed("win", "m")
 
             # 페이지 열기
             url = "https://www.google.com/search?q=kor+to+eng"
             cmd = f'explorer "{url}" >nul'
-            cmd_to_os_like_person_as_admin(cmd)
+            ensure_command_excuted_to_os_like_person_as_admin(cmd)
 
             # 크롬 창 활성화
             target_pid = get_pids(process_img_n="chrome.exe")  # chrome.exe pid 가져오기

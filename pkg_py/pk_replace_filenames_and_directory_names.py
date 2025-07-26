@@ -26,7 +26,7 @@ def replace_filename_and_directory_name():
     func_n = inspect.currentframe().f_code.co_name
 
     key_name = "d_working"
-    d_working = get_values_from_historical_file_routine(file_id=db.get_id(key_name,func_n), key_hint=f'{key_name}=', options_default=['pk_working'])
+    d_working = get_values_from_historical_file_routine(file_id=db.get_db_id(key_name, func_n), key_hint=f'{key_name}=', options_default=['pk_working'])
 
 
     f_files_to_replace = f"{D_PKG_TXT}/files_to_replace_via_{func_n}.txt"

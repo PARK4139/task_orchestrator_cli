@@ -47,14 +47,14 @@ from pynput import mouse
 from prompt_toolkit import PromptSession
 from prompt_toolkit import PromptSession
 # from project_database.test_project_database import MySqlUtil
-from pkg_py.functions_split.print_iterable_as_vertical import print_iterable_as_vertical
+from pkg_py.functions_split.ensure_iterable_printed_as_vertical import ensure_iterable_printed_as_vertical
 from pkg_py.functions_split.get_f_loading_nx_by_pattern import get_f_loading_nx_by_pattern
 from pkg_py.functions_split.ensure_window_to_front import ensure_window_to_front
-from pkg_py.functions_split.rerun_losslesscut import rerun_losslesscut
+from pkg_py.functions_split.ensure_losslesscut_reran import ensure_losslesscut_reran
 from pkg_py.functions_split.get_f_video_to_load import get_f_video_to_load
 from pkg_py.functions_split.get_d_working import get_d_working
-from pkg_py.functions_split.press import press
-from pkg_py.functions_split.print_state import print_state
+from pkg_py.functions_split.ensure_pressed import ensure_pressed
+from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.ensure_printed import ensure_printed
 
 from pkg_py.functions_split.ensure_console_cleared import ensure_console_cleared
@@ -80,7 +80,7 @@ from concurrent.futures import ThreadPoolExecutor
 from colorama import init as pk_colorama_init
 from collections import Counter
 from base64 import b64encode
-from pkg_py.functions_split.assist_to_load_video_at_losslesscut import ensure_video_loaded_at_losslesscut
+from pkg_py.functions_split.ensure_video_loaded_at_losslesscut import ensure_video_loaded_at_losslesscut
 from pkg_py.functions_split.kill_self_pk_program import kill_self_pk_program
 from pkg_py.system_object.etc import PK_UNDERLINE
 from pkg_py.functions_split.get_value_completed import get_value_completed

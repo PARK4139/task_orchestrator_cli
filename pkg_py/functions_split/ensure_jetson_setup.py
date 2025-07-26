@@ -46,17 +46,17 @@ from prompt_toolkit.styles import Style
 from prompt_toolkit import PromptSession
 from pkg_py.functions_split.get_historical_list import get_historical_list
 from pkg_py.functions_split.is_window_title_front import is_window_title_front
-from pkg_py.functions_split.press import press
-from pkg_py.functions_split.print_state import print_state
+from pkg_py.functions_split.ensure_pressed import ensure_pressed
+from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.ensure_printed_once import ensure_printed_once
-from pkg_py.functions_split.cmd_to_os import cmd_to_os
+from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_excuted_to_os
 from pkg_py.functions_split.ensure_list_written_to_f import ensure_list_written_to_f
 
 from pkg_py.functions_split.set_pk_context_state import set_pk_context_state
 from pkg_py.system_object.files import F_POT_PLAYER_MINI_64_EXE
 from pkg_py.system_object.files import F_HISTORICAL_PNX
 from pkg_py.system_object.encodings import Encoding
-from pkg_py.system_object.performance_logic import measure_seconds, pk_measure_memory
+from pkg_py.system_object.performance_logic import ensure_seconds_measured, pk_measure_memory
 from pkg_py.system_object.is_os_windows import is_os_windows
 from pathlib import Path
 from passlib.context import CryptContext

@@ -6,7 +6,7 @@ from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style
 from pkg_py.functions_split.kill_self_pk_program import kill_self_pk_program
 from pkg_py.system_object.directories import D_PKG_PY
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.workspace.pk_workspace import kill_process_by_window_title_seg
+from pkg_py.workspace.pk_workspace import ensure_process_killed_by_window_title_seg
 
 
 def kill_pk_program_list():
@@ -19,6 +19,6 @@ def kill_pk_program_list():
     f_list_b = get_list_that_element_applyed_via_func(func=get_pnx_os_style, working_list=f_list_b)
     f_list = get_list_differenced(list_a=f_list_a, list_b=f_list_b)
     for f in f_list:
-        pk_kill_process_by_window_title_seg(window_title_seg=get_nx(f))
+        ensure_process_killed_by_window_title_seg(window_title_seg=get_nx(f))
     if not LTA:
         kill_self_pk_program(self_f='pk_kill_pk_program.py')

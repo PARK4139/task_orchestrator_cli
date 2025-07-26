@@ -2,7 +2,7 @@
 
 
 from pkg_py.functions_split.ensure_printed import ensure_printed
-from pkg_py.functions_split.press import press
+from pkg_py.functions_split.ensure_pressed import ensure_pressed
 from pkg_py.functions_split.is_window_opened import is_window_opened
 from pkg_py.functions_split.ensure_window_to_front import ensure_window_to_front
 
@@ -28,8 +28,8 @@ def cmd_to_wsl_os_like_person_deprecated(cmd, remote_os_distro_n, wsl_window_tit
     start_time = time.time()
     while 1:
         if is_front_window_title(window_title_seg=wsl_window_title_seg):
-            copy_and_paste_with_keeping_clipboard(prompt=cmd, wsl_mode=True)
-            pk_press("enter")
+            ensure_copied_and_pasted_with_keeping_clipboard(prompt=cmd, wsl_mode=True)
+            ensure_pressed("enter")
             break
         ensure_window_to_front(window_title_seg=wsl_window_title_seg)
 
@@ -45,10 +45,10 @@ def cmd_to_wsl_os_like_person_deprecated(cmd, remote_os_distro_n, wsl_window_tit
         start_time = time.time()
         while 1:
             if is_front_window_title(window_title_seg=wsl_window_title_seg):
-                copy_and_paste_with_keeping_clipboard(prompt="exit", wsl_mode=True)
-                pk_press("enter")
-                copy_and_paste_with_keeping_clipboard(prompt="exit", wsl_mode=True)
-                pk_press("enter")
+                ensure_copied_and_pasted_with_keeping_clipboard(prompt="exit", wsl_mode=True)
+                ensure_pressed("enter")
+                ensure_copied_and_pasted_with_keeping_clipboard(prompt="exit", wsl_mode=True)
+                ensure_pressed("enter")
                 break
             else:
                 ensure_window_to_front(window_title_seg=wsl_window_title_seg)

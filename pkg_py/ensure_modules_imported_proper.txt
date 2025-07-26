@@ -419,8 +419,8 @@ from pkg_py.system_object.state_via_context import SpeedControlContext
 from pkg_py.system_object.state_via_database import PkSqlite3DB
 from pkg_py.workspace import get_fzf_command, get_last_history, save_to_history, fallback_choice, get_last_history_file
 # from pkg_py.workspace.pk_workspace import copy_and_push_auto_utility
-# from pkg_py.workspace.pk_workspace import debug_this_code_operated
-# from pkg_py.workspace.pk_workspace import debug_this_code_operated, debug_as_ipdb_console
+# from pkg_py.workspace.pk_workspace import ensure_this_code_operated
+# from pkg_py.workspace.pk_workspace import ensure_this_code_operated, debug_as_ipdb_console
 # from pkg_py.workspace.pk_workspace import ensure_cmd_exe_deduplicated
 # from pkg_py.workspace.pk_workspace import ensure_cmd_exe_deduplicated, ensure_cmd_exe_deduplicated_all
 # from pkg_py.workspace.pk_workspace import ensure_cmd_exe_deduplicated, ensure_cmd_exe_deduplicated_all, ensure_cmd_exe_deduplicated_all_in_loop
@@ -434,7 +434,7 @@ from pkg_py.workspace import get_fzf_command, get_last_history, save_to_history,
 # from pkg_py.workspace.pk_workspace import kill_process_by_window_title_seg
 # from pkg_py.workspace.pk_workspace import ensure_py_system_process_ran_by_pnx
 # from pkg_py.workspace.pk_workspace import speak_v3
-# from pkg_py.workspace.pk_workspace import speak_v3, debug_this_code_operated
+# from pkg_py.workspace.pk_workspace import speak_v3, ensure_this_code_operated
 # from pkg_py.workspace.pk_workspace import test_pk_python_program_structure, ensure_git_project_pushed
 # from pkg_py.workspace.pk_workspace import save_to_history, fallback_choice, get_fzf_command, get_last_history
 # from pkg_py.workspace.pk_workspace import ensure_window_os_variable_path_deduplicated

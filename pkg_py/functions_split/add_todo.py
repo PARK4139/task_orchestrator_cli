@@ -1,5 +1,5 @@
 from pkg_py import system_object
-from pkg_py.functions_split.cmd_to_os import cmd_to_os
+from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_excuted_to_os
 from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style
 from pkg_py.functions_split.print_and_write_schedule_template_cyclic_to_f_memo_todo_txt import print_and_write_schedule_template_cyclic_to_f_memo_todo_txt
 
@@ -99,5 +99,5 @@ def add_todo():
     # print_and_write_schedule_template_cyclic_non_to_f_memo_todo_txt(todo_task_name_str='칫솔구매', specific_year=2025, f_txt=memo_todo_txt, specific_month=1, specific_day=13, stamp_custom=rf'[비주기]')
     # print_and_write_schedule_template_cyclic_non_to_f_memo_todo_txt(todo_task_name_str='신진영/신수영/강주형 연락 및 안부전화', specific_year=2025, f_txt=memo_todo_txt, specific_month=3, specific_day=5, stamp_custom=rf'[비주기]')
 
-    # cmd_to_os(cmd=rf'explorer "{memo_done_txt}" ')
-    cmd_to_os(cmd=rf'explorer "{memo_todo_txt}" ')
+    # ensure_command_excuted_to_os(cmd=rf'explorer "{memo_done_txt}" ')
+    ensure_command_excuted_to_os(cmd=rf'explorer "{memo_todo_txt}" ')

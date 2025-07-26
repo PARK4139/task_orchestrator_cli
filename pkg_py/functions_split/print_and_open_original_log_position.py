@@ -16,7 +16,7 @@ from selenium.webdriver.chrome.options import Options
 from selenium.common.exceptions import WebDriverException
 from selenium.common.exceptions import ElementClickInterceptedException
 from prompt_toolkit.styles import Style
-from pkg_py.functions_split.cmd_to_os import cmd_to_os
+from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_excuted_to_os
 
 from pkg_py.system_object.etc import PkFilter
 from pkg_py.system_object.files import F_POT_PLAYER_MINI_64_EXE
@@ -62,6 +62,6 @@ def print_and_open_original_log_position(area_id, course_id, vehicle_id, steerin
     ensure_printed(str_working=rf'''original_log_position="{original_log_position}"  {'%%%FOO%%%' if LTA else ''}''',
              print_color='blue')
     if foo not in original_log_position:
-        cmd_to_os(cmd=rf'explorer "{original_log_position}" ')
+        ensure_command_excuted_to_os(cmd=rf'explorer "{original_log_position}" ')
     else:
         ensure_printed(f'''수집한 오리지널 로그_f_의 경로가 온전하지 않습니다.''', print_color='red')

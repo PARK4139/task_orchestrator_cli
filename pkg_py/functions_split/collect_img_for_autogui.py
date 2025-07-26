@@ -1,8 +1,8 @@
 from pkg_py.functions_split.get_nx import get_nx
-from pkg_py.functions_split.cmd_to_os import cmd_to_os
+from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_excuted_to_os
 
 from pkg_py.functions_split.ensure_printed import ensure_printed
-from pkg_py.functions_split.press import press
+from pkg_py.functions_split.ensure_pressed import ensure_pressed
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 
 
@@ -19,17 +19,17 @@ def collect_img_for_autogui():
     file_nx = get_nx(func_n_server_time_png)
     ensure_pnx_made(f_p, mode="d")
     try:
-        pk_press("win", "shift", "s", interval=0.5)
+        ensure_pressed("win", "shift", "s", interval=0.5)
         key = "ctrl+s"
         if not is_keyboard_pressed_within_time_limit(key_plus_key=key, time_limit=60):
             ensure_printed(rf"[red] 클릭감지타임아웃 {key}")
         ensure_slept(milliseconds=500)
         ensure_slept(milliseconds=500)
-        pk_press("ctrl", "l", interval=0.5)
+        ensure_pressed("ctrl", "l", interval=0.5)
         ensure_slept(milliseconds=300)
-        pk_copy(str_working=f_p)
+        ensure_copied(str_working=f_p)
         ensure_slept(milliseconds=300)
-        pk_press("enter")
+        ensure_pressed("enter")
         ensure_slept(milliseconds=300)
         print_as_gui(ment="클립보드에 추천f명을 저장해두었습니다")
         key = "left"
@@ -45,6 +45,6 @@ def collect_img_for_autogui():
             cmd = rf"taskkill -im ScreenSketch.exe"
         text_editor = 'explorer.exe'
         cmd = f'{text_editor} "{f_p}" '
-        cmd_to_os(cmd=cmd)
+        ensure_command_excuted_to_os(cmd=cmd)
     except:
         traceback.print_exc(file=sys.stdout)

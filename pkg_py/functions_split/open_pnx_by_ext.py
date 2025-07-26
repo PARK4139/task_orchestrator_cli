@@ -7,7 +7,7 @@ from functools import lru_cache
 
 @lru_cache(maxsize=1)
 def ensure_pnx_opened_by_ext(pnx):
-    from pkg_py.functions_split.cmd_to_os import cmd_to_os
+    from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_excuted_to_os
     from pkg_py.functions_split.get_pnx_windows_style import get_pnx_windows_style
     from pkg_py.functions_split.ensure_printed import ensure_printed
     from pkg_py.functions_split.get_os_n import get_os_n
@@ -51,8 +51,7 @@ def ensure_pnx_opened_by_ext(pnx):
             ensure_printed(f"ensure_pnx_opened_by_ext: {pnx} is a {description}", print_color='blue')
         # cmd = f' "{text_editor}" "{pnx}" '
         cmd = f'"{text_editor}" "{pnx}"'
-        ensure_printed(f'''[{PkMessages2025.DATA}] cmd={cmd} {'%%%FOO%%%' if LTA else ''}''')
-        cmd_to_os(cmd=cmd, mode='a')
+        ensure_command_excuted_to_os(cmd=cmd, mode='a')
     else:
         ensure_printed(f'''{PkMessages2025.NOT_PREPARED_YET}{'%%%FOO%%%' if LTA else ''}''', print_color='green', mode_verbose=0)
         # if x == '':  # d 인 경우

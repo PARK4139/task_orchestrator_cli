@@ -36,9 +36,9 @@ from prompt_toolkit import PromptSession
 from prompt_toolkit import PromptSession
 from pkg_py.functions_split.is_losslesscut_running import is_losslesscut_running
 from pkg_py.functions_split.is_window_title_opened import is_window_title_opened
-from pkg_py.functions_split.print_state import print_state
 from pkg_py.functions_split.ensure_printed import ensure_printed
-from pkg_py.functions_split.cmd_to_os import cmd_to_os
+from pkg_py.functions_split.ensure_printed import ensure_printed
+from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_excuted_to_os
 from pkg_py.functions_split.ensure_list_written_to_f import ensure_list_written_to_f
 from pkg_py.functions_split.get_list_sorted import get_list_sorted
 
@@ -86,7 +86,7 @@ from pkg_py.functions_split.ensure_printed import ensure_printed
 def lock_screen():
     cmd = "rundll32.exe user32.dll,LockWorkStation"
     if is_os_windows():
-        cmd_to_os(cmd=cmd)
+        ensure_command_excuted_to_os(cmd=cmd)
     else:
         cmd = get_pnx_wsl_unix_style(pnx=cmd)
-        cmd_to_os(cmd=cmd)
+        ensure_command_excuted_to_os(cmd=cmd)

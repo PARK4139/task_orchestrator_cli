@@ -44,7 +44,7 @@ from pkg_py.functions_split.get_video_filtered_list import get_video_filtered_li
 from pkg_py.functions_split.is_window_title_front import is_window_title_front
 from pkg_py.functions_split.ensure_printed_once import ensure_printed_once
 
-from pkg_py.functions_split.cmd_to_os import cmd_to_os
+from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_excuted_to_os
 
 from pkg_py.functions_split.set_pk_context_state import set_pk_context_state
 from pkg_py.system_object.stamps import STAMP_ATTEMPTED

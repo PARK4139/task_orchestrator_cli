@@ -12,7 +12,7 @@ from selenium.webdriver.common.by import By
 from pkg_py.functions_split.get_f_video_to_load import get_f_video_to_load
 from pkg_py.functions_split.ensure_printed_once import ensure_printed_once
 
-from pkg_py.functions_split.cmd_to_os import cmd_to_os
+from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_excuted_to_os
 from pkg_py.system_object.files import F_LOSSLESSCUT_EXE
 from pkg_py.system_object.directories_reuseable import D_PROJECT
 from pkg_py.system_object.state_via_database import PkSqlite3DB
@@ -40,7 +40,7 @@ def is_losslesscut_running_v3(F_CACHE):
     f_losslesscut_exe = get_pnx_windows_style(pnx=F_LOSSLESSCUT_EXE)
     if not os.path.exists(F_CACHE):
         ensure_pnx_made(pnx=F_CACHE, mode='f')
-        std_list = cmd_to_os(cmd='tasklist.exe | findstr "LosslessCut.exe"')
+        std_list = ensure_command_excuted_to_os(cmd='tasklist.exe | findstr "LosslessCut.exe"')
         status = len(std_list) > 0
         ensure_printed(f"status={status}", print_color='green')
         save_cash_to_f_pkl(F_CACHE, status=status)
@@ -54,7 +54,7 @@ def is_losslesscut_running_v3(F_CACHE):
                 ensure_printed(f"[CACHE] LosslessCut is {'running' if status else 'not running'}", print_color='blue')
                 return status
             else:
-                std_list = cmd_to_os(cmd='tasklist.exe | findstr "LosslessCut.exe"')
+                std_list = ensure_command_excuted_to_os(cmd='tasklist.exe | findstr "LosslessCut.exe"')
                 status = len(std_list) > 0
                 ensure_printed(f"status={status}", print_color='green')
                 save_cash_to_f_pkl(F_CACHE, status=status)
@@ -64,4 +64,4 @@ def is_losslesscut_running_v3(F_CACHE):
         except Exception:
             pass
 
-        # def assist_to_load_video_at_losslesscut_v1(d_working):
+        # def ensure_video_loaded_at_losslesscut_v1(d_working):

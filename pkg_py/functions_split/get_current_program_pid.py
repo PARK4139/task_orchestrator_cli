@@ -20,7 +20,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.chrome.options import Options
 from queue import Queue, Empty
 from prompt_toolkit.styles import Style
-from pkg_py.functions_split.load_f_video_on_losslesscut import load_f_video_on_losslesscut
+from pkg_py.functions_split.ensure_f_video_loaded_on_losslesscut import ensure_f_video_loaded_on_losslesscut
 from pkg_py.functions_split.is_window_title_front import is_window_title_front
 from pkg_py.functions_split.is_window_opened import is_window_opened
 from pkg_py.functions_split.ensure_printed_once import ensure_printed_once

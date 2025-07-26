@@ -39,13 +39,13 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service
 from queue import Queue, Empty
 from prompt_toolkit import PromptSession
-from pkg_py.functions_split.print_iterable_as_vertical import print_iterable_as_vertical
-from pkg_py.functions_split.rerun_losslesscut import rerun_losslesscut
-from pkg_py.functions_split.load_f_video_on_losslesscut import load_f_video_on_losslesscut
+from pkg_py.functions_split.ensure_iterable_printed_as_vertical import ensure_iterable_printed_as_vertical
+from pkg_py.functions_split.ensure_losslesscut_reran import ensure_losslesscut_reran
+from pkg_py.functions_split.ensure_f_video_loaded_on_losslesscut import ensure_f_video_loaded_on_losslesscut
 from pkg_py.functions_split.is_window_title_front import is_window_title_front
 from pkg_py.functions_split.is_window_opened import is_window_opened
 from pkg_py.functions_split.ensure_printed_once import ensure_printed_once
-from pkg_py.functions_split.cmd_to_os import cmd_to_os
+from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_excuted_to_os
 from pkg_py.functions_split.get_list_sorted import get_list_sorted
 from pkg_py.system_object.files import F_POT_PLAYER_MINI_64_EXE, F_HISTORICAL_PNX
 from pkg_py.system_object.files import F_LOSSLESSCUT_EXE

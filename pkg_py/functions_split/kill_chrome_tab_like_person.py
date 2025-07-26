@@ -1,7 +1,7 @@
 from pkg_py.system_object.local_test_activate import LTA
 
 from pkg_py.functions_split.ensure_printed import ensure_printed
-from pkg_py.functions_split.press import press
+from pkg_py.functions_split.ensure_pressed import ensure_pressed
 from pkg_py.functions_split.ensure_window_to_front import ensure_window_to_front
 
 
@@ -22,12 +22,12 @@ def kill_chrome_tab_like_person(url_to_kill):
                     break
                 loop_cnt = loop_cnt + 1
                 ensure_slept(milliseconds=15)
-                pk_press("ctrl", "l")
+                ensure_pressed("ctrl", "l")
                 ensure_slept(milliseconds=15)
                 url_dragged = get_txt_dragged()
                 if url_dragged == url_to_kill:
                     ensure_printed(str_working=rf'''url_to_close="{url_to_kill}"  {'%%%FOO%%%' if LTA else ''}''')
                     ensure_printed(str_working=rf'''url_dragged="{url_dragged}"  {'%%%FOO%%%' if LTA else ''}''')
-                    pk_press("ctrl", "w")
+                    ensure_pressed("ctrl", "w")
                     # restore_all_windows()
                     return

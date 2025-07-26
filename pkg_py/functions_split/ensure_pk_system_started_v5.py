@@ -1,8 +1,8 @@
 from pkg_py.functions_split.ensure_py_system_process_ran_by_pnx import ensure_py_system_process_ran_by_pnx
-from pkg_py.functions_split.measure_seconds import measure_seconds
+from pkg_py.functions_split.ensure_seconds_measured import ensure_seconds_measured
 
 
-@measure_seconds
+@ensure_seconds_measured
 def ensure_pk_system_started_v5():
     from pkg_py.functions_split.fallback_choice import fallback_choice
     from pkg_py.functions_split.get_f_historical import get_history_file

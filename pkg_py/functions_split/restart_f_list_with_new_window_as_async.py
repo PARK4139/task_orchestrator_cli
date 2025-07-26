@@ -15,6 +15,6 @@ from pkg_py.system_object.local_test_activate import LTA
 def restart_f_list_with_new_window_as_async(f_list):
     import asyncio
     for f in f_list:
-        asyncio.run(pk_kill_process_as_async(f=f))
+        asyncio.run(ensure_process_killed_as_async(f=f))
     for f in f_list:
         asyncio.run(pk_run_process_as_async(f=f))

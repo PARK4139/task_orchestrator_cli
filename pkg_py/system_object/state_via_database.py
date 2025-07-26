@@ -1,14 +1,12 @@
-import json
 from typing import Any
 from typing import Optional
 
-from pkg_py.functions_split.get_value_completed import get_value_completed
-from pkg_py.functions_split.ensure_printed import ensure_printed
-from pkg_py.system_object.local_test_activate import LTA
+from pkg_py.functions_split.ensure_seconds_measured import ensure_seconds_measured
 from pkg_py.system_object.files import F_PK_DB
 
 
 class PkSqlite3DB:
+    @ensure_seconds_measured
     def __init__(self):
         import sqlite3
 
@@ -44,6 +42,8 @@ class PkSqlite3DB:
             question: str,
             options: list[str],
     ) -> str:
+
+        from pkg_py.functions_split.get_value_completed import get_value_completed
         import json
         answer = get_value_completed(
             key_hint=f'{question} answer=',
@@ -64,6 +64,8 @@ class PkSqlite3DB:
 
     def get_v1(self, db_id: str) -> Optional[str]:
 
+        from pkg_py.functions_split.ensure_printed import ensure_printed
+        from pkg_py.system_object.local_test_activate import LTA
         # db 에서 상태를 가져옴
         cur = self.pk_db_connection.cursor()
         cur.execute("SELECT answer FROM pk_table_state WHERE id = ?", (db_id,))
@@ -73,6 +75,7 @@ class PkSqlite3DB:
         return value
 
     def default_input_func(self, message: str, answer_options: list[str]) -> str:
+
         print(message)
         for i, opt in enumerate(answer_options):
             print(f"{i + 1}. {opt}")
@@ -84,6 +87,7 @@ class PkSqlite3DB:
             return answer_options[0]
 
     def reset_values(self, db_id: str):
+
         # TBD : reset_key() 도 있으면 좋겠다
 
         # pk db 초기화
@@ -93,9 +97,11 @@ class PkSqlite3DB:
         print(f"{db_id} is reset in pk_system")
 
     def set_values(self, db_id: str, values: Any):
+
         self.set_values_v2(db_id, values)
 
     def set_values_v1(self, db_id: str, values):
+
         """
         # value 가 str 인 경우는 처리가능
         # TBD value 가 list 인 경우도 처리 가능하도록
@@ -116,6 +122,8 @@ class PkSqlite3DB:
         self.pk_db_connection.commit()
 
     def set_values_v2(self, db_id: str, values: Any):
+        import json
+
         """
         주어진 db_id에 대해 answer 값을 설정합니다.
         value가 str, list, dict 등인 경우 모두 JSON으로 직렬화하여 저장합니다.
@@ -137,10 +145,15 @@ class PkSqlite3DB:
         self.pk_db_connection.commit()
 
     def get_values(self, db_id: str) -> Optional[Any]:
+
         # return self.get_values_v1(db_id)
         return self.get_values_v2(db_id)
 
     def get_values_v1(self, db_id: str) -> Optional[Any]:
+        import json
+
+        from pkg_py.functions_split.ensure_printed import ensure_printed
+        from pkg_py.system_object.local_test_activate import LTA
         """
         주어진 db_id에 대한 answer 값을 가져옵니다.
         JSON 문자열이면 자동으로 역직렬화하여 원래 Python 객체로 반환합니다.
@@ -161,6 +174,10 @@ class PkSqlite3DB:
         return value
 
     def get_values_v2(self, db_id: str) -> Optional[Any]:
+        import json
+
+        from pkg_py.functions_split.ensure_printed import ensure_printed
+        from pkg_py.system_object.local_test_activate import LTA
         """
         주어진 db_id에 대한 answer 값을 가져옵니다.
         JSON 문자열이면 자동으로 역직렬화하여 원래 Python 객체로 반환합니다.
@@ -196,9 +213,11 @@ class PkSqlite3DB:
         )
         return value
 
-    def get_id(self, key_name, func_n) -> str:
+    def get_db_id(self, key_name, func_n) -> str:
+
         self.db_id = rf"{key_name}_via_{func_n}"
         return self.db_id
 
     def close(self):
+
         self.pk_db_connection.close()

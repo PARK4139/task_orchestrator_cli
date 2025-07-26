@@ -70,11 +70,11 @@ from prompt_toolkit import PromptSession
 from pkg_py.functions_split.get_f_loading_nx_by_pattern import get_f_loading_nx_by_pattern
 from pkg_py.functions_split.ensure_window_to_front import ensure_window_to_front
 from pkg_py.functions_split.is_losslesscut_running import is_losslesscut_running
-from pkg_py.functions_split.rerun_losslesscut import rerun_losslesscut
+from pkg_py.functions_split.ensure_losslesscut_reran import ensure_losslesscut_reran
 from pkg_py.functions_split.get_f_video_to_load import get_f_video_to_load
 from pkg_py.functions_split.get_video_filtered_list import get_video_filtered_list
 from pkg_py.functions_split.is_window_opened import is_window_opened
-from pkg_py.functions_split.press import press
+from pkg_py.functions_split.ensure_pressed import ensure_pressed
 from pkg_py.functions_split.ensure_printed_once import ensure_printed_once
 from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.ensure_list_written_to_f import ensure_list_written_to_f
@@ -107,7 +107,7 @@ from collections import defaultdict, Counter
 from bs4 import ResultSet
 from bs4 import BeautifulSoup
 from base64 import b64decode
-from pkg_py.functions_split.assist_to_load_video_at_losslesscut import ensure_video_loaded_at_losslesscut
+from pkg_py.functions_split.ensure_video_loaded_at_losslesscut import ensure_video_loaded_at_losslesscut
 from pkg_py.functions_split.kill_self_pk_program import kill_self_pk_program
 from pkg_py.system_object.stamps import STAMP_TRY_GUIDE, STAMP_UNIT_TEST_EXCEPTION_DISCOVERED
 from pkg_py.functions_split.get_value_completed import get_value_completed

@@ -1,7 +1,7 @@
 
 
 def ensure_os_shutdown(seconds=None, milliseconds=None, mins=None, restart_mode=0, cancel_mode=0):
-    from pkg_py.functions_split.cmd_to_os import cmd_to_os
+    from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_excuted_to_os
     from pkg_py.functions_split.ensure_printed import ensure_printed
     mode_list = [restart_mode, cancel_mode]
     false_count = mode_list.count(False)
@@ -16,12 +16,12 @@ def ensure_os_shutdown(seconds=None, milliseconds=None, mins=None, restart_mode=
     if false_count < 2:
         if restart_mode == 1:
             cmd = f'shutdown.exe /r'
-            cmd_to_os(cmd=cmd)
+            ensure_command_excuted_to_os(cmd=cmd)
             return
 
         if cancel_mode == 1:
             cmd = f'shutdown.exe /a'
-            cmd_to_os(cmd=cmd)
+            ensure_command_excuted_to_os(cmd=cmd)
             return
     else:
 
@@ -37,4 +37,4 @@ def ensure_os_shutdown(seconds=None, milliseconds=None, mins=None, restart_mode=
             seconds = mins * 60
 
         cmd = f'shutdown.exe /s /t {seconds}'
-        cmd_to_os(cmd=cmd)
+        ensure_command_excuted_to_os(cmd=cmd)

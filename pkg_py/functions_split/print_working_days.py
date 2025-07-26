@@ -6,7 +6,7 @@ import json
 from tkinter import UNDERLINE
 from seleniumbase import Driver
 from pynput import mouse
-from pkg_py.functions_split.press import press
+from pkg_py.functions_split.ensure_pressed import ensure_pressed
 from pkg_py.system_object.print_red import print_red
 from pathlib import Path
 from base64 import b64decode

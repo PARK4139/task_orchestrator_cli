@@ -10,7 +10,7 @@ import easyocr
 from seleniumbase import Driver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.chrome.options import Options
-from pkg_py.functions_split.cmd_to_os import cmd_to_os
+from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_excuted_to_os
 from pkg_py.system_object.files import F_FFMPEG_EXE
 
 from os import path
@@ -64,7 +64,7 @@ def download_issue_log_f(issue_log_index_data, original_log=False):
             break
         else:
             if not does_pnx_exist(pnx=src_new):
-                cmd_to_os(cmd=cmd, mode="a")
+                ensure_command_excuted_to_os(cmd=cmd, mode="a")
                 ensure_printed(str_working=rf'''이슈데이터 다운로드 완료 "{src_new}"  {'%%%FOO%%%' if LTA else ''}''',
                          print_color='blue')
                 return

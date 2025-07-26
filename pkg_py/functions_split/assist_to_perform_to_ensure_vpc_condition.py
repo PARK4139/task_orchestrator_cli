@@ -2,7 +2,7 @@ from pkg_py.functions_split.ensure_remote_os_as_nopasswd import ensure_remote_os
 from pkg_py.functions_split.ensure_ssh_public_key_to_remote_os import ensure_ssh_public_key_to_remote_os
 from pkg_py.functions_split.is_os_windows import is_os_windows
 from pkg_py.functions_split.ensure_printed import ensure_printed
-from pkg_py.functions_split.print_iterable_as_vertical import print_iterable_as_vertical
+from pkg_py.functions_split.ensure_iterable_printed_as_vertical import ensure_iterable_printed_as_vertical
 from pkg_py.system_object.local_test_activate import LTA
 
 
@@ -54,7 +54,7 @@ def assist_to_perform_to_ensure_vpc_condition():
         # argument 유효성 검사
         # ensure_printed(f'''ooo 과 ooo 이 초기화되지 않아 {vpc_identifier} 장비를 베이직 셋업과 스모크 테스트를 진행할 수 없습니다. {'%%%FOO%%%' if LTA else ''}''')
         # ensure_printed(f'''ooo a2z 외부차량탑재용으로 {vpc_identifier} 장비를 베이직 셋업과 스모크 테스트를 진행하시겠습니까? {'%%%FOO%%%' if LTA else ''}''')
-        print_iterable_as_vertical(item_iterable=config_remote_os)
+        ensure_iterable_printed_as_vertical(item_iterable=config_remote_os)
         raise
 
         ensure_vpc_ready(wsl_data=wsl_data, vpc_data=vpc_data, **config_remote_os)

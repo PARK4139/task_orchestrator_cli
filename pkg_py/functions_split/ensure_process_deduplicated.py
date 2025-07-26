@@ -1,5 +1,9 @@
 def ensure_process_deduplicated(window_title_seg: str, exact=True):
     import win32gui
+    from pkg_py.functions_split.ensure_printed import ensure_printed
+    from pkg_py.functions_split.get_window_title import get_window_title
+    from pkg_py.system_object.local_test_activate import LTA
+
     import win32con
 
     try:
@@ -35,5 +39,3 @@ def ensure_process_deduplicated(window_title_seg: str, exact=True):
 
     except Exception as e:
         ensure_printed(f"[ERROR] {e}", print_color="red")
-
-

@@ -43,9 +43,9 @@ from pkg_py.functions_split.get_d_working import get_d_working
 from pkg_py.functions_split.is_window_title_opened import is_window_title_opened
 from pkg_py.functions_split.is_window_opened import is_window_opened
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
-from pkg_py.functions_split.press import press
-from pkg_py.functions_split.print_state import print_state
-from pkg_py.functions_split.cmd_to_os import cmd_to_os
+from pkg_py.functions_split.ensure_pressed import ensure_pressed
+from pkg_py.functions_split.ensure_state_printed import ensure_state_printed
+from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_excuted_to_os
 from pkg_py.functions_split.ensure_list_written_to_f import ensure_list_written_to_f
 from pkg_py.functions_split.get_list_sorted import get_list_sorted
 

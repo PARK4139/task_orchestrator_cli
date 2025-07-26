@@ -17,7 +17,7 @@ from prompt_toolkit import PromptSession
 from pkg_py.functions_split.is_losslesscut_running import is_losslesscut_running
 from pkg_py.functions_split.get_f_video_to_load import get_f_video_to_load
 from pkg_py.functions_split.ensure_printed_once import ensure_printed_once
-from pkg_py.functions_split.cmd_to_os import cmd_to_os
+from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_excuted_to_os
 from pkg_py.system_object.files import F_POT_PLAYER_MINI_64_EXE
 from pkg_py.system_object.directories import D_PK_WORKING
 from pkg_py.system_object.print_red import print_red

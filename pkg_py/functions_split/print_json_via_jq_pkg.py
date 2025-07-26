@@ -21,10 +21,10 @@ def print_json_via_jq_pkg(json_str=None, json_file=None, json_list=None):
                                       indent=4)  # json.dumps() 함수는 JSON 데이터를 문자열로 변환하는 함수이며, indent 매개변수를 사용하여 들여쓰기를 설정하여 json 형태의 dict 를 예쁘게 출력할 수 있습니다.
                 print_light_white(json_str)
             if json_file is not None:
-                lines = cmd_to_os_like_person_as_admin(cmd=rf"type {json_file} | {F_JQ_WIN64_EXE} ")
+                lines = ensure_command_excuted_to_os_like_person_as_admin(cmd=rf"type {json_file} | {F_JQ_WIN64_EXE} ")
                 [print_light_white(line) for line in lines]
             if json_list is not None:
-                lines = cmd_to_os_like_person_as_admin(cmd=rf'echo "{json_list}" | "{F_JQ_WIN64_EXE}" ')
+                lines = ensure_command_excuted_to_os_like_person_as_admin(cmd=rf'echo "{json_list}" | "{F_JQ_WIN64_EXE}" ')
                 [print_light_white(line) for line in lines]
         else:
             ensure_printed(

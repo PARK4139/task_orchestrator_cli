@@ -10,7 +10,7 @@ import asyncio
 from selenium.webdriver.common.keys import Keys
 from PySide6.QtWidgets import QApplication
 from prompt_toolkit import PromptSession
-from pkg_py.functions_split.load_f_video_on_losslesscut import load_f_video_on_losslesscut
+from pkg_py.functions_split.ensure_f_video_loaded_on_losslesscut import ensure_f_video_loaded_on_losslesscut
 from pkg_py.functions_split.ensure_list_written_to_f import ensure_list_written_to_f
 from pkg_py.system_object.state_via_database import PkSqlite3DB
 from gtts import gTTS

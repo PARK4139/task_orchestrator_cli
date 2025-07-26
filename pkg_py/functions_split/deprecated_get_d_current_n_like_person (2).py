@@ -1,6 +1,6 @@
 def deprecated_get_d_current_n_like_person():
     texts_removed_duplicated_element = []
-    current_d = cmd_to_os_like_person_as_admin(rf'echo %cd%')
+    current_d = ensure_command_excuted_to_os_like_person_as_admin(rf'echo %cd%')
     for text in current_d:  # remove_duplication
         if text not in texts_removed_duplicated_element:
             if text is not None:

@@ -11,7 +11,7 @@ from selenium.webdriver.chrome.service import Service
 from prompt_toolkit import PromptSession
 from prompt_toolkit import PromptSession
 from pkg_py.functions_split.ensure_window_to_front import ensure_window_to_front
-from pkg_py.functions_split.print_state import print_state
+from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.system_object.etc import PkFilter
 from pkg_py.system_object.stamps import STAMP_ATTEMPTED
 from pkg_py.system_object.directories_reuseable import D_PROJECT

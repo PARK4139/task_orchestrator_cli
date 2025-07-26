@@ -1,6 +1,6 @@
 from pkg_py.system_object.map_massages import PkMessages2025
 
-from pkg_py.functions_split.cmd_to_os import cmd_to_os
+from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_excuted_to_os
 
 
 def should_i_explorer():
@@ -13,7 +13,7 @@ def should_i_explorer():
         if btn_txt_clicked == PkMessages2025.YES:
             pnx = input_box_text
             cmd = rf"explorer {pnx}"
-            cmd_to_os(cmd=cmd, mode="a")
+            ensure_command_excuted_to_os(cmd=cmd, mode="a")
             break
         else:
             break

@@ -100,6 +100,27 @@ def ensure_git_project_pushed():
     print(f"LOCAL LEPO : {GREEN}{os.getcwd()}{RESET}")
     print(f"STARTED AT : {GREEN}{time.strftime('%Y-%m-%d %H:%M:%S')}{RESET}")
 
+
+    # 0-1. git fetch
+    print(DIVIDER)
+    cmd = "git fetch"
+    code, output = run_command(cmd, capture_output=True)
+    print(output.strip())
+    status = print_status(step_counter + 1, cmd, code, output)
+    if status == "FAILED":
+        fail_and_exit(start_time)
+    step_counter += 1
+
+    # 0-2. git pull --rebase
+    # print(DIVIDER)
+    # cmd = "git pull --rebase"
+    # code, output = run_command(cmd, capture_output=True)
+    # print(output.strip())
+    # status = print_status(step_counter + 1, cmd, code, output)
+    # if status == "FAILED":
+    #     fail_and_exit(start_time)
+    # step_counter += 1
+
     # 0. git config set
     user_email = get_text_from_history_file("user_email") or ""
     user_name = get_text_from_history_file("user_name") or ""

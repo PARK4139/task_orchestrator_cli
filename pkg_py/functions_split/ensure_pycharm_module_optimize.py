@@ -48,7 +48,7 @@ def ensure_pycharm_module_optimize():
     else:
         DIRECTORY_TO_DO_MACRO_ROUTINE = os.path.normpath(
             get_values_from_historical_file_routine(
-                file_id=db.get_id(key_name, func_n),
+                file_id=db.get_db_id(key_name, func_n),
                 key_hint=f'{key_name}=',
                 options_default=[get_d_working()]
             )
@@ -85,7 +85,7 @@ def ensure_pycharm_module_optimize():
     total_file_cnt = len(filtered_files)
 
     key_name = "file_skip_limit"
-    file_skip_limit = db.get_values(db_id=db.get_id(key_name, func_n))
+    file_skip_limit = db.get_values(db_id=db.get_db_id(key_name, func_n))
     if file_skip_limit is None:
         file_skip_limit = get_values_from_historical_file_routine(
             file_id=get_file_id(key_name, func_n),
@@ -115,7 +115,7 @@ def ensure_pycharm_module_optimize():
                 file_name_last = file_name
 
                 file_base = os.path.splitext(file_name)[0]
-                pk_copy(file_base)
+                ensure_copied(file_base)
                 open_pycharm_parrete()
                 paste_and_enter()
                 move_cursor_to_top_of_pycarm_code()
@@ -139,7 +139,7 @@ def ensure_pycharm_module_optimize():
 
         key_name = "file_skip_limit"
         logging.info(f'''file_cnt={file_cnt} {'%%%FOO%%%' if LTA else ''}''')
-        db.set_values(db_id=db.get_id(key_name, func_n), values=file_cnt - 1)
+        db.set_values(db_id=db.get_db_id(key_name, func_n), values=file_cnt - 1)
 
         key_name = "string_location"
         text_to_move_cursor = get_value_by_file_id(file_id=get_file_id(key_name, func_n))

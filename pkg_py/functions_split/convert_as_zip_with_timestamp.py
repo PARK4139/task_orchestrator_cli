@@ -41,13 +41,13 @@ from queue import Queue, Empty
 from pytube import Playlist
 # from project_database.test_project_database import MySqlUtil
 from pkg_py.functions_split.get_f_loading_nx_by_pattern import get_f_loading_nx_by_pattern
-from pkg_py.functions_split.load_f_video_on_losslesscut import load_f_video_on_losslesscut
+from pkg_py.functions_split.ensure_f_video_loaded_on_losslesscut import ensure_f_video_loaded_on_losslesscut
 from pkg_py.functions_split.get_video_filtered_list import get_video_filtered_list
 from pkg_py.functions_split.is_window_opened import is_window_opened
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 from pkg_py.functions_split.ensure_printed_once import ensure_printed_once
 
-from pkg_py.functions_split.cmd_to_os import cmd_to_os
+from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_excuted_to_os
 from pkg_py.functions_split.get_list_sorted import get_list_sorted
 from pkg_py.functions_split.ensure_console_cleared import ensure_console_cleared
 from pkg_py.system_object.files import F_POT_PLAYER_MINI_64_EXE
@@ -65,7 +65,7 @@ from datetime import timedelta
 from datetime import datetime, timedelta
 from cryptography.hazmat.primitives import padding
 from collections import Counter
-from pkg_py.functions_split.assist_to_load_video_at_losslesscut import ensure_video_loaded_at_losslesscut
+from pkg_py.functions_split.ensure_video_loaded_at_losslesscut import ensure_video_loaded_at_losslesscut
 from pkg_py.system_object.etc import PK_UNDERLINE
 from pkg_py.functions_split.get_pnx_list import get_pnx_list
 from pkg_py.functions_split.get_list_calculated import get_list_calculated
@@ -96,13 +96,13 @@ def convert_as_zip_with_timestamp(f):
         pk_chdir(target_dirname_dirname)
         # ensure_printed(rf'부모d로 백업')
         cmd = f'bandizip.exe c "{target_zip}" "{f}"'
-        cmd_to_os_like_person_as_admin(cmd)
+        ensure_command_excuted_to_os_like_person_as_admin(cmd)
         # ensure_printed(rf'이름변경')
         cmd = f'ren "{target_zip}" "$deleted_{target_yyyy_mm_dd_HH_MM_SS_zip}"'
-        cmd_to_os_like_person_as_admin(cmd)
+        ensure_command_excuted_to_os_like_person_as_admin(cmd)
         # ensure_printed(rf'부모d에서 백업될 d로 이동')
         cmd = f'move "$deleted_{target_yyyy_mm_dd_HH_MM_SS_zip}" "{target_dirname}"'
-        cmd_to_os_like_person_as_admin(cmd)
+        ensure_command_excuted_to_os_like_person_as_admin(cmd)
         # ensure_printed(rf'백업될 d로 이동')
         pk_chdir(target_dirname)
         # ensure_printed(str_working="os.getcwd()")

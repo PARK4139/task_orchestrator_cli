@@ -40,12 +40,12 @@ from PySide6.QtWidgets import QApplication
 from prompt_toolkit import PromptSession
 from pkg_py.functions_split.get_historical_list import get_historical_list
 from pkg_py.functions_split.is_losslesscut_running import is_losslesscut_running
-from pkg_py.functions_split.load_f_video_on_losslesscut import load_f_video_on_losslesscut
+from pkg_py.functions_split.ensure_f_video_loaded_on_losslesscut import ensure_f_video_loaded_on_losslesscut
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
-from pkg_py.functions_split.press import press
-from pkg_py.functions_split.print_state import print_state
+from pkg_py.functions_split.ensure_pressed import ensure_pressed
+from pkg_py.functions_split.ensure_state_printed import ensure_state_printed
 from pkg_py.functions_split.ensure_printed import ensure_printed
-from pkg_py.functions_split.cmd_to_os import cmd_to_os
+from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_excuted_to_os
 from pkg_py.functions_split.ensure_list_written_to_f import ensure_list_written_to_f
 from pkg_py.functions_split.get_list_sorted import get_list_sorted
 from pkg_py.functions_split.set_pk_context_state import set_pk_context_state
@@ -59,7 +59,7 @@ from pkg_py.system_object.directories_reuseable import D_PROJECT
 from pkg_py.system_object.directories import D_PK_WORKING
 from pkg_py.system_object.directories import D_PKG_TXT, D_PK_WORKING
 from pkg_py.system_object.state_via_context import SpeedControlContext
-from pkg_py.system_object.performance_logic import measure_seconds, pk_measure_memory
+from pkg_py.system_object.performance_logic import ensure_seconds_measured, pk_measure_memory
 
 from pathlib import Path
 from paramiko import SSHClient, AutoAddPolicy
@@ -115,6 +115,6 @@ def run_venv_in_cmd_exe():
     script_list = get_list_replaced_element_from_str_to_str(working_list=script_list, from_str='    ', to_str='')
     ensure_pnx_made(pnx=f_cmd, mode='f', script_list=script_list)
     ensure_printed(rf"set PYTHONPATH={D_PROJECT}", print_color='blue')
-    # cmd_to_os(cmd=rf'notepad "{activate_bat}"')
-    # cmd_to_os(cmd=rf'notepad "{f_pn_bat}"')
-    cmd_to_os(cmd=rf'start call "{f_cmd}" ', encoding=Encoding.UTF8, mode='a')
+    # ensure_command_excuted_to_os(cmd=rf'notepad "{activate_bat}"')
+    # ensure_command_excuted_to_os(cmd=rf'notepad "{f_pn_bat}"')
+    ensure_command_excuted_to_os(cmd=rf'start call "{f_cmd}" ', encoding=Encoding.UTF8, mode='a')

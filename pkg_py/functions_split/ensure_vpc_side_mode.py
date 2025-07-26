@@ -1,7 +1,7 @@
 from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.system_object.directories import D_PKG_TXT
 from pkg_py.functions_split.get_nx import get_nx
-from pkg_py.functions_split.cmd_to_os import cmd_to_os
+from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_excuted_to_os
 from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style
 from pkg_py.functions_split.get_pnx_windows_style import get_pnx_windows_style
 from pkg_py.functions_split.ensure_printed import ensure_printed
@@ -61,7 +61,7 @@ def ensure_vpc_side_mode(vpc_data, config_remote_os):
 
         # download f (a2z_xavier_launcher)
         pk_chdir(d_temp)
-        std_list = cmd_to_os(
+        std_list = ensure_command_excuted_to_os(
             cmd="git clone -b packing_ai_framework --single-branch http://211.171.108.170:8003/ai_dept/a2z_xavier_launcher.git")
 
         # send f (a2z_xavier_launcher)
@@ -94,7 +94,7 @@ def ensure_vpc_side_mode(vpc_data, config_remote_os):
         # todo : chore : No password / ai_framework model packing ver / a2z_xavier_launcher / IP Setting
         # 이것도 자동화 하자
         f_remote_src = get_pnx_windows_style(f_remote_src)
-        cmd_to_os(rf' explorer "{f_remote_src}" ')
+        ensure_command_excuted_to_os(rf' explorer "{f_remote_src}" ')
         check_manual_task_iteractively(
             question=rf'''did you finish customizing {f_nx} manually?  {'%%%FOO%%%' if LTA else ''}''',
             ignore_uppercase_word_list=[f_nx])

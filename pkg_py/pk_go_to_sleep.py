@@ -1,7 +1,7 @@
 if __name__ == "__main__":
     try:
         import traceback
-        # from pkg_py.system_object.500_live_logic import back_up_pnx, kill_os, is_office_pc, is_internet_connected, save_power_as_s3, pk_kill_process_as_async, pk_run_process_as_async, restart_f_list_with_new_window_as_async
+        # from pkg_py.system_object.500_live_logic import back_up_pnx, kill_os, is_office_pc, is_internet_connected, save_power_as_s3, ensure_process_killed_as_async, pk_run_process_as_async, restart_f_list_with_new_window_as_async
         # from pkg_py.system_object.500_live_logic import back_up_pnx_without_venv_and_idea
         # from pkg_py.system_object.500_live_logic import copy, is_day
         # from pkg_py.system_object.500_live_logic import assist_to_upload_pnx_to_git, get_time_as_, get_pk_token
@@ -9,7 +9,7 @@ if __name__ == "__main__":
         # from pkg_py.system_object.static_logic import D_ARCHIVED, D_PKG_PY
         from colorama import init as pk_colorama_init
 
-        # from pkg_py.system_object.500_live_logic import deprecated_get_d_current_n_like_person, get_f_current_n, pk_copy, assist_to_upload_pnx_to_git, get_time_as_, get_pk_token, ensure_input_preprocessed, ensure_d_size_stable, push_pnx_to_github, LTA
+        # from pkg_py.system_object.500_live_logic import deprecated_get_d_current_n_like_person, get_f_current_n, ensure_copied, assist_to_upload_pnx_to_git, get_time_as_, get_pk_token, ensure_input_preprocessed, ensure_d_size_stable, push_pnx_to_github, LTA
         #
         # from pkg_py.system_object.static_logic import D_PROJECT, UNDERLINE, STAMP_TRY_GUIDE, STAMP_PYTHON_DEBUGGING_NOTE, STAMP_EXCEPTION_DISCOVERED, D_PKG_TOML
         # from pkg_py.system_object.static_logic import D_PROJECT

@@ -28,10 +28,10 @@ from selenium.common.exceptions import WebDriverException
 from PySide6.QtWidgets import QApplication
 from prompt_toolkit.styles import Style
 from pkg_py.functions_split.is_window_title_front import is_window_title_front
-from pkg_py.functions_split.press import press
+from pkg_py.functions_split.ensure_pressed import ensure_pressed
 from pkg_py.functions_split.ensure_printed import ensure_printed
 
-from pkg_py.functions_split.cmd_to_os import cmd_to_os
+from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_excuted_to_os
 
 from pkg_py.functions_split.set_pk_context_state import set_pk_context_state
 from pkg_py.system_object.etc import PkFilter
@@ -45,7 +45,7 @@ from datetime import timedelta
 from Cryptodome.Cipher import AES
 from concurrent.futures import ThreadPoolExecutor
 from pkg_py.functions_split.get_nx import get_nx
-from pkg_py.functions_split.assist_to_load_video_at_losslesscut import ensure_video_loaded_at_losslesscut
+from pkg_py.functions_split.ensure_video_loaded_at_losslesscut import ensure_video_loaded_at_losslesscut
 from pkg_py.functions_split.kill_self_pk_program import kill_self_pk_program
 from pkg_py.functions_split.get_value_completed import get_value_completed
 from pkg_py.system_object.directories import D_PKG_PY
@@ -67,12 +67,12 @@ def get_img_when_img_recognized_succeed(img_abspath, recognize_loop_limit_cnt=0,
     GuiUtil.pop_up_as_complete(title="화면이미지분석 시도 전 보고", ment="화면 이미지 분석을 시도합니다",
                                auto_click_positive_btn_after_seconds=1)
 
-    pk_press('ctrl', '0'
+    ensure_pressed('ctrl', '0'
     5)  # 이미지 분석 시 크롬 zoom 초기화(ctrl+0)
 
     # 고해상도/다크모드 에서 시도
     for i in range(0, 9):
-        pk_press('ctrl', '+')
+        ensure_pressed('ctrl', '+')
 
     chrome_zoom_step = 0
 
@@ -105,10 +105,10 @@ def get_img_when_img_recognized_succeed(img_abspath, recognize_loop_limit_cnt=0,
                         if chrome_zoom_step == 14:
                             chrome_zoom_step = 0
                         elif chrome_zoom_step < 7:
-                            pk_press('ctrl', '-')
+                            ensure_pressed('ctrl', '-')
                             chrome_zoom_step = chrome_zoom_step + 1
                         elif 7 <= chrome_zoom_step:
-                            pk_press('ctrl', '+')
+                            ensure_pressed('ctrl', '+')
                             chrome_zoom_step = chrome_zoom_step + 1
             except pyautogui.ImageNotFoundException:
                 ensure_printed(f"{loop_cnt}번의 화면인식시도를 했지만 인식하지 못하였습니다")
@@ -134,8 +134,8 @@ def get_img_when_img_recognized_succeed(img_abspath, recognize_loop_limit_cnt=0,
                     if chrome_zoom_step == 14:
                         chrome_zoom_step = 0
                     elif chrome_zoom_step < 7:
-                        pk_press('ctrl', '-')
+                        ensure_pressed('ctrl', '-')
                         chrome_zoom_step = chrome_zoom_step + 1
                     elif 7 <= chrome_zoom_step:
-                        pk_press('ctrl', '+')
+                        ensure_pressed('ctrl', '+')
                         chrome_zoom_step = chrome_zoom_step + 1

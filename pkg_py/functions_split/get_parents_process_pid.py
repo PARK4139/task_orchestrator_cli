@@ -69,8 +69,8 @@ from pkg_py.functions_split.is_window_title_front import is_window_title_front
 from pkg_py.functions_split.is_window_title_opened import is_window_title_opened
 from pkg_py.functions_split.is_window_opened import is_window_opened
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
-from pkg_py.functions_split.press import press
-from pkg_py.functions_split.print_state import print_state
+from pkg_py.functions_split.ensure_pressed import ensure_pressed
+from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.ensure_printed_once import ensure_printed_once
 
 from pkg_py.functions_split.ensure_list_written_to_f import ensure_list_written_to_f
@@ -110,7 +110,7 @@ from bs4 import ResultSet
 from base64 import b64encode
 from base64 import b64decode
 from pkg_py.functions_split.get_nx import get_nx
-from pkg_py.functions_split.assist_to_load_video_at_losslesscut import ensure_video_loaded_at_losslesscut
+from pkg_py.functions_split.ensure_video_loaded_at_losslesscut import ensure_video_loaded_at_losslesscut
 from pkg_py.system_object.etc import PkFilter, PK_UNDERLINE
 from pkg_py.system_object.stamps import STAMP_TRY_GUIDE, STAMP_UNIT_TEST_EXCEPTION_DISCOVERED
 from pkg_py.system_object.etc import PK_UNDERLINE
@@ -136,6 +136,6 @@ def get_parents_process_pid():
     import inspect
     func_n = inspect.currentframe().f_code.co_name
     cmd = rf'powershell (Get-WmiObject Win32_Process -Filter ProcessId=$PID).ParentProcessId'
-    lines = cmd_to_os_like_person_as_admin(cmd=cmd)
+    lines = ensure_command_excuted_to_os_like_person_as_admin(cmd=cmd)
     lines = get_list_replaced_element_from_str_to_str(working_list=lines, from_str="\r", to_str="")
     return lines[0]

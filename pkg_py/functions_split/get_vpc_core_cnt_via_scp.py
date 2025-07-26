@@ -29,7 +29,7 @@ from pkg_py.system_object.local_test_activate import LTA
 from os.path import dirname
 from bs4 import BeautifulSoup
 from base64 import b64decode
-from pkg_py.functions_split.assist_to_load_video_at_losslesscut import ensure_video_loaded_at_losslesscut
+from pkg_py.functions_split.ensure_video_loaded_at_losslesscut import ensure_video_loaded_at_losslesscut
 from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style
 from pkg_py.system_object.local_test_activate import LTA
 

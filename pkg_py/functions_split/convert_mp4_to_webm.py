@@ -44,14 +44,14 @@ from prompt_toolkit import PromptSession
 from pkg_py.functions_split.get_f_loading_nx_by_pattern import get_f_loading_nx_by_pattern
 from pkg_py.functions_split.ensure_window_to_front import ensure_window_to_front
 from pkg_py.functions_split.is_losslesscut_running import is_losslesscut_running
-from pkg_py.functions_split.rerun_losslesscut import rerun_losslesscut
+from pkg_py.functions_split.ensure_losslesscut_reran import ensure_losslesscut_reran
 from pkg_py.functions_split.get_video_filtered_list import get_video_filtered_list
 from pkg_py.functions_split.is_window_title_front import is_window_title_front
 from pkg_py.functions_split.is_window_title_opened import is_window_title_opened
-from pkg_py.functions_split.print_state import print_state
+from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.ensure_printed import ensure_printed
 
-from pkg_py.functions_split.cmd_to_os import cmd_to_os
+from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_excuted_to_os
 from pkg_py.functions_split.ensure_list_written_to_f import ensure_list_written_to_f
 from pkg_py.functions_split.get_list_sorted import get_list_sorted
 from pkg_py.functions_split.set_pk_context_state import set_pk_context_state

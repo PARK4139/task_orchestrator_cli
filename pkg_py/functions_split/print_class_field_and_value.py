@@ -66,13 +66,13 @@ from pynput import mouse
 from prompt_toolkit.styles import Style
 # from project_database.test_project_database import MySqlUtil
 from pkg_py.functions_split.get_historical_list import get_historical_list
-from pkg_py.functions_split.print_iterable_as_vertical import print_iterable_as_vertical
+from pkg_py.functions_split.ensure_iterable_printed_as_vertical import ensure_iterable_printed_as_vertical
 from pkg_py.functions_split.get_f_video_to_load import get_f_video_to_load
 from pkg_py.functions_split.get_video_filtered_list import get_video_filtered_list
 from pkg_py.functions_split.is_window_title_front import is_window_title_front
 from pkg_py.functions_split.get_d_working import get_d_working
 from pkg_py.functions_split.is_window_title_opened import is_window_title_opened
-from pkg_py.functions_split.print_state import print_state
+from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
@@ -88,7 +88,7 @@ from pkg_py.system_object.directories import D_PKG_TXT, D_PK_WORKING
 from pkg_py.system_object.map_massages import PkMessages2025
 from pkg_py.system_object.print_red import print_red
 from pkg_py.system_object.state_via_context import SpeedControlContext
-from pkg_py.system_object.performance_logic import measure_seconds, pk_measure_memory
+from pkg_py.system_object.performance_logic import ensure_seconds_measured, pk_measure_memory
 from pkg_py.system_object.is_os_windows import is_os_windows
 from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.system_object.get_list_calculated import get_list_calculated
@@ -111,7 +111,7 @@ from bs4 import ResultSet
 from bs4 import BeautifulSoup
 from base64 import b64encode
 from pkg_py.functions_split.get_nx import get_nx
-from pkg_py.functions_split.assist_to_load_video_at_losslesscut import ensure_video_loaded_at_losslesscut
+from pkg_py.functions_split.ensure_video_loaded_at_losslesscut import ensure_video_loaded_at_losslesscut
 from pkg_py.functions_split.get_value_completed import get_value_completed
 from pkg_py.system_object.directories import D_PKG_PY
 from pkg_py.functions_split.get_list_calculated import get_list_calculated

@@ -32,10 +32,10 @@ def upzip_pnx(pnx):
             if os.path.exists(target_zip):
                 # cmd=f'bandizip.exe bx "{target_zip}"'
                 cmd = f'bz.exe x -aoa "{target_zip}"'  # x 는 경로 보존, -aoa :Overwrite All existing files without prompt
-                cmd_to_os_like_person_as_admin(cmd)
+                ensure_command_excuted_to_os_like_person_as_admin(cmd)
                 if os.path.exists(pnx):
                     cmd = rf'echo y | del /f "{target_zip}"'
-                    cmd_to_os_like_person_as_admin(cmd)
+                    ensure_command_excuted_to_os_like_person_as_admin(cmd)
                 else:
                     ensure_printed("압축해제 후 압축f을 삭제에 실패")
             else:

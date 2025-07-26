@@ -1,7 +1,7 @@
 import pyaudio
 import numpy as np
 # from project_database.test_project_database import MySqlUtil
-from pkg_py.functions_split.press import press
+from pkg_py.functions_split.ensure_pressed import ensure_pressed
 from pkg_py.system_object.directories import D_PK_WORKING
 from pkg_py.system_object.state_via_database import PkSqlite3DB
 from mutagen.mp3 import MP3

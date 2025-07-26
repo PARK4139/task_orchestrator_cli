@@ -5,9 +5,9 @@ from pkg_py.system_object.is_os_windows import is_os_windows
 
 from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.is_os_windows import is_os_windows
-from pkg_py.functions_split.cmd_to_os import cmd_to_os
+from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_excuted_to_os
 from pkg_py.functions_split.ensure_printed import ensure_printed
-from pkg_py.functions_split.print_state import print_state
+from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 
 
@@ -21,11 +21,11 @@ def cmd_to_remote_os_with_pubkey(cmd, **config_remote_os):
         if not does_pnx_exist(pnx=config_remote_os['local_ssh_private_key']):  # todo local_ssh_private_key 가 path 라면 f_ prefix 추가.
             ensure_printed(f'''config_remote_os['local_ssh_private_key']={config_remote_os['local_ssh_private_key']} {'%%%FOO%%%' if LTA else ''}''')
             state = is_os_windows()
-            ensure_printed_state(state=state, pk_id="%%%FOO%%%")
+            ensure_state_printed(state=state, pk_id="%%%FOO%%%")
             if state:
-                cmd_to_os(f'ssh-keygen -t ed25519 -b 4096 -C "pk_ssh_key"')
+                ensure_command_excuted_to_os(f'ssh-keygen -t ed25519 -b 4096 -C "pk_ssh_key"')
             else:
-                cmd_to_os(f'ssh-keygen -t ed25519 -C "pk_ssh_key"')
+                ensure_command_excuted_to_os(f'ssh-keygen -t ed25519 -C "pk_ssh_key"')
         key_private = paramiko.Ed25519Key(filename=config_remote_os['local_ssh_private_key'])
 
         ensure_printed(f'''config_remote_os['user_n']={config_remote_os['user_n']} {'%%%FOO%%%' if LTA else ''}''')

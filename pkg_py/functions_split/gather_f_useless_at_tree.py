@@ -1,4 +1,4 @@
-from pkg_py.functions_split.cmd_to_os import cmd_to_os
+from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_excuted_to_os
 from pkg_py.system_object.directories_reuseable import D_PROJECT
 
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
@@ -8,7 +8,7 @@ from pkg_py.functions_split.ensure_printed import ensure_printed
 
 from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.system_object.directories_reuseable import D_PROJECT
-from pkg_py.functions_split.cmd_to_os import cmd_to_os
+from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_excuted_to_os
 from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 
@@ -20,7 +20,7 @@ def gather_f_useless_at_tree(d_working):
     ensure_pnx_made(pnx=dst, mode="d")
     ensure_printed(f'''dst={dst}  {'%%%FOO%%%' if LTA else ''}''')
     if not is_empty_d(d_src=dst):
-        cmd_to_os(cmd=rf'explorer "{dst}" ', encoding='cp949')
+        ensure_command_excuted_to_os(cmd=rf'explorer "{dst}" ', encoding='cp949')
     try:
         pk_chdir(d_dst=d_working)
 
@@ -37,7 +37,7 @@ def gather_f_useless_at_tree(d_working):
                 useless_f_nx = useless_f_nx.strip()
                 useless_f_nx = useless_f_nx.strip("\n")
                 cmd = f'dir /b /s "{useless_f_nx}"'
-                uleless_f_list = cmd_to_os(cmd=cmd, encoding='cp949')
+                uleless_f_list = ensure_command_excuted_to_os(cmd=cmd, encoding='cp949')
                 if uleless_f_list is None:
                     uleless_f_list = []
                 for uleless_f in uleless_f_list:

@@ -15,8 +15,8 @@ import datetime
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service
-from pkg_py.functions_split.print_iterable_as_vertical import print_iterable_as_vertical
-from pkg_py.functions_split.print_state import print_state
+from pkg_py.functions_split.ensure_iterable_printed_as_vertical import ensure_iterable_printed_as_vertical
+from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.ensure_printed_once import ensure_printed_once
 from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
 from pkg_py.system_object.files import F_FFMPEG_EXE

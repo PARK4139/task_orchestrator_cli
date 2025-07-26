@@ -1,8 +1,11 @@
-from pkg_py.functions_split.get_values_from_historical_database_routine import get_values_from_historical_database_routine
-from pkg_py.functions_split.ensure_printed import ensure_printed
+from pkg_py.functions_split.ensure_seconds_measured import ensure_seconds_measured
 
 
+@ensure_seconds_measured
 def get_pk_program_language_v2():
+    from pkg_py.functions_split.get_values_from_historical_database_routine import get_values_from_historical_database_routine
+    from pkg_py.functions_split.ensure_printed import ensure_printed
+
     import inspect
     from pkg_py.system_object.local_test_activate import LTA
     from pkg_py.system_object.state_via_database import PkSqlite3DB
@@ -15,7 +18,7 @@ def get_pk_program_language_v2():
     key_hint2 = "is_initial_launch"
     key_hint1 = "pk_program_language"
 
-    is_initial_launch = db.get_values(db_id=db.get_id(key_hint2, func_n))
+    is_initial_launch = db.get_values(db_id=db.get_db_id(key_hint2, func_n))
     if is_initial_launch is None:
         is_initial_launch = True
 
@@ -28,24 +31,24 @@ def get_pk_program_language_v2():
         ensure_printed("🎯 First launch detected")
 
         pk_program_language = get_values_from_historical_database_routine(
-            db_id=db.get_id(key_hint1, func_n),
+            db_id=db.get_db_id(key_hint1, func_n),
             key_hint=f"{key_hint1}=",
             values_default=["kr", "en"]
         )
-        db.set_values(db_id=db.get_id(key_hint1, func_n), values=pk_program_language)
+        db.set_values(db_id=db.get_db_id(key_hint1, func_n), values=pk_program_language)
 
-        db.set_values(db_id=db.get_id(key_hint2, func_n), values=False)
+        db.set_values(db_id=db.get_db_id(key_hint2, func_n), values=False)
     else:
         ensure_printed("Subsequent launch")
-        pk_program_language = db.get_values(db_id=db.get_id(key_hint1, func_n))
+        pk_program_language = db.get_values(db_id=db.get_db_id(key_hint1, func_n))
 
         if pk_program_language is None:
             ensure_printed(f"{key_hint1} is missing. Re-configuring... %%%FOO%%%")
             pk_program_language = get_values_from_historical_database_routine(
-                db_id=db.get_id(key_hint1, func_n),
+                db_id=db.get_db_id(key_hint1, func_n),
                 key_hint=f"{key_hint1}=",
                 values_default=["kr", "en"]
             )
-            db.set_values(db_id=db.get_id(key_hint1, func_n), values=pk_program_language)
+            db.set_values(db_id=db.get_db_id(key_hint1, func_n), values=pk_program_language)
     ensure_printed(f"[{func_n}] {key_hint1} = {pk_program_language} %%%FOO%%%")
     return pk_program_language

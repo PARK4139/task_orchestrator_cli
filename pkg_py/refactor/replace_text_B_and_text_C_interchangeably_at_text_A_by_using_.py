@@ -25,7 +25,7 @@ from datetime import datetime
 from colorama import init as pk_colorama_init
 from bs4 import ResultSet
 from bs4 import BeautifulSoup
-from pkg_py.functions_split.assist_to_load_video_at_losslesscut import ensure_video_loaded_at_losslesscut
+from pkg_py.functions_split.ensure_video_loaded_at_losslesscut import ensure_video_loaded_at_losslesscut
 from pkg_py.functions_split.get_pnx_windows_style import get_pnx_windows_style
 from pkg_py.functions_split.get_pnx_windows_style import get_pnx_windows_style
 

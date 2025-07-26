@@ -19,7 +19,7 @@ def ask_to_chatGPT(question: str):
     # todo : candi : selenium, cloudflare 사용
     # todo : final : chatGPT api 사용
     # cmd = f'explorer "https://www.google.com/search?q={question}"  >nul'
-    # cmd_to_os(cmd=cmd)
+    # ensure_command_excuted_to_os(cmd=cmd)
     # ensure_printed(f'''{cmd}  {'%%%FOO%%%' if LTA else ''}''', print_color="blue"))
 
     # move window to front

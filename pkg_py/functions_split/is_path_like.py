@@ -7,7 +7,7 @@ import mutagen
 import json
 import colorama
 from prompt_toolkit import PromptSession
-from pkg_py.functions_split.print_iterable_as_vertical import print_iterable_as_vertical
+from pkg_py.functions_split.ensure_iterable_printed_as_vertical import ensure_iterable_printed_as_vertical
 
 from pkg_py.system_object.files import F_FFMPEG_EXE
 

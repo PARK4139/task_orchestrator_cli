@@ -43,7 +43,8 @@
 # start_time = ensure_start_time_logged()
 # end_time = ensure_end_time_logged()
 # elapsed_time = ensure_elapsed_time_logged(start_time)
-# logging.info("______")
+# logging.info(f'''[{PkMessages2025.DATA}] elapsed_time={elapsed_time} {'%%%FOO%%%' if LTA else ''}''')
+# ipdb.set_trace()
 # _____________________________________________________________________  loop debugger
 # miliseconds = [1000, 500, 250, 100, 50]
 # pk_ensure_loop_delayed_at_loop_foot(loop_cnt, mode_level=2, miliseconds_limit=50)

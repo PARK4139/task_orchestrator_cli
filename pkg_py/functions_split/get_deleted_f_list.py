@@ -5,10 +5,10 @@ import nest_asyncio
 from tkinter import UNDERLINE
 from PySide6.QtWidgets import QApplication
 from pkg_py.functions_split.is_losslesscut_running import is_losslesscut_running
-from pkg_py.functions_split.load_f_video_on_losslesscut import load_f_video_on_losslesscut
+from pkg_py.functions_split.ensure_f_video_loaded_on_losslesscut import ensure_f_video_loaded_on_losslesscut
 from pkg_py.functions_split.is_window_title_front import is_window_title_front
 from pkg_py.functions_split.get_d_working import get_d_working
-from pkg_py.functions_split.print_state import print_state
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 from pkg_py.functions_split.ensure_list_written_to_f import ensure_list_written_to_f
 from pkg_py.system_object.directories import D_PK_WORKING

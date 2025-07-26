@@ -1,4 +1,4 @@
-from pkg_py.functions_split.cmd_to_os import cmd_to_os
+from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_excuted_to_os
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 from pkg_py.functions_split.ensure_pnx_made import ensure_pnx_made
 from pkg_py.functions_split.get_historical_list import get_historical_list
@@ -8,9 +8,6 @@ from pkg_py.system_object.directories_reuseable import D_PROJECT
 
 
 def ensure_os_path_added():
-    # from pkg_py.system_object.auto_completer import get_value_completed
-    #
-    #
     # not tested this function
     # this function is 종속적이다.
     import os, inspect
@@ -45,7 +42,7 @@ def ensure_os_path_added():
 
         # OS별 구분자로 합쳐서 export
         new_path_str = os.pathsep.join(unique_paths)
-        cmd_to_os(cmd=f'export PATH="{new_path_str}"')
+        ensure_command_excuted_to_os(cmd=f'export PATH="{new_path_str}"')
 
     # 히스토리에 입력값을 맨 앞에 기록
     ensure_list_written_to_f(

@@ -15,7 +15,7 @@ from selenium.common.exceptions import WebDriverException
 from pkg_py.functions_split.get_historical_list import get_historical_list
 from pkg_py.functions_split.get_f_video_to_load import get_f_video_to_load
 from pkg_py.functions_split.is_window_opened import is_window_opened
-from pkg_py.functions_split.press import press
+from pkg_py.functions_split.ensure_pressed import ensure_pressed
 
 from pkg_py.functions_split.set_pk_context_state import set_pk_context_state
 from pkg_py.system_object.etc import PkFilter

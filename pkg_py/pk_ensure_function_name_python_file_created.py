@@ -3,7 +3,7 @@ import traceback
 
 import ipdb
 
-from pkg_py.functions_split.debug_this_code_operated import ensure_this_code_operated
+from pkg_py.functions_split.ensure_this_code_operated import ensure_this_code_operated
 from pkg_py.functions_split.ensure_console_debuggable import ensure_console_debuggable
 from pkg_py.functions_split.ensure_do_exception_routine import ensure_do_exception_routine
 from pkg_py.functions_split.ensure_do_finally_routine import ensure_do_finally_routine

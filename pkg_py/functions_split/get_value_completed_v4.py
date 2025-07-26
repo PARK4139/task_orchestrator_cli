@@ -8,7 +8,7 @@ def get_value_completed_v4(message, option_values):
     func_n = inspect.currentframe().f_code.co_name
 
     if message.strip() == "x":
-        pk_speak(f"{func_n}() exited(intended)")
+        ensure_spoken(f"{func_n}() exited(intended)")
         return None
 
     seen = set()

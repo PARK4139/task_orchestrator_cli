@@ -10,7 +10,7 @@ from pkg_py.functions_split.ensure_printed import ensure_printed
 
 def guide_to_manual_remedy(prompt_remedy):
     print(f'\n')
-    pk_copy(str_working=prompt_remedy)
+    ensure_copied(str_working=prompt_remedy)
     ensure_printed(f'{PK_UNDERLINE}')
     ensure_printed(f'{STAMP_TRY_GUIDE} {prompt_remedy}')
     ensure_printed(f'{PK_UNDERLINE}')

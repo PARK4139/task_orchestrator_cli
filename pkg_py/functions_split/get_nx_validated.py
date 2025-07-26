@@ -26,9 +26,9 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.common.exceptions import WebDriverException
 from PySide6.QtWidgets import QApplication
-from pkg_py.functions_split.rerun_losslesscut import rerun_losslesscut
+from pkg_py.functions_split.ensure_losslesscut_reran import ensure_losslesscut_reran
 from pkg_py.functions_split.is_window_title_opened import is_window_title_opened
-from pkg_py.functions_split.press import press
+from pkg_py.functions_split.ensure_pressed import ensure_pressed
 from pkg_py.functions_split.ensure_printed_once import ensure_printed_once
 from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.ensure_list_written_to_f import ensure_list_written_to_f

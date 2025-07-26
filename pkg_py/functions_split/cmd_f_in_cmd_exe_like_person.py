@@ -18,16 +18,16 @@ def cmd_f_in_cmd_exe_like_person(cmd_prefix, f):
     pnx_new = get_pnx_windows_style(pnx=pnx_new)
 
     # kill
-    # kill_process_via_taskkill(process_name='cmd.exe')
-    # kill_process_via_wmic(process_img_n='cmd.exe')
+    # ensure_process_killed_via_taskkill(process_name='cmd.exe')
+    # ensure_process_killed_via_wmic(process_img_n='cmd.exe')
     window_title_seg = f
     window_title_seg = get_pnx_windows_style(window_title_seg)
     kill_window_like_person(window_title_seg=window_title_seg)
 
     # run
     try:
-        cmd_to_os_like_person(cmd=rf'"{D_PROJECT}\.venv\Scripts\activate.cmd"')
-        cmd_to_os_like_person(cmd=rf'{cmd_prefix} "{pnx_new}"')
+        ensure_command_excuted_to_os_like_person(cmd=rf'"{D_PROJECT}\.venv\Scripts\activate.cmd"')
+        ensure_command_excuted_to_os_like_person(cmd=rf'{cmd_prefix} "{pnx_new}"')
     except:
         pass
 

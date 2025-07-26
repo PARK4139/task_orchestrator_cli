@@ -23,5 +23,5 @@ def rsync_d_remote(d_pnx):
 
     if not is_internet_connected():
         raise
-    pk_speak(PkMents2025Korean.NOT_PREPARED_YET)
+    ensure_spoken(PkMents2025Korean.NOT_PREPARED_YET)
     pass

@@ -28,7 +28,7 @@ from prompt_toolkit import PromptSession
 from pkg_py.functions_split.is_losslesscut_running import is_losslesscut_running
 from pkg_py.functions_split.get_f_video_to_load import get_f_video_to_load
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
-from pkg_py.functions_split.print_state import print_state
+from pkg_py.functions_split.ensure_state_printed import ensure_state_printed
 from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.get_list_sorted import get_list_sorted
 from pkg_py.functions_split.ensure_console_cleared import ensure_console_cleared

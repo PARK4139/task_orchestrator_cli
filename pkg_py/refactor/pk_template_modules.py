@@ -46,11 +46,11 @@
 # from pkg_ps1.system_object.process import kill_process_by_window_title_seg
 # from pkg_py.functions_split import ensure_pycharm_module_optimize
 # from pkg_py.functions_split import ensure_keyboard_mouse_macro
-# from pkg_py.functions_split.assist_to_load_video_at_losslesscut import ensure_video_loaded_at_losslesscut
+# from pkg_py.functions_split.ensure_video_loaded_at_losslesscut import ensure_video_loaded_at_losslesscut
 # from pkg_py.functions_split.backup_workspace import backup_workspace
 # from pkg_py.functions_split.check_min_non_null_or_warn import check_min_non_null_or_warn
-# from pkg_py.functions_split.cmd_to_os import cmd_to_os
-# from pkg_py.functions_split.copy_and_paste_with_keeping_clipboard import copy_and_paste_with_keeping_clipboard
+# from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_excuted_to_os
+# from pkg_py.functions_split.ensure_copied_and_pasted_with_keeping_clipboard import ensure_copied_and_pasted_with_keeping_clipboard
 # from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 # from pkg_py.functions_split.ensure_console_cleared import ensure_console_cleared
 # from pkg_py.functions_split.ensure_console_debuggable import ensure_console_debuggable
@@ -136,7 +136,7 @@
 # from pkg_py.functions_split.is_window_title_opened import is_window_title_opened
 # from pkg_py.functions_split.kill_losslesscut import kill_losslesscut
 # from pkg_py.functions_split.kill_self_pk_program import kill_self_pk_program
-# from pkg_py.functions_split.load_f_video_on_losslesscut import load_f_video_on_losslesscut
+# from pkg_py.functions_split.ensure_f_video_loaded_on_losslesscut import ensure_f_video_loaded_on_losslesscut
 # from pkg_py.functions_split.load_logged_set import load_logged_set
 # from pkg_py.functions_split.move_window_to_front_via_pid import move_window_to_front_via_pid
 # from pkg_py.functions_split.open_pnx_by_ext import ensure_pnx_opened_by_ext
@@ -145,23 +145,23 @@
 # from pkg_py.functions_split.ensure_functions_splited_v2 import ensure_functions_splited_v2
 # from pkg_py.functions_split.ensure_loop_delayed_at_loop_foot import ensure_loop_delayed_at_loop_foot
 # from pkg_py.functions_split.initialize_and_customize_logging_config import initialize_and_customize_logging_config
-# from pkg_py.functions_split.measure_seconds import measure_seconds
-# from pkg_py.functions_split.press import press
-# from pkg_py.functions_split.press_v2 import press_v2
+# from pkg_py.functions_split.ensure_seconds_measured import ensure_seconds_measured
+# from pkg_py.functions_split.ensure_pressed import ensure_pressed
+# from pkg_py.functions_split.ensure_pressed_v2 import ensure_pressed_v2
 # from pkg_py.functions_split.ensure_printed import ensure_printed
 # from pkg_py.functions_split.print_once import print_once
-# from pkg_py.functions_split.print_state import print_state
+# from pkg_py.functions_split.ensure_state_printed import ensure_state_printed
 # from pkg_py.functions_split.replace_f_nx_list_from_old_str_to_new_str import replace_f_nx_list_from_old_str_to_new_str
 # from pkg_py.functions_split.ensure_slept import ensure_slept
 # from pkg_py.functions_split.sleep_v2 import sleep_v2
 # 
-# from pkg_py.functions_split.speak import speak
+# from pkg_py.functions_split.ensure_spoken import ensure_spoken
 # from pkg_py.functions_split.speak_v2 import speak_v2
 # from pkg_py.functions_split.type import type
 # from pkg_py.functions_split.type_v2 import type_v2
 # from pkg_py.functions_split.print_and_save_log_to_file import print_and_save_log_to_file
 # from pkg_py.functions_split.print_green import print_green
-# from pkg_py.functions_split.print_iterable_as_vertical import print_iterable_as_vertical
+# from pkg_py.functions_split.ensure_iterable_printed_as_vertical import ensure_iterable_printed_as_vertical
 # from pkg_py.functions_split.print_light_black import print_light_black
 # from pkg_py.functions_split.print_light_blue import print_light_blue
 # from pkg_py.functions_split.print_light_white import print_light_white
@@ -172,7 +172,7 @@
 # from pkg_py.functions_split.print_prompt_via_colorama import print_prompt_via_colorama
 # from pkg_py.functions_split.print_red import print_red
 # from pkg_py.functions_split.print_yellow import print_yellow
-# from pkg_py.functions_split.rerun_losslesscut import rerun_losslesscut
+# from pkg_py.functions_split.ensure_losslesscut_reran import ensure_losslesscut_reran
 # from pkg_py.functions_split.restore_workspace_from_latest_archive import restore_workspace_from_latest_archive
 # from pkg_py.functions_split.run_losslesscut import run_losslesscut
 # from pkg_py.functions_split.run_pk_python_program_by_path import run_pk_python_program_by_path
@@ -192,7 +192,7 @@
 # from pkg_py.system_object.local_test_activate import LTA
 # from pkg_py.system_object.is_os_windows import is_os_windows
 # 
-# from pkg_py.system_object.performance_logic import measure_seconds, pk_measure_memory
+# from pkg_py.system_object.performance_logic import ensure_seconds_measured, pk_measure_memory
 # from pkg_py.system_object.state_via_context import SpeedControlContext
 # from pkg_py.system_object.state_via_database import PkSqlite3DB
 # from pkg_py.system_object.print_red import print_red

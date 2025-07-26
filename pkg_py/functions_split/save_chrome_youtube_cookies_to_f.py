@@ -41,9 +41,9 @@ from pkg_py.functions_split.get_f_video_to_load import get_f_video_to_load
 from pkg_py.functions_split.is_window_title_front import is_window_title_front
 from pkg_py.functions_split.is_window_title_opened import is_window_title_opened
 from pkg_py.functions_split.is_window_opened import is_window_opened
-from pkg_py.functions_split.print_state import print_state
+from pkg_py.functions_split.ensure_state_printed import ensure_state_printed
 
-from pkg_py.functions_split.cmd_to_os import cmd_to_os
+from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_excuted_to_os
 from pkg_py.functions_split.ensure_console_cleared import ensure_console_cleared
 from pkg_py.system_object.files import F_POT_PLAYER_MINI_64_EXE
 from pkg_py.system_object.files import F_HISTORICAL_PNX

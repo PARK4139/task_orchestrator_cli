@@ -44,8 +44,8 @@ from pynput import mouse
 from pkg_py.functions_split.get_historical_list import get_historical_list
 from pkg_py.functions_split.get_f_loading_nx_by_pattern import get_f_loading_nx_by_pattern
 from pkg_py.functions_split.is_losslesscut_running import is_losslesscut_running
-from pkg_py.functions_split.rerun_losslesscut import rerun_losslesscut
-from pkg_py.functions_split.load_f_video_on_losslesscut import load_f_video_on_losslesscut
+from pkg_py.functions_split.ensure_losslesscut_reran import ensure_losslesscut_reran
+from pkg_py.functions_split.ensure_f_video_loaded_on_losslesscut import ensure_f_video_loaded_on_losslesscut
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.set_pk_context_state import set_pk_context_state
@@ -73,7 +73,7 @@ from dataclasses import dataclass
 from cryptography.hazmat.primitives import padding
 from cryptography.hazmat.backends import default_backend
 from bs4 import ResultSet
-from pkg_py.functions_split.assist_to_load_video_at_losslesscut import ensure_video_loaded_at_losslesscut
+from pkg_py.functions_split.ensure_video_loaded_at_losslesscut import ensure_video_loaded_at_losslesscut
 from pkg_py.system_object.etc import PK_UNDERLINE
 from pkg_py.functions_split.get_value_completed import get_value_completed
 from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style

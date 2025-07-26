@@ -1,3 +1,7 @@
+from pkg_py.functions_split.ensure_printed import ensure_printed
+from pkg_py.functions_split.get_window_title import get_window_title
+
+
 def is_process_killed(window_title_seg: str, timeout: float = 1.0) -> bool:
     """
     주어진 window_title_seg에 해당하는 CMD 프로세스가 종료되었는지 확인하고 종료 시도.
@@ -63,5 +67,3 @@ def is_process_killed(window_title_seg: str, timeout: float = 1.0) -> bool:
     except Exception as e:
         ensure_printed(f"[ERROR] 전체 종료 확인 실패: {e}", print_color="red")
         return False
-
-

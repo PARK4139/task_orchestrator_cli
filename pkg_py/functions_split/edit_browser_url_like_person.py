@@ -8,8 +8,8 @@ import inspect
 
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.common.exceptions import WebDriverException
-from pkg_py.functions_split.rerun_losslesscut import rerun_losslesscut
-from pkg_py.functions_split.press import press
+from pkg_py.functions_split.ensure_losslesscut_reran import ensure_losslesscut_reran
+from pkg_py.functions_split.ensure_pressed import ensure_pressed
 
 from pkg_py.functions_split.get_list_sorted import get_list_sorted
 from pkg_py.system_object.directories_reuseable import D_PROJECT
@@ -26,9 +26,9 @@ from pkg_py.functions_split.get_pnx_windows_style import get_pnx_windows_style
 
 def edit_browser_url_like_person():
     import random
-    pk_press("ctrl", "l"
+    ensure_pressed("ctrl", "l"
     5)
-    pk_press("right"
+    ensure_pressed("right"
     5)
     write("/")
     ensure_slept(milliseconds=random.randint(a=12, b=23))

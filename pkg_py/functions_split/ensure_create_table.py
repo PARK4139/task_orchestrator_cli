@@ -34,8 +34,8 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 from PySide6.QtWidgets import QApplication
 from prompt_toolkit.styles import Style
-from pkg_py.functions_split.rerun_losslesscut import rerun_losslesscut
-from pkg_py.functions_split.load_f_video_on_losslesscut import load_f_video_on_losslesscut
+from pkg_py.functions_split.ensure_losslesscut_reran import ensure_losslesscut_reran
+from pkg_py.functions_split.ensure_f_video_loaded_on_losslesscut import ensure_f_video_loaded_on_losslesscut
 from pkg_py.functions_split.is_window_title_opened import is_window_title_opened
 from pkg_py.functions_split.ensure_printed_once import ensure_printed_once
 from pkg_py.functions_split.ensure_list_written_to_f import ensure_list_written_to_f

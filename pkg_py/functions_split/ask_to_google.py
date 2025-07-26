@@ -14,9 +14,9 @@ from selenium.webdriver.common.action_chains import ActionChains
 from pkg_py.functions_split.ensure_window_to_front import ensure_window_to_front
 from pkg_py.functions_split.get_f_video_to_load import get_f_video_to_load
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
-from pkg_py.functions_split.press import press
+from pkg_py.functions_split.ensure_pressed import ensure_pressed
 from pkg_py.functions_split.ensure_printed_once import ensure_printed_once
-from pkg_py.functions_split.cmd_to_os import cmd_to_os
+from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_excuted_to_os
 
 from passlib.context import CryptContext
 from mutagen.mp3 import MP3
@@ -39,7 +39,7 @@ def ask_to_google(question: str):
 
     # search in google
     cmd = f'explorer "https://www.google.com/search?q={question}"  >nul'
-    cmd_to_os(cmd=cmd)
+    ensure_command_excuted_to_os(cmd=cmd)
     ensure_printed(f'''{cmd}  {'%%%FOO%%%' if LTA else ''}''', print_color="blue")
 
     # move window to front

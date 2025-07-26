@@ -1,4 +1,4 @@
-@measure_seconds
+@ensure_seconds_measured
 def ensure_pk_system_started_v4():
     # based on fzf.exe or fzf (with fallback)
     import inspect

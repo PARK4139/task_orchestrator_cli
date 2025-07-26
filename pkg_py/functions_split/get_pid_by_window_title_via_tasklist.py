@@ -27,14 +27,14 @@ from selenium.webdriver.chrome.service import Service
 from selenium.common.exceptions import ElementClickInterceptedException
 from pytube import Playlist
 from pkg_py.functions_split.get_historical_list import get_historical_list
-from pkg_py.functions_split.print_iterable_as_vertical import print_iterable_as_vertical
+from pkg_py.functions_split.ensure_iterable_printed_as_vertical import ensure_iterable_printed_as_vertical
 from pkg_py.functions_split.get_f_loading_nx_by_pattern import get_f_loading_nx_by_pattern
 from pkg_py.functions_split.ensure_window_to_front import ensure_window_to_front
 from pkg_py.functions_split.is_losslesscut_running import is_losslesscut_running
-from pkg_py.functions_split.rerun_losslesscut import rerun_losslesscut
+from pkg_py.functions_split.ensure_losslesscut_reran import ensure_losslesscut_reran
 from pkg_py.functions_split.get_f_video_to_load import get_f_video_to_load
 from pkg_py.functions_split.is_window_title_opened import is_window_title_opened
-from pkg_py.functions_split.cmd_to_os import cmd_to_os
+from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_excuted_to_os
 from pkg_py.functions_split.ensure_list_written_to_f import ensure_list_written_to_f
 
 from pkg_py.functions_split.set_pk_context_state import set_pk_context_state
@@ -68,7 +68,7 @@ from pkg_py.functions_split.get_pnx_list import get_pnx_list
 def get_pid_by_window_title_via_tasklist(window_title_seg):
     try:
         cmd = rf'tasklist'
-        lines = cmd_to_os(cmd=cmd)
+        lines = ensure_command_excuted_to_os(cmd=cmd)
         matching_lines = None
         for line in lines:
             if window_title_seg in line:

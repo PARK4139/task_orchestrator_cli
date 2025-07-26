@@ -1,5 +1,5 @@
 
-from pkg_py.functions_split.cmd_to_os import cmd_to_os
+from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_excuted_to_os
 from pkg_py.functions_split.download_youtube_videos import download_youtube_videos
 from pkg_py.functions_split.ensure_pnx_made import ensure_pnx_made
 from pkg_py.functions_split.get_list_from_f import get_list_from_f
@@ -8,7 +8,7 @@ from pkg_py.functions_split.get_list_removed_element_contain_prompt import get_l
 from pkg_py.functions_split.get_list_via_user_input import get_list_via_user_input
 from pkg_py.functions_split.is_window_opened import is_window_opened
 from pkg_py.functions_split.ensure_printed import ensure_printed
-from pkg_py.functions_split.print_iterable_as_vertical import print_iterable_as_vertical
+from pkg_py.functions_split.ensure_iterable_printed_as_vertical import ensure_iterable_printed_as_vertical
 from pkg_py.system_object.directories_reuseable import D_PROJECT
 from pkg_py.system_object.local_test_activate import LTA
 
@@ -27,7 +27,7 @@ def download_youtube_list(via_f_txt=None, video_url_list=None):
 
     if via_f_txt is True and video_url_list is None:
         if not is_window_opened(window_title_seg=func_n):
-            cmd_to_os(cmd=rf"explorer {f_func_n_txt}")
+            ensure_command_excuted_to_os(cmd=rf"explorer {f_func_n_txt}")
         video_url_list = get_list_from_f(f=f_func_n_txt)
         video_url_list = get_list_removed_element_contain_prompt(working_list=video_url_list, prompt="#")
 
@@ -41,7 +41,7 @@ def download_youtube_list(via_f_txt=None, video_url_list=None):
         return
 
     video_url_list = get_list_removed_by_removing_runtine(working_list=video_url_list)
-    print_iterable_as_vertical(item_iterable=video_url_list, item_iterable_n="urls")
+    ensure_iterable_printed_as_vertical(item_iterable=video_url_list, item_iterable_n="urls")
     ensure_printed(rf'''len(urls)="{len(video_url_list)}"''')
     if len(video_url_list) == 0:
         return

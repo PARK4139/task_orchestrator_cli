@@ -40,12 +40,12 @@ from selenium.webdriver.chrome.service import Service
 from pynput import mouse
 from prompt_toolkit.styles import Style
 from prompt_toolkit import PromptSession
-from pkg_py.functions_split.print_iterable_as_vertical import print_iterable_as_vertical
+from pkg_py.functions_split.ensure_iterable_printed_as_vertical import ensure_iterable_printed_as_vertical
 from pkg_py.functions_split.get_f_loading_nx_by_pattern import get_f_loading_nx_by_pattern
 from pkg_py.functions_split.is_losslesscut_running import is_losslesscut_running
-from pkg_py.functions_split.rerun_losslesscut import rerun_losslesscut
+from pkg_py.functions_split.ensure_losslesscut_reran import ensure_losslesscut_reran
 from pkg_py.functions_split.get_d_working import get_d_working
-from pkg_py.functions_split.print_state import print_state
+from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.ensure_printed_once import ensure_printed_once
 from pkg_py.functions_split.ensure_printed import ensure_printed
 
@@ -60,7 +60,7 @@ from pkg_py.system_object.directories import D_PKG_TXT, D_PK_WORKING
 from pkg_py.system_object.directories import D_DOWNLOADS, D_PKG_PKL
 from pkg_py.system_object.print_red import print_red
 from pkg_py.system_object.state_via_database import PkSqlite3DB
-from pkg_py.system_object.performance_logic import measure_seconds, pk_measure_memory
+from pkg_py.system_object.performance_logic import ensure_seconds_measured, pk_measure_memory
 from pkg_py.system_object.local_test_activate import LTA
 from passlib.context import CryptContext
 from paramiko import SSHClient, AutoAddPolicy

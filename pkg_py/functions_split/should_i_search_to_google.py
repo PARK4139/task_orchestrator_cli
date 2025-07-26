@@ -52,7 +52,7 @@ from selenium.common.exceptions import ElementClickInterceptedException
 from pytube import Playlist
 from prompt_toolkit import PromptSession
 from prompt_toolkit import PromptSession
-from pkg_py.functions_split.print_iterable_as_vertical import print_iterable_as_vertical
+from pkg_py.functions_split.ensure_iterable_printed_as_vertical import ensure_iterable_printed_as_vertical
 from pkg_py.functions_split.get_f_loading_nx_by_pattern import get_f_loading_nx_by_pattern
 from pkg_py.functions_split.is_losslesscut_running import is_losslesscut_running
 from pkg_py.functions_split.get_f_video_to_load import get_f_video_to_load

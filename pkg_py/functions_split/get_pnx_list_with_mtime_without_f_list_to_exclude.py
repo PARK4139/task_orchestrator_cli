@@ -29,9 +29,9 @@ from selenium.common.exceptions import WebDriverException
 from PySide6.QtWidgets import QApplication
 from prompt_toolkit.styles import Style
 from prompt_toolkit import PromptSession
-from pkg_py.functions_split.print_iterable_as_vertical import print_iterable_as_vertical
-from pkg_py.functions_split.rerun_losslesscut import rerun_losslesscut
-from pkg_py.functions_split.print_state import print_state
+from pkg_py.functions_split.ensure_iterable_printed_as_vertical import ensure_iterable_printed_as_vertical
+from pkg_py.functions_split.ensure_losslesscut_reran import ensure_losslesscut_reran
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 from pkg_py.functions_split.get_list_sorted import get_list_sorted
 from pkg_py.functions_split.set_pk_context_state import set_pk_context_state

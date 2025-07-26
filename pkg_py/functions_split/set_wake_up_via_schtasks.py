@@ -1,5 +1,5 @@
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.functions_split.cmd_to_os import cmd_to_os
+from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_excuted_to_os
 from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
@@ -19,7 +19,7 @@ def set_wake_up_via_schtasks(seconds):
     task_name = "WakeComputer"
     cmd = f'schtasks /create /tn "{task_name}" /tr "cmd.exe /c exit" /sc once /st {wake_time.strftime("%H:%M")} /f /it'
     ensure_printed(f''' {cmd}  {'%%%FOO%%%' if LTA else ''}''', print_color="blue")
-    std_list = cmd_to_os(cmd=cmd)
+    std_list = ensure_command_excuted_to_os(cmd=cmd)
     std_list = get_list_converted_from_byte_list_to_str_list(std_list)
     for std_str in std_list:
         ensure_printed(f'''[STD_OUT] {std_str}  {'%%%FOO%%%' if LTA else ''}''', print_color="blue")

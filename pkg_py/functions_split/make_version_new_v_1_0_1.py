@@ -6,12 +6,12 @@ import pandas as pd
 import cv2
 from zipfile import BadZipFile
 from yt_dlp import YoutubeDL
-from pkg_py.functions_split.print_iterable_as_vertical import print_iterable_as_vertical
+from pkg_py.functions_split.ensure_iterable_printed_as_vertical import ensure_iterable_printed_as_vertical
 from pkg_py.functions_split.get_f_loading_nx_by_pattern import get_f_loading_nx_by_pattern
 from pkg_py.functions_split.is_losslesscut_running import is_losslesscut_running
 from pkg_py.functions_split.is_window_title_opened import is_window_title_opened
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
-from pkg_py.functions_split.cmd_to_os import cmd_to_os
+from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_excuted_to_os
 from pkg_py.functions_split.ensure_list_written_to_f import ensure_list_written_to_f
 from pkg_py.system_object.directories_reuseable import D_PROJECT
 from functools import partial as functools_partial
@@ -88,7 +88,7 @@ def make_version_new_v_1_0_1(via_f_txt=False, working_list=None, debug_mode=True
                                                                            prompt=f_n)
         f_list_versioned_required.remove(f_nx)  # 원본제외
         f_list_versioned_required.remove(f_next_versioned_nx)  # 최신버전제외
-        print_iterable_as_vertical(item_iterable=f_list_versioned_required, item_iterable_n="f_list_versioned_required")
+        ensure_iterable_printed_as_vertical(item_iterable=f_list_versioned_required, item_iterable_n="f_list_versioned_required")
 
         ensure_printed(f'''f="{f}"''')
         ensure_printed(f'''f_n="{f_n}"''')

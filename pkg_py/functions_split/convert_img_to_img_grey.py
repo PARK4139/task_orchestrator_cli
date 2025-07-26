@@ -67,14 +67,14 @@ from prompt_toolkit.styles import Style
 from prompt_toolkit import PromptSession
 # from project_database.test_project_database import MySqlUtil
 from pkg_py.functions_split.get_f_loading_nx_by_pattern import get_f_loading_nx_by_pattern
-from pkg_py.functions_split.rerun_losslesscut import rerun_losslesscut
-from pkg_py.functions_split.load_f_video_on_losslesscut import load_f_video_on_losslesscut
+from pkg_py.functions_split.ensure_losslesscut_reran import ensure_losslesscut_reran
+from pkg_py.functions_split.ensure_f_video_loaded_on_losslesscut import ensure_f_video_loaded_on_losslesscut
 from pkg_py.functions_split.get_video_filtered_list import get_video_filtered_list
 from pkg_py.functions_split.is_window_title_front import is_window_title_front
 from pkg_py.functions_split.get_d_working import get_d_working
-from pkg_py.functions_split.press import press
-from pkg_py.functions_split.print_state import print_state
-from pkg_py.functions_split.cmd_to_os import cmd_to_os
+from pkg_py.functions_split.ensure_pressed import ensure_pressed
+from pkg_py.functions_split.ensure_printed import ensure_printed
+from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_excuted_to_os
 from pkg_py.functions_split.get_list_sorted import get_list_sorted
 
 from pkg_py.functions_split.set_pk_context_state import set_pk_context_state

@@ -29,7 +29,7 @@ from prompt_toolkit.styles import Style
 from prompt_toolkit import PromptSession
 # from project_database.test_project_database import MySqlUtil
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
-from pkg_py.functions_split.print_state import print_state
+from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.ensure_console_cleared import ensure_console_cleared
 from pkg_py.system_object.etc import PkFilter
 from pkg_py.system_object.files import F_POT_PLAYER_MINI_64_EXE

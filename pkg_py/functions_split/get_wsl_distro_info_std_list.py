@@ -14,7 +14,7 @@ from selenium.webdriver.common.by import By
 from selenium.common.exceptions import WebDriverException
 from pynput import mouse
 from pkg_py.functions_split.get_d_working import get_d_working
-from pkg_py.functions_split.cmd_to_os import cmd_to_os
+from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_excuted_to_os
 from pkg_py.system_object.state_via_context import SpeedControlContext
 
 from mutagen.mp3 import MP3

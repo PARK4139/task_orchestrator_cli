@@ -23,7 +23,7 @@ from fastapi import HTTPException
 from enum import Enum
 from datetime import datetime
 from base64 import b64decode
-from pkg_py.functions_split.assist_to_load_video_at_losslesscut import ensure_video_loaded_at_losslesscut
+from pkg_py.functions_split.ensure_video_loaded_at_losslesscut import ensure_video_loaded_at_losslesscut
 from pkg_py.functions_split.is_f import is_f
 from pkg_py.functions_split.get_pnx_windows_style import get_pnx_windows_style
 from pkg_py.functions_split.is_os_windows import is_os_windows

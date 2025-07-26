@@ -14,9 +14,9 @@ from urllib.parse import quote
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.chrome.service import Service
 from selenium.common.exceptions import WebDriverException
-from pkg_py.functions_split.rerun_losslesscut import rerun_losslesscut
+from pkg_py.functions_split.ensure_losslesscut_reran import ensure_losslesscut_reran
 from pkg_py.functions_split.is_window_opened import is_window_opened
-from pkg_py.functions_split.print_state import print_state
+from pkg_py.functions_split.ensure_state_printed import ensure_state_printed
 from pkg_py.system_object.files import F_HISTORICAL_PNX
 from pkg_py.system_object.encodings import Encoding
 from pkg_py.system_object.state_via_context import SpeedControlContext

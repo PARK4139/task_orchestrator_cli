@@ -40,8 +40,8 @@ from PySide6.QtWidgets import QApplication
 # from project_database.test_project_database import MySqlUtil
 from pkg_py.functions_split.get_f_loading_nx_by_pattern import get_f_loading_nx_by_pattern
 from pkg_py.functions_split.ensure_window_to_front import ensure_window_to_front
-from pkg_py.functions_split.rerun_losslesscut import rerun_losslesscut
-from pkg_py.functions_split.load_f_video_on_losslesscut import load_f_video_on_losslesscut
+from pkg_py.functions_split.ensure_losslesscut_reran import ensure_losslesscut_reran
+from pkg_py.functions_split.ensure_f_video_loaded_on_losslesscut import ensure_f_video_loaded_on_losslesscut
 from pkg_py.functions_split.is_window_opened import is_window_opened
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 from pkg_py.functions_split.ensure_printed import ensure_printed
@@ -65,7 +65,7 @@ from cryptography.hazmat.backends import default_backend
 from Cryptodome.Cipher import AES
 from collections import Counter
 from bs4 import ResultSet
-from pkg_py.functions_split.assist_to_load_video_at_losslesscut import ensure_video_loaded_at_losslesscut
+from pkg_py.functions_split.ensure_video_loaded_at_losslesscut import ensure_video_loaded_at_losslesscut
 from pkg_py.system_object.etc import PkFilter, PK_UNDERLINE
 from pkg_py.functions_split.get_value_completed import get_value_completed
 from pkg_py.system_object.directories import D_PKG_PY
@@ -97,10 +97,10 @@ def merge_d_list(d_list: List[str]):
     ensure_printed(f'''d_list={d_list}  {'%%%FOO%%%' if LTA else ''}''')
 
     if 0 == len(d_list):
-        pk_speak_v2("pnx가 아무것도 입력되지 않았습니다", comma_delay=0.98)
+        ensure_spoken_v2("pnx가 아무것도 입력되지 않았습니다", comma_delay=0.98)
         return
     elif 1 == len(d_list):
-        pk_speak_v2("하나의 pnx로는 머지를 시도할수 없습니다, 여러개의 pnx들을 입력해주세요", comma_delay=0.98)
+        ensure_spoken_v2("하나의 pnx로는 머지를 시도할수 없습니다, 여러개의 pnx들을 입력해주세요", comma_delay=0.98)
         return
     elif 1 < len(d_list):
         for index, d in enumerate(d_list):
@@ -110,7 +110,7 @@ def merge_d_list(d_list: List[str]):
                 if os.path.exists(drive_path):
                     connected_drives.append(drive_path)
                     if d == drive_path:
-                        pk_speak_v2("입력된 pnx는 너무 광범위하여, 진행할 수 없도록 설정되어 있습니다", comma_delay=0.98)
+                        ensure_spoken_v2("입력된 pnx는 너무 광범위하여, 진행할 수 없도록 설정되어 있습니다", comma_delay=0.98)
                         break
 
         # make_d_leaf(D_EMPTY)

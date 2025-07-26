@@ -19,7 +19,7 @@ if __name__ == '__main__':
         txt_clicked, function, txt_written = should_i_do(
             prompt=rf"___________",
             btn_list=[_2025.POSITIVE, _2025.NEGATIVE],
-            function=partial(cmd_to_os, cmd),
+            function=partial(ensure_command_excuted_to_os, cmd),
             auto_click_negative_btn_after_seconds=30,
             title=f"___________",
             input_box_mode=True,
@@ -57,12 +57,7 @@ if __name__ == '__main__':
         # friday.move_window_to_pycharm(debug_mode=debug_mode)
 
     except Exception as e:
-        # red
-        import traceback
-
-        ensure_printed(str_working=f'{PK_UNDERLINE}예외발생 s\n\n', print_color='red')
-        ensure_printed(str_working=f'{traceback.format_exc()}\n', print_color='red')
-        ensure_printed(str_working=f'{PK_UNDERLINE}예외발생 e\n\n', print_color='red')
+        
 
         # yellow
         f_current= get_f_current_n()

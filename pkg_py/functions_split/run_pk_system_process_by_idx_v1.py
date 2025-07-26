@@ -9,7 +9,7 @@ from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
 from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
 from pkg_py.functions_split.is_os_windows import is_os_windows
 from pkg_py.functions_split.get_nx import get_nx
-from pkg_py.functions_split.cmd_to_os import cmd_to_os
+from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_excuted_to_os
 from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
@@ -50,15 +50,15 @@ def run_pk_system_process_by_idx_v1(pk_idx, pk_arg_list):
                 cmd = f'cmd.exe /k "{cmd_to_autorun} && title {get_nx(available_pk_python_program_pnx)}&& {cmd_to_run} {available_pk_python_program_pnx}"'
             else:
                 cmd = f'cmd.exe /c "{cmd_to_autorun} && title {get_nx(available_pk_python_program_pnx)}&& {cmd_to_run} {available_pk_python_program_pnx}"'
-            # cmd_to_os(cmd=cmd, mode_with_window=0)
-            cmd_to_os(cmd=cmd, mode='a', mode_with_window=0)
+            # ensure_command_excuted_to_os(cmd=cmd, mode_with_window=0)
+            ensure_command_excuted_to_os(cmd=cmd, mode='a', mode_with_window=0)
         else:  # with new window
             if LTA:
                 cmd = f'start "" cmd.exe /k "{cmd_to_autorun} && title {get_nx(available_pk_python_program_pnx)}&& {cmd_to_run} {available_pk_python_program_pnx}"'
             else:
                 cmd = f'start "" cmd.exe /c "{cmd_to_autorun} && title {get_nx(available_pk_python_program_pnx)}&& {cmd_to_run} {available_pk_python_program_pnx}"'
-            #         cmd_to_os(cmd=cmd, mode_with_window=1)
-            cmd_to_os(cmd=cmd, mode='a', mode_with_window=1)
+            #         ensure_command_excuted_to_os(cmd=cmd, mode_with_window=1)
+            ensure_command_excuted_to_os(cmd=cmd, mode='a', mode_with_window=1)
         if LTA:
             ensure_printed(f'''{STAMP_TRY_GUIDE} {cmd} {'%%%FOO%%%' if LTA else ''}''')
     if is_os_wsl_linux():
@@ -75,33 +75,33 @@ def run_pk_system_process_by_idx_v1(pk_idx, pk_arg_list):
                 current_pane = subprocess.check_output("tmux display -p '#{pane_id}'", shell=True).decode().strip()
 
                 # 아래쪽 페인 split
-                cmd_to_os("tmux split-window -v")
+                ensure_command_excuted_to_os("tmux split-window -v")
 
                 # 위쪽 페인을 다시 활성화할지 여부
                 if tmux_upper_pane_active:
-                    cmd_to_os(f"tmux select-pane -t {current_pane}")
+                    ensure_command_excuted_to_os(f"tmux select-pane -t {current_pane}")
 
                 # 명령어 전송 (기본적으로 위쪽 페인으로 보냄)
-                cmd_to_os(f"tmux send-keys -t {current_pane} '{full_cmd}' C-m")
+                ensure_command_excuted_to_os(f"tmux send-keys -t {current_pane} '{full_cmd}' C-m")
                 return
             else:
                 # tmux 밖이면: 새 세션 생성 후 attach
                 tmux_session = get_nx(available_pk_python_program_pnx).replace(".", "_")
                 ensure_tmux_pk_session_removed(tmux_session)
-                cmd_to_os(f"tmux new-session -s {tmux_session} -d '{full_cmd}'")
-                cmd_to_os(f"tmux attach-session -t {tmux_session}")
+                ensure_command_excuted_to_os(f"tmux new-session -s {tmux_session} -d '{full_cmd}'")
+                ensure_command_excuted_to_os(f"tmux attach-session -t {tmux_session}")
                 return
         else:
             if is_tmux:
                 current_pane = subprocess.check_output("tmux display -p '#{pane_id}'", shell=True).decode().strip()
-                cmd_to_os("tmux split-window -v")
-                cmd_to_os(f"tmux send-keys -t {current_pane} '{full_cmd}' C-m")
+                ensure_command_excuted_to_os("tmux split-window -v")
+                ensure_command_excuted_to_os(f"tmux send-keys -t {current_pane} '{full_cmd}' C-m")
                 return
             else:
                 tmux_session = get_nx(available_pk_python_program_pnx).replace(".", "_")
                 ensure_tmux_pk_session_removed(tmux_session)
-                cmd_to_os(f"tmux new-session -s {tmux_session} -d '{full_cmd}'")
-                cmd_to_os(f"tmux attach-session -t {tmux_session}")
+                ensure_command_excuted_to_os(f"tmux new-session -s {tmux_session} -d '{full_cmd}'")
+                ensure_command_excuted_to_os(f"tmux attach-session -t {tmux_session}")
                 return
 
         # tmux_session = get_nx(available_pk_python_program_pnx).replace(".", "_")
@@ -114,7 +114,7 @@ def run_pk_system_process_by_idx_v1(pk_idx, pk_arg_list):
         #     split_flag = "-v"
         #     # LTA 모드라면 끝에 sleep 추가
         #     sleep_cmd = "; sleep 99999" if LTA else ""
-        #     cmd_to_os(cmd=(
+        #     ensure_command_excuted_to_os(cmd=(
         #         f"tmux split-window {split_flag} "
         #         # f"'clear && {cmd_to_run} {available_pk_python_program_pnx}{sleep_cmd}'"
         #         f"'{cmd_to_run} {available_pk_python_program_pnx}{sleep_cmd}'"
@@ -126,11 +126,11 @@ def run_pk_system_process_by_idx_v1(pk_idx, pk_arg_list):
         # ensure_tmux_pk_session_removed(tmux_session)
         #
         # # 새 세션 생성 & 첫 페인에서 실행
-        # cmd_to_os(cmd=(f"tmux new-session -s {tmux_session} -d '{cmd_to_run} {available_pk_python_program_pnx}'"))
+        # ensure_command_excuted_to_os(cmd=(f"tmux new-session -s {tmux_session} -d '{cmd_to_run} {available_pk_python_program_pnx}'"))
         # # 수직 분할 & 아래 페인에서 동일 명령 실행
-        # # cmd_to_os(cmd=(f"tmux split-window -v -t {tmux_session} '{cmd_to_run} {available_pk_python_program_pnx}'"))
+        # # ensure_command_excuted_to_os(cmd=(f"tmux split-window -v -t {tmux_session} '{cmd_to_run} {available_pk_python_program_pnx}'"))
         # # 세션에 연결
-        # cmd_to_os(cmd=f"tmux attach-session -t {tmux_session}")
+        # ensure_command_excuted_to_os(cmd=f"tmux attach-session -t {tmux_session}")
 
         # run_pk_for_wsl_linux(
         #     cmd_to_autorun="cmd.exe",

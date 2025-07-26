@@ -11,7 +11,7 @@ import hashlib
 from selenium.webdriver.common.keys import Keys
 from pynput import mouse
 from pkg_py.functions_split.get_historical_list import get_historical_list
-from pkg_py.functions_split.cmd_to_os import cmd_to_os
+from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_excuted_to_os
 from pkg_py.functions_split.set_pk_context_state import set_pk_context_state
 from pkg_py.system_object.files import F_LOSSLESSCUT_EXE
 from pkg_py.system_object.files import F_FFMPEG_EXE

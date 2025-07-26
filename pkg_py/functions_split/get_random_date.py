@@ -3,7 +3,7 @@ import pythoncom
 import psutil
 from selenium.webdriver.chrome.service import Service
 from selenium.common.exceptions import ElementClickInterceptedException
-from pkg_py.functions_split.rerun_losslesscut import rerun_losslesscut
+from pkg_py.functions_split.ensure_losslesscut_reran import ensure_losslesscut_reran
 from pkg_py.functions_split.is_window_title_front import is_window_title_front
 from collections import Counter
 from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style

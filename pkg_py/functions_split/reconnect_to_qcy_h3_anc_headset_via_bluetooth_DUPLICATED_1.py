@@ -10,7 +10,7 @@ def reconnect_to_qcy_h3_anc_headset_via_bluetooth():  # toogle_to_qcy_h3_anc_hea
     func_n = inspect.currentframe().f_code.co_name
     # Bluetooth 설정창 띄우기
     cmd = 'start ms-settings:bluetooth'
-    cmd_to_os_like_person_as_admin(cmd=cmd)
+    ensure_command_excuted_to_os_like_person_as_admin(cmd=cmd)
     window_title_seg = "설정"
     time_limit = 10
     time_s = time.time()

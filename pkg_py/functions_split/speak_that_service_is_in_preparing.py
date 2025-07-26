@@ -37,7 +37,7 @@ from PySide6.QtWidgets import QApplication
 from prompt_toolkit import PromptSession
 from pkg_py.functions_split.get_historical_list import get_historical_list
 from pkg_py.functions_split.get_f_loading_nx_by_pattern import get_f_loading_nx_by_pattern
-from pkg_py.functions_split.rerun_losslesscut import rerun_losslesscut
+from pkg_py.functions_split.ensure_losslesscut_reran import ensure_losslesscut_reran
 from pkg_py.functions_split.is_window_opened import is_window_opened
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 from pkg_py.functions_split.ensure_list_written_to_f import ensure_list_written_to_f
@@ -79,4 +79,4 @@ from pkg_py.functions_split.get_d_working import get_d_working
 def speak_that_service_is_in_preparing():
     import inspect
     func_n = inspect.currentframe().f_code.co_name
-    pk_speak_v2(str_working="아직 준비되지 않은 서비스 입니다", comma_delay=0.98)
+    ensure_spoken_v2(str_working="아직 준비되지 않은 서비스 입니다", comma_delay=0.98)

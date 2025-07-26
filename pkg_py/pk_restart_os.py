@@ -1,4 +1,4 @@
-# from pkg_py.system_object.500_live_logic import kill_process, get_process_name_list, get_list_sorted, cmd_to_os
+# from pkg_py.system_object.500_live_logic import ensure_process_killed, get_process_name_list, get_list_sorted, ensure_command_excuted_to_os
 
 process_name_list = get_process_name_list()
 process_name_list = get_list_sorted(working_list=process_name_list, mode_asc=1)
@@ -100,11 +100,11 @@ INCLUDE_PROCESSES = {
     # "WUDFHost.exe",
 }
 # for img_name in INCLUDE_PROCESSES:
-#     kill_process(img_name=img_name)
+#     ensure_process_killed(img_name=img_name)
 
 cmd_list = [
     'shutdown.exe /r',
 ]
 
 for cmd in cmd_list:
-    cmd_to_os(cmd=cmd, mode='a')
+    ensure_command_excuted_to_os(cmd=cmd, mode='a')

@@ -12,8 +12,8 @@ def cmd_to_remote_os_without_pw(port, users, ip, pw, cmd):
 
     cmd = f'ssh {users}@{ip} -p {port} "{cmd}"'
     ensure_printed(rf'''cmd="{cmd}"  {'%%%FOO%%%' if LTA else ''}''')
-    # cmd_to_os(cmd=cmd) # fail : pw 물은 채로 정지
-    cmd_to_os_like_person(cmd=cmd)
+    # ensure_command_excuted_to_os(cmd=cmd) # fail : pw 물은 채로 정지
+    ensure_command_excuted_to_os_like_person(cmd=cmd)
     window_title_seg = r"C:\Windows\system32\cmd"
     if LTA:
         print_window_opened_list()

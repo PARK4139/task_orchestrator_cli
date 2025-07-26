@@ -1,6 +1,6 @@
 from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.get_nx import get_nx
-from pkg_py.functions_split.cmd_to_os import cmd_to_os
+from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_excuted_to_os
 from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 
@@ -42,7 +42,7 @@ def download_issue_data(data_required, original_log=False):
             break
         else:
             if not does_pnx_exist(pnx=src_new):
-                cmd_to_os(cmd=cmd, mode="a")
+                ensure_command_excuted_to_os(cmd=cmd, mode="a")
                 ensure_printed(str_working=rf'''이슈데이터 다운로드 완료 "{src_new}"  {'%%%FOO%%%' if LTA else ''}''',
                          print_color='blue')
                 return

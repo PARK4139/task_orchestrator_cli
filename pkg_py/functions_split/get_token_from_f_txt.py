@@ -42,9 +42,9 @@ from selenium.webdriver.common.action_chains import ActionChains
 from selenium.common.exceptions import WebDriverException
 from PySide6.QtWidgets import QApplication
 from prompt_toolkit import PromptSession
-from pkg_py.functions_split.print_iterable_as_vertical import print_iterable_as_vertical
+from pkg_py.functions_split.ensure_iterable_printed_as_vertical import ensure_iterable_printed_as_vertical
 from pkg_py.functions_split.is_losslesscut_running import is_losslesscut_running
-from pkg_py.functions_split.load_f_video_on_losslesscut import load_f_video_on_losslesscut
+from pkg_py.functions_split.ensure_f_video_loaded_on_losslesscut import ensure_f_video_loaded_on_losslesscut
 from pkg_py.functions_split.get_video_filtered_list import get_video_filtered_list
 from pkg_py.functions_split.is_window_title_front import is_window_title_front
 from pkg_py.functions_split.get_list_sorted import get_list_sorted
@@ -58,7 +58,7 @@ from pkg_py.system_object.directories_reuseable import D_PROJECT
 from pkg_py.system_object.directories import D_PK_WORKING
 from pkg_py.system_object.map_massages import PkMessages2025
 from pkg_py.system_object.print_red import print_red
-from pkg_py.system_object.performance_logic import measure_seconds, pk_measure_memory
+from pkg_py.system_object.performance_logic import ensure_seconds_measured, pk_measure_memory
 from pkg_py.system_object.is_os_windows import is_os_windows
 
 from PIL import Image, ImageFont, ImageDraw

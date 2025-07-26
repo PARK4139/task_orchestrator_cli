@@ -38,9 +38,9 @@ from prompt_toolkit import PromptSession
 from prompt_toolkit import PromptSession
 from pkg_py.functions_split.get_f_loading_nx_by_pattern import get_f_loading_nx_by_pattern
 from pkg_py.functions_split.ensure_window_to_front import ensure_window_to_front
-from pkg_py.functions_split.rerun_losslesscut import rerun_losslesscut
+from pkg_py.functions_split.ensure_losslesscut_reran import ensure_losslesscut_reran
 from pkg_py.functions_split.is_window_opened import is_window_opened
-from pkg_py.functions_split.print_state import print_state
+from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.get_list_sorted import get_list_sorted
 from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
 from pkg_py.system_object.files import F_LOSSLESSCUT_EXE
@@ -58,7 +58,7 @@ from cryptography.hazmat.backends import default_backend
 from Cryptodome.Cipher import AES
 from concurrent.futures import ThreadPoolExecutor
 from base64 import b64encode
-from pkg_py.functions_split.assist_to_load_video_at_losslesscut import ensure_video_loaded_at_losslesscut
+from pkg_py.functions_split.ensure_video_loaded_at_losslesscut import ensure_video_loaded_at_losslesscut
 from pkg_py.functions_split.kill_self_pk_program import kill_self_pk_program
 from pkg_py.system_object.directories import D_PKG_PY
 from pkg_py.functions_split.get_list_calculated import get_list_calculated

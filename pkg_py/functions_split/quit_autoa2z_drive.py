@@ -26,7 +26,7 @@ from selenium.webdriver.chrome.options import Options
 from pynput import mouse
 # from project_database.test_project_database import MySqlUtil
 from pkg_py.functions_split.is_window_opened import is_window_opened
-from pkg_py.functions_split.press import press
+from pkg_py.functions_split.ensure_pressed import ensure_pressed
 from pkg_py.functions_split.set_pk_context_state import set_pk_context_state
 from pkg_py.system_object.stamps import STAMP_ATTEMPTED
 from pkg_py.system_object.files import F_HISTORICAL_PNX
@@ -59,13 +59,13 @@ def quit_autoa2z_drive():
                 pid = get_pid_by_window_title_via_tasklist(window_title_seg=window_title_seg)
                 if is_number_v2(prompt=pid):
                     # cmd = rf' taskkill /f /pid {pid} '
-                    # cmd_to_os_like_person(cmd=cmd, admin_mode=True) # fail
-                    # cmd_to_os_like_person_as_admin(cmd=cmd)
+                    # ensure_command_excuted_to_os_like_person(cmd=cmd, admin_mode=True) # fail
+                    # ensure_command_excuted_to_os_like_person_as_admin(cmd=cmd)
 
                     cmd = rf' Stop-Process -Id {pid} -Force'
-                    cmd_to_os_via_powershell_exe(cmd=cmd)
+                    ensure_command_excuted_to_os_via_powershell_exe(cmd=cmd)
                     ensure_writen_like_person(str_working='exit')
-                    pk_press("enter")
+                    ensure_pressed("enter")
                 else:
                     break
 

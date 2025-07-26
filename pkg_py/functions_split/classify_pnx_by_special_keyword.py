@@ -23,7 +23,7 @@ from selenium.common.exceptions import ElementClickInterceptedException
 from pkg_py.functions_split.ensure_window_to_front import ensure_window_to_front
 from pkg_py.functions_split.get_video_filtered_list import get_video_filtered_list
 from pkg_py.functions_split.is_window_opened import is_window_opened
-from pkg_py.functions_split.press import press
+from pkg_py.functions_split.ensure_pressed import ensure_pressed
 from pkg_py.functions_split.ensure_printed_once import ensure_printed_once
 from pkg_py.functions_split.set_pk_context_state import set_pk_context_state
 from pkg_py.system_object.stamps import STAMP_TRY_GUIDE

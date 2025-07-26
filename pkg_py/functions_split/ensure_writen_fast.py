@@ -12,5 +12,5 @@ def ensure_writen_fast(string: str):
 
     func_n = inspect.currentframe().f_code.co_name
     ensure_slept(milliseconds=500)
-    copy_and_paste_with_keeping_clipboard(string)
+    ensure_copied_and_pasted_with_keeping_clipboard(string)
     ensure_printed(rf"{string}", print_color='blue')

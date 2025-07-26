@@ -32,7 +32,7 @@ from telegram import Bot
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.chrome.options import Options
 from prompt_toolkit.styles import Style
-from pkg_py.functions_split.print_iterable_as_vertical import print_iterable_as_vertical
+from pkg_py.functions_split.ensure_iterable_printed_as_vertical import ensure_iterable_printed_as_vertical
 from pkg_py.functions_split.get_f_loading_nx_by_pattern import get_f_loading_nx_by_pattern
 from pkg_py.functions_split.is_losslesscut_running import is_losslesscut_running
 from pkg_py.functions_split.get_d_working import get_d_working
@@ -100,7 +100,7 @@ def make_pnx_interested_list_to_f_txt_x(d_working_list, exclusion_list):
             # ensure_printed(str_working=rf'''len(pnx_processed_list)="{len(pnx_processed_list)}"  {'%%%FOO%%%' if LTA else ''}''')
             if write_cnt == write_cnt_limit % 2 == 0:
                 file_cnt = file_cnt + 1
-                # print_iterable_as_vertical(item_iterable=pnx_processed_list, item_iterable_n="pnx_processed_list")
+                # ensure_iterable_printed_as_vertical(item_iterable=pnx_processed_list, item_iterable_n="pnx_processed_list")
                 # func_n_file_cnt_txt=rf"{D_PKG_TXT}\{func_n}_{file_cnt}.txt"
                 # ensure_list_written_to_file(texts=pnx_processed_list, pnx=func_n_file_cnt_txt, mode="w")
             func_n_file_cnt_txt = rf"{D_PKG_TXT}\{func_n}_{file_cnt}.txt"

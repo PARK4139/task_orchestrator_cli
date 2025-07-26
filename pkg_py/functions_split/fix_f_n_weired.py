@@ -41,7 +41,7 @@ from pkg_py.system_object.files import F_POT_PLAYER_MINI_64_EXE
 from pkg_py.system_object.encodings import Encoding
 from pkg_py.system_object.print_red import print_red
 from pkg_py.system_object.state_via_context import SpeedControlContext
-from pkg_py.system_object.performance_logic import measure_seconds, pk_measure_memory
+from pkg_py.system_object.performance_logic import ensure_seconds_measured, pk_measure_memory
 
 from PIL import Image, ImageFilter
 from functools import partial as functools_partial
@@ -53,7 +53,7 @@ from cryptography.hazmat.backends import default_backend
 from bs4 import BeautifulSoup
 from base64 import b64encode
 from base64 import b64decode
-from pkg_py.functions_split.assist_to_load_video_at_losslesscut import ensure_video_loaded_at_losslesscut
+from pkg_py.functions_split.ensure_video_loaded_at_losslesscut import ensure_video_loaded_at_losslesscut
 from pkg_py.functions_split.get_pnx_wsl_unix_style import get_pnx_wsl_unix_style
 from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
 from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style

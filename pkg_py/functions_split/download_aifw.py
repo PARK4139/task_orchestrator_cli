@@ -10,7 +10,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 from telegram import Bot
 from selenium.webdriver.support.ui import WebDriverWait
 from prompt_toolkit import PromptSession
-from pkg_py.functions_split.print_state import print_state
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 from pkg_py.system_object.files import F_LOSSLESSCUT_EXE
 from pkg_py.system_object.encodings import Encoding

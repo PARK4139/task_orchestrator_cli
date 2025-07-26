@@ -1,27 +1,17 @@
 from enum import Enum
 
-# pk_ : pk_ prefix means somthing customed by jung hoon park
+
 # ____________________________________________________________________________________
 PK_WSL_DISTRO_N = 'wsl_pk_ubuntu_24_04'
 pk_ = 'pk_'
-
-
 # ____________________________________________________________________________________
-# def __init__(self):
-#     try:
-#         os.system('chcp 65001 >nul')
-#         Friday.PYCHARM64_EXE = rf'{os.environ.get("PyCharm Community Edition").replace(";", "")}/pycharm64.exe'
-#     except AttributeError:
-#         pass
-#     except Exception:
-#         print_light_black(f"{traceback.format_exc()}")
 class PkFilter(Enum):
     url_like = 'url_like'
     url_false = 'url_false'
 
-
 # ____________________________________________________________________________________
-PK_UNDERLINE = '_' * 59 + " "  # 제목작성 시 앞부분에 적용되는 기준인데 pep8 최대권장길이(79)를 기준으로 20 자 내외로 제목작성을 작성을 최대한 준수
+PK_UNDERLINE = '_' * 59 + " "  # python pep8 최대권장길이(79)를 기준으로 20 자 내외로 제목작성을 작성을 최대한 준수
+PK_DIVIDER = 'pk ' * 59 + " "
 PK_UNDERLINESHORT = '_' * 6
 pk_INDENTATION_PROMISED = ' ' * 5
 PK_BLANK = ' '

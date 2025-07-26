@@ -1,9 +1,9 @@
-from pkg_py.functions_split.measure_seconds import measure_seconds
+from pkg_py.functions_split.ensure_seconds_measured import ensure_seconds_measured
 from pkg_py.system_object.map_massages import PkMessages2025
 from pkg_py.system_object.etc import
 
 
-@measure_seconds
+@ensure_seconds_measured
 def run_pk_python_program_by_path(pnx, pk_arg_list=None):
     from pkg_py.system_object.local_test_activate import LTA
     from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
@@ -11,7 +11,7 @@ def run_pk_python_program_by_path(pnx, pk_arg_list=None):
     from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
     from pkg_py.functions_split.is_os_windows import is_os_windows
     from pkg_py.functions_split.get_nx import get_nx
-    from pkg_py.functions_split.cmd_to_os import cmd_to_os
+    from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_excuted_to_os
     from pkg_py.functions_split.get_cmd_to_autorun import get_cmd_to_autorun
     from pkg_py.functions_split.ensure_printed import ensure_printed
     import os
@@ -34,10 +34,10 @@ def run_pk_python_program_by_path(pnx, pk_arg_list=None):
 
         if pk_arg_list[2] in ['-ww', '--without window']:
             cmd = f'cmd.exe /c "{cmd_to_autorun} && title {nx} && {cmd_to_run} {pnx}"'
-            cmd_to_os(cmd=cmd, mode='a', mode_with_window=0)
+            ensure_command_excuted_to_os(cmd=cmd, mode='a', mode_with_window=0)
         else:
             cmd = f'start "" cmd.exe /c "{cmd_to_autorun} && title {nx} && {cmd_to_run} {pnx}"'
-            cmd_to_os(cmd=cmd, mode='a', mode_with_window=1)
+            ensure_command_excuted_to_os(cmd=cmd, mode='a', mode_with_window=1)
 
         if LTA:
             ensure_printed(f'{STAMP_TRY_GUIDE} {cmd} %%%FOO%%%')
@@ -51,20 +51,20 @@ def run_pk_python_program_by_path(pnx, pk_arg_list=None):
 
         if is_tmux:
             current_pane = subprocess.check_output("tmux display -p '#{pane_id}'", shell=True).decode().strip()
-            cmd_to_os("tmux split-window -v")
-            cmd_to_os(f"tmux send-keys -t {current_pane} '{full_cmd}' C-m")
+            ensure_command_excuted_to_os("tmux split-window -v")
+            ensure_command_excuted_to_os(f"tmux send-keys -t {current_pane} '{full_cmd}' C-m")
             if LTA:
                 ensure_printed(f"{STAMP_TRY_GUIDE} tmux split → send-keys: {full_cmd}")
         else:
             tmux_session = nx.replace(".", "_")
             ensure_tmux_pk_session_removed(tmux_session)
-            cmd_to_os(f"tmux new-session -s {tmux_session} -d '{full_cmd}'")
-            cmd_to_os(f"tmux attach-session -t {tmux_session}")
+            ensure_command_excuted_to_os(f"tmux new-session -s {tmux_session} -d '{full_cmd}'")
+            ensure_command_excuted_to_os(f"tmux attach-session -t {tmux_session}")
             if LTA:
                 ensure_printed(f"{STAMP_TRY_GUIDE} tmux new-session: {full_cmd}")
     else:
         # 기타 리눅스
         cmd = f"{cmd_to_run} {pnx}"
-        cmd_to_os(cmd=cmd)
+        ensure_command_excuted_to_os(cmd=cmd)
         if LTA:
             ensure_printed(f"{STAMP_TRY_GUIDE} {cmd}")

@@ -39,11 +39,11 @@ from PySide6.QtWidgets import QApplication
 from pynput import mouse
 from pkg_py.functions_split.ensure_window_to_front import ensure_window_to_front
 from pkg_py.functions_split.is_losslesscut_running import is_losslesscut_running
-from pkg_py.functions_split.rerun_losslesscut import rerun_losslesscut
+from pkg_py.functions_split.ensure_losslesscut_reran import ensure_losslesscut_reran
 from pkg_py.functions_split.is_window_title_opened import is_window_title_opened
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
-from pkg_py.functions_split.press import press
-from pkg_py.functions_split.print_state import print_state
+from pkg_py.functions_split.ensure_pressed import ensure_pressed
+from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.get_list_sorted import get_list_sorted
 from pkg_py.functions_split.set_pk_context_state import set_pk_context_state

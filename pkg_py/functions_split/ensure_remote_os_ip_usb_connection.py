@@ -21,7 +21,7 @@ from pkg_py.functions_split.is_window_title_front import is_window_title_front
 from pkg_py.functions_split.is_window_opened import is_window_opened
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 
-from pkg_py.functions_split.cmd_to_os import cmd_to_os
+from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_excuted_to_os
 from pkg_py.functions_split.ensure_console_cleared import ensure_console_cleared
 from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
 from pkg_py.system_object.files import F_LOSSLESSCUT_EXE
@@ -49,9 +49,9 @@ def ensure_remote_os_ip_usb_connection(config_remote_os, remote_os_distro_n=None
 
     ensure_usbipd_installed(config_remote_os)
 
-    cmd_to_os(cmd="wsl --shutdown", encoding=Encoding.UTF8)
+    ensure_command_excuted_to_os(cmd="wsl --shutdown", encoding=Encoding.UTF8)
 
-    std_list = cmd_to_os(cmd="usbipd list", encoding=Encoding.UTF8)
+    std_list = ensure_command_excuted_to_os(cmd="usbipd list", encoding=Encoding.UTF8)
     bus_id = None
     # signiture_list = ["APX", "Attached" or "Shared"]
     signiture_list = ["APX"]
@@ -72,21 +72,21 @@ def ensure_remote_os_ip_usb_connection(config_remote_os, remote_os_distro_n=None
     ensure_printed(str_working=rf'''bus id found, bus_id={bus_id}  {'%%%FOO%%%' if LTA else ''}''', print_color="green")
 
     # signiture = "제공된 이름의 배포가 없습니다" or 'xxxx'
-    std_list = cmd_to_os(cmd=rf"wsl -d {remote_os_distro_n} -- exit")
+    std_list = ensure_command_excuted_to_os(cmd=rf"wsl -d {remote_os_distro_n} -- exit")
     if check_signiture_in_loop(time_limit=10, working_list=std_list, signiture="제공된 이름의 배포가 없습니다",
                                signiture_found_ment=rf"'{cmd}' 할수없었습니다"):
         raise
 
     cmd = "wsl -l -v"
-    std_list = cmd_to_os(cmd=cmd, encoding='utf-16')
+    std_list = ensure_command_excuted_to_os(cmd=cmd, encoding='utf-16')
     import ipdb
     ipdb.set_trace()
 
     cmd = rf"usbipd unbind -b {bus_id}"
-    cmd_to_os(cmd=cmd, encoding=Encoding.UTF8)
+    ensure_command_excuted_to_os(cmd=cmd, encoding=Encoding.UTF8)
 
     cmd = rf"usbipd bind -b {bus_id}"
-    cmd_to_os(cmd=cmd, encoding=Encoding.UTF8)
+    ensure_command_excuted_to_os(cmd=cmd, encoding=Encoding.UTF8)
 
     # usbipd: warning: A firewall appears to be blocking the connection; ensure TCP port 3240 is allowed.
     # powershell as admin
@@ -98,7 +98,7 @@ def ensure_remote_os_ip_usb_connection(config_remote_os, remote_os_distro_n=None
     # cmd = rf"usbipd attach --wsl --busid {bus_id} --auto-attach"
     cmd = rf'start "" usbipd attach --wsl --busid {bus_id} --auto-attach'
     cmd_with_window_title = rf'title "{cmd}" && {cmd}'
-    cmd_to_os_like_person(cmd=cmd_with_window_title)
+    ensure_command_excuted_to_os_like_person(cmd=cmd_with_window_title)
     timeout = 15
     start_time = time.time()
     while 1:
@@ -115,7 +115,7 @@ def ensure_remote_os_ip_usb_connection(config_remote_os, remote_os_distro_n=None
     signiture_list = "NVidia Corp."
     ment_positive = "wsl 에 attach 되었습니다"
     while 1:
-        std_list = cmd_to_os(cmd=cmd, encoding=Encoding.CP949)
+        std_list = ensure_command_excuted_to_os(cmd=cmd, encoding=Encoding.CP949)
         for signiture_to_search in std_list:
             if signiture_list in signiture_to_search:
                 ensure_printed(f'''{ment_positive}''', print_color="green")

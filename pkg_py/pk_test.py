@@ -5,10 +5,10 @@ import ipdb
 from pkg_py.functions_split.jarvis import run_jarvis
 from pkg_py.functions_split.ensure_do_exception_routine import ensure_do_exception_routine
 from pkg_py.functions_split.ensure_do_finally_routine import ensure_do_finally_routine
-from pkg_py.functions_split.speak import speak
+from pkg_py.functions_split.ensure_spoken import ensure_spoken
 from pkg_py.system_object.directories_reuseable import D_PROJECT
 from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
-# from pkg_py.workspace.pk_workspace import debug_this_code_operated, debug_as_ipdb_console
+# from pkg_py.workspace.pk_workspace import ensure_this_code_operated, debug_as_ipdb_console
 
 
 def test():
@@ -18,7 +18,7 @@ def test():
     colorama_init_once()
 
     while True:
-        debug_this_code_operated(ipdb=ipdb)
+        ensure_this_code_operated(ipdb=ipdb)
 
         debug_as_ipdb_console(ipdb=ipdb)
 
@@ -35,7 +35,7 @@ def test():
         #     raise RuntimeError("WSL 배포판 설치/이름 변경에 실패했습니다.")
 
         # if is_os_linux():
-        #     # cmd_to_os('exit')
+        #     # ensure_command_excuted_to_os('exit')
         #     # available_pk_python_program_pnx = get_pnx_from_fzf(D_PKG_PY)
         #     available_pk_python_program_pnx = None
         #     pnx_list = get_pnx_list(d_working=D_PKG_PY, mode="f", with_walking=0)

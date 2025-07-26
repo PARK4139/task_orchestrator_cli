@@ -25,7 +25,7 @@ from fastapi import HTTPException
 from datetime import date
 from cryptography.hazmat.backends import default_backend
 from collections import Counter
-from pkg_py.functions_split.assist_to_load_video_at_losslesscut import ensure_video_loaded_at_losslesscut
+from pkg_py.functions_split.ensure_video_loaded_at_losslesscut import ensure_video_loaded_at_losslesscut
 from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
 from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
 from pkg_py.system_object.local_test_activate import LTA
@@ -40,7 +40,7 @@ def ensure_vpc_flashed(wsl_data, vpc_data, config_remote_os):
 
     # ensure_printed(str_working=rf'''flash 를 진행하기 위해서 불필요한 창들을 끕니다  {'%%%FOO%%%' if LTA else ''}''', print_color='blue')
     # answer = input(rf"{get_stamp_func_n(func_n=func_n)} >")
-    # cmd_to_os(cmd=rf'taskkill /f /im "cmd.exe" ', debug_mode=False)
+    # ensure_command_excuted_to_os(cmd=rf'taskkill /f /im "cmd.exe" ', debug_mode=False)
     # process_kill_wsl_exe(debug_mode=False)
     # process_kill_cmd_exe(debug_mode=False)
     # process_kill_powershell_exe(debug_mode=False)
@@ -112,7 +112,7 @@ def ensure_vpc_flashed(wsl_data, vpc_data, config_remote_os):
                 # cmd_to_wsl_like_person(cmd=cmd, remote_os_distro_n=remote_os_distro_n, wsl_window_title_seg=wsl_window_title_seg)
                 #
                 # cmd = rf'explorer \\wsl$'
-                # cmd_to_os(cmd=cmd)
+                # ensure_command_excuted_to_os(cmd=cmd)
 
                 time_s_local = time.localtime(time_s)
                 check_manual_task_iteractively(

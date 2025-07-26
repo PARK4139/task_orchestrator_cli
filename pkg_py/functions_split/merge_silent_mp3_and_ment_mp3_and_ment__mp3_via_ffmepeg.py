@@ -17,4 +17,4 @@ def merge_silent_mp3_and_ment_mp3_and_ment__mp3_via_ffmepeg(ment_mp3, ment__mp3)
         raise
     if not os.path.exists(ment_mp3):
         cmd = rf'echo y | "ffmpeg" -i "concat:{os.path.abspath(silent_mp3)}|{os.path.abspath(ment__mp3)}" -acodec copy -metadata "title=Some Song" "{os.path.abspath(ment_mp3)}" -map_metadata 0:-1  >nul 2>&1'
-        cmd_to_os_like_person_as_admin(cmd)
+        ensure_command_excuted_to_os_like_person_as_admin(cmd)

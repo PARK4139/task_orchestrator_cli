@@ -5,12 +5,12 @@ from pkg_py.system_object.directories import D_PKG_TXT
 from pkg_py.functions_split.is_os_windows import is_os_windows
 from pkg_py.functions_split.get_nx import get_nx
 from pkg_py.functions_split.get_value_completed import get_value_completed
-from pkg_py.functions_split.cmd_to_os import cmd_to_os
+from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_excuted_to_os
 
 from pkg_py.functions_split.get_pnx_windows_style import get_pnx_windows_style
 from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style
-from pkg_py.functions_split.press import press
+from pkg_py.functions_split.ensure_pressed import ensure_pressed
 from pkg_py.functions_split.ensure_window_to_front import ensure_window_to_front
 
 
@@ -23,12 +23,12 @@ def load_magnet_set_to_bittorrent():
     # pk_magnets.txt explorer
     f = rf'{D_PKG_TXT}/pk_magnets.txt'
     if is_os_windows():
-        cmd_to_os(cmd=rf'explorer "{get_pnx_windows_style(f)}"', mode="a")
+        ensure_command_excuted_to_os(cmd=rf'explorer "{get_pnx_windows_style(f)}"', mode="a")
         if not is_front_window_title(window_title_seg=get_nx(f)):
             ensure_window_to_front(window_title_seg=get_nx(f))
     # else:
     #     f = get_pnx_unix_style(f)
-    # cmd_to_os(cmd=rf'sudo nano "{f}"', debug_mode=True, mode="a")
+    # ensure_command_excuted_to_os(cmd=rf'sudo nano "{f}"', debug_mode=True, mode="a")
 
     answer = get_value_completed(key_hint='answer(o/x)=', values=['o', 'x'])
     if answer != 'o':
@@ -96,4 +96,4 @@ def load_magnet_set_to_bittorrent():
         else:
             webbrowser.open(magnet)
         ensure_slept(milliseconds=interval_seconds)
-        pk_press("alt", "n")
+        ensure_pressed("alt", "n")

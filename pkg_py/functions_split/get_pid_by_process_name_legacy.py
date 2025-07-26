@@ -9,9 +9,9 @@ from selenium.webdriver.chrome.service import Service
 from selenium.common.exceptions import ElementClickInterceptedException
 from pytube import Playlist
 # from project_database.test_project_database import MySqlUtil
-from pkg_py.functions_split.rerun_losslesscut import rerun_losslesscut
+from pkg_py.functions_split.ensure_losslesscut_reran import ensure_losslesscut_reran
 from pkg_py.functions_split.get_d_working import get_d_working
-from pkg_py.functions_split.print_state import print_state
+from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.get_list_sorted import get_list_sorted
 
 from pathlib import Path

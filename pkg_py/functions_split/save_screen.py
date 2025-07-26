@@ -17,8 +17,8 @@ from prompt_toolkit import PromptSession
 # from project_database.test_project_database import MySqlUtil
 from pkg_py.functions_split.is_losslesscut_running import is_losslesscut_running
 from pkg_py.functions_split.get_video_filtered_list import get_video_filtered_list
-from pkg_py.functions_split.print_state import print_state
-from pkg_py.functions_split.cmd_to_os import cmd_to_os
+from pkg_py.functions_split.ensure_state_printed import ensure_state_printed
+from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_excuted_to_os
 
 from PIL import Image
 from functools import partial as functools_partial
@@ -37,10 +37,10 @@ from pkg_py.functions_split.get_d_working import get_d_working
 
 
 def save_screen():
-    # cmd_to_os_like_person(cmd=rf'''%systemroot%\system32\scrnsave.scr /s''')# 성공
+    # ensure_command_excuted_to_os_like_person(cmd=rf'''%systemroot%\system32\scrnsave.scr /s''')# 성공
     cmd = rf'''%systemroot%\system32\scrnsave.scr /s '''  # 성공
     if is_os_windows():
-        cmd_to_os(cmd=cmd)
+        ensure_command_excuted_to_os(cmd=cmd)
     else:
         cmd = get_pnx_wsl_unix_style(pnx=cmd)
-        cmd_to_os(cmd=cmd)
+        ensure_command_excuted_to_os(cmd=cmd)

@@ -38,12 +38,12 @@ from selenium.webdriver.chrome.options import Options
 from PySide6.QtWidgets import QApplication
 # from project_database.test_project_database import MySqlUtil
 from pkg_py.functions_split.get_historical_list import get_historical_list
-from pkg_py.functions_split.print_iterable_as_vertical import print_iterable_as_vertical
+from pkg_py.functions_split.ensure_iterable_printed_as_vertical import ensure_iterable_printed_as_vertical
 from pkg_py.functions_split.ensure_window_to_front import ensure_window_to_front
 from pkg_py.functions_split.get_f_video_to_load import get_f_video_to_load
-from pkg_py.functions_split.load_f_video_on_losslesscut import load_f_video_on_losslesscut
-from pkg_py.functions_split.press import press
-from pkg_py.functions_split.print_state import print_state
+from pkg_py.functions_split.ensure_f_video_loaded_on_losslesscut import ensure_f_video_loaded_on_losslesscut
+from pkg_py.functions_split.ensure_pressed import ensure_pressed
+from pkg_py.functions_split.ensure_state_printed import ensure_state_printed
 
 from pkg_py.system_object.etc import PkFilter
 from pkg_py.system_object.stamps import STAMP_ATTEMPTED

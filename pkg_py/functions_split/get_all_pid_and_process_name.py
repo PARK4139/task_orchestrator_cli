@@ -1,7 +1,7 @@
 import random
 import colorama
 from seleniumbase import Driver
-from pkg_py.functions_split.rerun_losslesscut import rerun_losslesscut
+from pkg_py.functions_split.ensure_losslesscut_reran import ensure_losslesscut_reran
 from pkg_py.functions_split.get_f_video_to_load import get_f_video_to_load
 from pkg_py.system_object.files import F_HISTORICAL_PNX
 from cryptography.hazmat.backends import default_backend

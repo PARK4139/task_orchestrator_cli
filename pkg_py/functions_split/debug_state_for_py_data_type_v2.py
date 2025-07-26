@@ -49,15 +49,15 @@ from prompt_toolkit.styles import Style
 from prompt_toolkit import PromptSession
 # from project_database.test_project_database import MySqlUtil
 from pkg_py.functions_split.get_historical_list import get_historical_list
-from pkg_py.functions_split.print_iterable_as_vertical import print_iterable_as_vertical
+from pkg_py.functions_split.ensure_iterable_printed_as_vertical import ensure_iterable_printed_as_vertical
 from pkg_py.functions_split.ensure_window_to_front import ensure_window_to_front
 from pkg_py.functions_split.get_f_video_to_load import get_f_video_to_load
-from pkg_py.functions_split.load_f_video_on_losslesscut import load_f_video_on_losslesscut
+from pkg_py.functions_split.ensure_f_video_loaded_on_losslesscut import ensure_f_video_loaded_on_losslesscut
 from pkg_py.functions_split.get_d_working import get_d_working
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
-from pkg_py.functions_split.press import press
+from pkg_py.functions_split.ensure_pressed import ensure_pressed
 
-from pkg_py.functions_split.cmd_to_os import cmd_to_os
+from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_excuted_to_os
 from pkg_py.functions_split.get_list_sorted import get_list_sorted
 
 from pkg_py.system_object.etc import PkFilter
@@ -83,7 +83,7 @@ from datetime import timedelta
 from cryptography.hazmat.primitives import padding
 from colorama import init as pk_colorama_init
 from pkg_py.functions_split.get_nx import get_nx
-from pkg_py.functions_split.assist_to_load_video_at_losslesscut import ensure_video_loaded_at_losslesscut
+from pkg_py.functions_split.ensure_video_loaded_at_losslesscut import ensure_video_loaded_at_losslesscut
 from pkg_py.functions_split.kill_self_pk_program import kill_self_pk_program
 from pkg_py.system_object.etc import PkFilter, PK_UNDERLINE
 from pkg_py.functions_split.get_value_completed import get_value_completed

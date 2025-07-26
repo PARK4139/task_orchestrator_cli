@@ -13,7 +13,7 @@ from prompt_toolkit import PromptSession
 # from project_database.test_project_database import MySqlUtil
 from pkg_py.functions_split.ensure_window_to_front import ensure_window_to_front
 from pkg_py.functions_split.is_window_title_front import is_window_title_front
-from pkg_py.functions_split.press import press
+from pkg_py.functions_split.ensure_pressed import ensure_pressed
 from pkg_py.functions_split.ensure_printed_once import ensure_printed_once
 
 from pkg_py.system_object.etc import PkFilter
@@ -40,7 +40,7 @@ def find_direction_via_naver_map(destination: str):
         # url="https://map.naver.com/"
         url = "https://map.naver.com/p/directions"
         cmd = f'explorer  "{url}"  >nul'
-        cmd_to_os_like_person_as_admin(cmd)
+        ensure_command_excuted_to_os_like_person_as_admin(cmd)
         ensure_slept(300)
 
         # 크롬 창 활성화
@@ -60,23 +60,23 @@ def find_direction_via_naver_map(destination: str):
         # 한가람한양아파트상가 입력
         ensure_writen_fast("한가람한양아파트상가")
         ensure_slept(30)
-        pk_press('enter')
+        ensure_pressed('enter')
         ensure_slept(300)
-        pk_press('tab')
+        ensure_pressed('tab')
         ensure_slept(30)
 
         # 목적지 입력
         ensure_writen_fast(destination)
         ensure_slept(30)
-        pk_press('down')
-        pk_press('enter')
+        ensure_pressed('down')
+        ensure_pressed('enter')
 
         # 길찾기 클릭
-        pk_press('tab')
-        pk_press('tab')
-        pk_press('tab')
-        pk_press('enter')
+        ensure_pressed('tab')
+        ensure_pressed('tab')
+        ensure_pressed('tab')
+        ensure_pressed('enter')
 
         # 작업마침 알림
-        pk_speak_v2(str_working='길찾기가 시도되었습니다', comma_delay=0.98)
+        ensure_spoken_v2(str_working='길찾기가 시도되었습니다', comma_delay=0.98)
         break

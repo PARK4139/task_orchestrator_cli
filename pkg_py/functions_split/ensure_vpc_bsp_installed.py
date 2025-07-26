@@ -7,7 +7,7 @@ from zipfile import BadZipFile
 from selenium.common.exceptions import ElementClickInterceptedException
 from pynput import mouse
 from pkg_py.functions_split.is_window_title_front import is_window_title_front
-from pkg_py.functions_split.cmd_to_os import cmd_to_os
+from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_excuted_to_os
 from pkg_py.system_object.etc import PkFilter
 from pkg_py.system_object.state_via_context import SpeedControlContext
 from os import path

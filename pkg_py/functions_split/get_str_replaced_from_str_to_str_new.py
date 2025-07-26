@@ -3,7 +3,7 @@ from tkinter import UNDERLINE
 from selenium.webdriver.chrome.options import Options
 from pkg_py.functions_split.is_losslesscut_running import is_losslesscut_running
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
-from pkg_py.functions_split.print_state import print_state
+from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.set_pk_context_state import set_pk_context_state
 from gtts import gTTS
 from pkg_py.system_object.etc import PK_UNDERLINE

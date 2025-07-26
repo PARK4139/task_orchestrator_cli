@@ -28,7 +28,7 @@ if __name__ == "__main__":
     finally:
         script_cmd = rf'{D_PROJECT}\.venv\Scripts\activate && python {__file__} && deactivate'
         print(f"\n")
-        pk_copy(str_working=script_cmd)
+        ensure_copied(str_working=script_cmd)
         ensure_printed(UNDERLINE)
         ensure_printed(f"{STAMP_TRY_GUIDE} {script_cmd}")
         ensure_printed(UNDERLINE)

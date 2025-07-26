@@ -9,7 +9,7 @@ import math
 import asyncio
 from selenium.webdriver.common.action_chains import ActionChains
 from PySide6.QtWidgets import QApplication
-from pkg_py.functions_split.rerun_losslesscut import rerun_losslesscut
+from pkg_py.functions_split.ensure_losslesscut_reran import ensure_losslesscut_reran
 
 from pkg_py.system_object.stamps import STAMP_ATTEMPTED
 from pkg_py.system_object.files import F_FFMPEG_EXE

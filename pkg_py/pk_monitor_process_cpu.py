@@ -6,9 +6,9 @@ if __name__ == '__main__':
     import psutil
     import pynvml
 
-    #  import deprecated_get_d_current_n_like_person, get_f_current_n, chcp_65001, get_os_n, cmd_to_os, print_iterable_as_vertical
+    #  import deprecated_get_d_current_n_like_person, get_f_current_n, chcp_65001, get_os_n, ensure_command_excuted_to_os, ensure_iterable_printed_as_vertical
     #
-    # from pkg_py.system_object.500_live_logic import get_list_sorted, get_list_deduplicated, cmd_to_os_like_person
+    # from pkg_py.system_object.500_live_logic import get_list_sorted, get_list_deduplicated, ensure_command_excuted_to_os_like_person
     #, print_yellow
 
     try:
@@ -24,7 +24,7 @@ if __name__ == '__main__':
 
         process_n_list = get_list_deduplicated(working_list=process_n_list)
         process_n_list = get_list_sorted(working_list=process_n_list)
-        # print_iterable_as_vertical(item_iterable=process_n_list, item_iterable_n='process_n_list')
+        # ensure_iterable_printed_as_vertical(item_iterable=process_n_list, item_iterable_n='process_n_list')
 
         def get_cpu_usage(process_name):
             cpu_usage = 0.0
@@ -84,8 +84,8 @@ if __name__ == '__main__':
 
         process_n = "Losslesscut"
         cmd =f'powershell "Get-Process | Where-Object {{ $_.ProcessName -eq \'{process_n}\' }} | Select-Object ProcessName, Id, CPU, WS"'
-        std_list = cmd_to_os(cmd=cmd)
-        print_iterable_as_vertical(item_iterable=std_list, item_iterable_n='std_list')
+        std_list = ensure_command_excuted_to_os(cmd=cmd)
+        ensure_iterable_printed_as_vertical(item_iterable=std_list, item_iterable_n='std_list')
 
     except Exception as e:
         import traceback

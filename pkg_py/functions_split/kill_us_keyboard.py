@@ -52,7 +52,7 @@ def kill_us_keyboard():
             # exec 할 명령
             f_cmd = rf"{D_PKG_WINDOWS}/pk_kill_us_keyboard.cmd"
             f_cmd = get_pnx_os_style(pnx=f_cmd)
-            cmd_to_os(cmd=rf'"{f_cmd}"', encoding=Encoding.CP949)
+            ensure_command_excuted_to_os(cmd=rf'"{f_cmd}"', encoding=Encoding.CP949)
 
             # sleep
             sleep_seconds = 3
@@ -64,7 +64,7 @@ def kill_us_keyboard():
                         # pk_system_kill_us_keyboard.cmd (run)
                         f_cmd = rf"{D_PKG_WINDOWS}/pk_kill_us_keyboard.cmd"
                         f_cmd = get_pnx_os_style(pnx=f_cmd)
-                        cmd_to_os(cmd=rf'"{f_cmd}"', encoding='utf-8')
+                        ensure_command_excuted_to_os(cmd=rf'"{f_cmd}"', encoding='utf-8')
 
                         flag[0] = 0  # flag를 다시 False로 초기화
                         ensure_printed(f"wait for enter  {'%%%FOO%%%' if LTA else ''}", print_color='white')

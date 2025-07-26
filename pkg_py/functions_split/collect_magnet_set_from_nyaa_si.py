@@ -5,7 +5,7 @@ from pkg_py.system_object.directories_reuseable import D_PROJECT
 from pkg_py.functions_split.ensure_list_written_to_f import ensure_list_written_to_f
 from pkg_py.functions_split.get_value_completed import get_value_completed
 from pkg_py.functions_split.ensure_printed import ensure_printed
-from pkg_py.functions_split.print_iterable_as_vertical import print_iterable_as_vertical
+from pkg_py.functions_split.ensure_iterable_printed_as_vertical import ensure_iterable_printed_as_vertical
 from pkg_py.functions_split.get_historical_list import get_historical_list
 
 
@@ -24,7 +24,7 @@ def collect_magnet_set_from_nyaa_si(search_keyword=None, driver=None, via_f_txt=
     # answer = get_value_completed(message=f'can i open {get_nx(f)} (o/x)=', option_values=['o', 'x'])
     # if is_os_windows():
     #     if answer == 'o':
-    #         cmd_to_os(cmd=rf'explorer "{get_pnx_windows_style(f)}"', mode="a")
+    #         ensure_command_excuted_to_os(cmd=rf'explorer "{get_pnx_windows_style(f)}"', mode="a")
     # else:
     #     ensure_printed(str_working=rf'''{get_pnx_unix_style(f)}  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
     #     pass # todo
@@ -60,7 +60,7 @@ def collect_magnet_set_from_nyaa_si(search_keyword=None, driver=None, via_f_txt=
     #     search_keyword_list = get_list_replaced_element_from_str_to_str(working_list=search_keyword_list, from_str='pk_music ', to_str='')
 
     ensure_printed(f'''len(search_keyword_list)={len(search_keyword_list)}  {'%%%FOO%%%' if LTA else ''}''')
-    # print_iterable_as_vertical(item_iterable=search_keyword_list, item_iterable_n="search_keyword_list")
+    # ensure_iterable_printed_as_vertical(item_iterable=search_keyword_list, item_iterable_n="search_keyword_list")
 
     search_keyword_list = get_list_striped_element(working_list=search_keyword_list)
     search_keyword_list = get_list_deduplicated(working_list=search_keyword_list)
@@ -93,7 +93,7 @@ def collect_magnet_set_from_nyaa_si(search_keyword=None, driver=None, via_f_txt=
         "720p",
         "480p",
     ]
-    print_iterable_as_vertical(item_iterable=negative_filter_keywords, item_iterable_n="negative_filter_keywords")
+    ensure_iterable_printed_as_vertical(item_iterable=negative_filter_keywords, item_iterable_n="negative_filter_keywords")
     for magnet in magnets_set:
         decoded_magnet = unquote(magnet)
         parsed = urlparse(decoded_magnet)

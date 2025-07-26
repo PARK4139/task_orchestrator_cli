@@ -1,5 +1,5 @@
 def get_window_title_list(process_img_n=None):
-    # test result = 0.000 passed via @measure_seconds at 250413
+    # test result = 0.000 passed via @ensure_seconds_measured at 250413
 
     import win32gui
     import win32process

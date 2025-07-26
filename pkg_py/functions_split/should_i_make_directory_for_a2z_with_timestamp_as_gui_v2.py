@@ -3,7 +3,7 @@
 
 
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.functions_split.cmd_to_os import cmd_to_os
+from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_excuted_to_os
 from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style
 
@@ -63,7 +63,7 @@ def should_i_make_directory_for_a2z_with_timestamp_as_gui_v2():
         ensure_pnx_made(pnx=pnx_new, mode="d")
         pnx = pnx_new
         cmd = rf'explorer "{pnx}"'
-        cmd_to_os(cmd=cmd, mode="a")
+        ensure_command_excuted_to_os(cmd=cmd, mode="a")
         return
     except:
         ensure_printed(f"{traceback.format_exc()}")

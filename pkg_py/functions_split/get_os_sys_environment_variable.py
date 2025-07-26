@@ -43,7 +43,7 @@ from prompt_toolkit.styles import Style
 from prompt_toolkit import PromptSession
 # from project_database.test_project_database import MySqlUtil
 from pkg_py.functions_split.get_historical_list import get_historical_list
-from pkg_py.functions_split.rerun_losslesscut import rerun_losslesscut
+from pkg_py.functions_split.ensure_losslesscut_reran import ensure_losslesscut_reran
 from pkg_py.functions_split.get_f_video_to_load import get_f_video_to_load
 from pkg_py.functions_split.is_window_title_opened import is_window_title_opened
 
@@ -68,7 +68,7 @@ from colorama import init as pk_colorama_init
 from collections import Counter
 from bs4 import ResultSet
 from bs4 import BeautifulSoup
-from pkg_py.functions_split.assist_to_load_video_at_losslesscut import ensure_video_loaded_at_losslesscut
+from pkg_py.functions_split.ensure_video_loaded_at_losslesscut import ensure_video_loaded_at_losslesscut
 from pkg_py.functions_split.get_pnx_list import get_pnx_list
 from pkg_py.functions_split.get_list_calculated import get_list_calculated
 from pkg_py.functions_split.is_d import is_d

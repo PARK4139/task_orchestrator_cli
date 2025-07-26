@@ -2,7 +2,7 @@ import traceback
 import tomllib
 from tkinter import UNDERLINE
 from prompt_toolkit import PromptSession
-from pkg_py.functions_split.load_f_video_on_losslesscut import load_f_video_on_losslesscut
+from pkg_py.functions_split.ensure_f_video_loaded_on_losslesscut import ensure_f_video_loaded_on_losslesscut
 from os.path import dirname
 from enum import Enum
 from Cryptodome.Random import get_random_bytes

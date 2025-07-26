@@ -1,6 +1,6 @@
 
 
-from pkg_py.functions_split.cmd_to_os import cmd_to_os
+from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_excuted_to_os
 from pkg_py.system_object.encodings import Encoding
 
 from pkg_py.functions_split.get_nx import get_nx
@@ -15,7 +15,7 @@ from pkg_py.functions_split.get_d_working import get_d_working
 from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.system_object.encodings import Encoding
 from pkg_py.functions_split.get_nx import get_nx
-from pkg_py.functions_split.cmd_to_os import cmd_to_os
+from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_excuted_to_os
 from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style
 from pkg_py.functions_split.get_pnx_wsl_unix_style import get_pnx_wsl_unix_style
 from pkg_py.functions_split.ensure_printed import ensure_printed
@@ -78,7 +78,7 @@ def compress_pnx_via_rar(src, dst, with_timestamp=1):
     # 압축
     wsl_pn_rar = get_pnx_wsl_unix_style(pnx=pn_rar)
     cmd = f'wsl rar a "{wsl_pn_rar}" "{nx}"'
-    cmd_to_os(cmd, encoding=Encoding.CP949)
+    ensure_command_excuted_to_os(cmd, encoding=Encoding.CP949)
 
     # copy
     copy_pnx_with_overwrite(pnx=pn_rar, dst=dst)

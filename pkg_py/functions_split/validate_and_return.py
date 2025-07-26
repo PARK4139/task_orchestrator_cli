@@ -22,9 +22,9 @@ from urllib.parse import quote
 from selenium.webdriver.chrome.options import Options
 from prompt_toolkit.styles import Style
 from prompt_toolkit import PromptSession
-from pkg_py.functions_split.print_iterable_as_vertical import print_iterable_as_vertical
-from pkg_py.functions_split.rerun_losslesscut import rerun_losslesscut
-from pkg_py.functions_split.load_f_video_on_losslesscut import load_f_video_on_losslesscut
+from pkg_py.functions_split.ensure_iterable_printed_as_vertical import ensure_iterable_printed_as_vertical
+from pkg_py.functions_split.ensure_losslesscut_reran import ensure_losslesscut_reran
+from pkg_py.functions_split.ensure_f_video_loaded_on_losslesscut import ensure_f_video_loaded_on_losslesscut
 from pkg_py.functions_split.is_window_title_opened import is_window_title_opened
 from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
 from pkg_py.system_object.encodings import Encoding

@@ -1,4 +1,4 @@
-from pkg_py.functions_split.cmd_to_os import cmd_to_os
+from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_excuted_to_os
 from pkg_py.system_object.is_os_windows import is_os_windows
 
 from pkg_py.system_object.directories import D_PKG_PY
@@ -6,7 +6,7 @@ from pkg_py.system_object.directories import D_PK_WORKING
 from pkg_py.system_object.directories_reuseable import D_PROJECT
 from pkg_py.functions_split.is_os_windows import is_os_windows
 from pkg_py.functions_split.get_nx import get_nx
-from pkg_py.functions_split.cmd_to_os import cmd_to_os
+from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_excuted_to_os
 from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 
@@ -15,14 +15,14 @@ def restart_up_pk_process_list():
     import asyncio
 
     if is_os_windows():
-        cmd_to_os("chcp 65001")
+        ensure_command_excuted_to_os("chcp 65001")
 
     if not is_office_pc():
         cmd_list = [
             rf'explorer "{D_PROJECT}\.venv\Scripts\activate && python {D_PKG_PY}\pk_test.py && deactivate"',
         ]
         for cmd in cmd_list:
-            cmd_to_os(cmd=cmd, mode='a')
+            ensure_command_excuted_to_os(cmd=cmd, mode='a')
 
         f_list = [
             rf"{D_PKG_PY}/pk_assist_to_control_wsl.py",
@@ -31,7 +31,7 @@ def restart_up_pk_process_list():
 
             # 작업 손실 유의
             rf"{D_PKG_PY}/pk_assist_to_run_mini.py",
-            rf"{D_PKG_PY}/pk_assist_to_load_video_at_losslesscut.py",
+            rf"{D_PKG_PY}/pk_ensure_video_loaded_at_losslesscut.py",
             rf"{D_PKG_PY}/pk_assist_to_upload_project.py",
             rf"{D_PKG_PY}/pk_assist_to_ensure_f_list_organized_by_nx_delimiter.py",
             # rf"{D_PKG_PY}/pk_assist_to_ensure_f_list_organized_by_ext.py",
@@ -43,7 +43,7 @@ def restart_up_pk_process_list():
             # rf"{D_PKG_PY}/pk_collect_and_download_magnets.py",
         ]
         for f in f_list:
-            pk_kill_process_by_window_title_seg(window_title_seg=get_nx(f))
+            ensure_process_killed_by_window_title_seg(window_title_seg=get_nx(f))
         for f in f_list:
             pk_run_process(pk_program_n_seg=get_nx(f))
 
@@ -53,11 +53,11 @@ def restart_up_pk_process_list():
             # todo : [ATTEMPTED] while block in pk_kill_us_keyboard->> void block
         ]
         for f in f_list:
-            asyncio.run(pk_kill_process_as_async(f=f))
+            asyncio.run(ensure_process_killed_as_async(f=f))
         for f in f_list:
             asyncio.run(pk_run_process_as_async(f=f))
         for f in f_list:
-            asyncio.run(pk_kill_process_as_async(f=f))
+            asyncio.run(ensure_process_killed_as_async(f=f))
 
 
     elif is_office_pc():
@@ -79,7 +79,7 @@ def restart_up_pk_process_list():
             # f'start cmd.exe /k',  # cmd.exe in venv
         ]
         for cmd in cmd_list:
-            cmd_to_os(cmd=cmd, mode='a')
+            ensure_command_excuted_to_os(cmd=cmd, mode='a')
 
         # without window
         f_list = [
@@ -87,7 +87,7 @@ def restart_up_pk_process_list():
             rf"{D_PKG_PY}/pk_kill_window_duplicated_list.py",
         ]
         for f in f_list:
-            asyncio.run(pk_kill_process_as_async(f=f))
+            asyncio.run(ensure_process_killed_as_async(f=f))
         for f in f_list:
             asyncio.run(pk_run_process_as_async(f=f, mode_with_window=0))
 
@@ -96,8 +96,8 @@ def restart_up_pk_process_list():
             rf"{D_PKG_PY}/pk_wsl.py",
         ]
         for f in f_list:
-            # pk_kill_process(cmd_exe_title=rf"f_nx")
-            asyncio.run(pk_kill_process_as_async(f=f))
+            # ensure_process_killed(cmd_exe_title=rf"f_nx")
+            asyncio.run(ensure_process_killed_as_async(f=f))
         for f in f_list:
             asyncio.run(pk_run_process_as_async(f=f))
 
@@ -107,11 +107,11 @@ def restart_up_pk_process_list():
             # todo : [ATTEMPTED] while block in pk_kill_us_keyboard->> void block
         ]
         for f in f_list:
-            asyncio.run(pk_kill_process_as_async(f=f))
+            asyncio.run(ensure_process_killed_as_async(f=f))
         for f in f_list:
             asyncio.run(pk_run_process_as_async(f=f))
         for f in f_list:
-            asyncio.run(pk_kill_process_as_async(f=f))
+            asyncio.run(ensure_process_killed_as_async(f=f))
 
         # f_cmd
         # pnx = rf"{D_PROJECT_RELEASE_SERVER}/run_release_server.cmd"
@@ -120,13 +120,13 @@ def restart_up_pk_process_list():
         # while is_f_locked(pnx):  # 배치f이 잠겨 있는지 확인 후 잠겨 있으면 기다림
         #     ensure_printed(f"File is locked, waiting for 1 second...")
         #     ensure_slept(seconds=1)
-        # cmd_to_os(cmd=rf'start "" "{pnx}"', encoding=Encoding.UTF8, mode='a')
+        # ensure_command_excuted_to_os(cmd=rf'start "" "{pnx}"', encoding=Encoding.UTF8, mode='a')
 
         # login_and_filter_and_export_addup()
 
         # taskkill
         #     tasklist | findstr tv_x64.exe
-        # cmd_to_os("tasklist | findstr tv_x64.exe")
+        # ensure_command_excuted_to_os("tasklist | findstr tv_x64.exe")
         kill_list = [
             # "PowerToys.exe",
             # "powertoys.exe",
@@ -141,16 +141,16 @@ def restart_up_pk_process_list():
             # "vcxsrv.exe",
         ]
         for process_name in kill_list:
-            cmd_to_os(f"taskkill /f /im {process_name}")
+            ensure_command_excuted_to_os(f"taskkill /f /im {process_name}")
 
         # # 11) WSL / SSH 서버 exec
         # # "C:\Windows\System32\bash.exe" -c "sudo service ssh start"
-        # cmd_to_os(r'"C:\Windows\System32\bash.exe" -c "sudo service ssh start"')
+        # ensure_command_excuted_to_os(r'"C:\Windows\System32\bash.exe" -c "sudo service ssh start"')
 
         # # (2) 콘솔 창 제목 설정
         # # title %~nx0
         # # Python에서 batch 스크립트처럼 %~nx0을 쓰기는 어려우므로, 간단히 문자열을 지정합니다.
-        # cmd_to_os("title pk_system_shell_start_up.py")
+        # ensure_command_excuted_to_os("title pk_system_shell_start_up.py")
 
     # pnx
     pnx_list = [
@@ -164,4 +164,4 @@ def restart_up_pk_process_list():
     for pnx in pnx_list:
         pnx = get_pnx_os_style(pnx)
         if does_pnx_exist(pnx=pnx):
-            cmd_to_os(f'explorer "{pnx}"')
+            ensure_command_excuted_to_os(f'explorer "{pnx}"')

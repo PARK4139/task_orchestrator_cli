@@ -66,7 +66,7 @@ if __name__ == "__main__":
         # set_wake_up_via_schtasks(seconds=seconds)
         set_wake_up_next_HH_mm(HH=21, mm=19)
         # powercfg -h off
-        # cmd_to_os(cmd=rf"rundll32.exe powrprof.dll,SetSuspendState Sleep")
+        # ensure_command_excuted_to_os(cmd=rf"rundll32.exe powrprof.dll,SetSuspendState Sleep")
         # change_os_mode_to_power_saving_mode_as_s3()
         # change_os_mode_to_power_saving_mode_as_s4()
 

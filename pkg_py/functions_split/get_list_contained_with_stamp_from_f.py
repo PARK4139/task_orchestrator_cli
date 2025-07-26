@@ -14,7 +14,7 @@ from tkinter import UNDERLINE
 from PySide6.QtWidgets import QApplication
 from prompt_toolkit.styles import Style
 # from project_database.test_project_database import MySqlUtil
-from pkg_py.functions_split.rerun_losslesscut import rerun_losslesscut
+from pkg_py.functions_split.ensure_losslesscut_reran import ensure_losslesscut_reran
 from pkg_py.functions_split.get_list_sorted import get_list_sorted
 from pkg_py.system_object.encodings import Encoding
 from pkg_py.system_object.state_via_database import PkSqlite3DB

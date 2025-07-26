@@ -33,11 +33,11 @@ def xcopy_with_overwrite(pnx, pnx_future):
 
     func_n = inspect.currentframe().f_code.co_name
     try:
-        result = cmd_to_os_like_person_as_admin(rf'echo a | xcopy "{pnx}" "{pnx_future}" /e /h /k /y')
+        result = ensure_command_excuted_to_os_like_person_as_admin(rf'echo a | xcopy "{pnx}" "{pnx_future}" /e /h /k /y')
         if result == subprocess.CalledProcessError:
             if is_f(pnx):
-                cmd_to_os_like_person_as_admin(rf'echo f | xcopy "{pnx}" "{pnx_future}" /e /h /k /y')
+                ensure_command_excuted_to_os_like_person_as_admin(rf'echo f | xcopy "{pnx}" "{pnx_future}" /e /h /k /y')
             else:
-                cmd_to_os_like_person_as_admin(rf'echo d | xcopy "{pnx}" "{pnx_future}" /e /h /k /y')
+                ensure_command_excuted_to_os_like_person_as_admin(rf'echo d | xcopy "{pnx}" "{pnx_future}" /e /h /k /y')
     except Exception:
         ensure_printed(f'''{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}''', print_color='red')

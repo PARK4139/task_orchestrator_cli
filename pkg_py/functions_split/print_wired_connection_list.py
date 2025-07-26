@@ -1,4 +1,4 @@
-from pkg_py.functions_split.print_iterable_as_vertical import print_iterable_as_vertical
+from pkg_py.functions_split.ensure_iterable_printed_as_vertical import ensure_iterable_printed_as_vertical
 
 
 def print_wired_connection_list(config_remote_os, wired_connection_no_range):
@@ -46,4 +46,4 @@ def print_wired_connection_list(config_remote_os, wired_connection_no_range):
         stdout_list.append(f"___________________________________________________________")
 
         # 수직으로 출력
-        print_iterable_as_vertical(item_iterable=stdout_list, item_iterable_n=f"Wired connection {wired_connection_no}")
+        ensure_iterable_printed_as_vertical(item_iterable=stdout_list, item_iterable_n=f"Wired connection {wired_connection_no}")

@@ -1,7 +1,7 @@
 
 
 import paramiko
-from pkg_py.functions_split.cmd_to_os import cmd_to_os
+from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_excuted_to_os
 from pkg_py.system_object.directories_reuseable import D_PROJECT
 
 
@@ -28,7 +28,7 @@ def compress_pnx_via_bz(pnx):
             pnx = pnx.replace("\"", "")
 
             if pnx.strip() == "":
-                pk_speak_v2(str_working="백업할 대상이 입력되지 않았습니다", comma_delay=0.98)
+                ensure_spoken_v2(str_working="백업할 대상이 입력되지 않았습니다", comma_delay=0.98)
                 break
 
             target_dirname = os.path.dirname(pnx)
@@ -44,10 +44,10 @@ def compress_pnx_via_bz(pnx):
             ensure_printed(f"target_yyyy_mm_dd_HH_MM_SS_zip_basename : {target_yyyy_mm_dd_hh_mm_ss_zip_basename}")
 
             cmd = f'bz.exe c "{target_zip}" "{pnx}"'
-            cmd_to_os(cmd=cmd)
+            ensure_command_excuted_to_os(cmd=cmd)
 
             cmd = rf'ren "{target_zip}" "{target_yyyy_mm_dd_hh_mm_ss_zip_basename}"'
-            cmd_to_os(cmd=cmd)
+            ensure_command_excuted_to_os(cmd=cmd)
 
             # f이 위치한 드라이브로 이동
             drives = [
@@ -64,10 +64,10 @@ def compress_pnx_via_bz(pnx):
             try:
                 pk_chdir(target_dirname)
             except:
-                pk_speak_v2(str_working="경로를 이해할 수 없습니다", comma_delay=0.98)
+                ensure_spoken_v2(str_working="경로를 이해할 수 없습니다", comma_delay=0.98)
                 pk_chdir(D_PROJECT)
                 break
-            lines = cmd_to_os_like_person_as_admin('dir /b /a-d *.zip')
+            lines = ensure_command_excuted_to_os_like_person_as_admin('dir /b /a-d *.zip')
             print_magenta(rf'''len(lines)={len(lines)}''')
             for line in lines:
                 print_magenta(f'''line={line}''')

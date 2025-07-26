@@ -8,7 +8,7 @@ from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
 if __name__ == "__main__":
     try:
         import traceback
-        # from pkg_py.system_object.500_live_logic import assist_to_ensure_f_list_organized_by_x, pk_copy
+        # from pkg_py.system_object.500_live_logic import assist_to_ensure_f_list_organized_by_x, ensure_copied
         #, STAMP_TRY_GUIDE, D_PROJECT, STAMP_UNIT_TEST_EXCEPTION_DISCOVERED
         #
         from colorama import init as pk_colorama_init

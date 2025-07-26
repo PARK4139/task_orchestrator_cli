@@ -10,12 +10,13 @@ import traceback
 # 사용하지 않는 함수를 찾아내 지울 수 있다.
 # file 호출된 함수명을 작성한다. (횟수 아니고 함수명 의 개수만으로 되겠음.
 
-pk_ensure_function_name_python_file_created
 
 # pk_system 실행기
 # ctrl r        cmd      1      ->       pk_python_macro
 # 1 ->       ahk    ->   pk_python
 # 1 ->  pk_python   ->   pk_fzf   ->
+
+ensure_memo_found_via_fzf
 
 
 # ensure_pnx_found_and_open_via_fzf.py
@@ -76,7 +77,7 @@ def _TEST_CASE_출력하고TTS():
     # todo 인터넷 있을때 테스트 가능
     # str_working = 'what time is it'
     str_working = '테스트이다'
-    pk_speak(str_working=str_working, after_delay=1.00)
+    ensure_spoken(str_working=str_working, after_delay=1.00)
 
     # print_and_speak("Playing music...")
 
@@ -152,7 +153,7 @@ def _TEST_CASE_장비현황_로컬DB에서_최신현황만_CSV파일로_저장()
     df_latest.to_csv(f_save_csv, index=False, encoding="utf-8-sig")
     if does_pnx_exist(f_save_csv):
         ensure_printed(f"최신 현황 CSV 저장 완료 → {f_save_csv}", print_color="green")
-        cmd_to_os(rf'explorer {f_save_csv}')
+        ensure_command_excuted_to_os(rf'explorer {f_save_csv}')
     return f_save_csv
 
 
@@ -214,7 +215,7 @@ def _TEST_CASE_장비현황_로컬DB에서_최신현황만_CSV파일로_저장_A
 
     if does_pnx_exist(f_save_csv):
         ensure_printed(f"✅ 전체 장비현황 CSV 저장 완료 (v6, Serial 수식처리 적용) → {f_save_csv}", print_color="green")
-        cmd_to_os(rf'explorer {f_save_csv}')
+        ensure_command_excuted_to_os(rf'explorer {f_save_csv}')
 
     return f_save_csv
 

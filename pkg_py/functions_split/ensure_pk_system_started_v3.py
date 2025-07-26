@@ -1,7 +1,7 @@
-from pkg_py.functions_split.measure_seconds import measure_seconds
+from pkg_py.functions_split.ensure_seconds_measured import ensure_seconds_measured
 
 
-@measure_seconds
+@ensure_seconds_measured
 def ensure_pk_system_started_v3(file_list: list[str]):
     from pkg_py.system_object.map_massages import PkMessages2025
     from pkg_py.system_object.local_test_activate import LTA

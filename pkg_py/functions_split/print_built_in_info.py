@@ -17,7 +17,7 @@ from tkinter import UNDERLINE
 from PySide6.QtWidgets import QApplication
 from pkg_py.functions_split.is_losslesscut_running import is_losslesscut_running
 from pkg_py.functions_split.is_window_opened import is_window_opened
-from pkg_py.functions_split.press import press
+from pkg_py.functions_split.ensure_pressed import ensure_pressed
 from pkg_py.functions_split.get_list_sorted import get_list_sorted
 from pkg_py.system_object.files import F_FFMPEG_EXE
 from pkg_py.system_object.encodings import Encoding

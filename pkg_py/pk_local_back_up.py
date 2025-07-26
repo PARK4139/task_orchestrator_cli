@@ -4,7 +4,7 @@ if __name__ == "__main__":
 
         from colorama import init as pk_colorama_init
 
-        # from pkg_py.system_object.500_live_logic import deprecated_get_d_current_n_like_person, get_f_current_n, pk_copy, assist_to_upload_pnx_to_git, get_time_as_, get_pk_token, kill_os, does_pnx_exist, LTA, get_value_completed
+        # from pkg_py.system_object.500_live_logic import deprecated_get_d_current_n_like_person, get_f_current_n, ensure_copied, assist_to_upload_pnx_to_git, get_time_as_, get_pk_token, kill_os, does_pnx_exist, LTA, get_value_completed
         #
         # from pkg_py.system_object.static_logic import D_PROJECT, UNDERLINE, STAMP_TRY_GUIDE, STAMP_PYTHON_DEBUGGING_NOTE, STAMP_EXCEPTION_DISCOVERED, D_PKG_TOML, D_PK_MEMO
         # from pkg_py.system_object.static_logic import D_ARCHIVED

@@ -2,7 +2,7 @@
 
 from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.ensure_printed import ensure_printed
-from pkg_py.functions_split.press import press
+from pkg_py.functions_split.ensure_pressed import ensure_pressed
 
 
 def get_text_dragged():
@@ -14,7 +14,7 @@ def get_text_dragged():
     clipboard_current_contents = pk_paste()
 
     # 드래그된것 클립보드에 저장
-    pk_press("ctrl", "c")
+    ensure_pressed("ctrl", "c")
 
     # 클립보드에서 변수에 저장
     text_dragged = pk_paste()

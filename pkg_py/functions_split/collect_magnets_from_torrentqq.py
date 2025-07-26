@@ -14,7 +14,7 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 from pytube import Playlist
 from pynput import mouse
-from pkg_py.functions_split.print_iterable_as_vertical import print_iterable_as_vertical
+from pkg_py.functions_split.ensure_iterable_printed_as_vertical import ensure_iterable_printed_as_vertical
 from pkg_py.functions_split.is_window_title_front import is_window_title_front
 from pkg_py.functions_split.is_window_title_opened import is_window_title_opened
 from pkg_py.functions_split.ensure_printed_once import ensure_printed_once
@@ -51,7 +51,7 @@ def collect_magnets_from_torrentqq(search_keyword=None, driver=None, via_f_txt=T
         # if not is_window_open(window_title_seg=window_title_seg):
         # ensure_pnx_opened_by_ext(pnx=f_func_n_txt)
         # move_window_to_front(window_title_seg=window_title_seg)
-        # cmd_to_os(cmd=rf'explorer "{f_func_n_txt}" ', debug_mode=True, mode="a")
+        # ensure_command_excuted_to_os(cmd=rf'explorer "{f_func_n_txt}" ', debug_mode=True, mode="a")
 
         # [OPTION]
         # search_keyword = search_keyword
@@ -73,7 +73,7 @@ def collect_magnets_from_torrentqq(search_keyword=None, driver=None, via_f_txt=T
         ensure_printed(f'''search_keyword_list={filtered_list}  {'%%%FOO%%%' if LTA else ''}''')
         filtered_list = get_list_deduplicated(working_list=filtered_list)
         ensure_printed(f'''search_keyword_list={filtered_list}  {'%%%FOO%%%' if LTA else ''}''')
-        print_iterable_as_vertical(item_iterable=filtered_list, item_iterable_n='search_keyword_list')
+        ensure_iterable_printed_as_vertical(item_iterable=filtered_list, item_iterable_n='search_keyword_list')
         ensure_printed(str_working=rf'''len(search_keyword_list)="{len(filtered_list)}"  {'%%%FOO%%%' if LTA else ''}''')
 
         # if driver is None:

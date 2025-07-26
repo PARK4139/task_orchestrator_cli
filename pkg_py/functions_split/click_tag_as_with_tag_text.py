@@ -25,7 +25,7 @@ from prompt_toolkit.styles import Style
 # from project_database.test_project_database import MySqlUtil
 from pkg_py.functions_split.is_losslesscut_running import is_losslesscut_running
 from pkg_py.functions_split.is_window_title_front import is_window_title_front
-from pkg_py.functions_split.cmd_to_os import cmd_to_os
+from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_excuted_to_os
 from pkg_py.functions_split.ensure_console_cleared import ensure_console_cleared
 from pkg_py.system_object.files import F_FFMPEG_EXE
 from pkg_py.system_object.encodings import Encoding

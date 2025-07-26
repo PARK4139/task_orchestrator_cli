@@ -1,7 +1,7 @@
 def move_cursor_to_top_of_pycarm_code():
-    pk_press("ctrl", "home")
-    pk_press("ctrl", "pgdn")
-    pk_press("ctrl", "end")
-    pk_press("ctrl", "home")
+    ensure_pressed("ctrl", "home")
+    ensure_pressed("ctrl", "pgdn")
+    ensure_pressed("ctrl", "end")
+    ensure_pressed("ctrl", "home")
 
 

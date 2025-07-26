@@ -7,7 +7,7 @@ def get_value_completed_v2(message, option_values):
 
     func_n = inspect.currentframe().f_code.co_name
     if message.strip() == "x":
-        pk_speak(f"{func_n}() exited(intended)")
+        ensure_spoken(f"{func_n}() exited(intended)")
 
     seen = set()
     if is_os_wsl_linux():
@@ -27,7 +27,7 @@ def get_value_completed_v2(message, option_values):
         #     split_flag = "-v"
         #     # LTA 모드라면 끝에 sleep 추가
         #     sleep_cmd = "; sleep 99999" if LTA else ""
-        #     cmd_to_os(cmd=(
+        #     ensure_command_excuted_to_os(cmd=(
         #         f"tmux split-window {split_flag} "
         #         f"'clear && {cmd_to_run} {available_pk_python_program_pnx}{sleep_cmd}'"
         #     ))
@@ -36,17 +36,17 @@ def get_value_completed_v2(message, option_values):
         # tmux_session = get_nx(available_pk_python_program_pnx).replace(".", "_")
         # ensure_tmux_pk_session_removed(tmux_session)
 
-        # cmd_to_os(cmd=(
+        # ensure_command_excuted_to_os(cmd=(
         #     f"tmux new-session -s {tmux_session} -d "
         #     f"'clear && {cmd_to_run} {available_pk_python_program_pnx}'"
         # ))
-        # cmd_to_os(cmd=(
+        # ensure_command_excuted_to_os(cmd=(
         #     f"tmux split-window -v -t {tmux_session} "
         #     f"'clear && {cmd_to_run} {available_pk_python_program_pnx}'"
         # ))
-        # cmd_to_os(cmd=f"tmux attach-session -t {tmux_session}")
+        # ensure_command_excuted_to_os(cmd=f"tmux attach-session -t {tmux_session}")
 
-        # deduped = cmd_to_os('fzf') + []
+        # deduped = ensure_command_excuted_to_os('fzf') + []
         deduped = []
     else:
         deduped = []

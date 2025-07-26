@@ -56,12 +56,12 @@ from prompt_toolkit import PromptSession
 from pkg_py.functions_split.get_f_loading_nx_by_pattern import get_f_loading_nx_by_pattern
 from pkg_py.functions_split.ensure_window_to_front import ensure_window_to_front
 from pkg_py.functions_split.is_losslesscut_running import is_losslesscut_running
-from pkg_py.functions_split.rerun_losslesscut import rerun_losslesscut
+from pkg_py.functions_split.ensure_losslesscut_reran import ensure_losslesscut_reran
 from pkg_py.functions_split.is_window_title_opened import is_window_title_opened
 from pkg_py.functions_split.is_window_opened import is_window_opened
-from pkg_py.functions_split.press import press
+from pkg_py.functions_split.ensure_pressed import ensure_pressed
 from pkg_py.functions_split.ensure_printed import ensure_printed
-from pkg_py.functions_split.cmd_to_os import cmd_to_os
+from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_excuted_to_os
 from pkg_py.functions_split.ensure_list_written_to_f import ensure_list_written_to_f
 from pkg_py.functions_split.get_list_sorted import get_list_sorted
 
@@ -93,7 +93,7 @@ from cryptography.hazmat.backends import default_backend
 from Cryptodome.Cipher import AES
 from collections import Counter
 from base64 import b64encode
-from pkg_py.functions_split.assist_to_load_video_at_losslesscut import ensure_video_loaded_at_losslesscut
+from pkg_py.functions_split.ensure_video_loaded_at_losslesscut import ensure_video_loaded_at_losslesscut
 from pkg_py.system_object.etc import PK_UNDERLINE
 from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style
 from pkg_py.system_object.directories import D_PK_WORKING, D_DOWNLOADS, D_PKG_PKL, D_PKG_PY
@@ -126,9 +126,9 @@ def test_api():
     pk_protocol_type = config["pk_uvicorn"]["protocol_type"]
     pk_host = config["pk_uvicorn"]["host"]
     pk_port = config["pk_uvicorn"]["port"]
-    cmd_to_os(cmd=fr"explorer.exe {pk_protocol_type}://{pk_host}:{pk_port}/docs")
-    cmd_to_os(cmd=fr"explorer.exe {pk_protocol_type}://{pk_host}:{pk_port}/redoc")
-    cmd_to_os(cmd=fr"explorer.exe {pk_protocol_type}://{pk_host}:{pk_port}")
+    ensure_command_excuted_to_os(cmd=fr"explorer.exe {pk_protocol_type}://{pk_host}:{pk_port}/docs")
+    ensure_command_excuted_to_os(cmd=fr"explorer.exe {pk_protocol_type}://{pk_host}:{pk_port}/redoc")
+    ensure_command_excuted_to_os(cmd=fr"explorer.exe {pk_protocol_type}://{pk_host}:{pk_port}")
 
     # TODO : ROUTING TEST
 

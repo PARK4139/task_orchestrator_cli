@@ -49,7 +49,7 @@ from prompt_toolkit import PromptSession
 from prompt_toolkit import PromptSession
 from pkg_py.functions_split.ensure_window_to_front import ensure_window_to_front
 from pkg_py.functions_split.is_losslesscut_running import is_losslesscut_running
-from pkg_py.functions_split.rerun_losslesscut import rerun_losslesscut
+from pkg_py.functions_split.ensure_losslesscut_reran import ensure_losslesscut_reran
 from pkg_py.functions_split.get_video_filtered_list import get_video_filtered_list
 from pkg_py.functions_split.is_window_title_front import is_window_title_front
 from pkg_py.functions_split.get_d_working import get_d_working
@@ -105,7 +105,7 @@ def get_cpu_usage(interval, process_n):
     for process in psutil.process_iter(attrs=["pid", "name"]):
         # process_pid_list.append(process.info['pid'])
         process_n_list.append(process.info['name'])
-    # print_iterable_as_vertical(item_iterable=process_n_list, item_iterable_n='process_n_list')
+    # ensure_iterable_printed_as_vertical(item_iterable=process_n_list, item_iterable_n='process_n_list')
     for process in psutil.process_iter(attrs=["name", "cpu_percent"]):
         if process_n in process.info["name"]:
             return process.cpu_percent(interval=interval)  # CPU 사용량 리턴

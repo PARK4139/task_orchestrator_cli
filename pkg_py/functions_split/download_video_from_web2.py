@@ -1,6 +1,6 @@
 from pkg_py.system_object.directories_reuseable import D_PROJECT
 
-from pkg_py.functions_split.press import press
+from pkg_py.functions_split.ensure_pressed import ensure_pressed
 
 
 def download_video_from_web2():
@@ -11,22 +11,22 @@ def download_video_from_web2():
         is_image_finded = click_center_of_img_recognized_by_mouse_left(img_pnx=f_png, loop_limit_cnt=100)
         if is_image_finded:
             ensure_slept(30)
-            pk_press("ctrl", "f")
-            pk_press("end")
-            pk_press("ctrl", "a")
-            pk_press("backspace")
+            ensure_pressed("ctrl", "f")
+            ensure_pressed("end")
+            ensure_pressed("ctrl", "a")
+            ensure_pressed("backspace")
             ensure_writen_fast("save")
-            pk_press("enter")
-            pk_press("enter")
-            pk_press("esc")
-            pk_press("enter")
+            ensure_pressed("enter")
+            ensure_pressed("enter")
+            ensure_pressed("esc")
+            ensure_pressed("enter")
             f_png = rf"{D_PROJECT}\pkg_png\download_video_via_chrome_extensions2.png"
             is_image_finded = click_center_of_img_recognized_by_mouse_left(img_pnx=f_png, loop_limit_cnt=100)
             if is_image_finded:
-                pk_press("shift", "w")
+                ensure_pressed("shift", "w")
             else:
-                pk_speak_v2(str_working="이미지를 찾을 수 없어 해당 자동화 기능을 마저 진행할 수 없습니다", comma_delay=0.98)
+                ensure_spoken_v2(str_working="이미지를 찾을 수 없어 해당 자동화 기능을 마저 진행할 수 없습니다", comma_delay=0.98)
         else:
-            pk_speak_v2(str_working="이미지를 찾을 수 없어 해당 자동화 기능을 마저 진행할 수 없습니다", comma_delay=0.98)
+            ensure_spoken_v2(str_working="이미지를 찾을 수 없어 해당 자동화 기능을 마저 진행할 수 없습니다", comma_delay=0.98)
         break
     pass

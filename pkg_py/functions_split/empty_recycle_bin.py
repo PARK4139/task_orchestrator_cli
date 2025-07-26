@@ -12,8 +12,8 @@ def empty_recycle_bin():
     func_n = inspect.currentframe().f_code.co_name
 
     # logging
-    cmd_to_os_like_person_as_admin(rf'echo y | del {D_HOME}\AppData\Roaming\Microsoft\Windows\Recent')
-    cmd_to_os_like_person_as_admin('PowerShell.exe -NoProfile -cmd Clear-RecycleBin -Confirm:$false')
+    ensure_command_excuted_to_os_like_person_as_admin(rf'echo y | del {D_HOME}\AppData\Roaming\Microsoft\Windows\Recent')
+    ensure_command_excuted_to_os_like_person_as_admin('PowerShell.exe -NoProfile -cmd Clear-RecycleBin -Confirm:$false')
     # 휴지통 삭제 (외장하드까지)
     # for %%a in (cdefghijk L mnopqrstuvwxyz) do (
     # 존재하는 경우 %%a:\$RECYCLE.BIN for /f "tokens=* usebackq" %%b in (`"dir /a:d/b %%a:\$RECYCLE.BIN\"`) do rd / q/s "%%a:\$RECYCLE.BIN\%%~b"

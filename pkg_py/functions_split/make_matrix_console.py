@@ -51,7 +51,7 @@ from PySide6.QtWidgets import QApplication
 from pynput import mouse
 from prompt_toolkit import PromptSession
 from pkg_py.functions_split.get_historical_list import get_historical_list
-from pkg_py.functions_split.rerun_losslesscut import rerun_losslesscut
+from pkg_py.functions_split.ensure_losslesscut_reran import ensure_losslesscut_reran
 from pkg_py.functions_split.get_f_video_to_load import get_f_video_to_load
 from pkg_py.functions_split.get_d_working import get_d_working
 from pkg_py.functions_split.is_window_opened import is_window_opened

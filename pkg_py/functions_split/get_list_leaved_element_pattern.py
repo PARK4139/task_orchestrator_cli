@@ -1,5 +1,5 @@
 import socket
-from pkg_py.functions_split.press import press
+from pkg_py.functions_split.ensure_pressed import ensure_pressed
 
 from pkg_py.system_object.files import F_POT_PLAYER_MINI_64_EXE
 from datetime import date

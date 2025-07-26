@@ -11,10 +11,10 @@ from zipfile import BadZipFile
 from yt_dlp import YoutubeDL
 from selenium.webdriver.common.keys import Keys
 from prompt_toolkit.styles import Style
-from pkg_py.functions_split.print_iterable_as_vertical import print_iterable_as_vertical
+from pkg_py.functions_split.ensure_iterable_printed_as_vertical import ensure_iterable_printed_as_vertical
 from pkg_py.functions_split.get_d_working import get_d_working
 from pkg_py.functions_split.is_window_title_opened import is_window_title_opened
-from pkg_py.functions_split.print_state import print_state
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
 from pkg_py.functions_split.ensure_list_written_to_f import ensure_list_written_to_f
 from pkg_py.system_object.directories_reuseable import D_PROJECT
@@ -26,7 +26,7 @@ from dirsync import sync
 from datetime import datetime
 from colorama import init as pk_colorama_init
 from bs4 import BeautifulSoup
-from pkg_py.functions_split.assist_to_load_video_at_losslesscut import ensure_video_loaded_at_losslesscut
+from pkg_py.functions_split.ensure_video_loaded_at_losslesscut import ensure_video_loaded_at_losslesscut
 from pkg_py.system_object.directories import D_PKG_PY
 
 from pkg_py.system_object.local_test_activate import LTA

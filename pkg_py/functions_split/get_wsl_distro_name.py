@@ -52,13 +52,13 @@ from pynput import mouse
 # from project_database.test_project_database import MySqlUtil
 from pkg_py.functions_split.get_historical_list import get_historical_list
 from pkg_py.functions_split.ensure_window_to_front import ensure_window_to_front
-from pkg_py.functions_split.rerun_losslesscut import rerun_losslesscut
+from pkg_py.functions_split.ensure_losslesscut_reran import ensure_losslesscut_reran
 from pkg_py.functions_split.get_f_video_to_load import get_f_video_to_load
 from pkg_py.functions_split.is_window_title_opened import is_window_title_opened
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
-from pkg_py.functions_split.press import press
+from pkg_py.functions_split.ensure_pressed import ensure_pressed
 
-from pkg_py.functions_split.cmd_to_os import cmd_to_os
+from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_excuted_to_os
 from pkg_py.functions_split.get_list_sorted import get_list_sorted
 from pkg_py.functions_split.ensure_console_cleared import ensure_console_cleared
 from pkg_py.system_object.etc import PkFilter
@@ -101,7 +101,7 @@ from pkg_py.functions_split.get_pnx_list import get_pnx_list
 
 def get_wsl_distro_name(cmd):
     wsl_distro_name = []
-    std_out_list = cmd_to_os(cmd=cmd, encoding='utf-16')
+    std_out_list = ensure_command_excuted_to_os(cmd=cmd, encoding='utf-16')
     for line_str in std_out_list:
         line_str = line_str.strip()
         if line_str.startswith("NAME"):

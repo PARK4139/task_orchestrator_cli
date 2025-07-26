@@ -5,12 +5,12 @@
 
 
 from pkg_py.system_object.directories import D_PKG_TXT
-from pkg_py.functions_split.cmd_to_os import cmd_to_os
+from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_excuted_to_os
 from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
 def is_office_pc():
-    hostname = cmd_to_os("hostname")[0]
+    hostname = ensure_command_excuted_to_os("hostname")[0]
     hostname = get_str_url_decoded(hostname)
     ensure_printed(f"hostname={hostname}")
     token_hostname_a2z_galaxybook = get_token_from_f_txt(f_token=rf'{D_PKG_TXT}\token_hostname_a2z_galaxybook.txt', initial_str="")

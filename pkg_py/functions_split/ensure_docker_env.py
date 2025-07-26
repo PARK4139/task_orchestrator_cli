@@ -14,7 +14,7 @@ from zipfile import BadZipFile
 from urllib.parse import urlparse
 from selenium.common.exceptions import ElementClickInterceptedException
 from PySide6.QtWidgets import QApplication
-from pkg_py.functions_split.load_f_video_on_losslesscut import load_f_video_on_losslesscut
+from pkg_py.functions_split.ensure_f_video_loaded_on_losslesscut import ensure_f_video_loaded_on_losslesscut
 from pkg_py.functions_split.set_pk_context_state import set_pk_context_state
 from pkg_py.system_object.files import F_LOSSLESSCUT_EXE
 from pkg_py.system_object.encodings import Encoding

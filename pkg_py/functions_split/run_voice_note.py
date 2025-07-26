@@ -1,5 +1,5 @@
 from tkinter import UNDERLINE
-from pkg_py.functions_split.cmd_to_os import cmd_to_os
+from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_excuted_to_os
 from pkg_py.system_object.encodings import Encoding
 from pkg_py.system_object.directories import D_PKG_TXT
 
@@ -14,7 +14,7 @@ from tkinter import UNDERLINE
 from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.system_object.directories import D_PKG_TXT
 from pkg_py.system_object.encodings import Encoding
-from pkg_py.functions_split.cmd_to_os import cmd_to_os
+from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_excuted_to_os
 from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style
 from pkg_py.functions_split.get_pnx_windows_style import get_pnx_windows_style
 from pkg_py.functions_split.ensure_printed import ensure_printed
@@ -35,7 +35,7 @@ def run_voice_note():
 
     f_txt = get_pnx_windows_style(pnx=f_txt)
     cmd = rf"explorer {f_txt}"
-    cmd_to_os(cmd=cmd, mode='a')
+    ensure_command_excuted_to_os(cmd=cmd, mode='a')
 
     ensure_printed_and_speak("저는 텍스트f에 받아쓰는 음성메모장 voice_note 입니다")
     recognizer = sr.Recognizer()

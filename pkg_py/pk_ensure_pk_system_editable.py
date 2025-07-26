@@ -11,7 +11,7 @@ if __name__ == "__main__":
 
     from pkg_py.functions_split.ensure_do_exception_routine import ensure_do_exception_routine
     from pkg_py.functions_split.colorama_init_once import colorama_init_once
-    from pkg_py.functions_split.cmd_to_os import cmd_to_os
+    from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_excuted_to_os
     from pkg_py.system_object.files import F_PYCHARM64_EDITION_2024_02_04_EXE, F_PYCHARM64_EDITION_2024_03_01_EXE
 
     try:
@@ -24,7 +24,7 @@ if __name__ == "__main__":
             f_pycharm = get_pnx_os_style(F_PYCHARM64_EDITION_2024_02_04_EXE)
         else:
             f_pycharm = get_pnx_os_style(F_PYCHARM64_EDITION_2024_03_01_EXE)
-        cmd_to_os(cmd=f'{f_pycharm} "{D_PROJECT}"')
+        ensure_command_excuted_to_os(cmd=f'{f_pycharm} "{D_PROJECT}"')
 
     except Exception as exception:
         ensure_do_exception_routine(traceback=traceback, exception=exception)

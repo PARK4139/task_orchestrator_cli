@@ -38,7 +38,7 @@ from pkg_py.functions_split.get_historical_list import get_historical_list
 from pkg_py.functions_split.ensure_window_to_front import ensure_window_to_front
 from pkg_py.functions_split.get_d_working import get_d_working
 from pkg_py.functions_split.is_window_opened import is_window_opened
-from pkg_py.functions_split.cmd_to_os import cmd_to_os
+from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_excuted_to_os
 
 from pkg_py.system_object.files import F_POT_PLAYER_MINI_64_EXE
 from pkg_py.system_object.files import F_HISTORICAL_PNX

@@ -10,7 +10,7 @@ def speak_v2(str_working, comma_delay=1.00, thread_join_mode=False):
     try:
         import inspect
         from pkg_py.functions_split.is_containing_special_characters_with_thread import is_containing_special_characters_with_thread
-        from pkg_py.functions_split.speak import speak
+        from pkg_py.functions_split.ensure_spoken import ensure_spoken
         from pkg_py.functions_split.remove_special_characters import remove_special_characters
         from pkg_py.system_object.etc import PLAYING_SOUNDS
 
@@ -46,7 +46,7 @@ def speak_v2(str_working, comma_delay=1.00, thread_join_mode=False):
                     ",")]  # from "abc,abc.abc,abc." to ["abc","abc","abc","abc"] # , or . 를 넣으면 나누어 읽도록 업데이트
                 working_list = [x for x in working_list if x.strip()]  # 리스트 요소 "" remove,  from ["", A] to [A]
                 for str_working in working_list:
-                    pk_speak(str_working, after_delay=comma_delay)
+                    ensure_spoken(str_working, after_delay=comma_delay)
                     pass
                 return None
 

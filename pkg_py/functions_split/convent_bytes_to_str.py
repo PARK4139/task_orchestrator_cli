@@ -28,7 +28,7 @@ from prompt_toolkit.styles import Style
 from pkg_py.functions_split.get_historical_list import get_historical_list
 from pkg_py.functions_split.is_losslesscut_running import is_losslesscut_running
 from pkg_py.functions_split.get_d_working import get_d_working
-from pkg_py.functions_split.press import press
+from pkg_py.functions_split.ensure_pressed import ensure_pressed
 from pkg_py.functions_split.get_list_sorted import get_list_sorted
 from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
 from pkg_py.system_object.files import F_HISTORICAL_PNX

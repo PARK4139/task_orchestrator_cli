@@ -1,7 +1,7 @@
 
 # 유사도 높은 첫 번째 타이틀로 선택
 # 해당 타이틀을 가진 윈도우들의 PID 직접 수집
-@measure_seconds
+@ensure_seconds_measured
 _, pid = win32process.GetWindowThreadProcessId(hwnd)
 best_match_hwnd, best_match_title, _ = matches[0]
 break

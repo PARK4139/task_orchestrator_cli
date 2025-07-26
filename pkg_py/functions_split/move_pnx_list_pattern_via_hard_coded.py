@@ -1,6 +1,6 @@
 import colorama
 # from project_database.test_project_database import MySqlUtil
-from pkg_py.functions_split.print_iterable_as_vertical import print_iterable_as_vertical
+from pkg_py.functions_split.ensure_iterable_printed_as_vertical import ensure_iterable_printed_as_vertical
 from pkg_py.system_object.files import F_HISTORICAL_PNX
 from os.path import dirname
 from functools import lru_cache
@@ -60,7 +60,7 @@ def move_pnx_list_pattern_via_hard_coded():
             pnxs_and_pnxs_new.append([item_pnx, item_pnx_new])
 
     # 확인
-    print_iterable_as_vertical(item_iterable=pnxs_and_pnxs_new, item_iterable_n="바꿀 대상")
+    ensure_iterable_printed_as_vertical(item_iterable=pnxs_and_pnxs_new, item_iterable_n="바꿀 대상")
     ensure_printed(str_working=rf'''len(pnxs_and_pnxs_new)="{len(pnxs_and_pnxs_new)}"  {'%%%FOO%%%' if LTA else ''}''')
 
     # 적용

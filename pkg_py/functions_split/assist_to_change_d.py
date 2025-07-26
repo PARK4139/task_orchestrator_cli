@@ -1,4 +1,4 @@
-from pkg_py.functions_split.cmd_to_os import cmd_to_os
+from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_excuted_to_os
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 from pkg_py.functions_split.get_TBD_pnx_working_with_idx_dict import get_TBD_pnx_working_with_idx_dict
 from pkg_py.functions_split.get_d_working_in_python import get_pwd_in_python
@@ -106,16 +106,16 @@ def assist_to_change_d():
         if len(pk_sys_argv) == 1:
             if pk_cmd_single_dict['.'] == pk_sys_argv[0]:
                 if is_os_windows():
-                    cmd_to_os(f'explorer.exe {get_pwd_in_python()}')
+                    ensure_command_excuted_to_os(f'explorer.exe {get_pwd_in_python()}')
                 continue
             elif pk_cmd_single_dict['cls'] == pk_sys_argv[0]:  # fail
                 if is_os_windows():
-                    cmd_to_os(f'cls')
+                    ensure_command_excuted_to_os(f'cls')
                 continue
             elif pk_cmd_single_dict['cmd'] == pk_sys_argv[0]:
                 if is_os_windows():
-                    # cmd_to_os(f'start "" cmd')
-                    cmd_to_os(f'cmd /k')
+                    # ensure_command_excuted_to_os(f'start "" cmd')
+                    ensure_command_excuted_to_os(f'cmd /k')
                 continue
             elif pk_cmd_str == "":
                 highlight_config_dict = {
@@ -147,7 +147,7 @@ def assist_to_change_d():
                 nx_idx = get_nx(d_working_with_idx_dict[idx_by_user_input])
                 cmd = f'cd {d_idx}"'
                 os.chdir(d_idx)
-                # pk_copy(str_working=d_idx)
+                # ensure_copied(str_working=d_idx)
                 if LTA:
                     ensure_printed(f'{pk_cmd_n} {pk_sys_argv[1]} {get_nx(d_idx)}')
                     ensure_printed(f'''{STAMP_TRY_GUIDE} {cmd} {'%%%FOO%%%' if LTA else ''}''')

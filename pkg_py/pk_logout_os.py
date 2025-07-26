@@ -1,5 +1,5 @@
-# # from pkg_py.system_object.500_live_logic import kill_process, get_process_name_list, get_list_sorted_element, cmd_to_os
-# from pkg_py.system_object.500_live_logic import cmd_to_os
+# # from pkg_py.system_object.500_live_logic import ensure_process_killed, get_process_name_list, get_list_sorted_element, ensure_command_excuted_to_os
+# from pkg_py.system_object.500_live_logic import ensure_command_excuted_to_os
 
 # process_name_list = get_process_name_list()
 # process_name_list = get_list_sorted_element(working_list=process_name_list, mode_asc=1)
@@ -97,7 +97,7 @@
 # }
 #
 # for img_name in INCLUDE_PROCESSES:
-#     kill_process(img_name=img_name)
+#     ensure_process_killed(img_name=img_name)
 
 
 cmd_list = [
@@ -105,4 +105,4 @@ cmd_list = [
 ]
 
 for cmd in cmd_list:
-    cmd_to_os(cmd=cmd)
+    ensure_command_excuted_to_os(cmd=cmd)

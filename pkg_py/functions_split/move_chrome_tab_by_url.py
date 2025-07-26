@@ -52,9 +52,9 @@ from selenium.common.exceptions import WebDriverException
 from PySide6.QtWidgets import QApplication
 from pkg_py.functions_split.get_historical_list import get_historical_list
 from pkg_py.functions_split.ensure_window_to_front import ensure_window_to_front
-from pkg_py.functions_split.rerun_losslesscut import rerun_losslesscut
-from pkg_py.functions_split.press import press
-from pkg_py.functions_split.print_state import print_state
+from pkg_py.functions_split.ensure_losslesscut_reran import ensure_losslesscut_reran
+from pkg_py.functions_split.ensure_pressed import ensure_pressed
+from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.ensure_printed import ensure_printed
 
 from pkg_py.functions_split.get_list_sorted import get_list_sorted
@@ -105,7 +105,7 @@ def move_chrome_tab_by_url(url):
                     return
                 loop_cnt = loop_cnt + 1
                 ensure_slept(milliseconds=15)
-                pk_press("ctrl", "l")
+                ensure_pressed("ctrl", "l")
                 ensure_slept(milliseconds=15)
                 url_dragged = get_text_dragged()
                 if url_dragged == url:

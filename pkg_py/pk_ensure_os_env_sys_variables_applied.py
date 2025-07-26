@@ -11,14 +11,14 @@ from pkg_py.functions_split.colorama_init_once import colorama_init_once
 from pkg_py.system_object.directories_reuseable import D_PROJECT
 from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
-# from pkg_py.workspace.pk_workspace import debug_this_code_operated
+# from pkg_py.workspace.pk_workspace import ensure_this_code_operated
 
 if __name__ == "__main__":
     try:
         colorama_init_once()
         os.system(f"title {os.path.basename(__file__)}")  # TBD : 데코레이터로 전환
         ensure_os_env_sys_variables_applied()
-        debug_this_code_operated(ipdb)
+        ensure_this_code_operated(ipdb)
         if LTA:
             ensure_console_debuggable(ipdb)
     except Exception as exception:

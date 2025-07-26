@@ -6,8 +6,8 @@ import psutil
 import json
 from selenium.common.exceptions import WebDriverException
 from prompt_toolkit import PromptSession
-from pkg_py.functions_split.press import press
-from pkg_py.functions_split.print_state import print_state
+from pkg_py.functions_split.ensure_pressed import ensure_pressed
+from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.set_pk_context_state import set_pk_context_state
 from pkg_py.system_object.files import F_FFMPEG_EXE
 from pkg_py.system_object.encodings import Encoding

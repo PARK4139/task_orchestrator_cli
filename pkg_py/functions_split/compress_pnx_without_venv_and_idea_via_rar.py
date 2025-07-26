@@ -41,14 +41,14 @@ from prompt_toolkit import PromptSession
 from pkg_py.functions_split.get_historical_list import get_historical_list
 from pkg_py.functions_split.get_f_loading_nx_by_pattern import get_f_loading_nx_by_pattern
 from pkg_py.functions_split.ensure_window_to_front import ensure_window_to_front
-from pkg_py.functions_split.rerun_losslesscut import rerun_losslesscut
-from pkg_py.functions_split.load_f_video_on_losslesscut import load_f_video_on_losslesscut
+from pkg_py.functions_split.ensure_losslesscut_reran import ensure_losslesscut_reran
+from pkg_py.functions_split.ensure_f_video_loaded_on_losslesscut import ensure_f_video_loaded_on_losslesscut
 from pkg_py.functions_split.get_video_filtered_list import get_video_filtered_list
 from pkg_py.functions_split.is_window_title_front import is_window_title_front
 from pkg_py.functions_split.is_window_opened import is_window_opened
-from pkg_py.functions_split.print_state import print_state
+from pkg_py.functions_split.ensure_printed import ensure_printed
 
-from pkg_py.functions_split.cmd_to_os import cmd_to_os
+from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_excuted_to_os
 from pkg_py.functions_split.get_list_sorted import get_list_sorted
 from pkg_py.system_object.etc import PkFilter
 from pkg_py.system_object.files import F_LOSSLESSCUT_EXE
@@ -70,7 +70,7 @@ from collections import Counter
 from bs4 import ResultSet
 from base64 import b64encode
 from pkg_py.functions_split.get_nx import get_nx
-from pkg_py.functions_split.assist_to_load_video_at_losslesscut import ensure_video_loaded_at_losslesscut
+from pkg_py.functions_split.ensure_video_loaded_at_losslesscut import ensure_video_loaded_at_losslesscut
 from pkg_py.functions_split.kill_self_pk_program import kill_self_pk_program
 from pkg_py.system_object.directories import D_PKG_PY
 from pkg_py.functions_split.is_f import is_f
@@ -143,7 +143,7 @@ def compress_pnx_without_venv_and_idea_via_rar(pnx, d_dst, with_timestamp=1):
     # compress by rar (".venv" 및 ".idea" 제외)
     f_rar_wsl = get_pnx_wsl_unix_style(pnx=f_rar)
     cmd = f'wsl rar a "{f_rar_wsl}" "{nx}" -x"*.venv/*" -x"*.idea/*"'
-    cmd_to_os(cmd=cmd, encoding=Encoding.UTF8)
+    ensure_command_excuted_to_os(cmd=cmd, encoding=Encoding.UTF8)
 
     # copy
     copy_pnx_with_overwrite(pnx=f_rar, dst=d_dst)

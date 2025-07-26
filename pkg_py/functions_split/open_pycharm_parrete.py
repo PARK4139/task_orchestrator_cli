@@ -18,16 +18,16 @@ from pkg_py.functions_split.get_value_by_file_id import get_value_by_file_id
 from pkg_py.functions_split.ensure_slept import ensure_slept
 from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.get_str_from_f import get_str_from_f
-from pkg_py.functions_split.press import press
+from pkg_py.functions_split.ensure_pressed import ensure_pressed
 from pkg_py.functions_split.ensure_loop_delayed_at_loop_foot import ensure_loop_delayed_at_loop_foot
 from pkg_py.functions_split.type import type
 
 
 
 def open_pycharm_parrete():
-    pk_press("shift")
+    ensure_pressed("shift")
     ensure_slept(100)
-    pk_press("shift")
+    ensure_pressed("shift")
     ensure_slept(500)
 
 

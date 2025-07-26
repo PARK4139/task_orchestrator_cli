@@ -11,7 +11,7 @@ from prompt_toolkit import PromptSession
 from pkg_py.functions_split.is_window_title_front import is_window_title_front
 from pkg_py.functions_split.get_d_working import get_d_working
 
-from pkg_py.functions_split.cmd_to_os import cmd_to_os
+from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_excuted_to_os
 
 from Cryptodome.Cipher import AES
 from concurrent.futures import ThreadPoolExecutor
@@ -27,4 +27,4 @@ def mstsc(ip=None, port=3389):
     # cmd=f'mstsc /admin /w:960 /h:540 /v:{ip}:{port} /multimon /NoConsentPrompt'
     # cmd=f'mstsc /admin /w:960 /h:1080 /v:{ip}:{port} /multimon /NoConsentPrompt'
     cmd = f'mstsc /v:{ip}:{port} /admin /w:1024 /h:768 /multimon '
-    cmd_to_os(cmd, mode='a')
+    ensure_command_excuted_to_os(cmd, mode='a')

@@ -15,7 +15,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 from urllib.parse import urlparse
 from telegram import Bot
 from selenium.webdriver.common.by import By
-from pkg_py.functions_split.load_f_video_on_losslesscut import load_f_video_on_losslesscut
+from pkg_py.functions_split.ensure_f_video_loaded_on_losslesscut import ensure_f_video_loaded_on_losslesscut
 from pkg_py.functions_split.ensure_printed import ensure_printed
 
 from pkg_py.functions_split.get_list_sorted import get_list_sorted

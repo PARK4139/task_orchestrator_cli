@@ -1,4 +1,5 @@
-
+from pkg_py.functions_split.ensure_printed import ensure_printed
+from pkg_py.system_object.etc import PK_UNDERLINE
 
 
 def measure_time_to_import_module_via_time():
@@ -48,16 +49,8 @@ def function_to_test():
     pass
 
 
-def measure_time_to_exec_function_via_cprofile():
-    import cProfile
-    import inspect
-    func_n = inspect.currentframe().f_code.co_name
-    ensure_printed(str_working=rf'''{PK_UNDERLINE}{func_n}() s %%%FOO%%%''', print_color='blue')
-    cProfile.run('function_to_test()')
-    ensure_printed(str_working=rf'''{PK_UNDERLINE}{func_n}() e %%%FOO%%%''', print_color='blue')
 
-
-def measure_time_to_exec_function_via_time():
+def ensure_seconds_measured_to_exec_function_via_time():
     import time
     import inspect
     func_n = inspect.currentframe().f_code.co_name
@@ -74,32 +67,15 @@ def measure_time_to_exec_function_via_time():
     ensure_printed(str_working=rf'''{PK_UNDERLINE}{func_n}() e %%%FOO%%%''', print_color='blue')
 
 
+
+
 if __name__ == '__main__':
     debug_mode = True
     try:
         # todo
         # ipdb.set_trace()
-        measure_time_to_exec_function_via_time()
-        measure_time_to_exec_function_via_cprofile()
         measure_time_to_import_module_via_time()
-
     except Exception as e:
-        # red
-        import traceback
-
-        ensure_printed(str_working=f'{PK_UNDERLINE}예외발생 s\n\n', print_color='red')
-        ensure_printed(str_working=f'{traceback.format_exc()}\n', print_color='red')
-        ensure_printed(str_working=f'{PK_UNDERLINE}예외발생 e\n\n', print_color='red')
-
-        # yellow
-        f_current = get_f_current_n()
-        d_current = pk_deprecated_get_d_current_n_like_person()
-        ensure_printed(str_working=f'{PK_UNDERLINE}[Debugging Note] s\n', print_color="yellow")
-        ensure_printed(str_working=f'f_current={f_current}\nd_current={d_current}\n', print_color="yellow")
-        ensure_printed(str_working=f'{PK_UNDERLINE}[Debugging Note] e\n', print_color="yellow")
-        ensure_do_finally_routine(D_PROJECT=D_PROJECT, __file__=__file__, STAMP_TRY_GUIDE=STAMP_TRY_GUIDE)
-        ensure_printed(script_to_run_python_program_in_venv)
-
         # debug
         import ipdb
 

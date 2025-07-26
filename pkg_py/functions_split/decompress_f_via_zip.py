@@ -19,10 +19,10 @@ from selenium.common.exceptions import ElementClickInterceptedException
 from pytube import Playlist
 from prompt_toolkit import PromptSession
 from pkg_py.functions_split.is_losslesscut_running import is_losslesscut_running
-from pkg_py.functions_split.rerun_losslesscut import rerun_losslesscut
+from pkg_py.functions_split.ensure_losslesscut_reran import ensure_losslesscut_reran
 from pkg_py.functions_split.get_video_filtered_list import get_video_filtered_list
 from pkg_py.functions_split.get_d_working import get_d_working
-from pkg_py.functions_split.press import press
+from pkg_py.functions_split.ensure_pressed import ensure_pressed
 from pkg_py.functions_split.ensure_list_written_to_f import ensure_list_written_to_f
 from pkg_py.system_object.files import F_POT_PLAYER_MINI_64_EXE
 from os.path import dirname
@@ -48,7 +48,7 @@ def decompress_f_via_zip(f):
 
     func_n = inspect.currentframe().f_code.co_name
     # cmd=rf'bz.exe x "{pnx}"'  # 화면에 창이 안뜨는 모드
-    # cmd_to_os(cmd=cmd)
+    # ensure_command_excuted_to_os(cmd=cmd)
     pnx_p = get_p(pnx=f)
     if pnx_p is None:
         pnx_p = os.path.dirname(f)

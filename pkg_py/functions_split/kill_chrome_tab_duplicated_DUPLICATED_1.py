@@ -61,15 +61,15 @@ from pynput import mouse
 from prompt_toolkit import PromptSession
 from prompt_toolkit import PromptSession
 from pkg_py.functions_split.get_historical_list import get_historical_list
-from pkg_py.functions_split.print_iterable_as_vertical import print_iterable_as_vertical
+from pkg_py.functions_split.ensure_iterable_printed_as_vertical import ensure_iterable_printed_as_vertical
 from pkg_py.functions_split.ensure_window_to_front import ensure_window_to_front
 from pkg_py.functions_split.get_f_video_to_load import get_f_video_to_load
-from pkg_py.functions_split.load_f_video_on_losslesscut import load_f_video_on_losslesscut
+from pkg_py.functions_split.ensure_f_video_loaded_on_losslesscut import ensure_f_video_loaded_on_losslesscut
 from pkg_py.functions_split.is_window_title_front import is_window_title_front
 from pkg_py.functions_split.is_window_title_opened import is_window_title_opened
 from pkg_py.functions_split.is_window_opened import is_window_opened
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
-from pkg_py.functions_split.press import press
+from pkg_py.functions_split.ensure_pressed import ensure_pressed
 from pkg_py.functions_split.ensure_printed_once import ensure_printed_once
 from pkg_py.functions_split.ensure_printed import ensure_printed
 
@@ -113,7 +113,7 @@ from bs4 import ResultSet
 from bs4 import BeautifulSoup
 from base64 import b64decode
 from pkg_py.functions_split.get_nx import get_nx
-from pkg_py.functions_split.assist_to_load_video_at_losslesscut import ensure_video_loaded_at_losslesscut
+from pkg_py.functions_split.ensure_video_loaded_at_losslesscut import ensure_video_loaded_at_losslesscut
 from pkg_py.system_object.stamps import STAMP_TRY_GUIDE, STAMP_UNIT_TEST_EXCEPTION_DISCOVERED
 from pkg_py.system_object.directories import D_PKG_PY
 from pkg_py.functions_split.get_list_calculated import get_list_calculated
@@ -149,23 +149,23 @@ def kill_chrome_tab_duplicated():
         ensure_printed(str_working=rf'''loop_limit="{loop_limit}"  {'%%%FOO%%%' if LTA else ''}''')
 
         # 탭을 전환하고 URL을 가져옵니다.
-        pk_press("ctrl", "l")
+        ensure_pressed("ctrl", "l")
         ensure_slept(milliseconds=5)
         url_dragged = get_txt_dragged()
 
         # 중복 여부 확인
         if url_dragged in chrome_tab_urls_processed:
             ensure_printed(str_working=rf'''URL already processed: "{url_dragged}"  {'%%%FOO%%%' if LTA else ''}''')
-            pk_press("ctrl", "tab")  # 다음 탭으로 이동
+            ensure_pressed("ctrl", "tab")  # 다음 탭으로 이동
             loop_out_cnt += 1
             if loop_out_cnt >= loop_limit:
                 break
             continue
 
         # 다음 탭으로 전환 후 URL 가져오기
-        pk_press("ctrl", "tab")
+        ensure_pressed("ctrl", "tab")
         ensure_slept(milliseconds=5)
-        pk_press("ctrl", "l")
+        ensure_pressed("ctrl", "l")
         ensure_slept(milliseconds=5)
         url_dragged_new = get_txt_dragged()
 
@@ -175,7 +175,7 @@ def kill_chrome_tab_duplicated():
         # 중복된 URL이면 탭 닫기
         if url_dragged == url_dragged_new:
             ensure_printed(str_working=rf'''Closing duplicate tab for URL: "{url_dragged}"  {'%%%FOO%%%' if LTA else ''}''')
-            pk_press("ctrl", "w")  # 탭 닫기
+            ensure_pressed("ctrl", "w")  # 탭 닫기
             continue
 
         # 처리된 URL을 리스트에 추가

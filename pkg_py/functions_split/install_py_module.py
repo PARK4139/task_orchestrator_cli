@@ -10,8 +10,8 @@ import clipboard
 from seleniumbase import Driver
 # from project_database.test_project_database import MySqlUtil
 from pkg_py.functions_split.ensure_window_to_front import ensure_window_to_front
-from pkg_py.functions_split.load_f_video_on_losslesscut import load_f_video_on_losslesscut
-from pkg_py.functions_split.press import press
+from pkg_py.functions_split.ensure_f_video_loaded_on_losslesscut import ensure_f_video_loaded_on_losslesscut
+from pkg_py.functions_split.ensure_pressed import ensure_pressed
 from pkg_py.functions_split.get_list_sorted import get_list_sorted
 from pkg_py.functions_split.set_pk_context_state import set_pk_context_state
 from pkg_py.system_object.files import F_POT_PLAYER_MINI_64_EXE

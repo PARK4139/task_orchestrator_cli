@@ -16,7 +16,7 @@ def test_pk_python_program_structure():
             colorama_init_once()
             os.system(f"title {os.path.basename(__file__)}")  # TBD : 데코레이터로 전환
             # ensure_printed(f'''{PkMessages2025.NOT_PREPARED_YET}{'%%%FOO%%%' if LTA else ''}''', print_color='green', mode_verbose=0) # write code here
-            # debug_this_code_operated(ipdb)
+            # ensure_this_code_operated(ipdb)
             if LTA:
                 ensure_console_debuggable(ipdb)
         except Exception as exception:

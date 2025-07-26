@@ -1,5 +1,5 @@
 # dictionary.md
-pk_ : related to my custom prefix
+pk_ : pk_ prefix means somthing customed by jung hoon park
 
 pk_option : optional logic by developer 
 

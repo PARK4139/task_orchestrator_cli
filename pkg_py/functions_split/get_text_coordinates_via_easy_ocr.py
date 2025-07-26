@@ -14,7 +14,7 @@ import os.path
 import json
 from selenium.common.exceptions import ElementClickInterceptedException
 from pynput import mouse
-from pkg_py.functions_split.load_f_video_on_losslesscut import load_f_video_on_losslesscut
+from pkg_py.functions_split.ensure_f_video_loaded_on_losslesscut import ensure_f_video_loaded_on_losslesscut
 from pkg_py.functions_split.is_window_opened import is_window_opened
 from pkg_py.system_object.files import F_POT_PLAYER_MINI_64_EXE
 from pkg_py.system_object.directories import D_PK_WORKING

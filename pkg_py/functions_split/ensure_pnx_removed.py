@@ -17,7 +17,7 @@ def ensure_pnx_removed(pnx):
         #     cmd = rf'echo y | del /f "{pnx}"'
         # else:
         #     cmd = rf'echo y | rmdir /s "{pnx}"'
-        # cmd_to_os(cmd=cmd)
+        # ensure_command_excuted_to_os(cmd=cmd)
 
         # 2
         # if does_pnx_exist(pnx):

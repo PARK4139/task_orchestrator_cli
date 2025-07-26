@@ -5,8 +5,8 @@ from zipfile import BadZipFile
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import ElementClickInterceptedException
-from pkg_py.functions_split.load_f_video_on_losslesscut import load_f_video_on_losslesscut
-from pkg_py.functions_split.cmd_to_os import cmd_to_os
+from pkg_py.functions_split.ensure_f_video_loaded_on_losslesscut import ensure_f_video_loaded_on_losslesscut
+from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_excuted_to_os
 from pkg_py.system_object.stamps import STAMP_ATTEMPTED
 from pkg_py.system_object.directories import D_PK_WORKING
 from cryptography.hazmat.backends import default_backend

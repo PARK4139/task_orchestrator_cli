@@ -9,7 +9,7 @@ def generate_token_f(f, initial_str):
     ensure_printed(f'''f={f}  {'%%%FOO%%%' if LTA else ''}''')
     line_list = get_list_from_f(f=f)
     line_list = get_list_removed_by_removing_runtine(working_list=line_list)
-    # print_iterable_as_vertical(item_iterable=line_list, item_iterable_n='line_list')
+    # ensure_iterable_printed_as_vertical(item_iterable=line_list, item_iterable_n='line_list')
     if len(line_list) == 0:
         token = initial_str
         if initial_str != "":

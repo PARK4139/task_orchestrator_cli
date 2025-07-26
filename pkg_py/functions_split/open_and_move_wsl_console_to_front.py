@@ -1,4 +1,4 @@
-from pkg_py.functions_split.cmd_to_os import cmd_to_os
+from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_excuted_to_os
 
 from pkg_py.functions_split.is_window_opened import is_window_opened
 from pkg_py.functions_split.ensure_window_to_front import ensure_window_to_front
@@ -10,7 +10,7 @@ def open_and_move_wsl_console_to_front(remote_os_distro_n, window_title_seg):
     ensure_wsl_distro_session(remote_os_distro_n)
 
     cmd = f'start cmd /k "wsl -d {remote_os_distro_n}"'
-    cmd_to_os(cmd=cmd, mode='a')
+    ensure_command_excuted_to_os(cmd=cmd, mode='a')
     time_limit = 20
     time_s = time.time()
     while 1:

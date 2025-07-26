@@ -1,6 +1,6 @@
 from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.ensure_printed import ensure_printed
-from pkg_py.functions_split.print_iterable_as_vertical import print_iterable_as_vertical
+from pkg_py.functions_split.ensure_iterable_printed_as_vertical import ensure_iterable_printed_as_vertical
 
 
 def get_magnets_set_from_torrent_qq(search_keyword, driver=None):
@@ -60,11 +60,11 @@ def get_magnets_set_from_torrent_qq(search_keyword, driver=None):
         for title, href in detail_page_link_list:
             ensure_printed(f'''title={title:80s}  href={href}''')
             detail_page_link_matched_list.append((title, href))
-        # print_iterable_as_vertical(item_iterable=detail_page_link_list, item_iterable_n="detail_page_link_list")
+        # ensure_iterable_printed_as_vertical(item_iterable=detail_page_link_list, item_iterable_n="detail_page_link_list")
         if len(detail_page_link_matched_list) == 0:
             ensure_printed(f'''detail page links not matched  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
             return magnet_link_set
-        print_iterable_as_vertical(item_iterable=detail_page_link_matched_list, item_iterable_n="link_matched_list")
+        ensure_iterable_printed_as_vertical(item_iterable=detail_page_link_matched_list, item_iterable_n="link_matched_list")
         for title, href in detail_page_link_matched_list:
             # driver_get_url_as_browser_tab_via_js(driver, href)
             ensure_printed(
@@ -133,7 +133,7 @@ def get_magnets_set_from_torrent_qq(search_keyword, driver=None):
                 else:
                     ensure_printed(f'''magnet_link does not exist''', print_color='red')
                 break
-        print_iterable_as_vertical(item_iterable=magnet_link_set, item_iterable_n="magnet_link_set")
+        ensure_iterable_printed_as_vertical(item_iterable=magnet_link_set, item_iterable_n="magnet_link_set")
 
         # debug
 

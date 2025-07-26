@@ -7,8 +7,8 @@ import functools
 
 from webdriver_manager.chrome import ChromeDriverManager
 from pkg_py.functions_split.get_f_video_to_load import get_f_video_to_load
-from pkg_py.functions_split.load_f_video_on_losslesscut import load_f_video_on_losslesscut
-from pkg_py.functions_split.cmd_to_os import cmd_to_os
+from pkg_py.functions_split.ensure_f_video_loaded_on_losslesscut import ensure_f_video_loaded_on_losslesscut
+from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_excuted_to_os
 from pkg_py.system_object.encodings import Encoding
 from pkg_py.system_object.directories_reuseable import D_PROJECT
 
@@ -48,16 +48,16 @@ def build_pk_project_via_pyinstaller():
             remove_pnx_parmanently(pnx=item)
 
         # pip 업그레이드
-        cmd_to_os(cmd="python -m pip install --upgrade pip")
+        ensure_command_excuted_to_os(cmd="python -m pip install --upgrade pip")
 
         # pip 업그레이드
-        cmd_to_os(cmd="pip install pyinstaller --upgrade")
+        ensure_command_excuted_to_os(cmd="pip install pyinstaller --upgrade")
 
         if not LTA:
-            cmd_to_os(cmd=rf"python -m PyInstaller -i .\pkg_png\icon.PNG pk_test_test.py")
+            ensure_command_excuted_to_os(cmd=rf"python -m PyInstaller -i .\pkg_png\icon.PNG pk_test_test.py")
 
         if LTA:
-            cmd_to_os(cmd=rf'echo d | xcopy ".\pkg_mp3" ".\dist\pk_test_test\_internal\pkg_mp3" /e /h /k /y')
+            ensure_command_excuted_to_os(cmd=rf'echo d | xcopy ".\pkg_mp3" ".\dist\pk_test_test\_internal\pkg_mp3" /e /h /k /y')
 
         # f = f'{D_PROJECT}/pk_temp.py'
         # write_f(f)

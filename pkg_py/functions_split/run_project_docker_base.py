@@ -59,7 +59,7 @@ def run_project_docker_base(f, dockerfile_script_list):
     #     # todo: 등록된 함수명 조회 with idx
     #     # print_pk_func_list_with_idx()
     #     # if user_cmd = "f 13":
-    #     #     pk_copy(str_working=pk_input())
+    #     #     ensure_copied(str_working=pk_input())
     #     import ipdb
     #     ipdb.set_trace()
     #     # ctrl v
@@ -72,7 +72,7 @@ def run_project_docker_base(f, dockerfile_script_list):
 
     # edit dockerfile
     # if LTA:
-    #     cmd_to_os(cmd=rf'code "{f}"')
+    #     ensure_command_excuted_to_os(cmd=rf'code "{f}"')
 
     # build docker
     f_nx = get_nx(f)
@@ -107,7 +107,7 @@ def run_project_docker_base(f, dockerfile_script_list):
     cmd_to_remote_os(cmd=cmd, **config_remote_os)
 
     # check docker container
-    # cmd_to_os(cmd=rf"wsl docker ps -a")  # 중지된 컨테이너 포함
+    # ensure_command_excuted_to_os(cmd=rf"wsl docker ps -a")  # 중지된 컨테이너 포함
 
     # 이 설정을 완료하면
     # WSL Docker deamon tcp://0.0.0.0:2375에서 외부 요청 수신대기

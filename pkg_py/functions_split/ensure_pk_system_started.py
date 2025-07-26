@@ -1,7 +1,7 @@
-from pkg_py.functions_split.measure_seconds import measure_seconds
+from pkg_py.functions_split.ensure_seconds_measured import ensure_seconds_measured
 
 
-@measure_seconds
+@ensure_seconds_measured
 def ensure_pk_system_started():
     from pkg_py.functions_split.ensure_pk_system_started_v5 import ensure_pk_system_started_v5
     # ensure_pk_system_started_v2(index_map)

@@ -2,7 +2,7 @@ import toml
 import random
 import platform
 from prompt_toolkit.styles import Style
-from pkg_py.functions_split.print_state import print_state
+from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.get_nx import get_nx
 from pkg_py.system_object.etc import PK_UNDERLINE
 

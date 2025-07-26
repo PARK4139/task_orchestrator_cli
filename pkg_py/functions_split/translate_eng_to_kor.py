@@ -30,10 +30,10 @@ from pkg_py.functions_split.ensure_window_to_front import ensure_window_to_front
 from pkg_py.functions_split.is_window_title_front import is_window_title_front
 from pkg_py.functions_split.is_window_title_opened import is_window_title_opened
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
-from pkg_py.functions_split.press import press
+from pkg_py.functions_split.ensure_pressed import ensure_pressed
 from pkg_py.functions_split.ensure_printed_once import ensure_printed_once
 
-from pkg_py.functions_split.cmd_to_os import cmd_to_os
+from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_excuted_to_os
 from pkg_py.functions_split.get_list_sorted import get_list_sorted
 from pkg_py.functions_split.ensure_console_cleared import ensure_console_cleared
 from pkg_py.system_object.files import F_LOSSLESSCUT_EXE
@@ -73,12 +73,12 @@ def translate_eng_to_kor(question: str):
                 question = question.strip('""')
             except AttributeError:
                 break
-            pk_press("win", "m")
+            ensure_pressed("win", "m")
 
             # 구글 번역 페이지로 이동
             url = "https://www.google.com/search?q=eng+to+kor"
             cmd = f'explorer "{url}" >nul'
-            cmd_to_os_like_person_as_admin(cmd)
+            ensure_command_excuted_to_os_like_person_as_admin(cmd)
 
             # 크롬 창 활성화
             target_pid: int = get_pids(process_img_n="chrome.exe")  # chrome.exe pid 가져오기

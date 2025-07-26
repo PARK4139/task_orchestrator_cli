@@ -41,14 +41,14 @@ from queue import Queue, Empty
 from pytube import Playlist
 from pynput import mouse
 from prompt_toolkit import PromptSession
-from pkg_py.functions_split.print_iterable_as_vertical import print_iterable_as_vertical
+from pkg_py.functions_split.ensure_iterable_printed_as_vertical import ensure_iterable_printed_as_vertical
 from pkg_py.functions_split.ensure_window_to_front import ensure_window_to_front
 from pkg_py.functions_split.get_video_filtered_list import get_video_filtered_list
 from pkg_py.functions_split.is_window_title_front import is_window_title_front
 from pkg_py.functions_split.is_window_opened import is_window_opened
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 from pkg_py.functions_split.ensure_printed import ensure_printed
-from pkg_py.functions_split.cmd_to_os import cmd_to_os
+from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_excuted_to_os
 from pkg_py.functions_split.ensure_list_written_to_f import ensure_list_written_to_f
 from pkg_py.functions_split.get_list_sorted import get_list_sorted
 
@@ -57,7 +57,7 @@ from pkg_py.system_object.stamps import STAMP_ATTEMPTED
 from pkg_py.system_object.files import F_LOSSLESSCUT_EXE
 from pkg_py.system_object.directories_reuseable import D_PROJECT
 from pkg_py.system_object.directories import D_DOWNLOADS, D_PKG_PKL
-from pkg_py.system_object.performance_logic import measure_seconds, pk_measure_memory
+from pkg_py.system_object.performance_logic import ensure_seconds_measured, pk_measure_memory
 from pkg_py.system_object.is_os_windows import is_os_windows
 from pkg_py.system_object.get_list_calculated import get_list_calculated
 
@@ -74,7 +74,7 @@ from concurrent.futures import ThreadPoolExecutor
 from bs4 import BeautifulSoup
 from base64 import b64decode
 from pkg_py.functions_split.get_nx import get_nx
-from pkg_py.functions_split.assist_to_load_video_at_losslesscut import ensure_video_loaded_at_losslesscut
+from pkg_py.functions_split.ensure_video_loaded_at_losslesscut import ensure_video_loaded_at_losslesscut
 from pkg_py.functions_split.kill_self_pk_program import kill_self_pk_program
 from pkg_py.functions_split.get_pnx_list import get_pnx_list
 from pkg_py.functions_split.is_d import is_d
@@ -94,7 +94,7 @@ def ask_to_chat_gpt(question):
     import pyautogui
     # 페이지 열기
     url = "https://chatgpt.com/"
-    cmd_to_os(cmd=f'explorer "{url}"')
+    ensure_command_excuted_to_os(cmd=f'explorer "{url}"')
 
     # 창 앞으로 이동
     window_title = "Chrome"

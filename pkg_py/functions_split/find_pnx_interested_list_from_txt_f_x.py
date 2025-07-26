@@ -8,7 +8,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.keys import Keys
 from pynput import mouse
-from pkg_py.functions_split.print_iterable_as_vertical import print_iterable_as_vertical
+from pkg_py.functions_split.ensure_iterable_printed_as_vertical import ensure_iterable_printed_as_vertical
 from pkg_py.functions_split.get_video_filtered_list import get_video_filtered_list
 from pkg_py.functions_split.set_pk_context_state import set_pk_context_state
 from pkg_py.system_object.files import F_POT_PLAYER_MINI_64_EXE
@@ -44,7 +44,7 @@ def find_pnx_interested_list_from_txt_f_x(including_texts=[], exclude_texts=[], 
     ensure_printed(str_working=rf'''pattern="{pattern}"  {'%%%FOO%%%' if LTA else ''}''')
     # f_list_in_d 아니고 f_nx_list_in_d 인지 확인필요
     f_list_in_d = os.listdir(d)
-    print_iterable_as_vertical(item_iterable=f_list_in_d, item_iterable_n="f_list_in_d")
+    ensure_iterable_printed_as_vertical(item_iterable=f_list_in_d, item_iterable_n="f_list_in_d")
     f_nx_list_matched = [file for file in f_list_in_d if re.match(pattern, file)]
     pnxs_required = []
     if f_nx_list_matched:
@@ -75,5 +75,5 @@ def find_pnx_interested_list_from_txt_f_x(including_texts=[], exclude_texts=[], 
                         pnxs_excluded.append(pnx)
                 else:
                     pnxs_excluded.append(pnx)
-    print_iterable_as_vertical(item_iterable=pnxs_excluded, item_iterable_n="pnxs_excluded")
+    ensure_iterable_printed_as_vertical(item_iterable=pnxs_excluded, item_iterable_n="pnxs_excluded")
     return pnxs_excluded

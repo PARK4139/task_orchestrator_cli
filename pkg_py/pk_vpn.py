@@ -38,12 +38,7 @@ if __name__ == '__main__':
 
 
     except Exception as e:
-        # red
-        import traceback
-
-        ensure_printed(str_working=f'{PK_UNDERLINE}예외발생 s\n\n', print_color='red')
-        ensure_printed(str_working=f'{traceback.format_exc()}\n', print_color='red')
-        ensure_printed(str_working=f'{PK_UNDERLINE}예외발생 e\n\n', print_color='red')
+        
 
         # yellow
         f_current= get_f_current_n()

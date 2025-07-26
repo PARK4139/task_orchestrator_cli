@@ -44,7 +44,7 @@ from pkg_py.functions_split.ensure_console_cleared import ensure_console_cleared
 from pkg_py.system_object.stamps import STAMP_ATTEMPTED
 from pkg_py.system_object.files import F_POT_PLAYER_MINI_64_EXE
 from pkg_py.system_object.state_via_context import SpeedControlContext
-from pkg_py.system_object.performance_logic import measure_seconds, pk_measure_memory
+from pkg_py.system_object.performance_logic import ensure_seconds_measured, pk_measure_memory
 from pkg_py.system_object.is_os_windows import is_os_windows
 
 from paramiko import SSHClient, AutoAddPolicy

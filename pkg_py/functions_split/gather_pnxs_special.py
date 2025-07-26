@@ -30,7 +30,7 @@ def gather_pnxs_special():
     pk_chdir(services)
     storages = []
     cmd = rf'dir /b /s "{D_DOWNLOADS}"'
-    lines = cmd_to_os_like_person_as_admin(cmd)
+    lines = ensure_command_excuted_to_os_like_person_as_admin(cmd)
     for line in lines:
         if line.strip() != "":
             storages.append(line.strip())

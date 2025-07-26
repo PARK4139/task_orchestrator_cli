@@ -1,5 +1,5 @@
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.functions_split.cmd_to_os import cmd_to_os
+from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_excuted_to_os
 from pkg_py.functions_split.get_pnx_windows_style import get_pnx_windows_style
 from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style
@@ -92,7 +92,7 @@ def ensure_vpc_smoke_test(vpc_data):
         # check f_local_dst
         f_local_new = get_pnx_os_style(f_local_new)
         if does_pnx_exist(pnx=f_local_new):
-            cmd_to_os(cmd=f'explorer "{f_local_new}" ', mode='a')
+            ensure_command_excuted_to_os(cmd=f'explorer "{f_local_new}" ', mode='a')
 
         # convert from lf to crlf # todo for not working
         f_n = get_n(f_nx)

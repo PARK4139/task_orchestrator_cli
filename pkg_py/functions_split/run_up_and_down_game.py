@@ -52,11 +52,11 @@ from prompt_toolkit import PromptSession
 from pkg_py.functions_split.get_f_loading_nx_by_pattern import get_f_loading_nx_by_pattern
 from pkg_py.functions_split.ensure_window_to_front import ensure_window_to_front
 from pkg_py.functions_split.is_losslesscut_running import is_losslesscut_running
-from pkg_py.functions_split.rerun_losslesscut import rerun_losslesscut
+from pkg_py.functions_split.ensure_losslesscut_reran import ensure_losslesscut_reran
 from pkg_py.functions_split.get_d_working import get_d_working
 from pkg_py.functions_split.is_window_opened import is_window_opened
-from pkg_py.functions_split.press import press
-from pkg_py.functions_split.print_state import print_state
+from pkg_py.functions_split.ensure_pressed import ensure_pressed
+from pkg_py.functions_split.ensure_state_printed import ensure_state_printed
 from pkg_py.functions_split.ensure_printed_once import ensure_printed_once
 from pkg_py.functions_split.ensure_printed import ensure_printed
 
@@ -111,7 +111,7 @@ def run_up_and_down_game():
     correct_answer: int = random.randint(1, 100)
     left_oportunity: int = 10
     ment = f"<UP AND DOWN GAME>\n\nFIND CORRECT NUMBER"
-    pk_speak_v2(str_working=ment, comma_delay=1.0)
+    ensure_spoken_v2(str_working=ment, comma_delay=1.0)
 
     txt_clicked, function, txt_written = should_i_do(
         prompt=ment,
@@ -130,11 +130,11 @@ def run_up_and_down_game():
 
     if btn_txt_clicked == "START":
         ment = f"START IS PRESSED, LETS START GAME"
-        pk_speak_v2(str_working=ment, comma_delay=0.98, thread_join_mode=True)
+        ensure_spoken_v2(str_working=ment, comma_delay=0.98, thread_join_mode=True)
         while left_oportunity >= 0:
             if left_oportunity == 0:
                 ment = f"LEFT CHANCE IS {left_oportunity} \nTAKE YOUR NEXT CHANCE."
-                pk_speak_v2(str_working=ment, comma_delay=0.98)
+                ensure_spoken_v2(str_working=ment, comma_delay=0.98)
 
                 txt_clicked, function, txt_written = should_i_do(
                     prompt=ment,
@@ -153,7 +153,7 @@ def run_up_and_down_game():
                 ment = f"TYPE NUMBER BETWEEN 1 TO 100"
                 if user_input is None:
                     ment = rf"{ment} AGAIN"
-                pk_speak_v2(str_working=ment, comma_delay=0.98)
+                ensure_spoken_v2(str_working=ment, comma_delay=0.98)
                 txt_clicked, function, txt_written = should_i_do(
                     prompt=ment,
                     btn_list=["SUBMIT", "EXIT"],
@@ -171,7 +171,7 @@ def run_up_and_down_game():
                 is_game_strated = True
             elif user_input == correct_answer:
                 ment = f"CONGRATULATIONS\n\nYOUR NUMBER IS {correct_answer}\nTHIS IS ANSWER\n\nSEE YOU AGAIN"
-                pk_speak_v2(str_working=ment, comma_delay=0.98)
+                ensure_spoken_v2(str_working=ment, comma_delay=0.98)
 
                 txt_clicked, function, txt_written = should_i_do(
                     prompt=ment,
@@ -186,7 +186,7 @@ def run_up_and_down_game():
 
             elif correct_answer < user_input:
                 ment = f"YOUR NUMBER IS {user_input}\n\nYOU NEED DOWN\n\nYOUR LEFT CHANCE IS {left_oportunity}"
-                pk_speak_v2(str_working=ment, comma_delay=0.98)
+                ensure_spoken_v2(str_working=ment, comma_delay=0.98)
 
                 txt_clicked, function, txt_written = should_i_do(
                     prompt=ment,
@@ -204,7 +204,7 @@ def run_up_and_down_game():
                     left_oportunity = left_oportunity - 1
             elif correct_answer > user_input:
                 ment = f"YOUR NUMBER IS {user_input}\n\nYOU NEED UP\n\nYOUR LEFT CHANCE IS {left_oportunity}"
-                pk_speak_v2(str_working=ment, comma_delay=0.98)
+                ensure_spoken_v2(str_working=ment, comma_delay=0.98)
 
                 txt_clicked, function, txt_written = should_i_do(
                     prompt=ment,

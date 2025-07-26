@@ -30,13 +30,13 @@ from pynput import mouse
 from pkg_py.functions_split.get_f_loading_nx_by_pattern import get_f_loading_nx_by_pattern
 from pkg_py.functions_split.is_losslesscut_running import is_losslesscut_running
 from pkg_py.functions_split.get_video_filtered_list import get_video_filtered_list
-from pkg_py.functions_split.print_state import print_state
+from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.ensure_list_written_to_f import ensure_list_written_to_f
 from pkg_py.system_object.stamps import STAMP_ATTEMPTED
 from pkg_py.system_object.files import F_POT_PLAYER_MINI_64_EXE, F_HISTORICAL_PNX
 from pkg_py.system_object.files import F_HISTORICAL_PNX
 from pkg_py.system_object.map_massages import PkMessages2025
-from pkg_py.system_object.performance_logic import measure_seconds, pk_measure_memory
+from pkg_py.system_object.performance_logic import ensure_seconds_measured, pk_measure_memory
 from pathlib import Path
 from os.path import dirname
 from os import path
@@ -47,7 +47,7 @@ from enum import Enum
 from cryptography.hazmat.primitives import padding
 from concurrent.futures import ThreadPoolExecutor
 from pkg_py.functions_split.get_nx import get_nx
-from pkg_py.functions_split.assist_to_load_video_at_losslesscut import ensure_video_loaded_at_losslesscut
+from pkg_py.functions_split.ensure_video_loaded_at_losslesscut import ensure_video_loaded_at_losslesscut
 from pkg_py.system_object.etc import PkFilter, PK_UNDERLINE
 from pkg_py.functions_split.get_pnx_list import get_pnx_list
 from pkg_py.functions_split.is_f import is_f

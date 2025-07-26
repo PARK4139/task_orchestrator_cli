@@ -1,6 +1,6 @@
 def ensure_pnx_made(pnx, mode, script_list=None, mode_script_overwrite=0):
     from pkg_py.system_object.local_test_activate import LTA
-    from pkg_py.functions_split.cmd_to_os import cmd_to_os
+    from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_excuted_to_os
     from pkg_py.functions_split.ensure_printed import ensure_printed
     from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style
     from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
@@ -16,8 +16,8 @@ def ensure_pnx_made(pnx, mode, script_list=None, mode_script_overwrite=0):
                 os.makedirs(os.path.dirname(pnx))
             except:
                 pass
-            cmd_to_os(rf'chcp 65001 >nul')
-            cmd_to_os(rf'echo. > "{pnx}"')
+            ensure_command_excuted_to_os(rf'chcp 65001 >nul')
+            ensure_command_excuted_to_os(rf'echo. > "{pnx}"')
         if script_list:
             while 1:
                 if does_pnx_exist(pnx):
@@ -28,7 +28,7 @@ def ensure_pnx_made(pnx, mode, script_list=None, mode_script_overwrite=0):
                     break
             if state_pnx_duplicated == 1:
                 ensure_printed(f'''state_pnx_duplicated={state_pnx_duplicated} {'%%%FOO%%%' if LTA else ''}''')
-                # cmd_to_os(f'code {pnx}')
+                # ensure_command_excuted_to_os(f'code {pnx}')
             if os.path.exists(pnx):
                 # write script to f
                 mode_open = None
@@ -41,7 +41,7 @@ def ensure_pnx_made(pnx, mode, script_list=None, mode_script_overwrite=0):
                     for line in script_list:
                         f_obj.write(f"{line}\n")
                         ensure_printed(f'''{line} written to {pnx} {'%%%FOO%%%' if LTA else ''}''')
-                    std_list = cmd_to_os(f'type {pnx}')
+                    std_list = ensure_command_excuted_to_os(f'type {pnx}')
                     # 마지막줄 쓰였는지 확인
                     last_line = script_list[-1].replace("\n", "")
                     if last_line == std_list[-1].replace("\n", ""):

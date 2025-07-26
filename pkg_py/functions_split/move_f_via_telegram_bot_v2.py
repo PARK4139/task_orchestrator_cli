@@ -33,7 +33,7 @@ from pkg_py.functions_split.get_video_filtered_list import get_video_filtered_li
 from pkg_py.functions_split.is_window_title_front import is_window_title_front
 from pkg_py.functions_split.get_d_working import get_d_working
 from pkg_py.functions_split.is_window_opened import is_window_opened
-from pkg_py.functions_split.press import press
+from pkg_py.functions_split.ensure_pressed import ensure_pressed
 from pkg_py.functions_split.get_list_sorted import get_list_sorted
 from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
 from pkg_py.system_object.stamps import STAMP_ATTEMPTED
@@ -53,7 +53,7 @@ from collections import Counter
 from bs4 import ResultSet
 from base64 import b64encode
 from pkg_py.functions_split.get_nx import get_nx
-from pkg_py.functions_split.assist_to_load_video_at_losslesscut import ensure_video_loaded_at_losslesscut
+from pkg_py.functions_split.ensure_video_loaded_at_losslesscut import ensure_video_loaded_at_losslesscut
 from pkg_py.system_object.etc import PkFilter, PK_UNDERLINE
 from pkg_py.system_object.is_os_windows import is_os_windows
 from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux

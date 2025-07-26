@@ -11,7 +11,7 @@ def move_pycharm_cursor_to_file(__file__):
     from pkg_py.system_object.map_massages import PkMessages2025
 
     filename_to_dst = os.path.basename(__file__)
-    pk_copy(filename_to_dst)
+    ensure_copied(filename_to_dst)
     ensure_slept(100)
     open_pycharm_parrete()
     ensure_slept(500)

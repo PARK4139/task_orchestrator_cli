@@ -37,7 +37,7 @@ from selenium.webdriver.chrome.service import Service
 from prompt_toolkit.styles import Style
 from prompt_toolkit import PromptSession
 from pkg_py.functions_split.get_f_loading_nx_by_pattern import get_f_loading_nx_by_pattern
-from pkg_py.functions_split.load_f_video_on_losslesscut import load_f_video_on_losslesscut
+from pkg_py.functions_split.ensure_f_video_loaded_on_losslesscut import ensure_f_video_loaded_on_losslesscut
 from pkg_py.functions_split.get_video_filtered_list import get_video_filtered_list
 from pkg_py.functions_split.is_window_title_opened import is_window_title_opened
 
@@ -51,7 +51,7 @@ from functools import partial
 from functools import lru_cache
 from enum import Enum
 from bs4 import BeautifulSoup
-from pkg_py.functions_split.assist_to_load_video_at_losslesscut import ensure_video_loaded_at_losslesscut
+from pkg_py.functions_split.ensure_video_loaded_at_losslesscut import ensure_video_loaded_at_losslesscut
 from pkg_py.functions_split.get_value_completed import get_value_completed
 from pkg_py.functions_split.is_d import is_d
 from pkg_py.functions_split.is_f import is_f

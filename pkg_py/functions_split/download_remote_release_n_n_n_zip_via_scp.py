@@ -13,7 +13,7 @@ from prompt_toolkit.styles import Style
 # from project_database.test_project_database import MySqlUtil
 from pkg_py.functions_split.ensure_window_to_front import ensure_window_to_front
 from pkg_py.functions_split.is_window_opened import is_window_opened
-from pkg_py.functions_split.press import press
+from pkg_py.functions_split.ensure_pressed import ensure_pressed
 
 from pkg_py.functions_split.ensure_list_written_to_f import ensure_list_written_to_f
 from pkg_py.system_object.stamps import STAMP_ATTEMPTED
@@ -35,8 +35,8 @@ def download_remote_release_n_n_n_zip_via_scp(vpc_aifw_version, dst):
     port_gitlab_token = get_token_from_f_token(f_token=rf'{D_PKG_TXT}\port_gitlab_token.txt', initial_str="")
     src = rf'{user_gitlab_token}@{ip_gitlab_token}:/home/user/release/remote_release_{vpc_aifw_version}.zip'
     cmd = rf"scp -P {port_gitlab_token} -r {src} {dst}"
-    # cmd_to_os(cmd=cmd) # warning : pw 물은 채로 정지
-    cmd_to_os_like_person(cmd=cmd)  # warning : pw 물은 채로 정지
+    # ensure_command_excuted_to_os(cmd=cmd) # warning : pw 물은 채로 정지
+    ensure_command_excuted_to_os_like_person(cmd=cmd)  # warning : pw 물은 채로 정지
     window_title_seg = r"C:\Windows\system32\cmd"
     while 1:
         ensure_slept(milliseconds=2000)
@@ -44,6 +44,6 @@ def download_remote_release_n_n_n_zip_via_scp(vpc_aifw_version, dst):
             ensure_window_to_front(window_title_seg=window_title_seg)
             ensure_slept(milliseconds=500)  # success : 중요.
             ensure_writen_like_person(str_working=pw_gitlab_token)
-            pk_press("enter")
+            ensure_pressed("enter")
             break
     ensure_slept(milliseconds=500)

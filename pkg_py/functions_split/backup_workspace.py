@@ -1,7 +1,7 @@
-from pkg_py.functions_split.measure_seconds import measure_seconds
+from pkg_py.functions_split.ensure_seconds_measured import ensure_seconds_measured
 
 
-@measure_seconds
+@ensure_seconds_measured
 def backup_workspace(D_PKG_ARCHIVED, d_working, func_n):
     import traceback
     from pkg_py.system_object.local_test_activate import LTA

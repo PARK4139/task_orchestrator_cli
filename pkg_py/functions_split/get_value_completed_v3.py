@@ -1,12 +1,12 @@
-from pkg_py.functions_split.ensure_pk_system_exit_silent import ensure_pk_system_exit_silent
-from pkg_py.functions_split.measure_seconds import measure_seconds
+from pkg_py.functions_split.ensure_seconds_measured import ensure_seconds_measured
 
 
-@measure_seconds
+@ensure_seconds_measured
 def get_value_completed_v3(message, options):
+    from pkg_py.functions_split.ensure_pk_system_exit_silent import ensure_pk_system_exit_silent
     from pkg_py.system_object.map_massages import PkMessages2025
     from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style
-    from pkg_py.functions_split.speak import speak
+    from pkg_py.functions_split.ensure_spoken import ensure_spoken
     from pkg_py.functions_split.is_path_like import is_path_like
 
     from prompt_toolkit import prompt
@@ -15,7 +15,7 @@ def get_value_completed_v3(message, options):
 
     func_n = inspect.currentframe().f_code.co_name
     if message.strip() == "x":
-        pk_speak(f"{func_n}() exited(intended)")
+        ensure_spoken(f"{func_n}() exited(intended)")
         return None
 
     seen = set()
