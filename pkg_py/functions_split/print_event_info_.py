@@ -37,7 +37,7 @@ from pkg_py.functions_split.is_f import is_f
 from pkg_py.system_object.is_os_windows import is_os_windows
 from pkg_py.functions_split.get_pnx_wsl_unix_style import get_pnx_wsl_unix_style
 
-from pkg_py.functions_split.get_pnx_list import get_pnx_list
+from pkg_py.functions_split.get_pnxs import get_pnxs
 
 
 def print_event_info_(event, thing_curious):

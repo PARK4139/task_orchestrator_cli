@@ -47,7 +47,7 @@ from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
 from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 
-from pkg_py.functions_split.get_pnx_list import get_pnx_list
+from pkg_py.functions_split.get_pnxs import get_pnxs
 
 
 def is_mouse_button_click_within_time_limit(key="left", time_limit=10):

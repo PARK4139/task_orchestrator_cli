@@ -11,7 +11,7 @@ from pkg_py.system_object.map_massages import PkMessages2025
 
 
 def reload_python_program_as_hot_reloader():
-    from pkg_py.functions_split.get_pnx_list import get_pnx_list
+    from pkg_py.functions_split.get_pnxs import get_pnxs
     from pkg_py.system_object.directories import D_PKG_PY
     # from pkg_py.workspace.pk_workspace import ensure_py_system_process_ran_by_pnx
     from pkg_py.functions_split.chcp_65001 import chcp_65001
@@ -36,14 +36,14 @@ def reload_python_program_as_hot_reloader():
     # mode = PkMessages2025.LOOP_MODE_N_SECONDS_INTERVAL  # pk_option
 
     key_name = 'file_to_monitor'
-    file_list = get_pnx_list(d_working=D_PK_FUNCTIONS_SPLIT, with_walking=0, filter_option="f")
-    file_list += get_pnx_list(d_working=D_PKG_PY, with_walking=0, filter_option="f")
+    file_list = get_pnxs(d_working=D_PK_FUNCTIONS_SPLIT, with_walking=0, filter_option="f")
+    file_list += get_pnxs(d_working=D_PKG_PY, with_walking=0, filter_option="f")
     file_to_monitor = get_value_via_fzf_or_history(key_name=key_name, options=file_list, file_id=get_file_id(key_name, func_n))
     file_to_monitor = get_pnx_os_style(file_to_monitor)
     ensure_printed(f'''file_to_monitor={file_to_monitor} {'%%%FOO%%%' if LTA else ''}''')
 
     key_name = 'file_to_excute'
-    file_list = get_pnx_list(d_working=D_PKG_PY, with_walking=0, filter_option="f")
+    file_list = get_pnxs(d_working=D_PKG_PY, with_walking=0, filter_option="f")
     file_to_excute = get_value_via_fzf_or_history(key_name=key_name, options=file_list, file_id=get_file_id(key_name, func_n))
     file_to_excute = get_pnx_os_style(file_to_excute)
     ensure_printed(f'''file_to_excute={file_to_excute} {'%%%FOO%%%' if LTA else ''}''')
@@ -57,8 +57,9 @@ def reload_python_program_as_hot_reloader():
     ]
     loop_cnt = 1
     # stable_seconds_limit = 4 # pk_option
+    # stable_seconds_limit = 3  # pk_option
+    stable_seconds_limit = 2 # pk_option
     # stable_seconds_limit = 1 # pk_option
-    stable_seconds_limit = 3  # pk_option
 
     window_title_to_kill = None
     file_to_excute = None

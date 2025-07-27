@@ -62,20 +62,20 @@ def ensure_video_loaded_at_losslesscut_v5(max_files=30):
     try:
         key_name = "d_working"
         file_to_working = get_file_id(key_name, func_n)
-        historical_pnx_list = get_historical_list(f=file_to_working)
-        options = historical_pnx_list + get_list_sorted(working_list=[D_PK_WORKING, D_DOWNLOADS], mode_asc=1)
+        historical_pnxs = get_historical_list(f=file_to_working)
+        options = historical_pnxs + get_list_sorted(working_list=[D_PK_WORKING, D_DOWNLOADS], mode_asc=1)
         d_working = get_value_completed(key_hint='d_working=', values=options)
-        ensure_printed(f'''[{PkMessages2025.DATA}] len(historical_pnx_list)={len(historical_pnx_list)} {'%%%FOO%%%' if LTA else ''}''')
+        ensure_printed(f'''[{PkMessages2025.DATA}] len(historical_pnxs)={len(historical_pnxs)} {'%%%FOO%%%' if LTA else ''}''')
         ensure_printed(f'''[{PkMessages2025.DATA}] len(options)={len(options)} {'%%%FOO%%%' if LTA else ''}''')
         d_working = get_pnx_os_style(pnx=d_working).strip()
-        values_to_save = [v for v in [d_working] + historical_pnx_list + options if does_pnx_exist(pnx=v)]
+        values_to_save = [v for v in [d_working] + historical_pnxs + options if does_pnx_exist(pnx=v)]
         values_to_save = get_list_calculated(origin_list=values_to_save, dedup=True)
         ensure_list_written_to_f(f=file_to_working, working_list=values_to_save, mode="w")
 
         ext_allowed_list = ['.mp4', '.mkv', '.avi', '.mov', '.wmv', '.flv', '.webm']
         video_ignored_keyword_list = ['-seg', 'SEG-']
         f_video_to_load = None
-        f_video_list_allowed = None
+        f_videos_allowed = None
         loop_cnt = 1
         state = {'running': 0, 'loading': 0, 'loaded': 0, 'playing': 0}
         prev_state = None
@@ -87,8 +87,8 @@ def ensure_video_loaded_at_losslesscut_v5(max_files=30):
 
             if f_video_to_load is None:
                 ensure_printed(f'''f_video_to_load is None {'%%%FOO%%%' if LTA else ''}''')
-                f_video_list_allowed = get_video_filtered_list(d_working, ext_allowed_list, video_ignored_keyword_list)[:max_files]
-                f_video_to_load = get_f_video_to_load(f_video_list_allowed)
+                f_videos_allowed = get_video_filtered_list(d_working, ext_allowed_list, video_ignored_keyword_list)[:max_files]
+                f_video_to_load = get_f_video_to_load(f_videos_allowed)
                 continue
 
             if state != prev_state:
@@ -96,7 +96,7 @@ def ensure_video_loaded_at_losslesscut_v5(max_files=30):
                 prev_state = state.copy()
 
             if not does_pnx_exist(pnx=f_video_to_load):
-                f_video_to_load = get_f_video_to_load(f_video_list_allowed)
+                f_video_to_load = get_f_video_to_load(f_videos_allowed)
                 pk_db.set_values(values=[str(INTERVAL_ORIGIN)], db_id=get_db_id(key_name="speed_control_interval_ms", func_n=func_n))
                 state['playing'] = 0
 

@@ -23,13 +23,13 @@ from PIL import Image
 from pkg_py.functions_split.ensure_pk_program_suicided import ensure_pk_program_suicided
 from pkg_py.functions_split.get_value_completed import get_value_completed
 from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style
-from pkg_py.functions_split.get_pnx_list import get_pnx_list
+from pkg_py.functions_split.get_pnxs import get_pnxs
 from pkg_py.functions_split.is_os_windows import is_os_windows
 from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style
 from pkg_py.functions_split.get_pnx_wsl_unix_style import get_pnx_wsl_unix_style
 
 from pkg_py.functions_split.ensure_printed import ensure_printed
-from pkg_py.functions_split.get_pnx_list import get_pnx_list
+from pkg_py.functions_split.get_pnxs import get_pnxs
 
 
 def ensure_docker_env():

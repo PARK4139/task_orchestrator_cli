@@ -6,7 +6,7 @@ from pkg_py.functions_split.get_video_filtered_list import get_video_filtered_li
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 from pkg_py.functions_split.get_list_sorted import get_list_sorted
 from bs4 import ResultSet
-from pkg_py.functions_split.get_pnx_list import get_pnx_list
+from pkg_py.functions_split.get_pnxs import get_pnxs
 from pkg_py.functions_split.get_pnx_wsl_unix_style import get_pnx_wsl_unix_style
 
 

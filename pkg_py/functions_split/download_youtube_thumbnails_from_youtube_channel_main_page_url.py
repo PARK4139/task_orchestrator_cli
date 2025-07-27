@@ -32,7 +32,7 @@ from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style
 from pkg_py.functions_split.get_pnx_windows_style import get_pnx_windows_style
 
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.functions_split.get_pnx_list import get_pnx_list
+from pkg_py.functions_split.get_pnxs import get_pnxs
 
 
 def download_youtube_thumbnails_from_youtube_channel_main_page_url(youtube_channel_main_page_url):

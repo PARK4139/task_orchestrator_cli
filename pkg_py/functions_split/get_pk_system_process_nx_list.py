@@ -79,15 +79,15 @@ from pkg_py.functions_split.get_pnx_wsl_unix_style import get_pnx_wsl_unix_style
 from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 
-from pkg_py.functions_split.get_pnx_list import get_pnx_list
+from pkg_py.functions_split.get_pnxs import get_pnxs
 
 
 def get_pk_system_process_nx_list():
-    # from pkg_py.system_object.files_and_directories_logic import get_pnx_os_style, get_nx, get_pnx_list
+    # from pkg_py.system_object.files_and_directories_logic import get_pnx_os_style, get_nx, get_pnxs
     # from pkg_py.system_object.get_list_calculated import get_list_calculated
     # from pkg_py.system_object.directories import D_PKG_PY
     nx_filtered = []
-    pnx_list = get_pnx_list(d_working=D_PKG_PY, with_walking=0)
+    pnx_list = get_pnxs(d_working=D_PKG_PY, with_walking=0)
     pnx_to_except = [rf"{D_PKG_PY}/__init__.py", f"{D_PKG_PY}/__pycache__"]
     pnx_to_except = [get_pnx_os_style(element) for element in pnx_to_except]
     pnx_excepted = get_list_calculated(origin_list=pnx_list, minus_list=pnx_to_except)

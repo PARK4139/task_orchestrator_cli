@@ -3,7 +3,7 @@ import inspect
 from pkg_py.functions_split.ensure_list_written_to_f import ensure_list_written_to_f
 from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.get_file_id import get_file_id
-from pkg_py.functions_split.get_pnx_list_from_d_working import get_pnxs_from_d_working
+from pkg_py.functions_split.get_pnxs_from_d_working import get_pnxs_from_d_working
 from pkg_py.functions_split.get_value_completed import get_value_completed
 from pkg_py.functions_split.get_value_via_fzf_or_history_routine import get_value_via_fzf_or_history_routine
 from pkg_py.functions_split.is_f import is_f

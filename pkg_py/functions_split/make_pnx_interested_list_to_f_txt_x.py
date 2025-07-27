@@ -73,7 +73,7 @@ from pkg_py.functions_split.get_pnx_windows_style import get_pnx_windows_style
 from pkg_py.functions_split.ensure_printed import ensure_printed
 
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.functions_split.get_pnx_list import get_pnx_list
+from pkg_py.functions_split.get_pnxs import get_pnxs
 from pkg_py.functions_split.get_d_working import get_d_working
 
 
@@ -87,7 +87,7 @@ def make_pnx_interested_list_to_f_txt_x(d_working_list, exclusion_list):
     write_cnt = 0
     write_cnt_limit = 1000000
     for pnx_interested in d_working_list:
-        pnxs_with_walking = get_pnx_list(d_working=pnx_interested, filter_option="f", with_walking=1)
+        pnxs_with_walking = get_pnxs(d_working=pnx_interested, filter_option="f", with_walking=1)
 
         # 'pnxs_exclude'를 set으로 변경하여 'in' 연산을 최적화
         func_n_file_cnt_txt = None

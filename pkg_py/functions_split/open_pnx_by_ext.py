@@ -5,7 +5,7 @@ from pkg_py.system_object.map_massages import PkMessages2025
 
 from functools import lru_cache
 
-@lru_cache(maxsize=1)
+# @lru_cache(maxsize=1)
 def ensure_pnx_opened_by_ext(pnx):
     from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_excuted_to_os
     from pkg_py.functions_split.get_pnx_windows_style import get_pnx_windows_style
@@ -24,6 +24,8 @@ def ensure_pnx_opened_by_ext(pnx):
             ext_to_program = {
                 '': ('explorer.exe', 'directory, opening in windows explorer'),
                 'txt': ('explorer.exe', 'text file, opening in windows explorer'),
+                'log': ('explorer.exe', 'text file, opening in windows explorer'),
+
                 'csv': ('explorer.exe', 'csv file, opening in excel'),
                 'xlsx': ('explorer.exe', 'excel file, opening in excel'),
                 'xlsm': ('explorer.exe', 'excel file, opening in excel'),

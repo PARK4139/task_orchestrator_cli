@@ -1,6 +1,5 @@
 from pkg_py.functions_split.ensure_files_renamed_and_filecontent_replaced import ensure_files_renamed_and_filecontent_replaced
-from pkg_py.system_object.directories import D_PK_FUNCTIONS_SPLIT, D_PKG_PY, D_PK_REFACTOR, D_PKG_WINDOWS, D_PKG_TXT, D_PKG_SH, D_PK_SYSTEM_OBJECT
-from pkg_py.system_object.directories_reuseable import D_PROJECT
+from pkg_py.system_object.directories import D_PK_FUNCTIONS_SPLIT, D_PKG_PY, D_PK_REFACTOR, D_PKG_WINDOWS, D_PKG_TXT
 
 # 사용 예시
 if __name__ == "__main__":
@@ -16,9 +15,8 @@ if __name__ == "__main__":
     ]
 
     target_extensions = [".py", ".cmd", ".bat", ".ps1", ".sh"]  # pk_option
-
-    oldstr = 'ensure_losslesscut_ran'
-    new_str = 'ensure_losslesscut_ran'
+    oldstr = rf'testtesttest'
+    new_str = rf'G:\Downloads'
     # new_str = "ensure_" + "losslesscut_reran"
 
     for d_target in d_targets:

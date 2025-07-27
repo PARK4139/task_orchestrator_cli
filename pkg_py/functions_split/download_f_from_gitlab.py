@@ -5,7 +5,7 @@ def download_f_from_gitlab(f_nx_remote_src, d_local_dst, gitlab_repo_url):
     'gitlab_repo_url : 192.168...'
 
     while 1:
-        pk_chdir(d_local_dst)
+        os.chdir(d_local_dst)
         ensure_command_excuted_to_os(cmd=f'git init')
         cmd = rf"git remote add -f origin http://{gitlab_repo_url}"
         std_list = ensure_command_excuted_to_os(cmd=cmd)

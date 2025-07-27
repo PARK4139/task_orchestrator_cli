@@ -35,7 +35,7 @@ from pkg_py.functions_split.get_pnx_wsl_unix_style import get_pnx_wsl_unix_style
 
 from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.ensure_printed import ensure_printed
-from pkg_py.functions_split.get_pnx_list import get_pnx_list
+from pkg_py.functions_split.get_pnxs import get_pnxs
 
 
 def get_f_video_of_d_working(d_working, ext_list_allowed):
@@ -52,15 +52,15 @@ def get_f_video_of_d_working(d_working, ext_list_allowed):
                 pass
     f_list_of_d_working = [os.path.join(d_working, f) for f in os.listdir(d_working)]
     ensure_printed(f'''len(f_list_of_d_working)={len(f_list_of_d_working)}  {'%%%FOO%%%' if LTA else ''}''')
-    f_video_list_allowed = [
+    f_videos_allowed = [
         f for f in f_list_of_d_working
         if os.path.splitext(f)[1].lower() in ext_list_allowed
            and not any(keyword in os.path.basename(f).lower() for keyword in ["seg", "temp"])
     ]
-    ensure_printed(f'''len(f_video_list_allowed)={len(f_video_list_allowed)}  {'%%%FOO%%%' if LTA else ''}''')
-    if f_video_list_allowed:
-        f_video_list_allowed.sort()
-        return f_video_list_allowed[0]
+    ensure_printed(f'''len(f_videos_allowed)={len(f_videos_allowed)}  {'%%%FOO%%%' if LTA else ''}''')
+    if f_videos_allowed:
+        f_videos_allowed.sort()
+        return f_videos_allowed[0]
     else:
         ensure_printed("조건에 맞는 f 없습니다.", print_color='red')
         return None

@@ -26,7 +26,7 @@ from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 
 from pkg_py.pk_system_object.local_test_activate import LTA
 from pkg_py.functions_split.ensure_printed import ensure_printed
-from pkg_py.functions_split.get_pnx_list import get_pnx_list
+from pkg_py.functions_split.get_pnxs import get_pnxs
 
 
 def cd(sys_argv):
@@ -49,7 +49,7 @@ def cd(sys_argv):
     f_cd_txt = os.path.join(D_PKG_TXT, "pk_cd.txt")
     if not does_pnx_exist(f_cd_txt):
         ensure_pnx_made(f_cd_txt, mode='f')
-    d_working_list = get_pnx_list(with_walking=0, d_working=get_d_working_in_python(), filter_option='d')
+    d_working_list = get_pnxs(with_walking=0, d_working=get_d_working_in_python(), filter_option='d')
     minus_list = [rf"{D_PKG_PY}/???.py"]
     minus_list = [get_pnx_os_style(element) for element in minus_list]
     plus_list = [

@@ -78,7 +78,7 @@ from Cryptodome.Cipher import AES
 from concurrent.futures import ThreadPoolExecutor
 from bs4 import ResultSet
 from base64 import b64encode
-from pkg_py.functions_split.get_pnx_list import get_pnx_list
+from pkg_py.functions_split.get_pnxs import get_pnxs
 from pkg_py.functions_split.get_list_calculated import get_list_calculated
 from pkg_py.functions_split.is_f import is_f
 from pkg_py.system_object.is_os_windows import is_os_windows

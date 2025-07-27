@@ -32,10 +32,7 @@ def ensure_function_name_python_file_created():
 
     while True:
         # 1. 디렉토리 경로 입력 받기
-        d_working = get_value_completed(
-            key_hint='d_working=',
-            values=[D_PKG_PY, D_PK_FUNCTIONS_SPLIT, D_SYSTEM_OBJECT]
-        )
+        d_working = get_value_completed(            key_hint='d_working=',            values=[D_PKG_PY, D_PK_FUNCTIONS_SPLIT, D_SYSTEM_OBJECT]        )
         d_working = get_pnx_os_style(d_working)
         if not os.path.isdir(d_working):
             logging.info(f"[{PkMessages2025.PATH_NOT_FOUND}] {d_working}")
@@ -52,9 +49,11 @@ def ensure_function_name_python_file_created():
             file_id = get_file_id(key_name, func_n)
             init_options = ["pk_ensure_", ]
         elif d_working == D_PK_FUNCTIONS_SPLIT:
-            key_name = 'python_file_name'
+            # key_name = 'python_file_name'
+            key_name = 'pk_python_file_name'
             file_id = get_file_id(key_name, func_n)
-            init_options = ["ensure_"]
+            # init_options = ["ensure_"]
+            init_options = [""]
         elif d_working == D_SYSTEM_OBJECT:
             key_name = 'python_system_object_file_name'
             file_id = get_file_id(key_name, func_n)

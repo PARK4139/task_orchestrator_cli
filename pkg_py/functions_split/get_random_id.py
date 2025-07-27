@@ -14,7 +14,7 @@ from pkg_py.system_object.local_test_activate import LTA
 from datetime import timedelta
 from bs4 import BeautifulSoup
 from pkg_py.system_object.etc import PK_UNDERLINE
-from pkg_py.functions_split.get_pnx_list import get_pnx_list
+from pkg_py.functions_split.get_pnxs import get_pnxs
 
 
 def get_random_id(length_limit: int):

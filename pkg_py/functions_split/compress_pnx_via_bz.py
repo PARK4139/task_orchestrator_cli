@@ -62,10 +62,10 @@ def compress_pnx_via_bz(pnx):
                 if (drive_where_target_is_located == drive):
                     os.system(rf"cd {drive}:")
             try:
-                pk_chdir(target_dirname)
+                os.chdir(target_dirname)
             except:
                 ensure_spoken_v2(str_working="경로를 이해할 수 없습니다", comma_delay=0.98)
-                pk_chdir(D_PROJECT)
+                os.chdir(D_PROJECT)
                 break
             lines = ensure_command_excuted_to_os_like_person_as_admin('dir /b /a-d *.zip')
             print_magenta(rf'''len(lines)={len(lines)}''')
@@ -101,7 +101,7 @@ def compress_pnx_via_bz(pnx):
                             except Exception:
                                 ensure_printed(f'''{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}''',
                                          print_color='red')
-                                pk_chdir(D_PROJECT)
+                                os.chdir(D_PROJECT)
                                 break
                             # 지금부터 7일 이전의 f만
                             # diff=time_to_backed_up__ - time_current
@@ -122,11 +122,11 @@ def compress_pnx_via_bz(pnx):
                                 except Exception:
                                     ensure_printed(f'''{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}''',
                                              print_color='red')
-                                    pk_chdir(D_PROJECT)
+                                    os.chdir(D_PROJECT)
                                     break
-            pk_chdir(D_PROJECT)
+            os.chdir(D_PROJECT)
             ensure_printed(f" {'%%%FOO%%%' if LTA else ''} green {ment}", print_color='blue')
             break
     except:
         ensure_printed(f'''{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
-        pk_chdir(D_PROJECT)
+        os.chdir(D_PROJECT)

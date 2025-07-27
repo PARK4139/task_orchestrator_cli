@@ -7,7 +7,7 @@ def ensure_pk_programs_killed():
     from pkg_py.functions_split.get_list_differenced import get_list_differenced
     from pkg_py.functions_split.get_list_that_element_applyed_via_func import get_list_that_element_applyed_via_func
     from pkg_py.functions_split.get_nx import get_nx
-    from pkg_py.functions_split.get_pnx_list_from_d_working import get_pnxs_from_d_working
+    from pkg_py.functions_split.get_pnxs_from_d_working import get_pnxs_from_d_working
     from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style
     from pkg_py.system_object.directories import D_PKG_PY
     from pkg_py.system_object.local_test_activate import LTA

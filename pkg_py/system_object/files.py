@@ -10,7 +10,7 @@ from pkg_py.system_object.directories_reuseable import D_PROJECT
 F_VPC_MAMNAGEMENT_MAP_TOML = f'{D_PKG_TOML}/vpc_mamnagement_map.toml'
 F_ALIAS_CMD = rf'{D_PKG_WINDOWS}/pk_alias.cmd'
 F_CONFIG_TOML = rf'{D_PROJECT}/pkg_toml/pk_config.toml'
-F_VIDEO_LIST_ALLOWED_TO_LOAD_TXT = rf'{D_PKG_TXT}/f_video_list_allowed_to_load.txt'
+F_VIDEO_LIST_ALLOWED_TO_LOAD_TXT = rf'{D_PKG_TXT}/f_videos_allowed_to_load.txt'
 F_LOCAL_PKG_CACHE = rf'{D_PROJECT}/pkg_alba/__pycache__/__init__.cpython-312.pyc'
 F_MEMO_TRASH_BIN_TOML = rf'{D_PKG_TOML}/memo_trash_bin.toml'
 F_MEMO_WORK_PK = rf"{D_PKG_PK}/pk_memo_working.pk"

@@ -27,7 +27,7 @@ def gather_pnxs_special():
     if not os.path.exists(dst):
         return
     services = os.path.dirname(dst)
-    pk_chdir(services)
+    os.chdir(services)
     storages = []
     cmd = rf'dir /b /s "{D_DOWNLOADS}"'
     lines = ensure_command_excuted_to_os_like_person_as_admin(cmd)
@@ -68,4 +68,4 @@ def gather_pnxs_special():
             except Exception as e:
                 ensure_printed(f'''{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
 
-    pk_chdir(starting_d)
+    os.chdir(starting_d)

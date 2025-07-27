@@ -35,7 +35,7 @@ from pkg_py.functions_split.ensure_pk_program_suicided import ensure_pk_program_
 from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style
 
 from pkg_py.functions_split.ensure_printed import ensure_printed
-from pkg_py.functions_split.get_pnx_list import get_pnx_list
+from pkg_py.functions_split.get_pnxs import get_pnxs
 
 
 def get_current_program_pid():

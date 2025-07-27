@@ -5,7 +5,7 @@ from pkg_py.system_object.encodings import Encoding
 from pkg_py.system_object.directories_reuseable import D_PROJECT
 from pkg_py.system_object.state_via_context import SpeedControlContext
 from pkg_py.functions_split.get_value_completed import get_value_completed
-from pkg_py.functions_split.get_pnx_list import get_pnx_list
+from pkg_py.functions_split.get_pnxs import get_pnxs
 
 
 def get_list_converted_from_byte_list_to_str_list(item_byte_list, encoding=None):

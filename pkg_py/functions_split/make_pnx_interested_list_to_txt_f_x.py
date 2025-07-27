@@ -2,7 +2,7 @@
 
 from pkg_py.functions_split.ensure_iterable_printed_as_vertical import ensure_iterable_printed_as_vertical
 from pkg_py.system_object.directories import D_PKG_TXT
-from pkg_py.functions_split.get_pnx_list import get_pnx_list
+from pkg_py.functions_split.get_pnxs import get_pnxs
 from pkg_py.functions_split.ensure_iterable_printed_as_vertical import ensure_iterable_printed_as_vertical
 
 
@@ -62,7 +62,7 @@ def make_pnx_interested_list_to_txt_f_x(pnx_interested_list=None, string_exclude
     write_cnt = 0
     write_cnt_limit = 1000000
     for pnx_interested in pnx_interested_list:
-        pnxs_with_walking = get_pnx_list(d_working=pnx_interested, filter_option="f", with_walking=1)
+        pnxs_with_walking = get_pnxs(d_working=pnx_interested, filter_option="f", with_walking=1)
 
         # 'pnxs_exclude'를 set으로 변경하여 'in' 연산을 최적화
         func_n_file_cnt_txt = None

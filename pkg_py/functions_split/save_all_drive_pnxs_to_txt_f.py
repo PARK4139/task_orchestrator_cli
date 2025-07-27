@@ -31,7 +31,7 @@ def save_all_drive_pnxs_to_txt_f():  # 이 함수는 Everything.exe 를 대체�
     f_cnt = 0
     f = open(D_PROJECT + '\\all_list.txt', 'a', encoding=Encoding.UTF8.value)  # >>  a    > w   각각 대응됨.
     for drive in drives:
-        pk_chdir(drive)
+        os.chdir(drive)
         for root, d_nx_list, f_nx_list in os.walk(os.getcwd()):  # 여기 또 os.getcwd() 있는 부분 수정하자..
             for f_nx in f_nx_list:
                 f_cnt = f_cnt + 1
@@ -90,7 +90,7 @@ def save_all_drive_pnxs_to_txt_f():  # 이 함수는 Everything.exe 를 대체�
     ensure_printed(f"{UNDERLINE}{UNDERLINE}all_list_proper.txt rewriting e", print_color='blue')
 
     ensure_printed(f"{UNDERLINE}{UNDERLINE}files opening s", print_color='blue')
-    pk_chdir(os.getcwd())
+    os.chdir(os.getcwd())
 
     # 윈도우냐 아니냐
     os.system("chcp 65001 >nul")

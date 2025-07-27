@@ -66,7 +66,7 @@ from bs4 import BeautifulSoup
 from base64 import b64encode
 from base64 import b64decode
 from pkg_py.system_object.etc import PkFilter, PK_UNDERLINE
-from pkg_py.functions_split.get_pnx_list import get_pnx_list
+from pkg_py.functions_split.get_pnxs import get_pnxs
 from pkg_py.system_object.directories import D_PKG_PY
 from pkg_py.functions_split.get_list_calculated import get_list_calculated
 from pkg_py.system_object.is_os_windows import is_os_windows

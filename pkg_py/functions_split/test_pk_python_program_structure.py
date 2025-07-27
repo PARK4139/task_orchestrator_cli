@@ -18,14 +18,15 @@ def test_pk_python_program_structure():
             colorama_init_once()
             ensure_window_title_replaced(get_nx(__file__))
 
-            state =  # write code here
+            # write code here
+            # state =
 
             ensure_process_killed(window_title=get_nx(__file__))  # pk_option
             # if state["state"]:
             #     ensure_process_killed(window_title=get_nx(__file__))  # pk_option
 
-            if LTA:
-                ensure_console_debuggable(ipdb)
+            # if LTA:
+            #     ensure_console_debuggable(ipdb)
         except Exception as exception:
             ensure_do_exception_routine(traceback=traceback, exception=exception)
         finally:

@@ -47,7 +47,7 @@ from dataclasses import dataclass
 from cryptography.hazmat.primitives import padding
 from base64 import b64encode
 from pkg_py.functions_split.get_value_completed import get_value_completed
-from pkg_py.functions_split.get_pnx_list import get_pnx_list
+from pkg_py.functions_split.get_pnxs import get_pnxs
 from pkg_py.functions_split.get_list_calculated import get_list_calculated
 from pkg_py.functions_split.is_os_windows import is_os_windows
 from pkg_py.functions_split.get_pnx_wsl_unix_style import get_pnx_wsl_unix_style

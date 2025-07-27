@@ -48,7 +48,7 @@ from colorama import init as pk_colorama_init
 from bs4 import ResultSet
 from pkg_py.functions_split.get_nx import get_nx
 from pkg_py.system_object.etc import PK_UNDERLINE
-from pkg_py.functions_split.get_pnx_list import get_pnx_list
+from pkg_py.functions_split.get_pnxs import get_pnxs
 from pkg_py.functions_split.get_list_calculated import get_list_calculated
 from pkg_py.functions_split.is_f import is_f
 from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style

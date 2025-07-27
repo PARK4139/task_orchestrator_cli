@@ -9,7 +9,7 @@ def push_pnx_to_github(d_working, git_repo_url, commit_msg, branch_n):
         return
     if not does_pnx_exist(pnx=d_working):
         ensure_pnx_made(pnx=d_working, mode='d')
-    pk_chdir(d_dst=d_working)
+    os.chdir(d_working)
     d_git = rf"{d_working}/.git"
     std_list = None
     state_done = [0, 0, 0, 0]

@@ -603,7 +603,7 @@ class PkProgramPerformanceOptimizingUtil:
             "{PROJECT_D}",
         ]
         """
-        current_directory_state = get_pnx_list_with_mtime_without_f_list_to_exclude(d_src=directory_pnx)  # str to dict
+        current_directory_state = get_pnxs_with_mtime_without_f_list_to_exclude(d_src=directory_pnx)  # str to dict
         current_directory_state = [f"{key}" for key, value in current_directory_state.items()]  # from dict to ["key\n"]   # 이건 함수는 테스트해보고, # noqa 처리 해야할 듯
         print(rf'type(current_directory_state) : {type(current_directory_state)}')
         print(rf'len(current_directory_state) : {len(current_directory_state)}')

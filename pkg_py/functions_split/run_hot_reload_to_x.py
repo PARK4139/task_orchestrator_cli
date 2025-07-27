@@ -27,7 +27,7 @@ def run_hot_reload_to_x():
     copy_pnx_with_overwrite(pnx=src, dst=dst)
 
     # cd
-    pk_chdir(dst)
+    os.chdir(dst)
 
     # call
     try:

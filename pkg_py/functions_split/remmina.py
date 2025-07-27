@@ -2,7 +2,7 @@
 import json
 from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_excuted_to_os
 
-from pkg_py.functions_split.get_pnx_list import get_pnx_list
+from pkg_py.functions_split.get_pnxs import get_pnxs
 
 
 def remmina(users, ip, remote_os_distro_n, wsl_window_title_seg, pw, exit_mode):

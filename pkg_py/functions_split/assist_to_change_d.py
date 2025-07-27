@@ -4,7 +4,7 @@ from pkg_py.functions_split.get_TBD_pnx_working_with_idx_dict import get_TBD_pnx
 from pkg_py.functions_split.get_d_working_in_python import get_pwd_in_python
 from pkg_py.functions_split.get_list_from_f import get_list_from_f
 from pkg_py.functions_split.get_nx import get_nx
-from pkg_py.functions_split.get_pnx_list import get_pnx_list
+from pkg_py.functions_split.get_pnxs import get_pnxs
 from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style
 from pkg_py.functions_split.is_os_windows import is_os_windows
 from pkg_py.functions_split.cd import cd
@@ -67,7 +67,7 @@ def assist_to_change_d():
         ensure_printed(f'''first_loop={first_loop} {'%%%FOO%%%' if LTA else ''}''')
 
     while 1:
-        d_working_list = get_pnx_list(with_walking=0, d_working=get_pwd_in_python(), filter_option='d')
+        d_working_list = get_pnxs(with_walking=0, d_working=get_pwd_in_python(), filter_option='d')
         d_working_with_idx_dict = get_TBD_pnx_working_with_idx_dict(origin_list=d_working_list, minus_list=minus_list,
                                                                     pnx_plus_list=plus_list)
 

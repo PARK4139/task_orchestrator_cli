@@ -51,7 +51,7 @@ def convert_mp4_to_wav(pnx):
     path_started = os.getcwd()
 
     os.system('mkdir storage')
-    pk_chdir('storage')
+    os.chdir('storage')
     if os.path.splitext(os.path.basename(pnx))[1] == '.mp4':
         from moviepy import VideoFileClip
         videoclip = VideoFileClip(pnx)
@@ -62,4 +62,4 @@ def convert_mp4_to_wav(pnx):
         audioclip.close()
         videoclip.close()
 
-    pk_chdir(path_started)
+    os.chdir(path_started)

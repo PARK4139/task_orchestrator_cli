@@ -33,7 +33,7 @@ from pkg_py.system_object.get_list_calculated import get_list_calculated
 from moviepy import VideoFileClip
 from Cryptodome.Random import get_random_bytes
 from pkg_py.functions_split.ensure_pk_program_suicided import ensure_pk_program_suicided
-from pkg_py.functions_split.get_pnx_list import get_pnx_list
+from pkg_py.functions_split.get_pnxs import get_pnxs
 from pkg_py.system_object.directories import D_PKG_PY
 from pkg_py.functions_split.get_list_calculated import get_list_calculated
 from pkg_py.functions_split.is_d import is_d

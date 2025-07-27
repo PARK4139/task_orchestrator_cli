@@ -9,7 +9,7 @@ from pkg_py.system_object.etc import PkFilter
 
 from functools import partial as functools_partial
 from collections import Counter
-from pkg_py.functions_split.get_pnx_list import get_pnx_list
+from pkg_py.functions_split.get_pnxs import get_pnxs
 from pkg_py.functions_split.is_d import is_d
 from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style
 

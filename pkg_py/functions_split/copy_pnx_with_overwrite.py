@@ -96,4 +96,4 @@ def copy_pnx_with_overwrite(pnx, dst):
     except:
         ensure_printed(f'''{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
 
-        pk_chdir(D_PROJECT)
+        os.chdir(D_PROJECT)

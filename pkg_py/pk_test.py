@@ -38,7 +38,7 @@ def test():
         #     # ensure_command_excuted_to_os('exit')
         #     # available_pk_python_program_pnx = get_pnx_from_fzf(D_PKG_PY)
         #     available_pk_python_program_pnx = None
-        #     pnx_list = get_pnx_list(d_working=D_PKG_PY, mode="f", with_walking=0)
+        #     pnx_list = get_pnxs(d_working=D_PKG_PY, mode="f", with_walking=0)
         #     for pnx in pnx_list:
         #         if __file__ not in pnx:
         #             continue

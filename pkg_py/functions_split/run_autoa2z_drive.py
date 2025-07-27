@@ -27,7 +27,7 @@ def run_autoa2z_drive():
             break
         if not is_window_opened(window_title_seg=window_title_seg):
             window_title_seg = "git log"
-            pk_chdir(d_dst=rf"{D_HOME}\source\repos\ms_proto_drive")
+            os.chdir(rf"{D_HOME}\source\repos\ms_proto_drive")
             cmd = rf' start cmd.exe /k "title {window_title_seg}&& git log" '
             ensure_printed(str_working=rf'''cmd="{cmd}"  {'%%%FOO%%%' if LTA else ''}''')
             ensure_command_excuted_to_os(cmd=cmd, mode="a")

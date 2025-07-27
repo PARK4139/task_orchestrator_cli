@@ -135,7 +135,7 @@ def compress_pnx_without_venv_and_idea_via_rar(pnx, d_dst, with_timestamp=1):
     ensure_pnx_made(pnx=d_dst, mode='d')
 
     # move
-    pk_chdir(p)
+    os.chdir(p)
 
     # todo 압축대상의 용량 확인
     ensure_printed("압축대상의 용량이 1GB 이상이면 1분 이상 걸릴 수 있습니다", print_color='blue')
@@ -165,7 +165,7 @@ def compress_pnx_without_venv_and_idea_via_rar(pnx, d_dst, with_timestamp=1):
     move_pnx_to_pk_recycle_bin(pnx=f_rar_wsl)
 
     # chdir
-    pk_chdir(working_d)
+    os.chdir(working_d)
 
     # logging
     if does_pnx_exist(pnx=f_rar_new_timestamp):

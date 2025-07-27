@@ -42,7 +42,7 @@ from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 
 from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.ensure_printed import ensure_printed
-from pkg_py.functions_split.get_pnx_list import get_pnx_list
+from pkg_py.functions_split.get_pnxs import get_pnxs
 from pkg_py.functions_split.get_d_working import get_d_working
 
 
@@ -67,6 +67,6 @@ def convert_wav_to_flac(pnx_wav):
         os.makedirs(destination)
     except Exception as e:
         pass
-    pk_chdir(destination)
+    os.chdir(destination)
     ensure_printed(f'"{ffmpeg_exe}" -i "{pnx_wav}" -c:a flac "{file_edited}"        를 수행합니다.', print_color='blue')
     subprocess.check_output(f'"{ffmpeg_exe}" -i "{pnx_wav}" -c:a flac "{file_edited}"', shell=True)

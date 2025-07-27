@@ -27,7 +27,7 @@ def upzip_pnx(pnx):
             pnx_basename = os.path.basename(pnx).split(".")[0]
             target_zip = rf'{pnx_dirname}\{pnx_basename}.zip'
 
-            pk_chdir(pnx_dirname)
+            os.chdir(pnx_dirname)
 
             if os.path.exists(target_zip):
                 # cmd=f'bandizip.exe bx "{target_zip}"'
@@ -40,9 +40,9 @@ def upzip_pnx(pnx):
                     ensure_printed("압축해제 후 압축f을 삭제에 실패")
             else:
                 ensure_printed("압축해제할 f이 없었습니다")
-            pk_chdir(D_PROJECT)
+            os.chdir(D_PROJECT)
             print_success("압축해제 성공")
             break
     except:
         ensure_printed(f'''{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
-        pk_chdir(D_PROJECT)
+        os.chdir(D_PROJECT)

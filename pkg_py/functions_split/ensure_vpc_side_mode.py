@@ -60,7 +60,7 @@ def ensure_vpc_side_mode(vpc_data, config_remote_os):
         d_temp = make_and_get_d_temp()
 
         # download f (a2z_xavier_launcher)
-        pk_chdir(d_temp)
+        os.chdir(d_temp)
         std_list = ensure_command_excuted_to_os(
             cmd="git clone -b packing_ai_framework --single-branch http://211.171.108.170:8003/ai_dept/a2z_xavier_launcher.git")
 
@@ -82,7 +82,7 @@ def ensure_vpc_side_mode(vpc_data, config_remote_os):
         d_temp = make_and_get_d_temp()
 
         # download xc_field.sh
-        pk_chdir(d_temp)
+        os.chdir(d_temp)
         f_remote_src = rf"{d_temp}/xc_field.sh"
         f_remote_src = get_pnx_unix_style(f_remote_src)
         f_nx = get_nx(f_remote_src)
@@ -178,7 +178,7 @@ def ensure_vpc_side_mode(vpc_data, config_remote_os):
         if not does_pnx_exist(pnx=f_remote_src):
             ensure_pnx_removed(d_temp)
             ensure_pnx_made(pnx=d_temp, mode='d')
-            pk_chdir(d_temp)
+            os.chdir(d_temp)
             token_gitlab_repo = get_token_from_f_token(f_token=rf'{D_PKG_TXT}\token_xc_field_gitlab_repo.txt',
                                                        initial_str=rf"")
             download_f_from_gitlab(f_nx_remote_src='xc_field.sh', d_local_dst=d_temp, gitlab_repo_url=token_gitlab_repo)

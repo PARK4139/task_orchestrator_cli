@@ -25,8 +25,8 @@ def convert_mp4_to_flac(pnx):
         os.makedirs(destination)
     except Exception as e:
         pass
-    pk_chdir(destination)
+    os.chdir(destination)
     ensure_printed(f'"{ffmpeg_exe}" -i "{pnx}" -c:a flac "{file_edited}"        를 수행합니다.', print_color='blue')
     subprocess.check_output(f'"{ffmpeg_exe}" -i "{pnx}" -c:a flac "{file_edited}"', shell=True)
 
-    pk_chdir(path_started)
+    os.chdir(path_started)

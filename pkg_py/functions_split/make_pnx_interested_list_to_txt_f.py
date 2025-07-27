@@ -2,7 +2,7 @@
 
 from pkg_py.system_object.directories import D_PKG_TXT
 from pkg_py.system_object.directories import D_PKG_TXT
-from pkg_py.functions_split.get_pnx_list import get_pnx_list
+from pkg_py.functions_split.get_pnxs import get_pnxs
 
 
 def make_pnx_interested_list_to_txt_f(pnx_interested_list=None, string_exclude=None):
@@ -60,7 +60,7 @@ def make_pnx_interested_list_to_txt_f(pnx_interested_list=None, string_exclude=N
     f_func_n_txt = rf"{D_PKG_TXT}\{func_n}.txt"
     ensure_str_writen_to_f(msg=f"", f=f_func_n_txt, mode="w")  # 내용 초기화
     for pnx_interested in pnx_interested_list:
-        pnxs_with_walking = get_pnx_list(d_working=pnx_interested, filter_option="f", with_walking=1)
+        pnxs_with_walking = get_pnxs(d_working=pnx_interested, filter_option="f", with_walking=1)
         for pnx_with_walking in pnxs_with_walking:
             if any(pnx_exclude in pnx_with_walking for pnx_exclude in string_exclude):
                 continue

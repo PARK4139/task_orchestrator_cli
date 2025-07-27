@@ -24,8 +24,8 @@ def convert_mp3_to_flac(f_mp3):
         os.makedirs(d_dst)
     except Exception as e:
         pass
-    pk_chdir(d_dst)
+    os.chdir(d_dst)
     ensure_printed(f'"{ffmpeg_exe}" -i "{f_mp3}" -c:a flac "{f_edited}"        를 수행합니다.', print_color='blue')
     subprocess.check_output(f'"{ffmpeg_exe}" -i "{f_mp3}" -c:a flac "{f_edited}"', shell=True)
 
-    pk_chdir(d_started)
+    os.chdir(d_started)

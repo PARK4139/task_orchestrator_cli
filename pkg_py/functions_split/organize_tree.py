@@ -51,7 +51,7 @@ from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style
 def organize_tree(d_working, with_walking):
     # src=rf"{USERPROFILE}\Downloads" # __init__.py   init_.py 가 되어 문제가 되었다.
     mode = 'f'
-    gather_f_useless_at_tree(d_working=d_working)
+    ensure_files_useless_gathered(d_working=d_working)
     rename_pnx_list_at_d(d_working=d_working, mode=mode, with_walking=with_walking)
     classify_pnx_list_at_tree(d_working=d_working, mode=mode, with_walking=with_walking)
     rename_pnx_list_at_d(d_working=d_working, mode=mode, with_walking=with_walking)
@@ -59,7 +59,7 @@ def organize_tree(d_working, with_walking):
     # empty_recycle_bin() # 비우기
 
     mode = 'd'
-    gather_f_useless_at_tree(d_working=d_working)
+    ensure_files_useless_gathered(d_working=d_working)
     rename_pnx_list_at_d(d_working=d_working, mode=mode, with_walking=with_walking)
     classify_pnx_list_at_tree(d_working=d_working, mode=mode, with_walking=with_walking)
     rename_pnx_list_at_d(d_working=d_working, mode=mode, with_walking=with_walking)

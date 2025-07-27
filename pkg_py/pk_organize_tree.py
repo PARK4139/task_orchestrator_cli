@@ -34,7 +34,7 @@ if __name__ == '__main__':
             global flag_to_detect_enter
 
             # [OPTION]
-            # d_working = rf"D:\[]"
+            # d_working = rf"G:\Downloads"
             d_working = D_PK_WORKING
 
             # [OPTION]

@@ -113,4 +113,4 @@ def convert_mp4_to_webm(src):
     os.system('mkdir storage >nul')
     os.chdir('storage')
     os.system(f'"{F_FFMPEG_EXE}" -i "{src}" -f webm -c:v libvpx -b:v 1M -acodec libvorbis "{file_edited}" -hide_banner')
-    pk_chdir(path_started)
+    os.chdir(path_started)

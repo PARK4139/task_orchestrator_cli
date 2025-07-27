@@ -25,7 +25,7 @@ from datetime import timedelta
 from datetime import datetime
 from bs4 import BeautifulSoup
 from base64 import b64encode
-from pkg_py.functions_split.get_pnx_list import get_pnx_list
+from pkg_py.functions_split.get_pnxs import get_pnxs
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 
 from pkg_py.functions_split.ensure_printed import ensure_printed

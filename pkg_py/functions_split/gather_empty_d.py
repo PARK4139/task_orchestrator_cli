@@ -10,7 +10,7 @@ def gather_empty_d(d_working: str, d_dst=None):
     d_src에서 빈 d를 찾아 d_dst 로 이동하는 함수.
     """
     if d_dst is None:
-        d_dst = r"D:\[]\[empty]"
+        d_dst = r"G:\Downloads\[empty]"
 
     ensure_pnx_made(pnx=d_dst, mode="d")  # 대상 d 생성
 

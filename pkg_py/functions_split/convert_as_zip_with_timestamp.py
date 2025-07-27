@@ -67,7 +67,7 @@ from cryptography.hazmat.primitives import padding
 from collections import Counter
 from pkg_py.functions_split.ensure_video_loaded_at_losslesscut import ensure_video_loaded_at_losslesscut
 from pkg_py.system_object.etc import PK_UNDERLINE
-from pkg_py.functions_split.get_pnx_list import get_pnx_list
+from pkg_py.functions_split.get_pnxs import get_pnxs
 from pkg_py.functions_split.get_list_calculated import get_list_calculated
 from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style
 from pkg_py.functions_split.get_pnx_windows_style import get_pnx_windows_style
@@ -93,7 +93,7 @@ def convert_as_zip_with_timestamp(f):
         target_zip = rf'$zip_{target_basename}.zip'
         target_yyyy_mm_dd_HH_MM_SS_zip = rf'{target_basename} - {get_time_as_("%Y %m %d %H %M %S")}.zip'
         # ensure_printed(rf'# target_dirname_dirname 로 이동')
-        pk_chdir(target_dirname_dirname)
+        os.chdir(target_dirname_dirname)
         # ensure_printed(rf'부모d로 백업')
         cmd = f'bandizip.exe c "{target_zip}" "{f}"'
         ensure_command_excuted_to_os_like_person_as_admin(cmd)
@@ -104,7 +104,7 @@ def convert_as_zip_with_timestamp(f):
         cmd = f'move "$deleted_{target_yyyy_mm_dd_HH_MM_SS_zip}" "{target_dirname}"'
         ensure_command_excuted_to_os_like_person_as_admin(cmd)
         # ensure_printed(rf'백업될 d로 이동')
-        pk_chdir(target_dirname)
+        os.chdir(target_dirname)
         # ensure_printed(str_working="os.getcwd()")
         # ensure_printed(os.getcwd())
         # ensure_printed(str_working="원본f삭제")
@@ -113,4 +113,4 @@ def convert_as_zip_with_timestamp(f):
         ensure_printed(f'''{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
     finally:
         ensure_printed(rf'프로젝트 d로 이동')
-        pk_chdir(starting_d)
+        os.chdir(starting_d)

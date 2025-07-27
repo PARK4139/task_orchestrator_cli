@@ -1,7 +1,7 @@
 def does_pnx_exist(pnx=None, nx=None):
     from pkg_py.system_object.local_test_activate import LTA
     from pkg_py.functions_split.ensure_printed import ensure_printed
-    from pkg_py.functions_split.get_pnx_list import get_pnx_list
+    from pkg_py.functions_split.get_pnxs import get_pnxs
     from pkg_py.functions_split.get_d_working import get_d_working
     import os
     # if LTA:
@@ -17,6 +17,6 @@ def does_pnx_exist(pnx=None, nx=None):
             # ensure_printed(f'''{pnx}  {'%%%FOO%%%' if LTA else ''} ''')
             return 0
     if nx:
-        if pnx in get_pnx_list(d_working=get_d_working(), with_walking=0):
+        if pnx in get_pnxs(d_working=get_d_working(), with_walking=0):
             if nx not in pnx:
                 return 0

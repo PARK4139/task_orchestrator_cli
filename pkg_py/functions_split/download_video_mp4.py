@@ -44,7 +44,7 @@ from fastapi import HTTPException
 from cryptography.hazmat.backends import default_backend
 from colorama import init as pk_colorama_init
 from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style
-from pkg_py.functions_split.get_pnx_list import get_pnx_list
+from pkg_py.functions_split.get_pnxs import get_pnxs
 from pkg_py.system_object.directories import D_PKG_PY
 from pkg_py.functions_split.is_f import is_f
 from pkg_py.functions_split.is_os_windows import is_os_windows

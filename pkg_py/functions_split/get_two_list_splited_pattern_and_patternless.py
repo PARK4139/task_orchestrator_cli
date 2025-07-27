@@ -7,7 +7,7 @@ from pkg_py.functions_split.get_f_loading_nx_by_pattern import get_f_loading_nx_
 from pkg_py.system_object.encodings import Encoding
 
 from datetime import date
-from pkg_py.functions_split.get_pnx_list import get_pnx_list
+from pkg_py.functions_split.get_pnxs import get_pnxs
 
 
 def get_two_list_splited_pattern_and_patternless(items, pattern):

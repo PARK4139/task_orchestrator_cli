@@ -15,7 +15,7 @@
 #     preview = True
 # _____________________________________________________________________ fzf
 # key_name = 'file_to_hot_reload'
-# values = get_pnx_list(d_working=D_PKG_PY, with_walking=0, filter_option="f")
+# values = get_pnxs(d_working=D_PKG_PY, with_walking=0, filter_option="f")
 # file_to_hot_reload = get_value_from_fzf(key_name=key_name, values=values)
 # file_to_hot_reload = get_pnx_os_style(file_to_hot_reload)
 # ensure_printed(f'''file_to_hot_reload={file_to_hot_reload} {'%%%FOO%%%' if LTA else ''}''')
