@@ -174,7 +174,7 @@
 # from pkg_py.functions_split.print_yellow import print_yellow
 # from pkg_py.functions_split.ensure_losslesscut_reran import ensure_losslesscut_reran
 # from pkg_py.functions_split.restore_workspace_from_latest_archive import restore_workspace_from_latest_archive
-# from pkg_py.functions_split.run_losslesscut import run_losslesscut
+# from pkg_py.functions_split.ensure_losslesscut_ran import ensure_losslesscut_ran
 # from pkg_py.functions_split.run_pk_python_program_by_path import run_pk_python_program_by_path
 # from pkg_py.functions_split.sanitize_filename import sanitize_filename
 # from pkg_py.functions_split.save_logged_set import save_logged_set

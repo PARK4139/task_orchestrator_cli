@@ -1,3 +1,4 @@
+from pkg_py.functions_split.ensure_losslesscut_ran import ensure_losslesscut_ran
 from pkg_py.system_object.directories import D_PKG_HISTORY
 
 
@@ -88,6 +89,8 @@ def ensure_video_loaded_at_losslesscut_v6(max_files=30):
         state = {'running': 0, 'loading': 0, 'loaded': 0, 'playing': 0}
         prev_state = None
 
+        ensure_losslesscut_reran()
+
         while True:
             ensure_text_divider_printed()
             ensure_console_paused()
@@ -114,7 +117,8 @@ def ensure_video_loaded_at_losslesscut_v6(max_files=30):
 
             if not is_losslesscut_running():
                 log_step("STATE= LOSSLESSCUT NOT RUNNING → RESTART")
-                ensure_losslesscut_reran()
+                # ensure_losslesscut_reran() # pk_option
+                ensure_losslesscut_ran()
                 state['running'] = 1
                 ensure_f_video_loaded_on_losslesscut(f_video_to_load)
                 state['playing'] = 0

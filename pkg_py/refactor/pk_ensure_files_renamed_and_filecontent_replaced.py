@@ -17,8 +17,8 @@ if __name__ == "__main__":
 
     target_extensions = [".py", ".cmd", ".bat", ".ps1", ".sh"]  # pk_option
 
-    oldstr = 'ensure_typed_v'
-    new_str = 'ensure_typed_v'
+    oldstr = 'ensure_losslesscut_ran'
+    new_str = 'ensure_losslesscut_ran'
     # new_str = "ensure_" + "losslesscut_reran"
 
     for d_target in d_targets:
