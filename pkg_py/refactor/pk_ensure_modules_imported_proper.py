@@ -95,7 +95,7 @@ from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
 #     while True:
 #         func_n = inspect.currentframe().f_code.co_name
 #         if LTA:
-#             d_working = D_FUNCTIONS_SPLIT
+#             d_working = D_PK_FUNCTIONS_SPLIT
 #             d_import_path_reference = D_PROJECT
 #             import_location = "lazy_import_location"
 #             exec_mode = PkMessages2025.PREVIEW

@@ -16,7 +16,7 @@ def make_pkg(dst):
     # back_up_pnx_to_dst(src=PROJECT_D, dst=ARCHIVED)
 
     # del # remove됨...유의
-    move_pnx_to_pk_recycle_bin(pnx=dst)
+    ensure_pnxs_move_to_recycle_bin(pnx=dst)
 
     # make
     ensure_pnx_made(pnx=dst, mode='d')

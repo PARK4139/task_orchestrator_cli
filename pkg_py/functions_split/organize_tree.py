@@ -1,67 +1,17 @@
-import zlib
-import yt_dlp
-import win32con
-import traceback
-import tomllib
-import threading
-import sys
-import shutil
-import random, math
-import pyaudio
-import psutil
-import pandas as pd
-import os.path
-from yt_dlp import YoutubeDL
-from urllib.parse import urlparse
-from typing import TypeVar, List
-from selenium.webdriver.support import expected_conditions as EC
-from pynput import mouse
-from prompt_toolkit.styles import Style
-from pkg_py.functions_split.is_losslesscut_running import is_losslesscut_running
-from pkg_py.functions_split.ensure_f_video_loaded_on_losslesscut import ensure_f_video_loaded_on_losslesscut
-from pkg_py.functions_split.is_window_opened import is_window_opened
-from pkg_py.functions_split.ensure_pressed import ensure_pressed
-from pkg_py.functions_split.ensure_printed import ensure_printed
-from pkg_py.functions_split.ensure_printed_once import ensure_printed_once
-from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_excuted_to_os
-
-from pkg_py.functions_split.ensure_console_cleared import ensure_console_cleared
-from pkg_py.system_object.files import F_POT_PLAYER_MINI_64_EXE
-from pkg_py.system_object.files import F_LOSSLESSCUT_EXE
-from pkg_py.system_object.files import F_HISTORICAL_PNX
-from pkg_py.system_object.files import F_FFMPEG_EXE
-from pkg_py.system_object.directories import D_PK_WORKING
-from pkg_py.system_object.map_massages import PkMessages2025
-from pkg_py.system_object.print_red import print_red
-from passlib.context import CryptContext
-from paramiko import SSHClient, AutoAddPolicy
-from functools import partial
-from enum import Enum
-from dataclasses import dataclass
-from cryptography.hazmat.primitives import padding
-from pkg_py.functions_split.get_nx import get_nx
-from pkg_py.functions_split.ensure_video_loaded_at_losslesscut import ensure_video_loaded_at_losslesscut
-from pkg_py.system_object.stamps import STAMP_TRY_GUIDE, STAMP_UNIT_TEST_EXCEPTION_DISCOVERED
-from pkg_py.functions_split.get_value_completed import get_value_completed
-from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style
-from pkg_py.functions_split.get_pnx_wsl_unix_style import get_pnx_wsl_unix_style
-from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style
-
-
 def organize_tree(d_working, with_walking):
     # src=rf"{USERPROFILE}\Downloads" # __init__.py   init_.py 가 되어 문제가 되었다.
     mode = 'f'
     ensure_files_useless_gathered(d_working=d_working)
-    rename_pnx_list_at_d(d_working=d_working, mode=mode, with_walking=with_walking)
+    ensure_pnxs_renamed(d_working=d_working, mode=mode, with_walking=with_walking)
     classify_pnx_list_at_tree(d_working=d_working, mode=mode, with_walking=with_walking)
-    rename_pnx_list_at_d(d_working=d_working, mode=mode, with_walking=with_walking)
+    ensure_pnxs_renamed(d_working=d_working, mode=mode, with_walking=with_walking)
     gather_empty_d(d_working=d_working)
     # empty_recycle_bin() # 비우기
 
     mode = 'd'
     ensure_files_useless_gathered(d_working=d_working)
-    rename_pnx_list_at_d(d_working=d_working, mode=mode, with_walking=with_walking)
+    ensure_pnxs_renamed(d_working=d_working, mode=mode, with_walking=with_walking)
     classify_pnx_list_at_tree(d_working=d_working, mode=mode, with_walking=with_walking)
-    rename_pnx_list_at_d(d_working=d_working, mode=mode, with_walking=with_walking)
+    ensure_pnxs_renamed(d_working=d_working, mode=mode, with_walking=with_walking)
     gather_empty_d(d_working=d_working)
     # empty_recycle_bin()  # 비우기

@@ -128,8 +128,8 @@ def compress_pnx_without_venv_and_idea_via_rar(pnx, d_dst, with_timestamp=1):
     f_rar_new_timestamp = rf"{d_dst}/{n}{timestamp}{_rar}"
 
     # remove
-    move_pnx_to_pk_recycle_bin(pnx=f_rar)
-    move_pnx_to_pk_recycle_bin(pnx=f_rar_new)
+    ensure_pnxs_move_to_recycle_bin(pnx=f_rar)
+    ensure_pnxs_move_to_recycle_bin(pnx=f_rar_new)
 
     # make d
     ensure_pnx_made(pnx=d_dst, mode='d')
@@ -161,8 +161,8 @@ def compress_pnx_without_venv_and_idea_via_rar(pnx, d_dst, with_timestamp=1):
         ensure_printed(f'''dst_nx={dst_nx} {'%%%FOO%%%' if LTA else ''}''')
         ensure_printed(f'''f_rar_wsl={f_rar_wsl}  {'%%%FOO%%%' if LTA else ''}''', print_color="blue")
     # move_pnx_to_trash_bin(src=f_rar_new)
-    move_pnx_to_pk_recycle_bin(pnx=dst_nx)
-    move_pnx_to_pk_recycle_bin(pnx=f_rar_wsl)
+    ensure_pnxs_move_to_recycle_bin(pnx=dst_nx)
+    ensure_pnxs_move_to_recycle_bin(pnx=f_rar_wsl)
 
     # chdir
     os.chdir(working_d)

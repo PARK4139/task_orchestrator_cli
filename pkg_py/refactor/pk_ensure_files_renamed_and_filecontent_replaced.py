@@ -15,8 +15,8 @@ if __name__ == "__main__":
     ]
 
     target_extensions = [".py", ".cmd", ".bat", ".ps1", ".sh"]  # pk_option
-    oldstr = rf'testtesttest'
-    new_str = rf'G:\Downloads'
+    oldstr = rf'ensure_todo_list_added'
+    new_str = rf'ensure_todo_list_added'
     # new_str = "ensure_" + "losslesscut_reran"
 
     for d_target in d_targets:

@@ -183,6 +183,7 @@ def ensure_video_loaded_at_losslesscut_v6(max_files=30):
         r'\d{2}\.\d{2}\.\d{2}-\d{2}\.\d{2}\.\d{2}',  # 00.00.58-00.46.21 패턴 (밀리초 없는 버전)
     ]
 
+
     key_name = "d_working"
     file_to_working = rf"{D_PKG_HISTORY}/{get_file_id(key_name, func_n)}.history"
     file_to_working = get_pnx_os_style(file_to_working)
@@ -190,7 +191,8 @@ def ensure_video_loaded_at_losslesscut_v6(max_files=30):
     options = historical_pnxs + get_list_sorted(working_list=[D_PK_WORKING, D_DOWNLOADS], mode_asc=1)
     if LTA:
         # d_working = rf"G:\Downloads\pk_working"
-        d_working = rf"G:\Downloads\pk_working\pk_working_s"
+        # d_working = rf"G:\Downloads\pk_working\pk_working_s"
+        d_working = get_value_completed(key_hint='d_working=', values=options)
     else:
         d_working = get_value_completed(key_hint='d_working=', values=options)
     d_working = get_pnx_os_style(pnx=d_working).strip()
@@ -199,6 +201,9 @@ def ensure_video_loaded_at_losslesscut_v6(max_files=30):
     values_to_save = [v for v in [d_working] + historical_pnxs + options if does_pnx_exist(pnx=v)]
     values_to_save = get_list_calculated(origin_list=values_to_save, dedup=True)
     ensure_list_written_to_f(f=file_to_working, working_list=values_to_save, mode="w")
+
+
+
     f_videos_allowed = get_video_filtered_list(d_working, ext_allowed_list, video_ignored_keyword_list, video_ignored_regex_patterns)[:max_files]
     f_video_to_load = get_f_video_to_load(f_videos_allowed)
 

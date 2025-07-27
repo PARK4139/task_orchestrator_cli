@@ -11,8 +11,6 @@ def run_jarvis():
     # jarvis 모드설정
     ensure_spoken("good evening, sir")
 
-
-
     def parse_time_ranges(text_list):
         """sample: ["12:00-13:00", "15:00-15:10"] -> [(time(12,0), time(13,0)), (time(15,0), time(15,10))]"""
         ranges = []

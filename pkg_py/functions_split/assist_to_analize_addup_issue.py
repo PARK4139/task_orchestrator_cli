@@ -133,7 +133,7 @@ def assist_to_analize_addup_issue():  # todo
     if does_pnx_exist(pnx=src_f):
         # remove Issues_list.csv
         while 1:
-            move_pnx_to_pk_recycle_bin(pnx=src_f)
+            ensure_pnxs_move_to_recycle_bin(pnx=src_f)
             if not does_pnx_exist(pnx=src_f):
                 break
     if not does_pnx_exist(pnx=src_f):

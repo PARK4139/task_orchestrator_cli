@@ -124,12 +124,12 @@ def remove_pnx_parmanently(pnx):
                         # shutil.rmtree(pnx_todo)
                         # if is_d(pnx_todo):
                         #     run_via_cmd_exe(rf'echo y | rmdir /s "{pnx_todo}"')
-                        move_pnx_to_pk_recycle_bin(pnx)
+                        ensure_pnxs_move_to_recycle_bin(pnx)
                     elif is_f(pnx):
                         # os.remove(pnx_todo)
                         # if is_f(pnx_todo):
                         #     run_via_cmd_exe(rf'echo y | del /f "{pnx_todo}"')
-                        move_pnx_to_pk_recycle_bin(pnx)
+                        ensure_pnxs_move_to_recycle_bin(pnx)
 
                     # ensure_printed(f" {'%%%FOO%%%' if LTA else ''} green {texts}" , print_color='blue)
                     # ensure_printed(f'''{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}''', print_color='red')

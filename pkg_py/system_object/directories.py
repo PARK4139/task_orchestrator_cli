@@ -57,7 +57,6 @@ D_ARCHIVED = rf"{D_DOWNLOADS}/pk_working/pk_archived"
 D_PKG_PK = rf'{D_PROJECT_PARENTS}/pk_memo/pkg_pk'
 D_PROJECT_MEMO = rf"{D_PROJECT_PARENTS}/pk_memo"
 
-# drive directory
 D_DEPRECATED_EXTERNAL = rf"G:/pk_deprecated"
 D_C_DRIVE = rf'C:/'
 D_D_DRIVE = rf'D:/'

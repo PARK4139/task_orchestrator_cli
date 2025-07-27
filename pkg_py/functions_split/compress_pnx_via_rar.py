@@ -67,7 +67,7 @@ def compress_pnx_via_rar(src, dst, with_timestamp=1):
     # ensure_printed(string = rf'''dst_nx_timestamp_rar="{dst_nx_timestamp_rar}"  {'%%%FOO%%%' if LTA else ''}''')
 
     # 삭제
-    move_pnx_to_pk_recycle_bin(pnx=pn_rar)
+    ensure_pnxs_move_to_recycle_bin(pnx=pn_rar)
 
     # 생성
     ensure_pnx_made(pnx=dst, mode='d')
@@ -91,8 +91,8 @@ def compress_pnx_via_rar(src, dst, with_timestamp=1):
     ensure_printed(str_working=rf'''desktop_nx="{dst_nx}"  {'%%%FOO%%%' if LTA else ''}''')
 
     # remove
-    move_pnx_to_pk_recycle_bin(pnx=dst_nx)
-    move_pnx_to_pk_recycle_bin(pnx=dst_nx_rar)
+    ensure_pnxs_move_to_recycle_bin(pnx=dst_nx)
+    ensure_pnxs_move_to_recycle_bin(pnx=dst_nx_rar)
 
     # chdir
     os.chdir(d_working)

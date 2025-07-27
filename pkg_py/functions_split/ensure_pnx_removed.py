@@ -1,7 +1,7 @@
 def ensure_pnx_removed(pnx):
     from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
     from pkg_py.functions_split.get_nx import get_nx
-    from pkg_py.functions_split.move_pnx_to_pk_recycle_bin import move_pnx_to_pk_recycle_bin
+    from pkg_py.functions_split.ensure_pnxs_move_to_recycle_bin import ensure_pnxs_move_to_recycle_bin
     from pkg_py.functions_split.ensure_printed import ensure_printed
     from pkg_py.system_object.local_test_activate import LTA
 
@@ -24,7 +24,7 @@ def ensure_pnx_removed(pnx):
         #     os.remove(pnx)
 
         # 3
-        move_pnx_to_pk_recycle_bin(pnx)
+        ensure_pnxs_move_to_recycle_bin(pnx)
     if not os.path.exists(pnx):
         ensure_printed(rf"[{func_n}] pnx={pnx} {'%%%FOO%%%' if LTA else ''}", print_color='green')
     else:

@@ -80,7 +80,7 @@ def copy_pnx_with_overwrite(pnx, dst):
 
         # remove
         if does_pnx_exist(pnx=f_zip_new):
-            move_pnx_to_pk_recycle_bin(pnx=f_zip_new)
+            ensure_pnxs_move_to_recycle_bin(pnx=f_zip_new)
 
         # compress
         compress_pnx_via_bz_exe(pnx=pnx, f_zip=f_zip)
@@ -92,7 +92,7 @@ def copy_pnx_with_overwrite(pnx, dst):
         pk_decompress_f_via_zip(f=f_zip_new)
 
         # remove
-        move_pnx_to_pk_recycle_bin(pnx=f_zip_new)
+        ensure_pnxs_move_to_recycle_bin(pnx=f_zip_new)
     except:
         ensure_printed(f'''{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
 
