@@ -1,3 +1,6 @@
+from pkg_py.system_object.directories import D_PKG_HISTORY
+
+
 def log_step(step_name: str, extra: str = ""):
     from pkg_py.functions_split.ensure_printed import ensure_printed
     from pkg_py.system_object.local_test_activate import LTA
@@ -62,7 +65,8 @@ def ensure_video_loaded_at_losslesscut_v6(max_files=30):
 
     try:
         key_name = "d_working"
-        file_to_working = get_file_id(key_name, func_n)
+        file_to_working = rf"{D_PKG_HISTORY}/{get_file_id(key_name, func_n)}.history"
+        file_to_working = get_pnx_os_style(file_to_working)
         historical_pnx_list = get_historical_list(f=file_to_working)
         options = historical_pnx_list + get_list_sorted(working_list=[D_PK_WORKING, D_DOWNLOADS], mode_asc=1)
         d_working = get_value_completed(key_hint='d_working=', values=options)
@@ -101,7 +105,6 @@ def ensure_video_loaded_at_losslesscut_v6(max_files=30):
                 log_step("STATE= VIDEO_NOT_FOUND → GET_NEXT")
                 f_video_to_load = get_f_video_to_load(f_video_list_allowed)
                 pk_db.set_values(values=[str(INTERVAL_ORIGIN)], db_id=get_db_id(key_name="speed_control_interval_ms", func_n=func_n))
-                ensure_video_playied_at_losslesscut()
                 state['playing'] = 0
 
             if state == {'running': 1, 'loading': 1, 'loaded': 1, 'playing': 0} and is_window_opened("정리 중 - LosslessCut"):
