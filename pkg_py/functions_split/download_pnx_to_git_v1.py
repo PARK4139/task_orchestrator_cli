@@ -81,7 +81,7 @@ from Cryptodome.Cipher import AES
 from bs4 import BeautifulSoup
 from pkg_py.functions_split.get_nx import get_nx
 from pkg_py.functions_split.ensure_video_loaded_at_losslesscut import ensure_video_loaded_at_losslesscut
-from pkg_py.functions_split.kill_self_pk_program import kill_self_pk_program
+from pkg_py.functions_split.ensure_pk_program_suicided import ensure_pk_program_suicided
 from pkg_py.functions_split.get_list_calculated import get_list_calculated
 from pkg_py.functions_split.is_d import is_d
 from pkg_py.system_object.is_os_windows import is_os_windows

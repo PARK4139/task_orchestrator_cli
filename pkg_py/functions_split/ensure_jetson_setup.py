@@ -75,7 +75,7 @@ from collections import Counter
 from bs4 import ResultSet
 from base64 import b64encode
 from pkg_py.functions_split.get_nx import get_nx
-from pkg_py.functions_split.kill_self_pk_program import kill_self_pk_program
+from pkg_py.functions_split.ensure_pk_program_suicided import ensure_pk_program_suicided
 from pkg_py.functions_split.get_pnx_list import get_pnx_list
 from pkg_py.system_object.directories import D_PKG_PY
 from pkg_py.functions_split.is_f import is_f

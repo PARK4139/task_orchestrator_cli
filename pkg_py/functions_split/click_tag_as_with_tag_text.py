@@ -36,7 +36,7 @@ from os import path
 from functools import partial as functools_partial
 from functools import partial
 from colorama import init as pk_colorama_init
-from pkg_py.functions_split.kill_self_pk_program import kill_self_pk_program
+from pkg_py.functions_split.ensure_pk_program_suicided import ensure_pk_program_suicided
 from pkg_py.system_object.etc import PK_UNDERLINE
 from pkg_py.functions_split.is_d import is_d
 from pkg_py.system_object.is_os_windows import is_os_windows

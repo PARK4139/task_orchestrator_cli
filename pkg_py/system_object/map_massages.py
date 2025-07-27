@@ -2,6 +2,7 @@ from pkg_py.functions_split.get_pk_program_language import get_pk_program_langua
 
 
 class PkMessages2025:
+    CASHE_USED = None
     FAILED = None
     COPIED = None
     CREATED = None
@@ -199,6 +200,7 @@ class PkMessages2025:
         "CREATED": {"kr": "생성", "en": "CREATED"},
         "COPIED": {"kr": "복사된", "en": "COPIED"},
         "FAILED": {"kr": "실패된", "en": "FAILED"},
+        "CASHE_USED": {"kr": "캐시 사용된", "en": "CASHE_USED".replace("_", "")},
 
     }
 

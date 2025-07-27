@@ -46,7 +46,7 @@ from Cryptodome.Random import get_random_bytes
 from concurrent.futures import ThreadPoolExecutor
 from pkg_py.functions_split.get_nx import get_nx
 from pkg_py.functions_split.ensure_video_loaded_at_losslesscut import ensure_video_loaded_at_losslesscut
-from pkg_py.functions_split.kill_self_pk_program import kill_self_pk_program
+from pkg_py.functions_split.ensure_pk_program_suicided import ensure_pk_program_suicided
 from pkg_py.functions_split.is_f import is_f
 from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
 from pkg_py.functions_split.ensure_printed import ensure_printed

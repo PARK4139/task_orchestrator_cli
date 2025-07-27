@@ -57,7 +57,7 @@ from Cryptodome.Random import get_random_bytes
 from colorama import init as pk_colorama_init
 from collections import Counter
 from base64 import b64decode
-from pkg_py.functions_split.kill_self_pk_program import kill_self_pk_program
+from pkg_py.functions_split.ensure_pk_program_suicided import ensure_pk_program_suicided
 from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style
 from pkg_py.functions_split.is_d import is_d
 from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux

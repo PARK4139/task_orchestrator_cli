@@ -1,6 +1,9 @@
 import os
 
-# from pkg_py.workspace.pk_workspace import ensure_git_project_pushed
+from pkg_py.functions_split.ensure_git_project_pushed import ensure_git_project_pushed
+from pkg_py.functions_split.ensure_process_killed import ensure_process_killed
+from pkg_py.functions_split.ensure_window_title_replaced import ensure_window_title_replaced
+from pkg_py.functions_split.get_nx import get_nx
 
 if __name__ == "__main__":
     try:
@@ -18,8 +21,11 @@ if __name__ == "__main__":
         from pkg_py.system_object.directories_reuseable import D_PROJECT
         from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
 
+        ensure_window_title_replaced(get_nx(__file__))
         os.chdir(D_PROJECT_MEMO)
-        ensure_git_project_pushed(with_commit_massage=False)
+        state = ensure_git_project_pushed(with_commit_massage=False)
+        if state["state"]:
+            ensure_process_killed(window_title=get_nx(__file__))  # pk_option
 
     except Exception as exception:
         ensure_do_exception_routine(traceback=traceback, exception=exception)

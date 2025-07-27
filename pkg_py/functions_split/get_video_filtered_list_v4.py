@@ -1,3 +1,6 @@
+from pkg_py.system_object.map_massages import PkMessages2025
+
+
 def get_video_filtered_list_v4(
         d_working,
         ext_allowed_list,
@@ -35,11 +38,11 @@ def get_video_filtered_list_v4(
                 cache = pickle.load(f)
             if time.time() - cache.get("timestamp", 0) < cache_ttl:
                 if verbose:
-                    ensure_printed(f"[CACHE] using video list cache from {f_cache}", print_color='cyan')
+                    ensure_printed(f"[{PkMessages2025.CASHE_USED}] using video list cache from {f_cache}", print_color='cyan')
                 return cache["video_list"]
         except Exception as e:
             if verbose:
-                ensure_printed(f"[CACHE] failed to load cache ({e}), will refresh", print_color='yellow')
+                ensure_printed(f"[{PkMessages2025.CASHE_USED}] failed to load cache ({e}), will refresh", print_color='yellow')
 
     # --- 파일 목록 가져오기 ---
     try:
@@ -76,9 +79,9 @@ def get_video_filtered_list_v4(
                     "video_list": filtered_list
                 }, f)
             if verbose:
-                ensure_printed(f"[CACHE] refreshed video list and saved to {f_cache}", print_color='green')
+                ensure_printed(f"[{PkMessages2025.CASHE_USED}] refreshed video list and saved to {f_cache}", print_color='green')
         except Exception as e:
             if verbose:
-                ensure_printed(f"[CACHE] failed to save cache ({e})", print_color='red')
+                ensure_printed(f"[{PkMessages2025.CASHE_USED}] failed to save cache ({e})", print_color='red')
 
     return filtered_list

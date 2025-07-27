@@ -61,7 +61,7 @@ from cryptography.hazmat.backends import default_backend
 from concurrent.futures import ThreadPoolExecutor
 from collections import Counter
 from bs4 import BeautifulSoup
-from pkg_py.functions_split.kill_self_pk_program import kill_self_pk_program
+from pkg_py.functions_split.ensure_pk_program_suicided import ensure_pk_program_suicided
 from pkg_py.functions_split.get_value_completed import get_value_completed
 from pkg_py.functions_split.is_f import is_f
 from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux

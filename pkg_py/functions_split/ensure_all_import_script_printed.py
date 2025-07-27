@@ -53,8 +53,8 @@ def get_modules_from_file(f_working):
             modules_parsed.add(line.strip())
     modules_parsed = sorted(modules_parsed, reverse=True)
     modules = []
-    for line_imported_pkg in modules_parsed:
-        modules.append(line_imported_pkg)
+    for line_enabled_pkg in modules_parsed:
+        modules.append(line_enabled_pkg)
     return modules
 
 

@@ -98,7 +98,7 @@ def ensure_wsl_usb_ip_connection_established(wsl_distro_n, config_remote_os):
     # todo : attach_remote_os_usb_connection() 를 ensure_wsl_usb_connection_attach() 에 병합
     import re
 
-    ensure_usbipd_installed(config_remote_os)
+    ensure_usbipd_enabled(config_remote_os)
 
     cmd = "usbipd list"  # watch -n 1 usbipd.exe list
     std_list = ensure_command_excuted_to_os(cmd=cmd, encoding=Encoding.UTF8)

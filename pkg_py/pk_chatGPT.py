@@ -4,7 +4,7 @@ from pkg_py.functions_split.should_i_search_to_chatGPT import should_i_search_to
 
 if __name__ == "__main__":
     try:
-        os.system(f"title {os.path.basename(__file__)}")  # TBD : 데코레이터로 전환
+        ensure_window_title_replaced(get_nx(__file__))
         while 1:
             should_i_search_to_chatGPT()
         if LTA:

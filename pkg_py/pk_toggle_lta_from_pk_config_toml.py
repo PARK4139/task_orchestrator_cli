@@ -3,7 +3,7 @@ if __name__ == "__main__":
         from pkg_py.functions_split.ensure_do_exception_routine import ensure_do_exception_routine
         from pkg_py.functions_split.ensure_do_finally_routine import ensure_do_finally_routine
         from pkg_py.functions_split.is_os_windows import is_os_windows
-        from pkg_py.functions_split.kill_self_pk_program import kill_self_pk_program
+        from pkg_py.functions_split.ensure_pk_program_suicided import ensure_pk_program_suicided
         from pkg_py.functions_split.colorama_init_once import colorama_init_once
         from pkg_py.functions_split.toggle_pk_config_key import toggle_pk_config_key
         from pkg_py.system_object.directories_reuseable import D_PROJECT
@@ -14,7 +14,7 @@ if __name__ == "__main__":
         colorama_init_once()
         pk_toggle_pk_config_key('LOCAL_TEST_ACTIVATE')
         if is_os_windows():
-            kill_self_pk_program(self_f=__file__)
+            ensure_pk_program_suicided(self_f=__file__)
     except Exception as exception:
         ensure_do_exception_routine(traceback=traceback, exception=exception)
 

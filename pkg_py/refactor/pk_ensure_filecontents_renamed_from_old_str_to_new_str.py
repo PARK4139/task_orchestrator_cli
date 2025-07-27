@@ -12,7 +12,7 @@ from pkg_py.functions_split.get_values_from_historical_file_routine import get_v
 from pkg_py.functions_split.restore_workspace_from_latest_archive import restore_workspace_from_latest_archive
 from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.system_object.map_massages import PkMessages2025
-from pkg_py.system_object.directories import D_FUNCTIONS_SPLIT, D_PKG_ARCHIVED
+from pkg_py.system_object.directories import D_PK_FUNCTIONS_SPLIT, D_PKG_ARCHIVED
 from pkg_py.system_object.directories import D_PKG_PY
 from pkg_py.system_object.directories_reuseable import D_PROJECT
 
@@ -95,7 +95,7 @@ def ensure_filecontents_renamed_from_old_str_to_new_str():
             d_working = get_values_from_historical_file_routine(
                 file_id=get_file_id(key_name, func_n),
                 key_hint=f'{key_name}=',
-                options_default=[D_FUNCTIONS_SPLIT, D_PKG_PY]
+                options_default=[D_PK_FUNCTIONS_SPLIT, D_PKG_PY]
             )[0]
 
             key_name = "old_str"

@@ -14,7 +14,7 @@ def test_pk_python_program_structure():
     if __name__ == "__main__":
         try:
             colorama_init_once()
-            os.system(f"title {os.path.basename(__file__)}")  # TBD : 데코레이터로 전환
+            ensure_window_title_replaced(get_nx(__file__))
 
             run_jarvis()
 

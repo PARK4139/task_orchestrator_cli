@@ -23,7 +23,7 @@ def run_project_docker_base(f, dockerfile_script_list):
     config_remote_os['pw'] = get_wsl_pw(wsl_distro_n)
     config_remote_os['local_ssh_public_key'] = os.path.join(D_HOME, ".ssh", "id_ed25519.pub")
     config_remote_os['local_ssh_private_key'] = os.path.expanduser("~/.ssh/id_ed25519")
-    ensure_wsl_distro_installed(wsl_distro_n=wsl_distro_n)
+    ensure_wsl_distro_enabled(wsl_distro_n=wsl_distro_n)
     ensure_wsl_distro_session(wsl_distro_n=wsl_distro_n)
 
     ip = config_remote_os['ip']

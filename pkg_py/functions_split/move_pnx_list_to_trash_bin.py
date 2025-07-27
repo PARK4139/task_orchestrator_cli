@@ -6,7 +6,7 @@ from pkg_py.functions_split.ensure_f_video_loaded_on_losslesscut import ensure_f
 from os.path import dirname
 from enum import Enum
 from Cryptodome.Random import get_random_bytes
-from pkg_py.functions_split.kill_self_pk_program import kill_self_pk_program
+from pkg_py.functions_split.ensure_pk_program_suicided import ensure_pk_program_suicided
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 
 

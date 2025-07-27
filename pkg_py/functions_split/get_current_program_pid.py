@@ -31,7 +31,7 @@ from moviepy import VideoFileClip
 from fastapi import HTTPException
 from enum import Enum
 from cryptography.hazmat.backends import default_backend
-from pkg_py.functions_split.kill_self_pk_program import kill_self_pk_program
+from pkg_py.functions_split.ensure_pk_program_suicided import ensure_pk_program_suicided
 from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style
 
 from pkg_py.functions_split.ensure_printed import ensure_printed

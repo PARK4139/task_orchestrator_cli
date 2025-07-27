@@ -47,7 +47,7 @@ def ensure_remote_os_ip_usb_connection(config_remote_os, remote_os_distro_n=None
 
     import time
 
-    ensure_usbipd_installed(config_remote_os)
+    ensure_usbipd_enabled(config_remote_os)
 
     ensure_command_excuted_to_os(cmd="wsl --shutdown", encoding=Encoding.UTF8)
 

@@ -1,7 +1,9 @@
 def test_pk_python_program_structure():
-    import os
+    from pkg_py.functions_split.ensure_process_killed import ensure_process_killed
     import traceback
 
+    from pkg_py.functions_split.ensure_window_title_replaced import ensure_window_title_replaced
+    from pkg_py.functions_split.get_nx import get_nx
     import ipdb
 
     from pkg_py.functions_split.ensure_console_debuggable import ensure_console_debuggable
@@ -14,14 +16,17 @@ def test_pk_python_program_structure():
     if __name__ == "__main__":
         try:
             colorama_init_once()
-            os.system(f"title {os.path.basename(__file__)}")  # TBD : 데코레이터로 전환
-            # ensure_printed(f'''{PkMessages2025.NOT_PREPARED_YET}{'%%%FOO%%%' if LTA else ''}''', print_color='green', mode_verbose=0) # write code here
-            # ensure_this_code_operated(ipdb)
+            ensure_window_title_replaced(get_nx(__file__))
+
+            state =  # write code here
+
+            ensure_process_killed(window_title=get_nx(__file__))  # pk_option
+            # if state["state"]:
+            #     ensure_process_killed(window_title=get_nx(__file__))  # pk_option
+
             if LTA:
                 ensure_console_debuggable(ipdb)
         except Exception as exception:
             ensure_do_exception_routine(traceback=traceback, exception=exception)
         finally:
             ensure_do_finally_routine(D_PROJECT=D_PROJECT, __file__=__file__, STAMP_TRY_GUIDE=STAMP_TRY_GUIDE)
-
-

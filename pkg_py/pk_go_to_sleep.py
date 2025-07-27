@@ -1,7 +1,7 @@
 if __name__ == "__main__":
     try:
         import traceback
-        # from pkg_py.system_object.500_live_logic import back_up_pnx, kill_os, is_office_pc, is_internet_connected, save_power_as_s3, ensure_process_killed_as_async, pk_run_process_as_async, restart_f_list_with_new_window_as_async
+        # from pkg_py.system_object.500_live_logic import back_up_pnx, ensure_os_shutdown, is_office_pc, is_internet_connected, save_power_as_s3, ensure_process_killed_as_async, pk_run_process_as_async, restart_f_list_with_new_window_as_async
         # from pkg_py.system_object.500_live_logic import back_up_pnx_without_venv_and_idea
         # from pkg_py.system_object.500_live_logic import copy, is_day
         # from pkg_py.system_object.500_live_logic import assist_to_upload_pnx_to_git, get_time_as_, get_pk_token
@@ -30,7 +30,7 @@ if __name__ == "__main__":
 
         # 3 kill or lock os
         if is_office_pc():
-            kill_os()
+            ensure_os_shutdown()
         else:
             # make_os_power_saving_mode_as_s3()
             f_py_list = [

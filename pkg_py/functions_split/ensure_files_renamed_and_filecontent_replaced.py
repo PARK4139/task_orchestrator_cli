@@ -1,16 +1,22 @@
 import os
-from pkg_py.system_object.directories import D_FUNCTIONS_SPLIT, D_PKG_PY, D_REFACTOR, D_PK_SYSTEM_OBJECT
-def ensure_files_renamed_and_filecontent_replaced(d_target, oldstr, new_str):
+from pkg_py.system_object.directories import D_PK_FUNCTIONS_SPLIT, D_PKG_PY, D_PK_REFACTOR, D_PK_SYSTEM_OBJECT
+
+def ensure_files_renamed_and_filecontent_replaced(d_target, oldstr, new_str, target_extensions=None):
+    target_extensions  = target_extensions or [".py", ".cmd", ".bat", ".ps1", ".sh"]
+
     d_target = os.path.abspath(d_target)
 
     if not os.path.isdir(d_target):
         print(f"[ERROR] 디렉토리 없음: {d_target}")
         return
 
+    # ✨ 처리할 확장자 목록 (유지보수 편하게 리스트로)
+
+
     for root, dirs, files in os.walk(d_target):
         for filename in files:
-            if not filename.endswith('.py'):
-                continue  # .py 파일만 처리
+            if not any(filename.lower().endswith(ext) for ext in target_extensions):
+                continue  # 지정된 확장자 외 파일은 스킵
 
             old_path = os.path.join(root, filename)
             modified = False
@@ -39,4 +45,5 @@ def ensure_files_renamed_and_filecontent_replaced(d_target, oldstr, new_str):
                 modified = True
 
             if not modified:
-                print(f"[SKIP] 변경 없음: {old_path}")
+                # print(f"[SKIP] 변경 없음: {old_path}") # pk_option
+                pass

@@ -1,6 +1,6 @@
 from pkg_py.functions_split.download_youtube_video_via_yt_dlp_v2 import download_youtube_video_via_yt_dlp_v2
 from pkg_py.functions_split.ensure_pnx_made import ensure_pnx_made
-from pkg_py.functions_split.ensure_ubuntu_pkg_installed import ensure_ubuntu_pkg_installed
+from pkg_py.functions_split.ensure_ubuntu_pkg_enabled import ensure_ubuntu_pkg_enabled
 from pkg_py.functions_split.ensure_window_to_front import ensure_window_to_front
 from pkg_py.functions_split.get_f_contained_feature_str import get_f_contained_feature_str
 from pkg_py.functions_split.get_list_deduplicated import get_list_deduplicated
@@ -8,7 +8,7 @@ from pkg_py.functions_split.get_list_from_f import get_list_from_f
 from pkg_py.functions_split.get_nx import get_nx
 from pkg_py.functions_split.get_p import get_p
 from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style
-from pkg_py.functions_split.get_pnx_ubuntu_pkg_installed import get_pnx_ubuntu_pkg_installed
+from pkg_py.functions_split.get_pnx_ubuntu_pkg_enabled import get_pnx_ubuntu_pkg_enabled
 from pkg_py.functions_split.get_youtube_video_metadata import get_youtube_video_metadata
 from pkg_py.functions_split.is_os_windows import is_os_windows
 from pkg_py.functions_split.mark_url_as_done import mark_url_as_done
@@ -48,8 +48,8 @@ def download_youtube_videos(urls=None):
     if is_os_windows():
         D_FFMPEG_LOCATION = get_pnx_os_style(get_p(F_FFMPEG_EXE))
     else:
-        ensure_ubuntu_pkg_installed('ffmpeg')
-        D_FFMPEG_LOCATION = get_pnx_ubuntu_pkg_installed('ffmpeg')
+        ensure_ubuntu_pkg_enabled('ffmpeg')
+        D_FFMPEG_LOCATION = get_pnx_ubuntu_pkg_enabled('ffmpeg')
 
     if urls is None:
         ensure_pnx_opened_by_ext(f_func_txt)

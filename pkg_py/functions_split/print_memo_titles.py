@@ -75,7 +75,7 @@ from concurrent.futures import ThreadPoolExecutor
 from bs4 import ResultSet
 from base64 import b64encode
 from base64 import b64decode
-from pkg_py.functions_split.kill_self_pk_program import kill_self_pk_program
+from pkg_py.functions_split.ensure_pk_program_suicided import ensure_pk_program_suicided
 from pkg_py.functions_split.get_value_completed import get_value_completed
 from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style
 from pkg_py.system_object.directories import D_PKG_PY

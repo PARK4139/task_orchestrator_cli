@@ -7,7 +7,7 @@ if __name__ == "__main__":
 
         from colorama import init as pk_colorama_init
 
-        # from pkg_py.system_object.500_live_logic import copy, ensure_command_excuted_to_os, is_os_windows, kill_self_pk_program, LTA
+        # from pkg_py.system_object.500_live_logic import copy, ensure_command_excuted_to_os, is_os_windows, ensure_pk_program_suicided, LTA
         #, STAMP_TRY_GUIDE, D_PROJECT, STAMP_UNIT_TEST_EXCEPTION_DISCOVERED
         #
 
@@ -17,7 +17,7 @@ if __name__ == "__main__":
             ensure_command_excuted_to_os(cmd='mkdir %USERPROFILE%\Downloads\pk_working\pk_temp')
 
         if not LTA:
-            kill_self_pk_program(self_f=__file__)
+            ensure_pk_program_suicided(self_f=__file__)
 
     except Exception as exception:
         ensure_do_exception_routine(traceback=traceback, exception=exception)

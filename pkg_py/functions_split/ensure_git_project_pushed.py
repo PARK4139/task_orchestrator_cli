@@ -1,5 +1,6 @@
-
 step_counter = 1
+
+
 def ensure_git_project_pushed(with_commit_massage=True):
     import inspect
     import os
@@ -20,7 +21,6 @@ def ensure_git_project_pushed(with_commit_massage=True):
     from pkg_py.system_object.etc import PK_UNDERLINE
     from pkg_py.system_object.local_test_activate import LTA
     from pkg_py.system_object.map_massages import PkMessages2025
-
 
     SCRIPT_NAME = Path(__file__).name
     func_n = inspect.currentframe().f_code.co_name
@@ -124,3 +124,7 @@ def ensure_git_project_pushed(with_commit_massage=True):
 
     duration = time.time() - start_time
     print(f"{PK_ANSI_COLOR_MAP['GREEN']}ALL PROCESS COMPLETED SUCCESSFULLY. TOTAL EXECUTION TIME: {duration:.2f} SECONDS {PK_ANSI_COLOR_MAP['RESET']}")
+
+    return {
+        "state": True
+    }

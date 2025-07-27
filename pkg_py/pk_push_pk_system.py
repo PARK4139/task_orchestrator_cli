@@ -1,6 +1,9 @@
 import os
 
 from pkg_py.functions_split.ensure_git_project_pushed import ensure_git_project_pushed
+from pkg_py.functions_split.ensure_process_killed import ensure_process_killed
+from pkg_py.functions_split.ensure_window_title_replaced import ensure_window_title_replaced
+from pkg_py.functions_split.get_nx import get_nx
 
 if __name__ == "__main__":
     try:
@@ -27,8 +30,11 @@ if __name__ == "__main__":
         # window_title_to_kill = python_filename
         # pk_ensure_process_killed(window_title=get_nx(window_title_to_kill)) # pk_option
 
+        ensure_window_title_replaced(get_nx(__file__))
         os.chdir(D_PROJECT)
-        ensure_git_project_pushed(with_commit_massage=False)
+        state = ensure_git_project_pushed(with_commit_massage=False)
+        if state["state"]:
+            ensure_process_killed(window_title=get_nx(__file__)) # pk_option
 
         # SCRIPT_NAME = Path(__file__).name
         # colorama_init_once()
@@ -37,9 +43,6 @@ if __name__ == "__main__":
         # TBD branch_name
         # TBD git_repo_url
         # push_pnx_to_github(d_working=D_PROJECT, git_repo_url=git_repo_url, commit_msg=commit_msg, branch_n='dev')
-
-
-
 
     except Exception as exception:
         ensure_do_exception_routine(traceback=traceback, exception=exception)

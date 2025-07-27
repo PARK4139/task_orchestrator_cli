@@ -53,7 +53,7 @@ from datetime import datetime, time
 from dataclasses import dataclass
 from concurrent.futures import ThreadPoolExecutor
 from bs4 import BeautifulSoup
-from pkg_py.functions_split.kill_self_pk_program import kill_self_pk_program
+from pkg_py.functions_split.ensure_pk_program_suicided import ensure_pk_program_suicided
 from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style
 from pkg_py.functions_split.get_pnx_list import get_pnx_list
 from pkg_py.system_object.directories import D_PKG_PY

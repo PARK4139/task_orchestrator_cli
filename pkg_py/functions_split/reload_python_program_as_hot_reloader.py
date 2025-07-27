@@ -6,7 +6,7 @@ from pkg_py.functions_split.ensure_slept import ensure_slept
 from pkg_py.functions_split.get_file_id import get_file_id
 from pkg_py.functions_split.get_value_via_fzf_or_history import get_value_via_fzf_or_history
 from pkg_py.functions_split.is_process_killed import is_process_killed
-from pkg_py.system_object.directories import D_FUNCTIONS_SPLIT
+from pkg_py.system_object.directories import D_PK_FUNCTIONS_SPLIT
 from pkg_py.system_object.map_massages import PkMessages2025
 
 
@@ -36,7 +36,7 @@ def reload_python_program_as_hot_reloader():
     # mode = PkMessages2025.LOOP_MODE_N_SECONDS_INTERVAL  # pk_option
 
     key_name = 'file_to_monitor'
-    file_list = get_pnx_list(d_working=D_FUNCTIONS_SPLIT, with_walking=0, filter_option="f")
+    file_list = get_pnx_list(d_working=D_PK_FUNCTIONS_SPLIT, with_walking=0, filter_option="f")
     file_list += get_pnx_list(d_working=D_PKG_PY, with_walking=0, filter_option="f")
     file_to_monitor = get_value_via_fzf_or_history(key_name=key_name, options=file_list, file_id=get_file_id(key_name, func_n))
     file_to_monitor = get_pnx_os_style(file_to_monitor)
@@ -87,10 +87,10 @@ def reload_python_program_as_hot_reloader():
                     ensure_printed("Confirmed stable after changes (step 2)", print_color='green')
                     for f in files_to_execute:
                         ensure_printed("Killing old process (step 3)", print_color='green')
-                        ensure_process_killed(window_title=get_nx(window_title_to_kill))
+                        ensure_process_killed(window_title=window_title_to_kill)
                         if not is_process_killed(window_title_seg=get_nx(f)):
                             ensure_printed("Old process still alive, retrying kill (step 4)", print_color='green')
-                            ensure_process_killed(window_title=get_nx(window_title_to_kill))
+                            ensure_process_killed(window_title=window_title_to_kill)
                         else:
                             ensure_printed("Old process terminated successfully (step 5)", print_color='green')
                         file_to_excute = f
@@ -111,15 +111,15 @@ def reload_python_program_as_hot_reloader():
                     # pk_run_process(pk_program_n_seg=get_nx(f))
                     file_to_excute = f
                     ensure_py_system_process_ran_by_pnx(file_to_excute=file_to_excute, file_title=get_nx(file_to_excute))
-                    # window_title_to_kill = get_nx(f)  # pk_option
-                    window_title_to_kill = f  # pk_option
+                    window_title_to_kill = get_nx(f)  # pk_option
+                    # window_title_to_kill = f  # pk_option
                 loop_cnt = loop_cnt + 1
                 continue
             for f in files_to_execute:
-                ensure_process_killed(window_title=get_nx(window_title_to_kill))
+                ensure_process_killed(window_title=window_title_to_kill)
                 while 1:
                     if not is_process_killed(window_title_seg=get_nx(f)):
-                        ensure_process_killed(window_title=get_nx(window_title_to_kill))
+                        ensure_process_killed(window_title=window_title_to_kill)
                         file_to_excute = f
                     else:
                         break

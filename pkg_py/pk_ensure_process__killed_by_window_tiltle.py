@@ -7,7 +7,7 @@ if __name__ == "__main__":
 
         from colorama import init as pk_colorama_init
 
-        # from pkg_py.system_object.500_live_logic import copy, kill_self_pk_program, LTA, get_windows_opened, ensure_process_killed, get_value_completed, get_set_from_list
+        # from pkg_py.system_object.500_live_logic import copy, ensure_pk_program_suicided, LTA, get_windows_opened, ensure_process_killed, get_value_completed, get_set_from_list
         #, STAMP_TRY_GUIDE, D_PROJECT, STAMP_UNIT_TEST_EXCEPTION_DISCOVERED
         #
 
@@ -19,7 +19,7 @@ if __name__ == "__main__":
         ensure_process_killed(window_title=window_title)
 
         if not LTA:
-            kill_self_pk_program(self_f=__file__)
+            ensure_pk_program_suicided(self_f=__file__)
     except:
         # traceback_format_exc_list = traceback.format_exc().split("\n")
         # ensure_printed(str_working=f'{PK_UNDERLINE}', print_color='red')

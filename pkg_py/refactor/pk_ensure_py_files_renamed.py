@@ -47,7 +47,7 @@ from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
 if __name__ == "__main__":
     try:
         colorama_init_once()
-        os.system(f"title {os.path.basename(__file__)}")  # TBD : 데코레이터로 전환
+        ensure_window_title_replaced(get_nx(__file__))
         ensure_py_files_renamed()
         if LTA:
             ensure_console_debuggable(ipdb)

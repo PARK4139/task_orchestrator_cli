@@ -22,7 +22,7 @@ from os.path import dirname
 from cryptography.hazmat.primitives import padding
 from bs4 import ResultSet
 from base64 import b64encode
-from pkg_py.functions_split.kill_self_pk_program import kill_self_pk_program
+from pkg_py.functions_split.ensure_pk_program_suicided import ensure_pk_program_suicided
 from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 

@@ -1226,10 +1226,10 @@ class GuiUtil:
         #     speak_that_service_is_in_preparing()
         #
         # # @rpa_program_method_decorator
-        # # def should_i_shutdown_this_computer(self):
+        # # def should_i_ensure_os_shutdown(self):
         # #     func_n = inspect.currentframe().f_code.co_name
         # #     ensure_printed(str_working=rf'''%%%FOO%%%''')
-        # #     should_i_shutdown_this_computer()
+        # #     should_i_ensure_os_shutdown()
         #
         # @rpa_program_method_decorator
         # def shoot_screenshot_custom(self):

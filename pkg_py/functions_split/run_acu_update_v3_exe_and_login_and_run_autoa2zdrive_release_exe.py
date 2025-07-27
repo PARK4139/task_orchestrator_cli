@@ -20,7 +20,7 @@ from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_e
 from functools import partial
 from cryptography.hazmat.backends import default_backend
 from pkg_py.functions_split.get_nx import get_nx
-from pkg_py.functions_split.kill_self_pk_program import kill_self_pk_program
+from pkg_py.functions_split.ensure_pk_program_suicided import ensure_pk_program_suicided
 from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 

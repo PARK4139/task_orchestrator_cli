@@ -1,7 +1,7 @@
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 from pkg_py.functions_split.download_youtube_video_via_yt_dlp import download_youtube_video_via_yt_dlp
 from pkg_py.functions_split.ensure_pnx_made import ensure_pnx_made
-from pkg_py.functions_split.ensure_ubuntu_pkg_installed import ensure_ubuntu_pkg_installed
+from pkg_py.functions_split.ensure_ubuntu_pkg_enabled import ensure_ubuntu_pkg_enabled
 from pkg_py.functions_split.get_f_contained_feature_str import get_f_contained_feature_str
 from pkg_py.functions_split.get_historical_list import get_historical_list
 from pkg_py.functions_split.get_list_deduplicated import get_list_deduplicated
@@ -11,7 +11,7 @@ from pkg_py.functions_split.get_list_removed_element_empty import get_list_remov
 from pkg_py.functions_split.get_list_striped_element import get_list_striped_element
 from pkg_py.functions_split.get_p import get_p
 from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style
-from pkg_py.functions_split.get_pnx_ubuntu_pkg_installed import get_pnx_ubuntu_pkg_installed
+from pkg_py.functions_split.get_pnx_ubuntu_pkg_enabled import get_pnx_ubuntu_pkg_enabled
 from pkg_py.functions_split.get_str_from_clipboard import get_str_from_clipboard
 from pkg_py.functions_split.get_value_completed import get_value_completed
 from pkg_py.functions_split.get_youtube_clip_id import get_youtube_clip_id
@@ -48,8 +48,8 @@ def download_youtube_video():
         if is_os_windows():
             ffmpeg_location = rf'{get_pnx_os_style(get_p(F_FFMPEG_EXE))}'
         else:
-            ensure_ubuntu_pkg_installed('ffmpeg')
-            ffmpeg_location = get_pnx_ubuntu_pkg_installed('ffmpeg')
+            ensure_ubuntu_pkg_enabled('ffmpeg')
+            ffmpeg_location = get_pnx_ubuntu_pkg_enabled('ffmpeg')
         ydl_opts = {
             'ffmpeg_location': ffmpeg_location,
             'format': 'bestvideo+bestaudio/best',  # 최상의 비디오 & 오디오 선택

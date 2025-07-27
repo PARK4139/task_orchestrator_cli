@@ -22,8 +22,8 @@ def ensure_vpc_ready(vpc_data, wsl_data, **config_remote_os):
     ensure_wsl_flash_directory_flashable(vpc_data)
     ensure_wsl_sdkmanager(config_remote_os)
 
-    ensure_vpc_ubuntu_pkg_installed(vpc_data, config_remote_os)
-    ensure_vpc_bsp_installed(vpc_data, config_remote_os)
+    ensure_vpc_ubuntu_pkg_enabled(vpc_data, config_remote_os)
+    ensure_vpc_bsp_enabled(vpc_data, config_remote_os)
     ensure_vpc_recovery_mode_entered(vpc_data, wsl_data, config_remote_os)
 
     ensure_vpc_flashed(vpc_data, config_remote_os)

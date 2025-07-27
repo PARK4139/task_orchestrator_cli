@@ -43,7 +43,7 @@
 # from PIL import Image, ImageFont, ImageDraw
 # from PIL import Image, ImageFont, ImageDraw, ImageFilter
 # from pkg_py.functions_split.ensure_printed import ensure_printed
-# from pkg_ps1.system_object.process import kill_process_by_window_title_seg
+# from pkg_ps1.system_object.process import ensure_process_killed_by_window_title_seg
 # from pkg_py.functions_split import ensure_pycharm_module_optimize
 # from pkg_py.functions_split import ensure_keyboard_mouse_macro
 # from pkg_py.functions_split.ensure_video_loaded_at_losslesscut import ensure_video_loaded_at_losslesscut
@@ -135,7 +135,7 @@
 # from pkg_py.functions_split.is_window_title_front import is_window_title_front
 # from pkg_py.functions_split.is_window_title_opened import is_window_title_opened
 # from pkg_py.functions_split.kill_losslesscut import kill_losslesscut
-# from pkg_py.functions_split.kill_self_pk_program import kill_self_pk_program
+# from pkg_py.functions_split.ensure_pk_program_suicided import ensure_pk_program_suicided
 # from pkg_py.functions_split.ensure_f_video_loaded_on_losslesscut import ensure_f_video_loaded_on_losslesscut
 # from pkg_py.functions_split.load_logged_set import load_logged_set
 # from pkg_py.functions_split.move_window_to_front_via_pid import move_window_to_front_via_pid
@@ -158,7 +158,7 @@
 # from pkg_py.functions_split.ensure_spoken import ensure_spoken
 # from pkg_py.functions_split.speak_v2 import speak_v2
 # from pkg_py.functions_split.type import type
-# from pkg_py.functions_split.type_v2 import type_v2
+# from pkg_py.functions_split.ensure_typed_v2 import ensure_typed_v2
 # from pkg_py.functions_split.print_and_save_log_to_file import print_and_save_log_to_file
 # from pkg_py.functions_split.print_green import print_green
 # from pkg_py.functions_split.ensure_iterable_printed_as_vertical import ensure_iterable_printed_as_vertical
@@ -210,8 +210,8 @@
 # from pkg_py.system_object.directories import D_PKG_PY, D_PKG_ARCHIVED
 # from pkg_py.system_object.directories import D_PKG_TXT
 # from pkg_py.system_object.directories import D_PKG_TXT, D_PK_WORKING
-# from pkg_py.system_object.directories import D_FUNCTIONS_SPLIT
-# from pkg_py.system_object.directories import D_FUNCTIONS_SPLIT, D_PKG_ARCHIVED
+# from pkg_py.system_object.directories import D_PK_FUNCTIONS_SPLIT
+# from pkg_py.system_object.directories import D_PK_FUNCTIONS_SPLIT, D_PKG_ARCHIVED
 # from pkg_py.system_object.directories import D_PK_WORKING
 # from pkg_py.system_object.directories import D_PK_WORKING, D_DOWNLOADS
 # from pkg_py.system_object.directories import D_PK_WORKING, D_DOWNLOADS, D_PKG_PKL
@@ -239,7 +239,7 @@
 # from pkg_py.refactor.ensure_keyboard_mouse_macro import PkMacroRoutines
 # from pkg_py.refactor.pk_ensure_functions_splited import restore_workspace_from_latest_archive, split_by_top_level_def, backup_workspace
 # from pkg_py.refactor.pk_ensure_keyboard_mouse_macro import PkMacroRoutines
-# from pkg_py.refactor.pk_ensure_modules_imported_front import clean_import_block
+# from pkg_py.refactor.pk_ensure_modules_enabled_front import clean_import_block
 # from pkg_py.workspace import ensure_pycharm_module_optimize
 # from prompt_toolkit import prompt
 # from prompt_toolkit import PromptSession

@@ -4,8 +4,8 @@ def get_wsl_data_raw_data(vpc_data_raw):
     import os
 
     wsl_data_raw = A2zCarDataStructure.RemoteDeviceDataStructure()
-    # if not is_wsl_distro_installed(wsl_distro_n=PK_WSL_DISTRO_N):
-    #     ensure_wsl_distro_installed(wsl_distro_n='Ubuntu-24.04')
+    # if not is_wsl_distro_enabled(wsl_distro_n=PK_WSL_DISTRO_N):
+    #     ensure_wsl_distro_enabled(wsl_distro_n='Ubuntu-24.04')
     #     mkr.
 
     wsl_data_raw.vpc_os_distro_n = get_vpc_wsl_distro_n(vpc_data_raw.vpc_type)

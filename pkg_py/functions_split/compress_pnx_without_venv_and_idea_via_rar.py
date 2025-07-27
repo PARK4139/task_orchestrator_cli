@@ -71,7 +71,7 @@ from bs4 import ResultSet
 from base64 import b64encode
 from pkg_py.functions_split.get_nx import get_nx
 from pkg_py.functions_split.ensure_video_loaded_at_losslesscut import ensure_video_loaded_at_losslesscut
-from pkg_py.functions_split.kill_self_pk_program import kill_self_pk_program
+from pkg_py.functions_split.ensure_pk_program_suicided import ensure_pk_program_suicided
 from pkg_py.system_object.directories import D_PKG_PY
 from pkg_py.functions_split.is_f import is_f
 from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
@@ -102,7 +102,7 @@ def compress_pnx_without_venv_and_idea_via_rar(pnx, d_dst, with_timestamp=1):
         config_remote_os['pw'] = get_wsl_pw(wsl_distro_n)
         config_remote_os['local_ssh_public_key'] = os.path.join(D_HOME, ".ssh", "id_ed25519.pub")
         config_remote_os['local_ssh_private_key'] = os.path.expanduser("~/.ssh/id_ed25519")
-        ensure_wsl_distro_installed(wsl_distro_n=wsl_distro_n)
+        ensure_wsl_distro_enabled(wsl_distro_n=wsl_distro_n)
         ensure_wsl_distro_session(wsl_distro_n=wsl_distro_n)
 
         ensure_ubuntu_pkg_to_remote_os(ubuntu_pkg_n='rar', **config_remote_os)

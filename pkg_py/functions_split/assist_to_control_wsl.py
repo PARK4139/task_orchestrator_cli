@@ -42,8 +42,8 @@ def assist_to_control_wsl(**pk_config):
 
             if "-d" in exec_cmd:
                 real_distro = exec_cmd[-1]
-                current_installed_distros = get_installed_wsl_distros()
-                if not any(d['name'].strip().lower() == real_distro.strip().lower() for d in current_installed_distros):
+                current_enabled_distros = get_enabled_wsl_distros()
+                if not any(d['name'].strip().lower() == real_distro.strip().lower() for d in current_enabled_distros):
                     ensure_printed(f"Distro '{real_distro}' not found. Please install it first.", print_color='red')
                     return
 

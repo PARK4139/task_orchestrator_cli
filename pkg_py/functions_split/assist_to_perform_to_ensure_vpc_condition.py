@@ -34,7 +34,7 @@ def assist_to_perform_to_ensure_vpc_condition():
         # [ how ] msi/wsl_ubuntu_24_04_no_flash/login.
         # msi
 
-        ensure_wsl_distro_installed(wsl_distro_n=wsl_data.vpc_os_distro_n)
+        ensure_wsl_distro_enabled(wsl_distro_n=wsl_data.vpc_os_distro_n)
         ensure_wsl_distro_session(wsl_distro_n=wsl_data.vpc_os_distro_n)
         ensure_wsl_usb_ip_connection_established(wsl_distro_n=wsl_data.vpc_os_distro_n,
                                                  config_remote_os=config_remote_os)

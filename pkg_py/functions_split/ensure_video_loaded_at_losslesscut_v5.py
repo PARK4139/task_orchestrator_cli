@@ -1,17 +1,8 @@
-from pkg_py.functions_split.ensure_input_preprocessed import ensure_input_preprocessed
-from pkg_py.functions_split.ensure_console_paused import ensure_console_paused
-from pkg_py.functions_split.ensure_text_divider_printed import ensure_text_divider_printed
-
-
-def play_losslesscut():
-    from pkg_py.functions_split.ensure_pressed import ensure_pressed
-    from pkg_py.functions_split.ensure_slept import ensure_slept
-    ensure_pressed("esc")
-    ensure_slept(milliseconds=300)
-    ensure_pressed("space")
-
-
 def ensure_video_loaded_at_losslesscut_v5(max_files=30):
+    from pkg_py.functions_split.ensure_console_paused import ensure_console_paused
+    from pkg_py.functions_split.ensure_text_divider_printed import ensure_text_divider_printed
+    from pkg_py.functions_split.ensure_video_playied_at_losslesscut import ensure_video_playied_at_losslesscut
+
     import traceback
     from pkg_py.functions_split.get_file_id import get_file_id
     from pkg_py.functions_split.get_list_calculated import get_list_calculated
@@ -83,18 +74,16 @@ def ensure_video_loaded_at_losslesscut_v5(max_files=30):
 
         ext_allowed_list = ['.mp4', '.mkv', '.avi', '.mov', '.wmv', '.flv', '.webm']
         video_ignored_keyword_list = ['-seg', 'SEG-']
-        f_video_list_allowed = get_video_filtered_list(d_working, ext_allowed_list, video_ignored_keyword_list)[:max_files]
-        f_video_to_load = get_f_video_to_load(f_video_list_allowed)
-
+        f_video_to_load = None
+        f_video_list_allowed = None
         loop_cnt = 1
         state = {'running': 0, 'loading': 0, 'loaded': 0, 'playing': 0}
         prev_state = None
 
         while True:
-            ensure_text_divider_printed() # pk_option
+            ensure_text_divider_printed()  # pk_option
             ensure_console_paused()
-            ensure_console_cleared() # pk_option
-
+            ensure_console_cleared()  # pk_option
 
             if f_video_to_load is None:
                 ensure_printed(f'''f_video_to_load is None {'%%%FOO%%%' if LTA else ''}''')
@@ -116,8 +105,8 @@ def ensure_video_loaded_at_losslesscut_v5(max_files=30):
                     state = {'running': 0, 'loading': 0, 'loaded': 0, 'playing': 0}
                     continue
 
-            if not is_losslesscut_running(F_CACHE):
-                ensure_losslesscut_reran(F_CACHE)
+            if not is_losslesscut_running():
+                ensure_losslesscut_reran()
                 state['running'] = 1
                 ensure_f_video_loaded_on_losslesscut(f_video_to_load)
                 state['playing'] = 0
@@ -150,7 +139,7 @@ def ensure_video_loaded_at_losslesscut_v5(max_files=30):
                 while True:
                     ensure_window_to_front(window_title_seg=window_title)
                     if is_window_title_front(window_title):
-                        play_losslesscut()
+                        ensure_video_playied_at_losslesscut()
                         state['playing'] = 1
                         ensure_printed(f'''step 1{'%%%FOO%%%' if LTA else ''}''')
                         break
