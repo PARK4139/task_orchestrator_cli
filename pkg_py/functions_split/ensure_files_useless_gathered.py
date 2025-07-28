@@ -61,7 +61,7 @@ def ensure_files_useless_gathered():
 
         os.chdir(d_working)
 
-        # string_clipboard_bkp=pk_paste()
+        # string_clipboard_bkp=ensure_pasted()
 
         # useless_f_set 수집
         useless_f_set = set()

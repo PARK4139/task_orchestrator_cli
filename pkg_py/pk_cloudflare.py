@@ -10,10 +10,6 @@ if __name__ == '__main__':
         # ipdb.set_trace()
 
         url = "https://www.scrapingcourse.com/cloudflare-challenge"
-        # url = "https://torrentqq348.com/torrent/magnet/950316"
-        # url = "https://torrentqq348.com"
-        # url = f'https://www.google.com/search?q=torrentqq347.com'
-        # url = "https://torrentqq347.com"
 
         # cloudflare sequrity challange : try : success
         driver = get_driver_selenium_solved_cloudflare_sequrity()

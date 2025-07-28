@@ -1,15 +1,19 @@
-from pkg_py.functions_split.reload_python_program_as_hot_reloader import reload_python_program_as_hot_reloader
-
-if __name__ == '__main__':
+if __name__ == "__main__":
     import traceback
+
+    from pkg_py.functions_split.ensure_colorama_initialized_once import ensure_colorama_initialized_once
     from pkg_py.functions_split.ensure_do_exception_routine import ensure_do_exception_routine
     from pkg_py.functions_split.ensure_do_finally_routine import ensure_do_finally_routine
+    from pkg_py.functions_split.ensure_python_file_and_function_created_in_loop import ensure_python_file_and_function_created_in_loop
+    from pkg_py.functions_split.ensure_window_title_replaced import ensure_window_title_replaced
+    from pkg_py.functions_split.get_nx import get_nx
     from pkg_py.system_object.directories_reuseable import D_PROJECT
     from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
 
     try:
-        reload_python_program_as_hot_reloader()
-
+        ensure_colorama_initialized_once()
+        ensure_window_title_replaced(get_nx(__file__))
+        ensure_python_file_and_function_created_in_loop()
     except Exception as exception:
         ensure_do_exception_routine(traceback=traceback, exception=exception)
     finally:

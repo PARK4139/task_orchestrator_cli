@@ -6,7 +6,7 @@ from pkg_py.functions_split.get_time_as_ import get_time_as_
 from pkg_py.functions_split.is_office_pc import is_office_pc
 from pkg_py.system_object.directories import D_PKG_TXT, D_PKG_JSON, D_DOWNLOADS, D_PKG_PK, D_PKG_TOML, D_PKG_WINDOWS, \
     D_PKG_DB, D_DESKTOP, D_PKG_PY, D_PK_RECYCLE_BIN, D_PKG_WINDOWS, D_PK_FUNCTIONS_SPLIT
-from pkg_py.system_object.directories_reuseable import D_PROJECT
+from pkg_py.system_object.directories_reuseable import D_PROJECT, D_HOME
 
 F_VPC_MAMNAGEMENT_MAP_TOML = f'{D_PKG_TOML}/vpc_mamnagement_map.toml'
 F_ALIAS_CMD = rf'{D_PKG_WINDOWS}/ensure_alias_enabled.cmd'
@@ -90,17 +90,19 @@ F_POPPINS_SEMIBOLDITALIC_TTF = rf"{D_PROJECT}/pkg_font/Poppins-SemiBoldItalic.tt
 F_POPPINS_THIN_TTF = rf"{D_PROJECT}/pkg_font/Poppins-Thin.ttf"
 F_POPPINS_THINITALIC_TTF = rf"{D_PROJECT}/pkg_font/Poppins-ThinItalic.ttf"
 F_RUBIKDOODLESHADOW_REGULAR_TTF = rf"{D_PROJECT}/pkg_font/RubikDoodleShadow-Regular.ttf"  # 너무 귀여운 입체감 있는 영어폰트
-F_PYCHARM64_EDITION_EXE = rf"C:/Program Files/JetBrains/PyCharm Community Edition 2025.1.3.1/bin/pycharm64.exe"
-if is_office_pc():
-    F_PYCHARM64_EDITION_EXE = rf"C:/Program Files/JetBrains/PyCharm Community Edition 2024.2.4/bin/pycharm64.exe"
-    # F_PYCHARM64_EDITION_EXE = r"C:/Program Files/JetBrains/PyCharm Community Edition 2024.3.1/bin/pycharm64.exe"
 F_HISTORICAL_PNX = rf'{D_PKG_TXT}/historical_pnx.txt'
 F_HISTORICAL_SEARCH_KEYWORD = rf'{D_PKG_TXT}/historical_search_keyword.txt'
 F_POT_PLAYER_MINI_64_EXE = r"C:\Program Files\DAUM\PotPlayer\PotPlayerMini64.exe"
-F_TEMP_TXT = rf"{D_DESKTOP}/pk_temp_{get_time_as_("now")}_{get_nx(__file__)}.txt"
+F_TEMP_LOG = rf"{D_DESKTOP}/pk_temp_via_{get_nx(__file__)}_{get_time_as_("now")}.log"
 F_TEST_PY = rf"{D_PKG_PY}/pk_test.py"
 F_PK_WORKSPACE_PY = get_pnx_os_style(rf"{D_PKG_PY}/workspace/pk_workspace.py")
 F_UV_ZIP = rf"{D_DOWNLOADS}\uv.zip"
 F_UV_EXE = rf"{D_PKG_WINDOWS}\uv.exe"
 F_PK_ALIAS_MACROS_TXT = rf"{D_PKG_TXT}\pk_alias_macros.txt"
 F_PK_TEST_PK_PYTHON_PROGRAM_STRUCTURE_PY=rf"{D_PK_FUNCTIONS_SPLIT}/test_pk_python_program_structure.py"
+
+F_PYCHARM64_EDITION_EXE = rf"C:/Program Files/JetBrains/PyCharm Community Edition 2025.1.3.1/bin/pycharm64.exe"
+if is_office_pc():
+    F_PYCHARM64_EDITION_EXE = rf"C:/Program Files/JetBrains/PyCharm Community Edition 2024.2.4/bin/pycharm64.exe"
+    # F_PYCHARM64_EDITION_EXE = r"C:/Program Files/JetBrains/PyCharm Community Edition 2024.3.1/bin/pycharm64.exe"
+F_CURSOR_EXE = rf"{D_HOME}\AppData\Local\Programs\cursor\Cursor.exe"

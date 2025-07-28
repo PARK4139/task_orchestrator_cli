@@ -45,4 +45,4 @@ call doskey cp_pwd=powershell -Command "Set-Clipboard -Value '%cd%'"
 
 endlocal
 
-@REM uv run python -m pkg_py.pk_paste_as_auto
+@REM uv run python -m pkg_py.ensure_pasted_as_auto

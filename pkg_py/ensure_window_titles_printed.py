@@ -1,6 +1,3 @@
-
-
-
 if __name__ == "__main__":
     try:
         import os
@@ -10,9 +7,10 @@ if __name__ == "__main__":
         from pathlib import Path
 
         from colorama import init as pk_colorama_init
+
         # from pkg_py.system_object.500_live_logic import copy, ensure_vpc_recovery_mode_entered, print_window_opened_list
-        #, STAMP_TRY_GUIDE, D_PROJECT, STAMP_UNIT_TEST_EXCEPTION_DISCOVERED, PK_WSL_DISTRO_N
-        #, print_red
+        # , STAMP_TRY_GUIDE, D_PROJECT, STAMP_UNIT_TEST_EXCEPTION_DISCOVERED, PK_WSL_DISTRO_N
+        # , print_red
 
         ensure_colorama_initialized_once()
 

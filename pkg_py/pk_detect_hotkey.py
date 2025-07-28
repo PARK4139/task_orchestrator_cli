@@ -2,7 +2,8 @@ if __name__ == "__main__":
     # ref
     import keyboard
     import pyautogui
-    ensure_printed(f'''detect hotkey %%%FOO%%%''',print_color="blue")
+
+    ensure_printed(f'''detect hotkey %%%FOO%%%''', print_color="blue")
     while 1:
         if keyboard.is_pressed('ctrl') and keyboard.is_pressed('alt') and keyboard.is_pressed('`'):
             pyautogui.alert("백스페이스와 1이 눌렸습니다!")  # 예제 동작: 알림창 표시

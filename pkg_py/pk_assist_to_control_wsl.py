@@ -1,4 +1,3 @@
-
 if __name__ == "__main__":
     # from pkg_py.system_object.500_live_logic import LTA, pk_debug_state_for_py_data_type, check_installed_wsl, assist_to_control_wsl
     #

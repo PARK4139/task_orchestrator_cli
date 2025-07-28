@@ -79,7 +79,7 @@ def classify_pnx_by_special_keyword(d_src, special_keyword, with_walking):
     special_dirs_promised = [
         # "blahblahblah_boom_boom_boom",
     ]
-    # previous_keyword=pk_paste()
+    # previous_keyword=ensure_pasted()
     # if previous_keyword == pnx:
     #     previous_keyword=""
 

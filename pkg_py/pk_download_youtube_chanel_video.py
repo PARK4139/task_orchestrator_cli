@@ -1,4 +1,3 @@
-
 if __name__ == "__main__":
     import traceback
     from pkg_py.functions_split.download_youtube_list import download_youtube_list
@@ -7,6 +6,7 @@ if __name__ == "__main__":
     from pkg_py.functions_split.get_videos_urls_from_youtube_channel_main_page import get_videos_urls_from_youtube_channel_main_page
     from pkg_py.system_object.directories_reuseable import D_PROJECT
     from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
+
     try:
         while 1:
             youtube_channel_main_page_url = input('youtube_channel_main_page_url=')

@@ -13,7 +13,7 @@ from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.system_object.map_massages import PkMessages2025
 
 
-def get_value_from_fzf_routine(file_id, options, editable):
+def get_value_from_fzf_routine(file_id, editable, options):
     import subprocess
     ensure_pnx_made(pnx=D_PKG_HISTORY, mode="f")
     history_file = get_history_file(file_id=file_id)
@@ -27,7 +27,6 @@ def get_value_from_fzf_routine(file_id, options, editable):
         ensure_pnx_opened_by_ext(pnx=history_file)
         ensure_window_to_front(window_title_seg=get_nx(history_file))
         # ipdb.set_trace()
-
     try:
         cmd = [fzf_cmd, "--print-query"] if fzf_cmd else None
         if not cmd:

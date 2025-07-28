@@ -14,8 +14,7 @@ def chrome_remote_desktop(hostname):
     f_func_n_txt = rf'{D_PROJECT}\pkg_txt\{func_n}.txt'
 
     # 페이지 열기
-    # url="https://remotedesktop.google.com/access/session/7dc038af-5992-1938-470a-8f85923ab286"
-    url = 'https://remotedesktop.google.com/access'
+    url =URL_CHROME_REMOTE
     ensure_command_excuted_to_os(cmd=f'explorer "{url}"')
     ensure_printed(str_working=rf'''url="{url}"  {'%%%FOO%%%' if LTA else ''}''')
 

@@ -5,7 +5,7 @@ def should_i_rsync():  # todo : chore : wsl rsync 로 교체
     import inspect
 
     func_n = inspect.currentframe().f_code.co_name
-    # text_promised=pk_paste()
+    # text_promised=ensure_pasted()
     text_promised = D_PROJECT_PARENTS
     while 1:
         dialog = GuiUtil.CustomQdialog(prompt="해당위치의 타겟을 싱크할까요?", btn_list=[YES, NO], input_box_mode=True,

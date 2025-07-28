@@ -1,10 +1,10 @@
 import subprocess
 import sys
 
+from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.get_list_contained_element import get_list_contained_element
 from pkg_py.functions_split.get_pnxs_from_d_working import get_pnxs_from_d_working
 from pkg_py.functions_split.get_str_from_list import get_str_from_list
-from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.system_object.directories import D_TESTS
 
 

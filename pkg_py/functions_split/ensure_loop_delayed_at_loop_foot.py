@@ -1,8 +1,8 @@
-
-
 def ensure_loop_delayed_at_loop_foot(loop_cnt, mode_level, miliseconds_limit=10000):
+    from pkg_py.functions_split.ensure_slept import ensure_slept
+
     from pkg_py.system_object.map_massages import PkMessages2025
-    
+
     from pkg_py.system_object.local_test_activate import LTA
     if mode_level == 1:  # strict level
         if LTA:
@@ -13,5 +13,3 @@ def ensure_loop_delayed_at_loop_foot(loop_cnt, mode_level, miliseconds_limit=100
     if mode_level == 3:  # natural operation
         if loop_cnt == 1:
             input(PkMessages2025.IF_YOU_WANT_MORE_PRESS_ENTER)
-
-

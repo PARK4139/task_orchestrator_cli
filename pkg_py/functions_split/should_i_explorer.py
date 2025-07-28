@@ -6,7 +6,7 @@ from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_e
 def should_i_explorer():
     while 1:
         dialog = GuiUtil.CustomQdialog(prompt="해당위치의 타겟을 exec 할까요?", btn_list=[YES, NO], input_box_mode=True,
-                                       input_box_text_default=pk_paste())
+                                       input_box_text_default=ensure_pasted())
         dialog.exec()
         btn_txt_clicked = dialog.btn_txt_clicked
         input_box_text = dialog.input_box.text()

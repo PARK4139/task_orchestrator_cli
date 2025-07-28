@@ -1,11 +1,7 @@
-
-
 import inspect
 import os
 import time
 from typing import TypeVar
-
- 
 
 T = TypeVar('T')  # todo : ref : 타입 힌팅 설정
 
@@ -15,6 +11,7 @@ T = TypeVar('T')  # todo : ref : 타입 힌팅 설정
 # todo control test loop limit
 test_loop_limit = 1
 is_first_test_lap = 1
+
 
 @staticmethod
 def print_ensure_seconds_measured_performance_nth_for_비교군1(function):
@@ -53,8 +50,8 @@ def print_ensure_seconds_measured_performance_nth_for_비교군1(function):
                 ensure_printed(str_working=f'{PK_UNDERLINE}예외발생 e\n\n', print_color="blue")
 
                 ensure_printed(str_working=f'{PK_UNDERLINE}[Debugging Note] s\n', print_color="blue")
-                f_current= get_f_current_n()
-                d_current=pk_deprecated_get_d_current_n_like_person()
+                f_current = get_f_current_n()
+                d_current = pk_deprecated_get_d_current_n_like_person()
                 print_yellow(prompt=f'f_current={f_current}\n d_current={d_current}\n')
                 ensure_printed(str_working=f'{PK_UNDERLINE}[Debugging Note] e\n', print_color="blue")
 
@@ -113,8 +110,8 @@ def ensure_seconds_measured_performance_nth_for_비교군2(function):
                 ensure_printed(str_working=f'{PK_UNDERLINE}예외발생 e\n\n', print_color="blue")
 
                 ensure_printed(str_working=f'{PK_UNDERLINE}[Debugging Note] s\n', print_color="blue")
-                f_current= get_f_current_n()
-                d_current=pk_deprecated_get_d_current_n_like_person()
+                f_current = get_f_current_n()
+                d_current = pk_deprecated_get_d_current_n_like_person()
                 print_yellow(prompt=f'f_current={f_current}\n d_current={d_current}\n')
                 ensure_printed(str_working=f'{PK_UNDERLINE}[Debugging Note] e\n', print_color="blue")
 
@@ -152,6 +149,7 @@ def run_비교군2():
 
     if LTA:
         pass
+
 
 def print_report_compared_functions_exec_time(function1, function2):
     function1()
@@ -316,7 +314,7 @@ if __name__ == '__main__':
     try:
         # ___________________________________________________________________________
         # todo : ref : 평균시간 측정 via timeit
-        
+
         print_function_run_ensure_seconds_measured_via_timeit(function=main, repeat=1)
 
         # todo : ref : 비교군 간 비교
@@ -325,11 +323,10 @@ if __name__ == '__main__':
         # compare_mean_times(function1=function1, function2=function2)
 
     except Exception as e:
-        
 
         # yellow
-        f_current= get_f_current_n()
-        d_current=pk_deprecated_get_d_current_n_like_person()
+        f_current = get_f_current_n()
+        d_current = pk_deprecated_get_d_current_n_like_person()
         ensure_printed(str_working=f'{PK_UNDERLINE}[Debugging Note] s\n', print_color="yellow")
         ensure_printed(str_working=f'f_current={f_current}\nd_current={d_current}\n', print_color="yellow")
         ensure_printed(str_working=f'{PK_UNDERLINE}[Debugging Note] e\n', print_color="yellow")
@@ -499,7 +496,7 @@ class DataStructureUtil:
 
     @staticmethod
     def is_two_lists_equal(list1, list2):
-        #, D_PROJECT 
+        # , D_PROJECT
         from pkg_py.functions_split.ensure_printed import ensure_printed
         func_n = inspect.currentframe().f_code.co_name
         ensure_printed(str_working=rf'''{PK_UNDERLINE}{func_n}() %%%FOO%%%''')

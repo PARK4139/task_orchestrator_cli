@@ -1,5 +1,5 @@
 import os
-from pkg_py.system_object.directories import D_PK_FUNCTIONS_SPLIT, D_PKG_PY, D_PK_REFACTOR, D_PK_SYSTEM_OBJECT
+from pkg_py.system_object.directories import D_PK_FUNCTIONS_SPLIT, D_PKG_PY, D_PK_REFACTOR, D_SYSTEM_OBJECT
 
 def ensure_files_renamed_and_filecontent_replaced(d_target, oldstr, new_str, target_extensions=None):
     target_extensions  = target_extensions or [".py", ".cmd", ".bat", ".ps1", ".sh"]

@@ -1,5 +1,3 @@
-
-
 if __name__ == "__main__":
 
     try:
@@ -14,7 +12,7 @@ if __name__ == "__main__":
         sys.exit(1)
     finally:
         script_cmd = rf'{D_PROJECT}\.venv\Scripts\activate && python {__file__} && deactivate'
-        
+
         ensure_printed(UNDERLINE)
         ensure_printed(f"{STAMP_TRY_GUIDE} {script_cmd}")
         ensure_printed(UNDERLINE)

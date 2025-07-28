@@ -1,4 +1,8 @@
+
+
 def move_cursor_to_top_of_pycarm_code():
+    from pkg_py.functions_split.ensure_pressed import ensure_pressed
+
     ensure_pressed("ctrl", "home")
     ensure_pressed("ctrl", "pgdn")
     ensure_pressed("ctrl", "end")

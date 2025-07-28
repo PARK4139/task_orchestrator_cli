@@ -15,13 +15,13 @@ def initialize_and_customize_logging_config(__file__):
         logging.info(msg)
     """
     import logging
-    from pkg_py.system_object.files import F_TEMP_TXT
+    from pkg_py.system_object.files import F_TEMP_LOG
     logging.basicConfig(
         level=logging.DEBUG,  # setting to record from level DEBUG to level info
         format="[%(asctime)s] [%(levelname)s] [%(message)s]",
         encoding="utf-8",
         handlers=[
-            logging.FileHandler(f"{F_TEMP_TXT}", encoding="utf-8"),
+            logging.FileHandler(f"{F_TEMP_LOG}", encoding="utf-8"),
             logging.StreamHandler()
         ]
     )

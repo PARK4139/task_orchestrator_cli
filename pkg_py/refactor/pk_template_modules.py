@@ -157,7 +157,7 @@
 # 
 # from pkg_py.functions_split.ensure_spoken import ensure_spoken
 # from pkg_py.functions_split.speak_v2 import speak_v2
-# from pkg_py.functions_split.type import type
+# from pkg_py.functions_split.ensure_typed import ensure_typed
 # from pkg_py.functions_split.ensure_typed_v2 import ensure_typed_v2
 # from pkg_py.functions_split.print_and_save_log_to_file import print_and_save_log_to_file
 # from pkg_py.functions_split.print_green import print_green
@@ -187,7 +187,7 @@
 # from pkg_py.pk_colorful_cli_util import print, ensure_printed, ensure_printed, ensure_printed, ensure_printed, print_magenta, print_light_white, ColoramaUtil, print_ment_via_colorama, print_success, prijnt_as_log, print_yellow
 # from pkg_py.pk_core_constants import USERPROFILE, HOSTNAME, UNDERLINE, BLANK, BIGGEST_PNXS, SMALLEST_PNXS, PLAYING_SOUNDS, COUNTS_FOR_GUIDE_TO_SLEEP,VIDEO_IDS_ALLOWED, AUDIO_IDS_ALLOWED, STORAGE_VIDEOES_MERGED, PROJECT_PARENTS_D, DESKTOP, DOWNLOADS, PKG_PNG, PKG_DPL, PKG_TXT
 # from pkg_py.pk_interface_graphic_user import GuiUtil, get_display_info, print_as_gui, should_i_do
-# from pkg_py.pk_paste_as_auto import copy
+# 
 # from pkg_py.system_object.get_list_calculated import get_list_calculated
 # from pkg_py.system_object.local_test_activate import LTA
 # from pkg_py.system_object.is_os_windows import is_os_windows

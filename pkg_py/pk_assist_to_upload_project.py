@@ -13,7 +13,7 @@ if __name__ == "__main__":
         git_repo_url = get_pk_token(f_token=rf"{D_PKG_TOML}/pk_token_pk_system_github_repo_url.toml", initial_str="")
         d_working = D_PROJECT
         branch_n = 'dev'
-        assist_to_upload_pnx_to_git(d_working=d_working, git_repo_url=git_repo_url,branch_n=branch_n)
+        assist_to_upload_pnx_to_git(d_working=d_working, git_repo_url=git_repo_url, branch_n=branch_n)
 
     except Exception as exception:
         ensure_do_exception_routine(traceback=traceback, exception=exception)

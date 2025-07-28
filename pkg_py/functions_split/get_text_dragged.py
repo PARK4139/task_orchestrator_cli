@@ -11,13 +11,13 @@ def get_text_dragged():
     func_n = inspect.currentframe().f_code.co_name
 
     # 클립보드 백업
-    clipboard_current_contents = pk_paste()
+    clipboard_current_contents = ensure_pasted()
 
     # 드래그된것 클립보드에 저장
     ensure_pressed("ctrl", "c")
 
     # 클립보드에서 변수에 저장
-    text_dragged = pk_paste()
+    text_dragged = ensure_pasted()
 
     ensure_printed(str_working=rf'''text_dragged="{text_dragged}"  {'%%%FOO%%%' if LTA else ''}''')
 
