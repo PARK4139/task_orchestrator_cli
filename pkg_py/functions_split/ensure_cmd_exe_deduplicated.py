@@ -9,7 +9,7 @@ def ensure_cmd_exe_deduplicated():
     from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style
     from pkg_py.functions_split.get_value_via_fzf_or_history import get_value_via_fzf_or_history
     from pkg_py.functions_split.get_values_sanitize_for_cp949 import get_values_sanitize_for_cp949
-    from pkg_py.pk_interface_graphic_user import get_windows_opened
+    from pkg_py.system_object.gui_util import get_windows_opened
     from pkg_py.system_object.local_test_activate import LTA
     key_name = 'window_opened'
     func_n = inspect.currentframe().f_code.co_name

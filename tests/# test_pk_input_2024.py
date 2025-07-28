@@ -32,7 +32,7 @@ if __name__ == "__main__":
 
 
     except:
-        # from pkg_py.system_object.print_red import print_red
+        # # from pkg_py.system_object.print_red import print_red
         traceback_format_exc_list = traceback.format_exc().split("\n")
         print_red(UNDERLINE)
         for line in traceback_format_exc_list:

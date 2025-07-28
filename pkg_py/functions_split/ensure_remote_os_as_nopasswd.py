@@ -33,7 +33,7 @@ from pkg_py.system_object.files import F_POT_PLAYER_MINI_64_EXE
 from pkg_py.system_object.files import F_FFMPEG_EXE
 from pkg_py.system_object.map_massages import PkMessages2025
 from pkg_py.system_object.state_via_database import PkSqlite3DB
-from pkg_py.system_object.is_os_windows import is_os_windows
+# from pkg_py.system_object.is_os_windows import is_os_windows
 from os.path import dirname
 from mutagen.mp3 import MP3
 from dirsync import sync

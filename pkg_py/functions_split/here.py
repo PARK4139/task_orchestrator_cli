@@ -15,7 +15,7 @@ from pkg_py.functions_split.get_list_sorted import get_list_sorted
 from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
 from pkg_py.system_object.directories_reuseable import D_PROJECT
 from pkg_py.system_object.performance_logic import ensure_seconds_measured, pk_measure_memory
-from pkg_py.system_object.is_os_windows import is_os_windows
+# from pkg_py.system_object.is_os_windows import is_os_windows
 
 from pathlib import Path
 from os.path import dirname

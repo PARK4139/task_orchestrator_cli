@@ -22,7 +22,7 @@ from Cryptodome.Cipher import AES
 from colorama import init as pk_colorama_init
 from bs4 import BeautifulSoup
 from pkg_py.functions_split.get_nx import get_nx
-from pkg_py.system_object.is_os_windows import is_os_windows
+# from pkg_py.system_object.is_os_windows import is_os_windows
 from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
 from pkg_py.functions_split.get_pnx_wsl_unix_style import get_pnx_wsl_unix_style
 

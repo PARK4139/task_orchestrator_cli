@@ -59,9 +59,9 @@ from pkg_py.functions_split.ensure_console_cleared import ensure_console_cleared
 from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
 from pkg_py.system_object.stamps import STAMP_ATTEMPTED
 from pkg_py.system_object.directories import D_PK_WORKING
-from pkg_py.system_object.print_red import print_red
+# from pkg_py.system_object.print_red import print_red
 from pkg_py.system_object.state_via_context import SpeedControlContext
-from pkg_py.system_object.is_os_windows import is_os_windows
+# from pkg_py.system_object.is_os_windows import is_os_windows
 from pkg_py.system_object.get_list_calculated import get_list_calculated
 
 from PIL import Image, ImageFont, ImageDraw
@@ -83,7 +83,7 @@ from base64 import b64encode
 from pkg_py.functions_split.get_value_completed import get_value_completed
 from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style
 from pkg_py.system_object.directories import D_DOWNLOADS, D_PKG_PKL, D_PKG_PY
-from pkg_py.system_object.is_os_windows import is_os_windows
+# from pkg_py.system_object.is_os_windows import is_os_windows
 from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
 from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style
 from pkg_py.functions_split.get_pnx_wsl_unix_style import get_pnx_wsl_unix_style

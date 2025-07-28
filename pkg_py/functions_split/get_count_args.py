@@ -67,7 +67,7 @@ from pkg_py.system_object.files import F_LOSSLESSCUT_EXE
 from pkg_py.system_object.files import F_FFMPEG_EXE
 from pkg_py.system_object.encodings import Encoding
 from pkg_py.system_object.map_massages import PkMessages2025
-from pkg_py.system_object.print_red import print_red
+# from pkg_py.system_object.print_red import print_red
 from pkg_py.system_object.state_via_database import PkSqlite3DB
 from pkg_py.system_object.state_via_context import SpeedControlContext
 from pkg_py.system_object.local_test_activate import LTA

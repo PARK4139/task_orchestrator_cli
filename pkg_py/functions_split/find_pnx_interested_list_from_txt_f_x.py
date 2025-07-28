@@ -22,7 +22,7 @@ from datetime import date
 from collections import Counter
 from bs4 import BeautifulSoup
 from pkg_py.functions_split.get_list_calculated import get_list_calculated
-from pkg_py.system_object.is_os_windows import is_os_windows
+# from pkg_py.system_object.is_os_windows import is_os_windows
 from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
 
 from pkg_py.system_object.local_test_activate import LTA

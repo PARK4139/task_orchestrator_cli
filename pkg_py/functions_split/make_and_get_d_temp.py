@@ -34,7 +34,7 @@ from bs4 import BeautifulSoup
 from base64 import b64encode
 from pkg_py.functions_split.get_nx import get_nx
 from pkg_py.functions_split.ensure_pk_program_suicided import ensure_pk_program_suicided
-from pkg_py.system_object.is_os_windows import is_os_windows
+# from pkg_py.system_object.is_os_windows import is_os_windows
 from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 

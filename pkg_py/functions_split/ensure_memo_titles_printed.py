@@ -1,41 +1,39 @@
-from pkg_py.functions_split.get_list_from_f import get_list_from_f
-from pkg_py.system_object.etc import PK_UNDERLINE
-import re
-import os
-import json
-import hashlib
-from datetime import datetime
+import ipdb
+
+from pkg_py.functions_split.ensure_console_debuggable import ensure_console_debuggable
+from pkg_py.functions_split.ensure_console_paused import ensure_console_paused
+from pkg_py.functions_split.ensure_memo_contents_found import ensure_memo_contents_found
 
 
 def ensure_memo_titles_printed(f):
-    from pkg_py.functions_split.get_line_list_to_include_search_keyword import get_line_list_to_include_search_keyword
-    from pkg_py.functions_split.get_list_removed_element_startswith_str import get_list_removed_element_startswith_str
-    from pkg_py.functions_split.get_str_from_list import get_str_from_list
-    from pkg_py.functions_split.print_highlighted import print_highlighted
-    from pkg_py.system_object.local_test_activate import LTA
+    import re
+    import os
+    import json
+    from datetime import datetime
+
     from pkg_py.functions_split.ensure_printed import ensure_printed
     from pkg_py.system_object.encodings import Encoding
     from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style
     from pkg_py.functions_split.ensure_pnx_made import ensure_pnx_made
 
     f = get_pnx_os_style(f)
-    
+
     if not os.path.exists(f):
         ensure_printed(f"파일이 존재하지 않습니다: {f}", print_color="red")
         return
-    
+
     # 캐시 파일 경로 설정
     cache_dir = os.path.join(os.path.dirname(f), ".memo_cache")
     cache_file = os.path.join(cache_dir, f"memo_titles_cache_{os.path.basename(f)}.json")
-    
+
     # 파일 정보 가져오기
     file_stat = os.stat(f)
     file_size = file_stat.st_size
     file_mtime = file_stat.st_mtime
-    
+
     # 캐시 디렉토리 생성
     ensure_pnx_made(pnx=cache_dir, mode='d')
-    
+
     # 캐시에서 이전 정보 확인
     cache_data = None
     if os.path.exists(cache_file):
@@ -44,39 +42,39 @@ def ensure_memo_titles_printed(f):
                 cache_data = json.load(cache_f)
         except Exception as e:
             ensure_printed(f"캐시 파일 읽기 오류: {str(e)}", print_color="yellow")
-    
+
     # 파일 변경 여부 확인
     file_changed = True
     if cache_data:
         cached_size = cache_data.get('file_size')
         cached_mtime = cache_data.get('file_mtime')
-        
+
         if cached_size == file_size and cached_mtime == file_mtime:
             file_changed = False
             ensure_printed("파일이 변경되지 않았습니다. 캐시된 결과를 사용합니다.", print_color="green")
-    
+
     titles_found = []
-    
+
     if file_changed:
         ensure_printed("파일이 변경되었습니다. 제목을 다시 추출합니다.", print_color="blue")
-        
+
         # 파일을 한 줄씩 읽어가며 처리 (메모리 효율적)
         try:
             with open(file=f, mode='r', encoding=Encoding.UTF8.value, errors='ignore') as file_obj:
                 line_number = 0
                 previous_line = ""
-                
+
                 for line in file_obj:
                     line_number += 1
                     line = line.strip()
-                    
+
                     # 구분선 패턴 (50개 이상의 언더스코어)
                     if re.match(r'^_{50,}$', line):
                         # 이전 줄이 구분선이 아니고, 현재 줄이 구분선이면
                         # 다음 줄이 제목일 가능성이 높음
                         previous_line = line
                         continue
-                    
+
                     # 이전 줄이 구분선이고, 현재 줄이 비어있지 않으면 제목으로 인식
                     if re.match(r'^_{50,}$', previous_line) and line:
                         titles_found.append({
@@ -84,13 +82,13 @@ def ensure_memo_titles_printed(f):
                             'line_number': line_number,
                             'separator_line': line_number - 1
                         })
-                    
+
                     previous_line = line
-                    
+
         except Exception as e:
             ensure_printed(f"파일 읽기 오류: {str(e)}", print_color="red")
             return
-        
+
         # 캐시에 결과 저장
         cache_data = {
             'file_size': file_size,
@@ -98,43 +96,32 @@ def ensure_memo_titles_printed(f):
             'titles': titles_found,
             'cached_at': datetime.now().isoformat()
         }
-        
+
         try:
             with open(cache_file, 'w', encoding='utf-8') as cache_f:
                 json.dump(cache_data, cache_f, ensure_ascii=False, indent=2)
             ensure_printed("결과가 캐시에 저장되었습니다.", print_color="green")
         except Exception as e:
             ensure_printed(f"캐시 저장 오류: {str(e)}", print_color="yellow")
-    
+
     else:
         # 캐시에서 제목 정보 가져오기
         titles_found = cache_data.get('titles', [])
-    
+
     # 제목들을 출력
     if titles_found:
         ensure_printed(f"=== 메모 제목 목록 ({len(titles_found)}개) ===", print_color="green")
         for i, title_info in enumerate(titles_found, 1):
             ensure_printed(f"{i}. [줄 {title_info['line_number']}] {title_info['title']}", print_color="cyan")
-        
+
         # 캐시 정보 출력
         if not file_changed and cache_data:
             cached_at = cache_data.get('cached_at', '알 수 없음')
             ensure_printed(f"캐시된 시간: {cached_at}", print_color="gray")
     else:
         ensure_printed("메모 제목을 찾을 수 없습니다.", print_color="yellow")
-    
-    # 기존 하이라이트 출력도 유지 (디버깅용)
-    if LTA:  # 로컬 테스트 모드에서만 전체 내용 출력
-        ensure_printed("=== 전체 파일 내용 (디버깅용) ===", print_color="yellow")
-        try:
-            with open(file=f, mode='r', encoding=Encoding.UTF8.value, errors='ignore') as file_obj:
-                for line in file_obj:
-                    print_highlighted(txt_whole=line.rstrip(), highlight_config_dict={
-                        "bright_red": [f'{' %%%FOO%%% ' if LTA else ''}'],
-                        "white": [rf"{PK_UNDERLINE}"],
-                    })
-        except Exception as e:
-            ensure_printed(f"디버깅 출력 오류: {str(e)}", print_color="red")
+
+
 
 
 def search_memo_contents_by_keyword(f, search_keyword=None):
@@ -145,7 +132,6 @@ def search_memo_contents_by_keyword(f, search_keyword=None):
     from pkg_py.system_object.encodings import Encoding
     from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style
     from pkg_py.functions_split.get_fzf_command import get_fzf_command
-    from pkg_py.functions_split.fallback_choice import fallback_choice
 
     f = get_pnx_os_style(f)
     if not os.path.exists(f):
@@ -213,27 +199,27 @@ def search_memo_contents_by_keyword(f, search_keyword=None):
                     if line.strip() and not re.match(separator_pattern, line.strip()):
                         title = line.strip()
                         break
-                
-                fzf_input_lines.append(f"[{i+1}] (줄 {start_line}) {title}")
-            
+
+                fzf_input_lines.append(f"[{i + 1}] (줄 {start_line}) {title}")
+
             fzf_input = "\n".join(fzf_input_lines)
-            
+
             # fzf 실행
             cmd = [fzf_cmd, "--height", "40%", "--layout=reverse", "--border"]
             proc = subprocess.Popen(cmd, stdin=subprocess.PIPE, stdout=subprocess.PIPE, text=True)
             out, _ = proc.communicate(input=fzf_input)
-            
+
             if out.strip():
                 # 선택된 결과에서 인덱스 추출
                 selected_line = out.strip()
                 match = re.search(r'\[(\d+)\]', selected_line)
                 if match:
                     selected_index = int(match.group(1)) - 1  # 0-based index
-                    
+
         except Exception as e:
             ensure_printed(f"fzf 실행 오류: {str(e)}", print_color="yellow")
             selected_index = None
-    
+
     # fzf가 없거나 실패한 경우 fallback 선택
     if selected_index is None:
         ensure_printed(f"=== '{search_keyword}'가 포함된 메모 컨텐츠 ({len(found_contents)}개) ===", print_color="green")
@@ -245,35 +231,24 @@ def search_memo_contents_by_keyword(f, search_keyword=None):
                 if line.strip() and not re.match(separator_pattern, line.strip()):
                     title = line.strip()
                     break
-            
+
             ensure_printed(f"[{i}] (줄 {start_line}) {title}", print_color="cyan")
-        
-        # fallback 선택
-        try:
-            choice = input(f"\n보고 싶은 번호를 입력하세요 (1-{len(found_contents)}, Enter로 취소): ").strip()
-            if choice:
-                selected_index = int(choice) - 1
-        except (ValueError, IndexError):
-            ensure_printed("잘못된 선택입니다.", print_color="red")
-            return
+
+        # # fallback 선택
+        # try:
+        #     choice = input(f"\n보고 싶은 번호를 입력하세요 (1-{len(found_contents)}, Enter로 취소): ").strip()
+        #     if choice:
+        #         selected_index = int(choice) - 1
+        # except (ValueError, IndexError):
+        #     ensure_printed("잘못된 선택입니다.", print_color="red")
+        #     return
     else:
         ensure_printed(f"선택됨: {selected_index + 1}번", print_color="green")
-    
-    # 선택된 결과 출력
-    if 0 <= selected_index < len(found_contents):
-        start_line, content = found_contents[selected_index]
-        ensure_printed(f"\n=== 선택된 메모 컨텐츠 (줄 {start_line}) ===", print_color="green")
-        ensure_printed(content, print_color="cyan")
-    else:
-        ensure_printed("선택이 취소되었습니다.", print_color="yellow")
 
-# hey cursor! write here.
-if __name__ == "__main__":
-    import sys
-    from pkg_py.functions_split.ensure_printed import ensure_printed
-    from pkg_py.pk_ensure_memo_contents_found import ensure_memo_contents_found
-    if len(sys.argv) < 2:
-        ensure_printed("사용법: python ensure_memo_titles_printed.py <메모파일경로>", print_color="yellow")
-    else:
-        f = sys.argv[1]
-        ensure_memo_contents_found()
+    # 선택된 결과 출력
+    # if 0 <= selected_index < len(found_contents):
+    #     start_line, content = found_contents[selected_index]
+    #     ensure_printed(f"\n=== 선택된 메모 컨텐츠 (줄 {start_line}) ===", print_color="green")
+    #     ensure_printed(content, print_color="cyan")
+    # else:
+    #     ensure_printed("선택이 취소되었습니다.", print_color="yellow")

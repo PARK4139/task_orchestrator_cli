@@ -24,12 +24,12 @@ from pkg_py.functions_split.ensure_printed_once import ensure_printed_once
 from pkg_py.functions_split.ensure_list_written_to_f import ensure_list_written_to_f
 from pkg_py.system_object.directories import D_PK_WORKING
 from pkg_py.system_object.state_via_database import PkSqlite3DB
-from pkg_py.system_object.is_os_windows import is_os_windows
+# from pkg_py.system_object.is_os_windows import is_os_windows
 from passlib.context import CryptContext
 from os import path
 from dataclasses import dataclass
 from base64 import b64encode
-from pkg_py.system_object.is_os_windows import is_os_windows
+# from pkg_py.system_object.is_os_windows import is_os_windows
 from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
 
 from pkg_py.system_object.local_test_activate import LTA

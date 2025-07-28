@@ -56,7 +56,7 @@ from pkg_py.system_object.files import F_FFMPEG_EXE
 from pkg_py.system_object.encodings import Encoding
 from pkg_py.system_object.directories_reuseable import D_PROJECT
 from pkg_py.system_object.state_via_database import PkSqlite3DB
-from pkg_py.system_object.is_os_windows import is_os_windows
+# from pkg_py.system_object.is_os_windows import is_os_windows
 
 from gtts import gTTS
 from functools import partial as functools_partial

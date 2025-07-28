@@ -62,7 +62,7 @@ from pkg_py.system_object.files import F_POT_PLAYER_MINI_64_EXE
 from pkg_py.system_object.directories_reuseable import D_PROJECT
 from pkg_py.system_object.directories import D_PK_WORKING
 from pkg_py.system_object.map_massages import PkMessages2025
-from pkg_py.system_object.print_red import print_red
+# from pkg_py.system_object.print_red import print_red
 from PIL import Image
 from mutagen.mp3 import MP3
 from moviepy import VideoFileClip
@@ -86,7 +86,7 @@ from pkg_py.system_object.etc import PK_UNDERLINE
 from pkg_py.functions_split.get_value_completed import get_value_completed
 from pkg_py.system_object.directories import D_PKG_PY
 from pkg_py.functions_split.get_list_calculated import get_list_calculated
-from pkg_py.system_object.is_os_windows import is_os_windows
+# from pkg_py.system_object.is_os_windows import is_os_windows
 from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
 from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style
 from pkg_py.functions_split.get_pnx_wsl_unix_style import get_pnx_wsl_unix_style

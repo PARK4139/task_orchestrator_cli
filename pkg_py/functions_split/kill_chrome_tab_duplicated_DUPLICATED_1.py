@@ -84,9 +84,9 @@ from pkg_py.system_object.directories_reuseable import D_PROJECT
 from pkg_py.system_object.directories import D_PKG_TXT, D_PK_WORKING
 from pkg_py.system_object.directories import D_DOWNLOADS, D_PKG_PKL
 from pkg_py.system_object.map_massages import PkMessages2025
-from pkg_py.system_object.print_red import print_red
+# from pkg_py.system_object.print_red import print_red
 from pkg_py.system_object.state_via_database import PkSqlite3DB
-from pkg_py.system_object.is_os_windows import is_os_windows
+# from pkg_py.system_object.is_os_windows import is_os_windows
 from pkg_py.system_object.local_test_activate import LTA
 from PIL import Image, ImageFont, ImageDraw
 from PIL import Image, ImageFilter

@@ -12,7 +12,7 @@ from PySide6.QtWidgets import QApplication
 from prompt_toolkit import PromptSession
 from pkg_py.functions_split.ensure_list_written_to_f import ensure_list_written_to_f
 from pkg_py.functions_split.ensure_console_cleared import ensure_console_cleared
-from pkg_py.system_object.is_os_windows import is_os_windows
+# from pkg_py.system_object.is_os_windows import is_os_windows
 from pkg_py.functions_split.is_f import is_f
 from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
 

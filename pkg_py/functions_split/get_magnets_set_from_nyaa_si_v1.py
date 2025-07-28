@@ -43,7 +43,7 @@ from pkg_py.functions_split.is_window_title_opened import is_window_title_opened
 
 from pkg_py.system_object.etc import PkFilter
 from pkg_py.system_object.encodings import Encoding
-from pkg_py.system_object.print_red import print_red
+# from pkg_py.system_object.print_red import print_red
 from passlib.context import CryptContext
 from moviepy import VideoFileClip
 from functools import partial as functools_partial

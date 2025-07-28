@@ -52,8 +52,8 @@ from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
 from pkg_py.system_object.stamps import STAMP_ATTEMPTED
 from pkg_py.system_object.files import F_FFMPEG_EXE
 from pkg_py.system_object.directories_reuseable import D_PROJECT
-from pkg_py.system_object.print_red import print_red
-from pkg_py.system_object.is_os_windows import is_os_windows
+# from pkg_py.system_object.print_red import print_red
+# from pkg_py.system_object.is_os_windows import is_os_windows
 from mysql.connector import connect, Error
 from mutagen.mp3 import MP3
 from functools import partial as functools_partial
@@ -70,7 +70,7 @@ from pkg_py.system_object.stamps import STAMP_TRY_GUIDE, STAMP_UNIT_TEST_EXCEPTI
 from pkg_py.functions_split.get_value_completed import get_value_completed
 from pkg_py.system_object.directories import D_PKG_PY
 from pkg_py.functions_split.get_list_calculated import get_list_calculated
-from pkg_py.system_object.is_os_windows import is_os_windows
+# from pkg_py.system_object.is_os_windows import is_os_windows
 from pkg_py.functions_split.get_pnx_wsl_unix_style import get_pnx_wsl_unix_style
 from pkg_py.functions_split.get_pnx_windows_style import get_pnx_windows_style
 from pkg_py.functions_split.is_os_windows import is_os_windows

@@ -31,7 +31,7 @@ def test():
         # Jetson : run jarvis
 
 
-        # if not ensure_pk_wsl_distro_installed():
+        # if not ensure_pk_wsl_distro_enabled():
         #     raise RuntimeError("WSL 배포판 설치/이름 변경에 실패했습니다.")
 
         # if is_os_linux():

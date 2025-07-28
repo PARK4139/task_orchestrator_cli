@@ -9,7 +9,7 @@ def download_video_f(url: str):
     from pkg_py.functions_split.move_pnx import move_pnx
     from pkg_py.functions_split.parse_youtube_video_id import parse_youtube_video_id
     from pkg_py.functions_split.print_magenta import print_magenta
-    from pkg_py.pk_interface_graphic_user import GuiUtil
+    from pkg_py.system_object.gui_util import GuiUtil
     from pkg_py.system_object.directories import D_PK_DOWNLOADSING
     from pkg_py.system_object.files import F_YT_DLP_EXE
 

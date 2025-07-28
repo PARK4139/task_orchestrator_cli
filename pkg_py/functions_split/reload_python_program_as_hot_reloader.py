@@ -19,7 +19,7 @@ def reload_python_program_as_hot_reloader():
     from pkg_py.functions_split.get_os_n import get_os_n
     from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style
     from pkg_py.functions_split.get_set_from_list import get_set_from_list
-    from pkg_py.pk_interface_graphic_user import get_windows_opened
+    from pkg_py.system_object.gui_util import get_windows_opened
     from pkg_py.functions_split.ensure_printed import ensure_printed
     from pkg_py.system_object.local_test_activate import LTA
     import inspect

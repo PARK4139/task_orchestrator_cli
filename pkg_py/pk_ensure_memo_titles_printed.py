@@ -4,7 +4,6 @@ from pkg_py.functions_split.ensure_colorama_initialized_once import ensure_color
 from pkg_py.functions_split.ensure_do_exception_routine import ensure_do_exception_routine
 from pkg_py.functions_split.ensure_do_finally_routine import ensure_do_finally_routine
 from pkg_py.functions_split.ensure_memo_titles_printed import ensure_memo_titles_printed
-from pkg_py.functions_split.ensure_process_killed import ensure_process_killed
 from pkg_py.functions_split.ensure_window_title_replaced import ensure_window_title_replaced
 from pkg_py.functions_split.get_nx import get_nx
 from pkg_py.system_object.directories_reuseable import D_PROJECT
@@ -16,7 +15,7 @@ try:
     ensure_window_title_replaced(get_nx(__file__))
     f_memo = F_MEMO_HOW_PK
     ensure_memo_titles_printed(f=f_memo)
-    ensure_process_killed(window_title=get_nx(__file__))  # pk_option
+    # ensure_process_killed(window_title=get_nx(__file__))  # pk_option
 except Exception as exception:
     ensure_do_exception_routine(traceback=traceback, exception=exception)
 finally:

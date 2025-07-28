@@ -32,7 +32,7 @@ from pkg_py.functions_split.ensure_console_cleared import ensure_console_cleared
 from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
 from pkg_py.system_object.files import F_POT_PLAYER_MINI_64_EXE
 from pkg_py.system_object.files import F_HISTORICAL_PNX
-from pkg_py.system_object.print_red import print_red
+# from pkg_py.system_object.print_red import print_red
 from pkg_py.system_object.state_via_context import SpeedControlContext
 from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.system_object.get_list_calculated import get_list_calculated
@@ -48,7 +48,7 @@ from bs4 import ResultSet
 from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style
 from pkg_py.functions_split.is_d import is_d
 from pkg_py.functions_split.is_f import is_f
-from pkg_py.system_object.is_os_windows import is_os_windows
+# from pkg_py.system_object.is_os_windows import is_os_windows
 from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
 from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style
 from pkg_py.functions_split.get_pnx_windows_style import get_pnx_windows_style

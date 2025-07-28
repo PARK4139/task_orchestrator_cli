@@ -17,7 +17,7 @@ from pkg_py.functions_split.ensure_list_written_to_f import ensure_list_written_
 from pkg_py.system_object.etc import PkFilter
 from pkg_py.system_object.files import F_POT_PLAYER_MINI_64_EXE, F_HISTORICAL_PNX
 from pkg_py.system_object.encodings import Encoding
-from pkg_py.system_object.print_red import print_red
+# from pkg_py.system_object.print_red import print_red
 from passlib.context import CryptContext
 from colorama import init as pk_colorama_init
 from pkg_py.functions_split.ensure_pk_program_suicided import ensure_pk_program_suicided

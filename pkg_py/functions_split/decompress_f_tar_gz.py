@@ -48,7 +48,7 @@ from pkg_py.system_object.etc import PkFilter
 from pkg_py.system_object.stamps import STAMP_ATTEMPTED
 from pkg_py.system_object.files import F_HISTORICAL_PNX
 from pkg_py.system_object.directories import D_PK_WORKING
-from pkg_py.system_object.is_os_windows import is_os_windows
+# from pkg_py.system_object.is_os_windows import is_os_windows
 from PIL import Image
 from passlib.context import CryptContext
 from os import path

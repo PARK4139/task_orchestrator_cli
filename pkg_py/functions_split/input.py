@@ -34,7 +34,7 @@ from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
 from pkg_py.system_object.files import F_LOSSLESSCUT_EXE
 from pkg_py.system_object.encodings import Encoding
 from pkg_py.system_object.map_massages import PkMessages2025
-from pkg_py.system_object.print_red import print_red
+# from pkg_py.system_object.print_red import print_red
 from pkg_py.system_object.state_via_context import SpeedControlContext
 from pathlib import Path
 from gtts import gTTS

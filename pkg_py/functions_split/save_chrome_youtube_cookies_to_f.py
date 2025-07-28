@@ -50,7 +50,7 @@ from pkg_py.system_object.files import F_HISTORICAL_PNX
 from pkg_py.system_object.encodings import Encoding
 from pkg_py.system_object.directories import D_PKG_TXT
 from pkg_py.system_object.map_massages import PkMessages2025
-from pkg_py.system_object.is_os_windows import is_os_windows
+# from pkg_py.system_object.is_os_windows import is_os_windows
 from pathlib import Path
 from passlib.context import CryptContext
 from functools import lru_cache

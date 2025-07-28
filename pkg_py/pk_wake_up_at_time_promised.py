@@ -1,6 +1,6 @@
 
-#  get_seconds_from_HH_mm, set_wake_up_next_HH_mm
-#
+#  get_seconds_from_HH_mm,
+#  set_wake_up_next_HH_mm
 
 
 

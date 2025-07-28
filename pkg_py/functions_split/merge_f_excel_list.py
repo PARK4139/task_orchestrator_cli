@@ -27,7 +27,7 @@ from enum import Enum
 from dirsync import sync
 from dataclasses import dataclass
 from bs4 import BeautifulSoup
-from pkg_py.system_object.is_os_windows import is_os_windows
+# from pkg_py.system_object.is_os_windows import is_os_windows
 from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style
 from pkg_py.functions_split.get_pnx_windows_style import get_pnx_windows_style
 from pkg_py.functions_split.ensure_printed import ensure_printed

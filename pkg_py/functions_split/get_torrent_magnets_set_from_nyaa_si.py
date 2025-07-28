@@ -7,7 +7,7 @@ from tkinter import UNDERLINE
 from selenium.common.exceptions import WebDriverException
 from pkg_py.system_object.directories_reuseable import D_PROJECT
 from pkg_py.system_object.state_via_database import PkSqlite3DB
-from pkg_py.system_object.is_os_windows import is_os_windows
+# from pkg_py.system_object.is_os_windows import is_os_windows
 
 from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.ensure_printed import ensure_printed

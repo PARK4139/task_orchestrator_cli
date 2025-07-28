@@ -31,7 +31,7 @@ from pkg_py.functions_split.get_f_video_to_load import get_f_video_to_load
 from pkg_py.functions_split.get_d_working import get_d_working
 from pkg_py.functions_split.ensure_list_written_to_f import ensure_list_written_to_f
 from pkg_py.system_object.map_massages import PkMessages2025
-from pkg_py.system_object.is_os_windows import is_os_windows
+# from pkg_py.system_object.is_os_windows import is_os_windows
 
 from functools import partial
 from bs4 import ResultSet
@@ -59,7 +59,7 @@ def print_wsl_distro_info_std_list() -> list[str]:
                 'Stopped'
             ],
         }
-        pk_debug_state_for_py_data_type(pk_stamp='%%%FOO%%%-1', data_working=std_list,
+        debug_state_for_py_data_type(pk_stamp='%%%FOO%%%-1', data_working=std_list,
                                         highlight_config_dict=highlight_config_dict, with_LTA=0)
         return std_list
     except Exception as e:

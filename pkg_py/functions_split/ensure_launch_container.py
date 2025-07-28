@@ -63,7 +63,7 @@ from pkg_py.functions_split.get_nx import get_nx
 from pkg_py.functions_split.get_value_completed import get_value_completed
 from pkg_py.system_object.directories import D_PKG_PY
 from pkg_py.functions_split.is_d import is_d
-from pkg_py.system_object.is_os_windows import is_os_windows
+# from pkg_py.system_object.is_os_windows import is_os_windows
 from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style
 from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style
 

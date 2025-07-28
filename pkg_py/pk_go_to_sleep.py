@@ -34,14 +34,13 @@ if __name__ == "__main__":
         else:
             # make_os_power_saving_mode_as_s3()
             f_py_list = [
-                rf"{D_PKG_PY}/pk_assist_to_lock_os.py",
+                rf"{D_PKG_PY}/pk_ensure_os_locked.py",
             ]
             restart_f_list_with_new_window_as_async(f_py_list)
 
 
     except Exception as exception:
         ensure_do_exception_routine(traceback=traceback, exception=exception)
-
     finally:
         ensure_do_finally_routine(D_PROJECT=D_PROJECT, __file__=__file__, STAMP_TRY_GUIDE=STAMP_TRY_GUIDE)
         

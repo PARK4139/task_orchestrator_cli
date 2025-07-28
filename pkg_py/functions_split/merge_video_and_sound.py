@@ -39,7 +39,7 @@ from pkg_py.functions_split.ensure_pressed import ensure_pressed
 from pkg_py.functions_split.ensure_printed_once import ensure_printed_once
 
 from pkg_py.system_object.files import F_FFMPEG_EXE
-from pkg_py.system_object.is_os_windows import is_os_windows
+# from pkg_py.system_object.is_os_windows import is_os_windows
 from PIL import Image
 from pathlib import Path
 from moviepy import VideoFileClip

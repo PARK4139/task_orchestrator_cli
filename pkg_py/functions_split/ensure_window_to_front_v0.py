@@ -19,7 +19,7 @@ from pkg_py.functions_split.is_window_title_opened import is_window_title_opened
 from pkg_py.functions_split.set_pk_context_state import set_pk_context_state
 from pkg_py.system_object.files import F_LOSSLESSCUT_EXE
 from pkg_py.system_object.encodings import Encoding
-from pkg_py.system_object.is_os_windows import is_os_windows
+# from pkg_py.system_object.is_os_windows import is_os_windows
 from mutagen.mp3 import MP3
 from fastapi import HTTPException
 from collections import Counter

@@ -42,7 +42,7 @@ from base64 import b64encode
 from pkg_py.functions_split.get_nx import get_nx
 from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
 from pkg_py.functions_split.is_d import is_d
-from pkg_py.system_object.is_os_windows import is_os_windows
+# from pkg_py.system_object.is_os_windows import is_os_windows
 from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
 from pkg_py.functions_split.get_pnx_wsl_unix_style import get_pnx_wsl_unix_style
 from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux

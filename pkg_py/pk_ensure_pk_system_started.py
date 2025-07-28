@@ -3,7 +3,6 @@ if __name__ == '__main__':
     from pkg_py.functions_split.ensure_window_title_replaced import ensure_window_title_replaced
     import traceback
     from pkg_py.functions_split.get_nx import get_nx
-
     from pkg_py.functions_split.ensure_colorama_initialized_once import ensure_colorama_initialized_once
     from pkg_py.functions_split.ensure_pk_system_started import ensure_pk_system_started
 
@@ -11,10 +10,15 @@ if __name__ == '__main__':
         ensure_colorama_initialized_once()
         ensure_window_title_replaced(get_nx(__file__))
 
-        ensure_pk_system_started()
+        # loop_mode = True # pk_option
+        loop_mode = False  # pk_option
+
+        if loop_mode == True:
+            while True:
+                ensure_pk_system_started()
+        else:
+            ensure_pk_system_started()
 
         ensure_process_killed(window_title=get_nx(__file__))  # pk_option
-
     except:
-
         traceback.print_exc()

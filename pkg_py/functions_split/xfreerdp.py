@@ -58,7 +58,7 @@ from pkg_py.system_object.directories import D_DOWNLOADS, D_PKG_PKL
 from pkg_py.system_object.state_via_database import PkSqlite3DB
 from pkg_py.system_object.state_via_context import SpeedControlContext
 from pkg_py.system_object.performance_logic import ensure_seconds_measured, pk_measure_memory
-from pkg_py.system_object.is_os_windows import is_os_windows
+# from pkg_py.system_object.is_os_windows import is_os_windows
 
 from passlib.context import CryptContext
 from os.path import dirname

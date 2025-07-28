@@ -8,7 +8,7 @@ from pkg_py.system_object.directories_reuseable import D_PROJECT
 from pathlib import Path
 from os.path import dirname
 from colorama import init as pk_colorama_init
-from pkg_py.system_object.is_os_windows import is_os_windows
+# from pkg_py.system_object.is_os_windows import is_os_windows
 from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style
 
 

@@ -15,7 +15,7 @@ from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.system_object.etc import PkFilter
 from pkg_py.system_object.stamps import STAMP_ATTEMPTED
 from pkg_py.system_object.directories_reuseable import D_PROJECT
-from pkg_py.system_object.is_os_windows import is_os_windows
+# from pkg_py.system_object.is_os_windows import is_os_windows
 
 from PIL import Image
 from os import path

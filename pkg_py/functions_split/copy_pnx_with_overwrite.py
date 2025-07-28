@@ -30,7 +30,7 @@ from pkg_py.system_object.directories_reuseable import D_PROJECT
 from pkg_py.system_object.directories import D_DOWNLOADS, D_PKG_PKL
 from pkg_py.system_object.state_via_database import PkSqlite3DB
 from pkg_py.system_object.state_via_context import SpeedControlContext
-from pkg_py.system_object.is_os_windows import is_os_windows
+# from pkg_py.system_object.is_os_windows import is_os_windows
 from functools import partial as functools_partial
 from fastapi import HTTPException
 from Cryptodome.Random import get_random_bytes

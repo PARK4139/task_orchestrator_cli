@@ -46,7 +46,7 @@ from pkg_py.system_object.stamps import STAMP_ATTEMPTED
 from pkg_py.system_object.files import F_LOSSLESSCUT_EXE
 from pkg_py.system_object.encodings import Encoding
 from pkg_py.system_object.directories import D_PKG_TXT, D_PK_WORKING
-from pkg_py.system_object.print_red import print_red
+# from pkg_py.system_object.print_red import print_red
 from pkg_py.system_object.state_via_database import PkSqlite3DB
 from paramiko import SSHClient, AutoAddPolicy
 from mysql.connector import connect, Error

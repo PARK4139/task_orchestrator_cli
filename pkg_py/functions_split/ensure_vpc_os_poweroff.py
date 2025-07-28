@@ -42,7 +42,7 @@ from pkg_py.system_object.stamps import STAMP_ATTEMPTED
 from pkg_py.system_object.files import F_POT_PLAYER_MINI_64_EXE
 from pkg_py.system_object.directories import D_PK_WORKING
 from pkg_py.system_object.state_via_database import PkSqlite3DB
-from pkg_py.system_object.is_os_windows import is_os_windows
+# from pkg_py.system_object.is_os_windows import is_os_windows
 from paramiko import SSHClient, AutoAddPolicy
 from os import path
 from functools import partial as functools_partial

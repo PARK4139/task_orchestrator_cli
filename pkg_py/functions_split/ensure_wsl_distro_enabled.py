@@ -24,7 +24,7 @@ from pkg_py.system_object.encodings import Encoding
 
 from os import path
 from Cryptodome.Random import get_random_bytes
-from pkg_py.system_object.is_os_windows import is_os_windows
+# from pkg_py.system_object.is_os_windows import is_os_windows
 from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
 from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
 from pkg_py.functions_split.is_os_windows import is_os_windows

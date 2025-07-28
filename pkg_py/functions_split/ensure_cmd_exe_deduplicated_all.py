@@ -7,7 +7,7 @@ def ensure_cmd_exe_deduplicated_all():
     from pkg_py.functions_split.ensure_slept import ensure_slept
     from pkg_py.functions_split.get_values_sanitize_for_cp949 import get_values_sanitize_for_cp949
     from pkg_py.functions_split.ensure_iterable_printed_as_vertical import ensure_iterable_printed_as_vertical
-    from pkg_py.pk_interface_graphic_user import get_windows_opened
+    from pkg_py.system_object.gui_util import get_windows_opened
 
     # ① 열린 창 목록 확보 및 CP949 대응 처리
     values = get_windows_opened()

@@ -5,7 +5,7 @@ from colorama import init as pk_colorama_init
 
 #
 # from pkg_py.system_object.500_live_logic import ensure_pnx_made, get_value_completed, get_values_from_historical_file, get_n
-# from pkg_py.system_object.500_live_logic import ensure_f_list_organized_by_ngram
+# from pkg_py.system_object.500_live_logic import ensure_files_organized_by_ngram
 # from pkg_py.system_object.static_logic import D_DOWNLOADS, D_PK_WORKING
 #, STAMP_TRY_GUIDE, D_PROJECT, STAMP_UNIT_TEST_EXCEPTION_DISCOVERED, D_PKG_TXT
 
@@ -27,11 +27,10 @@ if __name__ == "__main__":
             r"[\W_]+",  # 영문자/숫자 외 모든 문자(기호 포함) 및 언더바(_) 기준으로 분리
             r"\.",  # 마침표(.) 기준으로 분리 (확장자나 버전 구분에 유용)
         ])
-        pk_ensure_f_list_organized_by_ngram(token_splitter_pattern, d_working)
+        pk_ensure_files_organized_by_ngram(token_splitter_pattern, d_working)
 
     except Exception as exception:
         ensure_do_exception_routine(traceback=traceback, exception=exception)
-
     finally:
         ensure_do_finally_routine(D_PROJECT=D_PROJECT, __file__=__file__, STAMP_TRY_GUIDE=STAMP_TRY_GUIDE)
         

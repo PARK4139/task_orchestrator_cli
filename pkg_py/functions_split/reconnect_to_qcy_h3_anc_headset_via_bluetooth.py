@@ -27,7 +27,7 @@ from pkg_py.functions_split.ensure_state_printed import ensure_state_printed
 
 from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
 from pkg_py.system_object.files import F_POT_PLAYER_MINI_64_EXE
-from pkg_py.system_object.is_os_windows import is_os_windows
+# from pkg_py.system_object.is_os_windows import is_os_windows
 from os.path import dirname
 from mutagen.mp3 import MP3
 from gtts import gTTS

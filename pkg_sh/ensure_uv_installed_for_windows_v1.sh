@@ -8,7 +8,7 @@ set -u
 
 # ✅ 필요한 디렉토리 생성
 mkdir -p "$(dirname "$F_UV_ZIP")"      # ~/Downloads
-mkdir -p "$D_PKG_EXE"
+mkdir -p "$D_PKG_WINDOWS"
 
 echo "📥 다운로드 중: $PK_URL → $F_UV_ZIP"
 curl -L -o "$F_UV_ZIP" "$PK_URL"

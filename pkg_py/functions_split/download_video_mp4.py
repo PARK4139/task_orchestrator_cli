@@ -32,7 +32,7 @@ from pkg_py.functions_split.ensure_list_written_to_f import ensure_list_written_
 from pkg_py.system_object.etc import PkFilter
 from pkg_py.system_object.files import F_HISTORICAL_PNX
 from pkg_py.system_object.map_massages import PkMessages2025
-from pkg_py.system_object.print_red import print_red
+# from pkg_py.system_object.print_red import print_red
 from pkg_py.system_object.state_via_database import PkSqlite3DB
 from pkg_py.system_object.state_via_context import SpeedControlContext
 from pkg_py.system_object.local_test_activate import LTA

@@ -83,9 +83,9 @@ from pkg_py.system_object.files import F_HISTORICAL_PNX
 from pkg_py.system_object.files import F_FFMPEG_EXE
 from pkg_py.system_object.directories_reuseable import D_PROJECT
 from pkg_py.system_object.directories import D_PK_WORKING
-from pkg_py.system_object.print_red import print_red
+# from pkg_py.system_object.print_red import print_red
 from pkg_py.system_object.state_via_database import PkSqlite3DB
-from pkg_py.system_object.is_os_windows import is_os_windows
+# from pkg_py.system_object.is_os_windows import is_os_windows
 from pkg_py.system_object.get_list_calculated import get_list_calculated
 
 from PIL import Image, ImageFont, ImageDraw, ImageFilter

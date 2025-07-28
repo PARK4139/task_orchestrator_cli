@@ -1,5 +1,5 @@
 from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_excuted_to_os
-from pkg_py.system_object.is_os_windows import is_os_windows
+# from pkg_py.system_object.is_os_windows import is_os_windows
 
 from pkg_py.system_object.directories import D_PKG_PY
 from pkg_py.system_object.directories import D_PK_WORKING
@@ -25,22 +25,22 @@ def restart_up_pk_process_list():
             ensure_command_excuted_to_os(cmd=cmd, mode='a')
 
         f_list = [
-            rf"{D_PKG_PY}/pk_assist_to_control_wsl.py",
+            rf"{D_PKG_PY}/ensure_wsl_enabled.py",
             rf"{D_PKG_PY}/pk_assist_to_kill_explorer_window_duplicated_list.py",
-            rf"{D_PKG_PY}/pk_guide_todo.py",
+            rf"{D_PKG_PY}/pk_ensure_todo_list_guided.py",
 
             # 작업 손실 유의
             rf"{D_PKG_PY}/pk_assist_to_run_mini.py",
             rf"{D_PKG_PY}/pk_ensure_video_loaded_at_losslesscut.py",
-            rf"{D_PKG_PY}/pk_assist_to_upload_project.py",
-            rf"{D_PKG_PY}/pk_assist_to_ensure_f_list_organized_by_nx_delimiter.py",
-            # rf"{D_PKG_PY}/pk_assist_to_ensure_f_list_organized_by_ext.py",
-            rf"{D_PKG_PY}/pk_ensure_f_list_organized_by_ngram.py",
-            rf"{D_PKG_PY}/pk_ensure_f_list_organized_by_keyword_and_x.py",
+            rf"{D_PKG_PY}/pk_ensure_pk_system_uploaded_to_github.py",
+            rf"{D_PKG_PY}/pk_assist_to_ensure_files_organized_by_nx_delimiter.py",
+            # rf"{D_PKG_PY}/pk_assist_to_ensure_files_organized_by_ext.py",
+            rf"{D_PKG_PY}/pk_ensure_files_organized_by_ngram.py",
+            rf"{D_PKG_PY}/pk_ensure_files_organized_by_keyword_and_x.py",
             # mkr.
-            rf"{D_PKG_PY}/pk_assist_to_lock_os.py",  # *
+            rf"{D_PKG_PY}/pk_ensure_os_locked.py",  # *
             rf"{D_PKG_PY}/pk_replace_old_str_in_f_nx.py",
-            # rf"{D_PKG_PY}/pk_collect_and_download_magnets.py",
+            # rf"{D_PKG_PY}/pk_ensure_magnets_collected_and_loaded.py",
         ]
         for f in f_list:
             ensure_process_killed_by_window_title_seg(window_title_seg=get_nx(f))

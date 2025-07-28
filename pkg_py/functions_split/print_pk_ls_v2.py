@@ -10,7 +10,7 @@ from telegram import Bot
 from prompt_toolkit import PromptSession
 from pkg_py.functions_split.ensure_losslesscut_reran import ensure_losslesscut_reran
 from pkg_py.system_object.files import F_HISTORICAL_PNX
-from pkg_py.system_object.print_red import print_red
+# from pkg_py.system_object.print_red import print_red
 
 from os import path
 from dataclasses import dataclass

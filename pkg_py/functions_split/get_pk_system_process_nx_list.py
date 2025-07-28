@@ -52,7 +52,7 @@ from pkg_py.system_object.files import F_POT_PLAYER_MINI_64_EXE, F_HISTORICAL_PN
 from pkg_py.system_object.files import F_POT_PLAYER_MINI_64_EXE
 from pkg_py.system_object.files import F_LOSSLESSCUT_EXE
 from pkg_py.system_object.directories import D_PK_WORKING
-from pkg_py.system_object.print_red import print_red
+# from pkg_py.system_object.print_red import print_red
 from pkg_py.system_object.performance_logic import ensure_seconds_measured, pk_measure_memory
 from pkg_py.system_object.get_list_calculated import get_list_calculated
 from PIL import Image, ImageFilter

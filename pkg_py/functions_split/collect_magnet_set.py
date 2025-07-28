@@ -14,6 +14,6 @@ def collect_magnet_set():
     # nyaa_si_supplier = get_value_completed(message='nyaa_si_supplier=', option_values=['SubsPlease', '', 'Erai-raws'])
     search_keyword = ''  # pk_test
     nyaa_si_supplier = 'SubsPlease'  # pk_test
-    collect_magnet_set_from_nyaa_si_p1(nyaa_si_supplier=nyaa_si_supplier, search_keyword=search_keyword, driver=driver)
+    ensure_magnets_collected_from_nyaa_si_p1(nyaa_si_supplier=nyaa_si_supplier, search_keyword=search_keyword, driver=driver)
 
     # collect_magnets_from_torrentqq(via_f_txt=True, driver=driver)

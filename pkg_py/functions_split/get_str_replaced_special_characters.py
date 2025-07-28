@@ -25,7 +25,7 @@ from pkg_py.functions_split.get_list_sorted import get_list_sorted
 
 from pkg_py.system_object.etc import PkFilter
 from pkg_py.system_object.files import F_HISTORICAL_PNX
-from pkg_py.system_object.print_red import print_red
+# from pkg_py.system_object.print_red import print_red
 from fastapi import HTTPException
 from dirsync import sync
 from datetime import datetime, timedelta

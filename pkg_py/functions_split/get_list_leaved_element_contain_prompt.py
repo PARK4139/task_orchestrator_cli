@@ -19,7 +19,7 @@ from pkg_py.functions_split.ensure_printed_once import ensure_printed_once
 from pkg_py.functions_split.ensure_console_cleared import ensure_console_cleared
 from pkg_py.system_object.etc import PkFilter
 from pkg_py.system_object.map_massages import PkMessages2025
-from pkg_py.system_object.is_os_windows import is_os_windows
+# from pkg_py.system_object.is_os_windows import is_os_windows
 from pkg_py.system_object.local_test_activate import LTA
 from PIL import Image
 from os import path

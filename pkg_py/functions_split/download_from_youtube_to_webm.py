@@ -49,7 +49,7 @@ from pkg_py.functions_split.ensure_pk_program_suicided import ensure_pk_program_
 from pkg_py.system_object.etc import PkFilter, PK_UNDERLINE
 from pkg_py.functions_split.get_pnxs import get_pnxs
 from pkg_py.functions_split.is_d import is_d
-from pkg_py.system_object.is_os_windows import is_os_windows
+# from pkg_py.system_object.is_os_windows import is_os_windows
 from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
 from pkg_py.functions_split.is_os_windows import is_os_windows
 from pkg_py.functions_split.ensure_printed import ensure_printed

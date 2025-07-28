@@ -46,7 +46,7 @@ class PkSqlite3DB:
         from pkg_py.functions_split.get_value_completed import get_value_completed
         import json
         answer = get_value_completed(
-            key_hint=f'{question} answer=',
+            key_hint=f'{question} ',
             values=options
         )
 

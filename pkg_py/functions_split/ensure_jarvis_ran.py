@@ -2,8 +2,6 @@ from pkg_py.functions_split.ensure_console_cleared import ensure_console_cleared
 from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.ensure_slept import ensure_slept
 from pkg_py.functions_split.ensure_spoken import ensure_spoken
-# from pkg_py.workspace.pk_workspace import speak_v3
-
 
 def ensure_jarvis_ran():
     from datetime import datetime, time
@@ -33,8 +31,6 @@ def ensure_jarvis_ran():
 
         ensure_spoken(f"현재 시간은 {now_time.hour}시 {now_time.minute}분입니다.")
         ensure_printed(f"현재 시간은 {now_time.hour}시 {now_time.minute}분입니다.", print_color='yellow')
-
-
 
     ensure_spoken_v3("샘플 설정 시간을 입력해주세요")
     sleep_time_ranges_text = ["00:12-05:30"]
@@ -72,4 +68,3 @@ def ensure_jarvis_ran():
                 break  # 현재 속한 구간 하나만 처리
 
         ensure_slept(milliseconds=10000)
-

@@ -2,7 +2,7 @@ from pkg_py.functions_split.ensure_console_cleared import ensure_console_cleared
 from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.ensure_slept import ensure_slept
 from pkg_py.functions_split.ensure_spoken import ensure_spoken
-from pkg_py.workspace.pk_workspace import speak_v3
+from pkg_py.workspace.pk_workspace import ensure_spoken_v3
 
 
 def jarvis():

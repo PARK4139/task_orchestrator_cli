@@ -7,4 +7,4 @@ def ensure_pk_system_started():
     # ensure_pk_system_started_v2(index_map)
     # ensure_pk_system_started_v3(get_sorted_pk_file_list()) # not used fzf
     # ensure_pk_system_started_v4()
-    ensure_pk_system_started_v5()
+    return ensure_pk_system_started_v5()

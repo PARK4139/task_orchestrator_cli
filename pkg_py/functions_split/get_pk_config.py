@@ -21,7 +21,7 @@ from pkg_py.functions_split.set_pk_context_state import set_pk_context_state
 from pkg_py.system_object.etc import PkFilter
 from pkg_py.system_object.directories import D_PK_WORKING
 from pkg_py.system_object.state_via_context import SpeedControlContext
-from pkg_py.system_object.is_os_windows import is_os_windows
+# from pkg_py.system_object.is_os_windows import is_os_windows
 from os import path
 from datetime import date
 from pkg_py.system_object.directories import D_PKG_PY

@@ -52,7 +52,7 @@ from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
 from pkg_py.system_object.files import F_LOSSLESSCUT_EXE
 from pkg_py.system_object.directories import D_PKG_TXT, D_PK_WORKING
 from pkg_py.system_object.map_massages import PkMessages2025
-from pkg_py.system_object.is_os_windows import is_os_windows
+# from pkg_py.system_object.is_os_windows import is_os_windows
 from PIL import Image
 from pathlib import Path
 from paramiko import SSHClient, AutoAddPolicy

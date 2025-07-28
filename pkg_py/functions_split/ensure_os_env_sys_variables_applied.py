@@ -115,6 +115,8 @@ def ensure_os_env_sys_variables_applied():
         )
         ensure_printed(formatted, print_color="cyan")
 
+    ensure_window_os_path_deduplicated()
+
     # [PATH] 중복 제거 후 출력
     ensure_printed("\n[PATH] Current PATH entries (session)", print_color="cyan")
     path_entries = os.environ.get("PATH", "").split(";")

@@ -37,7 +37,7 @@ from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_e
 from pkg_py.functions_split.ensure_list_written_to_f import ensure_list_written_to_f
 from pkg_py.functions_split.get_list_sorted import get_list_sorted
 from pkg_py.system_object.map_massages import PkMessages2025
-from pkg_py.system_object.is_os_windows import is_os_windows
+# from pkg_py.system_object.is_os_windows import is_os_windows
 
 from pathlib import Path
 from passlib.context import CryptContext

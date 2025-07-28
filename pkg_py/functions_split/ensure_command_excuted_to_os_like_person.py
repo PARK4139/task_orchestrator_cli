@@ -12,7 +12,7 @@ from pkg_py.functions_split.ensure_window_to_front import ensure_window_to_front
 #
 # from pkg_py.system_object.files_and_directories_maker_logic import ensure_pnx_made
 # from pkg_py.system_object.mouse_and_keyboard import ensure_writen_like_person
-# from pkg_py.system_object.is_os_windows import is_os_windows
+# # from pkg_py.system_object.is_os_windows import is_os_windows
 # , ensure_state_printed
 # from pkg_py.system_object.time_and_lanauge_util import sleep
 # from pkg_py.system_object.directories import D_PKG_WINDOWS

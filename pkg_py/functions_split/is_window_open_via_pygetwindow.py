@@ -29,7 +29,7 @@ from pkg_py.system_object.files import F_HISTORICAL_PNX
 from pkg_py.system_object.encodings import Encoding
 from pkg_py.system_object.directories_reuseable import D_PROJECT
 from pkg_py.system_object.directories import D_PK_WORKING
-from pkg_py.system_object.print_red import print_red
+# from pkg_py.system_object.print_red import print_red
 from pkg_py.system_object.state_via_context import SpeedControlContext
 from pkg_py.system_object.get_list_calculated import get_list_calculated
 from PIL import Image

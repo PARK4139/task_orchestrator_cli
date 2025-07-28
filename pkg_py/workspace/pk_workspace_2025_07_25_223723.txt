@@ -42,7 +42,7 @@ from pkg_py.functions_split.ensure_slept import ensure_slept
 from pkg_py.functions_split.print_iterable_as_vertical import print_iterable_as_vertical
 from pkg_py.functions_split.set_values_to_historical_file import set_values_to_historical_file
 from pkg_py.functions_split.write_like_person import write_like_person
-from pkg_py.pk_interface_graphic_user import get_windows_opened
+from pkg_py.gui_util import get_windows_opened
 from pkg_py.system_object.color_map import PK_ANSI_COLOR_MAP
 from pkg_py.system_object.directories import D_PKG_WINDOWS
 from pkg_py.system_object.directories_reuseable import D_PROJECT, D_HOME
@@ -1716,7 +1716,7 @@ def ensure_cmd_exe_deduplicated_all_in_loop():
         ensure_cmd_exe_deduplicated_all()
 
 
-def ensure_cmd_exe_all_closed_in_loop():
+def ensure_cmd_exe_all_closed():
     while True:
         key_name = 'window_opened'
         values = get_windows_opened()
@@ -1909,7 +1909,7 @@ def copy_except_blacklist(src_dir, dst_dir, exclude_names):
     print(f"[{PkMessages2025.DONE}] {copied_count} file(s) copied to '{dst_dir}'.")
 
 
-def speak_v3(str_working, segment_delay=0.90, queue_mode=False):
+def ensure_spoken_v3(str_working, segment_delay=0.90, queue_mode=False):
     import threading
     import queue
 

@@ -36,7 +36,7 @@ from base64 import b64encode
 from pkg_py.functions_split.get_value_completed import get_value_completed
 from pkg_py.system_object.directories import D_PK_WORKING, D_DOWNLOADS
 from pkg_py.system_object.directories import D_PKG_PY
-from pkg_py.system_object.is_os_windows import is_os_windows
+# from pkg_py.system_object.is_os_windows import is_os_windows
 from pkg_py.functions_split.is_os_windows import is_os_windows
 from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style
 from pkg_py.functions_split.get_pnx_windows_style import get_pnx_windows_style

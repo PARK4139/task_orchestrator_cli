@@ -36,7 +36,7 @@ from pkg_py.functions_split.print_once import print_once
 from pkg_py.functions_split.ensure_list_written_to_f import ensure_list_written_to_f
 from pkg_py.system_object.etc import PkFilter
 from pkg_py.system_object.map_massages import PkMessages2025
-from pkg_py.system_object.is_os_windows import is_os_windows
+# from pkg_py.system_object.is_os_windows import is_os_windows
 from pkg_py.system_object.get_list_calculated import get_list_calculated
 from mutagen.mp3 import MP3
 from moviepy import VideoFileClip

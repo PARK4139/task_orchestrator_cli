@@ -1,6 +1,6 @@
 import undetected_chromedriver as uc
 
-from pkg_py.system_object.is_os_windows import is_os_windows
+# from pkg_py.system_object.is_os_windows import is_os_windows
 from pathlib import Path
 from dataclasses import dataclass
 from concurrent.futures import ThreadPoolExecutor

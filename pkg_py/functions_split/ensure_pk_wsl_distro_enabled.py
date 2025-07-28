@@ -1,9 +1,9 @@
-from pkg_py.system_object.print_red import print_red
+# from pkg_py.system_object.print_red import print_red
 from pkg_py.system_object.directories import D_DOWNLOADS
 
 from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.ensure_printed import ensure_printed
-from pkg_py.system_object.print_red import print_red
+# from pkg_py.system_object.print_red import print_red
 
 from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.system_object.directories import D_DOWNLOADS

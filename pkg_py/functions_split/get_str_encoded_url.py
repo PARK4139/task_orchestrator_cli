@@ -36,7 +36,7 @@ from pkg_py.functions_split.ensure_console_cleared import ensure_console_cleared
 from pkg_py.system_object.files import F_FFMPEG_EXE
 from pkg_py.system_object.encodings import Encoding
 from pkg_py.system_object.directories import D_PK_WORKING
-from pkg_py.system_object.print_red import print_red
+# from pkg_py.system_object.print_red import print_red
 
 from PIL import Image
 from pathlib import Path
@@ -52,7 +52,7 @@ from bs4 import BeautifulSoup
 from base64 import b64decode
 from pkg_py.functions_split.get_nx import get_nx
 from pkg_py.functions_split.get_list_calculated import get_list_calculated
-from pkg_py.system_object.is_os_windows import is_os_windows
+# from pkg_py.system_object.is_os_windows import is_os_windows
 from pkg_py.functions_split.get_pnx_wsl_unix_style import get_pnx_wsl_unix_style
 from pkg_py.functions_split.get_pnx_windows_style import get_pnx_windows_style
 from pkg_py.system_object.local_test_activate import LTA

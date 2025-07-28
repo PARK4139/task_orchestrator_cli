@@ -19,7 +19,7 @@ from pkg_py.functions_split.ensure_losslesscut_reran import ensure_losslesscut_r
 from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_excuted_to_os
 from pkg_py.system_object.stamps import STAMP_ATTEMPTED
 from pkg_py.system_object.files import F_HISTORICAL_PNX
-from pkg_py.system_object.print_red import print_red
+# from pkg_py.system_object.print_red import print_red
 from pkg_py.system_object.state_via_database import PkSqlite3DB
 from passlib.context import CryptContext
 from gtts import gTTS

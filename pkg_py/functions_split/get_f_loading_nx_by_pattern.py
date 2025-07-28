@@ -1,5 +1,5 @@
 
-from pkg_py.pk_interface_graphic_user import get_windows_opened
+from pkg_py.system_object.gui_util import get_windows_opened
 from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.ensure_printed import ensure_printed
 

@@ -24,7 +24,7 @@ from pkg_py.functions_split.is_window_opened import is_window_opened
 from pkg_py.functions_split.ensure_list_written_to_f import ensure_list_written_to_f
 from pkg_py.system_object.encodings import Encoding
 from pkg_py.system_object.map_massages import PkMessages2025
-from pkg_py.system_object.print_red import print_red
+# from pkg_py.system_object.print_red import print_red
 from pkg_py.system_object.local_test_activate import LTA
 from os.path import dirname
 from bs4 import BeautifulSoup

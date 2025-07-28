@@ -40,7 +40,7 @@ from pkg_py.system_object.files import F_POT_PLAYER_MINI_64_EXE
 from pkg_py.system_object.files import F_FFMPEG_EXE
 from pkg_py.system_object.encodings import Encoding
 from pkg_py.system_object.directories_reuseable import D_PROJECT
-from pkg_py.system_object.print_red import print_red
+# from pkg_py.system_object.print_red import print_red
 from pkg_py.system_object.get_list_calculated import get_list_calculated
 from pathlib import Path
 from gtts import gTTS

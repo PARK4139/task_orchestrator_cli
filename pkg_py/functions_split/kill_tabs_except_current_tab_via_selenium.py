@@ -8,7 +8,7 @@ from selenium.webdriver.common.keys import Keys
 from PySide6.QtWidgets import QApplication
 
 from pkg_py.system_object.files import F_FFMPEG_EXE
-from pkg_py.system_object.is_os_windows import is_os_windows
+# from pkg_py.system_object.is_os_windows import is_os_windows
 from pathlib import Path
 from moviepy import VideoFileClip
 from pkg_py.functions_split.get_value_completed import get_value_completed

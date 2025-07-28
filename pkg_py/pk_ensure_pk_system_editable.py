@@ -9,7 +9,7 @@ def ensure_cursor_opened():
 
 
 if __name__ == "__main__":
-    from pkg_py.functions_split.ensure_memo_opened import ensure_memo_opened
+    from pkg_py.functions_split.ensure_memo_editable import ensure_memo_editable
     from pkg_py.functions_split.ensure_process_killed import ensure_process_killed
     from pkg_py.functions_split.ensure_window_title_replaced import ensure_window_title_replaced
     from pkg_py.functions_split.get_nx import get_nx
@@ -29,7 +29,7 @@ if __name__ == "__main__":
         ensure_colorama_initialized_once()
         ensure_window_title_replaced(get_nx(__file__))
 
-        ensure_memo_opened()
+        ensure_memo_editable()
         ensure_pycharm_opened()
         ensure_cursor_opened()
 

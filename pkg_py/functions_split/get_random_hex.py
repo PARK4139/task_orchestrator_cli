@@ -20,7 +20,7 @@ from pkg_py.functions_split.ensure_printed import ensure_printed
 
 from pkg_py.system_object.files import F_LOSSLESSCUT_EXE
 from pkg_py.system_object.map_massages import PkMessages2025
-from pkg_py.system_object.is_os_windows import is_os_windows
+# from pkg_py.system_object.is_os_windows import is_os_windows
 from pkg_py.system_object.local_test_activate import LTA
 from dirsync import sync
 from cryptography.hazmat.backends import default_backend

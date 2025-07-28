@@ -9,7 +9,7 @@ set D_PK_SYSTEM=%D_DOWNLOADS%\pk_system
 set D_PK_WORKING=%D_DOWNLOADS%\pk_working
 set D_PK_MEMO=%D_DOWNLOADS%\pk_memo
 set D_PKG_WINDOWS=%D_PK_SYSTEM%\pkg_windows
-set D_PKG_WINDOWS=%D_PK_SYSTEM%\pkg_exe
+set D_PKG_WINDOWS=%D_PK_SYSTEM%\pkg_windows
 set D_PKG_TXT=%D_PK_SYSTEM%\pkg_txt
 set D_AUTO_UTILITY=%D_DOWNLOADS%\auto_utility
 
@@ -25,7 +25,7 @@ setx D_PK_SYSTEM "%D_DOWNLOADS%\pk_system"
 setx D_PK_WORKING "%D_DOWNLOADS%\pk_working"
 setx D_PK_MEMO "%D_DOWNLOADS%\pk_memo"
 setx D_PKG_WINDOWS "%D_PK_SYSTEM%\pkg_windows"
-setx D_PKG_WINDOWS "%D_PK_SYSTEM%\pkg_exe"
+setx D_PKG_WINDOWS "%D_PK_SYSTEM%\pkg_windows"
 setx D_PKG_TXT "%D_PK_SYSTEM%\pkg_txt"
 
 setx F_UV_ZIP "%D_DOWNLOADS%\uv.zip"
@@ -34,7 +34,7 @@ setx F_PK_ALIAS_MACROS_TXT "%D_PKG_TXT%\pk_alias_macros.txt"
 setx D_AUTO_UTILITY "%D_DOWNLOADS%\auto_utility"
 
 @REM ______________________________________ set path
-set PATH=%PATH%;C:\Users\user\Downloads\pk_system\pkg_exe
+set PATH=%PATH%;C:\Users\user\Downloads\pk_system\pkg_windows
 
 
 @REM ______________________________________ print

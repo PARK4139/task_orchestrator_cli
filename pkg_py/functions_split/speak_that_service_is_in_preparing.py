@@ -48,7 +48,7 @@ from pkg_py.system_object.files import F_HISTORICAL_PNX
 from pkg_py.system_object.files import F_FFMPEG_EXE
 from pkg_py.system_object.directories_reuseable import D_PROJECT
 from pkg_py.system_object.map_massages import PkMessages2025
-from pkg_py.system_object.print_red import print_red
+# from pkg_py.system_object.print_red import print_red
 from pkg_py.system_object.state_via_context import SpeedControlContext
 
 from PIL import Image

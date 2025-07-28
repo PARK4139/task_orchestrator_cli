@@ -1,4 +1,4 @@
-from pkg_py.system_object.is_os_windows import is_os_windows
+# from pkg_py.system_object.is_os_windows import is_os_windows
 
 from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.system_object.directories import D_PKG_TXT

@@ -29,7 +29,7 @@ from base64 import b64encode
 from pkg_py.functions_split.get_nx import get_nx
 from pkg_py.functions_split.ensure_video_loaded_at_losslesscut import ensure_video_loaded_at_losslesscut
 from pkg_py.functions_split.is_d import is_d
-from pkg_py.system_object.is_os_windows import is_os_windows
+# from pkg_py.system_object.is_os_windows import is_os_windows
 from pkg_py.functions_split.get_pnx_windows_style import get_pnx_windows_style
 
 from pkg_py.system_object.local_test_activate import LTA

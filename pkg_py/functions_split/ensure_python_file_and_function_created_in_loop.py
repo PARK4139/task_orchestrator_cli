@@ -122,7 +122,7 @@ def ensure_python_file_and_function_created(d_working, func_n):
                     template_content = f_template.read()
                     lines = template_content.splitlines()
                     lines = lines[1:]
-                    lines = [line for line in lines if "__main__" not in line] # 2. "__main__" 포함된 줄 제거
+                    # lines = [line for line in lines if "__main__" not in line] #  "__main__" 포함된 줄 제거  # pk_option
                     def remove_one_indent(line):
                         if line.startswith('\t'):
                             return line[1:]

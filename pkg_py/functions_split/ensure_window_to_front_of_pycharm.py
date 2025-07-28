@@ -65,7 +65,7 @@ from pkg_py.system_object.directories import D_PK_WORKING
 from pkg_py.system_object.map_massages import PkMessages2025
 from pkg_py.system_object.state_via_database import PkSqlite3DB
 from pkg_py.system_object.state_via_context import SpeedControlContext
-from pkg_py.system_object.is_os_windows import is_os_windows
+# from pkg_py.system_object.is_os_windows import is_os_windows
 from pathlib import Path
 from os.path import dirname
 from os import path

@@ -27,7 +27,7 @@ if __name__ == '__main__':
         from pkg_py.functions_split.ensure_iterable_printed_as_vertical import ensure_iterable_printed_as_vertical
         from pkg_py.functions_split.ensure_func_info_loaded import ensure_func_info_loaded
 
-        from pkg_py.pk_interface_graphic_user import get_windows_opened
+        from pkg_py.system_object.gui_util import get_windows_opened
 
 
         def ensure_windows_deduplicated_in_loop():

@@ -18,7 +18,7 @@ from pkg_py.functions_split.get_f_loading_nx_by_pattern import get_f_loading_nx_
 from pkg_py.functions_split.get_list_sorted import get_list_sorted
 from pkg_py.functions_split.ensure_console_cleared import ensure_console_cleared
 from pkg_py.system_object.files import F_POT_PLAYER_MINI_64_EXE
-from pkg_py.system_object.print_red import print_red
+# from pkg_py.system_object.print_red import print_red
 from pkg_py.system_object.state_via_database import PkSqlite3DB
 from mutagen.mp3 import MP3
 from functools import lru_cache

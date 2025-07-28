@@ -16,7 +16,7 @@ def cmd_to_remote_os_without_pw(port, users, ip, pw, cmd):
     ensure_command_excuted_to_os_like_person(cmd=cmd)
     window_title_seg = r"C:\Windows\system32\cmd"
     if LTA:
-        print_window_opened_list()
+        ensure_windows_printed()
     ensure_printed(rf'''window_title_seg="{window_title_seg}"{'%%%FOO%%%' if LTA else ''}''')
     time_limit = 10
     time_s = time.time()
