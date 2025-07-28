@@ -32,6 +32,7 @@ from pkg_py.system_object.map_massages import PkMessages2025
 
 # todo : jarvis CI/CD pipe line control flow in Jetson
 # jhp : 배포해
+# 운영서버 test # 실제운영환경에서 test 후 배포 되도록
 # host : watch host local code changed
 # host : 자동배포(host->Jetson)  # rsync
 # Jetson : watch Jetson local code changed
