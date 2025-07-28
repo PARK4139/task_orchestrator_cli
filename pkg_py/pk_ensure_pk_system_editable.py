@@ -28,7 +28,7 @@ if __name__ == "__main__":
             f_pycharm = get_pnx_os_style(F_PYCHARM64_EDITION_2024_02_04_EXE)
         else:
             f_pycharm = get_pnx_os_style(F_PYCHARM64_EDITION_2025_01_03_EXE)
-        ensure_command_excuted_to_os(cmd=f'start "" "{f_pycharm}" "{D_PROJECT}"')
+        ensure_command_excuted_to_os(cmd=f'start "" "{f_pycharm}" "{D_PROJECT}"', mode="a")
 
         ensure_process_killed(window_title=get_nx(__file__))  # pk_option
 

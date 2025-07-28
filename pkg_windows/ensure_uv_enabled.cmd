@@ -2,7 +2,7 @@
 chcp 65001 >nul
 
 curl -L -o "%F_UV_ZIP%" "%PK_URL%"
-powershell -NoLogo -NoProfile -Command "Expand-Archive -Path '%F_UV_ZIP%' -DestinationPath '%D_PKG_EXE%' -Force"
+powershell -NoLogo -NoProfile -Command "Expand-Archive -Path '%F_UV_ZIP%' -DestinationPath '%D_PKG_WINDOWS%' -Force"
 
 if not exist "%F_UV_EXE%" (
     echo ❌ uv.exe not found at: %F_UV_EXE%
@@ -17,15 +17,15 @@ if not defined OLD_PATH (
     set "OLD_PATH="
 )
 
-echo %OLD_PATH% | find /I "%D_PKG_EXE%" >nul
+echo %OLD_PATH% | find /I "%D_PKG_WINDOWS%" >nul
 if not errorlevel 1 (
     echo ⚠️ uv path already exists in PATH. Skipping.
     goto :done
 )
 
 
-@REM set PATH=%D_PKG_EXE%;%PATH%
-setx PATH "%OLD_PATH%;%D_PKG_EXE%" >nul
+@REM set PATH=%D_PKG_WINDOWS%;%PATH%
+setx PATH "%OLD_PATH%;%D_PKG_WINDOWS%" >nul
 echo ✅ PATH updated (applies to future sessions).
 
 :done

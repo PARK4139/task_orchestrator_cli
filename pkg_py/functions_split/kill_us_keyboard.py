@@ -50,7 +50,7 @@ def kill_us_keyboard():
 
         while 1:
             # exec 할 명령
-            f_cmd = rf"{D_PKG_WINDOWS}/pk_kill_us_keyboard.cmd"
+            f_cmd = rf"{D_PKG_WINDOWS}/ensure_us_keyboard_killed.cmd"
             f_cmd = get_pnx_os_style(pnx=f_cmd)
             ensure_command_excuted_to_os(cmd=rf'"{f_cmd}"', encoding=Encoding.CP949)
 
@@ -61,8 +61,8 @@ def kill_us_keyboard():
                     if flag[0]:  # flag가 True면 리셋 후 루프 재시작
                         ensure_printed("Enter detected! Restarting loop...", print_color="white")
 
-                        # pk_system_kill_us_keyboard.cmd (run)
-                        f_cmd = rf"{D_PKG_WINDOWS}/pk_kill_us_keyboard.cmd"
+                        # pk_system_ensure_us_keyboard_killed.cmd (run)
+                        f_cmd = rf"{D_PKG_WINDOWS}/ensure_us_keyboard_killed.cmd"
                         f_cmd = get_pnx_os_style(pnx=f_cmd)
                         ensure_command_excuted_to_os(cmd=rf'"{f_cmd}"', encoding='utf-8')
 

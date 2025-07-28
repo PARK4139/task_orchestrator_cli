@@ -2,7 +2,7 @@ import traceback
 
 import ipdb
 
-from pkg_py.functions_split.jarvis import run_jarvis
+from pkg_py.functions_split.jarvis import ensure_jarvis_ran
 from pkg_py.functions_split.ensure_do_exception_routine import ensure_do_exception_routine
 from pkg_py.functions_split.ensure_do_finally_routine import ensure_do_finally_routine
 from pkg_py.functions_split.ensure_spoken import ensure_spoken
@@ -22,7 +22,7 @@ def test():
 
         debug_as_ipdb_console(ipdb=ipdb)
 
-        # run_jarvis()
+        # ensure_jarvis_ran()
         # jarvis control flow in Jetson
         # host : watch host local code changed
         # host : 자동배포(host->Jetson)  # rsync

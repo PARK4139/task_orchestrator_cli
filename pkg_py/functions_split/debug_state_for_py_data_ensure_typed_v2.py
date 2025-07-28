@@ -123,7 +123,7 @@ def debug_state_for_py_data_ensure_typed_v2(pk_stamp, data_working, highlight_co
                 if elapsed >= pk_time_limit:
                     ensure_printed(f'''time out (pk_time_limit={pk_time_limit}) {'%%%FOO%%%' if LTA else ''}''')
                     break
-                user_input = pk_input_with_timeout(
+                user_input = input_with_timeout(
                     str_working=rf'{STAMP_PK_DEBUGER_ENVIRONMENT} {pk_stamp} Press Enter to continue.',
                     timeout_secs=int(pk_time_limit - elapsed))
                 if not user_input:

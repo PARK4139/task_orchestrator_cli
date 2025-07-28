@@ -1,6 +1,4 @@
 from enum import Enum
-
-
 # ____________________________________________________________________________________
 PK_WSL_DISTRO_N = 'wsl_pk_ubuntu_24_04'
 pk_ = 'pk_'
@@ -8,13 +6,12 @@ pk_ = 'pk_'
 class PkFilter(Enum):
     url_like = 'url_like'
     url_false = 'url_false'
-
 # ____________________________________________________________________________________
-PK_UNDERLINE = '_' * 59 + " "  # python pep8 최대권장길이(79)를 기준으로 20 자 내외로 제목작성을 작성을 최대한 준수
-PK_DIVIDER = 'pk ' * 59 + " "
-PK_UNDERLINESHORT = '_' * 6
-pk_INDENTATION_PROMISED = ' ' * 5
-PK_BLANK = ' '
+PK_UNDERLINE = '_' * 66 + " " # pk_option # python pep8 최대권장길이(79)를 기준으로 13 자 내외로 제목작성을 작성을 최대한 준수
+PK_DIVIDER = 'pk ' * 66 + " " # pk_option
+PK_UNDERLINESHORT = '_' * 6 # pk_option
+pk_INDENTATION_PROMISED = ' ' * 5 # pk_option
+PK_BLANK = ' ' # pk_option
 
 COUNTS_FOR_GUIDE_TO_SLEEP = []
 ROUTINES = [
@@ -49,7 +46,6 @@ AUDIO_IDS_ALLOWED = [
 
 pi = 3.141592
 # ____________________________________________________________________________________
-
 
 # hope to deprecate
 members = []  # 리스트에 저장, 런타임 중에만 저장이 유지됨, 앱종료 시 데이터 삭제

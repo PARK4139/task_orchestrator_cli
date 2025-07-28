@@ -39,7 +39,7 @@
 # _____________________________________________________________________  info
 # print(f"LOCAL LEPO : {GREEN}{os.getcwd()}{RESET}")
 # _____________________________________________________________________  log structure  (awesome)   : measure time/ performance
-# pk_initialize_and_customize_logging_config(__file__)
+# initialize_and_customize_logging_config(__file__)
 # start_time = ensure_start_time_logged()
 # end_time = ensure_end_time_logged()
 # elapsed_time = ensure_elapsed_time_logged(start_time)

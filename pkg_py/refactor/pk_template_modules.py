@@ -238,7 +238,7 @@
 # from pkg_py.system_object.stamps import STAMP_TRY_GUIDE, STAMP_UNIT_TEST_EXCEPTION_DISCOVERED
 # from pkg_py.refactor.ensure_keyboard_mouse_macro import PkMacroRoutines
 # from pkg_py.refactor.pk_ensure_functions_splited import restore_workspace_from_latest_archive, split_by_top_level_def, backup_workspace
-# from pkg_py.refactor.pk_ensure_keyboard_mouse_macro import PkMacroRoutines
+# from pkg_py.refactor.ensure_keyboard_mouse_macro import PkMacroRoutines
 # from pkg_py.refactor.pk_ensure_modules_enabled_front import clean_import_block
 # from pkg_py.workspace import ensure_pycharm_module_optimize
 # from prompt_toolkit import prompt

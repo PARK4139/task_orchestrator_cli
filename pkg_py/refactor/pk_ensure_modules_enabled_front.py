@@ -106,7 +106,7 @@ def ensure_modules_import_to_python_files():
 
 def main():
     try:
-        pk_initialize_and_customize_logging_config(__file__)
+        initialize_and_customize_logging_config(__file__)
         pk_ensure_modules_import_to_python_files()
     except Exception as e:
         ensure_do_exception_routine(traceback=traceback, exception=e)

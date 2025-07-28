@@ -21,7 +21,7 @@ def ensure_pycharm_module_optimize():
     from pkg_py.functions_split.paste_and_enter import paste_and_enter
     from pkg_py.functions_split.ensure_loop_delayed_at_loop_foot import ensure_loop_delayed_at_loop_foot
     from pkg_py.functions_split.press_ctrl_alt_l_nth import press_ctrl_alt_l_nth
-    from pkg_py.refactor.pk_ensure_keyboard_mouse_macro import PkMacroRoutines
+    from pkg_py.refactor.ensure_keyboard_mouse_macro import PkMacroRoutines
     from pkg_py.pk_paste_as_auto import copy
     from pkg_py.system_object.local_test_activate import LTA
     from pkg_py.system_object.state_via_database import PkSqlite3DB

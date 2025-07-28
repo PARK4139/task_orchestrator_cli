@@ -26,7 +26,6 @@ D_PKG_LOG = rf'{D_PROJECT}/pkg_log'
 D_PKG_JSON = rf'{D_PROJECT}/pkg_json'
 D_PKG_IMAGE = rf'{D_PROJECT}/pk_image'
 D_PKG_HISTORY = rf"{D_PROJECT}/pkg_history"
-D_PKG_EXE = rf'{D_PROJECT}/pkg_exe'
 D_PKG_DPL = rf'{D_PROJECT}/pkg_dpl'
 D_PKG_DB = rf'{D_PROJECT}/pkg_db'
 D_PKG_SH = rf'{D_PROJECT}/pkg_sh'

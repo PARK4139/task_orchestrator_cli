@@ -6,7 +6,7 @@
 def initialize_and_customize_logging_config(__file__):
     """description  : Replaced print() with logging.info() in pk_system """
     """call example : 
-        pk_initialize_and_customize_logging_config(__file__)
+        initialize_and_customize_logging_config(__file__)
 
         logging.warning(msg)
         logging.error(msg)

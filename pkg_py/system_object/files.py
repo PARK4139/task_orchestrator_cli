@@ -4,11 +4,11 @@ from pkg_py.functions_split.get_nx import get_nx
 from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style
 from pkg_py.functions_split.get_time_as_ import get_time_as_
 from pkg_py.system_object.directories import D_PKG_TXT, D_PKG_JSON, D_DOWNLOADS, D_PKG_PK, D_PKG_TOML, D_PKG_WINDOWS, \
-    D_PKG_DB, D_DESKTOP, D_PKG_PY, D_PK_RECYCLE_BIN, D_PKG_EXE, D_PK_FUNCTIONS_SPLIT
+    D_PKG_DB, D_DESKTOP, D_PKG_PY, D_PK_RECYCLE_BIN, D_PKG_WINDOWS, D_PK_FUNCTIONS_SPLIT
 from pkg_py.system_object.directories_reuseable import D_PROJECT
 
 F_VPC_MAMNAGEMENT_MAP_TOML = f'{D_PKG_TOML}/vpc_mamnagement_map.toml'
-F_ALIAS_CMD = rf'{D_PKG_WINDOWS}/pk_alias.cmd'
+F_ALIAS_CMD = rf'{D_PKG_WINDOWS}/ensure_alias_enabled.cmd'
 F_CONFIG_TOML = rf'{D_PROJECT}/pkg_toml/pk_config.toml'
 F_VIDEO_LIST_ALLOWED_TO_LOAD_TXT = rf'{D_PKG_TXT}/f_videos_allowed_to_load.txt'
 F_LOCAL_PKG_CACHE = rf'{D_PROJECT}/pkg_alba/__pycache__/__init__.cpython-312.pyc'
@@ -17,7 +17,7 @@ F_MEMO_WORK_PK = rf"{D_PKG_PK}/pk_memo_working.pk"
 F_MEMO_HOW_PK = rf"{D_PKG_PK}/pk_memo_how.pk"
 F_ICON_PNG = rf"{D_PROJECT}/pkg_png/icon.PNG"
 F_LOSSLESSCUT_EXE = rf"{D_DOWNLOADS}/pk_archived/LosslessCut-win-x64/LosslessCut.exe"
-# F_FFMPEG_EXE = rf"{D_PKG_EXE}/ffmpeg.exe"
+# F_FFMPEG_EXE = rf"{D_PKG_WINDOWS}/ffmpeg.exe"
 F_FFMPEG_EXE = rf"{D_DOWNLOADS}/pk_archived/LosslessCut-win-x64/resources/ffmpeg.exe"
 F_SUCCESS_LOG = rf'{D_PROJECT}/pkg_log/success.log'
 F_MACRO_LOG = rf'{D_PROJECT}/pkg_log/macro.log'
@@ -99,6 +99,6 @@ F_TEMP_TXT = rf"{D_DESKTOP}/pk_temp_{get_time_as_("now")}_{get_nx(__file__)}.txt
 F_TEST_PY = rf"{D_PKG_PY}/pk_test.py"
 F_PK_WORKSPACE_PY = get_pnx_os_style(rf"{D_PKG_PY}/workspace/pk_workspace.py")
 F_UV_ZIP = rf"{D_DOWNLOADS}\uv.zip"
-F_UV_EXE = rf"{D_PKG_EXE}\uv.exe"
+F_UV_EXE = rf"{D_PKG_WINDOWS}\uv.exe"
 F_PK_ALIAS_MACROS_TXT = rf"{D_PKG_TXT}\pk_alias_macros.txt"
 F_PK_TEST_PK_PYTHON_PROGRAM_STRUCTURE_PY=rf"{D_PK_FUNCTIONS_SPLIT}/test_pk_python_program_structure.py"

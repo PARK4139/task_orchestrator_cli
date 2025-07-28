@@ -13,8 +13,8 @@ call doskey wsl18=wsl -d Ubuntu-18.04 $*
 call doskey reboot=shutdown /r /t 0
 call doskey logout=logoff
 
-call doskey cmda="%D_PK_SYSTEM%\pkg_windows\pk_cmd_exe_as_admin.cmd"
-call doskey ps="%D_PK_SYSTEM%\pkg_windows\pk_powershell_exe.cmd"
+call doskey cmda="%D_PK_SYSTEM%\pkg_windows\ensure_cmd_exe_ran_as_admin.cmd"
+call doskey ps="%D_PK_SYSTEM%\pkg_windows\ensure_powershell_exe_ran.cmd"
 call doskey psa=powershell -Command "Start-Process powershell -Verb runAs"
 
 call doskey pycharm="C:\Program Files\JetBrains\PyCharm Community Edition 2024.3.1\bin\pycharm64.exe" $*

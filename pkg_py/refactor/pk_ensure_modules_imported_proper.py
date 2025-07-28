@@ -324,7 +324,7 @@ def step6_preview_lazy_import_applied_code(code: str, lazy_imports: list[str]) -
 def ensure_modules_imported_proper():
     func_n = inspect.currentframe().f_code.co_name
 
-    pk_initialize_and_customize_logging_config(__file__=__file__)
+    initialize_and_customize_logging_config(__file__=__file__)
     d_working = D_PKG_PY
 
     # 1단계: import 수집 및 저장

@@ -42,7 +42,7 @@ echo -e "\e[36m─────────────────────�
 # Step 40: Syncing uv
 CURRENT_STEP="Syncing uv packages"
 echo -e "\e[36m[5/6] $CURRENT_STEP\e[0m"
-UV_PATH="$USER_HOME/Downloads/pk_system/pkg_exe"
+UV_PATH="$USER_HOME/Downloads/pk_system/pkg_windows"
 export PATH="$PATH:$UV_PATH"
 chmod +x "$SCRIPT_DIR/ensure_uv_synced.sh"
 "$SCRIPT_DIR/ensure_uv_synced.sh" || exit 1

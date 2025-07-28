@@ -100,7 +100,7 @@ def assist_to_control_wsl(**pk_config):
                     if elapsed >= pk_seconds_limit:
                         ensure_printed(f'''time is limited (pk_time_limit={pk_seconds_limit}) {'%%%FOO%%%' if LTA else ''}''')
                         raise
-                    user_input = pk_input_with_timeout("계속 wsl 환경을 쓸까요? 아무것도 안하면 환경이 종료됩니다. Enter를 누르면 유지됩니다",
+                    user_input = input_with_timeout("계속 wsl 환경을 쓸까요? 아무것도 안하면 환경이 종료됩니다. Enter를 누르면 유지됩니다",
                                                        timeout_secs=int(pk_seconds_limit - elapsed))
                     if user_input == "":
                         break

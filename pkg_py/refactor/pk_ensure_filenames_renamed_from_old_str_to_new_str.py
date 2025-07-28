@@ -11,7 +11,7 @@ from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
 
 if __name__ == "__main__":
     try:
-        pk_initialize_and_customize_logging_config(__file__=__file__)
+        initialize_and_customize_logging_config(__file__=__file__)
         d_working = D_SYSTEM_OBJECT
         old_str = 'pk_system_layer_100_'
         new_str = ''

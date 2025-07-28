@@ -186,7 +186,7 @@ if __name__ == "__main__":
     from pkg_py.functions_split.ensure_do_exception_routine import ensure_do_exception_routine
     from pkg_py.functions_split.ensure_do_finally_routine import ensure_do_finally_routine
 
-    pk_initialize_and_customize_logging_config(__file__=__file__)
+    initialize_and_customize_logging_config(__file__=__file__)
     try:
         pk_ensure_filecontents_renamed_from_old_str_to_new_str()
     except Exception as exception:

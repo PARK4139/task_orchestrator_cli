@@ -49,7 +49,7 @@
     set /a STEP_INDEX+=1
     set "CURRENT_STEP=Registering pk_alias to AutoRun"
     powershell -Command "Write-Host '[!STEP_INDEX!/!TOTAL_STEPS!] !CURRENT_STEP!' -ForegroundColor Cyan"
-    reg add "HKCU\Software\Microsoft\Command Processor" /v AutoRun /t REG_SZ /d "\"%D_PKG_WINDOWS%\pk_alias.cmd\"" /f
+    reg add "HKCU\Software\Microsoft\Command Processor" /v AutoRun /t REG_SZ /d "\"%D_PKG_WINDOWS%\ensure_alias_enabled.cmd\"" /f
 
     echo ──────────────────────────────────────────────────────────
     :: All Complete

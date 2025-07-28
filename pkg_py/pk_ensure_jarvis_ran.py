@@ -1,7 +1,7 @@
 def test_pk_python_program_structure():
     import os
     import traceback
-    from pkg_py.functions_split.run_jarvis import run_jarvis
+    from pkg_py.functions_split.ensure_jarvis_ran import ensure_jarvis_ran
     import ipdb
 
     from pkg_py.functions_split.ensure_console_debuggable import ensure_console_debuggable
@@ -16,7 +16,7 @@ def test_pk_python_program_structure():
             colorama_init_once()
             ensure_window_title_replaced(get_nx(__file__))
 
-            run_jarvis()
+            ensure_jarvis_ran()
 
             if LTA:
                 ensure_console_debuggable(ipdb)

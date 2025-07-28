@@ -145,7 +145,7 @@ def ensure_modules_enabled_lazy():
 
 if __name__ == "__main__":
     try:
-        pk_initialize_and_customize_logging_config(__file__)
+        initialize_and_customize_logging_config(__file__)
         pk_ensure_modules_enabled_lazy()
     except Exception as exception:
         ensure_do_exception_routine(traceback=traceback, exception=exception)

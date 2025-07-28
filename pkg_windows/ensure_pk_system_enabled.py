@@ -7,6 +7,17 @@ import winreg
 from typing import Callable, List, Tuple
 
 # ──────────────────────────────────────────────
+# Constants
+UV_URL = "https://github.com/astral-sh/uv/releases/latest/download/uv-x86_64-pc-windows-msvc.zip"
+USER_PROFILE = os.environ["USERPROFILE"]
+D_PK_SYSTEM = os.path.join(USER_PROFILE, "Downloads", "pk_system")
+D_PKG_WINDOWS = os.path.join(D_PK_SYSTEM, "pkg_py", "pkg_windows")
+F_UV_EXE = os.path.join(D_PKG_WINDOWS, "uv.exe")
+F_UV_ZIP = os.path.join(USER_PROFILE, "Downloads", "uv.zip")
+F_ALIAS_CMD = os.path.join(D_PK_SYSTEM, "pkg_windows", "ensure_alias_enabled.cmd")
+F_SHORTCUT_TARGET = os.path.join(D_PK_SYSTEM, "pkg_windows", "ensure_pk_system_ran.cmd")
+
+# ──────────────────────────────────────────────
 temp_installed_modules = {}
 
 def try_import_or_install(pkg_name: str, import_name: str = None) -> None:
@@ -33,10 +44,8 @@ def print_step(step_index: int, total_steps: int, description: str, color: str =
 # ──────────────────────────────────────────────
 def register_pk_alias() -> None:
     try:
-        user_profile = os.environ["USERPROFILE"]
-        pk_alias_path = os.path.join(user_profile, "Downloads", "pk_system", "pkg_windows", "pk_alias.cmd")
         with winreg.CreateKey(winreg.HKEY_CURRENT_USER, r"Software\Microsoft\Command Processor") as key:
-            winreg.SetValueEx(key, "AutoRun", 0, winreg.REG_SZ, f'"{pk_alias_path}"')
+            winreg.SetValueEx(key, "AutoRun", 0, winreg.REG_SZ, f'"{F_ALIAS_CMD}"')
     except Exception as e:
         print(f"❌ Failed to register pk_alias: {e}")
         raise
@@ -46,18 +55,12 @@ def install_uv() -> None:
     try_import_or_install("requests")
     import requests
 
-    user_profile = os.environ["USERPROFILE"]
-    d_pkg_exe = os.path.join(user_profile, "Downloads", "pk_system", "pkg_exe")
-    uv_zip_path = os.path.join(user_profile, "Downloads", "uv.zip")
-    uv_exe_path = os.path.join(d_pkg_exe, "uv.exe")
-    uv_url = "https://github.com/astral-sh/uv/releases/latest/download/uv-x86_64-pc-windows-msvc.zip"
-
-    os.makedirs(d_pkg_exe, exist_ok=True)
+    os.makedirs(D_PKG_WINDOWS, exist_ok=True)
 
     try:
-        with requests.get(uv_url, stream=True) as r:
+        with requests.get(UV_URL, stream=True) as r:
             r.raise_for_status()
-            with open(uv_zip_path, "wb") as f:
+            with open(F_UV_ZIP, "wb") as f:
                 for chunk in r.iter_content(chunk_size=8192):
                     f.write(chunk)
     except Exception as e:
@@ -65,17 +68,17 @@ def install_uv() -> None:
         raise
 
     try:
-        with zipfile.ZipFile(uv_zip_path, 'r') as zip_ref:
-            zip_ref.extractall(d_pkg_exe)
+        with zipfile.ZipFile(F_UV_ZIP, 'r') as zip_ref:
+            zip_ref.extractall(D_PKG_WINDOWS)
     except Exception as e:
         print(f"❌ Failed to extract uv zip: {e}")
         raise
 
-    if not os.path.exists(uv_exe_path):
-        raise FileNotFoundError(f"❌ uv.exe not found at: {uv_exe_path}")
+    if not os.path.exists(F_UV_EXE):
+        raise FileNotFoundError(f"❌ uv.exe not found at: {F_UV_EXE}")
 
     try:
-        subprocess.run([uv_exe_path, "--version"], check=True)
+        subprocess.run([F_UV_EXE, "--version"], check=True)
     except Exception as e:
         print(f"❌ uv verification failed: {e}")
         raise
@@ -89,12 +92,12 @@ def install_uv() -> None:
     except Exception:
         old_path = ""
 
-    if d_pkg_exe not in old_path:
+    if D_PKG_WINDOWS not in old_path:
         try:
-            new_path = f"{old_path};{d_pkg_exe}" if old_path else d_pkg_exe
+            new_path = f"{old_path};{D_PKG_WINDOWS}" if old_path else D_PKG_WINDOWS
             with winreg.OpenKey(winreg.HKEY_CURRENT_USER, "Environment", 0, winreg.KEY_SET_VALUE) as key:
                 winreg.SetValueEx(key, "Path", 0, winreg.REG_EXPAND_SZ, new_path)
-            print(f"uv path added to PATH: {d_pkg_exe}")
+            print(f"uv path added to PATH: {D_PKG_WINDOWS}")
         except Exception as e:
             print(f"❌ Failed to update PATH: {e}")
             raise
@@ -102,7 +105,7 @@ def install_uv() -> None:
         print("⚠️ uv path already in PATH. Skipping update.")
 
     try:
-        os.remove(uv_zip_path)
+        os.remove(F_UV_ZIP)
     except FileNotFoundError:
         print("⚠️ uv.zip not found for cleanup. Skipping.")
     except Exception as e:
@@ -111,21 +114,15 @@ def install_uv() -> None:
 # ──────────────────────────────────────────────
 def sync_uv_packages() -> None:
     try:
-        user_profile = os.environ["USERPROFILE"]
-        d_pk_system = os.path.join(user_profile, "Downloads", "pk_system")
-        uv_exe = os.path.join(user_profile, "Downloads", "pk_system", "pkg_exe", "uv.exe")
+        if not os.path.isdir(D_PK_SYSTEM):
+            raise FileNotFoundError(f"❌ Target path does not exist: {D_PK_SYSTEM}")
 
-        if not os.path.isdir(d_pk_system):
-            raise FileNotFoundError(f"❌ Target path does not exist: {d_pk_system}")
+        os.chdir(D_PK_SYSTEM)
+        os.environ["PATH"] += ";" + os.path.dirname(F_UV_EXE)
 
-        os.chdir(d_pk_system)
-        os.environ["PATH"] += ";" + os.path.dirname(uv_exe)
-
-        result = subprocess.run([uv_exe, "sync"])
+        result = subprocess.run([F_UV_EXE, "sync"])
         if result.returncode != 0:
             raise RuntimeError("❌ uv sync failed.")
-
-
     except Exception as e:
         print(f"❌ Failed during uv sync: {e}")
         raise
@@ -147,14 +144,12 @@ def create_shortcuts() -> None:
         try_import_or_install("pywin32", "win32com")
         import win32com.client
 
-        user_profile = os.environ["USERPROFILE"]
-        script_path = os.path.join(user_profile, "Downloads", "pk_system", "pkg_windows", "ensure_pk_system_ran.cmd")
         shortcut_name = "PK System Launcher"
         icon_path = os.path.join(os.environ["SystemRoot"], "System32", "shell32.dll") + ",40"
 
         targets = [
-            os.path.join(user_profile, "Desktop", f"{shortcut_name}.lnk"),
-            os.path.join(os.path.dirname(script_path), f"{shortcut_name}.lnk")
+            os.path.join(USER_PROFILE, "Desktop", f"{shortcut_name}.lnk"),
+            os.path.join(os.path.dirname(F_SHORTCUT_TARGET), f"{shortcut_name}.lnk")
         ]
 
         shell = win32com.client.Dispatch("WScript.Shell")
@@ -162,7 +157,7 @@ def create_shortcuts() -> None:
         for shortcut_path in targets:
             shortcut = shell.CreateShortcut(shortcut_path)
             shortcut.TargetPath = "cmd.exe"
-            shortcut.Arguments = f'/c "{script_path}"'
+            shortcut.Arguments = f'/c "{F_SHORTCUT_TARGET}"'
             shortcut.IconLocation = icon_path
             shortcut.WindowStyle = 1
             shortcut.Save()
@@ -178,7 +173,7 @@ def create_shortcuts() -> None:
 # ──────────────────────────────────────────────
 def main() -> None:
     print("──────────────────────────────────────────────────────────")
-    print(f"[STARTED] {__file__}.py")
+    print(f"[STARTED] {__file__}")
     print("──────────────────────────────────────────────────────────")
 
     try_import_or_install("requests")
@@ -212,5 +207,4 @@ def main() -> None:
 
 # ──────────────────────────────────────────────
 if __name__ == "__main__":
-    # TODO : 환경별 검증 필요
     main()

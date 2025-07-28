@@ -1,11 +1,11 @@
-# from pkg_py.workspace.pk_workspace import update_system_path_with_deduplication, ensure_window_os_variable_path_deduplicated
+# from pkg_py.workspace.pk_workspace import update_system_path_with_deduplication, ensure_window_os_path_deduplicated
 
 
 def ensure_os_env_sys_variables_applied():
     # 아...이거 좋은데. python 설치에 의존됨... 결국 batch 로 작성을 해야하나?
     from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style
     from pkg_py.system_object.directories import (
-        D_PKG_EXE, D_PKG_TXT, D_PKG_WINDOWS, D_PK_MEMO, D_DOWNLOADS,
+        D_PKG_WINDOWS, D_PKG_TXT, D_PKG_WINDOWS, D_PK_MEMO, D_DOWNLOADS,
         D_PK_SYSTEM, D_PK_WORKING, D_AUTO_UTILITY,
     )
     from pkg_py.system_object.files import (
@@ -15,7 +15,7 @@ def ensure_os_env_sys_variables_applied():
     import subprocess
     from pkg_py.functions_split.ensure_printed import ensure_printed
 
-    ensure_window_os_variable_path_deduplicated()
+    ensure_window_os_path_deduplicated()
 
     PK_URL = "https://github.com/astral-sh/uv/releases/download/0.6.12/uv-x86_64-pc-windows-msvc.zip"
     env_vars = {
@@ -25,7 +25,7 @@ def ensure_os_env_sys_variables_applied():
         "D_PK_WORKING": D_PK_WORKING,
         "D_PK_MEMO": D_PK_MEMO,
         "D_PKG_WINDOWS": D_PKG_WINDOWS,
-        "D_PKG_EXE": D_PKG_EXE,
+        "D_PKG_WINDOWS": D_PKG_WINDOWS,
         "D_PKG_TXT": D_PKG_TXT,
         "F_UV_ZIP": F_UV_ZIP,
         "F_UV_EXE": F_UV_EXE,
@@ -59,15 +59,15 @@ def ensure_os_env_sys_variables_applied():
         except subprocess.CalledProcessError as e:
             ensure_printed(f"[ERROR] Failed to setx {key}: {e}", print_color="red")
 
-    # Append D_PKG_EXE to PATH (session)
-    D_PKG_EXE = get_pnx_os_style(env_vars['D_PKG_EXE'])
-    if D_PKG_EXE not in os.environ.get("PATH", ""):
-        os.environ["PATH"] += ";" + D_PKG_EXE
-        session_logs.append(("PATH", f"+= {D_PKG_EXE}"))
+    # Append D_PKG_WINDOWS to PATH (session)
+    D_PKG_WINDOWS = get_pnx_os_style(env_vars['D_PKG_WINDOWS'])
+    if D_PKG_WINDOWS not in os.environ.get("PATH", ""):
+        os.environ["PATH"] += ";" + D_PKG_WINDOWS
+        session_logs.append(("PATH", f"+= {D_PKG_WINDOWS}"))
 
     try:
-        update_system_path_with_deduplication(D_PKG_EXE)
-        setx_logs.append(("PATH", f"+= {D_PKG_EXE}"))
+        update_system_path_with_deduplication(D_PKG_WINDOWS)
+        setx_logs.append(("PATH", f"+= {D_PKG_WINDOWS}"))
 
         completed = subprocess.run(
             ["reg", "query", "HKCU\\Environment", "/v", "PATH"],

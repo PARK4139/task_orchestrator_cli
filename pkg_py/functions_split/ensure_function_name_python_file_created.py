@@ -11,8 +11,6 @@ def write_template_to_file(f_template, template_content):
 
 
 def ensure_function_name_python_file_created():
-    # TODO : pk 파일을 만드는 옵션 or 단일 함수생성 옵션 or ...판단로직추가
-    # TODO : pk 파일 생성시   structure 의 __main__ 줄 제거, 한단계 들여쓰기
     import inspect
     import logging
     import os
@@ -31,14 +29,14 @@ def ensure_function_name_python_file_created():
     D_PK_FUNCTIONS_SPLIT = get_pnx_os_style(D_PK_FUNCTIONS_SPLIT)
 
     while True:
-        # 1. 디렉토리 경로 입력 받기
+        # 1. get user directory path
         d_working = get_value_completed(            key_hint='d_working=',            values=[D_PKG_PY, D_PK_FUNCTIONS_SPLIT, D_SYSTEM_OBJECT]        )
         d_working = get_pnx_os_style(d_working)
         if not os.path.isdir(d_working):
             logging.info(f"[{PkMessages2025.PATH_NOT_FOUND}] {d_working}")
             continue
 
-        # 2. 파일명 입력 받기 (.py 확장자 자동 부여)
+        # 2. get user filename  # .py 확장자 자동 부여
         # editable = False
         editable = True
         key_name = None
@@ -65,7 +63,7 @@ def ensure_function_name_python_file_created():
         python_file_name = get_pnx_os_style(value)
         ensure_printed(f'''python_file_name={python_file_name} {'%%%FOO%%%' if LTA else ''}''')
 
-        # 3. 중복 파일 처리
+        # 3. deduplicate files
         counter = 1
         func_n_template = f_n[:-3] if f_n.endswith(".py") else f_n
         while os.path.exists(os.path.join(d_working, python_file_name)):
@@ -77,7 +75,7 @@ def ensure_function_name_python_file_created():
         function_name_python_file_pnx = os.path.join(d_working, python_file_name)
         ensure_printed(f'''[{PkMessages2025.DATA}] function_name_python_file_pnx={function_name_python_file_pnx} {'%%%FOO%%%' if LTA else ''}''')
 
-        # 4. 템플릿 옵션 선택
+        # 4. select template_option
         template_option = None
         # template_option = get_value_completed(key_hint='template_file=', values=[F_PK_TEST_PK_PYTHON_PROGRAM_STRUCTURE_PY, splited_function_template])
         if d_working == D_PKG_PY:
@@ -90,17 +88,18 @@ def ensure_function_name_python_file_created():
         ensure_printed(f'''[{PkMessages2025.DATA}] template_option={template_option} {'%%%FOO%%%' if LTA else ''}''')
         ensure_printed(f'''[{PkMessages2025.DATA}] F_PK_TEST_PK_PYTHON_PROGRAM_STRUCTURE_PY={F_PK_TEST_PK_PYTHON_PROGRAM_STRUCTURE_PY} {'%%%FOO%%%' if LTA else ''}''')
 
-        # 5. 파일 생성
+        # 5. make file
         ensure_pnx_made(pnx=function_name_python_file_pnx, mode="f")
         logging.info(f"[{PkMessages2025.CREATED}] {function_name_python_file_pnx}")
 
-        # 6. 템플릿 내용 복사
+        # 6. select and save template_content
         template_content = None
         if d_working == D_PKG_PY:
             if os.path.isfile(F_PK_TEST_PK_PYTHON_PROGRAM_STRUCTURE_PY):
                 try:
                     with open(F_PK_TEST_PK_PYTHON_PROGRAM_STRUCTURE_PY, 'r', encoding='utf-8') as f_template:
                         template_content = f_template.read()
+                        # TODO : template_content pk 파일 생성시 structure 의 __main__ 줄 제거, 모든줄 한단계 들여쓰기
                         ensure_printed(f'''[{PkMessages2025.DATA}] template_content={template_content} {'%%%FOO%%%' if LTA else ''}''')
                     write_template_to_file(function_name_python_file_pnx, template_content)
                     logging.info(f"[{PkMessages2025.COPIED}] template copied → {function_name_python_file_pnx}")
@@ -119,5 +118,5 @@ def ensure_function_name_python_file_created():
             write_template_to_file(function_name_python_file_pnx, template_content)
             logging.info(f"[{PkMessages2025.COPIED}] template copied → {function_name_python_file_pnx}")
 
-        # 7. 생성된 파일 열기
+        # 7. open file generated
         ensure_pnx_opened_by_ext(pnx=function_name_python_file_pnx)
