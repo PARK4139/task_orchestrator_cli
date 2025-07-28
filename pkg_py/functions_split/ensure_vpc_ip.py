@@ -10,7 +10,7 @@ def ensure_vpc_ip(vpc_data, **config_remote_os):
     ip_new = vpc_data.vpc_ip
     while 1:
         set_vpc_ip(vpc_data, **config_remote_os)
-        if not ping(ip_new):
+        if not ensure_pinged(ip_new):
             ensure_printed(str_working=rf'''{vpc_type} set as {vpc_side_mode} side {'%%%FOO%%%' if LTA else ''}''',
                      print_color="red")
             raise

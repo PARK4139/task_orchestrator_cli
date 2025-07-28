@@ -136,7 +136,7 @@ def get_ip_conncetion_ping_test_result_list():
     ping_test_result_list = []
     for ip in ip_allowed_set:
         state_success = 0
-        state_result = ping(ip)
+        state_result = ensure_pinged(ip)
         if state_result is None:
             state_success = 0
         if state_result == 0:

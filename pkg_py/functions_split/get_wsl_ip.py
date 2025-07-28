@@ -22,7 +22,7 @@ def get_wsl_ip(wsl_distro_n):
             pass
     ip_wsl = std_out_list[0].split(" ")[0]
     if ip_wsl:
-        if not ping(ip=ip_wsl):
+        if not ensure_pinged(ip=ip_wsl):
             ensure_printed(str_working=rf'''ping {ip_wsl}  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
             raise
     return ip_wsl

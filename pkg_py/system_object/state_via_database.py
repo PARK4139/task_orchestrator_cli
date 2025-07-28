@@ -1,6 +1,7 @@
 from typing import Any
 from typing import Optional
 
+from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.ensure_seconds_measured import ensure_seconds_measured
 from pkg_py.system_object.files import F_PK_DB
 
@@ -94,7 +95,7 @@ class PkSqlite3DB:
         cur = self.pk_db_connection.cursor()
         cur.execute("UPDATE pk_table_state SET answer = NULL WHERE id = ?", (db_id,))
         self.pk_db_connection.commit()
-        print(f"{db_id} is reset in pk_system")
+        ensure_printed(f"db_id({db_id}) is reset")
 
     def set_values(self, db_id: str, values: Any):
 

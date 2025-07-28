@@ -1,13 +1,32 @@
-from pkg_py.functions_split.ensure_console_cleared import ensure_console_cleared
-from pkg_py.functions_split.ensure_printed import ensure_printed
-from pkg_py.functions_split.ensure_slept import ensure_slept
-from pkg_py.functions_split.ensure_spoken import ensure_spoken
+
 
 def ensure_jarvis_ran():
-    from datetime import datetime, time
+    from datetime import time
+    from pkg_py.functions_split.ensure_console_cleared import ensure_console_cleared
+    from pkg_py.functions_split.ensure_printed import ensure_printed
+    from pkg_py.functions_split.ensure_slept import ensure_slept
+    from pkg_py.functions_split.ensure_spoken import ensure_spoken
+    from pkg_py.functions_split.ensure_spoken_v3 import ensure_spoken_v3
 
     # jarvis 모드설정
     ensure_spoken("good evening, sir")
+
+    return
+
+    # if not ensure_pk_wsl_distro_enabled():
+    #     raise RuntimeError("WSL 배포판 설치/이름 변경에 실패했습니다.")
+
+    # if is_os_linux():
+    #     # ensure_command_excuted_to_os('exit')
+    #     # available_pk_python_program_pnx = get_pnx_from_fzf(D_PKG_PY)
+    #     available_pk_python_program_pnx = None
+    #     pnx_list = get_pnxs(d_working=D_PKG_PY, mode="f", with_walking=0)
+    #     for pnx in pnx_list:
+    #         if __file__ not in pnx:
+    #             continue
+    #         available_pk_python_program_pnx = pnx
+    #     tmux_session = get_nx(available_pk_python_program_pnx).replace(".", "_")
+    #     ensure_tmux_pk_session_removed(tmux_session)
 
     def parse_time_ranges(text_list):
         """sample: ["12:00-13:00", "15:00-15:10"] -> [(time(12,0), time(13,0)), (time(15,0), time(15,10))]"""

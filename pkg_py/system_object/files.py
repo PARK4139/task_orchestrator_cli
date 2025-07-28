@@ -98,6 +98,7 @@ F_TEST_PY = rf"{D_PKG_PY}/pk_test.py"
 F_PK_WORKSPACE_PY = get_pnx_os_style(rf"{D_PKG_PY}/workspace/pk_workspace.py")
 F_UV_ZIP = rf"{D_DOWNLOADS}\uv.zip"
 F_UV_EXE = rf"{D_PKG_WINDOWS}\uv.exe"
+F_YOUTUBE_COOKIES_TXT = rf"{D_PKG_TXT}/youtube_cookies.txt"
 F_PK_ALIAS_MACROS_TXT = rf"{D_PKG_TXT}\pk_alias_macros.txt"
 F_PK_TEST_PK_PYTHON_PROGRAM_STRUCTURE_PY=rf"{D_PK_FUNCTIONS_SPLIT}/test_pk_python_program_structure.py"
 

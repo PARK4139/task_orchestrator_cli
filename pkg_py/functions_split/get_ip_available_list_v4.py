@@ -20,7 +20,7 @@ def get_ip_available_list_v4(timeout_ms=500, max_workers=None):
     # 병렬로 ping 실행
     with ThreadPoolExecutor(max_workers=workers) as executor:
         # executor.map 에서는 순서대로 ip, 결과(True/False)가 반환됨
-        results = list(executor.map(lambda ip: (ip, ping(ip)), ip_set))
+        results = list(executor.map(lambda ip: (ip, ensure_pinged(ip)), ip_set))
 
     # 성공한 IP만 추출
     ip_connected_list = [ip for ip, ok in results if ok]

@@ -89,7 +89,7 @@ from pkg_py.functions_split.get_d_working import get_d_working
 
 def run_venv_in_cmd_exe():
     f_p = rf'{D_PKG_PY}'
-    f_n = 'pk_save_chrome_youtube_cookies_to_f'
+    f_n = 'pk_ensure_chrome_youtube_cookies_saved_to_file'
     f_pn_py = get_pnx_os_style(pnx=rf"{f_p}/{f_n}.py")
     f_cmd = rf"{D_PKG_WINDOWS}\{f_n}.cmd"
     activate_bat = rf'{D_PROJECT}\.venv\Scripts\activate.cmd'

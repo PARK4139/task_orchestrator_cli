@@ -9,7 +9,7 @@ from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style
 def run_f_n_as_script():  # todo : chore : add parameter
 
     f_p = rf'{D_PKG_PY}'
-    f_n = 'pk_save_chrome_youtube_cookies_to_f'
+    f_n = 'pk_ensure_chrome_youtube_cookies_saved_to_file'
     f_pn_py = get_pnx_os_style(pnx=rf"{f_p}/{f_n}.py")
     f_pn_cmd = rf"{D_PKG_WINDOWS}\{f_n}.cmd"
     activate_bat = rf'{D_PROJECT}\.venv\Scripts\activate.cmd'

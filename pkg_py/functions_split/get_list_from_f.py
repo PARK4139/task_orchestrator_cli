@@ -15,14 +15,28 @@ def get_list_from_f(f):
 
     try:
         if os.path.exists(f):
-            # with open(file=f,mode= 'r', encoding=Encoding.UTF8.value) as f:
-            # with open(file=f, 'r', errors='ignore') as f:
-            with open(file=f, mode='r', encoding=Encoding.UTF8.value, errors='ignore') as f:
-                lines = f.readlines()  # from file.ext to ["한줄","한줄","한줄"]
-                # mkr_f 내용을 디스크에 강제로 기록
-                # os.fsync(f.fileno())
-                if lines is None:
-                    return []
-                return lines
+            # 먼저 UTF-8로 시도
+            try:
+                with open(file=f, mode='r', encoding=Encoding.UTF8.value, errors='ignore') as f_obj:
+                    lines = f_obj.readlines()
+                    if lines is None:
+                        return []
+                    return lines
+            except UnicodeDecodeError:
+                # UTF-8 실패 시 UTF-16으로 시도
+                try:
+                    with open(file=f, mode='r', encoding='utf-16', errors='ignore') as f_obj:
+                        lines = f_obj.readlines()
+                        if lines is None:
+                            return []
+                        return lines
+                except UnicodeDecodeError:
+                    # UTF-16도 실패 시 cp949로 시도
+                    with open(file=f, mode='r', encoding='cp949', errors='ignore') as f_obj:
+                        lines = f_obj.readlines()
+                        if lines is None:
+                            return []
+                        return lines
     except:
         ensure_printed(f'''{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}" ''', print_color='red')
+        return []

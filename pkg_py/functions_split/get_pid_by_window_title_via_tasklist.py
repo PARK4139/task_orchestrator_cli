@@ -65,23 +65,18 @@ from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.get_pnxs import get_pnxs
 
 
+from pkg_py.functions_split.get_list_from_tasklist import get_pid_by_window_title
+
+
 def get_pid_by_window_title_via_tasklist(window_title_seg):
-    try:
-        cmd = rf'tasklist'
-        lines = ensure_command_excuted_to_os(cmd=cmd)
-        matching_lines = None
-        for line in lines:
-            if window_title_seg in line:
-                matching_lines = line
-
-        pids = []
-        parts = matching_lines.split()
-        if len(parts) > 1 and window_title_seg in parts[0]:
-            pids.append(parts[1])
-
-        if len(pids) == 1:
-            return pids[0]
-        else:
-            return pids
-    except Exception as e:
-        return str(e)
+    """
+    윈도우 타이틀로 PID를 찾는 함수 (기존 함수 호환성 유지)
+    
+    Args:
+        window_title_seg (str): 윈도우 타이틀 일부
+    
+    Returns:
+        str or list: PID 또는 PID 리스트
+    """
+    # 새로운 통합 함수 사용
+    return get_pid_by_window_title(window_title_seg)

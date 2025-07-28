@@ -8,7 +8,7 @@ def reboot_vpc(**config_remote_os):
     stdout, stderr = cmd_to_remote_os(cmd="sudo shutdown -r now", **config_remote_os)
     ip = config_remote_os['ip']
     while 1:
-        if not ping(ip):
+        if not ensure_pinged(ip):
             ensure_printed(f'''ping ({ip}) {'%%%FOO%%%' if LTA else ''}''', print_color='green')
             return
         ensure_slept(milliseconds=20)

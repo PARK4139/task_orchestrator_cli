@@ -21,7 +21,7 @@
 # ensure_printed(f'''file_to_hot_reload={file_to_hot_reload} {'%%%FOO%%%' if LTA else ''}''')
 # _____________________________________________________________________  history
 # key_name = "pk_program_language"
-# pk_program_language = get_values_from_historical_database_routine(db_id = db.get_id(key_name,func_n), key_hint=f'{key_name}=', values_default=["kr", "en"])
+# pk_program_language = get_values_from_historical_database_routine(db_id = db.get_id(key_name,func_n), key_hint=f'{key_name}=', options_default=["kr", "en"])
 # _____________________________________________________________________  history
 # key_name = "is_initial_launch"
 # is_initial_launch = db.get_values(db_id = db.get_id(key_name,func_n)) or True
@@ -30,7 +30,7 @@
 # is_initial_launch = db.get_values(db_id = db.get_id(key_name,func_n)) or ""
 # _____________________________________________________________________  history
 # key_name = "d_working"
-# d_working = get_values_from_historical_file_routine(file_id=get_file_id(key_name,func_n), key_hint=f'{key_name}=', values_default=['pk_working'], editable=True)
+# d_working = get_values_from_historical_file_routine(file_id=get_file_id(key_name,func_n), key_hint=f'{key_name}=', options_default=['pk_working'], editable=True)
 # _____________________________________________________________________ options
 # options = []
 # d_working = get_value_completed(key_hint='d_working=', values=options)

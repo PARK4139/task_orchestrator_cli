@@ -245,10 +245,10 @@ def main():
 
     # todo : chore : 장치 제어
     # ssh(users=users_mac, ip=ip_private_mac, wsl_linux_version=wsl_linux_version, wsl_window_title_seg=f"{users_desktop_wsl}@{HOSTNAME}", pw=pw_mac, exit_mode=False)
-    # ping(ip=ip_private_mac)
+    # ensure_pinged(ip=ip_private_mac)
     # command_to_remote_os(command=rf'sudo reboot', users=users_mac, ip=ip_private_mac, wsl_linux_version=wsl_linux_version, wsl_window_title_seg=f"{users_desktop_wsl}@{HOSTNAME}", pw=pw_mac, exit_mode=False)
     # command_to_remote_os(command=rf'sudo poweroff', users=users_mac, ip=ip_private_mac, wsl_linux_version=wsl_linux_version, wsl_window_title_seg=f"{users_desktop_wsl}@{HOSTNAME}", pw=pw_mac, exit_mode=False)
-    # ping(ip=ip_private_mac)
+    # ensure_pinged(ip=ip_private_mac)
     # mstsc(ip = ip_private_mac, port=port_rdp_mac)
     # remmina(users=users_mac, ip=ip_private_mac, wsl_linux_version=wsl_linux_version, wsl_window_title_seg=f"{users_desktop_wsl}@{HOSTNAME}", pw=pw_mac, exit_mode=False)
     # xfreerdp(users=users_mac, ip=ip_private_mac, wsl_linux_version=wsl_linux_version, wsl_window_title_seg=f"{users_desktop_wsl}@{HOSTNAME}", pw=pw_mac, exit_mode=False)

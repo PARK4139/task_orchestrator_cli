@@ -1,22 +1,117 @@
-# -*- coding: utf-8 -*-  # python 3.x 하위버전 호환을 위한코드
-__author__ = 'jung_hoon_park'
+import os
+import tempfile
+from pathlib import Path
 
 from pkg_py.functions_split import get_text_dragged
+from pkg_py.functions_split.assist_to_analize_addup_issue import assist_to_analize_addup_issue
+from pkg_py.functions_split.assist_to_do_pk_schedule import assist_to_do_pk_schedule
+from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
+from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_excuted_to_os
 from pkg_py.functions_split.ensure_printed import ensure_printed
+from pkg_py.functions_split.ensure_slept import ensure_slept
+from pkg_py.functions_split.ensure_spoken import ensure_spoken
+from pkg_py.functions_split.get_migrate_device_table_from_f_xlsx_to_local_db import get_migrate_device_table_from_f_xlsx_to_local_db
+from pkg_py.functions_split.get_p import get_p
+from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style
 from pkg_py.functions_split.get_text_dragged import get_text_dragged
+from pkg_py.functions_split.is_day import is_day
+from pkg_py.functions_split.is_hour import is_hour
+from pkg_py.functions_split.is_minute import is_minute
+from pkg_py.functions_split.is_month import is_month
+from pkg_py.functions_split.is_year import is_year
+from pkg_py.functions_split.run_project_docker_base import run_project_docker_base
+from pkg_py.system_object.directories import D_PKG_CSV, D_PKG_DB
+from pkg_py.system_object.directories_reuseable import D_PROJECT
+from pkg_py.system_object.gui_util import should_i_do
+from pkg_py.system_object.map_massages import PkMessages2025
 
 
-# 함수호출 횟수 로거
-# 데코레이션으로 만든다
+# todo : jarvis
+# ensure_chatGPT_responded(question="가 뭐야?") # 질문하기
+# from voice to voice
+
+# todo : jarvis CI/CD pipe line control flow in Jetson
+# jhp : 배포해
+# host : watch host local code changed
+# host : 자동배포(host->Jetson)  # rsync
+# Jetson : watch Jetson local code changed
+# Jetson : shutdown jarvis
+# Jetson : run jarvis
+# jarvis : 배포해
+
+
+# todo : 드래그한상태에서 특정단축키를 누르면, chatgpt 에게 질문을 하는 프로세스
+# from drag to voice
+# get_text_dragged
+# get_text_dragged()
+# drag 한 내용 + 특정 단축키 > dragged language 분류 > 실행
+
+
+# todo : time info
+
+# todo : weather info
+# get_comprehensive_weather_information_from_web()
+# print_sub_pnx_list(src=rf"D:\#기타\pkg_files")
+# print_from_pnx_list_to_semantic_words(pnx =rf"D:\#기타\pkg_files")
+
+# todo : schedule info
+
+
+# todo : 회의록 녹음/STT/요약/공유 pipeline
+# pk_ensure_기획_template_requested_via_chatGPT()
+# pk_ensure_기획_template_requested_via_chatGPT()
+# pk_ensure_기획_contents_requested_via_chatGPT()
+# pk_ensure_edit_code_contents_requested_via_cursor()
+# pk_ensure_record_contents_requested_via_smartphone_recording_app()
+# pk_ensure_STT_contents_requested_via_naver_clova()
+# pk_ensure_summary_contents_requested_via_chatGPT()
+# pk_ensure_summary_file_contents_requested_via_chatGPT()
+# pk_ensure_summary_json_contents_requested_via_chatGPT()
+# pk_ensure_회의록 녹음/STT/요약/공유 pipeline_pipeline_ran_via_ai()
+
+
+# todo : 원인분석 pipeline
+
+# todo : kiri
+
+# todo : ensure_marketing
+
+# todo : ensure_api_service_ran
+#  uv + fastapi + router + business logic
+# todo : ensure_db_service_cicd_monitor_ran
+# todo : ensure_db_service_ran
+#  uv + fastapi + router + business logic
+# 기획 : 비지니스 모델 기획
+#     동시접속 5000만 traffic 처리, 강한 보안
+# 기획 : 로직플로우 기획
+# 화면설계
+# 프론트엔드 설계
+# 백엔드 설계
+# 프로젝트 요소 정의
+#   서비스작업서버 : 개발자가 서비스코드 편집을 주로 하는 서버
+#   github 서버   : release, CI/CD Pipeline
+#   서비스운영서버 : AWS
+# 프로젝트 제어 플로우 정의
+#   서비스작업서버가 서비스작업서버/특정디렉토리 와 서비스운영서버/특정디렉토리_rsynced를 rsync # CICD PIPE LINE
+#   서비스운영서버가 서비스운영서버/특정디렉토리_rsynced를 모니터링 (변화감지 시, 서비스종료, 서비스코드 를 OP디렉토리 로 rsync 서비스재시작
+
+
+# todo : 함수호출 횟수 로거
+# 구현 as 데코레이터
 # 모든 함수에 붙인다.
 # 사용하지 않는 함수를 찾아내 지울 수 있다.
-# file 호출된 함수명을 작성한다. (횟수 아니고 함수명 의 개수만으로 되겠음.
+# 호출된 file/함수명을 로깅한다. (횟수 아니고 함수명 의 개수만으로 되겠음)
+# todo : refactor/pk_ensure_pk_system_lighten()
+# 코드마다 호출을 하나의 파일에 로깅하도록 하고 종합 후 불필요한 것을 add 하는데서 제외 하여 백업
+# pk     : not callable function and xxx 를 삭제, is it possiable?
+# cursor :
 
 
+# todo : pk_ensure_file_found.py
 # ensure_pnx_found_and_open_via_fzf.py
+# assist_to_find_pnx_list_like_everything()
 # 기존의 파일과 디렉토리 목록에 없는 부분만 추가적으로 DB 에 저장
 # DB 에 저장 모든 파일과 디렉토리 목록을 idx 와 함꼐 출력
-#
 # pk {idx} 를 입력 하면 idx 에 해당하는 파일 또는 디렉토리를 open
 # open 시 디렉토리라면 explorer.exe 를 통해서 열고
 # open 시 파일이라면 확장자에 따라서 지정된 파일로 연다. 지정되지 않은 확장자라면 code.exe 로 연다.
@@ -36,15 +131,7 @@ del "%~f0"
     os.system(f'start /min cmd /c "{bat_path}"')
 
 
-if __name__ == "__main__":
-    self_delete_project()
-
-import os
-import tempfile
-from pathlib import Path
-
-
-def self_delete_project():
+def ensure_pk_system_suicide():
     project_root = Path(__file__).resolve().parent
     bat_path = Path(tempfile.gettempdir()) / "self_delete.bat"
 
@@ -54,17 +141,7 @@ timeout /t 2 > nul
 rmdir /s /q "{project_root}"
 del "%~f0"
 ''')
-
     os.system(f'start /min cmd /c "{bat_path}"')
-
-
-if __name__ == "__main__":
-    self_delete_project()
-
-
-def _TEST_CASE_파일_제어기():
-    # todo 인터넷될때
-    assist_to_find_pnx_list_like_everything()
 
 
 def _TEST_CASE_출력하고TTS():
@@ -167,14 +244,14 @@ def _TEST_CASE_장비현황_로컬DB에서_최신현황만_CSV파일로_저장_A
     # 2. 업무수행일 → 정수형으로 변환
     df_all["업무수행일"] = pd.to_numeric(df_all["업무수행일"], errors="coerce")
 
-    # ✅ 장비식별자 기준 최신 업무트래킹 내림차순 정렬
+    # 장비식별자 기준 최신 업무트래킹 내림차순 정렬
     df_all["장비번호"] = df_all["장비식별자"].str.extract(r"XC\s?#?(\d+)", expand=False).astype(float)
     df_all = df_all.sort_values(["장비식별자", "업무수행일"], ascending=[True, False])
 
-    # ✅ 장비별 첫 번째만 "TRUE", 나머지 ""
+    # 장비별 첫 번째만 "TRUE", 나머지 ""
     df_all["장비별최신업무여부"] = df_all.duplicated(subset=["장비식별자"], keep="first").map(lambda x: "" if x else "TRUE")
 
-    # ✅ 날짜 포맷 변환
+    # 날짜 포맷 변환
     def parse_tracking_date(x):
         try:
             return datetime.strptime(str(int(x)), "%y%m%d").strftime("%Y-%m-%d")
@@ -183,18 +260,18 @@ def _TEST_CASE_장비현황_로컬DB에서_최신현황만_CSV파일로_저장_A
 
     # df_all["업무수행일"] = df_all["업무수행일"].apply(parse_tracking_date)
 
-    # ✅ 정렬 후 장비번호 제거, 표순번 추가
+    # 정렬 후 장비번호 제거, 표순번 추가
     df_all = df_all.drop(columns=["장비번호"])
     df_all.insert(0, "표순번", range(1, len(df_all) + 1))
 
-    # ✅ 컬럼 순서 정리 (비고 포함 시)
+    # 컬럼 순서 정리 (비고 포함 시)
     expected_cols = [
         "표순번", "장비식별자", "스티커라벨(장비식별자)", "Nvidia Serial", "장비 용도", "AI framework 배포파일 버전",
         "위치", "업무트래킹", "업무수행일", "장비별최신업무여부", "비고"
     ]
     df_all = df_all[[col for col in expected_cols if col in df_all.columns]]
 
-    # ✅ Nvidia Serial → 수식 문자열로 변환 (Excel/Notion 지수표기 방지)
+    # Nvidia Serial → 수식 문자열로 변환 (Excel/Notion 지수표기 방지)
     if "Nvidia Serial" in df_all.columns:
         df_all["Nvidia Serial"] = df_all["Nvidia Serial"].apply(lambda x: f'="{x}"' if pd.notna(x) else "")
 
@@ -208,7 +285,7 @@ def _TEST_CASE_장비현황_로컬DB에서_최신현황만_CSV파일로_저장_A
     df_all.to_csv(f_save_csv, index=False, encoding="utf-8-sig")
 
     if does_pnx_exist(f_save_csv):
-        ensure_printed(f"✅ 전체 장비현황 CSV 저장 완료 (v6, Serial 수식처리 적용) → {f_save_csv}", print_color="green")
+        ensure_printed(f"전체 장비현황 CSV 저장 완료 (v6, Serial 수식처리 적용) → {f_save_csv}", print_color="green")
         ensure_command_excuted_to_os(rf'explorer {f_save_csv}')
 
     return f_save_csv
@@ -284,8 +361,9 @@ def _TEST_CASE_시간확인_v1():
                             break
         ensure_slept(seconds=1)
 
-# todo
+
 # 스케쥴확인 # 파일이든 DB 든 등록된 스케쥴을 확인. 곧 해야할일을 확인하여 가이드
+
 
 def _TEST_CASE_시간확인():
     _TEST_CASE_시간확인_v1()
@@ -295,12 +373,15 @@ def _TEST_CASE_시간확인_v2():
     pass
 
 
+def ensure_printed_and_speak(param):
+    pass
+
+
 def _TEST_CASE_출력하고TTS():
     ensure_printed_and_speak("Playing music...")
 
 
 def _TEST_CASE_어시스트_스케쥴():
-    # todo
     assist_to_do_pk_schedule()
 
 
@@ -319,7 +400,6 @@ def _TEST_CASE_어시스트_스케쥴():
 # todo : 밤루틴 수면양말 동굴이불
 
 # todo
-# ensure_chatGPT_responded(question="가 뭐야?") # 질문하기
 # print_user_input_organized_duplicated_hashed() # 해시테그 오름차순 정리
 # reconnect_to_qcy_h3_anc_headset_via_bluetooth()
 # reconnect_to_wifi()
@@ -335,11 +415,11 @@ def _TEST_CASE_어시스트_스케쥴():
 # windows_shutdown(seconds=60)
 # 출근해라 to telegram/chat_room/ # via smartphone # txt, 작은파일은 보낼 수 있으니까 schedule 프로그램에서 동작하도록
 # make_shellscript_version_new_via_hard_coded() # 쉘 스크립트 버전 자동 업데이트
-ensure_directory_made_for_work()
+
 
 # todo control device
 # ssh(users=users_mac, ip=ip_private_mac, wsl_linux_version=wsl_linux_version, wsl_window_title_seg=f"{users_desktop_wsl}@{HOSTNAME}", pw=pw_mac, exit_mode=False)
-# ping(ip=ip_private_mac)
+# ensure_pinged(ip=ip_private_mac)
 # cmd_to_remote_os_via_wsl(command=rf'sudo reboot', users=users_mac, ip=ip_private_mac, wsl_linux_version=wsl_linux_version, wsl_window_title_seg=f"{users_desktop_wsl}@{HOSTNAME}", pw=pw_mac, exit_mode=False)
 # cmd_to_remote_os_via_wsl(command=rf'sudo poweroff', users=users_mac, ip=ip_private_mac, wsl_linux_version=wsl_linux_version, wsl_window_title_seg=f"{users_desktop_wsl}@{HOSTNAME}", pw=pw_mac, exit_mode=False)
 # mstsc(ip = ip_private_mac, port=port_rdp_mac)
@@ -461,20 +541,6 @@ ensure_directory_made_for_work()
 #     # 오디오 처리 exec
 #     process_audio(input_audio, output_audio, low_cutoff, high_cutoff, reverb_decay, volume_level)
 
-# todo : 드래그한상태에서 특정단축키를 누르면, chatgpt 에게 질문을 하는 프로세스
-# get_text_dragged
-# get_text_dragged()
-# drag 한 내용 + 특정 단축키 > dragged language 분류 > 실행
-
-# todo
-# get_comprehensive_weather_information_from_web()
-# print_sub_pnx_list(src=rf"D:\#기타\pkg_files")
-# print_from_pnx_list_to_semantic_words(pnx =rf"D:\#기타\pkg_files")
-
-# ai pipeline
-# todo : 회의록 자동화
-# 네이버 클로바 : STT
-# chatGPT : 내용 요약
 
 # liost
 
@@ -486,11 +552,6 @@ ensure_directory_made_for_work()
 # 노션/데이터베이스/속성(장비 용도, AI framework 배포파일 버전, 위치) 원복
 
 # _TEST_CASE_어시스트_스케쥴()
-_TEST_CASE_출력하고TTS()
-ensure_printed('단위테스트', print_color='green')
-
-
-
 
 
 def _TEST_CASE_프로젝트_FASTAPI():
@@ -553,14 +614,10 @@ def _TEST_CASE_프로젝트_FASTAPI():
 #         success sound 를 print_color = 'green' 에 연동?
 
 
-# TBD refactor/pk_ensure_pk_system_lighten()
-# 코드마다 호출을 하나의 파일에 로깅하도록 하고 종합 후 불필요한 것을 add 하는데서 제외 하여 백업
-# pk     : not callable function and xxx 를 삭제, is it possiable?
-# cursor :
 
 
-# Selenium sample
-assist_to_analize_addup_issue()
+# todo : Selenium sample
+# assist_to_analize_addup_issue()
 
 
 def test_gui():
@@ -570,50 +627,54 @@ def test_gui():
     from pkg_py.functions_split.ensure_printed import ensure_printed
 
     debug_mode = True
-    try:
-        # todo : sample : gui component
-        import pyautogui
+    # todo : sample : gui component
+    import pyautogui
 
-        pyautogui.alert("{msg}")  # 예제 동작: 알림창 표시
+    pyautogui.alert("{msg}")  # 예제 동작: 알림창 표시
 
-        # todo : sample : gui component
-        cmd = rf'explorer "{__file__}"'
-        txt_clicked, function, txt_written = should_i_do(
-            prompt=rf"___________",
-            btn_list=[_2025.POSITIVE, _2025.NEGATIVE],
-            function=partial(ensure_command_excuted_to_os, cmd),
-            auto_click_negative_btn_after_seconds=30,
-            title=f"___________",
-            input_box_mode=True,
-            input_box_text_default="______________",
-        )
-        if txt_clicked == _2025.NEGATIVE:
-            ensure_printed(str_working=f'  for txt_clicked != _2025.POSITIVE', print_color='red')
-            sys.exit(1)
-        user_input = txt_written
-        # ipdb.set_trace()
+    # todo : sample : gui component
+    cmd = rf'explorer "{__file__}"'
+    txt_clicked, function, txt_written = should_i_do(
+        prompt=rf"___________",
+        btn_list=[PkMessages2025.POSITIVE, PkMessages2025.NEGATIVE],
+        function=partial(ensure_command_excuted_to_os, cmd),
+        auto_click_negative_btn_after_seconds=30,
+        title=f"___________",
+        input_box_mode=True,
+        input_box_text_default="______________",
+    )
+    if txt_clicked == PkMessages2025.NEGATIVE:
+        ensure_printed(str_working=f'  for txt_clicked != PkMessages2025.POSITIVE', print_color='red')
+        sys.exit(1)
+    user_input = txt_written
+    # ipdb.set_trace()
 
-        # todo : sample : gui component 2
-        question = get_text_dragged()
-        txt_clicked, function, txt_written = should_i_do(
-            prompt=rf"드래그한 내용을 인터넷에 질문할까요?",
-            btn_list=[_2025.POSITIVE, _2025.NEGATIVE],
-            function=partial(ask_to_google, question=question),
-            auto_click_negative_btn_after_seconds=30,
-            title=f"___________",
-            input_box_mode=True,
-            input_box_text_default=question,
-        )
-        if txt_clicked == _2025.NEGATIVE:
-            ensure_printed(f'''{_2025.NEGATIVE} pressed %%%FOO%%%''', print_color='red')
-            sys.exit(1)
-        if txt_clicked == _2025.POSITIVE:
-            ensure_printed(f'''txt_clicked={txt_clicked} %%%FOO%%%''', print_color="blue")
-            ensure_printed(f'''txt_written={txt_written} %%%FOO%%%''', print_color="blue")
-        else:
-            # break
-            pass
-        # previous_question = dialog.input_box.text()
+    # todo : sample : gui component 2
+    question = get_text_dragged()
+    txt_clicked, function, txt_written = should_i_do(
+        prompt=rf"드래그한 내용을 인터넷에 질문할까요?",
+        btn_list=[PkMessages2025.POSITIVE, PkMessages2025.NEGATIVE],
+        function=partial(ask_to_google, question=question),
+        auto_click_negative_btn_after_seconds=30,
+        title=f"___________",
+        input_box_mode=True,
+        input_box_text_default=question,
+    )
+    if txt_clicked == PkMessages2025.NEGATIVE:
+        ensure_printed(f'''{PkMessages2025.NEGATIVE} pressed %%%FOO%%%''', print_color='red')
+        sys.exit(1)
+    if txt_clicked == PkMessages2025.POSITIVE:
+        ensure_printed(f'''txt_clicked={txt_clicked} %%%FOO%%%''', print_color="blue")
+        ensure_printed(f'''txt_written={txt_written} %%%FOO%%%''', print_color="blue")
+    else:
+        # break
+        pass
+    # previous_question = dialog.input_box.text()
 
-        # move
-        # friday.move_window_to_pycharm(debug_mode=debug_mode)
+    # move
+    # friday.move_window_to_pycharm(debug_mode=debug_mode)
+
+
+
+# -*- coding: utf-8 -*-  # python 3.x 하위버전 호환을 위한코드
+# __author__ = 'jung_hoon_park'

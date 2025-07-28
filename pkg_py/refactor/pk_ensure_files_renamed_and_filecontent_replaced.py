@@ -19,7 +19,7 @@ if __name__ == "__main__":
 
     target_extensions = [".py", ".cmd", ".bat", ".ps1", ".sh", ".bak", ".txt"]  # pk_option
 
-    old_string = rf'ensure_spoken_v'  # pk_option
-    new_string = rf'ensure_spoken_v'  # pk_option
+    old_string = rf'pk_ensure_chrome_youtube_cookies_saved_to_file'  # pk_option
+    new_string = rf'pk_ensure_chrome_youtube_cookies_saved_to_file'  # pk_option
     for d_target in d_targets:
         ensure_files_renamed_and_filecontent_replaced(d_target, old_string, new_string, target_extensions=target_extensions)
