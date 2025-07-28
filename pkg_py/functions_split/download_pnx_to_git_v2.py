@@ -36,7 +36,7 @@ def download_pnx_to_git_v2(d_working, git_repo_url, commit_msg, branch_n):
     import threading
     from colorama import init as pk_colorama_init
 
-    colorama_init_once()
+    ensure_colorama_initialized_once()
 
     def ask_user_yes_no(msg, timeout=5):
         ensure_printed(f"{msg} (y/n, {timeout}초 내 응답): ", print_color='yellow')

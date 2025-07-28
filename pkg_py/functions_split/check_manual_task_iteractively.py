@@ -62,7 +62,7 @@ def check_manual_task_iteractively(question, ignore_uppercase_word_list=None):
 
         import sys
 
-        colorama_init_once()
+        ensure_colorama_initialized_once()
 
         if ignore_uppercase_word_list is None:
             ignore_uppercase_word_list = []

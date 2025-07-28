@@ -8,7 +8,7 @@ from colorama import init as pk_colorama_init
 # from pkg_py.system_object.static_logic import D_PKG_PY, UNDERLINE, STAMP_TRY_GUIDE, D_PROJECT, STAMP_UNIT_TEST_EXCEPTION_DISCOVERED
 #, print_red
 
-colorama_init_once()
+ensure_colorama_initialized_once()
 
 if __name__ == "__main__":
     try:

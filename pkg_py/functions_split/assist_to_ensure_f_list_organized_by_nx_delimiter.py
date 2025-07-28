@@ -7,7 +7,7 @@ from pkg_py.functions_split.get_value_completed import get_value_completed
 def assist_to_ensure_f_list_organized_by_nx_delimiter():
     from colorama import init as pk_colorama_init
 
-    colorama_init_once()
+    ensure_colorama_initialized_once()
 
     option_values = [D_PK_WORKING, D_PROJECT, D_DOWNLOADS]
     while 1:

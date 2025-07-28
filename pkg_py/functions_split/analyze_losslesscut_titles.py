@@ -22,5 +22,5 @@ def analyze_titles(log_file="losslesscut_titles.log"):
             print("  ", t)
     return states
 
-# 사용 예시
+# example
 # analyze_titles() 

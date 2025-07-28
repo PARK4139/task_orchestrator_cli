@@ -23,5 +23,5 @@ def auto_load_and_play(video_path, check_interval=2.0):
             break
         time.sleep(check_interval)
 
-# 사용 예시
+# example
 # auto_load_and_play(r"C:\path\to\your\video.mp4") 

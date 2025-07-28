@@ -1,3 +1,7 @@
+from pkg_py.functions_split.ensure_copied import ensure_copied
+from pkg_py.functions_split.ensure_loop_delayed_at_loop_foot import ensure_loop_delayed_at_loop_foot
+
+
 def ensure_pycharm_module_optimize():
     """Optimize pycharm module via keyboard-mouse macro"""
     import os
@@ -19,10 +23,8 @@ def ensure_pycharm_module_optimize():
     from pkg_py.functions_split.move_pycharm_cursor_to_file import move_pycharm_cursor_to_file
     from pkg_py.functions_split.open_pycharm_parrete import open_pycharm_parrete
     from pkg_py.functions_split.paste_and_enter import paste_and_enter
-    from pkg_py.functions_split.ensure_loop_delayed_at_loop_foot import ensure_loop_delayed_at_loop_foot
     from pkg_py.functions_split.press_ctrl_alt_l_nth import press_ctrl_alt_l_nth
     from pkg_py.refactor.ensure_keyboard_mouse_macro import PkMacroRoutines
-    from pkg_py.pk_paste_as_auto import copy
     from pkg_py.system_object.local_test_activate import LTA
     from pkg_py.system_object.state_via_database import PkSqlite3DB
     from pkg_py.system_object.map_massages import PkMessages2025
@@ -97,7 +99,6 @@ def ensure_pycharm_module_optimize():
 
     mouse_x, mouse_y = pyautogui.position()
     file_name_last = None
-
     try:
         for file_name in filtered_files:
             file_abspath = os.path.join(DIRECTORY_TO_DO_MACRO_ROUTINE, file_name)
@@ -123,7 +124,7 @@ def ensure_pycharm_module_optimize():
                 press_ctrl_alt_l_nth()
                 close_pycharm_tab()
 
-                pk_ensure_loop_delayed_at_loop_foot(loop_cnt, mode_level=2, miliseconds_limit=50)
+                ensure_loop_delayed_at_loop_foot(loop_cnt, mode_level=2, miliseconds_limit=50)
                 loop_cnt += 1
 
             file_cnt += 1  # ✅ 단일 위치에서 증가

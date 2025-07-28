@@ -14,7 +14,7 @@ if __name__ == "__main__":
         #, STAMP_TRY_GUIDE, D_PROJECT, STAMP_UNIT_TEST_EXCEPTION_DISCOVERED, PK_WSL_DISTRO_N
         #, print_red
 
-        colorama_init_once()
+        ensure_colorama_initialized_once()
 
         print_window_opened_list()
 

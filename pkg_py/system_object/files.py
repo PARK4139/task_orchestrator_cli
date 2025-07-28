@@ -3,6 +3,7 @@ import os
 from pkg_py.functions_split.get_nx import get_nx
 from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style
 from pkg_py.functions_split.get_time_as_ import get_time_as_
+from pkg_py.functions_split.is_office_pc import is_office_pc
 from pkg_py.system_object.directories import D_PKG_TXT, D_PKG_JSON, D_DOWNLOADS, D_PKG_PK, D_PKG_TOML, D_PKG_WINDOWS, \
     D_PKG_DB, D_DESKTOP, D_PKG_PY, D_PK_RECYCLE_BIN, D_PKG_WINDOWS, D_PK_FUNCTIONS_SPLIT
 from pkg_py.system_object.directories_reuseable import D_PROJECT
@@ -89,9 +90,10 @@ F_POPPINS_SEMIBOLDITALIC_TTF = rf"{D_PROJECT}/pkg_font/Poppins-SemiBoldItalic.tt
 F_POPPINS_THIN_TTF = rf"{D_PROJECT}/pkg_font/Poppins-Thin.ttf"
 F_POPPINS_THINITALIC_TTF = rf"{D_PROJECT}/pkg_font/Poppins-ThinItalic.ttf"
 F_RUBIKDOODLESHADOW_REGULAR_TTF = rf"{D_PROJECT}/pkg_font/RubikDoodleShadow-Regular.ttf"  # 너무 귀여운 입체감 있는 영어폰트
-F_PYCHARM64_EDITION_2024_03_01_EXE = r"C:/Program Files/JetBrains/PyCharm Community Edition 2024.3.1/bin/pycharm64.exe"
-F_PYCHARM64_EDITION_2024_02_04_EXE = rf"C:/Program Files/JetBrains/PyCharm Community Edition 2024.2.4/bin/pycharm64.exe"
-F_PYCHARM64_EDITION_2025_01_03_EXE = rf"C:/Program Files/JetBrains/PyCharm Community Edition 2025.1.3.1/bin/pycharm64.exe"
+F_PYCHARM64_EDITION_EXE = rf"C:/Program Files/JetBrains/PyCharm Community Edition 2025.1.3.1/bin/pycharm64.exe"
+if is_office_pc():
+    F_PYCHARM64_EDITION_EXE = rf"C:/Program Files/JetBrains/PyCharm Community Edition 2024.2.4/bin/pycharm64.exe"
+    # F_PYCHARM64_EDITION_EXE = r"C:/Program Files/JetBrains/PyCharm Community Edition 2024.3.1/bin/pycharm64.exe"
 F_HISTORICAL_PNX = rf'{D_PKG_TXT}/historical_pnx.txt'
 F_HISTORICAL_SEARCH_KEYWORD = rf'{D_PKG_TXT}/historical_search_keyword.txt'
 F_POT_PLAYER_MINI_64_EXE = r"C:\Program Files\DAUM\PotPlayer\PotPlayerMini64.exe"

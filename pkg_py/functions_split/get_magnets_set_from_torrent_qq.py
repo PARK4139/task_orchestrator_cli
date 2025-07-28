@@ -11,7 +11,7 @@ def get_magnets_set_from_torrent_qq(search_keyword, driver=None):
         from bs4 import BeautifulSoup
 
         from colorama import init as pk_colorama_init
-        colorama_init_once()
+        ensure_colorama_initialized_once()
 
         magnet_link_set = set()
         ensure_printed(f'''search_keyword={search_keyword}  {'%%%FOO%%%' if LTA else ''}''')

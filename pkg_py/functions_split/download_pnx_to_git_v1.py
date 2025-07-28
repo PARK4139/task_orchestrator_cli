@@ -101,7 +101,7 @@ def download_pnx_to_git_v1(d_working, git_repo_url, commit_msg, branch_n):
     import traceback
     from colorama import init as pk_colorama_init
 
-    colorama_init_once()
+    ensure_colorama_initialized_once()
 
     try:
         if not does_pnx_exist(pnx=d_working):

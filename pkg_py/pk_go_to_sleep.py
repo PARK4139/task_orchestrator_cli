@@ -23,7 +23,7 @@ if __name__ == "__main__":
 
         # 2. puload to github
         if is_internet_connected():
-            colorama_init_once()
+            ensure_colorama_initialized_once()
             git_repo_url = get_pk_token(f_token=rf"{D_PKG_TOML}/pk_token_pk_system_github_repo_url.toml", initial_str="")
             commit_msg = ensure_input_preprocessed(str_working=f"commit_msg=", upper_seconds_limit=30, return_default=f"feat: auto pushed by pk_system at {get_time_as_("%Y-%m-%d %H:%M")}")
             push_pnx_to_github(d_working=D_PROJECT, git_repo_url=git_repo_url, commit_msg=commit_msg, branch_n='dev')

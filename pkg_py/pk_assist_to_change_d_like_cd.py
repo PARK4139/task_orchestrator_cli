@@ -6,7 +6,7 @@ try:
     #
     from colorama import init as pk_colorama_init
 
-    colorama_init_once()
+    ensure_colorama_initialized_once()
 
     assist_to_change_d()
 

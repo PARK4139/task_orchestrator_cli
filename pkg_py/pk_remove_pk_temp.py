@@ -8,7 +8,7 @@ if __name__ == "__main__":
         #, STAMP_TRY_GUIDE, D_PROJECT, STAMP_UNIT_TEST_EXCEPTION_DISCOVERED
         #
 
-        colorama_init_once()
+        ensure_colorama_initialized_once()
 
         if is_os_windows():
             ensure_command_excuted_to_os(cmd='echo y | rmdir /s %USERPROFILE%\Downloads\pk_working\pk_temp')

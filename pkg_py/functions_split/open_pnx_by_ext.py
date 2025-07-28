@@ -1,5 +1,5 @@
 from pkg_py.functions_split.is_os_windows import is_os_windows
-from pkg_py.system_object.files import F_PYCHARM64_EDITION_2025_01_03_EXE
+from pkg_py.system_object.files import F_PYCHARM64_EDITION_EXE
 from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.system_object.map_massages import PkMessages2025
 
@@ -44,7 +44,7 @@ def ensure_pnx_opened_by_ext(pnx):
 
                 # 'py': ('explorer.exe', 'python file, opening in windows explorer'),
                 # 'py': ('python.exe', 'python file, opening in windows explorer'),
-                'py': (get_pnx_windows_style(F_PYCHARM64_EDITION_2025_01_03_EXE), 'python file, opening in windows explorer'),
+                'py': (get_pnx_windows_style(F_PYCHARM64_EDITION_EXE), 'python file, opening in windows explorer'),
             }
         program, description = ext_to_program.get(x, (None, None))
         if program:

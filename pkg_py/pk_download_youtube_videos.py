@@ -5,7 +5,7 @@ if __name__ == "__main__":
         import sys
 
         from pkg_py.functions_split.download_youtube_videos import download_youtube_videos
-        from pkg_py.functions_split.colorama_init_once import colorama_init_once
+        from pkg_py.functions_split.ensure_colorama_initialized_once import ensure_colorama_initialized_once
         from pkg_py.system_object.map_massages import PkMessages2025
         from pkg_py.system_object.state_via_database import PkSqlite3DB
 
@@ -13,7 +13,7 @@ if __name__ == "__main__":
         if pkg_path not in sys.path:
             sys.path.append(pkg_path)
 
-        colorama_init_once()
+        ensure_colorama_initialized_once()
 
 
         db_id = 'download_option'

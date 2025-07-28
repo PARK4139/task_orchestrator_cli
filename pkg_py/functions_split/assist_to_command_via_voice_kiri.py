@@ -59,7 +59,7 @@ def assist_to_command_via_voice_kiri():
 
     from colorama import init as pk_colorama_init
     import os
-    colorama_init_once()
+    ensure_colorama_initialized_once()
 
     # ensure wsl
     config_remote_os = {}

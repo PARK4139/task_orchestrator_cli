@@ -641,7 +641,7 @@ class PkProgramPerformanceOptimizingUtil:
     @staticmethod
     def replace_words_based_on_tri_node(text, dictionary):
         """
-        # 사용 예시
+        # example
         dictionary = ["apple", "banana", "orange"]
         text = "I like apple and banana."
         replaced_text = replace_words(text, dictionary)

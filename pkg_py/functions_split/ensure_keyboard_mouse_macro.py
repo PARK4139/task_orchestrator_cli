@@ -1,5 +1,12 @@
-def ensure_keyboard_mouse_macro(macro_routine):
+import inspect
+import logging
+import os
+import time
 
+from pkg_py.functions_split.ensure_pycharm_module_optimize import ensure_pycharm_module_optimize
+
+
+def ensure_keyboard_mouse_macro(macro_routine):
     from pkg_py.system_object.local_test_activate import LTA
     from pkg_py.system_object.state_via_database import PkSqlite3DB
     from pkg_py.system_object.map_massages import PkMessages2025
@@ -9,7 +16,6 @@ def ensure_keyboard_mouse_macro(macro_routine):
     from pkg_py.functions_split.ensure_elapsed_time_logged import ensure_elapsed_time_logged
     from pkg_py.functions_split.ensure_start_time_logged import ensure_start_time_logged
     from pkg_py.functions_split.ensure_printed import ensure_printed
-    from pkg_py.functions_split import ensure_pycharm_module_optimize
     func_n = inspect.currentframe().f_code.co_name
     db = PkSqlite3DB()
 

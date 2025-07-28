@@ -601,7 +601,7 @@ def _TEST_CASE_프로젝트_FASTAPI():
 
 
 # from colorama import init as pk_colorama_init # ensure_printed() 함수에서 import 하면 엄청 느려짐
-# colorama_init_once() # colorama 초기화 # [97m[ 출력예방 # 색상전이를 막을 수 있음, 최적화를 한다면 연산되어 콘솔에 출력되는 것을 모두 중단처리. CliUtilStateUtil.is_op_mode == True 에서 동작하도록 하는 것도 방법이다.
+# ensure_colorama_initialized_once() # colorama 초기화 # [97m[ 출력예방 # 색상전이를 막을 수 있음, 최적화를 한다면 연산되어 콘솔에 출력되는 것을 모두 중단처리. CliUtilStateUtil.is_op_mode == True 에서 동작하도록 하는 것도 방법이다.
 # 혹시나 싶었는데 console_blurred 에서 팝업 기능과 충돌이 되는 것으로 보인다.
 # ensure_printed_v1 를 여러번 호출을 하면 호출횟수의 증가에 따라 속도저하 문제가 있음.-> ensure_printed_v2
 

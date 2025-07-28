@@ -16,7 +16,7 @@ if pkg_path not in sys.path:
 
 if __name__ == "__main__":
     try:
-        colorama_init_once()
+        ensure_colorama_initialized_once()
 
         pk_db = PkSqlite3DB()
         db_id = 'working_directory_to_play_contents'

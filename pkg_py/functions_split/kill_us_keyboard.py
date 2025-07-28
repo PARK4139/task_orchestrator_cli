@@ -5,7 +5,7 @@ def kill_us_keyboard():
     import threading
     from multiprocessing import shared_memory, Lock
 
-    colorama_init_once()
+    ensure_colorama_initialized_once()
 
     if get_os_n() == 'windows':
         chcp_65001()

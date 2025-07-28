@@ -11,7 +11,7 @@ if __name__ == "__main__":
     #, print_red
 
     try:
-        colorama_init_once()
+        ensure_colorama_initialized_once()
 
         pk_ensure_f_list_scaned_and_collected()
     except Exception as ex:

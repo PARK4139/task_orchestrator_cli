@@ -3,7 +3,7 @@ def push_pnx_to_github(d_working, git_repo_url, commit_msg, branch_n):
     from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
     from pkg_py.system_object.local_test_activate import LTA
     from pkg_py.functions_split.ensure_printed import ensure_printed
-    colorama_init_once()
+    ensure_colorama_initialized_once()
     ensure_printed(f'''commit_msg={commit_msg} {'%%%FOO%%%' if LTA else ''}''')
     if not is_internet_connected():
         return

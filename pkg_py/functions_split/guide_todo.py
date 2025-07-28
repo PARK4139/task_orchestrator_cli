@@ -42,7 +42,7 @@ def guide_todo():
     ensure_slept(milliseconds=1000)
 
     from colorama import init as pk_colorama_init
-    colorama_init_once()
+    ensure_colorama_initialized_once()
 
     # pnx by os style
     MEMO_DONE_TXT, MEMO_TODO_TXT, MEMO_TRASH_BIN_TXT = map(get_pnx_os_style,
@@ -67,7 +67,7 @@ def guide_todo():
     # todo_lines_list = get_list_removed_element_contain_str(working_list=todo_lines_list, string="#")
     # todo_lines_str = get_str_from_list(working_list=todo_lines_list, item_connector='')
     # print_with_highlighted(txt_whole=todo_lines_str, txt_highlighted_list=['2025'])
-    # print_memo_titles(f=f)
+    # ensure_memo_titles_printed(f=f)
 
     # bring MEMO_TODO_TXT
     todo_lines_list = get_list_from_f(f=MEMO_TODO_TXT)

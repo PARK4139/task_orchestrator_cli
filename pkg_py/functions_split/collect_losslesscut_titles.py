@@ -14,5 +14,5 @@ def collect_losslesscut_titles(output_file="losslesscut_titles.log", interval=1.
                     seen.add(title)
             time.sleep(interval)
 
-# 사용 예시
+# example
 # collect_losslesscut_titles() 

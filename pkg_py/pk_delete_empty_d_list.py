@@ -3,7 +3,7 @@
 if __name__ == "__main__":
 
     try:
-        colorama_init_once()
+        ensure_colorama_initialized_once()
 
         pk_delete_empty_d_list()
     except Exception as ex:

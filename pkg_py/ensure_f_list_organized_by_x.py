@@ -13,7 +13,7 @@ if __name__ == "__main__":
         #
         from colorama import init as pk_colorama_init
 
-        colorama_init_once()
+        ensure_colorama_initialized_once()
 
         ensure_f_list_organized_by_x()
 

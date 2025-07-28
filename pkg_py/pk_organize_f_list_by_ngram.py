@@ -11,7 +11,7 @@ from colorama import init as pk_colorama_init
 
 if __name__ == "__main__":
     try:
-        colorama_init_once()
+        ensure_colorama_initialized_once()
 
         f_historical = rf'{D_PKG_TXT}/historical_{get_n(__file__)}.txt'
         historical_d_workings = get_values_from_historical_file(f_historical=f_historical)

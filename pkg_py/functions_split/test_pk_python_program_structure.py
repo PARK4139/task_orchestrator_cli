@@ -9,13 +9,13 @@ def test_pk_python_program_structure():
     from pkg_py.functions_split.ensure_console_debuggable import ensure_console_debuggable
     from pkg_py.functions_split.ensure_do_exception_routine import ensure_do_exception_routine
     from pkg_py.functions_split.ensure_do_finally_routine import ensure_do_finally_routine
-    from pkg_py.functions_split.colorama_init_once import colorama_init_once
+    from pkg_py.functions_split.ensure_colorama_initialized_once import ensure_colorama_initialized_once
     from pkg_py.system_object.directories_reuseable import D_PROJECT
     from pkg_py.system_object.local_test_activate import LTA
     from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
     if __name__ == "__main__":
         try:
-            colorama_init_once()
+            ensure_colorama_initialized_once()
             ensure_window_title_replaced(get_nx(__file__))
 
             # write code here

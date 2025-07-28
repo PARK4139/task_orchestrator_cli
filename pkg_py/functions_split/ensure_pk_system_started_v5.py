@@ -82,8 +82,8 @@ def ensure_pk_system_started_v5():
         # 제목에서 pk_ 접두사 제거
         if file_title.startswith("pk_"):
             file_title = file_title[3:]
-
             ensure_py_system_process_ran_by_pnx(file_to_excute, file_title)
+
         ensure_slept(milliseconds=500)
         if LTA:
             ensure_window_to_front(window_title_seg=rf"file_to_excute")  # pk_option

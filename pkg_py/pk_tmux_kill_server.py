@@ -5,7 +5,7 @@ import traceback
 from colorama import init as pk_colorama_init
 
 from pkg_py.functions_split.ensure_do_finally_routine import ensure_do_finally_routine
-from pkg_py.functions_split.colorama_init_once import colorama_init_once
+from pkg_py.functions_split.ensure_colorama_initialized_once import ensure_colorama_initialized_once
 from pkg_py.functions_split.print_red import print_red
 from pkg_py.system_object.directories_reuseable import D_PROJECT
 from pkg_py.system_object.stamps import STAMP_TRY_GUIDE, STAMP_UNIT_TEST_EXCEPTION_DISCOVERED
@@ -14,7 +14,7 @@ from pkg_py.system_object.stamps import STAMP_TRY_GUIDE, STAMP_UNIT_TEST_EXCEPTI
 #, STAMP_TRY_GUIDE, D_PROJECT, STAMP_UNIT_TEST_EXCEPTION_DISCOVERED
 #, print_red
 
-colorama_init_once()
+ensure_colorama_initialized_once()
 
 if __name__ == "__main__":
     try:

@@ -13,7 +13,7 @@ if __name__ == "__main__":
         # from pkg_py.system_object.500_live_logic import back_up_pnx
         # from pkg_py.system_object.static_logic import D_PROJECT, D_DOWNLOADS
 
-        colorama_init_once()
+        ensure_colorama_initialized_once()
 
         # 백업 정책
         # .venv 데이터 특성은 용량 큼, 자주 바뀌지 않음.-> uv + pyproject.toml + uv.lock 으로 대체

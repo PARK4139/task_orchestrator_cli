@@ -34,7 +34,7 @@ from pkg_py.functions_split.get_values_from_historical_file import get_values_fr
 from pkg_py.functions_split.get_window_title import get_window_title
 from pkg_py.functions_split.get_window_title_list import get_window_title_list
 from pkg_py.functions_split.kill_process_via_taskkill import kill_process_via_taskkill
-from pkg_py.functions_split.colorama_init_once import colorama_init_once
+from pkg_py.functions_split.ensure_colorama_initialized_once import ensure_colorama_initialized_once
 from pkg_py.functions_split.measure_seconds import measure_seconds
 from pkg_py.functions_split.press import press
 from pkg_py.functions_split.ensure_printed import ensure_printed
@@ -79,7 +79,7 @@ def test_pk_python_program_structure():
     from pkg_py.functions_split.ensure_do_exception_routine import ensure_do_exception_routine
     from pkg_py.functions_split.ensure_do_finally_routine import ensure_do_finally_routine
     from pkg_py.functions_split.ensure_os_env_sys_variables_applied import ensure_os_env_sys_variables_applied
-    from pkg_py.functions_split.colorama_init_once import colorama_init_once
+    from pkg_py.functions_split.ensure_colorama_initialized_once import ensure_colorama_initialized_once
     from pkg_py.functions_split.ensure_printed import ensure_printed
     from pkg_py.system_object.directories_reuseable import D_PROJECT
     from pkg_py.system_object.local_test_activate import LTA
@@ -88,7 +88,7 @@ def test_pk_python_program_structure():
     from pkg_py.workspace.pk_workspace import ensure_this_code_operated
     if __name__ == "__main__":
         try:
-            colorama_init_once()
+            ensure_colorama_initialized_once()
             os.system(f"title {os.path.basename(__file__)}")  # TBD : 데코레이터로 전환
             # ensure_printed(f'''{PkMessages2025.NOT_PREPARED_YET}{'%%%FOO%%%' if LTA else ''}''', print_color='green', mode_verbose=0) # write code here
             # ensure_this_code_operated(ipdb)
@@ -1426,7 +1426,7 @@ def kill_us_keyboard():
     import threading
     from multiprocessing import shared_memory, Lock
 
-    colorama_init_once()
+    ensure_colorama_initialized_once()
 
     if get_os_n() == 'windows':
         chcp_65001()
@@ -2023,7 +2023,7 @@ def debug_as_ipdb_console(ipdb):
     ipdb.set_trace()
 
 
-def is_a2z_office():
+def is_office_pc_v2():
     if "user" in D_HOME:
         return True
     else:

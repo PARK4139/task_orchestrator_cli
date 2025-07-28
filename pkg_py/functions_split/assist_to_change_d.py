@@ -25,7 +25,7 @@ def assist_to_change_d():
     import inspect
     import sys
 
-    colorama_init_once()
+    ensure_colorama_initialized_once()
 
     f_cd_txt = os.path.join(D_PKG_TXT, "pk_cd.txt")
     if not does_pnx_exist(f_cd_txt):

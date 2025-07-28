@@ -11,7 +11,7 @@ if __name__ == "__main__":
         #, STAMP_TRY_GUIDE, D_PROJECT, STAMP_UNIT_TEST_EXCEPTION_DISCOVERED
         #
 
-        colorama_init_once()
+        ensure_colorama_initialized_once()
 
         window_opened_list = get_windows_opened()
         window_opened_set = get_set_from_list(window_opened_list)

@@ -4,7 +4,7 @@ import sys
 import time
 import traceback
 
-from pkg_py.functions_split.colorama_init_once import colorama_init_once
+from pkg_py.functions_split.ensure_colorama_initialized_once import ensure_colorama_initialized_once
 from pkg_py.functions_split.ensure_do_exception_routine import ensure_do_exception_routine
 from pkg_py.functions_split.ensure_do_finally_routine import ensure_do_finally_routine
 from pkg_py.functions_split.get_pk_config import get_pk_config
@@ -107,7 +107,7 @@ def ensure_table():
 if __name__ == "__main__":
     try:
         # TODO
-        colorama_init_once()
+        ensure_colorama_initialized_once()
 
         log("Checking Docker daemon...")
         try:

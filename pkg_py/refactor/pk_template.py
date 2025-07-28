@@ -47,7 +47,7 @@
 # ipdb.set_trace()
 # _____________________________________________________________________  loop debugger
 # miliseconds = [1000, 500, 250, 100, 50]
-# pk_ensure_loop_delayed_at_loop_foot(loop_cnt, mode_level=2, miliseconds_limit=50)
+# ensure_loop_delayed_at_loop_foot(loop_cnt, mode_level=2, miliseconds_limit=50)
 # loop_cnt += 1
 # _____________________________________________________________________
 # f_working = get_pnx_from_fzf(pnx=d_working)

@@ -4,7 +4,7 @@ from pkg_py.functions_split.ensure_printed import ensure_printed
 
 def print_preview(categorized_f_dict):
     from colorama import init as pk_colorama_init
-    colorama_init_once()
+    ensure_colorama_initialized_once()
 
     ensure_printed(f'''[ ngram 기반 분류결과(preview) ] {'%%%FOO%%%' if LTA else ''}''', print_color='blue')
     # f_print_mode = get_value_completed(message='f_print_mode=', option_values=["o","x"])

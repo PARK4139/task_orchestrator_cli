@@ -3,6 +3,7 @@ import traceback
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 from pkg_py.functions_split.ensure_do_exception_routine import ensure_do_exception_routine
 from pkg_py.functions_split.ensure_do_finally_routine import ensure_do_finally_routine
+from pkg_py.functions_split.ensure_files_stable_after_change import ensure_files_stable_after_change
 from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.ensure_slept import ensure_slept
 from pkg_py.system_object.directories_reuseable import D_PROJECT
@@ -10,11 +11,10 @@ from pkg_py.system_object.files import F_MEMO_HOW_PK
 from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
 
 
-def found_memo_contents():
-    from pkg_py.functions_split.ensure_f_list_change_stable import ensure_files_stable_after_change
+def ensure_memo_contents_found():
     from pkg_py.functions_split.get_os_n import get_os_n
     from pkg_py.functions_split.chcp_65001 import chcp_65001
-    from pkg_py.functions_split.print_memo_titles import print_memo_titles
+    from pkg_py.functions_split.ensure_memo_titles_printed import ensure_memo_titles_printed
 
     if get_os_n() == 'windows':
         chcp_65001()
@@ -39,19 +39,19 @@ def found_memo_contents():
     # txt_str = input("Press Enter to continue...")
     # ensure_str_writen_to_f_pnx(txt_str=txt_str, f_pnx=f_memo)
 
-    f_monitored_list = [
-        f_memo
-    ]
-    while 1:
-        if ensure_files_stable_after_change(f_list=f_monitored_list, limit_seconds=30):
-            print_memo_titles(f=f_memo)
-        ensure_slept(milliseconds=900)
-
+    # f_monitored_list = [
+    #     f_memo
+    # ]
+    # while 1:
+    #     if ensure_files_stable_after_change(f_list=f_monitored_list, stable_seconds_limit=30):
+    #         ensure_memo_titles_printed(f=f_memo)
+    #     ensure_slept(milliseconds=900)
+    ensure_memo_titles_printed(f=f_memo)
 
 if __name__ == "__main__":
     try:
         # todo
-        found_memo_contents()
+        ensure_memo_contents_found()
         #     print memo title_list
     except Exception as exception:
         ensure_do_exception_routine(traceback=traceback, exception=exception)

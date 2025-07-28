@@ -1,5 +1,4 @@
-
-
+from pkg_py.functions_split.open_pnx_by_ext import ensure_pnx_opened_by_ext
 from pkg_py.system_object.directories import D_DOWNLOADS
 from pkg_py.system_object.directories_reuseable import D_PROJECT
 from pkg_py.functions_split.ensure_printed import ensure_printed

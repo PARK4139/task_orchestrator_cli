@@ -1,7 +1,7 @@
 if __name__ == "__main__":
     import traceback
 
-    from pkg_py.functions_split.colorama_init_once import colorama_init_once
+    from pkg_py.functions_split.ensure_colorama_initialized_once import ensure_colorama_initialized_once
     from pkg_py.functions_split.ensure_auto_utility_copied_and_pushed import ensure_auto_utility_copied_and_pushed
     from pkg_py.functions_split.ensure_do_exception_routine import ensure_do_exception_routine
     from pkg_py.functions_split.ensure_do_finally_routine import ensure_do_finally_routine
@@ -12,7 +12,7 @@ if __name__ == "__main__":
     from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
 
     try:
-        colorama_init_once()
+        ensure_colorama_initialized_once()
         ensure_window_title_replaced(get_nx(__file__))
         ensure_auto_utility_copied_and_pushed()
         ensure_process_killed(window_title=get_nx(__file__))  # pk_option

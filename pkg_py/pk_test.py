@@ -13,9 +13,9 @@ from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
 
 def test():
     from pkg_py.functions_split.ensure_pk_system_exit_silent import ensure_pk_system_exit_silent
-    from pkg_py.functions_split.colorama_init_once import colorama_init_once
+    from pkg_py.functions_split.ensure_colorama_initialized_once import ensure_colorama_initialized_once
 
-    colorama_init_once()
+    ensure_colorama_initialized_once()
 
     while True:
         ensure_this_code_operated(ipdb=ipdb)

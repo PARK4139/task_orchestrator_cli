@@ -11,9 +11,9 @@ if __name__ == "__main__":
         from pkg_py.functions_split.ensure_video_loaded_at_losslesscut import ensure_video_loaded_at_losslesscut
         from pkg_py.functions_split.ensure_pk_program_suicided import ensure_pk_program_suicided
         from pkg_py.functions_split.ensure_do_finally_routine import ensure_do_finally_routine
-        from pkg_py.functions_split.colorama_init_once import colorama_init_once
+        from pkg_py.functions_split.ensure_colorama_initialized_once import ensure_colorama_initialized_once
 
-        colorama_init_once()
+        ensure_colorama_initialized_once()
 
         ensure_video_loaded_at_losslesscut()
 

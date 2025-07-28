@@ -181,7 +181,7 @@ from pkg_py.functions_split.get_d_working import get_d_working
 def assist_to_do_pk_schedule():
     from colorama import init as pk_colorama_init
 
-    colorama_init_once()
+    ensure_colorama_initialized_once()
 
     loop_cnt = 0
     while 1:

@@ -18,7 +18,7 @@ if __name__ == "__main__":
 
         from colorama import init as pk_colorama_init
 
-        colorama_init_once()
+        ensure_colorama_initialized_once()
 
         d_working = pk_input(str_working=rf'd_working=', limit_seconds=60, return_default=D_PK_WORKING, get_input_validated=get_pnx_validated)
         while 1:

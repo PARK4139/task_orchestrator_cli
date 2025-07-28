@@ -8,7 +8,7 @@ def assist_to_control_wsl(**pk_config):
     import inspect
     import subprocess
     import time
-    colorama_init_once()
+    ensure_colorama_initialized_once()
     func_n = inspect.currentframe().f_code.co_name
 
     class _PkWslController:

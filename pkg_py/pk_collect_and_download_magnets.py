@@ -10,7 +10,7 @@ from colorama import init as pk_colorama_init
 if __name__ == '__main__':
     try:
 
-        colorama_init_once()
+        ensure_colorama_initialized_once()
 
         collect_magnet_set()
         # load_magnet_set_to_bittorrent()
