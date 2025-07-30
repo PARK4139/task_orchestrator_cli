@@ -14,12 +14,12 @@ def ensure_pk_system_started_v4():
     import subprocess
     func_n = inspect.currentframe().f_code.co_name
     from pkg_py.system_object.directories import D_PKG_PY
-    from pkg_py.functions_split.get_sorted_pk_file_list import get_excutable_pk_system_file_list
+    from pkg_py.functions_split.get_sorted_pk_file_list import get_excutable_pk_system_processes
 
     last_history_file = get_last_history_file(__file__, func_n)
     pk_system_directory = D_PKG_PY
 
-    pk_file_list = get_excutable_pk_system_file_list()
+    pk_file_list = get_excutable_pk_system_processes()
 
     if not pk_file_list:
         print("실행 가능한 pk_*.py 파일이 없습니다.")

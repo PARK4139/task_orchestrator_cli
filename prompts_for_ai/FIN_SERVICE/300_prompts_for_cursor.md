@@ -1,11 +1,23 @@
 _________________________________________________________________
-오늘 작업한 프롬프트들 정리해서 prompts_for_ai/FIN_SERVICE/prompts_used_by_cursor.history 에 추가 작성해줘
+
+함수를 개선해줘
+
+
+함수명을 ensure_ prefix 로 시작하는 표현으로 제안
+함수명을 ensure_ prefix 로 시작하는 표현으로 변경
+
+
+
+ 
 
 _________________________________________________________________
-오늘 작업한 프롬프트들 정리해서 한글 commit msg 작성해줘
-오늘 작업한 프롬프트들 정리해서 영어 commit msg 작성해줘
-오늘 작업한 프롬프트들 정리해서 영어 commit msg 추천해줘
-현재 작업한 프롬프트들 정리해서 영어 commit msg 추천해줘
+오늘 작업한 프롬프트들 정리해서 prompts_for_ai/FIN_SERVICE/prompts_used_by_cursor.history 에 추가 작성
+
+_________________________________________________________________
+오늘 작업한 프롬프트들 정리해서 한글 commit msg 작성
+오늘 작업한 프롬프트들 정리해서 영어 commit msg 작성
+오늘 작업한 프롬프트들 정리해서 영어 commit msg 추천
+현재 작업한 프롬프트들 정리해서 영어 commit msg 추천
 
 ex>
 "feat: optimize MSA infrastructure with uv + pyproject.toml and improve naming
@@ -20,9 +32,9 @@ ex>
 _________________________________________________________________
 
 
-오늘 작업한 내용들 정리해서 README_KOREAN.md 에 추가작성해줘
-현재 작업한 내용들 정리해서 README_KOREAN.md 에 추가작성해줘README_KOREAN.md 를 영문화 해서 README_ENGLISH.md 로 작성해줘
-README_ENGLISH.md 를 요약해서  README.md  에 작성해줘
+오늘 작업한 내용들 정리해서 README_KOREAN.md 에 추가
+현재 작업한 내용들 정리해서 README_KOREAN.md 에 추가README_KOREAN.md 를 영문화 해서 README_ENGLISH.md 로 작성
+README_ENGLISH.md 를 요약해서  README.md  에 작성
 
 
 

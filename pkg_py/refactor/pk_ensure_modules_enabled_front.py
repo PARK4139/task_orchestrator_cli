@@ -6,8 +6,8 @@ import os.path
 import traceback
 
 from pkg_py.functions_split.backup_workspace import backup_workspace
-from pkg_py.functions_split.ensure_do_exception_routine import ensure_do_exception_routine
-from pkg_py.functions_split.ensure_do_finally_routine import ensure_do_finally_routine
+from pkg_py.functions_split.pk_ensure_do_exception_routine import pk_ensure_do_exception_routine
+from pkg_py.functions_split.pk_ensure_do_finally_routine import pk_ensure_do_finally_routine
 from pkg_py.functions_split.get_str_from_f import get_str_from_f
 from pkg_py.functions_split.get_value_completed import get_value_completed
 from pkg_py.functions_split.initialize_and_customize_logging_config import initialize_and_customize_logging_config
@@ -29,7 +29,7 @@ def clean_import_block(block: str) -> str:
     return "\n".join(result_lines)
 
 
-def ensure_modules_import_to_python_files():
+def pk_ensure_modules_import_to_python_files():
     func_name = inspect.currentframe().f_code.co_name
     d_working = rf"{os.environ['USERPROFILE']}\Downloads\pk_system\pkg_py\functions_split"
     d_backup_root = os.path.join(D_PKG_PY, "..", "pkg_archived")
@@ -97,7 +97,7 @@ def ensure_modules_import_to_python_files():
             if decision == PkMessages2025.SATISFIED:
                 logging.info(f"[{PkMessages2025.SATISFIED}]")
                 logging.info(f"[{PkMessages2025.DONE}] import injection {'(preview)' if preview_mode else '(executed)'}")
-                # ensure_pk_system_exit_silent() # pk_option
+                # pk_ensure_pk_system_exit_silent() # pk_option
                 continue
             elif decision == PkMessages2025.REVERT:
                 restore_workspace_from_latest_archive(D_PKG_ARCHIVED, d_working)  # REVERT 실행
@@ -109,9 +109,9 @@ def main():
         initialize_and_customize_logging_config(__file__)
         pk_ensure_modules_import_to_python_files()
     except Exception as e:
-        ensure_do_exception_routine(traceback=traceback, exception=e)
+        pk_ensure_do_exception_routine(traceback=traceback, exception=e)
     finally:
-        ensure_do_finally_routine(D_PROJECT=D_PROJECT, __file__=__file__, STAMP_TRY_GUIDE=STAMP_TRY_GUIDE)
+        pk_ensure_do_finally_routine(D_PROJECT=D_PROJECT, __file__=__file__, STAMP_TRY_GUIDE=STAMP_TRY_GUIDE)
 
 
 if __name__ == "__main__":

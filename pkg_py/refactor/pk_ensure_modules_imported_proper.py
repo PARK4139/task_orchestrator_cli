@@ -7,7 +7,7 @@ import traceback
 from datetime import datetime
 from pathlib import Path
 
-from pkg_py.functions_split.ensure_do_exception_routine import ensure_do_exception_routine
+from pkg_py.functions_split.pk_ensure_do_exception_routine import pk_ensure_do_exception_routine
 from pkg_py.functions_split.get_value_completed import get_value_completed
 from pkg_py.functions_split.initialize_and_customize_logging_config import initialize_and_customize_logging_config
 from pkg_py.system_object.directories import D_ARCHIVED, D_PKG_PY
@@ -91,7 +91,7 @@ from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
 #     return insert_imports_to_code(code, general_imports, lazy_imports, main_imports)
 #
 #
-# def ensure_modules_imported_proper():
+# def pk_ensure_modules_imported_proper():
 #     while True:
 #         func_n = inspect.currentframe().f_code.co_name
 #         if LTA:
@@ -133,7 +133,7 @@ from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
 #             logging.info("backup_workspace 종료")
 #
 #         try:
-#             start_time = ensure_start_time_logged()
+#             start_time = pk_ensure_start_time_logged()
 #             reference_imports = collect_imports_from_dir(d_import_path_reference)
 #
 #             # 🔥 제외할 디렉토리 설정 (.venv 등)
@@ -183,7 +183,7 @@ from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
 #                 except Exception as e:
 #                     logging.warning(f"[IMPORT ORGANIZE FAIL] {pyfile}: {e}")
 #
-#             elapsed_time = ensure_elapsed_time_logged(start_time)
+#             elapsed_time = pk_ensure_elapsed_time_logged(start_time)
 #
 #         except Exception as e:
 #             if archive_path:
@@ -202,8 +202,8 @@ from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
 #         logging.info(f"[{func_n}] 완료")
 #
 #         if LTA:
-#             ensure_console_debuggable(ipdb=ipdb)
-#         ensure_console_cleared()
+#             pk_ensure_console_debuggable(ipdb=ipdb)
+#         pk_ensure_console_cleared()
 
 def collect_import_lines_from_dir(d_working: str, encoding_list=('utf-8', 'cp949')):
     imports = set()
@@ -252,12 +252,12 @@ def step1_save_imports_to_txt(func_n, d_working: str):
     return output_path
 
 
-from pkg_py.functions_split.open_pnx_by_ext import ensure_pnx_opened_by_ext
+from pkg_py.functions_split.open_pnx_by_ext import pk_ensure_pnx_opened_by_ext
 
 
 def step2_open_txt_file_for_editing(f_txt: Path):
     print(f"[STEP2] opening {f_txt} for editing...")
-    ensure_pnx_opened_by_ext(str(f_txt))
+    pk_ensure_pnx_opened_by_ext(str(f_txt))
 
 
 def step3_confirm_editing_done() -> bool:
@@ -321,7 +321,7 @@ def step6_preview_lazy_import_applied_code(code: str, lazy_imports: list[str]) -
     return preview_code
 
 
-def ensure_modules_imported_proper():
+def pk_ensure_modules_imported_proper():
     func_n = inspect.currentframe().f_code.co_name
 
     initialize_and_customize_logging_config(__file__=__file__)
@@ -361,15 +361,15 @@ def ensure_modules_imported_proper():
         f.write(preview_code)
 
     print(f"[STEP6] 👀 PREVIEW 저장 완료: {preview_path}")
-    ensure_pnx_opened_by_ext(preview_path)
+    pk_ensure_pnx_opened_by_ext(preview_path)
 
 
 if __name__ == "__main__":
     try:
-        ensure_modules_imported_proper()
+        pk_ensure_modules_imported_proper()
 
     except Exception as exception:
-        ensure_do_exception_routine(traceback=traceback, exception=exception)
+        pk_ensure_do_exception_routine(traceback=traceback, exception=exception)
     finally:
-        ensure_do_finally_routine(D_PROJECT=D_PROJECT, __file__=__file__, STAMP_TRY_GUIDE=STAMP_TRY_GUIDE)
+        pk_ensure_do_finally_routine(D_PROJECT=D_PROJECT, __file__=__file__, STAMP_TRY_GUIDE=STAMP_TRY_GUIDE)
 

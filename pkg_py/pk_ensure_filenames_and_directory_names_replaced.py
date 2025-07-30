@@ -111,7 +111,7 @@ def replace_filename_and_directory_name():
 
 if __name__ == "__main__":
     try:
-        pk_replace_filename_and_directory_name()
+        replace_filename_and_directory_name()
         if LTA:
             ensure_console_debuggable()
     except Exception as exception:

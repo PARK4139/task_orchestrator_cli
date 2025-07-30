@@ -1,6 +1,6 @@
-from pkg_py.functions_split.ensure_do_finally_routine import ensure_do_finally_routine
-from pkg_py.functions_split.ensure_pnx_removed import ensure_pnx_removed
-from pkg_py.functions_split.ensure_printed import ensure_printed
+from pkg_py.functions_split.pk_ensure_do_finally_routine import pk_ensure_do_finally_routine
+from pkg_py.functions_split.pk_ensure_pnx_removed import pk_ensure_pnx_removed
+from pkg_py.functions_split.pk_ensure_printed import pk_ensure_printed
 from pkg_py.functions_split.get_nx import get_nx
 from pkg_py.functions_split.get_pnxs_from_d_working import get_pnxs_from_d_working
 from pkg_py.functions_split.is_f import is_f
@@ -13,7 +13,7 @@ if __name__ == "__main__":
     try:
         import traceback
 
-        # from pkg_py.system_object.500_live_logic import copy, LTA, get_pnxs_from_d_working, is_f, get_nx, ensure_pnx_removed
+        # from pkg_py.system_object.500_live_logic import copy, LTA, get_pnxs_from_d_working, is_f, get_nx, pk_ensure_pnx_removed
         # , STAMP_TRY_GUIDE, D_PROJECT, STAMP_UNIT_TEST_EXCEPTION_DISCOVERED
         #
 
@@ -47,8 +47,8 @@ if __name__ == "__main__":
                     print(f"❌ 파일 열기 실패: {e}")
                     exit(1)
 
-                ensure_printed(f'''_________________________________________________ {'%%%FOO%%%' if LTA else ''}''')
-                ensure_printed(f'''restored ({get_nx(pnx)}) {'%%%FOO%%%' if LTA else ''}''')
+                pk_ensure_printed(f'''_________________________________________________ {'%%%FOO%%%' if LTA else ''}''')
+                pk_ensure_printed(f'''restored ({get_nx(pnx)}) {'%%%FOO%%%' if LTA else ''}''')
                 # print(content)
                 # signiture = 'pk_'
                 # if signiture in content:
@@ -60,14 +60,14 @@ if __name__ == "__main__":
                 if user_input == 'o':
                     pass
                 if user_input == 'x':
-                    ensure_pnx_removed(pnx)
+                    pk_ensure_pnx_removed(pnx)
 
     except:
         traceback_format_exc_list = traceback.format_exc().split("\n")
-        ensure_printed(str_working=f'{PK_UNDERLINE}', print_color='red')
+        pk_ensure_printed(str_working=f'{PK_UNDERLINE}', print_color='red')
         for traceback_format_exc_str in traceback_format_exc_list:
-            ensure_printed(str_working=f'{STAMP_UNIT_TEST_EXCEPTION_DISCOVERED} {traceback_format_exc_str}', print_color='red')
-        ensure_printed(str_working=f'{PK_UNDERLINE}', print_color='red')
+            pk_ensure_printed(str_working=f'{STAMP_UNIT_TEST_EXCEPTION_DISCOVERED} {traceback_format_exc_str}', print_color='red')
+        pk_ensure_printed(str_working=f'{PK_UNDERLINE}', print_color='red')
 
     finally:
-        ensure_do_finally_routine(D_PROJECT=D_PROJECT, __file__=__file__, STAMP_TRY_GUIDE=STAMP_TRY_GUIDE)
+        pk_ensure_do_finally_routine(D_PROJECT=D_PROJECT, __file__=__file__, STAMP_TRY_GUIDE=STAMP_TRY_GUIDE)

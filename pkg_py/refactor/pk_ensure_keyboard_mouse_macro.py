@@ -1,6 +1,6 @@
 import pyautogui
 
-from pkg_py.functions_split.ensure_keyboard_mouse_macro import ensure_keyboard_mouse_macro
+from pkg_py.functions_split.pk_ensure_keyboard_mouse_macro import pk_ensure_keyboard_mouse_macro
 from pkg_py.functions_split.initialize_and_customize_logging_config import initialize_and_customize_logging_config
 
 
@@ -21,7 +21,7 @@ class PkMacroRoutines:
 PkMacroRoutines.set_lang("kr")
 
 if __name__ == "__main__":
-    pk_initialize_and_customize_logging_config(__file__)
+    initialize_and_customize_logging_config(__file__)
     pyautogui.FAILSAFE = False  # Prevent abrupt exception on mouse move to top-left
     routine = PkMacroRoutines.ENSURE_PYCHARM_CODE_OPTIMIZED
     pk_ensure_keyboard_mouse_macro(routine)

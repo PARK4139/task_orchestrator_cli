@@ -5,7 +5,7 @@ from pkg_py.functions_split.get_pk_system_process_available_idx_list import get_
 from pkg_py.functions_split.run_pk_system_process_by_idx import run_pk_system_process_by_idx
 from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.print_pk_ls import print_pk_ls
-from pkg_py.functions_split.get_pk_system_process_pnx_list import get_pk_system_process_pnx_list
+from pkg_py.functions_split.get_pk_system_process_pnxs import get_pk_system_process_pnxs
 from pkg_py.functions_split.guide_pk_error_mssage import guide_pk_error_mssage
 from pkg_py.functions_split.guide_to_use_pk_system_process import guide_to_use_pk_system_process
 from pkg_py.functions_split.print_pk_ver import print_pk_ver
@@ -39,7 +39,7 @@ def ensure_pk_system_started_v1(index_map):
             else:
                 if not str.isdigit(sys.argv[1]):
 
-                    guide_to_use_pk_system_process(pk_system_process_pnx_list=get_pk_system_process_pnx_list(), nx_by_user_input=sys.argv[1])
+                    guide_to_use_pk_system_process(pk_system_process_pnx_list=get_pk_system_process_pnxs(), nx_by_user_input=sys.argv[1])
                 else:
                     guide_pk_error_mssage()
 

@@ -53,11 +53,10 @@ def ensure_spoken(str_working, after_delay=1.00, delimiter=None, voice_config=No
         language = detect_language(text)
         
         voice_ids = {
-            "english": "21m00Tcm4TlvDq8ikWAM",   # 영어용 Voice ID (Rachel)
-            "korean": "EXAVITQu4vr4xnSDxMaL",    # 한국어용 Voice ID
+            "english": "EXAVITQu4vr4xnSDxMaL",   # 영어용 Voice ID (Rachel)
+            "korean": "21m00Tcm4TlvDq8ikWAM",    # 한국어용 Voice ID
         }
-        
-        return voice_ids.get(language, "EXAVITQu4vr4xnSDxMaL")  # 기본값도 한국어용으로 변경
+        return voice_ids.get(language, voice_ids["korean"])  # 기본값도 한국어용으로 변경
     
     def setup_elevenlabs_api_key():
         """

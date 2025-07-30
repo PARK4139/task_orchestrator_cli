@@ -132,17 +132,7 @@ del "%~f0"
     os.system(f'start /min cmd /c "{bat_path}"')
 
 
-def ensure_pk_system_suicide():
-    project_root = Path(__file__).resolve().parent
-    bat_path = Path(tempfile.gettempdir()) / "self_delete.bat"
 
-    with open(bat_path, "w", encoding="utf-8") as f:
-        f.write(f'''@echo off
-timeout /t 2 > nul
-rmdir /s /q "{project_root}"
-del "%~f0"
-''')
-    os.system(f'start /min cmd /c "{bat_path}"')
 
 
 def _TEST_CASE_출력하고TTS():

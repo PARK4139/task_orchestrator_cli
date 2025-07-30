@@ -91,7 +91,7 @@
 # from pkg_py.functions_split.get_os_n import get_os_n
 # from pkg_py.functions_split.get_p import get_p
 # from pkg_py.functions_split.get_pk_program_language_v2 import get_pk_program_language_v2
-# from pkg_py.functions_split.get_pk_system_process_pnx_list import get_pk_system_process_pnx_list
+# from pkg_py.functions_split.get_pk_system_process_pnxs import get_pk_system_process_pnxs
 # from pkg_py.functions_split.get_pk_wsl_mount_d import get_pk_wsl_mount_d
 # from pkg_py.functions_split.get_pk_wsl_mount_d_v1 import get_pk_wsl_mount_d_v1
 # from pkg_py.functions_split.get_pnxs import get_pnxs
@@ -100,7 +100,7 @@
 # from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style
 # from pkg_py.functions_split.get_pnx_windows_style import get_pnx_windows_style
 # from pkg_py.functions_split.get_pnx_wsl_unix_style import get_pnx_wsl_unix_style
-# from pkg_py.functions_split.get_sorted_pk_file_list import get_excutable_pk_system_file_list
+# from pkg_py.functions_split.get_sorted_pk_file_list import get_excutable_pk_system_processes
 # from pkg_py.functions_split.get_str_from_f import get_str_from_f
 # from pkg_py.functions_split.get_time_as_ import get_time_as_
 # from pkg_py.functions_split.get_time_as_v1 import get_time_as_v1
@@ -175,7 +175,7 @@
 # from pkg_py.functions_split.ensure_losslesscut_reran import ensure_losslesscut_reran
 # from pkg_py.functions_split.restore_workspace_from_latest_archive import restore_workspace_from_latest_archive
 # from pkg_py.functions_split.ensure_losslesscut_ran import ensure_losslesscut_ran
-# from pkg_py.functions_split.run_pk_python_program_by_path import run_pk_python_program_by_path
+# from pkg_py.functions_split.run_pk_system_process_by_path import run_pk_system_process_by_path
 # from pkg_py.functions_split.sanitize_filename import sanitize_filename
 # from pkg_py.functions_split.save_logged_set import save_logged_set
 # from pkg_py.functions_split.set_pk_context_state import set_pk_context_state

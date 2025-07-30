@@ -1,19 +1,16 @@
-from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_excuted_to_os
-from pkg_py.functions_split.ensure_printed import ensure_printed
-from pkg_py.functions_split.get_str_url_decoded import get_str_url_decoded
-from pkg_py.functions_split.get_token_from_f_txt import get_token_from_f_txt
-from pkg_py.functions_split.is_office_pc_v2 import is_office_pc_v2
-from pkg_py.system_object.directories import D_PKG_TXT
+from pkg_py.functions_split.ensure_seconds_measured import ensure_seconds_measured
+from pkg_py.functions_split.get_hostname import get_hostname
 
 
-def is_office_pc():
-    hostname = ensure_command_excuted_to_os("hostname")[0]
+@ensure_seconds_measured
+def is_pk_pc():
+    from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_excuted_to_os
+    from pkg_py.functions_split.ensure_printed import ensure_printed
+    from pkg_py.functions_split.get_str_url_decoded import get_str_url_decoded
+    hostname = get_hostname()
     hostname = get_str_url_decoded(hostname)
     ensure_printed(f"hostname={hostname}")
-    token_hostname_a2z_galaxybook = get_token_from_f_txt(f_token=rf'{D_PKG_TXT}\token_hostname_a2z_galaxybook.txt', initial_str="")
-    token_hostname_home_desktop = get_token_from_f_txt(f_token=rf'{D_PKG_TXT}\token_hostname_home_desktop.txt', initial_str="")
-
-    if hostname == token_hostname_home_desktop:
-        return 0
-    elif hostname == token_hostname_a2z_galaxybook:
+    if hostname in ["pk"]:
         return 1
+    else:
+        return 0

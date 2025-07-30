@@ -19,7 +19,7 @@ if __name__ == "__main__":
 
         ensure_files_useless_gathered()
 
-        # ensure_process_killed(window_title=get_nx(__file__))  # pk_option
+        # ensure_pk_program_suicided(self_f=__file__) # pk_option
     except Exception as exception:
         ensure_do_exception_routine(traceback=traceback, exception=exception)
     finally:

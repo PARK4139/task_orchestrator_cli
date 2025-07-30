@@ -6,8 +6,8 @@ import re
 import traceback
 
 from pkg_py.functions_split.backup_workspace import backup_workspace
-from pkg_py.functions_split.ensure_do_exception_routine import ensure_do_exception_routine
-from pkg_py.functions_split.ensure_do_finally_routine import ensure_do_finally_routine
+from pkg_py.functions_split.pk_ensure_do_exception_routine import pk_ensure_do_exception_routine
+from pkg_py.functions_split.pk_ensure_do_finally_routine import pk_ensure_do_finally_routine
 from pkg_py.functions_split.get_nx import get_nx
 from pkg_py.functions_split.get_value_completed import get_value_completed
 from pkg_py.functions_split.is_f import is_f
@@ -37,7 +37,7 @@ def move_import_to_function_start(body_lines, indent_level):
     formatted_imports = [f"{' ' * indent_level}{imp}\n" for imp in imports]
     return formatted_imports + non_import_lines
 
-def ensure_modules_enabled_lazy_once(f_working, D_PKG_ARCHIVED, preview=False):
+def pk_ensure_modules_enabled_lazy_once(f_working, D_PKG_ARCHIVED, preview=False):
     """모듈 임포트를 lazy하게 업데이트하고 백업 및 복원 기능 추가"""
     # 백업
     func_n = inspect.currentframe().f_code.co_name
@@ -112,7 +112,7 @@ def ensure_modules_enabled_lazy_once(f_working, D_PKG_ARCHIVED, preview=False):
         logging.info(f"백업이 '{archive_path}'에 저장되었습니다.")
 
 
-def ensure_modules_enabled_lazy():
+def pk_ensure_modules_enabled_lazy():
     from enum import Enum
     encoding: Enum
 
@@ -148,6 +148,6 @@ if __name__ == "__main__":
         initialize_and_customize_logging_config(__file__)
         pk_ensure_modules_enabled_lazy()
     except Exception as exception:
-        ensure_do_exception_routine(traceback=traceback, exception=exception)
+        pk_ensure_do_exception_routine(traceback=traceback, exception=exception)
     finally:
-        ensure_do_finally_routine(D_PROJECT=D_PROJECT, __file__=__file__, STAMP_TRY_GUIDE=STAMP_TRY_GUIDE)
+        pk_ensure_do_finally_routine(D_PROJECT=D_PROJECT, __file__=__file__, STAMP_TRY_GUIDE=STAMP_TRY_GUIDE)

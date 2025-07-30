@@ -1,14 +1,3 @@
-"""
-YouTube 쿠키 자동 관리 시스템
-"""
-
-from pkg_py.functions_split.ensure_printed import ensure_printed
-from pkg_py.system_object.files import F_YOUTUBE_COOKIES_TXT
-from pkg_py.functions_split.save_chrome_youtube_cookies_to_f import save_chrome_youtube_cookies_to_f
-from pkg_py.functions_split.ensure_youtube_cookies_created import ensure_youtube_cookies_created, get_youtube_cookies_help
-from pkg_py.functions_split.ensure_youtube_login_via_selenium import ensure_youtube_login_via_selenium, get_youtube_selenium_login_help
-import os
-
 def ensure_youtube_cookies_available():
     """
     YouTube 쿠키가 사용 가능한지 확인하고, 필요시 자동으로 생성하는 함수
@@ -16,6 +5,13 @@ def ensure_youtube_cookies_available():
     Returns:
         bool: 쿠키 사용 가능 여부
     """
+
+    from pkg_py.functions_split.ensure_printed import ensure_printed
+    from pkg_py.system_object.files import F_YOUTUBE_COOKIES_TXT
+    from pkg_py.functions_split.save_chrome_youtube_cookies_to_f import save_chrome_youtube_cookies_to_f
+    from pkg_py.functions_split.ensure_youtube_cookies_created import ensure_youtube_cookies_created, get_youtube_cookies_help
+    from pkg_py.functions_split.ensure_youtube_login_via_selenium import ensure_youtube_login_via_selenium
+    import os
     try:
         # 1. 쿠키 파일이 이미 존재하는지 확인
         if os.path.exists(F_YOUTUBE_COOKIES_TXT):
@@ -26,26 +22,26 @@ def ensure_youtube_cookies_available():
                 return True
             else:
                 ensure_printed(f"⚠️ 쿠키 파일이 너무 작습니다: {file_size} bytes", print_color="yellow")
-        
+
         # 2. Chrome에서 쿠키 자동 추출 시도
         ensure_printed("🍪 Chrome에서 YouTube 쿠키를 자동으로 추출합니다...", print_color="cyan")
         if save_chrome_youtube_cookies_to_f():
             return True
-        
+
         # 3. Selenium을 사용한 자동 로그인 시도
         ensure_printed("🤖 Selenium을 사용한 YouTube 자동 로그인을 시도합니다...", print_color="cyan")
         if ensure_youtube_login_via_selenium():
             return True
-        
+
         # 4. 자동 추출 실패 시 수동 생성 안내
         ensure_printed("⚠️ 자동 쿠키 추출에 실패했습니다.", print_color="yellow")
         ensure_printed("📝 수동으로 쿠키를 생성하겠습니다...", print_color="cyan")
-        
+
         if ensure_youtube_cookies_created():
             get_youtube_cookies_help()
             ensure_printed("💡 쿠키 파일을 수동으로 생성한 후 다시 시도해주세요.", print_color="yellow")
             return False  # 수동 생성은 완료되었지만 실제 쿠키는 없음
-        
+
         # 4. 최소한의 쿠키 파일 생성
         try:
             with open(F_YOUTUBE_COOKIES_TXT, 'w', encoding='utf-8') as f:
@@ -57,40 +53,40 @@ def ensure_youtube_cookies_available():
             ensure_printed("⚠️ 실제 쿠키 값으로 교체해야 합니다.", print_color="yellow")
         except Exception as e:
             ensure_printed(f"❌ 쿠키 파일 생성 실패: {e}", print_color="red")
-        
+
         return False
-        
+
     except Exception as e:
         ensure_printed(f"❌ 쿠키 확인 중 오류 발생: {e}", print_color="red")
         return False
 
+
 def get_youtube_cookies_status():
-    """
-    YouTube 쿠키 상태를 확인하는 함수
-    
-    Returns:
-        dict: 쿠키 상태 정보
-    """
+    import os
+
+    from pkg_py.functions_split.ensure_printed import ensure_printed
+    from pkg_py.system_object.files import F_YOUTUBE_COOKIES_TXT
+
     status = {
         'file_exists': False,
         'file_size': 0,
         'auto_extraction_available': False,
         'recommendation': ''
     }
-    
+
     try:
         # 파일 존재 여부 확인
         if os.path.exists(F_YOUTUBE_COOKIES_TXT):
             status['file_exists'] = True
             status['file_size'] = os.path.getsize(F_YOUTUBE_COOKIES_TXT)
-        
+
         # browser_cookie3 사용 가능 여부 확인
         try:
             import browser_cookie3
             status['auto_extraction_available'] = True
         except ImportError:
             status['auto_extraction_available'] = False
-        
+
         # 권장사항 설정
         if status['file_exists'] and status['file_size'] > 100:
             status['recommendation'] = 'ready'
@@ -98,42 +94,32 @@ def get_youtube_cookies_status():
             status['recommendation'] = 'auto_extract'
         else:
             status['recommendation'] = 'manual_create'
-        
+
         return status
-        
+
     except Exception as e:
         ensure_printed(f"❌ 쿠키 상태 확인 중 오류: {e}", print_color="red")
         return status
 
+
 def refresh_youtube_cookies():
-    """
-    YouTube 쿠키를 새로고침하는 함수
-    
-    Returns:
-        bool: 새로고침 성공 여부
-    """
+    import os
+
+    from pkg_py.functions_split.ensure_printed import ensure_printed
+    from pkg_py.functions_split.save_chrome_youtube_cookies_to_f import save_chrome_youtube_cookies_to_f
+    from pkg_py.system_object.files import F_YOUTUBE_COOKIES_TXT
+
     try:
         # 기존 쿠키 파일 백업
         if os.path.exists(F_YOUTUBE_COOKIES_TXT):
             backup_path = F_YOUTUBE_COOKIES_TXT + '.backup'
             os.rename(F_YOUTUBE_COOKIES_TXT, backup_path)
             ensure_printed(f"📦 기존 쿠키 파일을 백업했습니다: {backup_path}", print_color="cyan")
-        
+
         # 새 쿠키 추출
         ensure_printed("🔄 YouTube 쿠키를 새로고침합니다...", print_color="cyan")
         return save_chrome_youtube_cookies_to_f()
-        
+
     except Exception as e:
         ensure_printed(f"❌ 쿠키 새로고침 실패: {e}", print_color="red")
         return False
-
-if __name__ == "__main__":
-    # 쿠키 상태 확인
-    status = get_youtube_cookies_status()
-    ensure_printed(f"📊 쿠키 상태: {status}", print_color="cyan")
-    
-    # 쿠키 사용 가능 여부 확인
-    if ensure_youtube_cookies_available():
-        ensure_printed("✅ YouTube 쿠키가 준비되었습니다!", print_color="green")
-    else:
-        ensure_printed("❌ YouTube 쿠키 설정이 필요합니다.", print_color="red") 

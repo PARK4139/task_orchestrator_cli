@@ -11,6 +11,7 @@ def ensure_pnx_opened_by_ext(pnx):
     from pkg_py.functions_split.get_pnx_windows_style import get_pnx_windows_style
     from pkg_py.functions_split.ensure_printed import ensure_printed
     from pkg_py.functions_split.get_os_n import get_os_n
+    from pkg_py.functions_split.get_value_completed import get_value_completed
 
     # TBD : tab 으로 뭘로 열지 설정하도록 ?
     if is_os_windows():
@@ -51,6 +52,45 @@ def ensure_pnx_opened_by_ext(pnx):
             text_editor = program
             pnx = get_pnx_windows_style(pnx=pnx)
             ensure_printed(f"ensure_pnx_opened_by_ext: {pnx} is a {description}", print_color='blue')
+        
+        # text_editor가 None이면 사용자 입력 받기
+        if text_editor is None:
+            ensure_printed(f"확장자 '{x}'에 대한 기본 프로그램이 설정되지 않았습니다.", print_color='yellow')
+            
+            # 사용자에게 프로그램 선택 옵션 제공
+            program_options = [
+                "explorer.exe (Windows 탐색기에서 열기)",
+                "notepad.exe (메모장에서 열기)",
+                "code (VS Code에서 열기)",
+                "pycharm64.exe (PyCharm에서 열기)",
+                "python.exe (Python으로 실행)",
+                "사용자 정의 프로그램 입력"
+            ]
+            # selected_option = get_value_completed("프로그램을 선택하세요: ", program_options) # pk_option
+            selected_option = "explorer.exe (Windows 탐색기에서 열기)"
+            
+            if selected_option is None:
+                ensure_printed("프로그램 선택이 취소되었습니다.", print_color='yellow')
+                return
+            
+            if selected_option == "explorer.exe (Windows 탐색기에서 열기)":
+                text_editor = "explorer.exe"
+            elif selected_option == "notepad.exe (메모장에서 열기)":
+                text_editor = "notepad.exe"
+            elif selected_option == "code (VS Code에서 열기)":
+                text_editor = "code"
+            elif selected_option == "pycharm64.exe (PyCharm에서 열기)":
+                text_editor = get_pnx_windows_style(F_PYCHARM64_EDITION_EXE)
+            elif selected_option == "python.exe (Python으로 실행)":
+                text_editor = "python.exe"
+            elif selected_option == "사용자 정의 프로그램 입력":
+                custom_program = input("프로그램 경로나 명령어를 입력하세요: ").strip()
+                if custom_program:
+                    text_editor = custom_program
+                else:
+                    ensure_printed("프로그램이 입력되지 않았습니다.", print_color='red')
+                    return
+        
         # cmd = f' "{text_editor}" "{pnx}" '
         cmd = f'"{text_editor}" "{pnx}"'
         ensure_command_excuted_to_os(cmd=cmd, mode='a')

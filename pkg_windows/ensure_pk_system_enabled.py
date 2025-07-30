@@ -464,7 +464,7 @@ def create_shortcuts() -> None:
         
         # 바탕화면 바로가기 생성
         desktop = os.path.join(os.path.expanduser("~"), "Desktop")
-        shortcut_path = os.path.join(desktop, "PK System Launcher.lnk")
+        shortcut_path = os.path.join(desktop, "pk_system_launcher.lnk")
         
         shell = win32com.client.Dispatch("WScript.Shell")
         shortcut = shell.CreateShortCut(shortcut_path)
@@ -474,7 +474,7 @@ def create_shortcuts() -> None:
         print(f"바로가기 생성됨: {shortcut_path}")
         
         # 작업 디렉토리 바로가기 생성
-        shortcut_path = os.path.join(D_PKG_WINDOWS, "PK System Launcher.lnk")
+        shortcut_path = os.path.join(D_PKG_WINDOWS, "pk_system_launcher.lnk")
         shortcut = shell.CreateShortCut(shortcut_path)
         shortcut.Targetpath = F_ALIAS_CMD
         shortcut.WorkingDirectory = D_PK_SYSTEM

@@ -1,11 +1,11 @@
 import time
+from concurrent.futures import ThreadPoolExecutor
+
 import psutil
 import win32gui
 import win32process
-from concurrent.futures import ThreadPoolExecutor
 
-# Custom printing functions (정의되어 있다고 가정)
-from pkg_py.functions_split.pk_print import ensure_printed
+from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.ensure_seconds_measured import ensure_seconds_measured
 from pkg_py.system_object.local_test_activate import LTA
 

@@ -1,5 +1,8 @@
+from pkg_py.functions_split.ensure_seconds_measured import ensure_seconds_measured
+
+
+@ensure_seconds_measured
 def ensure_py_system_process_ran_by_pnx(file_to_excute, file_title):
-    # OS별 실행
     import subprocess
 
     from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_excuted_to_os

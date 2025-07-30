@@ -1,68 +1,42 @@
 
 
-def ensure_windows_closed():
-    import win32gui
-
-    from pkg_py.functions_split.ensure_func_info_saved import ensure_func_info_saved
-    from pkg_py.system_object.map_massages import PkMessages2025
+def ensure_windows_closed(window_title):
+    """특정 창을 닫는 함수
+    
+    Args:
+        window_title (str): 닫을 창의 제목
+    
+    Returns:
+        bool: 창을 닫았으면 True, 못 닫았으면 False
+    """
+    import time
     from pkg_py.functions_split.ensure_printed import ensure_printed
+    from pkg_py.functions_split.ensure_process_killed import ensure_process_killed
+    from pkg_py.functions_split.is_window_opened import is_window_opened
+    from pkg_py.system_object.gui_util import get_windows_opened
 
-    import win32com.client
+    # 닫을 창 제목들
+    window_titles_to_close = [window_title]
 
-    import pythoncom
-    import os
-    import traceback
-
-    import win32con
-    import inspect
-    try:
-
-        func_n = inspect.currentframe().f_code.co_name
-        pythoncom.CoInitialize()  # COM Initialization
-        shell = win32com.client.Dispatch("Shell.Application")
-        windows = shell.Windows()
-        path_to_windows = {}
-        ensure_printed("Window explorer.exe 중복창 탐지 중...")
-        for window in windows:
-            try:
-                hwnd = window.HWND  # 창의 핸들값 가져오기
-                if not hwnd:
-                    ensure_printed(f"HWND를 찾을 수 없는 창: {window.Name}", print_color='red')
-                    continue
-                current_path = window.Document.Folder.Self.Path
-                if not current_path:
-                    ensure_printed("경로를 확인할 수 없는 창이 발견됨", print_color='red')
-                    continue
-
-                # 경로 정규화
-                normalized_path = os.path.normpath(current_path).lower()
-
-                # 창 목록에 추가
-                path_to_windows.setdefault(normalized_path, []).append((hwnd, window))
-
-            except Exception as e:
-                ensure_printed(f"창 처리 중 오류 발생: {e}", print_color='red')
-                continue
-
-        # 중복된 창 닫기
-        for path, win_list in path_to_windows.items():
-            if len(win_list) > 1:
-                ensure_printed(f"[중복창 탐지] {len(win_list)}개 창 중복 path={path}")
-                for hwnd, window in win_list[1:]:  # 첫 번째 창을 제외한 나머지 창 닫기
-                    try:
-                        window.Quit()  # ensure_printed(f"[중복창 닫기] hwnd={hwnd} path={path}")
-                        win32gui.PostMessage(hwnd, win32con.WM_CLOSE, 0, 0)  # 추가적으로 윈도우 강제 닫기 시도
-
-                        ensure_printed(f"[중복창 닫기] window={window} hwnd={hwnd} path={path}", print_color="green")
-                    except:
-                        ensure_printed(f"[중복창 닫기] window={window} hwnd={hwnd} path={path}", print_color='red')
-        func_data = {
-            "n": func_n,
-            "state": PkMessages2025.success,
-            "title": getattr(window, "LocationName", "제목 없음"),
-        }
-        ensure_func_info_saved(func_n, func_data)
-    except Exception as e:
-        ensure_printed(f"오류 발생: {traceback.format_exc()}", print_color='red')
-    finally:
-        pythoncom.CoUninitialize()  # COM 해제
+    max_wait_time = 10  # 최대 10초 대기
+    wait_count = 0
+    
+    while wait_count < max_wait_time:
+        # 현재 열린 창 목록 확인 (디버깅용)
+        windows_opened = get_windows_opened()
+        everything_windows = [w for w in windows_opened if "Everything" in w]
+        if everything_windows:
+            ensure_printed(f"발견된 Everything 창들: {everything_windows}", print_color='yellow')
+        
+        # 각 창 제목에 대해 창이 열려있는지 확인하고 닫기
+        for title in window_titles_to_close:
+            if is_window_opened(window_title_seg=title):
+                ensure_printed(f"창 닫기 시도: {title}", print_color='cyan')
+                ensure_process_killed(window_title=title)
+                return True  # 창을 닫았으면 True 반환
+        
+        time.sleep(0.5)  # 0.5초씩 대기
+        wait_count += 1
+    
+    ensure_printed(f"'{window_title}' 창을 찾을 수 없거나 닫을 수 없습니다.", print_color='red')
+    return False  # 창을 닫지 못했으면 False 반환

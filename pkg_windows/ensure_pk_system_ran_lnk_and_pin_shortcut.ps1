@@ -3,7 +3,7 @@
 
 # 사용자 설정
 $TargetCmd = "$PSScriptRoot\ensure_pk_system_ran.cmd"
-$ShortcutName = "PK System Launcher"
+$ShortcutName = "pk_system_launcher"
 $IconPath = "$env:SystemRoot\System32\shell32.dll,40"  # 예: 폴더 아이콘
 
 # 생성 위치 목록: 바탕화면 + 현재 스크립트 위치

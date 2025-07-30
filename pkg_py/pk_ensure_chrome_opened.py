@@ -1,5 +1,6 @@
 if __name__ == "__main__":
     from pkg_py.functions_split.ensure_chrome_opened import ensure_chrome_opened
+    from pkg_py.functions_split.ensure_pk_program_suicided import ensure_pk_program_suicided
     import traceback
     from pkg_py.functions_split.ensure_window_title_replaced import ensure_window_title_replaced
     from pkg_py.functions_split.get_nx import get_nx
@@ -12,8 +13,8 @@ if __name__ == "__main__":
     try:
         ensure_colorama_initialized_once()
         ensure_window_title_replaced(get_nx(__file__))
-
         ensure_chrome_opened()
+        ensure_pk_program_suicided(self_f=__file__)  # pk_option
     except Exception as exception:
         ensure_do_exception_routine(traceback=traceback, exception=exception)
     finally:

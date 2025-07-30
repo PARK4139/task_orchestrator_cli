@@ -1,6 +1,6 @@
 if __name__ == "__main__":
+    from pkg_py.system_object.directories import D_PK_REFACTOR, D_PROMPTS_FOR_AI, D_SYSTEM_OBJECT, D_PK_FUNCTIONS_SPLIT, D_PKG_PY, D_PKG_SH, D_PKG_WINDOWS, D_PKG_TXT
     from pkg_py.functions_split.ensure_files_renamed_and_filecontent_replaced import ensure_files_renamed_and_filecontent_replaced
-    from pkg_py.system_object.directories import D_PK_FUNCTIONS_SPLIT, D_PKG_PY, D_PK_REFACTOR, D_PKG_WINDOWS, D_PKG_TXT, D_PKG_SH, D_SYSTEM_OBJECT, D_PROMPTS_FOR_AI
 
     d_targets = [  # pk_option
         # D_PROJECT,  # too slow for too many files exist. not recommanded
@@ -13,6 +13,7 @@ if __name__ == "__main__":
         D_SYSTEM_OBJECT,
         D_PROMPTS_FOR_AI,
     ]
+
     # d_targets = [ # pk_option
     #     F_MEMO_HOW_PK,
     #     F_MEMO_WORK_PK,
@@ -20,8 +21,8 @@ if __name__ == "__main__":
 
     target_extensions = [".py", ".cmd", ".bat", ".ps1", ".sh", ".bak", ".txt"]  # pk_option
 
-    old_string = rf'ensure_release_allowed_pk_system_copied_to_local_business_demo_and_business_demo_pushed_to_github'  # pk_option
-    new_string = rf'ensure_release_allowed_pk_system_copied_to_local_business_demo_and_business_demo_pushed_to_github'  # pk_option
+    old_string = rf'pk_ensure_pk_system_process_reloaded_as_hot_reloader'  # pk_option
+    new_string = rf'pk_ensure_pk_system_process_reloaded_as_hot_reloader'  # pk_option
 
     # mode = 3 # pk_option
     # s = rf'pk_ensure_venv_path_config_updated'
@@ -33,7 +34,7 @@ if __name__ == "__main__":
     #     old_string = rf'{new_string}_{new_string}'
     # elif mode == 3:
     #     old_string = s[3:] if s.startswith("pk_") else s
-    #     prefix = rf"ensure"
+    #     prefix = rf"pk_ensure"
     #     object = rf"venv_path_config"
     #     verb = rf"updateed"
     #     suffix = "_" + rf"via_google"

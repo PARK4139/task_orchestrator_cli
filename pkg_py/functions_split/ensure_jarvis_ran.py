@@ -22,14 +22,14 @@ def ensure_jarvis_ran():
 
     # if is_os_linux():
     #     # ensure_command_excuted_to_os('exit')
-    #     # available_pk_python_program_pnx = get_pnx_from_fzf(D_PKG_PY)
-    #     available_pk_python_program_pnx = None
+    #     # available_pk_system_process_pnx = get_pnx_from_fzf(D_PKG_PY)
+    #     available_pk_system_process_pnx = None
     #     pnx_list = get_pnxs(d_working=D_PKG_PY, mode="f", with_walking=0)
     #     for pnx in pnx_list:
     #         if __file__ not in pnx:
     #             continue
-    #         available_pk_python_program_pnx = pnx
-    #     tmux_session = get_nx(available_pk_python_program_pnx).replace(".", "_")
+    #         available_pk_system_process_pnx = pnx
+    #     tmux_session = get_nx(available_pk_system_process_pnx).replace(".", "_")
     #     ensure_tmux_pk_session_removed(tmux_session)
 
     # def parse_time_ranges(text_list):

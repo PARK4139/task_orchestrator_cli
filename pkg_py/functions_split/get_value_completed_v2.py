@@ -16,10 +16,10 @@ def get_value_completed_v2(message, option_values):
         # cmd = None
         # if pk_arg_list is None:
         #     pk_arg_list = []
-        # available_pk_python_program_pnx = get_available_pk_python_program_pnx(pk_idx)
+        # available_pk_system_process_pnx = get_available_pk_system_process_pnx(pk_idx)
         # cmd_to_run = 'uv run python'
         # cmd_to_run = 'python'
-        # tmux_session = get_nx(available_pk_python_program_pnx).replace(".", "_")
+        # tmux_session = get_nx(available_pk_system_process_pnx).replace(".", "_")
         # ensure_tmux_pk_session_removed(tmux_session)
 
         # if os.environ.get("TMUX"):
@@ -29,20 +29,20 @@ def get_value_completed_v2(message, option_values):
         #     sleep_cmd = "; sleep 99999" if LTA else ""
         #     ensure_command_excuted_to_os(cmd=(
         #         f"tmux split-window {split_flag} "
-        #         f"'clear && {cmd_to_run} {available_pk_python_program_pnx}{sleep_cmd}'"
+        #         f"'clear && {cmd_to_run} {available_pk_system_process_pnx}{sleep_cmd}'"
         #     ))
         #     return
 
-        # tmux_session = get_nx(available_pk_python_program_pnx).replace(".", "_")
+        # tmux_session = get_nx(available_pk_system_process_pnx).replace(".", "_")
         # ensure_tmux_pk_session_removed(tmux_session)
 
         # ensure_command_excuted_to_os(cmd=(
         #     f"tmux new-session -s {tmux_session} -d "
-        #     f"'clear && {cmd_to_run} {available_pk_python_program_pnx}'"
+        #     f"'clear && {cmd_to_run} {available_pk_system_process_pnx}'"
         # ))
         # ensure_command_excuted_to_os(cmd=(
         #     f"tmux split-window -v -t {tmux_session} "
-        #     f"'clear && {cmd_to_run} {available_pk_python_program_pnx}'"
+        #     f"'clear && {cmd_to_run} {available_pk_system_process_pnx}'"
         # ))
         # ensure_command_excuted_to_os(cmd=f"tmux attach-session -t {tmux_session}")
 

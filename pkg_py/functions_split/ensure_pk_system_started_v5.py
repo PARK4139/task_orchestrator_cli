@@ -21,13 +21,13 @@ def ensure_pk_system_started_v5():
     import os
     import subprocess
     import inspect
-    from pkg_py.functions_split.get_sorted_pk_file_list import get_excutable_pk_system_file_list
+    from pkg_py.functions_split.get_sorted_pk_file_list import get_excutable_pk_system_processes
 
     func_n = inspect.currentframe().f_code.co_name
 
     prefix = pk_
 
-    pk_file_list = get_excutable_pk_system_file_list()  # pkg_py 폴더의 py 파일 추가
+    pk_file_list = get_excutable_pk_system_processes()  # pkg_py 폴더의 py 파일 추가
     pk_file_list += get_refactor_py_file_list()  # refactor 폴더의 py 파일 추가
     if not pk_file_list:
         print(f"실행 가능한 {prefix}*.py/refactor/*.py 파일이 없습니다.")
@@ -81,9 +81,8 @@ def ensure_pk_system_started_v5():
     file_to_excute = os.path.normpath(file_to_excute)
     file_title = os.path.basename(file_to_excute)
 
-    # 제목에서 pk_ 접두사 제거
     if file_title.startswith(f"{prefix}"):
-        file_title = file_title[3:]
+        file_title = file_title[3:] # remove file prefix
         ensure_py_system_process_ran_by_pnx(file_to_excute, file_title)
 
     ensure_slept(milliseconds=500)

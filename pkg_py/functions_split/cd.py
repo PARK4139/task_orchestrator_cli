@@ -60,7 +60,7 @@ def cd(sys_argv):
         D_HOME,
         D_DESKTOP,
     ]
-    d_working_with_idx_dict = get_TBD_pnx_working_with_idx_dict(origin_list=d_working_list, minus_list=minus_list,
+    d_working_with_idx_dict = get_pnx_working_with_idx_option(origin_list=d_working_list, minus_list=minus_list,
                                                                 pnx_plus_list=plus_list)
     # d_working_without_idx_list = get_pnx_working_without_idx_list(pnx_working_with_idx_dict=d_working_with_idx_dict)
     d_working_idx_list = get_idx_list(item_iterable=d_working_with_idx_dict)

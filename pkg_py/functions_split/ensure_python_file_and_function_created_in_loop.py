@@ -28,7 +28,7 @@ def ensure_python_file_and_function_created(d_working, func_n):
     from pkg_py.functions_split.open_pnx_by_ext import ensure_pnx_opened_by_ext
     from pkg_py.system_object.directories import D_PKG_PY, D_PK_FUNCTIONS_SPLIT
     from pkg_py.system_object.map_massages import PkMessages2025
-    from pkg_py.system_object.files import F_PK_TEST_PK_PYTHON_PROGRAM_STRUCTURE_PY
+    from pkg_py.system_object.files import F_TEST_PK_PYTHON_PROGRAM_STRUCTURE_PY
 
     D_PKG_PY = get_pnx_os_style(D_PKG_PY)
     D_PK_FUNCTIONS_SPLIT = get_pnx_os_style(D_PK_FUNCTIONS_SPLIT)
@@ -41,8 +41,8 @@ def ensure_python_file_and_function_created(d_working, func_n):
         logging.info(f"[{PkMessages2025.PATH_NOT_FOUND}] {d_working}")
 
     # 2. get user filename  # .py 확장자 자동 부여
-    # editable = False
-    editable = True
+    editable = False
+    # editable = True
     value = None
     if d_working == D_PKG_PY:
         key_name = 'pk_python_file_name'
@@ -93,21 +93,21 @@ def ensure_python_file_and_function_created(d_working, func_n):
     # 중복 처리 끝난 후에 전체 경로 구성
     file_pnx_to_made = os.path.join(d_working, file_name)
     ensure_printed(f'''[{PkMessages2025.DATA}] file_pnx_to_made={file_pnx_to_made} {'%%%FOO%%%' if LTA else ''}''')
-    F_PK_TEST_PK_PYTHON_PROGRAM_STRUCTURE_PY = get_pnx_os_style(F_PK_TEST_PK_PYTHON_PROGRAM_STRUCTURE_PY)
+    F_TEST_PK_PYTHON_PROGRAM_STRUCTURE_PY = get_pnx_os_style(F_TEST_PK_PYTHON_PROGRAM_STRUCTURE_PY)
 
     # 4. select template_option
     template_option = None
-    # template_option = get_value_completed(key_hint='template_file=', values=[F_PK_TEST_PK_PYTHON_PROGRAM_STRUCTURE_PY, splited_function_template])
+    # template_option = get_value_completed(key_hint='template_file=', values=[F_TEST_PK_PYTHON_PROGRAM_STRUCTURE_PY, splited_function_template])
     if d_working == D_PKG_PY:
         file_pnx_to_made = rf"{get_p(file_pnx_to_made)}/{pk_}{get_nx(file_pnx_to_made)}"
         file_pnx_to_made = get_pnx_os_style(file_pnx_to_made)
-        template_option = F_PK_TEST_PK_PYTHON_PROGRAM_STRUCTURE_PY
+        template_option = F_TEST_PK_PYTHON_PROGRAM_STRUCTURE_PY
     elif d_working == D_PK_FUNCTIONS_SPLIT:
         pass
     elif d_working == D_SYSTEM_OBJECT:
         pass
     ensure_printed(f'''[{PkMessages2025.DATA}] template_option={template_option} {'%%%FOO%%%' if LTA else ''}''')
-    ensure_printed(f'''[{PkMessages2025.DATA}] F_PK_TEST_PK_PYTHON_PROGRAM_STRUCTURE_PY={F_PK_TEST_PK_PYTHON_PROGRAM_STRUCTURE_PY} {'%%%FOO%%%' if LTA else ''}''')
+    ensure_printed(f'''[{PkMessages2025.DATA}] F_TEST_PK_PYTHON_PROGRAM_STRUCTURE_PY={F_TEST_PK_PYTHON_PROGRAM_STRUCTURE_PY} {'%%%FOO%%%' if LTA else ''}''')
 
     # 5. make file
     ensure_pnx_made(pnx=file_pnx_to_made, mode="f")
@@ -116,9 +116,9 @@ def ensure_python_file_and_function_created(d_working, func_n):
     # 6. select and save template_content
     template_content = None
     if d_working == D_PKG_PY:
-        if os.path.isfile(F_PK_TEST_PK_PYTHON_PROGRAM_STRUCTURE_PY):
+        if os.path.isfile(F_TEST_PK_PYTHON_PROGRAM_STRUCTURE_PY):
             try:
-                with open(F_PK_TEST_PK_PYTHON_PROGRAM_STRUCTURE_PY, 'r', encoding='utf-8') as f_template:
+                with open(F_TEST_PK_PYTHON_PROGRAM_STRUCTURE_PY, 'r', encoding='utf-8') as f_template:
                     template_content = f_template.read()
                     lines = template_content.splitlines()
                     lines = lines[1:]
@@ -138,7 +138,7 @@ def ensure_python_file_and_function_created(d_working, func_n):
             except Exception as e:
                 logging.info(f"[{PkMessages2025.FAILED}] write template: {e}")
         else:
-            logging.info(f"[{PkMessages2025.SKIPPED}] template file not found: {F_PK_TEST_PK_PYTHON_PROGRAM_STRUCTURE_PY}")
+            logging.info(f"[{PkMessages2025.SKIPPED}] template file not found: {F_TEST_PK_PYTHON_PROGRAM_STRUCTURE_PY}")
     elif d_working == D_PK_FUNCTIONS_SPLIT:
         template_content = f"def {func_n_template}():\n\tpass"
         ensure_printed(f'''[{PkMessages2025.DATA}] template_content={template_content} {'%%%FOO%%%' if LTA else ''}''')

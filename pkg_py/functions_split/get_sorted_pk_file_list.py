@@ -1,10 +1,9 @@
+from pkg_py.functions_split.ensure_seconds_measured import ensure_seconds_measured
 
 
-from pkg_py.system_object.directories import D_PKG_PY
-
-
-def get_excutable_pk_system_file_list():
-    # pk_*.py 파일 절대경로 리스트
+@ensure_seconds_measured
+def get_excutable_pk_system_processes():
+    from pkg_py.system_object.directories import D_PKG_PY
     import os
     from glob import glob
     # return sorted(glob(os.path.join(D_PKG_PY, "pk_*.py")))

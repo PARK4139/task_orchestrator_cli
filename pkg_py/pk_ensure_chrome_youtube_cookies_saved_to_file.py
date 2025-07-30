@@ -1,7 +1,5 @@
 if __name__ == "__main__":
     import traceback
-    from pkg_py.functions_split.ensure_slept import ensure_slept
-
     from pkg_py.functions_split.ensure_do_exception_routine import ensure_do_exception_routine
     from pkg_py.functions_split.ensure_do_finally_routine import ensure_do_finally_routine
     from pkg_py.functions_split.ensure_printed import ensure_printed
@@ -14,8 +12,6 @@ if __name__ == "__main__":
             ensure_printed("✅ YouTube 쿠키가 성공적으로 설정되었습니다!", print_color="green")
         else:
             ensure_printed("❌ YouTube 쿠키 설정에 실패했습니다.", print_color="red")
-        while 1:
-            ensure_slept(hours=24)
     except Exception as exception:
         ensure_do_exception_routine(traceback=traceback, exception=exception)
     finally:

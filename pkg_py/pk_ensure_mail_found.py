@@ -19,9 +19,9 @@ if __name__ == "__main__":
         # write code here
         # state =
         ensure_mail_found()
-        ensure_process_killed(window_title=get_nx(__file__))  # pk_option
+        ensure_pk_program_suicided(self_f=__file__) # pk_option
         # if state["state"]:
-        #     ensure_process_killed(window_title=get_nx(__file__))  # pk_option
+        #     ensure_pk_program_suicided(self_f=__file__) # pk_option
 
         # if LTA:
         #     ensure_console_debuggable(ipdb)

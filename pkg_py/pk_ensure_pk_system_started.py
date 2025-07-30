@@ -23,6 +23,6 @@ if __name__ == '__main__':
         else:
             ensure_pk_system_started()
 
-        ensure_process_killed(window_title=get_nx(__file__))  # pk_option
+        ensure_pk_program_suicided(self_f=__file__) # pk_option
     except:
         traceback.print_exc()

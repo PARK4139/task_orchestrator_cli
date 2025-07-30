@@ -1,14 +1,13 @@
-import os
-
-from pkg_py.functions_split.ensure_git_project_pushed import ensure_git_project_pushed
-from pkg_py.functions_split.ensure_process_killed import ensure_process_killed
-from pkg_py.functions_split.ensure_window_title_replaced import ensure_window_title_replaced
-from pkg_py.functions_split.get_nx import get_nx
-
 if __name__ == "__main__":
     try:
         import traceback
         from pathlib import Path
+        import os
+
+        from pkg_py.functions_split.ensure_git_project_pushed import ensure_git_project_pushed
+        from pkg_py.functions_split.ensure_pk_program_suicided import ensure_pk_program_suicided
+        from pkg_py.functions_split.ensure_window_title_replaced import ensure_window_title_replaced
+        from pkg_py.functions_split.get_nx import get_nx
 
         from pkg_py.functions_split.ensure_do_exception_routine import ensure_do_exception_routine
         from pkg_py.functions_split.ensure_do_finally_routine import ensure_do_finally_routine
@@ -34,7 +33,7 @@ if __name__ == "__main__":
         os.chdir(D_PROJECT)
         state = ensure_git_project_pushed(with_commit_massage=False)
         if state["state"]:
-            ensure_process_killed(window_title=get_nx(__file__))  # pk_option
+            ensure_pk_program_suicided(self_f=__file__)  # pk_option
 
         # SCRIPT_NAME = Path(__file__).name
         # ensure_colorama_initialized_once()

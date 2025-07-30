@@ -3,8 +3,8 @@ import os
 import re
 import traceback
 
-from pkg_py.functions_split.ensure_do_exception_routine import ensure_do_exception_routine
-from pkg_py.functions_split.ensure_do_finally_routine import ensure_do_finally_routine
+from pkg_py.functions_split.pk_ensure_do_exception_routine import pk_ensure_do_exception_routine
+from pkg_py.functions_split.pk_ensure_do_finally_routine import pk_ensure_do_finally_routine
 from pkg_py.functions_split.get_file_id import get_file_id
 from pkg_py.functions_split.get_value_completed import get_value_completed
 from pkg_py.functions_split.get_values_from_historical_file_routine import get_values_from_historical_file_routine
@@ -48,7 +48,7 @@ def rename_files(d_working, rename_map, dry_run=True):
     return updated_rename_map
 
 
-def ensure_filenames_renamed_from_prefix_xxx(mode=None):
+def pk_ensure_filenames_renamed_from_prefix_xxx(mode=None):
     func_n = inspect.currentframe().f_code.co_name
     if LTA:
         d_working = D_PK_FUNCTIONS_SPLIT
@@ -76,6 +76,6 @@ if __name__ == "__main__":
         initialize_and_customize_logging_config(__file__=__file__)
         pk_ensure_filenames_renamed_from_prefix_xxx()
     except Exception as exception:
-        ensure_do_exception_routine(traceback=traceback, exception=exception)
+        pk_ensure_do_exception_routine(traceback=traceback, exception=exception)
     finally:
-        ensure_do_finally_routine(D_PROJECT=D_PROJECT, __file__=__file__, STAMP_TRY_GUIDE=STAMP_TRY_GUIDE)
+        pk_ensure_do_finally_routine(D_PROJECT=D_PROJECT, __file__=__file__, STAMP_TRY_GUIDE=STAMP_TRY_GUIDE)

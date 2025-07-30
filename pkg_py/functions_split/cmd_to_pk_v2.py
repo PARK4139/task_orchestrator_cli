@@ -37,13 +37,13 @@ def ensure_pk_system_started_v2(index_map):
                 pk_file_to_run = index_map[arg1]
                 if LTA:
                     ensure_printed(f"[INFO] 실행할 파일: {pk_file_to_run}")
-                run_pk_python_program_by_path(pk_file_to_run, sys.argv[2:])
+                run_pk_system_process_by_path(pk_file_to_run, sys.argv[2:])
                 return
             else:
                 if not arg1.isdigit():
 
                     # 문자열 기반 추측 지원
-                    guide_to_use_pk_system_process(get_pk_system_process_pnx_list(), nx_by_user_input=arg1)
+                    guide_to_use_pk_system_process(get_pk_system_process_pnxs(), nx_by_user_input=arg1)
                 else:
                     guide_pk_error_mssage()
                 return

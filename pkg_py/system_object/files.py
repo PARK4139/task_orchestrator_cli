@@ -1,13 +1,9 @@
-import os
-
 from pkg_py.functions_split.get_nx import get_nx
 from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style
 from pkg_py.functions_split.get_time_as_ import get_time_as_
-from pkg_py.functions_split.is_office_pc import is_office_pc
-from pkg_py.system_object.directories import D_PKG_TXT, D_PKG_JSON, D_DOWNLOADS, D_PKG_PK, D_PKG_TOML, D_PKG_WINDOWS, \
-    D_PKG_DB, D_DESKTOP, D_PKG_PY, D_PK_RECYCLE_BIN, D_PKG_WINDOWS, D_PK_FUNCTIONS_SPLIT, D_PKG_LOG
+from pkg_py.functions_split.is_office_pc import is_pk_pc
+from pkg_py.system_object.directories import D_PKG_TXT, D_PKG_JSON, D_DOWNLOADS, D_PKG_PK, D_PKG_TOML, D_PKG_DB, D_PKG_PY, D_PKG_WINDOWS, D_PK_FUNCTIONS_SPLIT, D_PKG_LOG
 from pkg_py.system_object.directories_reuseable import D_PROJECT, D_HOME
-
 
 F_VPC_MAMNAGEMENT_MAP_TOML = f'{D_PKG_TOML}/vpc_mamnagement_map.toml'
 F_ALIAS_CMD = rf'{D_PKG_WINDOWS}/ensure_alias_enabled.cmd'
@@ -101,10 +97,14 @@ F_UV_ZIP = rf"{D_DOWNLOADS}\uv.zip"
 F_UV_EXE = rf"{D_PKG_WINDOWS}\uv.exe"
 F_YOUTUBE_COOKIES_TXT = rf"{D_PKG_TXT}/youtube_cookies.txt"
 F_PK_ALIAS_MACROS_TXT = rf"{D_PKG_TXT}\pk_alias_macros.txt"
-F_PK_TEST_PK_PYTHON_PROGRAM_STRUCTURE_PY=rf"{D_PK_FUNCTIONS_SPLIT}/test_pk_python_program_structure.py"
-
-F_PYCHARM64_EDITION_EXE = rf"C:/Program Files/JetBrains/PyCharm Community Edition 2025.1.3.1/bin/pycharm64.exe"
-if is_office_pc():
+F_TEST_PK_PYTHON_PROGRAM_STRUCTURE_PY = rf"{D_PK_FUNCTIONS_SPLIT}/test_pk_system_process_structure.py"
+F_EVERYTHING_EXE =rf"C:\Program Files\Everything\Everything.exe"
+F_SNIPPING_TOOL_EXE =rf"C:\Program Files\WindowsApps\Microsoft.ScreenSketch_11.2506.25.0_x64__8wekyb3d8bbwe\SnippingTool\SnippingTool.exe"
+F_BIT_TORRENT_EXE =rf"C:\Users\wjdgn\AppData\Roaming\bittorrent\BitTorrent.exe"
+F_PYCHARM64_EDITION_EXE = None
+if is_pk_pc():
+    F_PYCHARM64_EDITION_EXE = rf"C:/Program Files/JetBrains/PyCharm Community Edition 2025.1.3.1/bin/pycharm64.exe"
+else:
     F_PYCHARM64_EDITION_EXE = rf"C:/Program Files/JetBrains/PyCharm Community Edition 2024.2.4/bin/pycharm64.exe"
     # F_PYCHARM64_EDITION_EXE = r"C:/Program Files/JetBrains/PyCharm Community Edition 2024.3.1/bin/pycharm64.exe"
 F_CURSOR_EXE = rf"{D_HOME}\AppData\Local\Programs\cursor\Cursor.exe"
