@@ -19,7 +19,7 @@ WSL, Docker, uv, venv 환경에서 실행되며, 다양한 파일 형식, 시스
 
 ---
 
-## 🚀 **최신 프로젝트 상태 (2024-01-XX)**
+## 🚀 **최신 프로젝트 상태 (2025-01-XX)**
 
 ### ✅ **완료된 주요 프로젝트**
 
@@ -33,6 +33,13 @@ WSL, Docker, uv, venv 환경에서 실행되며, 다양한 파일 형식, 시스
 - **✅ 완료**: 시스템 자동화, 프로세스 관리, 멀티미디어 처리
 - **✅ 완료**: AI 통합 (ChatGPT, OCR, 음성인식)
 - **✅ 완료**: 네트워크/웹 도구 (Selenium, FastAPI, Cloudflare)
+
+#### **3. Windows 시스템 자동화 개선** (2025-01-XX)
+- **✅ 완료**: Windows 레지스트리 핸들 오류 수정
+- **✅ 완료**: 환경변수 설정 로직 개선 (`D_BUSINESS_DEMO` 포함)
+- **✅ 완료**: UI/UX 개선 (이모지 제거, 메시지 정리)
+- **✅ 완료**: UV, FZF 설치 및 PATH 설정 자동화
+- **✅ 완료**: Business Demo 디렉토리 자동 생성
 
 ### 🎯 **현재 개발 중인 프로젝트**
 
@@ -76,6 +83,10 @@ WSL, Docker, uv, venv 환경에서 실행되며, 다양한 파일 형식, 시스
   - **news_analyzer/** : 뉴스 크롤링 서비스
   - **shared/** : 공통 설정 및 데이터베이스 모듈
   - **deployment/** : Docker Compose 및 Nginx 설정
+- **pkg_windows/** : **🆕 Windows 시스템 자동화 도구** (최신 추가)
+  - **ensure_pk_system_enabled.py** : UV, FZF, Python 가상환경 자동 설치 및 설정
+  - **Windows 레지스트리 관리** : 환경변수 설정 및 PATH 구성
+  - **시스템 자동화** : 데스크톱 바로가기 생성, AutoRun 등록
 - **tests/** : pytest 기반 단위/통합 테스트
 - **docker-compose.yaml, *.Dockerfile** : Docker 기반 실행/배포 환경
 - **pyproject.toml** : 프로젝트 메타데이터, 의존성, 빌드/패키징 설정
@@ -93,6 +104,7 @@ WSL, Docker, uv, venv 환경에서 실행되며, 다양한 파일 형식, 시스
 - **자동화/유틸리티** : 배치 파일/디렉토리/이름 변경, 핫키, GUI, tmux, venv, Docker 등
 - **테스트/배포** : pytest 기반 테스트, Git/Docker 자동화, 배포 스크립트
 - **🆕 MSA 아키텍처** : Docker 오케스트레이션을 통한 마이크로서비스 기반 투자 자문 시스템
+- **🆕 Windows 자동화** : UV, FZF 설치, 환경변수 설정, 시스템 구성 자동화
 
 ---
 
@@ -108,6 +120,8 @@ WSL, Docker, uv, venv 환경에서 실행되며, 다양한 파일 형식, 시스
   - 워크스페이스 통합, 실행/상태 관리
 - **🆕 pkg_finance_invest_assist/**  
   - MSA 투자 자문 시스템: API Gateway, 추천 엔진, 금융 데이터, 뉴스 크롤링
+- **🆕 pkg_windows/**  
+  - Windows 시스템 자동화: UV/FZF 설치, 환경변수 설정, 레지스트리 관리
 
 ---
 
@@ -125,6 +139,7 @@ WSL, Docker, uv, venv 환경에서 실행되며, 다양한 파일 형식, 시스
    - Python 가상 환경 설정
    - PATH 환경 변수 구성
    - 데스크톱 바로가기 생성
+   - Business Demo 디렉토리 자동 생성
 
 ### 수동 설치
 1. Python 3.12+ 환경을 준비합니다.
@@ -140,6 +155,36 @@ WSL, Docker, uv, venv 환경에서 실행되며, 다양한 파일 형식, 시스
    - 설치 및 실행 시 uv를 사용해야 합니다.
 3. (선택사항) Docker 환경  
    *Docker 기반 오케스트레이션 (docker-compose)은 개발 중이며 아직 지원되지 않습니다.*
+
+### 🆕 **Windows 시스템 자동화 (최신 기능)**
+
+#### **자동 설치 및 설정**
+```cmd
+# Windows에서 시스템 자동화 실행
+cd pk_system
+python pkg_windows/ensure_pk_system_enabled.py
+```
+
+이 스크립트는 다음을 자동으로 수행합니다:
+- **UV 패키지 관리자** 설치 및 검증
+- **FZF 퍼지 검색 도구** 설치 및 검증
+- **Python 가상환경** 설정 및 PATH 구성
+- **Business Demo 디렉토리** 자동 생성
+- **환경변수 설정** (`D_BUSINESS_DEMO` 포함)
+- **데스크톱 바로가기** 생성
+- **AutoRun 등록** (명령 프롬프트 자동 실행)
+
+#### **설정 확인**
+```cmd
+# 설치된 도구들 확인
+uv --version
+fzf --version
+python --version
+
+# 환경변수 확인
+echo %PATH%
+echo %D_BUSINESS_DEMO%
+```
 
 ### 🆕 **MSA 투자 자문 시스템 실행 (WSL 환경)**
 
@@ -180,6 +225,16 @@ explorer.exe http://[WSL_IP]:8000/docs
   ```bash
   pytest tests/
   ```
+
+### 🆕 **Windows 시스템 자동화 테스트**
+```cmd
+# 시스템 설정 확인
+python pkg_windows/ensure_pk_system_enabled.py
+
+# 개별 도구 테스트
+uv --version
+fzf --version
+```
 
 ### 🆕 **MSA API 테스트**
 ```bash
@@ -260,6 +315,11 @@ pkg_py/
 ├── shared/                    # 공통 모듈
 ├── deployment/                # Docker 설정
 └── scripts/                   # 실행 스크립트
+
+🆕 pkg_windows/  # Windows 시스템 자동화 도구
+├── ensure_pk_system_enabled.py  # 자동 설치 및 설정
+├── windows_registry_manager.py # 레지스트리 관리
+└── system_automation.py       # 시스템 구성 자동화
 ```
 
 ### 설치 진입점
@@ -297,6 +357,12 @@ pkg_finance_invest_assist/
 ├── market_data/main.py               # 금융 데이터 서비스
 ├── news_analyzer/main.py             # 뉴스 크롤링 서비스
 └── shared/config.py                  # 공통 설정
+
+🆕 # Windows 시스템 자동화 예시
+pkg_windows/
+├── ensure_pk_system_enabled.py        # 자동 설치 및 설정
+├── windows_registry_manager.py       # 레지스트리 관리
+└── system_automation.py              # 시스템 구성 자동화
 ```
 
 ## 개발/기여

@@ -5,52 +5,59 @@ Earth / Korean / Anyang / Jung hoon Park
 
 ## Project Overview
 
-**pk_system** is a multi-utility toolkit for automation, system management, data processing, AI, and multimedia, built on Python 3.12+.  
-It runs in WSL, Docker, uv, and venv environments, supporting a wide range of file formats, system operations, networking, multimedia, natural language processing, automation, testing, and deployment features.
+**pk_system** is a multi-purpose toolkit for automation, system management, data processing, AI, and multimedia based on Python 3.12+.  
+It runs in WSL, Docker, uv, venv environments and supports various file formats, system operations, networking, multimedia, natural language processing, automation, testing, and deployment features.
 
 ### AI-Powered Development
-This project leverages modern AI development tools to enhance productivity and code quality:
+This project leverages the latest AI development tools to enhance productivity and code quality:
 
-- **🖥️ [Cursor](https://cursor.sh/)**: Primary IDE with AI-powered code completion, refactoring, and intelligent assistance
+- **🖥️ [Cursor](https://cursor.sh/)**: Primary IDE with AI-based code completion, refactoring, and intelligent assistance
 - **🤖 [ChatGPT](https://chat.openai.com/)**: AI assistant for code generation, debugging, and architectural decisions
 - **🧠 AI-Enhanced Workflow**: Iterative development using AI for rapid prototyping, testing, and optimization
 
-The development process combines human expertise with AI capabilities to create robust, maintainable code while accelerating development cycles.
+The development process combines human expertise with AI capabilities to generate robust and maintainable code while accelerating the development cycle.
 
 ---
 
-## 🚀 **Latest Project Status (2024-01-XX)**
+## 🚀 **Latest Project Status (2025-01-XX)**
 
 ### ✅ **Completed Major Projects**
 
 #### **1. MSA Investment Advisory System** (`pkg_finance_invest_assist/`)
-- **✅ Completed**: Docker + WSL environment setup, API Gateway, PostgreSQL + Redis integration
-- **✅ Completed**: pyproject.toml + uv migration, modernized dependency management
+- **✅ Complete**: Docker + WSL environment setup, API Gateway, PostgreSQL + Redis integration
+- **✅ Complete**: pyproject.toml + uv migration, dependency management modernization
 - **🔄 In Progress**: Investment timing recommendation logic implementation
 - **❌ Not Implemented**: News crawling, asset price monitoring, Django web interface
 
 #### **2. Core System Tools**
-- **✅ Completed**: System automation, process management, multimedia processing
-- **✅ Completed**: AI integration (ChatGPT, OCR, speech recognition)
-- **✅ Completed**: Network/web tools (Selenium, FastAPI, Cloudflare)
+- **✅ Complete**: System automation, process management, multimedia processing
+- **✅ Complete**: AI integration (ChatGPT, OCR, speech recognition)
+- **✅ Complete**: Network/web tools (Selenium, FastAPI, Cloudflare)
+
+#### **3. Windows System Automation Improvements** (2025-01-XX)
+- **✅ Complete**: Windows registry handle error fixes
+- **✅ Complete**: Environment variable configuration improvements (`D_BUSINESS_DEMO` included)
+- **✅ Complete**: UI/UX improvements (emoji removal, message cleanup)
+- **✅ Complete**: UV, FZF installation and PATH configuration automation
+- **✅ Complete**: Business Demo directory auto-creation
 
 ### 🎯 **Currently Developing Projects**
 
 #### **MSA Investment Advisory System** - Phase 1 in Progress
 - **Tech Stack**: FastAPI, Docker, PostgreSQL, Redis, WSL
-- **Development Environment**: "Edit on Windows, Execute on WSL" approach
+- **Development Environment**: "Edit on Windows, Run on WSL" approach
 - **Dependency Management**: uv + pyproject.toml (replacing requirements.txt)
 - **API Status**: 
   - ✅ Gateway: `http://[WSL_IP]:8000/docs` (Swagger UI)
-  - 🔄 Recommendation Engine: Investment timing analysis logic in progress
+  - 🔄 Recommendation Engine: Investment timing analysis logic implementation
   - ❌ Finance API: External financial API integration needed
   - ❌ News Crawler: News collection and sentiment analysis needed
 
 ### 📋 **Next Steps Plan**
 
 #### **Phase 1: Core API Implementation (Priority)**
-1. **Investment Timing Recommendation Logic** - Technical indicator-based analysis algorithm
-2. **Asset Price Query** - External financial API integration (Yahoo Finance, Alpha Vantage, etc.)
+1. **Investment Timing Recommendation Logic** - Technical indicator-based analysis algorithms
+2. **Asset Price Queries** - External financial API integration (Yahoo Finance, Alpha Vantage, etc.)
 3. **News Crawling** - News collection using BeautifulSoup/Selenium
 
 #### **Phase 2-4: Advanced Features**
@@ -61,94 +68,132 @@ The development process combines human expertise with AI capabilities to create 
 
 ---
 
-## Main Folder & File Structure
+## Major Folders and File Structure
 
 - **pkg_py/** : Core Python utilities for system/automation/data/AI/multimedia
-  - **functions_split/** : Numerous single-purpose scripts for window/process/network/file/automation/translation/crawling, etc.
-  - **system_object/** : Utilities for state management, file/directory/encoding/color/keymap, and other system objects
-  - **refactor/** : Tools for code automation, refactoring, module/file renaming, and meta-programming
+  - **functions_split/** : Numerous single-purpose scripts for windows/process/network/file/automation/translation/crawling, etc.
+  - **system_object/** : Utilities for state management, file/directory/encoding/color/keymap and other system objects
+  - **refactor/** : Tools for code automation, refactoring, module/file name changes, meta programming
   - **workspace/** : Workspace management and integrated execution/state control
-  - **Standalone scripts** : Various scripts for process/window/network/multimedia/automation/testing/deployment
-- **pkg_finance_invest_assist/** : **🆕 MSA Investment Advisory System** (Latest Project)
-  - **gateway/** : FastAPI-based API Gateway
-  - **recommend-engine/** : Investment recommendation engine
-  - **finance-api-client/** : Financial data API client
-  - **news-crawler/** : News crawling service
+  - **Independent execution scripts** : Various scripts for process/window/network/multimedia/automation/testing/deployment
+- **pkg_finance_invest_assist/** : **🆕 MSA Investment Advisory System** (latest project)
+  - **api_gateway/** : FastAPI-based API Gateway
+  - **investment_advisor/** : Investment recommendation engine
+  - **market_data/** : Financial data API client
+  - **news_analyzer/** : News crawling service
   - **shared/** : Common configuration and database modules
-  - **infra/** : Docker Compose and Nginx configuration
+  - **deployment/** : Docker Compose and Nginx configuration
+- **pkg_windows/** : **🆕 Windows System Automation Tools** (latest addition)
+  - **ensure_pk_system_enabled.py** : Automatic UV, FZF, Python virtual environment installation and configuration
+  - **Windows Registry Management** : Environment variable setup and PATH configuration
+  - **System Automation** : Desktop shortcut creation, AutoRun registration
 - **tests/** : pytest-based unit/integration tests
-- **docker-compose.yaml, *.Dockerfile** : Docker-based execution/deployment environments
-- **pyproject.toml** : Project metadata, dependencies, build/packaging settings
-- **Others** : Various data/media/document package directories (`pkg_csv`, `pkg_json`, `pkg_mp3`, etc. — be careful when publishing)
+- **docker-compose.yaml, *.Dockerfile** : Docker-based execution/deployment environment
+- **pyproject.toml** : Project metadata, dependencies, build/packaging configuration
+- **Others** : Various data/media/document package directories (`pkg_csv`, `pkg_json`, `pkg_mp3`, etc. — caution when publishing)
 
 ---
 
-## Key Features
+## Major Features
 
-- **System/OS Management** : Process/window/network/env management, backup/restore, automation
-- **Data Processing** : Supports CSV, JSON, XLSX, image, sound, video, and more
-- **Multimedia** : Youtube download, video/audio processing, image conversion, etc.
-- **Network/Web** : Integrations with Cloudflare, Selenium, Playwright, FastAPI, and more
+- **System/OS Management** : Process/window/network/environment management, backup/restore, automation
+- **Data Processing** : Support for CSV, JSON, XLSX, images, sound, video, etc.
+- **Multimedia** : YouTube downloads, video/audio processing, image conversion, etc.
+- **Network/Web** : Integration with Cloudflare, Selenium, Playwright, FastAPI, etc.
 - **AI/NLP** : ChatGPT, Konlpy, OCR, speech recognition, etc.
-- **Automation/Utilities** : Batch file/dir/rename, hotkeys, GUI, tmux, venv, Docker, etc.
+- **Automation/Utilities** : Batch file/directory/name changes, hotkeys, GUI, tmux, venv, Docker, etc.
 - **Testing/Deployment** : pytest-based tests, Git/Docker automation, deployment scripts
-- **🆕 MSA Architecture** : Microservice-based investment advisory system with Docker orchestration
+- **🆕 MSA Architecture** : Microservice-based investment advisory system through Docker orchestration
+- **🆕 Windows Automation** : UV, FZF installation, environment variable setup, system configuration automation
 
 ---
 
-## Example Key Modules/Scripts
+## Major Modules/Scripts Examples
 
 - **functions_split/**  
-  - Window/process control, file/dir management, translation, crawling, automation, screenshot, networking, data transformation, etc.
+  - Window/process control, file/directory management, translation, crawling, automation, screenshots, networking, data conversion, etc.
 - **system_object/**  
-  - System state management, file/dir/encoding/color/keymap utilities
+  - System state management, file/directory/encoding/color/keymap utilities
 - **refactor/**  
-  - Code automation, function/module splitting, batch renaming, meta-programming
+  - Code automation, function/module splitting, batch name changes, meta programming
 - **workspace/**  
   - Workspace integration, execution/state management
 - **🆕 pkg_finance_invest_assist/**  
   - MSA Investment Advisory System: API Gateway, recommendation engine, financial data, news crawling
+- **🆕 pkg_windows/**  
+  - Windows System Automation: UV/FZF installation, environment variable setup, registry management
 
 ---
 
-## Installation & Usage
+## Installation and Usage
 
 ### Quick Start (Windows)
-1. **Run the installation script**:
+1. **Run Installation Script**:
    ```cmd
    cd pk_system
    ensure_pk_system_enabled.cmd
    ```
-   This script will:
+   This script performs the following:
    - Install and configure uv package manager
-   - Install fzf for fuzzy finding
+   - Install fzf for fuzzy search
    - Set up Python virtual environment
    - Configure PATH environment variables
    - Create desktop shortcuts
+   - Auto-create Business Demo directory
 
 ### Manual Installation
-1. Prepare a Python 3.12+ environment.
-2. Install dependencies using [uv](https://github.com/astral-sh/uv) (recommended):
+1. Prepare Python 3.12+ environment.
+2. Use [uv](https://github.com/astral-sh/uv) to install dependencies (recommended):
    ```bash
-   # Install uv if not already installed
+   # Install uv if not installed
    pip install uv
 
-   # Install all dependencies as defined in pyproject.toml
+   # Install all dependencies defined in pyproject.toml
    uv pip install -e .
    ```
-   - This project uses uv as the package and dependency manager instead of traditional venv/pip.
-   - Please make sure to use uv for installation and execution.
+   - This project uses uv as package and dependency manager instead of venv/pip.
+   - Use uv for installation and execution.
 3. (Optional) Docker environment  
    *Docker-based orchestration (docker-compose) is under development and not yet supported.*
+
+### 🆕 **Windows System Automation (Latest Feature)**
+
+#### **Automatic Installation and Setup**
+```cmd
+# Run system automation on Windows
+cd pk_system
+python pkg_windows/ensure_pk_system_enabled.py
+```
+
+This script automatically performs:
+- **UV Package Manager** installation and validation
+- **FZF Fuzzy Search Tool** installation and validation
+- **Python Virtual Environment** setup and PATH configuration
+- **Business Demo Directory** auto-creation
+- **Environment Variable Setup** (including `D_BUSINESS_DEMO`)
+- **Desktop Shortcut** creation
+- **AutoRun Registration** (command prompt auto-execution)
+
+#### **Setup Verification**
+```cmd
+# Check installed tools
+uv --version
+fzf --version
+python --version
+
+# Check environment variables
+echo %PATH%
+echo %D_BUSINESS_DEMO%
+```
 
 ### 🆕 **MSA Investment Advisory System Execution (WSL Environment)**
 
 #### **1. WSL Environment Setup**
 ```bash
-# Navigate to project directory in WSL
+# Move to project directory in WSL
 cd /mnt/c/Users/user/Downloads/pk_system/pkg_finance_invest_assist
 
-# Set Docker permissions
+# Docker permission setup
 sudo usermod -aG docker $USER
 newgrp docker
 ```
@@ -175,70 +220,80 @@ explorer.exe http://[WSL_IP]:8000/docs
 
 ## Testing
 
-- pytest-based tests are provided in the `tests/` folder and scripts like `pk_test_tests.py`
+- pytest-based tests are provided in `tests/` folder and scripts like `pk_test_tests.py`
 - Example:
   ```bash
   pytest tests/
   ```
 
+### 🆕 **Windows System Automation Testing**
+```cmd
+# System setup verification
+python pkg_windows/ensure_pk_system_enabled.py
+
+# Individual tool testing
+uv --version
+fzf --version
+```
+
 ### 🆕 **MSA API Testing**
 ```bash
-# Check API Gateway status
+# API Gateway status check
 curl "http://[WSL_IP]:8000/"
 
-# Test investment timing recommendation (in progress)
+# Investment timing recommendation test (in implementation)
 curl "http://[WSL_IP]:8000/api/v1/recommend/invest-timing?asset_name=Samsung"
 ```
 
 ---
 
-## Project Structure & Naming Conventions
+## Project Structure and Naming Conventions
 
 ### File Naming Rules
 - **`pk_` prefix files**: Call-only wrapper functions
-  - **In `pkg_py/`**: Main entry point wrappers (e.g., `pk_ensure_chatGPT_responded.py`)
+  - **In `pkg_py/`**: Major entry point wrappers (e.g., `pk_ensure_chatGPT_responded.py`)
   - **In `functions_split/`**: Internal utility wrappers
   - Example: `pkg_py/pk_ensure_chatGPT_responded.py` → calls `functions_split/ensure_chatGPT_responded()`
-- **`ensure_` prefix files**: Actual function implementations
+- **`ensure_` prefix files**: Actual function implementation
   - **Location**: Must be in `functions_split/` folder
   - Example: `functions_split/ensure_chatGPT_responded.py` → contains `ensure_chatGPT_responded()` function
-- **Function naming**: Functions should start with `ensure_` pattern
+- **Function naming**: Functions must start with `ensure_` pattern
 
 ### Function Naming Patterns
-This project actively uses three main function naming patterns for consistency and clarity:
+This project actively uses three major function naming patterns for consistency and clarity:
 
 #### **`ensure_` Pattern** - Guaranteed Execution
-- **Purpose**: Ensures a specific state or condition is achieved
-- **Behavior**: Performs actions to guarantee the desired outcome
+- **Purpose**: Ensure specific state or condition is achieved
+- **Action**: Perform work to guarantee desired results
 - **Examples**:
-  - `ensure_youtube_cookies_available()` - Guarantees YouTube cookies are ready
-  - `ensure_potplayer_started()` - Ensures PotPlayer is running
-  - `ensure_printed()` - Guarantees output is displayed
-  - `ensure_colorama_initialized_once()` - Ensures colorama is initialized
+  - `ensure_youtube_cookies_available()` - Ensure YouTube cookies are prepared
+  - `ensure_potplayer_started()` - Ensure PotPlayer is running
+  - `ensure_printed()` - Ensure output is displayed
+  - `ensure_colorama_initialized_once()` - Ensure colorama is initialized
 
 #### **`get_` Pattern** - Data Retrieval
-- **Purpose**: Retrieves or calculates data without side effects
-- **Behavior**: Returns values without modifying system state
+- **Purpose**: Retrieve or calculate data without side effects
+- **Action**: Return values without modifying system state
 - **Examples**:
-  - `get_youtube_video_metadata()` - Retrieves video information
-  - `get_image_names_from_tasklist()` - Gets process list
-  - `get_values_from_historical_file_routine()` - Reads historical data
-  - `get_nx()` - Gets next identifier
+  - `get_youtube_video_metadata()` - Retrieve video information
+  - `get_image_names_from_tasklist()` - Get process list
+  - `get_values_from_historical_file_routine()` - Read history data
+  - `get_nx()` - Get next identifier
 
 #### **`set_` Pattern** - State Configuration
-- **Purpose**: Configures or modifies system state
-- **Behavior**: Changes settings or updates state
+- **Purpose**: Configure or modify system state
+- **Action**: Change settings or update state
 - **Examples**:
-  - `set_window_title()` - Changes window title
-  - `set_environment_variables()` - Configures environment
-  - `set_database_values()` - Updates database entries
+  - `set_window_title()` - Change window title
+  - `set_environment_variables()` - Environment configuration
+  - `set_database_values()` - Update database entries
 
 #### **Pattern Usage Guidelines**
-- **`ensure_`**: Use when the function must succeed or handle failures gracefully
-- **`get_`**: Use for pure data retrieval functions with no side effects
+- **`ensure_`**: Use when function should succeed or handle failure gracefully
+- **`get_`**: Use for pure data retrieval functions without side effects
 - **`set_`**: Use when explicitly modifying system state or configuration
-- **Consistency**: Maintain these patterns across all new functions
-- **Clarity**: The pattern immediately indicates the function's purpose and behavior
+- **Consistency**: Maintain this pattern in all new functions
+- **Clarity**: Pattern immediately indicates function purpose and action
 
 ### Directory Structure
 ```
@@ -253,13 +308,18 @@ pkg_py/
 └── workspace/              # Workspace management
 
 🆕 pkg_finance_invest_assist/  # MSA Investment Advisory System
-├── gateway/                # API Gateway (FastAPI)
-├── recommend-engine/       # Investment recommendation engine
-├── finance-api-client/     # Financial data API
-├── news-crawler/          # News crawling service
-├── shared/                # Common modules
-├── infra/                 # Docker configuration
-└── scripts/               # Execution scripts
+├── api_gateway/                # API Gateway (FastAPI)
+├── investment_advisor/         # Investment recommendation engine
+├── market_data/               # Financial data API
+├── news_analyzer/             # News crawling service
+├── shared/                    # Common modules
+├── deployment/                # Docker configuration
+└── scripts/                   # Execution scripts
+
+🆕 pkg_windows/                # Windows System Automation
+├── ensure_pk_system_enabled.py # UV/FZF installation and configuration
+├── Registry Management Tools
+└── System Automation Scripts
 ```
 
 ### Installation Entry Point
@@ -292,20 +352,27 @@ pkg_py/functions_split/
 
 🆕 # MSA Investment Advisory System example
 pkg_finance_invest_assist/
-├── gateway/main.py               # API Gateway (FastAPI)
-├── recommend-engine/main.py      # Investment recommendation service
-├── finance-api-client/main.py    # Financial data service
-├── news-crawler/main.py         # News crawling service
-└── shared/config.py             # Common configuration
+├── api_gateway/main.py               # API Gateway (FastAPI)
+├── investment_advisor/main.py         # Investment recommendation service
+├── market_data/main.py               # Financial data service
+├── news_analyzer/main.py             # News crawling service
+└── shared/config.py                  # Common configuration
+
+🆕 # Windows System Automation example
+pkg_windows/
+├── ensure_pk_system_enabled.py       # UV/FZF installation and configuration
+├── Registry Management Functions
+└── System Automation Tools
 ```
 
 ## Development/Contribution
 
 ### Development Environment
-- **IDE**: [Cursor](https://cursor.sh/) with AI-powered assistance
+- **IDE**: AI-powered assistance available in [Cursor](https://cursor.sh/)
 - **AI Assistant**: [ChatGPT](https://chat.openai.com/) for code generation and debugging
 - **Workflow**: AI-enhanced iterative development for rapid prototyping
-- **🆕 MSA Development**: "Edit on Windows, Execute on WSL" approach
+- **🆕 MSA Development**: "Edit on Windows, Run on WSL" approach
+- **🆕 Windows Automation**: UV, FZF installation, environment variable setup
 
 ### Development Guidelines
 - Refer to scripts in `pkg_py/` for each main feature
@@ -316,6 +383,10 @@ pkg_finance_invest_assist/
   - Develop each microservice independently
   - Communication through API Gateway
   - Manage entire environment with Docker Compose
+- **🆕 Windows Automation Guidelines**:
+  - Use `with` block for registry operations
+  - Broadcast notification after environment variable changes
+  - Remove unnecessary emojis from UI messages
 
 ### AI-Enhanced Development Process
 1. **🖥️ Cursor IDE**: Use AI-powered code completion and refactoring
@@ -334,6 +405,10 @@ pkg_finance_invest_assist/
   - API documentation (Swagger UI)
   - Docker image optimization
   - Environment-specific configuration separation
+- **🆕 Windows Automation Best Practices**:
+  - Pay attention to registry handle management
+  - Recommend checking in a new terminal after environment variable changes
+  - UV installation requires internet connection
 
 ---
 
@@ -352,3 +427,7 @@ MIT (provisional, subject to change)
   - WSL IP address may change on restart
   - Docker containers run only in WSL environment
   - Access from Windows browser using WSL IP required
+- **🆕 Windows Automation Notes**:
+  - Registry operations may require administrator privileges
+  - Recommend checking in a new terminal after environment variable changes
+  - UV installation requires internet connection
