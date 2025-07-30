@@ -613,7 +613,7 @@ class GuiUtil:
 
             #  메인창 설정
             self.setWindowTitle('.')
-            icon_png = rf"{D_PROJECT}\pkg_png\icon.PNG"
+            icon_png = rf"{D_PROJECT}\pkg_image\icon.PNG"
             self.setWindowIcon(QIcon(icon_png))  # 메인창 아이콘 설정
             # self.setAttribute(Qt.WA_TranslucentBackground) # 메인창 블러 설정
             # self.setWindowFlags(Qt.WindowType.FramelessWindowHint) # 메인창 최상단 프레임레스 설정

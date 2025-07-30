@@ -54,10 +54,10 @@ def build_pk_project_via_pyinstaller():
         ensure_command_excuted_to_os(cmd="pip install pyinstaller --upgrade")
 
         if not LTA:
-            ensure_command_excuted_to_os(cmd=rf"python -m PyInstaller -i .\pkg_png\icon.PNG pk_test_test.py")
+            ensure_command_excuted_to_os(cmd=rf"python -m PyInstaller -i .\pkg_image\icon.PNG pk_test_test.py")
 
         if LTA:
-            ensure_command_excuted_to_os(cmd=rf'echo d | xcopy ".\pkg_mp3" ".\dist\pk_test_test\_internal\pkg_mp3" /e /h /k /y')
+            ensure_command_excuted_to_os(cmd=rf'echo d | xcopy ".\pkg_sound" ".\dist\pk_test_test\_internal\pkg_sound" /e /h /k /y')
 
         # f = f'{D_PROJECT}/pk_temp.py'
         # write_f(f)

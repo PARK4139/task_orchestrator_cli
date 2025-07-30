@@ -1,4 +1,4 @@
-# from pkg_py.workspace.pk_workspace import update_system_path_with_deduplication, ensure_window_os_path_deduplicated
+# from pkg_py.workspace.pk_workspace import update_system_path_with_deduplication, ensure_os_path_deduplicated
 
 
 def ensure_os_env_sys_variables_applied():
@@ -6,7 +6,7 @@ def ensure_os_env_sys_variables_applied():
     from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style
     from pkg_py.system_object.directories import (
         D_PKG_WINDOWS, D_PKG_TXT, D_PKG_WINDOWS, D_PK_MEMO, D_DOWNLOADS,
-        D_PK_SYSTEM, D_PK_WORKING, D_AUTO_UTILITY,
+        D_PK_SYSTEM, D_PK_WORKING, D_BUSINESS_DEMO,
     )
     from pkg_py.system_object.files import (
         F_UV_EXE, F_UV_ZIP, F_PK_ALIAS_MACROS_TXT,
@@ -15,7 +15,7 @@ def ensure_os_env_sys_variables_applied():
     import subprocess
     from pkg_py.functions_split.ensure_printed import ensure_printed
 
-    ensure_window_os_path_deduplicated()
+    ensure_os_path_deduplicated()
 
     PK_URL = "https://github.com/astral-sh/uv/releases/download/0.6.12/uv-x86_64-pc-windows-msvc.zip"
     env_vars = {
@@ -30,7 +30,7 @@ def ensure_os_env_sys_variables_applied():
         "F_UV_ZIP": F_UV_ZIP,
         "F_UV_EXE": F_UV_EXE,
         "F_PK_ALIAS_MACROS_TXT": F_PK_ALIAS_MACROS_TXT,
-        "D_AUTO_UTILITY": D_AUTO_UTILITY,
+        "D_BUSINESS_DEMO": D_BUSINESS_DEMO,
     }
     env_vars = {k: get_pnx_os_style(v) for k, v in env_vars.items()}
 
@@ -115,7 +115,7 @@ def ensure_os_env_sys_variables_applied():
         )
         ensure_printed(formatted, print_color="cyan")
 
-    ensure_window_os_path_deduplicated()
+    ensure_os_path_deduplicated()
 
     # [PATH] 중복 제거 후 출력
     ensure_printed("\n[PATH] Current PATH entries (session)", print_color="cyan")

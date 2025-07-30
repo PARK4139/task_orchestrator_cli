@@ -1,4 +1,4 @@
-from pkg_py.functions_split.get_list_from_tasklist import get_process_name_by_pid as get_process_name_by_pid_new
+from pkg_py.functions_split.ensure_tasklist_got import get_process_name_by_pid as get_process_name_by_pid_new
 
 
 def get_process_name_by_pid(pid):

@@ -212,7 +212,7 @@ def ensure_kiri_ran():
                 continue
             elif any(keyword in str_working for keyword in ["트리정리"]):
 
-                restart_f_list_with_new_window_as_async([rf"{D_PKG_PY}/pk_organize_tree.py"])
+                restart_f_list_with_new_window_as_async([rf"{D_PKG_PY}/pk_ensure_tree_organized.py"])
                 keyword = ''
                 continue
             elif any(keyword in str_working for keyword in ["피케이"]):

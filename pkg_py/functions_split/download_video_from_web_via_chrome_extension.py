@@ -83,7 +83,7 @@ from pkg_py.functions_split.get_d_working import get_d_working
 def download_video_from_web_via_chrome_extension():
     while 1:
         # press("ctrl", "0")
-        f_png = rf"{D_PROJECT}\pkg_png\download_video_via_chrome_extensions.png"
+        f_png = rf"{D_PROJECT}\pkg_image\download_video_via_chrome_extensions.png"
         click_center_of_img_recognized_by_mouse_left(img_pnx=f_png, loop_limit_cnt=10)
 
         ensure_slept(1000)

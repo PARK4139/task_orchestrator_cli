@@ -256,7 +256,7 @@ def main():
     # install_chrome_remote_desktop_client_to_remote_os(users=users_mac, ip=ip_private_mac, wsl_linux_version=wsl_linux_version, wsl_window_title_seg=f"{users_desktop_wsl}@{HOSTNAME}", pw=pw_mac, exit_mode=False)
     # chrome_remote_desktop(hostname = hostname) # todo GPU 없는 장비는 사용불가, pin 입력 로직 검토필요
     # teamviewer(hostname = hostname) # todo
-    # send_pkg_to_house_to_pk_system_release_server() # todo
+    # send_pkg_to_house_to_pk_system_ensure_release_server_ran() # todo
 
     # todo : chore : 빌드
     # build_console_blurred() # todo build 시 테스트
@@ -265,7 +265,7 @@ def main():
     # todo : chore : 업로드
     # token_gitlab_repo_url = get_token_from_text_file(token_file=rf'{PKG_TXT}\token_gitlab_repo_url.txt', initial_token="")
     # commit_ment = "test:initial git push test"
-    # commit_ment = "fix: run_release_server() "
+    # commit_ment = "fix: run_ensure_release_server_ran() "
     # upload_pnx_to_git(git_repository_url=token_gitlab_repo_url, commit_msg=commit_ment)
 
     # todo : chore : 퇴근
@@ -283,9 +283,9 @@ def main():
     # should_i_enter_to_power_saving_mode()
 
     # todo : chore : tool
-    # run_pk_release_server(port=9090) # todo with linux/fastapi
+    # run_pk_ensure_release_server_ran(port=9090) # todo with linux/fastapi
     # git_push_via_hard_code()  # todo git push 자동화
-    # send_pkg_to_house_to_pk_system_release_server()
+    # send_pkg_to_house_to_pk_system_ensure_release_server_ran()
     # build_console_blurred() # todo build 자동화
     # shutdown_pnx(process_name="python.exe")
     # shutdown_pnx(process_name="alsong.exe")
@@ -1546,7 +1546,7 @@ class PkProgramPerformanceOptimizingUtil:
 # command_run_v2(command=command)
 # token_gitlab_repo_url = get_token_from_text_file(token_file=rf'{StateManagePKG_TXT}\token_gitlab_repo_url.txt', initial_token="")
 # # commit_ment = "test:initial git push test"
-# commit_ment = "feat:add run_release_server() "
+# commit_ment = "feat:add run_ensure_release_server_ran() "
 # pnx = rf"{StateManagePROJECT_D}\pk_system.py"
 # upload_pnx_to_git(git_repository_url=token_gitlab_repo_url, commit_msg=commit_ment, pnx=pnx)
 

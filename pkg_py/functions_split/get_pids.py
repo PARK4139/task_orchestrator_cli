@@ -1,4 +1,4 @@
-from pkg_py.functions_split.get_list_from_tasklist import get_pids_by_process_name
+from pkg_py.functions_split.ensure_tasklist_got import get_pids_by_process_name
 from pkg_py.functions_split.ensure_printed import ensure_printed
 
 

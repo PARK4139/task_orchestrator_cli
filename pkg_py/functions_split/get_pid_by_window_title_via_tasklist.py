@@ -65,7 +65,7 @@ from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.get_pnxs import get_pnxs
 
 
-from pkg_py.functions_split.get_list_from_tasklist import get_pid_by_window_title
+from pkg_py.functions_split.ensure_tasklist_got import get_pid_by_window_title
 
 
 def get_pid_by_window_title_via_tasklist(window_title_seg):

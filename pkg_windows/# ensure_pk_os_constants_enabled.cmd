@@ -11,7 +11,7 @@ set D_PK_MEMO=%D_DOWNLOADS%\pk_memo
 set D_PKG_WINDOWS=%D_PK_SYSTEM%\pkg_windows
 set D_PKG_WINDOWS=%D_PK_SYSTEM%\pkg_windows
 set D_PKG_TXT=%D_PK_SYSTEM%\pkg_txt
-set D_AUTO_UTILITY=%D_DOWNLOADS%\auto_utility
+set D_BUSINESS_DEMO=%D_DOWNLOADS%\business_demo
 
 set F_UV_ZIP=%D_DOWNLOADS%\uv.zip
 set F_UV_EXE=%D_PKG_WINDOWS%\uv.exe
@@ -31,7 +31,7 @@ setx D_PKG_TXT "%D_PK_SYSTEM%\pkg_txt"
 setx F_UV_ZIP "%D_DOWNLOADS%\uv.zip"
 setx F_UV_EXE "%D_PKG_WINDOWS%\uv.exe"
 setx F_PK_ALIAS_MACROS_TXT "%D_PKG_TXT%\pk_alias_macros.txt"
-setx D_AUTO_UTILITY "%D_DOWNLOADS%\auto_utility"
+setx D_BUSINESS_DEMO "%D_DOWNLOADS%\business_demo"
 
 @REM ______________________________________ set path
 set PATH=%PATH%;C:\Users\user\Downloads\pk_system\pkg_windows

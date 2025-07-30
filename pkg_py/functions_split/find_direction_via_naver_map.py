@@ -53,7 +53,7 @@ def find_direction_via_naver_map(destination: str):
         # press("alt", "left")
 
         # 출발지 입력 클릭
-        f_png = rf"{D_PROJECT}\pkg_png\find_direction_via_naver_direction.png"
+        f_png = rf"{D_PROJECT}\pkg_image\find_direction_via_naver_direction.png"
         click_center_of_img_recognized_by_mouse_left(img_pnx=f_png, loop_limit_cnt=100, is_zoom_toogle_mode=True)
         ensure_slept(30)
 

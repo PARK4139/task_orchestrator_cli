@@ -13,4 +13,4 @@ def ensure_files_organized_by_ngram(token_splitter_pattern, d_working):
     min_support = int(get_value_completed(key_hint='min_support=', values=["2", "3", "4", "5"]))  # 3 추천
     max_n = int(
         get_value_completed(key_hint='max_n=', values=["2", "3", "4", "5", "6", "7", "8", "9", "10"]))  # 3 or 10  추천
-    pk_organize_f_list_by_ngram(f_to_organize_list, d_working, token_splitter_pattern, min_support, max_n)
+    pk_ensure_files_organized_by_ngram_option(f_to_organize_list, d_working, token_splitter_pattern, min_support, max_n)

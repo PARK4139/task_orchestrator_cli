@@ -35,15 +35,15 @@ def ensure_vpc_side_mode(vpc_data, config_remote_os):
 
         d_temp = make_and_get_d_temp()
 
-        config_aidev1_release_server = {
+        config_aidev1_ensure_release_server_ran = {
             'user_n': get_token_from_f_token(f_token=rf'{D_PKG_TXT}\user_gitlab_token.txt', initial_str=""),
             'ip': get_token_from_f_token(f_token=rf'{D_PKG_TXT}\ip_gitlab_token.txt', initial_str=""),
             'pw': get_token_from_f_token(f_token=rf'{D_PKG_TXT}\pw_gitlab_token.txt', initial_str=""),
             'port': get_token_from_f_token(f_token=rf'{D_PKG_TXT}\port_gitlab_token.txt', initial_str=""),
         }
-        download_pnx_from_aidev1_release_server(
+        download_pnx_from_aidev1_ensure_release_server_ran(
             remote_f_src=f"/home/user/release/remote_release_{vpc_aifw_version}.zip", local_d_dst=d_temp,
-            **config_aidev1_release_server)
+            **config_aidev1_ensure_release_server_ran)
 
         upload_pnx_to_remote_os(local_pnx_src=f'{d_temp}/remote_release_{vpc_aifw_version}.zip',
                                 remote_pnx_dst=f'/home/nvidia/works/remote_release_{vpc_aifw_version}.zip',

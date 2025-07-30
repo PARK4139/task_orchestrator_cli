@@ -19,7 +19,7 @@ from pkg_py.functions_split.is_hour import is_hour
 from pkg_py.functions_split.is_minute import is_minute
 from pkg_py.functions_split.is_month import is_month
 from pkg_py.functions_split.is_year import is_year
-from pkg_py.functions_split.run_project_docker_base import run_project_docker_base
+from pkg_py.functions_split.ensure_pk_project_docker_ran import ensure_pk_project_docker_ran
 from pkg_py.system_object.directories import D_PKG_CSV, D_PKG_DB
 from pkg_py.system_object.directories_reuseable import D_PROJECT
 from pkg_py.system_object.gui_util import should_i_do
@@ -334,7 +334,7 @@ def test_string_handling():
 
     # mkr_텍스트 변환
     # text=r"""
-    # python -m PyInstaller -i ".\pkg_png\icon.PNG" console_blurred.py
+    # python -m PyInstaller -i ".\pkg_image\icon.PNG" console_blurred.py
     # """
     # print_text_converted(text=text)
 
@@ -596,8 +596,8 @@ def _TEST_CASE_프로젝트_FASTAPI():
         f'CMD ["/container_workspace/.venv/bin/python", "-m", "uvicorn", "project_fastapi.test_project_fastapi:app", "--proxy-headers", "--host", "0.0.0.0", "--port", "80"]',
         f'',
     ]
-    # run_project_docker_base(f=rf'{D_PROJECT}/project_fastapi.Dockerfile',f_dockerfile_script_list=f_dockerfile_script_list)
-    run_project_docker_base(f=rf'{D_PROJECT}/test.Dockerfile', dockerfile_script_list=f_dockerfile_script_list)
+    # ensure_pk_project_docker_ran(f=rf'{D_PROJECT}/project_fastapi.Dockerfile',f_dockerfile_script_list=f_dockerfile_script_list)
+    ensure_pk_project_docker_ran(f=rf'{D_PROJECT}/test.Dockerfile', dockerfile_script_list=f_dockerfile_script_list)
 
 
 # todo : 테스트결과가 pass fail 형태로 종합되어 출력이 되도록, 실제 시스템, 서비스, 파일에는 반영이 안되어야 한다. 더미파일을 생성해서 확인하는 방향으로 설계.

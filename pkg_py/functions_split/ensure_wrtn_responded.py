@@ -52,11 +52,11 @@ def ask_to_wrtn(question: str):
         ensure_pressed('ctrl', '0')
 
         # 광고닫기 버튼 클릭
-        f_png = rf"{D_PROJECT}\pkg_png\ask_to_wrtn_ad_close.png"
+        f_png = rf"{D_PROJECT}\pkg_image\ask_to_wrtn_ad_close.png"
         click_center_of_img_recognized_by_mouse_left(img_pnx=f_png, loop_limit_cnt=10, is_zoom_toogle_mode=True)
 
         # 프롬프트 콘솔 클릭(광고 없어도 진행)
-        f_png = rf"{D_PROJECT}\pkg_png\ask_to_wrtn.png"
+        f_png = rf"{D_PROJECT}\pkg_image\ask_to_wrtn.png"
         if click_center_of_img_recognized_by_mouse_left(img_pnx=f_png, loop_limit_cnt=50, is_zoom_toogle_mode=True):
             # 질문 작성 및 확인
             ensure_writen_fast(question)

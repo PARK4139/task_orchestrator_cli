@@ -7,7 +7,7 @@ def download_video_from_web2():
     if not is_internet_connected():
         raise
     while 1:
-        f_png = rf"{D_PROJECT}\pkg_png\download_video_via_chrome_extensions1.png"
+        f_png = rf"{D_PROJECT}\pkg_image\download_video_via_chrome_extensions1.png"
         is_image_finded = click_center_of_img_recognized_by_mouse_left(img_pnx=f_png, loop_limit_cnt=100)
         if is_image_finded:
             ensure_slept(30)
@@ -20,7 +20,7 @@ def download_video_from_web2():
             ensure_pressed("enter")
             ensure_pressed("esc")
             ensure_pressed("enter")
-            f_png = rf"{D_PROJECT}\pkg_png\download_video_via_chrome_extensions2.png"
+            f_png = rf"{D_PROJECT}\pkg_image\download_video_via_chrome_extensions2.png"
             is_image_finded = click_center_of_img_recognized_by_mouse_left(img_pnx=f_png, loop_limit_cnt=100)
             if is_image_finded:
                 ensure_pressed("shift", "w")

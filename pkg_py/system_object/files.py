@@ -8,6 +8,7 @@ from pkg_py.system_object.directories import D_PKG_TXT, D_PKG_JSON, D_DOWNLOADS,
     D_PKG_DB, D_DESKTOP, D_PKG_PY, D_PK_RECYCLE_BIN, D_PKG_WINDOWS, D_PK_FUNCTIONS_SPLIT, D_PKG_LOG
 from pkg_py.system_object.directories_reuseable import D_PROJECT, D_HOME
 
+
 F_VPC_MAMNAGEMENT_MAP_TOML = f'{D_PKG_TOML}/vpc_mamnagement_map.toml'
 F_ALIAS_CMD = rf'{D_PKG_WINDOWS}/ensure_alias_enabled.cmd'
 F_CONFIG_TOML = rf'{D_PROJECT}/pkg_toml/pk_config.toml'
@@ -16,7 +17,7 @@ F_LOCAL_PKG_CACHE = rf'{D_PROJECT}/pkg_alba/__pycache__/__init__.cpython-312.pyc
 F_MEMO_TRASH_BIN_TOML = rf'{D_PKG_TOML}/memo_trash_bin.toml'
 F_MEMO_WORK_PK = rf"{D_PKG_PK}/pk_memo_working.pk"
 F_MEMO_HOW_PK = rf"{D_PKG_PK}/pk_memo_how.pk"
-F_ICON_PNG = rf"{D_PROJECT}/pkg_png/icon.PNG"
+F_ICON_PNG = rf"{D_PROJECT}/pkg_image/icon.PNG"
 F_LOSSLESSCUT_EXE = rf"{D_DOWNLOADS}/pk_archived/LosslessCut-win-x64/LosslessCut.exe"
 F_FFMPEG_EXE = rf"{D_DOWNLOADS}/pk_archived/LosslessCut-win-x64/resources/ffmpeg.exe"
 # F_FFMPEG_EXE = rf"{D_PKG_WINDOWS}/ffmpeg.exe"
@@ -107,3 +108,5 @@ if is_office_pc():
     F_PYCHARM64_EDITION_EXE = rf"C:/Program Files/JetBrains/PyCharm Community Edition 2024.2.4/bin/pycharm64.exe"
     # F_PYCHARM64_EDITION_EXE = r"C:/Program Files/JetBrains/PyCharm Community Edition 2024.3.1/bin/pycharm64.exe"
 F_CURSOR_EXE = rf"{D_HOME}\AppData\Local\Programs\cursor\Cursor.exe"
+
+F_ENSURE_PK_SYSTEM_ENABLED_CMD = f'{D_PKG_WINDOWS}/ensure_pk_system_enabled.cmd'

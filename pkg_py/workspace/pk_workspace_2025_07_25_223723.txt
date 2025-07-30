@@ -1842,10 +1842,10 @@ step_counter = 0
 
 
 
-def copy_and_push_auto_utility():
+def copy_and_push_business_demo():
     downloads_path = os.path.join(os.environ["USERPROFILE"], "Downloads")
     SOURCE_DIR = rf"{downloads_path}\pk_system"
-    DEST_DIR = rf"{downloads_path}\auto_utility"
+    DEST_DIR = rf"{downloads_path}\business_demo"
     EXCLUDE_NAMES = {
         # 제외할 파일/디렉토리 이름
         "__pycache__",
@@ -1858,7 +1858,7 @@ def copy_and_push_auto_utility():
     }
     copy_except_blacklist(SOURCE_DIR, DEST_DIR, EXCLUDE_NAMES)
 
-    src = rf"{DEST_DIR}\.gitignore_for_public"
+    src = rf"{DEST_DIR}\.gitignore_for_making_business_demo_public"
     dst = rf"{DEST_DIR}\.gitignore"
     try:
         if os.path.exists(dst):

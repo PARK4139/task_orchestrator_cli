@@ -53,7 +53,7 @@ def ensure_files_useless_gathered():
         if editable:
             ensure_pnx_opened_by_ext(pnx=useless_file_names_txt)
 
-        dst = rf"G:\Downloads\pk_recycle_bin\pk_useless"
+        dst = rf"G:\Downloads\휴지통\pk_useless"
         ensure_pnx_made(pnx=dst, mode="d")
         ensure_printed(f'''dst={dst}  {'%%%FOO%%%' if LTA else ''}''')
         if not is_empty_d(d_src=dst):

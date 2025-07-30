@@ -185,7 +185,7 @@
 # from pkg_py.functions_split.ensure_list_written_to_f import ensure_list_written_to_f
 # from pkg_py.functions_split.ensure_str_writen_to_f import ensure_str_writen_to_f
 # from pkg_py.pk_colorful_cli_util import print, ensure_printed, ensure_printed, ensure_printed, ensure_printed, print_magenta, print_light_white, ColoramaUtil, print_ment_via_colorama, print_success, prijnt_as_log, print_yellow
-# from pkg_py.pk_core_constants import USERPROFILE, HOSTNAME, UNDERLINE, BLANK, BIGGEST_PNXS, SMALLEST_PNXS, PLAYING_SOUNDS, COUNTS_FOR_GUIDE_TO_SLEEP,VIDEO_IDS_ALLOWED, AUDIO_IDS_ALLOWED, STORAGE_VIDEOES_MERGED, PROJECT_PARENTS_D, DESKTOP, DOWNLOADS, PKG_PNG, PKG_DPL, PKG_TXT
+# from pkg_py.pk_core_constants import USERPROFILE, HOSTNAME, UNDERLINE, BLANK, BIGGEST_PNXS, SMALLEST_PNXS, PLAYING_SOUNDS, COUNTS_FOR_GUIDE_TO_SLEEP,VIDEO_IDS_ALLOWED, AUDIO_IDS_ALLOWED, STORAGE_VIDEOES_MERGED, PROJECT_PARENTS_D, DESKTOP, DOWNLOADS, PKG_IMAGE, PKG_DPL, PKG_TXT
 # from pkg_py.gui_util import GuiUtil, get_display_info, print_as_gui, should_i_do
 # 
 # from pkg_py.system_object.get_list_calculated import get_list_calculated

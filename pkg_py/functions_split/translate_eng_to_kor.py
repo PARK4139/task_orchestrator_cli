@@ -85,7 +85,7 @@ def translate_eng_to_kor(question: str):
             ensure_window_to_front(pid=target_pid)
 
             # 텍스트를 입력하세 클릭
-            f_png = rf"{D_PROJECT}\pkg_png\eng to kor.png"
+            f_png = rf"{D_PROJECT}\pkg_image\eng to kor.png"
             click_center_of_img_recognized_by_mouse_left(img_pnx=f_png, is_zoom_toogle_mode=True, loop_limit_cnt=100)
 
             # 번역할 내용 작성
@@ -98,7 +98,7 @@ def translate_eng_to_kor(question: str):
             ensure_slept(30)
 
             # text to voice icon
-            f_png = rf"{D_PROJECT}\pkg_png\text to voice icon.png"
+            f_png = rf"{D_PROJECT}\pkg_image\text to voice icon.png"
             click_center_of_img_recognized_by_mouse_left(img_pnx=f_png, is_zoom_toogle_mode=True, loop_limit_cnt=100)
 
             # 종료

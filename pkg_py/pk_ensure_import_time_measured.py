@@ -21,7 +21,7 @@ def measure_time_to_import_module_via_time():
         "pkg_py.constants.[]", "pkg_py.constants.VIDEO_IDS_ALLOWED",
         "pkg_py.constants.AUDIO_IDS_ALLOWED", "pkg_py.constants.STORAGE_VIDEOES_MERGED",
         "pkg_py.constants.PROJECT_PARENTS_DIRECTORY", "pkg_py.constants.DESKTOP",
-        "pkg_py.constants.DOWNLOADS", "pkg_py.constants.PKG_PNG", "pkg_py.constants.PKG_DPL",
+        "pkg_py.constants.DOWNLOADS", "pkg_py.constants.PKG_IMAGE", "pkg_py.constants.PKG_DPL",
         "pkg_py.constants.PKG_TXT", "pkg_py.constants.CLASSIFYING", "pkg_py.constants.RECYCLE_BIN",
         "pkg_py.constants.LOCAL_PKG_CACHE_FILE", "pkg_py.constants.SUCCESS_LOG", "pkg_py.constants.SCHECLUER_YAML", "pkg_py.constants.YT_DLP_CMD",
         "pkg_py.constants.JQ_WIN64_EXE", "pkg_py.constants.FFMPEG_EXE", "pkg_py.constants.DB_YAML",

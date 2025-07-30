@@ -162,7 +162,7 @@ def ensure_filecontents_renamed_from_old_str_to_new_str():
             if decision == rf"{PkMessages2025.ORIGIN} {PkMessages2025.DELETE}":
                 for path in python_files:
                     try:
-                        os.remove(path)  # TODO   move to pk_recycle_bin    as  origiin   or tar.bz2
+                        os.remove(path)  # TODO   move to 휴지통    as  origiin   or tar.bz2
                         logging.info(f"[{PkMessages2025.REMOVED}] {os.path.basename(path)}")
                     except Exception as e:
                         logging.info(f"[{PkMessages2025.ERROR}] Failed to remove {path}: {e}")
