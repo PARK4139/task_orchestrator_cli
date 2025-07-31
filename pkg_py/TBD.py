@@ -27,7 +27,7 @@ from pkg_py.system_object.map_massages import PkMessages2025
 
 
 # todo : jarvis
-# ensure_chatGPT_responded(question="가 뭐야?") # 질문하기
+# ensure_chat_gpt_responded(question="가 뭐야?") # 질문하기
 # from voice to voice
 
 # todo : jarvis CI/CD pipe line control flow in Jetson

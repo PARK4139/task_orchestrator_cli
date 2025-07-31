@@ -5,6 +5,7 @@ from pkg_py.functions_split.ensure_do_exception_routine import ensure_do_excepti
 from pkg_py.functions_split.ensure_do_finally_routine import ensure_do_finally_routine
 from pkg_py.functions_split.ensure_job_offer_found import ensure_job_offer_found
 from pkg_py.functions_split.ensure_process_killed import ensure_process_killed
+from pkg_py.functions_split.ensure_pk_program_suicided import ensure_pk_program_suicided
 from pkg_py.functions_split.ensure_window_title_replaced import ensure_window_title_replaced
 from pkg_py.functions_split.get_nx import get_nx
 from pkg_py.system_object.directories_reuseable import D_PROJECT

@@ -1,5 +1,6 @@
 from pkg_py.functions_split.ensure_directory_made_at_pwd import ensure_directory_made_at_pwd
 from pkg_py.functions_split.ensure_process_killed import ensure_process_killed
+from pkg_py.functions_split.ensure_pk_program_suicided import ensure_pk_program_suicided
 import traceback
 
 from pkg_py.functions_split.ensure_window_title_replaced import ensure_window_title_replaced

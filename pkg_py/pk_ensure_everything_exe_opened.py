@@ -1,8 +1,7 @@
-from pkg_py.functions_split.ensure_everything_exe_opened import ensure_everything_exe_opened
-from pkg_py.functions_split.ensure_process_killed import ensure_process_killed
-
 if __name__ == "__main__":
     import traceback
+    from pkg_py.functions_split.ensure_everything_exe_opened import ensure_everything_exe_opened
+    from pkg_py.functions_split.ensure_pk_program_suicided import ensure_pk_program_suicided
     from pkg_py.functions_split.ensure_window_title_replaced import ensure_window_title_replaced
     from pkg_py.functions_split.get_nx import get_nx
     from pkg_py.functions_split.ensure_do_exception_routine import ensure_do_exception_routine
@@ -17,7 +16,7 @@ if __name__ == "__main__":
 
         ensure_everything_exe_opened()
 
-        ensure_pk_program_suicided(self_f=__file__) # pk_option
+        ensure_pk_program_suicided(self_f=__file__)  # pk_option
     except Exception as exception:
         ensure_do_exception_routine(traceback=traceback, exception=exception)
     finally:

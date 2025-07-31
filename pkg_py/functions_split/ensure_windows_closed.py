@@ -12,6 +12,7 @@ def ensure_windows_closed(window_title):
     import time
     from pkg_py.functions_split.ensure_printed import ensure_printed
     from pkg_py.functions_split.ensure_process_killed import ensure_process_killed
+    from pkg_py.functions_split.ensure_pk_program_suicided import ensure_pk_program_suicided
     from pkg_py.functions_split.is_window_opened import is_window_opened
     from pkg_py.system_object.gui_util import get_windows_opened
 

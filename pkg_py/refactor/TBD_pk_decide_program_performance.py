@@ -214,7 +214,7 @@ def main():
     # reconnect_to_qcy_h3_anc_headset_via_bluetooth()
     # reconnect_to_wifi()
     # sleep(min=50, show_mode=True) # console 에  #   카운트다운이 되면서 출력이 되도록 하자.
-    # pk_ensure_chatGPT_responded(question="가 뭐야?") # 질문하기
+    # pk_ensure_chat_gpt_responded(question="가 뭐야?") # 질문하기
     # test_string_handling()
     # test_wsl_util() #타겟 제어
     # test_explorer_util() # 타겟 탐색

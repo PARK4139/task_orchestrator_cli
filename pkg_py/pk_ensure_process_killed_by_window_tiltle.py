@@ -6,6 +6,7 @@ if __name__ == "__main__":
     from pkg_py.functions_split.ensure_do_finally_routine import ensure_do_finally_routine
     from pkg_py.functions_split.ensure_pk_program_suicided import ensure_pk_program_suicided
     from pkg_py.functions_split.ensure_process_killed import ensure_process_killed
+    from pkg_py.functions_split.ensure_pk_program_suicided import ensure_pk_program_suicided
     from pkg_py.functions_split.get_set_from_list import get_set_from_list
     from pkg_py.functions_split.get_value_completed import get_value_completed
     from pkg_py.system_object.directories_reuseable import D_PROJECT

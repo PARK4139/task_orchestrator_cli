@@ -26,6 +26,8 @@ Python 가상환경관리는 uv + pyproject.toml + uv.lock 으로 관리리하�
 
 chatgpt_4o_70. : project tree 
 프로젝트 트리는 네가 작성한 트리를 모두 pkg_finance_invest_assist 으로 이동해서 관리하자
+function 의 위치는 function_split 에서 작성
+pkg_py 에서 function 명 작성 시, pk_ prefix 를 붙여서 작성
 
 
 chatgpt_4o_71. : Database
@@ -39,9 +41,11 @@ CI/CD 는 추천해줄래?
 
 
 chatgpt_4o_72. : functions
-함수명 작성규칙은 ensure_ 로 시작하고 완료형 동사를 suffix로서 붙이는 형식으로. ex>  ensure_string_printed(), ensure_investing_timing_guided
-function 작성 시 doc string 에는 특징을 적는 것이 중요. 
-
+function 명 작성 시, ensure_ 로 prefix로서 시작 ex>  ensure_string_printed(), ensure_investing_timing_guided
+function 명 작성 시, 완료형 동사를 suffix로서 종료 ex>  ensure_string_printed(), ensure_investing_timing_guided
+function 명 작성 시, doc string 에는 특징을 적는 것이 중요. 
+function 명 작성 시, snake case 로 작성
+function_split 에서 function 명 작성 시, pk_ prefix 를 붙이지 않고 작성성
 
 chatgpt_4o_78. : docs
 README 에 표현된 기능들 중에 구현중인 것은 구현중임을 표기하고 아직 안된것은 안되었다고 표기해줘. docs 업데이트시에는 항상 기억해

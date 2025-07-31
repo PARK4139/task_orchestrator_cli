@@ -100,7 +100,7 @@ F_PK_ALIAS_MACROS_TXT = rf"{D_PKG_TXT}\pk_alias_macros.txt"
 F_TEST_PK_PYTHON_PROGRAM_STRUCTURE_PY = rf"{D_PK_FUNCTIONS_SPLIT}/test_pk_system_process_structure.py"
 F_EVERYTHING_EXE =rf"C:\Program Files\Everything\Everything.exe"
 F_SNIPPING_TOOL_EXE =rf"C:\Program Files\WindowsApps\Microsoft.ScreenSketch_11.2506.25.0_x64__8wekyb3d8bbwe\SnippingTool\SnippingTool.exe"
-F_BIT_TORRENT_EXE =rf"C:\Users\wjdgn\AppData\Roaming\bittorrent\BitTorrent.exe"
+F_BIT_TORRENT_EXE =rf"C:\Users\wjdgn\AppData\Roaming\bittorrent\bit_torrent.exe"
 F_PYCHARM64_EDITION_EXE = None
 if is_pk_pc():
     F_PYCHARM64_EDITION_EXE = rf"C:/Program Files/JetBrains/PyCharm Community Edition 2025.1.3.1/bin/pycharm64.exe"

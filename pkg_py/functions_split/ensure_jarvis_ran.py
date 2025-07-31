@@ -155,7 +155,8 @@ def ensure_jarvis_ran():
 
     # Jarvis 시작
     ensure_console_cleared()
-    ensure_spoken("안녕하세요! Jarvis가 시작되었습니다.")
+    # ensure_spoken("안녕하세요! Jarvis가 시작되었습니다.")
+    ensure_spoken("hello! Jarvis is started.")
     ensure_printed("🤖 Jarvis 대화형 루프 시작!", print_color='green')
     ensure_printed("💡 'help'를 입력하여 사용 가능한 명령어를 확인하세요.", print_color='cyan')
     ensure_printed("=" * 50, print_color='white')

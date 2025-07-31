@@ -1,4 +1,5 @@
 from pkg_py.functions_split.ensure_process_killed import ensure_process_killed
+from pkg_py.functions_split.ensure_pk_program_suicided import ensure_pk_program_suicided
 
 if __name__ == "__main__":
     import traceback

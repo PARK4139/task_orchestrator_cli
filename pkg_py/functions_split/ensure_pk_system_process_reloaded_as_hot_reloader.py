@@ -1,6 +1,7 @@
 from pkg_py.functions_split.ensure_console_cleared import ensure_console_cleared
 from pkg_py.functions_split.ensure_files_stable_after_change import ensure_files_stable_after_change
 from pkg_py.functions_split.ensure_process_killed import ensure_process_killed
+from pkg_py.functions_split.ensure_pk_program_suicided import ensure_pk_program_suicided
 from pkg_py.functions_split.ensure_py_system_process_ran_by_pnx import ensure_py_system_process_ran_by_pnx
 from pkg_py.functions_split.ensure_slept import ensure_slept
 from pkg_py.functions_split.get_file_id import get_file_id

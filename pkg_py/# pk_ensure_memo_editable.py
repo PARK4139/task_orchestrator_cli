@@ -1,6 +1,7 @@
 if __name__ == "__main__":
     try:
         from pkg_py.functions_split.ensure_process_killed import ensure_process_killed
+from pkg_py.functions_split.ensure_pk_program_suicided import ensure_pk_program_suicided
         from pkg_py.functions_split.ensure_window_title_replaced import ensure_window_title_replaced
         from pkg_py.functions_split.get_nx import get_nx
 

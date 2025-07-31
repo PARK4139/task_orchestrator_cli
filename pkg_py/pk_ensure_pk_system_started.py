@@ -1,5 +1,5 @@
 if __name__ == '__main__':
-    from pkg_py.functions_split.ensure_process_killed import ensure_process_killed
+    from pkg_py.functions_split.ensure_pk_program_suicided import ensure_pk_program_suicided
     from pkg_py.functions_split.ensure_window_title_replaced import ensure_window_title_replaced
     from pkg_py.functions_split.initialize_and_customize_logging_config import initialize_and_customize_logging_config
     import traceback
@@ -23,6 +23,6 @@ if __name__ == '__main__':
         else:
             ensure_pk_system_started()
 
-        ensure_pk_program_suicided(self_f=__file__) # pk_option
+        # ensure_pk_program_suicided(self_f=__file__) # pk_option
     except:
         traceback.print_exc()

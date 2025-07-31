@@ -21,6 +21,9 @@ RUN uv sync --no-dev
 COPY investment_advisor/ ./investment_advisor/
 COPY shared/ ./shared/
 
+# Set Python path to include current directory
+ENV PYTHONPATH=/app
+
 # Expose port
 EXPOSE 8001
 

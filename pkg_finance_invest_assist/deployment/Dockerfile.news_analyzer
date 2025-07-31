@@ -21,6 +21,9 @@ RUN uv sync --no-dev && uv pip install beautifulsoup4==4.12.2 lxml==4.9.3 seleni
 COPY news_analyzer/ ./news_analyzer/
 COPY shared/ ./shared/
 
+# Set Python path to include current directory
+ENV PYTHONPATH=/app
+
 # Expose port
 EXPOSE 8003
 

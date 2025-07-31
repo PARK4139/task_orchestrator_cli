@@ -21,6 +21,9 @@ RUN uv sync --no-dev
 COPY market_data/ ./market_data/
 COPY shared/ ./shared/
 
+# Set Python path to include current directory
+ENV PYTHONPATH=/app
+
 # Expose port
 EXPOSE 8002
 

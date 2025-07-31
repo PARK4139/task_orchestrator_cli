@@ -1,4 +1,5 @@
 from pkg_py.functions_split.ensure_process_killed import ensure_process_killed
+from pkg_py.functions_split.ensure_pk_program_suicided import ensure_pk_program_suicided
 from pkg_py.functions_split.get_d_working_in_python import get_pwd_in_python
 from pkg_py.functions_split.ensure_colorama_initialized_once import ensure_colorama_initialized_once
 from pkg_py.functions_split.ensure_copied import ensure_copied

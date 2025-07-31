@@ -7,7 +7,7 @@ import winreg
 import json
 from typing import Callable, List, Tuple
 
-# ──────────────────────────────────────────────
+
 # Constants
 UV_URL = "https://github.com/astral-sh/uv/releases/latest/download/uv-x86_64-pc-windows-msvc.zip"
 FZF_API_URL = "https://api.github.com/repos/junegunn/fzf/releases/latest"
@@ -24,7 +24,7 @@ F_FZF_ZIP = os.path.join(USER_PROFILE, "Downloads", "fzf.zip")
 F_ALIAS_CMD = os.path.join(D_PK_SYSTEM, "pkg_windows", "ensure_alias_enabled.cmd")
 F_SHORTCUT_TARGET = os.path.join(D_PK_SYSTEM, "pkg_windows", "ensure_pk_system_ran.cmd")
 
-# ──────────────────────────────────────────────
+
 temp_installed_modules = {}
 
 def try_import_or_install(pkg_name: str, import_name: str = None) -> None:
@@ -40,12 +40,12 @@ def try_import_or_install(pkg_name: str, import_name: str = None) -> None:
             print(f"Failed to install '{pkg_name}': {e}")
             raise
 
-# ──────────────────────────────────────────────
+
 def print_step(step_index: int, total_steps: int, description: str, color: str = "cyan") -> None:
     color_code = {"cyan": 36, "yellow": 33, "green": 32, "red": 31}.get(color, 36)
     print(f"\033[{color_code}m[{step_index}/{total_steps}] {description}\033[0m")
 
-# ──────────────────────────────────────────────
+
 def get_system_path() -> str:
     """시스템 환경변수 PATH 가져오기"""
     try:
@@ -178,8 +178,11 @@ def get_latest_fzf_url() -> str:
         version = data["tag_name"]
         print(f"FZF 최신 버전: {version}")
         
+        # Remove 'v' prefix from version for filename
+        version_clean = version.lstrip('v')
+        
         # Windows AMD64 다운로드 URL 생성
-        download_url = f"https://github.com/junegunn/fzf/releases/download/{version}/fzf-{version}-windows_amd64.zip"
+        download_url = f"https://github.com/junegunn/fzf/releases/download/{version}/fzf-{version_clean}-windows_amd64.zip"
         print(f"FZF 다운로드 URL: {download_url}")
         
         return download_url
@@ -459,31 +462,50 @@ def delete_autorun_key() -> None:
         print(f"Failed to delete AutoRun: {e}")
 
 def create_shortcuts() -> None:
+    """바로가기 생성 함수 - 더 안정적인 버전"""
     try:
         import win32com.client
         
-        # 바탕화면 바로가기 생성
-        desktop = os.path.join(os.path.expanduser("~"), "Desktop")
-        shortcut_path = os.path.join(desktop, "pk_system_launcher.lnk")
+        # F_ALIAS_CMD 파일이 존재하는지 확인
+        if not os.path.exists(F_ALIAS_CMD):
+            print(f"경고: {F_ALIAS_CMD} 파일이 존재하지 않습니다.")
+            print("바로가기 생성을 건너뜁니다.")
+            return
         
         shell = win32com.client.Dispatch("WScript.Shell")
-        shortcut = shell.CreateShortCut(shortcut_path)
-        shortcut.Targetpath = F_ALIAS_CMD
-        shortcut.WorkingDirectory = D_PK_SYSTEM
-        shortcut.save()
-        print(f"바로가기 생성됨: {shortcut_path}")
+        
+        # 바탕화면 바로가기 생성
+        try:
+            desktop = os.path.join(os.path.expanduser("~"), "Desktop")
+            if os.path.exists(desktop):
+                shortcut_path = os.path.join(desktop, "pk_system_launcher.lnk")
+                shortcut = shell.CreateShortCut(shortcut_path)
+                shortcut.Targetpath = F_ALIAS_CMD
+                shortcut.WorkingDirectory = D_PK_SYSTEM
+                shortcut.save()
+                print(f"바탕화면 바로가기 생성됨: {shortcut_path}")
+            else:
+                print("바탕화면 경로를 찾을 수 없습니다.")
+        except Exception as e:
+            print(f"바탕화면 바로가기 생성 실패: {e}")
         
         # 작업 디렉토리 바로가기 생성
-        shortcut_path = os.path.join(D_PKG_WINDOWS, "pk_system_launcher.lnk")
-        shortcut = shell.CreateShortCut(shortcut_path)
-        shortcut.Targetpath = F_ALIAS_CMD
-        shortcut.WorkingDirectory = D_PK_SYSTEM
-        shortcut.save()
-        print(f"바로가기 생성됨: {shortcut_path}")
+        try:
+            shortcut_path = os.path.join(D_PKG_WINDOWS, "pk_system_launcher.lnk")
+            shortcut = shell.CreateShortCut(shortcut_path)
+            shortcut.Targetpath = F_ALIAS_CMD
+            shortcut.WorkingDirectory = D_PK_SYSTEM
+            shortcut.save()
+            print(f"작업 디렉토리 바로가기 생성됨: {shortcut_path}")
+        except Exception as e:
+            print(f"작업 디렉토리 바로가기 생성 실패: {e}")
         
+    except ImportError as e:
+        print(f"win32com.client 모듈을 가져올 수 없습니다: {e}")
+        print("바로가기 생성은 선택사항이므로 계속 진행합니다.")
     except Exception as e:
-        print(f"바로가기 생성 실패 ({shortcut_path}): {e}")
-        raise
+        print(f"바로가기 생성 중 예상치 못한 오류: {e}")
+        print("바로가기 생성은 선택사항이므로 계속 진행합니다.")
 
 def main() -> None:
     """메인 실행 함수"""

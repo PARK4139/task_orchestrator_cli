@@ -21,8 +21,8 @@ if __name__ == "__main__":
 
     target_extensions = [".py", ".cmd", ".bat", ".ps1", ".sh", ".bak", ".txt"]  # pk_option
 
-    old_string = rf'pk_ensure_pk_system_process_reloaded_as_hot_reloader'  # pk_option
-    new_string = rf'pk_ensure_pk_system_process_reloaded_as_hot_reloader'  # pk_option
+    old_string = rf'bit_torrent'  # pk_option
+    new_string = rf'bit_torrent'  # pk_option
 
     # mode = 3 # pk_option
     # s = rf'pk_ensure_venv_path_config_updated'

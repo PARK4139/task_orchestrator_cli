@@ -2,6 +2,7 @@ from pkg_py.functions_split.ensure_files_useless_gathered import ensure_files_us
 
 
 from pkg_py.functions_split.ensure_process_killed import ensure_process_killed
+from pkg_py.functions_split.ensure_pk_program_suicided import ensure_pk_program_suicided
 import traceback
 
 from pkg_py.functions_split.ensure_window_title_replaced import ensure_window_title_replaced

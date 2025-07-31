@@ -8,4 +8,4 @@ def should_i_search_to_chatGPT():
     )
     txt_written = txt_written.strip()
     if txt_written != "":
-        ensure_chatGPT_responded(txt_written)
+        ensure_chat_gpt_responded(txt_written)
