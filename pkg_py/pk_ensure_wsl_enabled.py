@@ -17,8 +17,8 @@ if __name__ == "__main__":
         ensure_window_title_replaced(get_nx(__file__))
 
 
-        state_wsl_installed, wsl_cmd_map_dict = ensure_wsl_installed()
-        if not state_wsl_installed:
+        state_wsl_enabled, wsl_cmd_map_dict = ensure_wsl_enabled()
+        if not state_wsl_enabled:
             debug_state_for_py_data_type(pk_stamp='%%%FOO%%%-2', data_working=wsl_cmd_map_dict)
             ensure_printed("wsl installed", print_color='red')
             sys.exit(0)

@@ -48,7 +48,7 @@ def collect_magnets_from_torrentqq(search_keyword=None, driver=None, via_f_txt=T
 
         # [OPTION]
         # window_title_seg = get_nx(collect_magnets_from_nyaa_si_txt)
-        # if not is_window_open(window_title_seg=window_title_seg):
+        # if not is_window_opened(window_title_seg=window_title_seg):
         # ensure_pnx_opened_by_ext(pnx=f_func_n_txt)
         # move_window_to_front(window_title_seg=window_title_seg)
         # ensure_command_excuted_to_os(cmd=rf'explorer "{f_func_n_txt}" ', debug_mode=True, mode="a")

@@ -25,7 +25,7 @@ def ensure_text_decoded():
         return None
     
     ensure_printed(" 마스터 패스워드를 입력하세요:", print_color='blue')
-    master_password = input("마스터 패스워드: ").strip()
+    master_password = input("마스터 패스워드(5th sym pw): ").strip()
     
     if not master_password:
         ensure_printed("❌ 마스터 패스워드가 입력되지 않았습니다.", print_color='red')

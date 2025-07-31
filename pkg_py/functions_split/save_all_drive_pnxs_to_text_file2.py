@@ -99,7 +99,7 @@ def save_all_drive_pnxs_to_text_file2():  # 루프 수정필요 # 이 함수는 
     f_func_n_txt = rf'{D_PROJECT}\pkg_txt\{func_n}.txt'
     ensure_pnx_made(pnx=f_func_n_txt, mode="item")
 
-    # if not is_window_open(window_title=f_func_n_txt):
+    # if not is_window_opened(window_title=f_func_n_txt):
     #     run_pnx_via_explorer_exe(f_func_n_txt, debug_mode=False)
 
     # 1. 특정 경로를 제외할 텍스트 f에서 경로 읽어오기

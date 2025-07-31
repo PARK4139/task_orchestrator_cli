@@ -5,7 +5,7 @@ def ensure_fd_exe_enabled():
     import sys
     from pkg_py.functions_split.ensure_printed import ensure_printed
 
-    def check_fd_installed():
+    def check_fd_enabled():
         """fd가 설치되어 있는지 확인"""
         try:
             result = subprocess.run(
@@ -91,7 +91,7 @@ def ensure_fd_exe_enabled():
         ensure_printed("4. 또는 fd.exe를 원하는 폴더에 두고 PATH에 추가", print_color='cyan')
 
     # 1. fd가 이미 설치되어 있는지 확인
-    if check_fd_installed():
+    if check_fd_enabled():
         return True
 
     ensure_printed("fd가 설치되어 있지 않습니다.", print_color='yellow')
@@ -153,7 +153,7 @@ def ensure_fd_exe_enabled():
         return False
 
     # 4. 설치 후 다시 확인
-    if check_fd_installed():
+    if check_fd_enabled():
         ensure_printed("fd 설치가 완료되었습니다!", print_color='green')
         return True
     else:

@@ -1,5 +1,5 @@
 version = 1
-revision = 2
+revision = 3
 requires-python = ">=3.12"
 resolution-markers = [
     "python_full_version >= '3.13' and sys_platform == 'darwin'",
@@ -1945,6 +1945,7 @@ dependencies = [
     { name = "pydantic" },
     { name = "pydantic-core" },
     { name = "pydeck" },
+    { name = "pydub" },
     { name = "pyee" },
     { name = "pygetwindow", marker = "sys_platform == 'win32'" },
     { name = "pyglet" },
@@ -1970,11 +1971,12 @@ dependencies = [
     { name = "python-jose" },
     { name = "python-multipart" },
     { name = "python-telegram-bot" },
+    { name = "python-xlib", marker = "sys_platform == 'linux'" },
     { name = "pyttsx3" },
     { name = "pytube" },
     { name = "pytweening" },
     { name = "pytz" },
-    { name = "pywin32" },
+    { name = "pywin32", marker = "sys_platform == 'win32'" },
     { name = "pyyaml" },
     { name = "pyzmq" },
     { name = "referencing" },
@@ -2167,6 +2169,7 @@ requires-dist = [
     { name = "pydantic", specifier = "==2.10.4" },
     { name = "pydantic-core", specifier = "==2.27.2" },
     { name = "pydeck", specifier = "==0.9.1" },
+    { name = "pydub", specifier = ">=0.25.1" },
     { name = "pyee", specifier = "==12.0.0" },
     { name = "pygetwindow", marker = "sys_platform == 'win32'", specifier = "==0.0.9" },
     { name = "pyglet", specifier = "~=2.0.20" },
@@ -2175,7 +2178,7 @@ requires-dist = [
     { name = "pymysql", specifier = "~=1.1.1" },
     { name = "pynacl", specifier = "==1.5.0" },
     { name = "pynose", specifier = "==1.5.3" },
-    { name = "pynput", specifier = "==1.7.7" },
+    { name = "pynput", specifier = ">=1.7.7" },
     { name = "pyotp", specifier = "==2.9.0" },
     { name = "pyparsing", specifier = "==3.2.0" },
     { name = "pyperclip", specifier = "==1.9.0" },
@@ -2192,11 +2195,11 @@ requires-dist = [
     { name = "python-jose", specifier = "~=3.4.0" },
     { name = "python-multipart", specifier = "==0.0.20" },
     { name = "python-telegram-bot", specifier = "==21.10" },
+    { name = "python-xlib", marker = "sys_platform == 'linux'", specifier = ">=0.33" },
     { name = "pyttsx3", specifier = ">=2.99" },
     { name = "pytube", specifier = "==15.0.0" },
     { name = "pytweening", specifier = "==1.2.0" },
     { name = "pytz", specifier = "==2024.2" },
-    { name = "pywin32", specifier = ">=308" },
     { name = "pywin32", marker = "sys_platform == 'win32'", specifier = "==308" },
     { name = "pyyaml", specifier = "==6.0.2" },
     { name = "pyzmq", specifier = "==26.2.0" },
@@ -2570,6 +2573,15 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/a1/ca/40e14e196864a0f61a92abb14d09b3d3da98f94ccb03b49cf51688140dab/pydeck-0.9.1.tar.gz", hash = "sha256:f74475ae637951d63f2ee58326757f8d4f9cd9f2a457cf42950715003e2cb605", size = 3832240, upload-time = "2024-05-10T15:36:21.153Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/ab/4c/b888e6cf58bd9db9c93f40d1c6be8283ff49d88919231afe93a6bcf61626/pydeck-0.9.1-py2.py3-none-any.whl", hash = "sha256:b3f75ba0d273fc917094fa61224f3f6076ca8752b93d46faf3bcfd9f9d59b038", size = 6900403, upload-time = "2024-05-10T15:36:17.36Z" },
+]
+
+[[package]]
+name = "pydub"
+version = "0.25.1"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/fe/9a/e6bca0eed82db26562c73b5076539a4a08d3cffd19c3cc5913a3e61145fd/pydub-0.25.1.tar.gz", hash = "sha256:980a33ce9949cab2a569606b65674d748ecbca4f0796887fd6f46173a7b0d30f", size = 38326, upload-time = "2021-03-10T02:09:54.659Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/a6/53/d78dc063216e62fc55f6b2eebb447f6a4b0a59f55c8406376f76bf959b08/pydub-0.25.1-py2.py3-none-any.whl", hash = "sha256:65617e33033874b59d87db603aa1ed450633288aefead953b30bded59cb599a6", size = 32327, upload-time = "2021-03-10T02:09:53.503Z" },
 ]
 
 [[package]]

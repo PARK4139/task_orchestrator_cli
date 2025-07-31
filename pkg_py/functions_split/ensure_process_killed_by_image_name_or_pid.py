@@ -3,6 +3,10 @@ import subprocess
 import os
 from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_excuted_to_os
+from pkg_py.functions_split.is_os_linux import is_os_linux
+from pkg_py.functions_split.is_os_windows import is_os_windows
+from pkg_py.functions_split.is_os_linux import is_os_linux
+from pkg_py.functions_split.is_os_windows import is_os_windows
 
 def ensure_process_killed_by_image_name_or_pid(target, force_kill=False, timeout=10):
     """

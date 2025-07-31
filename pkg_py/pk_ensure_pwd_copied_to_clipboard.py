@@ -4,8 +4,9 @@ from pkg_py.functions_split.get_d_working_in_python import get_pwd_in_python
 from pkg_py.functions_split.ensure_colorama_initialized_once import ensure_colorama_initialized_once
 from pkg_py.functions_split.ensure_copied import ensure_copied
 from pkg_py.functions_split.ensure_printed import ensure_printed
+from pkg_py.functions_split.is_os_linux import is_os_linux
+from pkg_py.functions_split.is_os_windows import is_os_windows
 from pkg_py.system_object.local_test_activate import LTA
-
 
 
 import traceback
@@ -30,7 +31,27 @@ if __name__ == "__main__":
         pwd = get_pwd_in_python()
         ensure_printed(f'''pwd={pwd} {'%%%FOO%%%' if LTA else ''}''')
 
-        ensure_copied(pwd)
+        # OS별 클립보드 복사 처리
+        if is_os_windows():
+            ensure_copied(pwd)
+        elif is_os_linux():
+            # Linux에서는 xclip 또는 xsel 사용
+            try:
+                import subprocess
+                subprocess.run(['xclip', '-selection', 'clipboard'], input=pwd.encode(), check=True)
+            except (subprocess.CalledProcessError, FileNotFoundError):
+                try:
+                    subprocess.run(['xsel', '--clipboard'], input=pwd.encode(), check=True)
+                except (subprocess.CalledProcessError, FileNotFoundError):
+                    # 클립보드 도구가 없으면 출력만
+                    ensure_printed(f"클립보드 복사 실패. 경로: {pwd}")
+        else:
+            # macOS에서는 pbcopy 사용
+            try:
+                import subprocess
+                subprocess.run(['pbcopy'], input=pwd.encode(), check=True)
+            except (subprocess.CalledProcessError, FileNotFoundError):
+                ensure_printed(f"클립보드 복사 실패. 경로: {pwd}")
 
         ensure_pk_program_suicided(self_f=__file__) # pk_option
 

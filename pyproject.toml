@@ -138,7 +138,7 @@ dependencies = [
     "PyMsgBox==1.0.9",
     "PyNaCl==1.5.0",
     "pynose==1.5.3",
-    "pynput==1.7.7",
+    "pynput>=1.7.7",
     "pyotp==2.9.0",
     "pyparsing==3.2.0",
     "pyperclip==1.9.0",
@@ -232,18 +232,21 @@ dependencies = [
     "starlette~=0.41.3",
     "et_xmlfile~=2.0.0",
     "pycryptodomex~=3.22.0",
-    # ~= 아닌 고정버전으로 해야 win32 적용됨
-    "PyAutoGUI==0.9.54; sys_platform=='win32'",
-    "PyGetWindow==0.0.9; sys_platform=='win32'",
-    "pywin32==308; sys_platform=='win32'",
-    "MouseInfo==0.1.3; sys_platform=='win32'",
-    "blurwindow==1.2.1; sys_platform=='win32'",
-    "pyreadline3==3.5.4; sys_platform=='win32'",
-    "PyRect==0.2.0; sys_platform=='win32'",
-    "shadowcopy==0.0.4; sys_platform=='win32'",
+    # Windows 전용 패키지들
+    "PyAutoGUI==0.9.54; sys_platform == 'win32'",
+    "PyGetWindow==0.0.9; sys_platform == 'win32'",
+    "pywin32==308; sys_platform == 'win32'",
+    "MouseInfo==0.1.3; sys_platform == 'win32'",
+    "blurwindow==1.2.1; sys_platform == 'win32'",
+    "pyreadline3==3.5.4; sys_platform == 'win32'",
+    "PyRect==0.2.0; sys_platform == 'win32'",
+    "shadowcopy==0.0.4; sys_platform == 'win32'",
+    # Linux/WSL 전용 패키지들
+    "python-xlib>=0.33; sys_platform == 'linux'",
+    # 크로스 플랫폼 패키지들
     "browser-cookie3>=0.20.1",
     "pyttsx3>=2.99",
-    "pywin32>=308",
+    "pydub>=0.25.1",
 ]
 
 # [tool.setuptools]

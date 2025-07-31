@@ -1,14 +1,13 @@
-from typing import Any
-from typing import Optional
-
-from pkg_py.functions_split.ensure_printed import ensure_printed
-from pkg_py.functions_split.ensure_seconds_measured import ensure_seconds_measured
-from pkg_py.system_object.files import F_PK_DB
-
-
 class PkSqlite3DB:
+    from typing import Any
+    from typing import Optional
+
+    from pkg_py.functions_split.ensure_seconds_measured import ensure_seconds_measured
+
     @ensure_seconds_measured
     def __init__(self):
+
+        from pkg_py.system_object.files import F_PK_DB
         import sqlite3
 
         self.sqlite3 = sqlite3
@@ -89,6 +88,7 @@ class PkSqlite3DB:
 
     def reset_values(self, db_id: str):
 
+        from pkg_py.functions_split.ensure_printed import ensure_printed
         # TBD : reset_key() 도 있으면 좋겠다
 
         # pk db 초기화

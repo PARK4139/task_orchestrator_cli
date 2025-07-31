@@ -10,7 +10,7 @@ def download_video_f(url: str):
     from pkg_py.functions_split.parse_youtube_video_id import parse_youtube_video_id
     from pkg_py.functions_split.print_magenta import print_magenta
     from pkg_py.system_object.gui_util import GuiUtil
-    from pkg_py.system_object.directories import D_PK_DOWNLOADSING
+    from pkg_py.system_object.directories import D_PK_DOWNLOADING
     from pkg_py.system_object.files import F_YT_DLP_EXE
 
     from pkg_py.functions_split.ensure_printed import ensure_printed
@@ -103,8 +103,8 @@ def download_video_f(url: str):
             print_magenta("except:2024-04-12 1750")
             print_magenta(rf'''cmd : {cmd}''')
 
-        if not os.path.exists(D_PK_DOWNLOADSING):
-            os.makedirs(D_PK_DOWNLOADSING)
+        if not os.path.exists(D_PK_DOWNLOADING):
+            os.makedirs(D_PK_DOWNLOADING)
 
         ensure_printed(str_working="다운로드 f 이동 시도 중...")
         file = ""
@@ -119,7 +119,7 @@ def download_video_f(url: str):
                     file = line
 
             src = os.path.abspath(file)
-            src_renamed = rf"{D_PK_DOWNLOADSING}\{os.path.basename(file)}"
+            src_renamed = rf"{D_PK_DOWNLOADING}\{os.path.basename(file)}"
 
             ensure_printed(f'src_renamed : {src_renamed}', print_color='blue')
             if src == os.getcwd():  # 여기 또 os.getcwd() 있는 부분 수정하자..
@@ -142,7 +142,7 @@ def download_video_f(url: str):
             ensure_printed(f'''{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
         print(rf'다운로드 결과 확인 중...')
         try:
-            src_moved = rf'{D_PK_DOWNLOADSING}\{file}'
+            src_moved = rf'{D_PK_DOWNLOADING}\{file}'
             ensure_printed(rf'''src_moved : {src_moved}''', print_color='blue')
 
             # 재생할까요? 불필요하면 주석

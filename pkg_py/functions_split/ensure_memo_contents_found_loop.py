@@ -1,11 +1,8 @@
-from pkg_py.functions_split.ensure_console_cleared import ensure_console_cleared
-from pkg_py.functions_split.ensure_pk_system_exit_silent import ensure_pk_system_exit_silent
-from pkg_py.functions_split.ensure_printed import ensure_printed
-from pkg_py.pk_ensure_memo_contents_found import ensure_memo_contents_found
-
-
 def ensure_memo_contents_found_loop():
-    # ensure_printed("반복 검색 모드입니다. 종료하려면 'x' 또는 'quit'를 입력하세요.", print_color="green")
+    from pkg_py.functions_split.ensure_console_cleared import ensure_console_cleared
+    from pkg_py.functions_split.ensure_memo_contents_found import ensure_memo_contents_found
+    from pkg_py.functions_split.ensure_pk_system_exit_silent import ensure_pk_system_exit_silent
+    from pkg_py.functions_split.ensure_printed import ensure_printed
     loop_cnt = 1
     user_input = None
     while True:

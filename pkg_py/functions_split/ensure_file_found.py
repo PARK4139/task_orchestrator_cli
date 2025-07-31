@@ -31,7 +31,7 @@ def ensure_file_found():
         "C:\\Users\\wjdgn\\Downloads\\pk_system\\pkg_pkl",
         "C:\\Users\\wjdgn\\Downloads\\pk_system\\pkg_sound",
         "C:\\Users\\wjdgn\\Downloads\\pk_system\\pkg_video",
-        "C:\\Users\\wjdgn\\Downloads\\pk_system\\pkg_mp4",
+        "C:\\Users\\wjdgn\\Downloads\\pk_system\\pkg_video",
         "C:\\Users\\wjdgn\\Downloads\\pk_system\\pkg_zip",
         "C:\\Users\\wjdgn\\Downloads\\pk_system\\pkg_archived",
     ]
