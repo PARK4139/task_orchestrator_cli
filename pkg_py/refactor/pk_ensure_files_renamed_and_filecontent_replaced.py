@@ -21,8 +21,8 @@ if __name__ == "__main__":
 
     target_extensions = [".py", ".cmd", ".bat", ".ps1", ".sh", ".bak", ".txt"]  # pk_option
 
-    old_string = rf'_enabled'  # pk_option
-    new_string = rf'_enabled'  # pk_option
+    old_string = rf'device_state_changed'  # pk_option
+    new_string = rf'device_state_changed'  # pk_option
 
     # mode = 3 # pk_option
     # s = rf'pk_ensure_venv_path_config_updated'
