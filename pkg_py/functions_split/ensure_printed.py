@@ -1,18 +1,16 @@
-import traceback
-
-from pkg_py.functions_split.get_time_as_ import get_time_as_
-from pkg_py.functions_split.get_txt_highlighted import get_txt_highlighted
-from pkg_py.functions_split.print_green import print_green
-from pkg_py.functions_split.print_light_black import print_light_black
-from pkg_py.functions_split.print_light_blue import print_light_blue
-from pkg_py.functions_split.print_light_white import print_light_white
-from pkg_py.functions_split.print_magenta import print_magenta
-from pkg_py.functions_split.print_red import print_red
-from pkg_py.functions_split.print_yellow import print_yellow
-from pkg_py.system_object.stamps import STAMP_DEBUG, STAMP_INTERACTIVE, STAMP_SUCCEEDED, STAMP_INFO, STAMP_TEST, STAMP_ERROR
-
-
 def ensure_printed(str_working, flush=True, print_color='', line_feed_mode=1, STAMP=None, mode_verbose=1, highlight_config_dict=None):
+    import traceback
+
+    from pkg_py.functions_split import get_time_as_
+    from pkg_py.functions_split.get_txt_highlighted import get_txt_highlighted
+    from pkg_py.functions_split.print_green import print_green
+    from pkg_py.functions_split.print_light_black import print_light_black
+    from pkg_py.functions_split.print_light_blue import print_light_blue
+    from pkg_py.functions_split.print_light_white import print_light_white
+    from pkg_py.functions_split.print_magenta import print_magenta
+    from pkg_py.functions_split.print_red import print_red
+    from pkg_py.functions_split.print_yellow import print_yellow
+    from pkg_py.system_object.stamps import STAMP_DEBUG, STAMP_INTERACTIVE, STAMP_SUCCEEDED, STAMP_INFO, STAMP_TEST, STAMP_ERROR
     try:
         STAMP_TIME = f"[ {get_time_as_('now')} ]"
         print_color = print_color.strip()

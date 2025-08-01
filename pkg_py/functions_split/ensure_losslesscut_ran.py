@@ -15,7 +15,7 @@ def ensure_losslesscut_ran():
 
 
 
-def is_losslesscut_installed():
+def is_losslesscut_enabled():
     import os
     f_losslesscut_exe = get_pnx_windows_style(pnx=F_LOSSLESSCUT_EXE)
     if not os.path.exists(f_losslesscut_exe):

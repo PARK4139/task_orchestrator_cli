@@ -12,7 +12,7 @@ def ensure_git_project_pushed(with_commit_massage=True):
     from pkg_py.functions_split.get_file_id import get_file_id
     from pkg_py.functions_split.get_next_commit_number import get_next_commit_number
     from pkg_py.functions_split.get_text_from_history_file import get_text_from_history_file
-    from pkg_py.functions_split.get_time_as_ import get_time_as_
+    from pkg_py.functions_split import get_time_as_
     from pkg_py.functions_split.get_value_via_fzf_or_history_routine import get_value_via_fzf_or_history_routine
     from pkg_py.functions_split.print_status import print_status
     from pkg_py.functions_split.run_command import run_command

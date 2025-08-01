@@ -3,7 +3,7 @@ import os
 import re
 import traceback
 
-from pkg_py.functions_split.pk_ensure_do_exception_routine import pk_ensure_do_exception_routine
+from pkg_py.functions_split.ensure_do_exception_routine import ensure_do_exception_routine
 from pkg_py.functions_split.pk_ensure_do_finally_routine import pk_ensure_do_finally_routine
 from pkg_py.functions_split.get_file_id import get_file_id
 from pkg_py.functions_split.get_value_completed import get_value_completed
@@ -76,6 +76,6 @@ if __name__ == "__main__":
         initialize_and_customize_logging_config(__file__=__file__)
         pk_ensure_filenames_renamed_from_prefix_xxx()
     except Exception as exception:
-        pk_ensure_do_exception_routine(traceback=traceback, exception=exception)
+        ensure_do_exception_routine(traceback=traceback, exception=exception)
     finally:
         pk_ensure_do_finally_routine(D_PROJECT=D_PROJECT, __file__=__file__, STAMP_TRY_GUIDE=STAMP_TRY_GUIDE)

@@ -165,7 +165,7 @@ def ensure_git_project_pushed():
     try:
         from pkg_py.functions_split.get_file_id import get_file_id
         from pkg_py.functions_split.get_values_from_historical_file_routine import get_values_from_historical_file_routine
-        from pkg_py.functions_split.get_time_as_ import get_time_as_
+        from pkg_py.functions_split import get_time_as_
         from pkg_py.functions_split.get_value_completed import get_value_completed
         option_values = [
             "chore: various improvements and updates across multiple files",

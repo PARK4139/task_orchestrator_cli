@@ -1,9 +1,10 @@
-import os
-from pkg_py.system_object.directories import D_PK_FUNCTIONS_SPLIT, D_PKG_PY, D_PK_REFACTOR, D_SYSTEM_OBJECT
-
 def ensure_files_renamed_and_filecontent_replaced(d_target, oldstr, new_str, target_extensions=None):
-    target_extensions  = target_extensions or [".py", ".cmd", ".bat", ".ps1", ".sh"]
+    import inspect
+    import os
 
+    from pkg_py.system_object.map_massages import PkMessages2025
+    target_extensions = target_extensions or [".py", ".cmd", ".bat", ".ps1", ".sh"]
+    func_n = inspect.currentframe().f_code.co_name
     d_target = os.path.abspath(d_target)
 
     if not os.path.isdir(d_target):
@@ -11,7 +12,6 @@ def ensure_files_renamed_and_filecontent_replaced(d_target, oldstr, new_str, tar
         return
 
     # ✨ 처리할 확장자 목록 (유지보수 편하게 리스트로)
-
 
     for root, dirs, files in os.walk(d_target):
         for filename in files:
@@ -47,3 +47,5 @@ def ensure_files_renamed_and_filecontent_replaced(d_target, oldstr, new_str, tar
             if not modified:
                 # print(f"[SKIP] 변경 없음: {old_path}") # pk_option
                 pass
+
+            print(f"[{PkMessages2025.DONE}] {func_n}")  # pk_option

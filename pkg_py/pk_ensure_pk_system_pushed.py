@@ -12,7 +12,7 @@ if __name__ == "__main__":
         from pkg_py.functions_split.ensure_do_exception_routine import ensure_do_exception_routine
         from pkg_py.functions_split.ensure_do_finally_routine import ensure_do_finally_routine
         from pkg_py.functions_split.get_pk_token import get_pk_token
-        from pkg_py.functions_split.get_time_as_ import get_time_as_
+        from pkg_py.functions_split import get_time_as_
         from pkg_py.functions_split.get_value_completed import get_value_completed
         from pkg_py.functions_split.ensure_colorama_initialized_once import ensure_colorama_initialized_once
         from pkg_py.functions_split.push_pnx_to_github import push_pnx_to_github

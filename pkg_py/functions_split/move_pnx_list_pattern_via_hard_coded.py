@@ -20,7 +20,7 @@ def move_pnx_list_pattern_via_hard_coded():
     # pnx=rf"D:\#기타\pkg_dirs"
     # pnx=rf"D:\#기타\pkg_files"
     pnx = rf"D:\#기타"
-    pnx = rf"D:\#기타\pkg_files\pkg_mp4"
+    pnx = rf"D:\#기타\pkg_files\pkg_video"
 
     txt_to_exclude_list = [
         F_DB_YAML,

@@ -39,7 +39,7 @@ def function_split():
             print(f"❌ WSL 환경 확인 실패: {e}")
             return False
     
-    def ensure_docker_installed() -> bool:
+    def ensure_docker_enabled() -> bool:
         """Docker 설치 확인"""
         try:
             result = subprocess.run(
@@ -59,7 +59,7 @@ def function_split():
             print(f"❌ Docker 설치 확인 실패: {e}")
             return False
     
-    def ensure_docker_compose_installed() -> bool:
+    def ensure_docker_compose_enabled() -> bool:
         """Docker Compose 설치 확인"""
         try:
             result = subprocess.run(
@@ -219,13 +219,13 @@ def function_split():
     
     # 2단계: Docker 설치 확인
     print("\n2️⃣ Docker 설치 확인 중...")
-    if not ensure_docker_installed():
+    if not ensure_docker_enabled():
         print("❌ Docker 설치 확인 실패. 테스트를 중단합니다.")
         return False
     
     # 3단계: Docker Compose 설치 확인
     print("\n3️⃣ Docker Compose 설치 확인 중...")
-    if not ensure_docker_compose_installed():
+    if not ensure_docker_compose_enabled():
         print("❌ Docker Compose 설치 확인 실패. 테스트를 중단합니다.")
         return False
     

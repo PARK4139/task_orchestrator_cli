@@ -1,7 +1,5 @@
-from pkg_py.system_object.gui_util import get_windows_opened
-
-
 def ensure_windows_deduplicated():
+    from pkg_py.functions_split.get_windows_opened import get_windows_opened
     from pkg_py.functions_split.ensure_slept import ensure_slept
 
     from pkg_py.system_object.local_test_activate import LTA
@@ -36,7 +34,7 @@ def ensure_windows_deduplicated():
                 ensure_printed(f'''len_before={len_before}  {'%%%FOO%%%' if LTA else ''}''')
                 ensure_printed(f'''len_current={len_current}  {'%%%FOO%%%' if LTA else ''}''')
                 ensure_iterable_printed_as_vertical(item_iterable=current_windows_opened_list,
-                                           item_iterable_n="current_windows_opened_list")
+                                                    item_iterable_n="current_windows_opened_list")
                 len_before = len_current
             if len(current_windows_opened_list) != len(previous_windows_opened_list):
                 # ensure_printed(f'''len(current_windows_opened_list)={len(current_windows_opened_list)} len(previous_windows_opened_list)={len(previous_windows_opened_list)}  {'%%%FOO%%%' if LTA else ''}''',print_color="blue")

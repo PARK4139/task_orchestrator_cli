@@ -72,7 +72,7 @@ def merge_pnx_list_via_text_file():
     func_n = inspect.currentframe().f_code.co_name
     f_func_n_txt = rf'{D_PROJECT}\pkg_txt\{func_n}.txt'
     ensure_pnx_made(pnx=f_func_n_txt, mode="f")
-    # if not is_window_open(window_title=f_func_n_txt):
+    # if not is_window_opened(window_title=f_func_n_txt):
     #     open_pnx(f_func_n_txt, debug_mode=True)
     pnxs = get_list_from_f(f=f_func_n_txt)
     merge_d_list(d_list=pnxs)

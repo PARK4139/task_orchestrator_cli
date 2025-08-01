@@ -11,11 +11,8 @@ sys.path.insert(0, str(project_root))
 from pkg_py.functions_split.pk_ensure_fin_service_container_build_tested import function_split
 
 
-def D_PROJECT():
-    """
-    WSL 환경에서 fin_service 컨테이너 빌드 테스트를 실행하는 wrapper 함수
-    """
-    print("🔧 D_PROJECT: fin_service 컨테이너 빌드 테스트 실행")
+def ensure_fin_service_container_builded_at_wsl():
+    print("fin_service 컨테이너 빌드 루틴 실행")
     print("=" * 60)
 
     try:
@@ -35,4 +32,4 @@ def D_PROJECT():
 
 
 if __name__ == "__main__":
-    D_PROJECT()
+    ensure_fin_service_container_builded_at_wsl()

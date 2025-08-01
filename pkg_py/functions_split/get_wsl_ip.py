@@ -1,18 +1,9 @@
-
-
-
-
-# from pkg_py.system_object.is_os_windows import is_os_windows
-from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
-
-from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
-from pkg_py.functions_split.is_os_windows import is_os_windows
-from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_excuted_to_os
-from pkg_py.functions_split.ensure_printed import ensure_printed
-
-
 def get_wsl_ip(wsl_distro_n):
+    from pkg_py.functions_split.ensure_pinged import ensure_pinged
+    from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
+    from pkg_py.functions_split.is_os_windows import is_os_windows
+    from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_excuted_to_os
+    std_out_list = None
     if is_os_windows():
         std_out_list = ensure_command_excuted_to_os(rf'wsl -d {wsl_distro_n} hostname -I', encoding='utf-8')
     else:
@@ -20,9 +11,8 @@ def get_wsl_ip(wsl_distro_n):
             std_out_list = ensure_command_excuted_to_os(rf'hostname -I', encoding='utf-8')
         else:
             pass
-    ip_wsl = std_out_list[0].split(" ")[0]
-    if ip_wsl:
-        if not ensure_pinged(ip=ip_wsl):
-            ensure_printed(str_working=rf'''ping {ip_wsl}  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
-            raise
-    return ip_wsl
+    wsl_ip = std_out_list[0].split(" ")[0]
+    if wsl_ip:
+        if not ensure_pinged(ip=wsl_ip):
+            raise "pk_?????"
+    return wsl_ip

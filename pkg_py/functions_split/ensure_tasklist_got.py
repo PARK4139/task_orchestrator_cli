@@ -1,60 +1,140 @@
 import subprocess
 import re
+import platform
 from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.get_list_deduplicated import get_list_deduplicated
 from pkg_py.functions_split.get_list_removed_element_empty import get_list_removed_empty
 from pkg_py.functions_split.get_list_striped_element import get_list_striped_element
+from pkg_py.functions_split.is_os_linux import is_os_linux
+from pkg_py.functions_split.is_os_windows import is_os_windows
 
 def get_image_names_from_tasklist():
     """
-    tasklist 명령어의 결과에서 이미지명을 수집하고 중복을 제거한 리스트를 반환
+    tasklist/ps 명령어의 결과에서 이미지명을 수집하고 중복을 제거한 리스트를 반환
     
     Returns:
         list: 이미지명 리스트 (중복 제거됨)
     """
     try:
-        # tasklist 명령어 실행 (인코딩 오류 방지)
-        try:
-            result = subprocess.run(['tasklist', '/FO', 'CSV'], 
-                                  capture_output=True, 
-                                  text=True, 
-                                  encoding='cp949')  # Windows 한국어 인코딩
-        except UnicodeDecodeError:
-            # cp949 실패 시 기본 인코딩으로 재시도
-            result = subprocess.run(['tasklist', '/FO', 'CSV'], 
-                                  capture_output=True, 
-                                  text=True, 
-                                  encoding='utf-8', 
-                                  errors='ignore')
+        if is_os_windows():
+            # Windows tasklist 명령어 실행
+            try:
+                result = subprocess.run(['tasklist', '/FO', 'CSV'], 
+                                      capture_output=True, 
+                                      text=True, 
+                                      encoding='cp949')  # Windows 한국어 인코딩
+            except UnicodeDecodeError:
+                # cp949 실패 시 기본 인코딩으로 재시도
+                result = subprocess.run(['tasklist', '/FO', 'CSV'], 
+                                      capture_output=True, 
+                                      text=True, 
+                                      encoding='utf-8', 
+                                      errors='ignore')
+            
+            if result.returncode != 0:
+                ensure_printed(f"❌ tasklist 명령어 실행 실패: {result.stderr}", print_color="red")
+                return []
+            
+            if not result.stdout:
+                ensure_printed("⚠️ tasklist 명령어 결과가 비어있습니다.", print_color="yellow")
+                return []
+            
+            lines = result.stdout.strip().split('\n')
+            
+            # 첫 번째 줄은 헤더이므로 제외
+            if lines and lines[0].startswith('"Image Name"'):
+                lines = lines[1:]
+            
+            image_names = []
+            
+            for line in lines:
+                if line.strip():
+                    # CSV 형식에서 첫 번째 컬럼(이미지명) 추출
+                    parts = re.findall(r'"([^"]*)"', line)
+                    if parts:
+                        image_name = parts[0].strip()  # 첫 번째 컬럼이 이미지명
+                        if image_name and image_name.lower() != 'image name':
+                            image_names.append(image_name)
         
-        if result.returncode != 0:
-            ensure_printed(f"❌ tasklist 명령어 실행 실패: {result.stderr}", print_color="red")
-            return []
+        elif is_os_linux():
+            # Linux ps 명령어 실행
+            try:
+                result = subprocess.run(['ps', 'aux'], 
+                                      capture_output=True, 
+                                      text=True, 
+                                      encoding='utf-8')
+            except Exception as e:
+                ensure_printed(f"❌ ps 명령어 실행 실패: {e}", print_color="red")
+                return []
+            
+            if result.returncode != 0:
+                ensure_printed(f"❌ ps 명령어 실행 실패: {result.stderr}", print_color="red")
+                return []
+            
+            if not result.stdout:
+                ensure_printed("⚠️ ps 명령어 결과가 비어있습니다.", print_color="yellow")
+                return []
+            
+            lines = result.stdout.strip().split('\n')
+            
+            # 첫 번째 줄은 헤더이므로 제외
+            if lines and 'USER' in lines[0]:
+                lines = lines[1:]
+            
+            image_names = []
+            
+            for line in lines:
+                if line.strip():
+                    # ps aux 형식에서 마지막 컬럼(명령어) 추출
+                    parts = line.split()
+                    if len(parts) >= 11:
+                        command = parts[10]  # 마지막 컬럼이 명령어
+                        if command and command != 'COMMAND':
+                            # 경로에서 파일명만 추출
+                            import os
+                            image_name = os.path.basename(command)
+                            if image_name:
+                                image_names.append(image_name)
         
-        if not result.stdout:
-            ensure_printed("⚠️ tasklist 명령어 결과가 비어있습니다.", print_color="yellow")
-            return []
-        
-        lines = result.stdout.strip().split('\n')
-        
-        # 첫 번째 줄은 헤더이므로 제외
-        if lines and lines[0].startswith('"Image Name"'):
-            lines = lines[1:]
-        
-        image_names = []
-        
-        for line in lines:
-            if line.strip():
-                # CSV 형식에서 첫 번째 컬럼(이미지명) 추출
-                # "Image Name","PID","Session Name","Session#","Mem Usage"
-                # "chrome.exe","1234","Console","1","123,456 K"
-                
-                # CSV 파싱 (쉼표로 분리하되 따옴표 안의 쉼표는 무시)
-                parts = re.findall(r'"([^"]*)"', line)
-                if parts:
-                    image_name = parts[0].strip()  # 첫 번째 컬럼이 이미지명
-                    if image_name and image_name.lower() != 'image name':
-                        image_names.append(image_name)
+        else:
+            # macOS ps 명령어 실행
+            try:
+                result = subprocess.run(['ps', 'aux'], 
+                                      capture_output=True, 
+                                      text=True, 
+                                      encoding='utf-8')
+            except Exception as e:
+                ensure_printed(f"❌ ps 명령어 실행 실패: {e}", print_color="red")
+                return []
+            
+            if result.returncode != 0:
+                ensure_printed(f"❌ ps 명령어 실행 실패: {result.stderr}", print_color="red")
+                return []
+            
+            if not result.stdout:
+                ensure_printed("⚠️ ps 명령어 결과가 비어있습니다.", print_color="yellow")
+                return []
+            
+            lines = result.stdout.strip().split('\n')
+            
+            # 첫 번째 줄은 헤더이므로 제외
+            if lines and 'USER' in lines[0]:
+                lines = lines[1:]
+            
+            image_names = []
+            
+            for line in lines:
+                if line.strip():
+                    # ps aux 형식에서 마지막 컬럼(명령어) 추출
+                    parts = line.split()
+                    if len(parts) >= 11:
+                        command = parts[10]  # 마지막 컬럼이 명령어
+                        if command and command != 'COMMAND':
+                            # 경로에서 파일명만 추출
+                            import os
+                            image_name = os.path.basename(command)
+                            if image_name:
+                                image_names.append(image_name)
         
         # 중복 제거 및 정렬
         if image_names:
@@ -70,80 +150,116 @@ def get_image_names_from_tasklist():
             # 알파벳 순으로 정렬
             image_names.sort(key=str.lower)
             
-            ensure_printed(f"📋 tasklist에서 {len(image_names)}개의 고유한 이미지명을 수집했습니다.", print_color="green")
+            cmd_name = "tasklist" if is_os_windows() else "ps"
+            ensure_printed(f"📋 {cmd_name}에서 {len(image_names)}개의 고유한 이미지명을 수집했습니다.", print_color="green")
         else:
-            ensure_printed("⚠️ tasklist에서 이미지명을 찾을 수 없습니다.", print_color="yellow")
+            ensure_printed("⚠️ 프로세스 목록에서 이미지명을 찾을 수 없습니다.", print_color="yellow")
         
         return image_names
         
     except Exception as e:
-        ensure_printed(f"❌ tasklist 처리 중 오류 발생: {e}", print_color="red")
+        ensure_printed(f"❌ 프로세스 목록 처리 중 오류 발생: {e}", print_color="red")
         return []
 
 def ensure_tasklist_got_with_pid():
     """
-    tasklist 명령어의 결과에서 이미지명과 PID를 함께 수집
+    tasklist/ps 명령어의 결과에서 이미지명과 PID를 함께 수집
     
     Returns:
         list: (이미지명, PID) 튜플 리스트
     """
     try:
-        # tasklist 명령어 실행 (인코딩 오류 방지)
-        try:
-            result = subprocess.run(['tasklist', '/FO', 'CSV'], 
-                                  capture_output=True, 
-                                  text=True, 
-                                  encoding='cp949')  # Windows 한국어 인코딩
-        except UnicodeDecodeError:
-            # cp949 실패 시 기본 인코딩으로 재시도
-            result = subprocess.run(['tasklist', '/FO', 'CSV'], 
-                                  capture_output=True, 
-                                  text=True, 
-                                  encoding='utf-8', 
-                                  errors='ignore')
+        if is_os_windows():
+            # Windows tasklist 명령어 실행
+            try:
+                result = subprocess.run(['tasklist', '/FO', 'CSV'], 
+                                      capture_output=True, 
+                                      text=True, 
+                                      encoding='cp949')
+            except UnicodeDecodeError:
+                result = subprocess.run(['tasklist', '/FO', 'CSV'], 
+                                      capture_output=True, 
+                                      text=True, 
+                                      encoding='utf-8', 
+                                      errors='ignore')
+            
+            if result.returncode != 0:
+                ensure_printed(f"❌ tasklist 명령어 실행 실패: {result.stderr}", print_color="red")
+                return []
+            
+            if not result.stdout:
+                ensure_printed("⚠️ tasklist 명령어 결과가 비어있습니다.", print_color="yellow")
+                return []
+            
+            lines = result.stdout.strip().split('\n')
+            
+            # 첫 번째 줄은 헤더이므로 제외
+            if lines and lines[0].startswith('"Image Name"'):
+                lines = lines[1:]
+            
+            process_list = []
+            
+            for line in lines:
+                if line.strip():
+                    parts = re.findall(r'"([^"]*)"', line)
+                    if len(parts) >= 2:
+                        image_name = parts[0].strip()
+                        pid = parts[1].strip()
+                        if image_name and image_name.lower() != 'image name' and pid.isdigit():
+                            process_list.append((image_name, int(pid)))
         
-        if result.returncode != 0:
-            ensure_printed(f"❌ tasklist 명령어 실행 실패: {result.stderr}", print_color="red")
-            return []
+        else:
+            # Linux/macOS ps 명령어 실행
+            try:
+                result = subprocess.run(['ps', 'aux'], 
+                                      capture_output=True, 
+                                      text=True, 
+                                      encoding='utf-8')
+            except Exception as e:
+                ensure_printed(f"❌ ps 명령어 실행 실패: {e}", print_color="red")
+                return []
+            
+            if result.returncode != 0:
+                ensure_printed(f"❌ ps 명령어 실행 실패: {result.stderr}", print_color="red")
+                return []
+            
+            if not result.stdout:
+                ensure_printed("⚠️ ps 명령어 결과가 비어있습니다.", print_color="yellow")
+                return []
+            
+            lines = result.stdout.strip().split('\n')
+            
+            # 첫 번째 줄은 헤더이므로 제외
+            if lines and 'USER' in lines[0]:
+                lines = lines[1:]
+            
+            process_list = []
+            
+            for line in lines:
+                if line.strip():
+                    parts = line.split()
+                    if len(parts) >= 2:
+                        try:
+                            pid = int(parts[1])
+                            command = parts[10] if len(parts) >= 11 else parts[1]
+                            if command and command != 'PID':
+                                import os
+                                image_name = os.path.basename(command)
+                                if image_name:
+                                    process_list.append((image_name, pid))
+                        except (ValueError, IndexError):
+                            continue
         
-        if not result.stdout:
-            ensure_printed("⚠️ tasklist 명령어 결과가 비어있습니다.", print_color="yellow")
-            return []
+        if process_list:
+            cmd_name = "tasklist" if is_os_windows() else "ps"
+            ensure_printed(f"📋 {cmd_name}에서 {len(process_list)}개의 프로세스를 수집했습니다.", print_color="green")
+        else:
+            ensure_printed("⚠️ 프로세스 목록을 찾을 수 없습니다.", print_color="yellow")
         
-        lines = result.stdout.strip().split('\n')
-        
-        # 첫 번째 줄은 헤더이므로 제외
-        if lines and lines[0].startswith('"Image Name"'):
-            lines = lines[1:]
-        
-        process_info = []
-        
-        for line in lines:
-            if line.strip():
-                # CSV 파싱
-                parts = re.findall(r'"([^"]*)"', line)
-                if len(parts) >= 2:
-                    image_name = parts[0].strip()
-                    pid = parts[1].strip()
-                    
-                    if image_name and image_name.lower() != 'image name':
-                        process_info.append((image_name, pid))
-        
-        # 중복 제거 (이미지명 기준)
-        unique_processes = {}
-        for image_name, pid in process_info:
-            if image_name not in unique_processes:
-                unique_processes[image_name] = pid
-        
-        # 정렬
-        sorted_processes = sorted(unique_processes.items(), key=lambda x: x[0].lower())
-        
-        ensure_printed(f"📋 tasklist에서 {len(sorted_processes)}개의 고유한 프로세스를 수집했습니다.", print_color="green")
-        
-        return sorted_processes
+        return process_list
         
     except Exception as e:
-        ensure_printed(f"❌ tasklist 처리 중 오류 발생: {e}", print_color="red")
+        ensure_printed(f"❌ 프로세스 목록 처리 중 오류 발생: {e}", print_color="red")
         return []
 
 def ensure_tasklist_got_filtered(filter_keywords=None):

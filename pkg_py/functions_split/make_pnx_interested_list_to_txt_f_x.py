@@ -84,5 +84,5 @@ def make_pnx_interested_list_to_txt_f_x(pnx_interested_list=None, string_exclude
             write_cnt = write_cnt + 1
             if write_cnt == write_cnt_limit % 2 == 0:
                 window_title = rf"{func_n}_{file_cnt}"
-                # if not is_window_open(window_title_seg=window_title):
+                # if not is_window_opened(window_title_seg=window_title):
                 #     open_pnx(pnx=func_n_file_cnt_txt)

@@ -14,13 +14,13 @@ def get_pnxs_interested_from_file_system(pnx_interested_list=None, string_exclud
 
         # PKG_TXT = rf"{D_PKG_TXT}"
         # window_title_seg = get_nx(PKG_TXT)
-        # if not is_window_open(window_title_seg=window_title_seg):
+        # if not is_window_opened(window_title_seg=window_title_seg):
         #     open_pnx(pnx=PKG_TXT)
     else:
         make_pnx_interested_list_to_f_txt(pnx_interested_list=pnx_interested_list, string_exclude=string_exclude)
 
         # window_title_seg = get_nx (f_func_n_txt)
-        # if not is_window_open(window_title_seg=window_title_seg):
+        # if not is_window_opened(window_title_seg=window_title_seg):
         #     open_pnx(pnx=f_func_n_txt)
 
     return get_list_from_f(f=f_func_n_txt)

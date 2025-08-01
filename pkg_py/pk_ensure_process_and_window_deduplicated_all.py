@@ -1,10 +1,9 @@
-from pkg_py.functions_split.ensure_cmd_exe_deduplicated_all import ensure_cmd_exe_deduplicated_all
-
 if __name__ == '__main__':
     try:
+        from pkg_py.functions_split.ensure_cmd_exe_deduplicated_all import ensure_cmd_exe_deduplicated_all
+        from pkg_py.functions_split.get_windows_opened import get_windows_opened
         from pkg_py.functions_split.ensure_do_exception_routine import ensure_do_exception_routine
         from pkg_py.functions_split.ensure_do_finally_routine import ensure_do_finally_routine
-        # from pkg_py.workspace.pk_workspace import ensure_cmd_exe_deduplicated, ensure_cmd_exe_deduplicated_all
         import traceback
         from pkg_py.system_object.directories_reuseable import D_PROJECT
         from pkg_py.system_object.etc import PK_UNDERLINE
@@ -26,8 +25,6 @@ if __name__ == '__main__':
         from pkg_py.functions_split.ensure_window_to_front import ensure_window_to_front
         from pkg_py.functions_split.ensure_iterable_printed_as_vertical import ensure_iterable_printed_as_vertical
         from pkg_py.functions_split.ensure_func_info_loaded import ensure_func_info_loaded
-
-        from pkg_py.system_object.gui_util import get_windows_opened
 
 
         def ensure_windows_deduplicated_in_loop():
@@ -54,7 +51,7 @@ if __name__ == '__main__':
                         ensure_printed(f'''len_before={len_before}  {'%%%FOO%%%' if LTA else ''}''')
                         ensure_printed(f'''len_current={len_current}  {'%%%FOO%%%' if LTA else ''}''')
                         ensure_iterable_printed_as_vertical(item_iterable=current_windows_opened_list,
-                                                   item_iterable_n="current_windows_opened_list")
+                                                            item_iterable_n="current_windows_opened_list")
                         len_before = len_current
                     if len(current_windows_opened_list) != len(previous_windows_opened_list):
                         # ensure_printed(f'''len(current_windows_opened_list)={len(current_windows_opened_list)} len(previous_windows_opened_list)={len(previous_windows_opened_list)}  {'%%%FOO%%%' if LTA else ''}''',print_color="blue")
@@ -72,7 +69,7 @@ if __name__ == '__main__':
                     # ensure_slept(milliseconds=500)
                     # ensure_slept(milliseconds=1000)
                     # ensure_slept(milliseconds=2000) # pk_option
-                    ensure_slept(milliseconds=10000) # pk_option
+                    ensure_slept(milliseconds=10000)  # pk_option
 
                     ensure_console_cleared()
 
@@ -82,6 +79,7 @@ if __name__ == '__main__':
 
             # run main loop
             run_main_loop()
+
 
         ensure_windows_deduplicated_in_loop()
 

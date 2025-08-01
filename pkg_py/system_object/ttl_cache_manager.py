@@ -1,18 +1,11 @@
-import json
-import os
-import sqlite3
-import time
-from functools import wraps
-from pathlib import Path
-
-from pkg_py.system_object.directories import D_PKG_DB
-from pkg_py.system_object.map_massages import PkMessages2025
-
-
 class TTLCacheManager:
     """이 유틸은  데코레이터 스타일 + 직접 get/set 형태 모두 지원"""
 
     def __init__(self, db_path, ttl_seconds: int = 5, maxsize: int = 128):
+        import os
+        from pathlib import Path
+
+        from pkg_py.system_object.directories import D_PKG_DB
         db_path = db_path or os.path.join(D_PKG_DB, "ensure_function_ttl_cached.sqlite")
         self.db_path = Path(db_path)
         self.ttl = ttl_seconds
@@ -20,6 +13,8 @@ class TTLCacheManager:
         self._ensure_table()
 
     def _ensure_table(self):
+        import sqlite3
+
         with sqlite3.connect(self.db_path) as conn:
             conn.execute('''
                 CREATE TABLE IF NOT EXISTS ttl_cache (
@@ -45,6 +40,10 @@ class TTLCacheManager:
             conn.commit()
 
     def set(self, key: str, value):
+        import json
+        import sqlite3
+        import time
+
         now = time.time()
         value_str = json.dumps(value)  # 리스트 → 문자열 직렬화
         with sqlite3.connect(self.db_path) as conn:
@@ -55,6 +54,10 @@ class TTLCacheManager:
             self._enforce_maxsize(conn)
 
     def get(self, key: str):
+        import json
+        import sqlite3
+        import time
+
         now = time.time()
         with sqlite3.connect(self.db_path) as conn:
             row = conn.execute('''
@@ -71,11 +74,15 @@ class TTLCacheManager:
         return None
 
     def invalidate(self, key: str):
+        import sqlite3
+
         with sqlite3.connect(self.db_path) as conn:
             conn.execute('DELETE FROM ttl_cache WHERE cache_key = ?', (key,))
             conn.commit()
 
     def clear(self):
+        import sqlite3
+
         with sqlite3.connect(self.db_path) as conn:
             conn.execute('DELETE FROM ttl_cache')
             conn.commit()
@@ -84,8 +91,11 @@ class TTLCacheManager:
         """함수를 TTL + LRU 캐시로 감싸는 데코레이터"""
 
         def wrapper_factory(func):
+            from functools import wraps
+
             @wraps(func)
             def wrapped(*args, **kwargs):
+                from pkg_py.system_object.map_massages import PkMessages2025
                 key = str((args, tuple(sorted(kwargs.items()))))
                 cached_result = self.get(key)
                 if cached_result is not None:

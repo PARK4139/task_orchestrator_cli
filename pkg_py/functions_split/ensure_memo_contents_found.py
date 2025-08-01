@@ -1,15 +1,14 @@
+from pkg_py.functions_split import ensure_printed, get_fzf_command
+
+
 def ensure_memo_contents_found():
-    from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
+    from pkg_py.functions_split.common_imports import does_pnx_exist, get_os_n, chcp_65001, get_fzf_command, ensure_printed
     from pkg_py.system_object.files import F_MEMO_HOW_PK
-    from pkg_py.functions_split.get_os_n import get_os_n
-    from pkg_py.functions_split.chcp_65001 import chcp_65001
+    from pkg_py.system_object.encodings import Encoding
     import re
     import subprocess
     import sys
     import locale
-    from pkg_py.functions_split.get_fzf_command import get_fzf_command
-    from pkg_py.functions_split.ensure_printed import ensure_printed
-    from pkg_py.system_object.encodings import Encoding
 
     if get_os_n() == 'windows':
         chcp_65001()
