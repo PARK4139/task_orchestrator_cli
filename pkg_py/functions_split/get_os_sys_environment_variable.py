@@ -68,7 +68,7 @@ from colorama import init as pk_colorama_init
 from collections import Counter
 from bs4 import ResultSet
 from bs4 import BeautifulSoup
-from pkg_py.functions_split.ensure_video_loaded_at_losslesscut import ensure_video_loaded_at_losslesscut
+from pkg_py.functions_split.ensure_video_played_at_losslesscut import ensure_video_played_at_losslesscut
 from pkg_py.functions_split.get_pnxs import get_pnxs
 from pkg_py.functions_split.get_list_calculated import get_list_calculated
 from pkg_py.functions_split.is_d import is_d

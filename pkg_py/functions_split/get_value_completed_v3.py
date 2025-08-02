@@ -22,6 +22,9 @@ def get_value_completed_v3(message, options):
     deduped = []
     options = options + [PkMessages2025.SHUTDOWN]
     for option in options:
+        # None 값은 건너뛰기
+        if option is None:
+            continue
         styled = option
         if isinstance(option, str):
             if is_path_like(option):

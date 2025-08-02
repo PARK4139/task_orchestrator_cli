@@ -1,20 +1,16 @@
-from pkg_py.functions_split.ensure_slept import ensure_slept
-from pkg_py.functions_split.get_f_historical import get_history_file
-from pkg_py.functions_split.get_last_history import get_last_history
-from pkg_py.functions_split.get_nx import get_nx
-from pkg_py.functions_split.get_p import get_p
-from pkg_py.functions_split.save_to_history import save_to_history
-from pkg_py.system_object.directories import D_SYSTEM_OBJECT
-from pkg_py.system_object.etc import pk_
-from pkg_py.system_object.local_test_activate import LTA
-
-
 def write_template_to_file(f_template, template_content):
-    with open(f_template, 'w', encoding='utf-8') as f_new:
+    with open(f_template, 'a', encoding='utf-8') as f_new:
         f_new.write(template_content)
 
 
 def ensure_python_file_and_function_created(d_working, func_n):
+    from pkg_py.functions_split.get_f_historical import get_history_file
+    from pkg_py.functions_split.get_last_history import get_last_history
+    from pkg_py.functions_split.get_nx import get_nx
+    from pkg_py.functions_split.get_p import get_p
+    from pkg_py.functions_split.save_to_history import save_to_history
+    from pkg_py.system_object.etc import pk_
+
     import logging
     import os
     from pkg_py.functions_split.ensure_printed import ensure_printed
@@ -35,19 +31,17 @@ def ensure_python_file_and_function_created(d_working, func_n):
     D_SYSTEM_OBJECT = get_pnx_os_style(D_SYSTEM_OBJECT)
     d_working = get_pnx_os_style(d_working)
 
-    # 1. get user directory path
     # d_working = get_value_completed(key_hint='d_working=', values=[D_PKG_PY, D_PK_FUNCTIONS_SPLIT, D_SYSTEM_OBJECT])
     if not os.path.isdir(d_working):
         logging.info(f"[{PkMessages2025.PATH_NOT_FOUND}] {d_working}")
 
-    # 2. get user filename  # .py 확장자 자동 부여
     editable = False
     # editable = True
     value = None
     if d_working == D_PKG_PY:
         key_name = 'pk_python_file_name'
         file_id = get_file_id(key_name, func_n)
-        init_options = ["ensure_" ]
+        init_options = ["ensure_"]
         if LTA:
             # value = "pk_deprecated"
             value = get_value_via_fzf_or_history_routine(key_name=key_name, file_id=file_id, init_options=init_options, editable=editable)
@@ -57,7 +51,7 @@ def ensure_python_file_and_function_created(d_working, func_n):
     elif d_working == D_PK_FUNCTIONS_SPLIT:
         key_name = 'pk_python_file_name'
         file_id = get_file_id(key_name, func_n)
-        init_options = ["ensure_" ]
+        init_options = ["ensure_"]
         if LTA:
             # value = "pk_deprecated"
             # value = get_value_via_fzf_or_history_routine(key_name=key_name, file_id=file_id, init_options=init_options, editable=editable)
@@ -122,6 +116,7 @@ def ensure_python_file_and_function_created(d_working, func_n):
                     template_content = f_template.read()
                     lines = template_content.splitlines()
                     lines = lines[1:]
+
                     # lines = [line for line in lines if "__main__" not in line] #  "__main__" 포함된 줄 제거  # pk_option
                     def remove_one_indent(line):
                         if line.startswith('\t'):
@@ -130,6 +125,7 @@ def ensure_python_file_and_function_created(d_working, func_n):
                             return line[4:]
                         else:
                             return line
+
                     lines = [remove_one_indent(line) for line in lines]
                     template_content = "\n".join(lines)
                     ensure_printed(f'''[{PkMessages2025.DATA}] template_content={template_content} {'%%%FOO%%%' if LTA else ''}''')
@@ -156,6 +152,9 @@ def ensure_python_file_and_function_created(d_working, func_n):
 
 def ensure_python_file_and_function_created_in_loop():
     import inspect
+    from pkg_py.functions_split.ensure_slept import ensure_slept
+    from pkg_py.system_object.directories import D_SYSTEM_OBJECT
+    from pkg_py.system_object.local_test_activate import LTA
 
     from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style
     from pkg_py.functions_split.get_value_completed import get_value_completed
@@ -167,7 +166,6 @@ def ensure_python_file_and_function_created_in_loop():
     D_PK_FUNCTIONS_SPLIT = get_pnx_os_style(D_PK_FUNCTIONS_SPLIT)
 
     while True:
-        # 1. get user directory path
         if LTA:
             # mode = "PK_FILE_AND_FUNCTIONS" # pk_option
             mode = get_value_completed(key_hint='mode=', values=["PK_FILE_AND_FUNCTIONS", "SYSTEM_OBJECT"])

@@ -146,14 +146,14 @@ def handle_state_event(event_type, state, f_video_to_load, **kwargs):
     return state
 
 
-def ensure_video_loaded_at_losslesscut_v6(max_files=30):
+def ensure_video_played_at_losslesscut_v6(max_files=30):
     import time
     import traceback
     import inspect
     from pkg_py.functions_split.get_file_id import get_file_id
     from pkg_py.functions_split.get_list_calculated import get_list_calculated
-    from pkg_py.functions_split.ensure_do_exception_routine import ensure_do_exception_routine
-    from pkg_py.functions_split.ensure_do_finally_routine import ensure_do_finally_routine
+    from pkg_py.functions_split.ensure_exception_routine_done import ensure_exception_routine_done
+    from pkg_py.functions_split.ensure_finally_routine_done import ensure_finally_routine_done
     from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
     from pkg_py.functions_split.ensure_start_time_logged import ensure_start_time_logged
     from pkg_py.system_object.state_via_database import PkSqlite3DB
@@ -310,6 +310,6 @@ def ensure_video_loaded_at_losslesscut_v6(max_files=30):
             loop_cnt += 1
 
     except Exception as exception:
-        ensure_do_exception_routine(traceback=traceback, exception=exception)
+        ensure_exception_routine_done(traceback=traceback, exception=exception)
     finally:
-        ensure_do_finally_routine(D_PROJECT=D_PROJECT, __file__=__file__, STAMP_TRY_GUIDE=STAMP_TRY_GUIDE)
+        ensure_finally_routine_done(D_PROJECT=D_PROJECT, __file__=__file__, STAMP_TRY_GUIDE=STAMP_TRY_GUIDE)

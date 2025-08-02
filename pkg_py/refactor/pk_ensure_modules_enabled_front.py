@@ -6,8 +6,8 @@ import os.path
 import traceback
 
 from pkg_py.functions_split.backup_workspace import backup_workspace
-from pkg_py.functions_split.ensure_do_exception_routine import ensure_do_exception_routine
-from pkg_py.functions_split.pk_ensure_do_finally_routine import pk_ensure_do_finally_routine
+from pkg_py.functions_split.ensure_exception_routine_done import ensure_exception_routine_done
+from pkg_py.functions_split.pk_ensure_finally_routine_done import pk_ensure_finally_routine_done
 from pkg_py.functions_split.get_str_from_f import get_str_from_f
 from pkg_py.functions_split.get_value_completed import get_value_completed
 from pkg_py.functions_split.initialize_and_customize_logging_config import initialize_and_customize_logging_config
@@ -109,9 +109,9 @@ def main():
         initialize_and_customize_logging_config(__file__)
         pk_ensure_modules_import_to_python_files()
     except Exception as e:
-        ensure_do_exception_routine(traceback=traceback, exception=e)
+        ensure_exception_routine_done(traceback=traceback, exception=e)
     finally:
-        pk_ensure_do_finally_routine(D_PROJECT=D_PROJECT, __file__=__file__, STAMP_TRY_GUIDE=STAMP_TRY_GUIDE)
+        pk_ensure_finally_routine_done(D_PROJECT=D_PROJECT, __file__=__file__, STAMP_TRY_GUIDE=STAMP_TRY_GUIDE)
 
 
 if __name__ == "__main__":

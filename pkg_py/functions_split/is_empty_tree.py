@@ -26,7 +26,7 @@ from dirsync import sync
 from datetime import datetime
 from colorama import init as pk_colorama_init
 from bs4 import BeautifulSoup
-from pkg_py.functions_split.ensure_video_loaded_at_losslesscut import ensure_video_loaded_at_losslesscut
+from pkg_py.functions_split.ensure_video_played_at_losslesscut import ensure_video_played_at_losslesscut
 from pkg_py.system_object.directories import D_PKG_PY
 
 from pkg_py.system_object.local_test_activate import LTA

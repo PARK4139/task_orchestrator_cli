@@ -1,12 +1,13 @@
 import traceback
 
 from pkg_py.functions_split.ensure_chat_gpt_responded import ensure_chat_gpt_responded
-from pkg_py.functions_split.ensure_do_exception_routine import ensure_do_exception_routine
-from pkg_py.functions_split.ensure_do_finally_routine import ensure_do_finally_routine
+from pkg_py.functions_split.ensure_exception_routine_done import ensure_exception_routine_done
+from pkg_py.functions_split.ensure_finally_routine_done import ensure_finally_routine_done
 from pkg_py.functions_split.ensure_window_title_replaced import ensure_window_title_replaced
 from pkg_py.functions_split.get_nx import get_nx
 from pkg_py.system_object.directories_reuseable import D_PROJECT
 from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
+from pkg_py.system_object.map_massages import PkMessages2025
 
 def pk_ensure_chat_gpt_responded(
     question: str,
@@ -86,5 +87,5 @@ if __name__ == "__main__":
         
     except Exception as e:
         from pkg_py.functions_split.ensure_printed import ensure_printed
-        ensure_printed(f"❌ 테스트 실패: {e}", print_color="red")
-        ensure_printed("🔑 OpenAI API 키를 환경변수 OPENAI_API_KEY에 설정하세요.", print_color="yellow")
+        ensure_printed(f"❌ {PkMessages2025.TEST_FAILED}: {e}", print_color="red")
+        ensure_printed(f"🔑 {PkMessages2025.OPENAI_API_KEY_SETUP}.", print_color="yellow")

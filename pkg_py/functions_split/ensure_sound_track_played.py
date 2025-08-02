@@ -1,6 +1,10 @@
+from pkg_py.system_object.local_test_activate import LTA
+
+
 def ensure_sound_track_played():
     from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_excuted_to_os
     from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style
+    from pkg_py.functions_split.get_p import get_p
     from pkg_py.functions_split.is_os_linux import is_os_linux
     from pkg_py.functions_split.is_os_windows import is_os_windows
     from pkg_py.system_object.files import F_PKG_SOUND_POTPLAYER64_DPL
@@ -12,6 +16,8 @@ def ensure_sound_track_played():
     if is_os_windows():
         # Windows에서는 PotPlayer 사용
         F_PKG_SOUND_POTPLAYER64_DPL = get_pnx_os_style(F_PKG_SOUND_POTPLAYER64_DPL)
+        if not LTA:
+            ensure_command_excuted_to_os(cmd=rf'explorer "{get_p(F_PKG_SOUND_POTPLAYER64_DPL)}" ') # pk_option
         ensure_command_excuted_to_os(cmd=rf'explorer "{F_PKG_SOUND_POTPLAYER64_DPL}" ')
     elif is_os_linux():
         # Linux에서는 기본 오디오 플레이어 사용

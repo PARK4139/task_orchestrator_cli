@@ -29,7 +29,7 @@ from Cryptodome.Cipher import AES
 from concurrent.futures import ThreadPoolExecutor
 from base64 import b64encode
 from base64 import b64decode
-from pkg_py.functions_split.ensure_pk_program_suicided import ensure_pk_program_suicided
+from pkg_py.functions_split.ensure_program_suicided import ensure_program_suicided
 from pkg_py.functions_split.is_f import is_f
 from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
 from pkg_py.functions_split.get_pnx_wsl_unix_style import get_pnx_wsl_unix_style

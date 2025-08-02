@@ -53,7 +53,7 @@ from collections import Counter
 from bs4 import ResultSet
 from base64 import b64encode
 from pkg_py.functions_split.get_nx import get_nx
-from pkg_py.functions_split.ensure_video_loaded_at_losslesscut import ensure_video_loaded_at_losslesscut
+from pkg_py.functions_split.ensure_video_played_at_losslesscut import ensure_video_played_at_losslesscut
 from pkg_py.system_object.etc import PkFilter, PK_UNDERLINE
 # from pkg_py.system_object.is_os_windows import is_os_windows
 from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux

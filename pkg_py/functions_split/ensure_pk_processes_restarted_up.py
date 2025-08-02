@@ -31,7 +31,7 @@ def ensure_pk_processes_restarted_up():
 
             # 작업 손실 유의
             rf"{D_PKG_PY}/pk_assist_to_run_mini.py",
-            rf"{D_PKG_PY}/pk_ensure_video_loaded_at_losslesscut.py",
+            rf"{D_PKG_PY}/pk_ensure_video_played_at_losslesscut.py",
             rf"{D_PKG_PY}/pk_ensure_pk_system_uploaded_to_github.py",
             rf"{D_PKG_PY}/pk_assist_to_ensure_files_organized_by_nx_delimiter.py",
             # rf"{D_PKG_PY}/pk_assist_to_ensure_files_organized_by_ext.py",
@@ -43,7 +43,7 @@ def ensure_pk_processes_restarted_up():
             # rf"{D_PKG_PY}/pk_ensure_magnets_collected_and_loaded.py",
         ]
         for f in f_list:
-            ensure_process_killed_by_window_title_seg(window_title_seg=get_nx(f))
+            ensure_process_killed_by_window_title(window_title=get_nx(f))
         for f in f_list:
             pk_run_process(pk_program_n_seg=get_nx(f))
 

@@ -53,8 +53,8 @@ from dataclasses import dataclass
 from cryptography.hazmat.primitives import padding
 from Cryptodome.Random import get_random_bytes
 from bs4 import ResultSet
-from pkg_py.functions_split.ensure_video_loaded_at_losslesscut import ensure_video_loaded_at_losslesscut
-from pkg_py.functions_split.ensure_pk_program_suicided import ensure_pk_program_suicided
+from pkg_py.functions_split.ensure_video_played_at_losslesscut import ensure_video_played_at_losslesscut
+from pkg_py.functions_split.ensure_program_suicided import ensure_program_suicided
 from pkg_py.system_object.etc import PK_UNDERLINE
 from pkg_py.functions_split.get_value_completed import get_value_completed
 from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style

@@ -53,7 +53,7 @@ from cryptography.hazmat.backends import default_backend
 from bs4 import BeautifulSoup
 from base64 import b64encode
 from base64 import b64decode
-from pkg_py.functions_split.ensure_video_loaded_at_losslesscut import ensure_video_loaded_at_losslesscut
+from pkg_py.functions_split.ensure_video_played_at_losslesscut import ensure_video_played_at_losslesscut
 from pkg_py.functions_split.get_pnx_wsl_unix_style import get_pnx_wsl_unix_style
 from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
 from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style

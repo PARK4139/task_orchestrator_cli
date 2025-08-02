@@ -13,6 +13,7 @@ import zipfile
 from pathlib import Path
 
 from pkg_py.system_object.urls import UV_URL_LINUX, FZF_API_URL, UV_URL_WINDOWS
+from pkg_py.system_object.map_massages import PkMessages2025
 
 if platform.system().lower() == "windows":
     import winreg
@@ -74,11 +75,11 @@ def try_import_or_install(pkg_name: str, import_name: str = None) -> None:
     try:
         __import__(import_name)
     except ImportError:
-        print(f"'{pkg_name}' module not found, attempting to install...")
+        print(f"'{pkg_name}' {PkMessages2025.MODULE_NOT_FOUND}, attempting to install...")
         try:
             subprocess.run([sys.executable, "-m", "pip", "install", pkg_name], check=True)
         except Exception as e:
-            print(f"Failed to install '{pkg_name}': {e}")
+            print(f"{PkMessages2025.INSTALL_FAILED} '{pkg_name}': {e}")
             raise
 
 

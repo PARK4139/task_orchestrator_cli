@@ -22,7 +22,7 @@ from os.path import dirname
 from mutagen.mp3 import MP3
 from gtts import gTTS
 from enum import Enum
-from pkg_py.functions_split.ensure_video_loaded_at_losslesscut import ensure_video_loaded_at_losslesscut
+from pkg_py.functions_split.ensure_video_played_at_losslesscut import ensure_video_played_at_losslesscut
 from pkg_py.system_object.etc import PK_UNDERLINE
 from pkg_py.functions_split.get_pnx_wsl_unix_style import get_pnx_wsl_unix_style
 from pkg_py.functions_split.get_pnx_windows_style import get_pnx_windows_style

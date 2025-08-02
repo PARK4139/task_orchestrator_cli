@@ -1,6 +1,6 @@
 from pytube import Playlist
 
-from pkg_py.functions_split.ensure_pk_program_suicided import ensure_pk_program_suicided
+from pkg_py.functions_split.ensure_program_suicided import ensure_program_suicided
 
 from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.ensure_printed import ensure_printed

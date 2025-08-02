@@ -1,6 +1,7 @@
 from pkg_py.system_object.files import F_FFMPEG_EXE
 
 from pkg_py.functions_split.ensure_printed import ensure_printed
+from pkg_py.system_object.map_massages import PkMessages2025
 
 
 def convert_mp3_to_flac(f_mp3):
@@ -25,7 +26,7 @@ def convert_mp3_to_flac(f_mp3):
     except Exception as e:
         pass
     os.chdir(d_dst)
-    ensure_printed(f'"{ffmpeg_exe}" -i "{f_mp3}" -c:a flac "{f_edited}"        를 수행합니다.', print_color='blue')
+    ensure_printed(f'"{ffmpeg_exe}" -i "{f_mp3}" -c:a flac "{f_edited}"        {PkMessages2025.PERFORMING_OPERATION}.', print_color='blue')
     subprocess.check_output(f'"{ffmpeg_exe}" -i "{f_mp3}" -c:a flac "{f_edited}"', shell=True)
 
     os.chdir(d_started)

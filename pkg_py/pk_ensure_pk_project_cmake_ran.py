@@ -20,9 +20,9 @@ if __name__ == '__main__':
         ensure_printed(str_working=assist_to_ensure_pk_project_cmake_ran.__name__)
 
     except Exception as exception:
-        ensure_do_exception_routine(traceback=traceback, exception=exception)
+        ensure_exception_routine_done(traceback=traceback, exception=exception)
         d_current_n = pk_deprecated_get_d_current_n_like_person()
-        ensure_do_finally_routine(D_PROJECT=D_PROJECT, __file__=__file__, STAMP_TRY_GUIDE=STAMP_TRY_GUIDE)
+        ensure_finally_routine_done(D_PROJECT=D_PROJECT, __file__=__file__, STAMP_TRY_GUIDE=STAMP_TRY_GUIDE)
         traceback_format_exc_list = traceback.format_exc().split("\n")
 
         ensure_printed(str_working=f'{PK_UNDERLINE}', print_color='red')

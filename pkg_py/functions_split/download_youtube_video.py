@@ -250,7 +250,7 @@ def download_youtube_video():
                          print_color='red')
     except SystemExit as e:
         if e.code == 0:
-            ensure_printed('[정상 종료됨: SystemExit(0)]', print_color='green')
+            ensure_printed(f'[{PkMessages2025.NORMAL_EXIT}: SystemExit(0)]', print_color='green')
             sys.exit(0)
         else:
             raise  # 비정상 종료는 그대로 propagate

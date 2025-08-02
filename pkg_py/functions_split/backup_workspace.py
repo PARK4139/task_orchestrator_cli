@@ -5,7 +5,7 @@ from pkg_py.functions_split.ensure_seconds_measured import ensure_seconds_measur
 def backup_workspace(D_PKG_ARCHIVED, d_working, func_n):
     import traceback
     from pkg_py.system_object.local_test_activate import LTA
-    from pkg_py.functions_split.ensure_do_exception_routine import ensure_do_exception_routine
+    from pkg_py.functions_split.ensure_exception_routine_done import ensure_exception_routine_done
     from pkg_py.functions_split.ensure_printed import ensure_printed
     import logging
     import os
@@ -50,4 +50,4 @@ def backup_workspace(D_PKG_ARCHIVED, d_working, func_n):
         logging.info(f"[{PkMessages2025.BACKUP_DONE}] {archive_path}\n")
         return archive_path
     except Exception as exception:
-        ensure_do_exception_routine(traceback=traceback, exception=exception)
+        ensure_exception_routine_done(traceback=traceback, exception=exception)

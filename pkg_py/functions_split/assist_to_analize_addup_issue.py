@@ -7,6 +7,7 @@ from pkg_py.system_object.directories import D_PKG_TXT
 from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style
 from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
+from pkg_py.system_object.map_massages import PkMessages2025
 
 
 def assist_to_analize_addup_issue():  # todo
@@ -46,7 +47,7 @@ def assist_to_analize_addup_issue():  # todo
                     stamp_func_n = rf'''[{func_n}()]'''
                     ensure_printed(f'''{stamp_func_n} {traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}''',
                              print_color='red')
-                    ensure_printed(str_working="페이지 로딩에 실패", print_color='red')
+                    ensure_printed(str_working=f"{PkMessages2025.PAGE_LOADING_FAILED}", print_color='red')
                     return
 
     def write_user_input_by_tag_id(driver, tag_id, user_input):

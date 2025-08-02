@@ -48,4 +48,4 @@ def ensure_files_renamed_and_filecontent_replaced(d_target, oldstr, new_str, tar
                 # print(f"[SKIP] 변경 없음: {old_path}") # pk_option
                 pass
 
-            print(f"[{PkMessages2025.DONE}] {func_n}")  # pk_option
+

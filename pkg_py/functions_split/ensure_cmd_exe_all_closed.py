@@ -3,7 +3,7 @@ import inspect
 from pkg_py.functions_split.get_file_id import get_file_id
 from pkg_py.functions_split.get_value_via_fzf_or_history import get_value_via_fzf_or_history
 from pkg_py.functions_split.get_values_sanitize_for_cp949 import get_values_sanitize_for_cp949
-from pkg_py.system_object.gui_util import get_windows_opened
+from pkg_py.functions_split.get_windows_opened import get_windows_opened
 
 
 def ensure_cmd_exe_all_closed():

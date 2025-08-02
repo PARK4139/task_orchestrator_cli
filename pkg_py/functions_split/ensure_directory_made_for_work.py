@@ -20,7 +20,7 @@ from pkg_py.system_object.directories import D_PK_WORKING
 from datetime import datetime
 from dataclasses import dataclass
 from collections import Counter
-from pkg_py.functions_split.ensure_pk_program_suicided import ensure_pk_program_suicided
+from pkg_py.functions_split.ensure_program_suicided import ensure_program_suicided
 from pkg_py.functions_split.is_d import is_d
 # from pkg_py.system_object.is_os_windows import is_os_windows
 

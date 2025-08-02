@@ -167,7 +167,7 @@ def get_latest_tracking_only_from_sqlite_xc_status_db():
     """
     df_latest = pd.read_sql(query, conn)
     conn.close()
-    ensure_printed(f"📌 최신 업무트래킹 기준으로 {len(df_latest)}개 장비 조회됨", print_color='blue')
+    ensure_printed(f"📌 {PkMessages2025.LATEST_WORK_TRACKING} {len(df_latest)}{PkMessages2025.EQUIPMENT_QUERIED}", print_color='blue')
     return df_latest
 
 
@@ -214,7 +214,7 @@ def _TEST_CASE_장비현황_로컬DB에서_최신현황만_CSV파일로_저장()
 
     df_latest.to_csv(f_save_csv, index=False, encoding="utf-8-sig")
     if does_pnx_exist(f_save_csv):
-        ensure_printed(f"최신 현황 CSV 저장 완료 → {f_save_csv}", print_color="green")
+        ensure_printed(f"{PkMessages2025.LATEST_STATUS_CSV_SAVE_COMPLETE} → {f_save_csv}", print_color="green")
         ensure_command_excuted_to_os(rf'explorer {f_save_csv}')
     return f_save_csv
 
@@ -276,7 +276,7 @@ def _TEST_CASE_장비현황_로컬DB에서_최신현황만_CSV파일로_저장_A
     df_all.to_csv(f_save_csv, index=False, encoding="utf-8-sig")
 
     if does_pnx_exist(f_save_csv):
-        ensure_printed(f"전체 장비현황 CSV 저장 완료 (v6, Serial 수식처리 적용) → {f_save_csv}", print_color="green")
+        ensure_printed(f"{PkMessages2025.FULL_EQUIPMENT_STATUS_CSV_SAVE_COMPLETE} (v6, Serial 수식처리 적용) → {f_save_csv}", print_color="green")
         ensure_command_excuted_to_os(rf'explorer {f_save_csv}')
 
     return f_save_csv

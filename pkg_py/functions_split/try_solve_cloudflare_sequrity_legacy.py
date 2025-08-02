@@ -30,7 +30,7 @@ from dataclasses import dataclass
 from cryptography.hazmat.backends import default_backend
 from Cryptodome.Random import get_random_bytes
 from bs4 import ResultSet
-from pkg_py.functions_split.ensure_video_loaded_at_losslesscut import ensure_video_loaded_at_losslesscut
+from pkg_py.functions_split.ensure_video_played_at_losslesscut import ensure_video_played_at_losslesscut
 from pkg_py.system_object.etc import PK_UNDERLINE
 from pkg_py.functions_split.get_pnxs import get_pnxs
 from pkg_py.functions_split.get_list_calculated import get_list_calculated

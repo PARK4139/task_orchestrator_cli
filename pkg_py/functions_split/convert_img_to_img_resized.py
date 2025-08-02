@@ -42,7 +42,7 @@ from enum import Enum
 from Cryptodome.Random import get_random_bytes
 from colorama import init as pk_colorama_init
 from pkg_py.functions_split.get_nx import get_nx
-from pkg_py.functions_split.ensure_video_loaded_at_losslesscut import ensure_video_loaded_at_losslesscut
+from pkg_py.functions_split.ensure_video_played_at_losslesscut import ensure_video_played_at_losslesscut
 from pkg_py.functions_split.get_list_calculated import get_list_calculated
 from pkg_py.functions_split.is_f import is_f
 from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux

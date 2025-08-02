@@ -31,7 +31,7 @@ from os import path
 from functools import partial as functools_partial
 from datetime import date
 from cryptography.hazmat.backends import default_backend
-from pkg_py.functions_split.ensure_pk_program_suicided import ensure_pk_program_suicided
+from pkg_py.functions_split.ensure_program_suicided import ensure_program_suicided
 from pkg_py.functions_split.get_pnxs import get_pnxs
 from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
 from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style

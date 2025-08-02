@@ -17,7 +17,7 @@ def ensure_files_useless_gathered():
     import traceback
 
     from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
-    from pkg_py.functions_split.ensure_do_exception_routine import ensure_do_exception_routine
+    from pkg_py.functions_split.ensure_exception_routine_done import ensure_exception_routine_done
     from pkg_py.functions_split.ensure_list_written_to_f import ensure_list_written_to_f
     from pkg_py.functions_split.ensure_printed import ensure_printed
     from pkg_py.functions_split.get_file_id import get_file_id
@@ -90,4 +90,4 @@ def ensure_files_useless_gathered():
                 ensure_pnxs_move_to_recycle_bin(pnx=useless_f)
         ensure_printed(str_working=rf'''dst="{dst}"  {'%%%FOO%%%' if LTA else ''}''', print_color='green')
     except Exception as exception:
-        ensure_do_exception_routine(traceback=traceback, exception=exception)
+        ensure_exception_routine_done(traceback=traceback, exception=exception)

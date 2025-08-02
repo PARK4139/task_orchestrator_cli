@@ -2,6 +2,7 @@ from tkinter import UNDERLINE
 
 
 from pkg_py.functions_split.ensure_printed import ensure_printed
+from pkg_py.system_object.map_massages import PkMessages2025
 
 
 def crawl_html_href(url: str):
@@ -17,21 +18,21 @@ def crawl_html_href(url: str):
     url = url.strip()
 
     # driver 설정
-    ensure_printed(f"get_driver_selenium(browser_debug_mode=True) 수행 중...", print_color='blue')
+    ensure_printed(f"{PkMessages2025.SELENIUM_DRIVER_DEBUG_MODE}...", print_color='blue')
     driver = get_driver_selenium(browser_debug_mode=browser_debug_mode)
 
-    ensure_printed(f"driver.get(target_url) 수행 중...", print_color='blue')
+    ensure_printed(f"{PkMessages2025.DRIVER_GET_TARGET_URL}...", print_color='blue')
     target_url = url
     driver.get(target_url)
 
     # 자동제어 브라우저 화면 초기 로딩 random.randint(1,n) 초만큼 명시적 대기
     n = 2
     seconds = random.randint(1, n)
-    ensure_printed(f"자동제어 브라우저 화면 초기 로딩 중... {seconds} seconds", print_color='blue')
+    ensure_printed(f"{PkMessages2025.BROWSER_SCREEN_INITIAL_LOADING}... {seconds} {PkMessages2025.SECONDS}", print_color='blue')
     driver.implicitly_wait(seconds)  # 처음페이지 로딩이 끝날 때까지 약 random.randint(1,n)초 대기
 
     # 최하단으로 자동 스크롤, 페이지 최하단에서 더이상 로딩될 dom 객체가 없을 때 까지
-    ensure_printed("스크롤 최하단으로 이동 중...", print_color='blue')
+    ensure_printed(f"{PkMessages2025.SCROLL_TO_BOTTOM}...", print_color='blue')
     scroll_cnt = 0
     previous_scroll_h = None
     current_scroll_h = None
@@ -46,7 +47,7 @@ def crawl_html_href(url: str):
         n = 6  # success
         if len(scroll_maxs_monitored) == n:
             if all(scroll_maxs_monitored) == True:  # [bool] bool list 내 요소가 모두 true 인지 확인
-                ensure_printed(str_working="스크롤 최하단으로 이동되었습니다", print_color='blue')
+                ensure_printed(str_working=f"{PkMessages2025.SCROLL_TO_BOTTOM_COMPLETE}", print_color='blue')
                 break
 
         # previous_scroll_h 업데이트

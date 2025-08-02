@@ -53,6 +53,9 @@ def get_value_completed_v2(message, option_values):
 
     # 1) get_pnx_os_style 적용 + 중복 제거 (원본 순서 유지)
     for item in option_values:
+        # None 값은 건너뛰기
+        if item is None:
+            continue
         styled = item
         if isinstance(item, str):
             if is_path_like(item):

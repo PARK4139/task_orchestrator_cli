@@ -2,7 +2,7 @@ from pkg_py.functions_split.ensure_console_cleared import ensure_console_cleared
 from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.ensure_slept import ensure_slept
 from pkg_py.functions_split.ensure_spoken import ensure_spoken
-from pkg_py.functions_split.ensure_spoken_v3 import ensure_spoken_v3
+from pkg_py.system_object.map_massages import PkMessages2025
 
 
 def TBD_jarvis():
@@ -28,10 +28,10 @@ def TBD_jarvis():
     def alert(now_time):
         """알림 함수: 현재 시간을 출력하고, OS에 따라 알림 표시"""
 
-        ensure_spoken(f"현재 시간은 {now_time.hour}시 {now_time.minute}분입니다.")
-        ensure_printed(f"현재 시간은 {now_time.hour}시 {now_time.minute}분입니다.", print_color='yellow')
+        ensure_spoken(f"{PkMessages2025.CURRENT_TIME} {now_time.hour}시 {now_time.minute}분입니다.")
+        ensure_printed(f"{PkMessages2025.CURRENT_TIME} {now_time.hour}시 {now_time.minute}분입니다.", print_color='yellow')
 
-    ensure_spoken_v3("샘플 설정 시간을 입력해주세요")
+    ensure_spoken(f"{PkMessages2025.SAMPLE_TIME_INPUT}")
     sleep_time_ranges_text = ["00:12-05:30"]
     lunch_time_ranges_text = ["12:00-13:00"]
     break_time_ranges_text = ["15:00-15:15"]
@@ -57,7 +57,7 @@ def TBD_jarvis():
             ensure_console_cleared()
             last_cleared_hour = now.hour
             alerted_blocks.clear()  # 새로운 시간 진입 시, 알림 상태 초기화
-            ensure_printed(f"alerted_blocks=({alerted_blocks})", print_color='yellow')
+            ensure_printed(f"{PkMessages2025.ALERT_BLOCKS}=({alerted_blocks})", print_color='yellow')
 
         for idx, block in enumerate(all_time_blocks):
             if is_now_in_time_range(now_time, block):

@@ -62,7 +62,7 @@ if __name__ == '__main__':
         run_input_listener_loop()
 
     except Exception as e:
-        ensure_do_exception_routine(traceback=traceback, exception=exception)
+        ensure_exception_routine_done(traceback=traceback, exception=exception)
 
         ensure_printed(str_working=f'{PK_UNDERLINE}', print_color='red')
         for traceback_format_exc_str in traceback_format_exc_list:

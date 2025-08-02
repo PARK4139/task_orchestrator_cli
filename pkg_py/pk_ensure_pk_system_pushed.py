@@ -1,3 +1,9 @@
+import ipdb
+
+from pkg_py.functions_split.ensure_console_debuggable import ensure_console_debuggable
+from pkg_py.system_object.local_test_activate import LTA
+from pkg_py.system_object.map_massages import PkMessages2025
+
 if __name__ == "__main__":
     try:
         import traceback
@@ -5,14 +11,14 @@ if __name__ == "__main__":
         import os
 
         from pkg_py.functions_split.ensure_git_project_pushed import ensure_git_project_pushed
-        from pkg_py.functions_split.ensure_pk_program_suicided import ensure_pk_program_suicided
+        from pkg_py.functions_split.ensure_program_suicided import ensure_program_suicided
         from pkg_py.functions_split.ensure_window_title_replaced import ensure_window_title_replaced
         from pkg_py.functions_split.get_nx import get_nx
 
-        from pkg_py.functions_split.ensure_do_exception_routine import ensure_do_exception_routine
-        from pkg_py.functions_split.ensure_do_finally_routine import ensure_do_finally_routine
+        from pkg_py.functions_split.ensure_exception_routine_done import ensure_exception_routine_done
+        from pkg_py.functions_split.ensure_finally_routine_done import ensure_finally_routine_done
         from pkg_py.functions_split.get_pk_token import get_pk_token
-        from pkg_py.functions_split import get_time_as_
+        from pkg_py.functions_split import get_time_as_, ensure_printed
         from pkg_py.functions_split.get_value_completed import get_value_completed
         from pkg_py.functions_split.ensure_colorama_initialized_once import ensure_colorama_initialized_once
         from pkg_py.functions_split.push_pnx_to_github import push_pnx_to_github
@@ -32,8 +38,9 @@ if __name__ == "__main__":
         ensure_window_title_replaced(get_nx(__file__))
         os.chdir(D_PROJECT)
         state = ensure_git_project_pushed(with_commit_massage=False)
+        ensure_printed(f'''[{PkMessages2025.DATA}] state={state} {'%%%FOO%%%' if LTA else ''}''')
         if state["state"]:
-            ensure_pk_program_suicided(self_f=__file__)  # pk_option
+            ensure_program_suicided(__file__)  # pk_option
 
         # SCRIPT_NAME = Path(__file__).name
         # ensure_colorama_initialized_once()
@@ -44,6 +51,6 @@ if __name__ == "__main__":
         # push_pnx_to_github(d_working=D_PROJECT, git_repo_url=git_repo_url, commit_msg=commit_msg, branch_n='dev')
 
     except Exception as exception:
-        ensure_do_exception_routine(traceback=traceback, exception=exception)
+        ensure_exception_routine_done(traceback=traceback, exception=exception)
     finally:
-        ensure_do_finally_routine(D_PROJECT=D_PROJECT, __file__=__file__, STAMP_TRY_GUIDE=STAMP_TRY_GUIDE)
+        ensure_finally_routine_done(D_PROJECT=D_PROJECT, __file__=__file__, STAMP_TRY_GUIDE=STAMP_TRY_GUIDE)

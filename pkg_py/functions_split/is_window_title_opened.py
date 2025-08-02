@@ -2,7 +2,7 @@ def is_window_title_opened(window_title):
     from pkg_py.system_object.local_test_activate import LTA
     from pkg_py.functions_split.ensure_printed import ensure_printed
     from pkg_py.functions_split.get_list_without_none import get_list_without_none
-    from pkg_py.system_object.gui_util import get_windows_opened
+    from pkg_py.functions_split.get_windows_opened import get_windows_opened
 
     window_titles_opened = get_windows_opened()
     window_titles_opened = get_list_without_none(working_list=window_titles_opened)

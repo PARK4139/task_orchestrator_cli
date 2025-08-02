@@ -38,7 +38,7 @@ from datetime import timedelta
 from datetime import date
 from cryptography.hazmat.backends import default_backend
 from Cryptodome.Random import get_random_bytes
-from pkg_py.functions_split.ensure_video_loaded_at_losslesscut import ensure_video_loaded_at_losslesscut
+from pkg_py.functions_split.ensure_video_played_at_losslesscut import ensure_video_played_at_losslesscut
 from pkg_py.system_object.directories import D_PK_WORKING, D_PKG_PKL, D_PKG_PY
 from pkg_py.system_object.directories import D_PKG_PY
 # from pkg_py.system_object.is_os_windows import is_os_windows

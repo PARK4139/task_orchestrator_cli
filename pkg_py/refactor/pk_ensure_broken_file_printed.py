@@ -1,4 +1,4 @@
-from pkg_py.functions_split.pk_ensure_do_finally_routine import pk_ensure_do_finally_routine
+from pkg_py.functions_split.pk_ensure_finally_routine_done import pk_ensure_finally_routine_done
 from pkg_py.functions_split.pk_ensure_pnx_removed import pk_ensure_pnx_removed
 from pkg_py.functions_split.pk_ensure_printed import pk_ensure_printed
 from pkg_py.functions_split.get_nx import get_nx
@@ -70,4 +70,4 @@ if __name__ == "__main__":
         pk_ensure_printed(str_working=f'{PK_UNDERLINE}', print_color='red')
 
     finally:
-        pk_ensure_do_finally_routine(D_PROJECT=D_PROJECT, __file__=__file__, STAMP_TRY_GUIDE=STAMP_TRY_GUIDE)
+        pk_ensure_finally_routine_done(D_PROJECT=D_PROJECT, __file__=__file__, STAMP_TRY_GUIDE=STAMP_TRY_GUIDE)

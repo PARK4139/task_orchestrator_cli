@@ -15,6 +15,9 @@ def get_value_completed_v4(message, option_values):
     deduped = []
 
     for item in option_values:
+        # None 값은 건너뛰기
+        if item is None:
+            continue
         styled = item
         if isinstance(item, str) and is_path_like(item):
             styled = get_pnx_os_style(item)

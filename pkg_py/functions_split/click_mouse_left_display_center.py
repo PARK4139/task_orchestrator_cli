@@ -59,7 +59,7 @@ from Cryptodome.Cipher import AES
 from collections import Counter
 from base64 import b64encode
 from base64 import b64decode
-from pkg_py.functions_split.ensure_video_loaded_at_losslesscut import ensure_video_loaded_at_losslesscut
+from pkg_py.functions_split.ensure_video_played_at_losslesscut import ensure_video_played_at_losslesscut
 from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style
 from pkg_py.functions_split.get_list_calculated import get_list_calculated
 from pkg_py.functions_split.is_d import is_d

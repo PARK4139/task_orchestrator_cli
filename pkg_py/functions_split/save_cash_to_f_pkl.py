@@ -31,7 +31,7 @@ from datetime import datetime
 from datetime import date
 from dataclasses import dataclass
 from Cryptodome.Random import get_random_bytes
-from pkg_py.functions_split.ensure_video_loaded_at_losslesscut import ensure_video_loaded_at_losslesscut
+from pkg_py.functions_split.ensure_video_played_at_losslesscut import ensure_video_played_at_losslesscut
 # from pkg_py.system_object.is_os_windows import is_os_windows
 from pkg_py.functions_split.get_pnx_windows_style import get_pnx_windows_style
 from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style

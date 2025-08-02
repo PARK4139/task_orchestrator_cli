@@ -1,5 +1,7 @@
+from torch.fx.experimental.symbolic_shapes import lru_cache
 
 
+@lru_cache(maxsize=1)
 def ensure_ffmpeg_installed_to_pkg_windows():
     from pkg_py.system_object.directories import D_PKG_WINDOWS
 

@@ -57,7 +57,7 @@ from datetime import date
 from collections import defaultdict, Counter
 from bs4 import BeautifulSoup
 from pkg_py.functions_split.get_nx import get_nx
-from pkg_py.functions_split.ensure_video_loaded_at_losslesscut import ensure_video_loaded_at_losslesscut
+from pkg_py.functions_split.ensure_video_played_at_losslesscut import ensure_video_played_at_losslesscut
 from pkg_py.functions_split.get_pnxs import get_pnxs
 from pkg_py.system_object.directories import D_PKG_PY
 from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux

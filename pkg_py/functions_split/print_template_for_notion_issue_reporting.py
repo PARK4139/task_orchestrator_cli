@@ -25,7 +25,7 @@ from functools import partial
 from dirsync import sync
 from collections import Counter
 from bs4 import BeautifulSoup
-from pkg_py.functions_split.ensure_video_loaded_at_losslesscut import ensure_video_loaded_at_losslesscut
+from pkg_py.functions_split.ensure_video_played_at_losslesscut import ensure_video_played_at_losslesscut
 from pkg_py.functions_split.get_value_completed import get_value_completed
 from pkg_py.functions_split.get_list_calculated import get_list_calculated
 

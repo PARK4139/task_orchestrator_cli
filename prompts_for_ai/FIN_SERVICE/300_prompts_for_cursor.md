@@ -25,19 +25,36 @@ _________________________________________________________________ service logic 
 # TODO : tests의 디렉토리의 파일들 탭으로 펼치고 그중 하나를 엔터로 자동완성하여 선택된 단일파일의 테스트 코드를 실행
 
 _________________________________________________________________ refactor
+business_finance_invest_assist 내부 함수명 리펙토링 요청
+1. ensure_ prefix 로 시작하는 표현으로
 
-프로젝트/business_finance_invest_assist 함수명을 ensure_ prefix 로 시작하는 표현으로 리펙토링해줘
 
-
+pk_system 프로젝트를 다국어 모드를 지원 프로그램으로 리팩토링 요청
+1. PkMessages2025 를 활용해서 호출하는 부분의 패턴을 분석
+2. 한글이나 영어로 하드코딩된 부분을 f-string 문법을 통해서 PkMessages2025.XXX 형태로 변경.
+3. PkMessages2025 에 없는 단어는 PkMessages2025 에 추가
+4. PkMessages2025 에서 이모지 제거
+5. ensure_printed(f"발견된 Everything 창들: {everything_windows}", print_color='yellow') 이런거 보면 아직 다국어지원 완전히 안된거 같은데 pk_system 내부의 모든 사용자지정 파이썬파일들에 다국어 지원 적용해줘  jarvis 들어간 파일들 부터
+6. PkMessages2025 에서 중복 비교
+7. PkMessages2025 에서 중복 제거
 
 _________________________________________________________________ test
-test 코드는 tests 로  이동
-test 코드는 test_ prefix로 파일명을 작성성
-
-root 에 있는 test_ prefix로 시작하는 테스트 코드는 tests 로  이동해
+1. tests 디렉토리 밖에 있는 테스트코드들을 tests 디렉토리로  이동
+2. test 코드는 tests 디렉토리로 이동
+3. test 코드는 test_ prefix로 파일명으로 리펙토링
 
 
 tests의 test 코드명을 좀더 명시적으로 변경해줘
+
+
+tests 코드 refactor 요청
+1. 프로젝트에 더이상 유효하지 않아보이는 test 코드는 파일명에 "#_" prefix 를 붙여서 rename 해줘
+2. tests 내부의 코드들을 모두 dry_run 기능으로 수행하도록 수정요청
+3. tests 를 테스트를 자동화해서 report 기능추가요청
+
+_________________________________________________________________ error 
+디버깅 강화요청
+
 _________________________________________________________________ commit massage 
 오늘 작업한 프롬프트들 정리해서 한글 commit msg 작성
 오늘 작업한 프롬프트들 정리해서 영어 commit msg 작성

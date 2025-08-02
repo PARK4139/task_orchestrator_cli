@@ -1,10 +1,11 @@
-from pkg_py.functions_split.ensure_py_system_process_ran_by_pnx import ensure_py_system_process_ran_by_pnx
 from pkg_py.functions_split.ensure_seconds_measured import ensure_seconds_measured
-from pkg_py.system_object.etc import pk_
 
 
 @ensure_seconds_measured
-def ensure_pk_system_started_v5():
+def ensure_pk_system_started_v5(pk_file_list=None):
+    from pkg_py.functions_split.ensure_py_system_process_ran_by_pnx import ensure_py_system_process_ran_by_pnx
+    from pkg_py.system_object.etc import pk_
+
     from pkg_py.functions_split.fallback_choice import fallback_choice
     from pkg_py.functions_split.get_f_historical import get_history_file
     from pkg_py.functions_split.get_file_id import get_file_id
@@ -25,19 +26,22 @@ def ensure_pk_system_started_v5():
 
     func_n = inspect.currentframe().f_code.co_name
 
-    prefix = pk_
-
-    pk_file_list = get_excutable_pk_system_processes()  # pkg_py 폴더의 py 파일 추가
-    pk_file_list += get_refactor_py_file_list()  # refactor 폴더의 py 파일 추가
+    prefix = pk_  # pk_option
+    # prefix = rf"{pk_}ensure_" # pk_option
+    if pk_file_list is None:
+        pk_file_list = get_excutable_pk_system_processes()  # pkg_py 폴더의 py 파일 추가
+    if LTA:
+        pk_file_list += get_refactor_py_file_list()  # refactor 폴더의 py 파일 추가
     if not pk_file_list:
         print(f"실행 가능한 {prefix}*.py/refactor/*.py 파일이 없습니다.")
         return
 
     last_selected_guide_mode = None
     if LTA:
+        # last_selected_guide_mode = False  # pk_option
         last_selected_guide_mode = True  # pk_option
     else:
-        last_selected_guide_mode = False
+        last_selected_guide_mode = False  # pk_option
 
     key_name = "last_selected"
     last_selected = None
@@ -48,12 +52,14 @@ def ensure_pk_system_started_v5():
     fzf_cmd = get_fzf_command()
     if fzf_cmd:
         try:
-            display_names = [os.path.basename(p)[3:] for p in pk_file_list]  # remove 'pk_'
+            # display_names = [os.path.basename(p)[3:] for p in pk_file_list]
+            display_names = [os.path.basename(p).removeprefix(prefix) for p in pk_file_list]
             fzf_input = "\n".join(display_names)
             cmd = [fzf_cmd]
             if last_selected_guide_mode == True:
                 if last_selected and last_selected in pk_file_list:
-                    fname = os.path.basename(last_selected)[3:]
+                    # fname = os.path.basename(last_selected)[3:]
+                    fname = os.path.basename(last_selected).removeprefix(prefix)
                     cmd += ["--query", fname]
             proc = subprocess.Popen(cmd, stdin=subprocess.PIPE, stdout=subprocess.PIPE, text=True)
             out, _ = proc.communicate(input=fzf_input)
@@ -81,8 +87,8 @@ def ensure_pk_system_started_v5():
     file_to_excute = os.path.normpath(file_to_excute)
     file_title = os.path.basename(file_to_excute)
 
-    if file_title.startswith(f"{prefix}"):
-        file_title = file_title[3:] # remove file prefix
+    if file_title.startswith(prefix):
+        file_title = file_title.removeprefix(prefix)
         ensure_py_system_process_ran_by_pnx(file_to_excute, file_title)
 
     ensure_slept(milliseconds=500)

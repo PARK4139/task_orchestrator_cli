@@ -51,7 +51,7 @@ from functools import partial
 from functools import lru_cache
 from enum import Enum
 from bs4 import BeautifulSoup
-from pkg_py.functions_split.ensure_video_loaded_at_losslesscut import ensure_video_loaded_at_losslesscut
+from pkg_py.functions_split.ensure_video_played_at_losslesscut import ensure_video_played_at_losslesscut
 from pkg_py.functions_split.get_value_completed import get_value_completed
 from pkg_py.functions_split.is_d import is_d
 from pkg_py.functions_split.is_f import is_f

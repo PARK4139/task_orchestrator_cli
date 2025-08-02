@@ -4,7 +4,7 @@ from pkg_py.functions_split.ensure_iterable_printed_as_vertical import ensure_it
 from pkg_py.system_object.files import F_HISTORICAL_PNX
 from os.path import dirname
 from functools import lru_cache
-from pkg_py.functions_split.ensure_pk_program_suicided import ensure_pk_program_suicided
+from pkg_py.functions_split.ensure_program_suicided import ensure_program_suicided
 from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style
 from pkg_py.functions_split.ensure_printed import ensure_printed
 

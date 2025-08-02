@@ -75,5 +75,5 @@ if __name__ == "__main__":
         ensure_printed(str_working=f'{PK_UNDERLINE}', print_color='red')
 
     finally:
-        ensure_do_finally_routine(D_PROJECT=D_PROJECT, __file__=__file__, STAMP_TRY_GUIDE=STAMP_TRY_GUIDE)
+        ensure_finally_routine_done(D_PROJECT=D_PROJECT, __file__=__file__, STAMP_TRY_GUIDE=STAMP_TRY_GUIDE)
         

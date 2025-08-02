@@ -1,8 +1,8 @@
 if __name__ == "__main__":
     import traceback
     from pkg_py.system_object.directories import D_DESKTOP
-    from pkg_py.functions_split.ensure_do_exception_routine import ensure_do_exception_routine
-    from pkg_py.functions_split.pk_ensure_do_finally_routine import pk_ensure_do_finally_routine
+    from pkg_py.functions_split.ensure_exception_routine_done import ensure_exception_routine_done
+    from pkg_py.functions_split.pk_ensure_finally_routine_done import pk_ensure_finally_routine_done
     from pkg_py.system_object.directories_reuseable import D_PROJECT
     from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
     from datetime import datetime
@@ -40,6 +40,6 @@ if __name__ == "__main__":
         since = datetime(2025, 1, 1, 15, 30)  # 기준 시점 설정 (예: 2025년 1월 1일 15:30)
         copy_changed_files(src_dir=source_directory, dest_dir=destination_directory, since_time=since)
     except Exception as exception:
-        ensure_do_exception_routine(traceback=traceback, exception=exception)
+        ensure_exception_routine_done(traceback=traceback, exception=exception)
     finally:
-        pk_ensure_do_finally_routine(D_PROJECT=D_PROJECT, __file__=__file__, STAMP_TRY_GUIDE=STAMP_TRY_GUIDE)
+        pk_ensure_finally_routine_done(D_PROJECT=D_PROJECT, __file__=__file__, STAMP_TRY_GUIDE=STAMP_TRY_GUIDE)

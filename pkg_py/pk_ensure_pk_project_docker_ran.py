@@ -52,15 +52,16 @@ if __name__ == '__main__':
     except Exception as e:
         # red
         import traceback
-        ensure_printed(str_working=f'{PK_UNDERLINE}예외발생 s\n\n', print_color='red')
+        from pkg_py.system_object.map_massages import PkMessages2025
+        ensure_printed(str_working=f'{PK_UNDERLINE}{PkMessages2025.EXCEPTION_OCCURRED_S}\n\n', print_color='red')
         ensure_printed(str_working=f'{traceback.format_exc()}\n', print_color='red')
-        ensure_printed(str_working=f'{PK_UNDERLINE}예외발생 e\n\n', print_color='red')
+        ensure_printed(str_working=f'{PK_UNDERLINE}{PkMessages2025.EXCEPTION_OCCURRED_E}\n\n', print_color='red')
 
         # yellow
         f_current= get_f_current_n()
         d_current=pk_deprecated_get_d_current_n_like_person()
-        ensure_printed(str_working=f'{PK_UNDERLINE}[Debugging Note] s\n', print_color="yellow")
+        ensure_printed(str_working=f'{PK_UNDERLINE}{PkMessages2025.DEBUGGING_NOTE_S}\n', print_color="yellow")
         ensure_printed(str_working=f'f_current={f_current}\nd_current={d_current}\n', print_color="yellow")
-        ensure_printed(str_working=f'{PK_UNDERLINE}[Debugging Note] e\n', print_color="yellow")
-        ensure_do_finally_routine(D_PROJECT=D_PROJECT, __file__=__file__, STAMP_TRY_GUIDE=STAMP_TRY_GUIDE)
+        ensure_printed(str_working=f'{PK_UNDERLINE}{PkMessages2025.DEBUGGING_NOTE_E}\n', print_color="yellow")
+        ensure_finally_routine_done(D_PROJECT=D_PROJECT, __file__=__file__, STAMP_TRY_GUIDE=STAMP_TRY_GUIDE)
         ensure_printed(script_to_run_python_program_in_venv)

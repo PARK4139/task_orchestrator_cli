@@ -1,5 +1,5 @@
 def ensure_pycharm_module_optimize():
-    """Optimize pycharm module via keyboard-mouse macro"""
+    from pkg_py.refactor.pk_ensure_keyboard_mouse_macro import PkMacroRoutines
     import os
     import shutil
     import logging
@@ -25,7 +25,6 @@ def ensure_pycharm_module_optimize():
     from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
     from pkg_py.functions_split.get_d_working import get_d_working
     from pkg_py.functions_split.get_values_from_historical_file_routine import get_values_from_historical_file_routine
-    from pkg_py.refactor.ensure_keyboard_mouse_macro import PkMacroRoutines
     from pkg_py.system_object.local_test_activate import LTA
     from pkg_py.system_object.state_via_database import PkSqlite3DB
     from pkg_py.system_object.map_massages import PkMessages2025

@@ -81,21 +81,21 @@ def download_video_mp4(url: str):
                     if id in line:
                         video_id = id
                         if video_id.strip() == "":
-                            ensure_printed(rf"다운로드 할 수 있는 video_id가 아닙니다 {video_id.strip()}", print_color='blue')
+                            ensure_printed(rf"{PkMessages2025.VIDEO_ID_NOT_DOWNLOADABLE} {video_id.strip()}", print_color='blue')
                             break
                 # audio_id 설정
                 for id in audio_ids_allowed:
                     if id in line:
                         audio_id = id
                         if audio_id.strip() == "":
-                            ensure_printed(rf"다운로드 할 수 있는 audio_id가 아닙니다 {audio_id.strip()}", print_color='blue')
+                            ensure_printed(rf"{PkMessages2025.AUDIO_ID_NOT_DOWNLOADABLE} {audio_id.strip()}", print_color='blue')
                             break
                         break
 
         cmd = rf'{F_YT_DLP_EXE} -f "bestvideo[ext=mp4]+bestaudio[ext=mp4]" {url}'  # ext=mp4 로 처리
         if video_id == "" or audio_id == "" == 1:
             # text="다운로드를 진행할 수 없습니다\n다운로드용 video_id 와 audio_id를 설정 후\nurl을 다시 붙여넣어 다운로드를 다시 시도하세요\n{url}"
-            ensure_printed("불완전한 다운로드 명령어가 감지되었습니다....", print_color='blue')
+            ensure_printed(f"{PkMessages2025.INCOMPLETE_DOWNLOAD_COMMAND}....", print_color='blue')
             ensure_spoken_v2(str_working="불완전한 다운로드 명령어가 감지되었습니다", comma_delay=0.98)
             dialog = GuiUtil.CustomQdialog(
                 prompt=f"에러코드[E004]\n아래의 비디오 아이디를 저장하고 에러코드를 관리자에게 문의해주세요\nvideo id: {url}",
@@ -116,7 +116,7 @@ def download_video_mp4(url: str):
         if not os.path.exists(D_PK_DOWNLOADSING):
             os.makedirs(D_PK_DOWNLOADSING)
 
-        ensure_printed("다운로드 f 이동 시도 중...", print_color='blue')
+        ensure_printed(f"{PkMessages2025.DOWNLOAD_FILE_MOVE_ATTEMPT}...", print_color='blue')
         file = ""
         try:
             clip_id = parse_youtube_video_id(url)
@@ -148,7 +148,7 @@ def download_video_mp4(url: str):
 
         except:
             ensure_printed(f'''{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
-        ensure_printed(rf'다운로드 결과 확인 중...', print_color='blue')
+        ensure_printed(rf'{PkMessages2025.DOWNLOAD_RESULT_CHECK}...', print_color='blue')
         try:
             src_moved = rf'{D_PK_DOWNLOADSING}\{file}'
             ensure_printed(rf'''src_moved : {src_moved}''', print_color='blue')

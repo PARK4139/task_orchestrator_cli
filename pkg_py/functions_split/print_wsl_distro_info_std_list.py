@@ -37,7 +37,7 @@ from functools import partial
 from bs4 import ResultSet
 from base64 import b64encode
 from pkg_py.functions_split.get_nx import get_nx
-from pkg_py.functions_split.ensure_pk_program_suicided import ensure_pk_program_suicided
+from pkg_py.functions_split.ensure_program_suicided import ensure_program_suicided
 from pkg_py.functions_split.get_list_calculated import get_list_calculated
 from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
 from pkg_py.functions_split.get_pnx_windows_style import get_pnx_windows_style

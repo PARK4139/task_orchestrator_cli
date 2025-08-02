@@ -59,7 +59,7 @@ from datetime import datetime
 from datetime import date
 from cryptography.hazmat.backends import default_backend
 from base64 import b64encode
-from pkg_py.functions_split.ensure_video_loaded_at_losslesscut import ensure_video_loaded_at_losslesscut
+from pkg_py.functions_split.ensure_video_played_at_losslesscut import ensure_video_played_at_losslesscut
 from pkg_py.system_object.etc import PK_UNDERLINE
 from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style
 from pkg_py.functions_split.get_list_calculated import get_list_calculated

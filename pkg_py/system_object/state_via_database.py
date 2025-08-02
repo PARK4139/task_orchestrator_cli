@@ -7,12 +7,12 @@ class PkSqlite3DB:
     @ensure_seconds_measured
     def __init__(self):
 
-        from pkg_py.system_object.files import F_PK_DB
+        from pkg_py.system_object.files import F_PK_SQLITE
         import sqlite3
 
         self.sqlite3 = sqlite3
 
-        self.pk_db_pnx = F_PK_DB
+        self.pk_db_pnx = F_PK_SQLITE
         self.ensure_pk_db(self.pk_db_pnx)
         self.pk_db_connection = sqlite3.connect(self.pk_db_pnx)
         self.ensure_pk_db_table()

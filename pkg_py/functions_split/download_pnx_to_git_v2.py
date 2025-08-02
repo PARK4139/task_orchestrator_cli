@@ -23,7 +23,7 @@ from PIL import Image
 from mutagen.mp3 import MP3
 from collections import Counter
 from bs4 import BeautifulSoup
-from pkg_py.functions_split.ensure_video_loaded_at_losslesscut import ensure_video_loaded_at_losslesscut
+from pkg_py.functions_split.ensure_video_played_at_losslesscut import ensure_video_played_at_losslesscut
 from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 

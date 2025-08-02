@@ -24,7 +24,7 @@ from functools import partial as functools_partial
 from dirsync import sync
 from cryptography.hazmat.primitives import padding
 from Cryptodome.Cipher import AES
-from pkg_py.functions_split.ensure_pk_program_suicided import ensure_pk_program_suicided
+from pkg_py.functions_split.ensure_program_suicided import ensure_program_suicided
 from pkg_py.functions_split.get_value_completed import get_value_completed
 from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style
 from pkg_py.functions_split.get_pnxs import get_pnxs

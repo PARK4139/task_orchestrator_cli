@@ -1,10 +1,8 @@
-from pkg_py.functions_split.ensure_console_cleared import ensure_console_cleared
-from pkg_py.functions_split.lock_os import lock_os
-from pkg_py.functions_split.ensure_slept import ensure_slept
-
-
 def ensure_os_locked():
     from datetime import datetime, time
+    from pkg_py.functions_split.ensure_console_cleared import ensure_console_cleared
+    from pkg_py.functions_split.ensure_slept import ensure_slept
+    from pkg_py.functions_split.lock_os import lock_os
 
     def parse_time_ranges(text_list):
         """sample: ["12:00-13:00", "15:00-15:10"] -> [(time(12,0), time(13,0)), (time(15,0), time(15,10))]"""
@@ -27,16 +25,10 @@ def ensure_os_locked():
 
     # 샘플 설정 시간
     sleep_time_ranges_text = ["00:12-05:30"]
-    lunch_time_ranges_text = ["12:00-13:00"]
-    break_time_ranges_text = ["15:00-15:15"]
-    exercise_time_ranges_text = ["18:30-18:50"]
 
     # 파싱
     all_time_blocks = (
-            parse_time_ranges(sleep_time_ranges_text)
-            + parse_time_ranges(lunch_time_ranges_text)
-            + parse_time_ranges(break_time_ranges_text)
-            + parse_time_ranges(exercise_time_ranges_text)
+        parse_time_ranges(sleep_time_ranges_text)
     )
 
     last_cleared_hour = -1  # 아직 클리어된 적 없음을 의미
@@ -52,6 +44,6 @@ def ensure_os_locked():
 
         # 시간 블럭에 해당하면 잠금
         if is_now_in_time_ranges(now_time, all_time_blocks):
-            pk_lock_os()
+            lock_os()
 
         ensure_slept(milliseconds=10000)

@@ -92,8 +92,8 @@ from concurrent.futures import ThreadPoolExecutor
 from collections import Counter
 from bs4 import ResultSet
 from bs4 import BeautifulSoup
-from pkg_py.functions_split.ensure_video_loaded_at_losslesscut import ensure_video_loaded_at_losslesscut
-from pkg_py.functions_split.ensure_pk_program_suicided import ensure_pk_program_suicided
+from pkg_py.functions_split.ensure_video_played_at_losslesscut import ensure_video_played_at_losslesscut
+from pkg_py.functions_split.ensure_program_suicided import ensure_program_suicided
 from pkg_py.system_object.etc import PkFilter, PK_UNDERLINE
 from pkg_py.system_object.etc import PK_UNDERLINE
 from pkg_py.functions_split.get_value_completed import get_value_completed

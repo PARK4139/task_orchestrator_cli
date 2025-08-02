@@ -43,10 +43,10 @@
 # from PIL import Image, ImageFont, ImageDraw
 # from PIL import Image, ImageFont, ImageDraw, ImageFilter
 # from pkg_py.functions_split.ensure_printed import ensure_printed
-# from pkg_ps1.system_object.process import ensure_process_killed_by_window_title_seg
+# from pkg_ps1.system_object.process import ensure_process_killed_by_window_title
 # from pkg_py.functions_split import ensure_pycharm_module_optimize
 # from pkg_py.functions_split import ensure_keyboard_mouse_macro
-# from pkg_py.functions_split.ensure_video_loaded_at_losslesscut import ensure_video_loaded_at_losslesscut
+# from pkg_py.functions_split.ensure_video_played_at_losslesscut import ensure_video_played_at_losslesscut
 # from pkg_py.functions_split.backup_workspace import backup_workspace
 # from pkg_py.functions_split.check_min_non_null_or_warn import check_min_non_null_or_warn
 # from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_excuted_to_os
@@ -54,8 +54,8 @@
 # from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 # from pkg_py.functions_split.ensure_console_cleared import ensure_console_cleared
 # from pkg_py.functions_split.ensure_console_debuggable import ensure_console_debuggable
-# from pkg_py.functions_split.ensure_do_exception_routine import ensure_do_exception_routine
-# from pkg_py.functions_split.ensure_do_finally_routine import ensure_do_finally_routine
+# from pkg_py.functions_split.ensure_exception_routine_done import ensure_exception_routine_done
+# from pkg_py.functions_split.ensure_finally_routine_done import ensure_finally_routine_done
 # from pkg_py.functions_split.ensure_elapsed_time_logged import ensure_elapsed_time_logged
 # from pkg_py.functions_split.ensure_func_info_loaded import ensure_func_info_loaded
 # from pkg_py.functions_split.ensure_func_info_saved import ensure_func_info_saved
@@ -135,7 +135,7 @@
 # from pkg_py.functions_split.is_window_title_front import is_window_title_front
 # from pkg_py.functions_split.is_window_title_opened import is_window_title_opened
 # from pkg_py.functions_split.kill_losslesscut import kill_losslesscut
-# from pkg_py.functions_split.ensure_pk_program_suicided import ensure_pk_program_suicided
+# from pkg_py.functions_split.ensure_program_suicided import ensure_program_suicided
 # from pkg_py.functions_split.ensure_f_video_loaded_on_losslesscut import ensure_f_video_loaded_on_losslesscut
 # from pkg_py.functions_split.load_logged_set import load_logged_set
 # from pkg_py.functions_split.move_window_to_front_via_pid import move_window_to_front_via_pid

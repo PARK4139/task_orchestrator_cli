@@ -46,7 +46,7 @@ if __name__ == '__main__':
         ensure_printed(str_working=f'{PK_UNDERLINE}[Debugging Note] s\n', print_color="yellow")
         ensure_printed(str_working=f'f_current={f_current}\nd_current={d_current}\n', print_color="yellow")
         ensure_printed(str_working=f'{PK_UNDERLINE}[Debugging Note] e\n', print_color="yellow")
-        ensure_do_finally_routine(D_PROJECT=D_PROJECT, __file__=__file__, STAMP_TRY_GUIDE=STAMP_TRY_GUIDE)
+        ensure_finally_routine_done(D_PROJECT=D_PROJECT, __file__=__file__, STAMP_TRY_GUIDE=STAMP_TRY_GUIDE)
         ensure_printed(script_to_run_python_program_in_venv)
 
         # debug

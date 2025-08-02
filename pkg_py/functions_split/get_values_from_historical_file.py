@@ -1,10 +1,11 @@
-from pkg_py.system_object.etc import PkFilter
-from pkg_py.functions_split.get_list_calculated import get_list_calculated
-from pkg_py.functions_split.get_historical_list import get_historical_list
-from pkg_py.functions_split.is_url import is_url
 
 
 def get_values_from_history_file(f_historical, pk_serial_filters=None):
+    from pkg_py.system_object.etc import PkFilter
+    from pkg_py.functions_split.get_list_calculated import get_list_calculated
+    from pkg_py.functions_split.get_historical_list import get_historical_list
+    from pkg_py.functions_split.is_url import is_url
+
     # TBD
     # paralel filter(priority) as another function
 

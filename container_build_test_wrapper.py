@@ -7,8 +7,10 @@ import os
 import sys
 from pathlib import Path
 
+from pkg_py.system_object.directories_reuseable import D_PROJECT
+
 # 프로젝트 루트 디렉토리 설정
-D_PROJECT = str(Path(__file__).resolve().parent)
+
 
 # pkg_py 디렉토리를 Python 경로에 추가
 pkg_py_path = os.path.join(D_PROJECT, "pkg_py")

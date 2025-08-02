@@ -65,7 +65,7 @@ from cryptography.hazmat.backends import default_backend
 from Cryptodome.Cipher import AES
 from collections import Counter
 from bs4 import ResultSet
-from pkg_py.functions_split.ensure_video_loaded_at_losslesscut import ensure_video_loaded_at_losslesscut
+from pkg_py.functions_split.ensure_video_played_at_losslesscut import ensure_video_played_at_losslesscut
 from pkg_py.system_object.etc import PkFilter, PK_UNDERLINE
 from pkg_py.functions_split.get_value_completed import get_value_completed
 from pkg_py.system_object.directories import D_PKG_PY

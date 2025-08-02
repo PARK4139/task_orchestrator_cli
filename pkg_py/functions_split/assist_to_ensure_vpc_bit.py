@@ -1,6 +1,7 @@
 from pkg_py.system_object.local_test_activate import LTA
 
 from pkg_py.functions_split.ensure_printed import ensure_printed
+from pkg_py.system_object.map_massages import PkMessages2025
 
 
 def assist_to_ensure_vpc_bit(bit_mode):
@@ -15,7 +16,7 @@ def assist_to_ensure_vpc_bit(bit_mode):
 
     if not LTA:
         if not is_internet_connected():
-            ensure_printed(f'''인터넷이 연결되어야 vpc bit 가 진행이 가능합니다. {'%%%FOO%%%' if LTA else ''}''', print_color='red')
+            ensure_printed(f'''{PkMessages2025.INTERNET_CONNECTION_REQUIRED} {PkMessages2025.VPC_BIT_PROGRESS}. {'%%%FOO%%%' if LTA else ''}''', print_color='red')
 
     # ensure ping to acu_it # [acu_it] from toml
 

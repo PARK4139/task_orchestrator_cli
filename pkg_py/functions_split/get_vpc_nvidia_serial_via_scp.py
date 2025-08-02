@@ -87,7 +87,7 @@ from Cryptodome.Cipher import AES
 from colorama import init as pk_colorama_init
 from collections import Counter
 from base64 import b64decode
-from pkg_py.functions_split.ensure_video_loaded_at_losslesscut import ensure_video_loaded_at_losslesscut
+from pkg_py.functions_split.ensure_video_played_at_losslesscut import ensure_video_played_at_losslesscut
 from pkg_py.system_object.directories import D_PK_WORKING, D_DOWNLOADS, D_PKG_PKL, D_PKG_PY
 from pkg_py.system_object.directories import D_PKG_PY
 from pkg_py.functions_split.is_d import is_d

@@ -44,7 +44,7 @@ def download_pnx_to_git_v3(d_working, git_repo_url, commit_msg, branch_n):
         input_thread.join(timeout)
 
         if result['answer'] is None:
-            ensure_printed("시간 초과: 응답이 없어 작업을 건너뜁니다.", print_color='red')
+            ensure_printed(f"{PkMessages2025.RESPONSE_TIMEOUT}.", print_color='red')
             return 0
 
         return result['answer'] == 'y'
@@ -60,7 +60,7 @@ def download_pnx_to_git_v3(d_working, git_repo_url, commit_msg, branch_n):
             debug_state_for_py_data_type('%%%CLONE%%%', std_list)
 
             if any("fatal:" in line.lower() for line in std_list):
-                ensure_printed(f"Git clone 실패: {std_list}", print_color='red')
+                ensure_printed(f"{PkMessages2025.GIT_CLONE_FAILED}: {std_list}", print_color='red')
                 return
         else:
             os.chdir(d_working)
@@ -77,7 +77,7 @@ def download_pnx_to_git_v3(d_working, git_repo_url, commit_msg, branch_n):
                     debug_state_for_py_data_type('%%%PUSH_NEW_BRANCH%%%', std_list)
 
                     if any("error:" in line.lower() or "failed to push" in line.lower() for line in std_list):
-                        ensure_printed(f"브랜치 푸시 실패: {std_list}", print_color='red')
+                        ensure_printed(f"{PkMessages2025.BRANCH_PUSH_FAILED}: {std_list}", print_color='red')
 
                         if ask_user_yes_no("커밋이 없어서 푸시에 실패한 것 같습니다. 빈 커밋을 생성할까요?"):
                             std_list = ensure_command_excuted_to_os('git commit --allow-empty -m "init empty commit"')
@@ -87,19 +87,19 @@ def download_pnx_to_git_v3(d_working, git_repo_url, commit_msg, branch_n):
                             debug_state_for_py_data_type('%%%PUSH_AFTER_EMPTY_COMMIT%%%', std_list)
 
                             if any("error:" in line.lower() or "failed to push" in line.lower() for line in std_list):
-                                ensure_printed(f"빈 커밋 후 푸시도 실패했습니다: {std_list}", print_color='red')
+                                ensure_printed(f"{PkMessages2025.EMPTY_COMMIT_PUSH_FAILED}: {std_list}", print_color='red')
                                 return
                         else:
-                            ensure_printed("사용자가 빈 커밋 생성을 취소했습니다.", print_color='red')
+                            ensure_printed(f"{PkMessages2025.USER_CANCELLED_EMPTY_COMMIT}.", print_color='red')
                             return
                 else:
-                    ensure_printed("사용자가 브랜치 생성을 취소했습니다.", print_color='red')
+                    ensure_printed(f"{PkMessages2025.USER_CANCELLED_BRANCH_CREATION}.", print_color='red')
                     return
             elif any("fatal:" in line.lower() for line in std_list):
-                ensure_printed(f"Git pull 실패: {std_list}", print_color='red')
+                ensure_printed(f"{PkMessages2025.GIT_PULL_FAILED}: {std_list}", print_color='red')
                 return
 
-        ensure_printed(f"Git 작업 완료: {d_working} {'%%%FOO%%%' if LTA else ''}", print_color='green')
+        ensure_printed(f"{PkMessages2025.GIT_WORK_COMPLETE}: {d_working} {'%%%FOO%%%' if LTA else ''}", print_color='green')
 
     except Exception:
         ensure_printed(f"{traceback.format_exc()} {'%%%FOO%%%' if LTA else ''}", print_color='red')

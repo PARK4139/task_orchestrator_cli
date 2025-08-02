@@ -119,7 +119,7 @@ from bs4 import ResultSet
 from bs4 import BeautifulSoup
 from base64 import b64encode
 from base64 import b64decode
-from pkg_py.functions_split.ensure_video_loaded_at_losslesscut import ensure_video_loaded_at_losslesscut
+from pkg_py.functions_split.ensure_video_played_at_losslesscut import ensure_video_played_at_losslesscut
 from pkg_py.system_object.etc import PK_UNDERLINE
 from pkg_py.functions_split.get_value_completed import get_value_completed
 from pkg_py.system_object.directories import D_PKG_PY

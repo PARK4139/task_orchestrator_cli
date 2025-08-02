@@ -64,5 +64,5 @@ if __name__ == "__main__":
         ensure_printed(f'{UNDERLINE}예외발생 s\n\n', print_color='red')
         ensure_printed(f'{traceback.format_exc()}\n', print_color='red')
         ensure_printed(f'{UNDERLINE}예외발생 e\n\n', print_color='red')
-        ensure_do_finally_routine(D_PROJECT=D_PROJECT, __file__=__file__, STAMP_TRY_GUIDE=STAMP_TRY_GUIDE)
+        ensure_finally_routine_done(D_PROJECT=D_PROJECT, __file__=__file__, STAMP_TRY_GUIDE=STAMP_TRY_GUIDE)
         ensure_printed(script_to_run_python_program_in_venv)

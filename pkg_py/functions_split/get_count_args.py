@@ -84,8 +84,8 @@ from datetime import datetime, time
 from collections import defaultdict, Counter
 from base64 import b64decode
 from pkg_py.functions_split.get_nx import get_nx
-from pkg_py.functions_split.ensure_video_loaded_at_losslesscut import ensure_video_loaded_at_losslesscut
-from pkg_py.functions_split.ensure_pk_program_suicided import ensure_pk_program_suicided
+from pkg_py.functions_split.ensure_video_played_at_losslesscut import ensure_video_played_at_losslesscut
+from pkg_py.functions_split.ensure_program_suicided import ensure_program_suicided
 from pkg_py.functions_split.is_f import is_f
 from pkg_py.functions_split.get_pnx_wsl_unix_style import get_pnx_wsl_unix_style
 from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux

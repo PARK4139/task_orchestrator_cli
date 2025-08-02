@@ -22,7 +22,7 @@ from PIL import Image
 from os import path
 from functools import lru_cache
 from base64 import b64decode
-from pkg_py.functions_split.ensure_pk_program_suicided import ensure_pk_program_suicided
+from pkg_py.functions_split.ensure_program_suicided import ensure_program_suicided
 from pkg_py.functions_split.is_f import is_f
 from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style
 from pkg_py.functions_split.ensure_printed import ensure_printed

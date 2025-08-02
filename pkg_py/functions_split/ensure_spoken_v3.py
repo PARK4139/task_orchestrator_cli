@@ -2,8 +2,8 @@ def ensure_spoken_v3(str_working, segment_delay=0.90, queue_mode=False):
     import inspect
     import traceback
 
-    from pkg_py.functions_split.ensure_do_exception_routine import ensure_do_exception_routine
-    from pkg_py.functions_split.ensure_do_finally_routine import ensure_do_finally_routine
+    from pkg_py.functions_split.ensure_exception_routine_done import ensure_exception_routine_done
+    from pkg_py.functions_split.ensure_finally_routine_done import ensure_finally_routine_done
     from pkg_py.system_object.directories_reuseable import D_PROJECT
     from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
 
@@ -78,6 +78,6 @@ def ensure_spoken_v3(str_working, segment_delay=0.90, queue_mode=False):
                 ensure_spoken(seg, after_delay=segment_delay)
 
     except Exception as e:
-        ensure_do_exception_routine(traceback=traceback, exception=e)
+        ensure_exception_routine_done(traceback=traceback, exception=e)
     finally:
-        ensure_do_finally_routine(D_PROJECT=D_PROJECT, __file__=__file__, STAMP_TRY_GUIDE=STAMP_TRY_GUIDE)
+        ensure_finally_routine_done(D_PROJECT=D_PROJECT, __file__=__file__, STAMP_TRY_GUIDE=STAMP_TRY_GUIDE)

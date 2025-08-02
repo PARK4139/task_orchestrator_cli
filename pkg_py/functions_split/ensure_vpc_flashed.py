@@ -25,7 +25,7 @@ from fastapi import HTTPException
 from datetime import date
 from cryptography.hazmat.backends import default_backend
 from collections import Counter
-from pkg_py.functions_split.ensure_video_loaded_at_losslesscut import ensure_video_loaded_at_losslesscut
+from pkg_py.functions_split.ensure_video_played_at_losslesscut import ensure_video_played_at_losslesscut
 from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
 from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
 from pkg_py.system_object.local_test_activate import LTA

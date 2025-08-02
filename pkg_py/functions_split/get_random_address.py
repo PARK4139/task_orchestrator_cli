@@ -39,7 +39,7 @@ from moviepy import VideoFileClip
 from concurrent.futures import ThreadPoolExecutor
 from colorama import init as pk_colorama_init
 from base64 import b64encode
-from pkg_py.functions_split.ensure_pk_program_suicided import ensure_pk_program_suicided
+from pkg_py.functions_split.ensure_program_suicided import ensure_program_suicided
 from pkg_py.functions_split.get_pnxs import get_pnxs
 from pkg_py.system_object.directories import D_PKG_PY
 # from pkg_py.system_object.is_os_windows import is_os_windows

@@ -40,7 +40,7 @@ from dataclasses import dataclass
 from base64 import b64encode
 from base64 import b64decode
 from pkg_py.functions_split.get_nx import get_nx
-from pkg_py.functions_split.ensure_pk_program_suicided import ensure_pk_program_suicided
+from pkg_py.functions_split.ensure_program_suicided import ensure_program_suicided
 from pkg_py.functions_split.get_value_completed import get_value_completed
 from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
 

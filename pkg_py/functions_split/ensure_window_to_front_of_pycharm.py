@@ -80,7 +80,7 @@ from colorama import init as pk_colorama_init
 from bs4 import ResultSet
 from bs4 import BeautifulSoup
 from base64 import b64encode
-from pkg_py.functions_split.ensure_video_loaded_at_losslesscut import ensure_video_loaded_at_losslesscut
+from pkg_py.functions_split.ensure_video_played_at_losslesscut import ensure_video_played_at_losslesscut
 from pkg_py.system_object.directories import D_PKG_PY
 from pkg_py.functions_split.is_f import is_f
 from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux

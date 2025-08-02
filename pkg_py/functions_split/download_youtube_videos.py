@@ -67,7 +67,7 @@ def download_youtube_videos(urls=None):
         value = db.get_values(db_id=db_id)
         if value != PkMessages2025.YES:
             logging.info("사용자 요청으로 종료")
-            ensure_printed("🚫 사용자 요청으로 종료합니다.", print_color="yellow")
+            ensure_printed(f"🚫 {PkMessages2025.USER_REQUESTED_EXIT}.", print_color="yellow")
             return
 
         # YouTube 쿠키 확인 및 설정
@@ -76,14 +76,14 @@ def download_youtube_videos(urls=None):
             ensure_youtube_cookies_available()
         except Exception as e:
             logging.warning(f"YouTube 쿠키 설정 실패: {e}")
-            ensure_printed(f"⚠️ YouTube 쿠키 설정 실패, 계속 진행: {e}", print_color="yellow")
+            ensure_printed(f"⚠️ {PkMessages2025.YOUTUBE_COOKIES_SETUP_FAILED_CONTINUE}: {e}", print_color="yellow")
 
         # PotPlayer 시작 (단일 인스턴스)
         try:
             ensure_potplayer_started()
         except Exception as e:
             logging.warning(f"PotPlayer 시작 실패: {e}")
-            ensure_printed(f"⚠️ PotPlayer 시작 실패, 계속 진행: {e}", print_color="yellow")
+            ensure_printed(f"⚠️ {PkMessages2025.POTPLAYER_START_FAILED_CONTINUE}: {e}", print_color="yellow")
 
         urls_raw = get_list_from_f(f_func_txt)
         logging.info(f"원본 URL 개수: {len(urls_raw)}")
@@ -96,7 +96,7 @@ def download_youtube_videos(urls=None):
 
         if not urls:
             logging.error("URL이 입력되지 않았습니다")
-            ensure_printed("❗ URL이 입력되지 않았습니다.", print_color="red")
+            ensure_printed(f"❗ {PkMessages2025.URL_NOT_ENTERED}.", print_color="red")
             return
 
     success_count = 0
@@ -109,7 +109,7 @@ def download_youtube_videos(urls=None):
 
         if url.startswith("#"):
             logging.info(f"주석 처리된 URL, 건너뜀: {url}")
-            ensure_printed(f"주석 처리된 URL, 건너뜀: {url}", print_color="yellow")
+            ensure_printed(f"{PkMessages2025.COMMENTED_URL_SKIP}: {url}", print_color="yellow")
             continue
 
         try:
@@ -120,13 +120,13 @@ def download_youtube_videos(urls=None):
             # 메타데이터 추출 실패 시 건너뛰기
             if info is None or title is None or clip_id is None or ext is None:
                 logging.error(f"메타데이터 추출 실패: {url}")
-                ensure_printed(f"⚠️ 메타데이터 추출 실패로 건너뜀: {url}", print_color="yellow")
+                ensure_printed(f"⚠️ {PkMessages2025.METADATA_EXTRACTION_FAILED_SKIP}: {url}", print_color="yellow")
                 failed_count += 1
                 continue
 
             # ext 변수 로깅 추가
             logging.info(f"메타데이터 추출 성공 - ext: {ext}, title: {title}, clip_id: {clip_id}")
-            ensure_printed(f"🔍 DEBUG: 메타데이터에서 받은 ext = '{ext}' (타입: {type(ext)})", print_color="yellow")
+            ensure_printed(f"🔍 {PkMessages2025.DEBUG_METADATA_EXT} = '{ext}' (타입: {type(ext)})", print_color="yellow")
             ensure_printed(f"🔍 DEBUG: title = '{title}'", print_color="yellow")
             ensure_printed(f"🔍 DEBUG: clip_id = '{clip_id}'", print_color="yellow")
 
@@ -135,7 +135,7 @@ def download_youtube_videos(urls=None):
             f_output = os.path.join(D_PK_WORKING, output_filename)
             
             logging.info(f"생성된 파일명: {output_filename}")
-            ensure_printed(f"🔍 DEBUG: 생성된 output_filename = '{output_filename}'", print_color="yellow")
+            ensure_printed(f"🔍 {PkMessages2025.DEBUG_OUTPUT_FILENAME} = '{output_filename}'", print_color="yellow")
 
             f_pnx_downloaded = get_f_contained_feature_str(feature_str=output_filename, d_pnx=D_PK_WORKING)
             if f_pnx_downloaded and f_pnx_downloaded.lower().endswith(tuple(extensions_allowed)):
@@ -174,10 +174,10 @@ def download_youtube_videos(urls=None):
                 try:
                     add_to_potplayer_playlist(f_pnx_downloaded)
                     logging.info(f"PotPlayer 재생목록에 추가됨: {f_pnx_downloaded}")
-                    ensure_printed(f"🎬 PotPlayer 재생목록에 추가됨: {f_pnx_downloaded}", print_color="cyan")
+                    ensure_printed(f"🎬 {PkMessages2025.POTPLAYER_PLAYLIST_ADDED}: {f_pnx_downloaded}", print_color="cyan")
                 except Exception as e:
                     logging.warning(f"PotPlayer 재생목록 추가 실패: {e}")
-                    ensure_printed(f"⚠️ PotPlayer 재생목록 추가 실패: {e}", print_color="yellow")
+                    ensure_printed(f"⚠️ {PkMessages2025.POTPLAYER_PLAYLIST_ADD_FAILED}: {e}", print_color="yellow")
 
                 value = db.get_values(db_id='download_option')
                 if value == PkMessages2025.play:
@@ -186,16 +186,16 @@ def download_youtube_videos(urls=None):
                     # ensure_pnx_opened_by_ext(pnx=f_pnx_downloaded)  # 주석 처리
             else:
                 logging.error(f"다운로드된 파일을 찾을 수 없음: {f_output}")
-                ensure_printed(f"❗ 병합된 최종 파일이 존재하지 않음: {f_output}", print_color="red")
+                ensure_printed(f"❗ {PkMessages2025.FINAL_FILE_NOT_FOUND}: {f_output}", print_color="red")
                 ensure_printed(f"🔍 DEBUG: 정규화된 파일명 = '{normalized_filename}'", print_color="yellow")
                 ensure_printed(f"🔍 DEBUG: clip_id 검색 = '[{clip_id}]'", print_color="yellow")
                 failed_count += 1
 
         except Exception as e:
             logging.error(f"예외 발생: {url} - {traceback.format_exc()}")
-            ensure_printed(f"❌ 예외 발생: {url}\n{traceback.format_exc()}", print_color="red")
+            ensure_printed(f"❌ {PkMessages2025.EXCEPTION_OCCURRED}: {url}\n{traceback.format_exc()}", print_color="red")
             failed_count += 1
 
     logging.info(f"=== YouTube 다운로드 완료 ===")
     logging.info(f"성공: {success_count}, 실패: {failed_count}, 총 URL: {len(urls)}")
-    ensure_printed("🎬 전체 다운로드 작업 완료!", print_color="green")
+    ensure_printed(f"🎬 {PkMessages2025.TOTAL_DOWNLOAD_COMPLETED}!", print_color="green")

@@ -25,8 +25,8 @@ from passlib.context import CryptContext
 from gtts import gTTS
 from dirsync import sync
 from bs4 import ResultSet
-from pkg_py.functions_split.ensure_video_loaded_at_losslesscut import ensure_video_loaded_at_losslesscut
-from pkg_py.functions_split.ensure_pk_program_suicided import ensure_pk_program_suicided
+from pkg_py.functions_split.ensure_video_played_at_losslesscut import ensure_video_played_at_losslesscut
+from pkg_py.functions_split.ensure_program_suicided import ensure_program_suicided
 from pkg_py.functions_split.get_value_completed import get_value_completed
 from pkg_py.functions_split.is_d import is_d
 from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux

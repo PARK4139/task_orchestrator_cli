@@ -1,7 +1,7 @@
 from pkg_py.functions_split.ensure_console_cleared import ensure_console_cleared
 from pkg_py.functions_split.ensure_files_stable_after_change import ensure_files_stable_after_change
 from pkg_py.functions_split.ensure_process_killed import ensure_process_killed
-from pkg_py.functions_split.ensure_pk_program_suicided import ensure_pk_program_suicided
+from pkg_py.functions_split.ensure_program_suicided import ensure_program_suicided
 from pkg_py.functions_split.ensure_py_system_process_ran_by_pnx import ensure_py_system_process_ran_by_pnx
 from pkg_py.functions_split.ensure_slept import ensure_slept
 from pkg_py.functions_split.get_file_id import get_file_id
@@ -20,7 +20,7 @@ def ensure_pk_system_process_reloaded_as_hot_reloader():
     from pkg_py.functions_split.get_os_n import get_os_n
     from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style
     from pkg_py.functions_split.get_set_from_list import get_set_from_list
-    from pkg_py.system_object.gui_util import get_windows_opened
+    from pkg_py.functions_split.get_windows_opened import get_windows_opened
     from pkg_py.functions_split.ensure_printed import ensure_printed
     from pkg_py.system_object.local_test_activate import LTA
     import inspect

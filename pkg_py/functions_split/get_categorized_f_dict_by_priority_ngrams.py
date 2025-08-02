@@ -58,8 +58,8 @@ from cryptography.hazmat.backends import default_backend
 from Cryptodome.Cipher import AES
 from concurrent.futures import ThreadPoolExecutor
 from base64 import b64encode
-from pkg_py.functions_split.ensure_video_loaded_at_losslesscut import ensure_video_loaded_at_losslesscut
-from pkg_py.functions_split.ensure_pk_program_suicided import ensure_pk_program_suicided
+from pkg_py.functions_split.ensure_video_played_at_losslesscut import ensure_video_played_at_losslesscut
+from pkg_py.functions_split.ensure_program_suicided import ensure_program_suicided
 from pkg_py.system_object.directories import D_PKG_PY
 from pkg_py.functions_split.get_list_calculated import get_list_calculated
 from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style

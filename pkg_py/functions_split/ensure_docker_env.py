@@ -20,7 +20,7 @@ from pkg_py.system_object.files import F_LOSSLESSCUT_EXE
 from pkg_py.system_object.encodings import Encoding
 from pkg_py.system_object.state_via_database import PkSqlite3DB
 from PIL import Image
-from pkg_py.functions_split.ensure_pk_program_suicided import ensure_pk_program_suicided
+from pkg_py.functions_split.ensure_program_suicided import ensure_program_suicided
 from pkg_py.functions_split.get_value_completed import get_value_completed
 from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style
 from pkg_py.functions_split.get_pnxs import get_pnxs

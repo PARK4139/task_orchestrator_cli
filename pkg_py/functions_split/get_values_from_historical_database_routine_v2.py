@@ -1,6 +1,6 @@
-
-
 def get_values_from_historical_database_routine_v2(db_id, key_hint, values_default, editable):
+    from pkg_py.system_object.local_test_activate import LTA
+
     from pkg_py.system_object.state_via_database import PkSqlite3DB
     from pkg_py.functions_split.get_value_completed import get_value_completed
     from pkg_py.functions_split.get_list_deduplicated import get_list_deduplicated
@@ -39,5 +39,3 @@ def get_values_from_historical_database_routine_v2(db_id, key_hint, values_defau
     print(f'''type(values_to_save)={type(values_to_save)} {'%%%FOO%%%' if LTA else ''}''')
     db.set_values(db_id=db_id, values=values_to_save)
     return user_value
-
-

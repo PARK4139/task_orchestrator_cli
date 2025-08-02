@@ -70,8 +70,8 @@ from collections import Counter
 from bs4 import ResultSet
 from base64 import b64encode
 from pkg_py.functions_split.get_nx import get_nx
-from pkg_py.functions_split.ensure_video_loaded_at_losslesscut import ensure_video_loaded_at_losslesscut
-from pkg_py.functions_split.ensure_pk_program_suicided import ensure_pk_program_suicided
+from pkg_py.functions_split.ensure_video_played_at_losslesscut import ensure_video_played_at_losslesscut
+from pkg_py.functions_split.ensure_program_suicided import ensure_program_suicided
 from pkg_py.system_object.directories import D_PKG_PY
 from pkg_py.functions_split.is_f import is_f
 from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
@@ -83,6 +83,7 @@ from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.get_d_working import get_d_working
+from pkg_py.system_object.map_massages import PkMessages2025
 
 
 def compress_pnx_without_venv_and_idea_via_rar(pnx, d_dst, with_timestamp=1):
@@ -138,7 +139,7 @@ def compress_pnx_without_venv_and_idea_via_rar(pnx, d_dst, with_timestamp=1):
     os.chdir(p)
 
     # todo 압축대상의 용량 확인
-    ensure_printed("압축대상의 용량이 1GB 이상이면 1분 이상 걸릴 수 있습니다", print_color='blue')
+    ensure_printed(f"{PkMessages2025.COMPRESSION_TARGET_SIZE_WARNING}", print_color='blue')
 
     # compress by rar (".venv" 및 ".idea" 제외)
     f_rar_wsl = get_pnx_wsl_unix_style(pnx=f_rar)

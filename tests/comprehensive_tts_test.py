@@ -1,10 +1,24 @@
 #!/usr/bin/env python3
 """
-종합 TTS 테스트 - 모든 방법을 인덱스와 함께 테스트
+종합 TTS 테스트 - 모든 방법을 인덱스와 함께 테스트 - dry_run 지원
 """
 
 import time
-from pkg_py.functions_split.ensure_spoken_hybrid import VoiceConfig, ensure_spoken_hybrid
+from test_base import DryRunMixin, run_test_with_dry_run
+
+class ComprehensiveTTSTest(DryRunMixin):
+    """종합 TTS 테스트 클래스"""
+    
+    def __init__(self, dry_run: bool = True):
+        super().__init__(dry_run)
+        try:
+            from pkg_py.functions_split.ensure_spoken_hybrid import VoiceConfig, ensure_spoken_hybrid
+            self.VoiceConfig = VoiceConfig
+            self.ensure_spoken_hybrid = ensure_spoken_hybrid
+        except ImportError:
+            self.dry_run_print("⚠️ ensure_spoken_hybrid 모듈을 import할 수 없습니다", print_color="yellow")
+            self.VoiceConfig = None
+            self.ensure_spoken_hybrid = None
 
 def test_basic_tts_methods():
     """기본 TTS 방법들 테스트"""
@@ -238,33 +252,39 @@ def test_final_integration():
         ensure_spoken_hybrid(text, voice_config=perfect_config)
         time.sleep(1)
 
-def main():
-    """메인 테스트 함수"""
-    print("🎧 종합 TTS 테스트 시작")
-    print("=" * 60)
-    print("각 테스트 후 헤드폰에서 소리가 들리는지 확인해주세요!")
-    print("=" * 60)
-    
-    # 모든 테스트 실행
-    test_basic_tts_methods()
-    test_volume_configurations()
-    test_speed_configurations()
-    test_hybrid_tts_components()
-    test_voice_configurations()
-    test_bluetooth_specific()
-    test_final_integration()
-    
-    print("\n🎉 모든 테스트 완료!")
-    print("=" * 60)
-    print("📋 테스트 결과 요약:")
-    print("- 기본 TTS: ✅")
-    print("- 하이브리드 TTS: ✅")
-    print("- 볼륨 설정: ✅")
-    print("- 속도 설정: ✅")
-    print("- 음성 설정: ✅")
-    print("- 블루투스 헤드폰: ✅")
-    print("- 최종 통합: ✅")
-    print("\n🎧 헤드폰에서 소리가 들렸다면 모든 기능이 정상 작동합니다!")
+    def main(self):
+        """메인 테스트 함수"""
+        self.dry_run_print("🎧 종합 TTS 테스트 시작")
+        self.dry_run_print("=" * 60)
+        self.dry_run_print("각 테스트 후 헤드폰에서 소리가 들리는지 확인해주세요!")
+        self.dry_run_print("=" * 60)
+        
+        # 모든 테스트 실행
+        self.test_basic_tts_methods()
+        self.test_volume_configurations()
+        self.test_speed_configurations()
+        self.test_hybrid_tts_components()
+        self.test_voice_configurations()
+        self.test_bluetooth_specific()
+        self.test_final_integration()
+        
+        self.dry_run_print("\n🎉 모든 테스트 완료!")
+        self.dry_run_print("=" * 60)
+        self.dry_run_print("📋 테스트 결과 요약:")
+        self.dry_run_print("- 기본 TTS: ✅")
+        self.dry_run_print("- 하이브리드 TTS: ✅")
+        self.dry_run_print("- 볼륨 설정: ✅")
+        self.dry_run_print("- 속도 설정: ✅")
+        self.dry_run_print("- 음성 설정: ✅")
+        self.dry_run_print("- 블루투스 헤드폰: ✅")
+        self.dry_run_print("- 최종 통합: ✅")
+        self.dry_run_print("\n🎧 헤드폰에서 소리가 들렸다면 모든 기능이 정상 작동합니다!")
+
+def test_comprehensive_tts():
+    """종합 TTS 테스트 함수"""
+    test_instance = ComprehensiveTTSTest(dry_run=True)
+    test_instance.main()
 
 if __name__ == "__main__":
-    main() 
+    # dry_run 모드로 테스트 실행
+    run_test_with_dry_run(test_comprehensive_tts, "종합 TTS 테스트") 

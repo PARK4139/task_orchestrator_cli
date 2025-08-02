@@ -20,7 +20,7 @@ from pkg_py.system_object.performance_logic import ensure_seconds_measured, pk_m
 from PIL import Image
 from moviepy import VideoFileClip
 from Cryptodome.Cipher import AES
-from pkg_py.functions_split.ensure_video_loaded_at_losslesscut import ensure_video_loaded_at_losslesscut
+from pkg_py.functions_split.ensure_video_played_at_losslesscut import ensure_video_played_at_losslesscut
 from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style
 from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style
 from pkg_py.system_object.local_test_activate import LTA

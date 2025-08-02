@@ -9,7 +9,7 @@ def ensure_file_found():
     from pkg_py.functions_split.get_value_completed import get_value_completed
     from pkg_py.functions_split.ensure_printed import ensure_printed
     from pkg_py.functions_split.ensure_process_killed import ensure_process_killed
-    from pkg_py.functions_split.ensure_pk_program_suicided import ensure_pk_program_suicided
+    from pkg_py.functions_split.ensure_program_suicided import ensure_program_suicided
     from pkg_py.functions_split.is_window_opened import is_window_opened
     from pkg_py.functions_split.ensure_windows_closed import ensure_windows_closed
 
@@ -226,8 +226,8 @@ def ensure_file_found():
     
     # 모든 드라이브에서 검색 옵션 추가
     search_options = ["모든 드라이브에서 검색"] + drives
-    
-    selected_drive = get_value_completed("드라이브 선택: ", search_options)
+
+    selected_drive = get_value_completed("영역 선택: ", search_options)
     if selected_drive is None:
         print("드라이브 선택이 취소되었습니다.")
         return

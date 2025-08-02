@@ -1,6 +1,7 @@
 from pkg_py.system_object.encodings import Encoding
 
 from pkg_py.functions_split.ensure_printed import ensure_printed
+from pkg_py.system_object.map_massages import PkMessages2025
 
 
 def convert_xls_to_xlsx(f_xls):
@@ -22,10 +23,10 @@ def convert_xls_to_xlsx(f_xls):
     try:
         if ".xls" == get_x(f_xls):
             if not os.path.exists(f_xls):
-                ensure_printed(f"{func_n}() {get_x(f_xls)} 는 처리할 수 없는 확장자입니다.", print_color='red')
+                ensure_printed(f"{func_n}() {get_x(f_xls)} {PkMessages2025.UNPROCESSABLE_EXTENSION}.", print_color='red')
                 return
     except CustomErrorUtil as e:
-        ensure_printed(f"{func_n}() {get_x(f_xls)} 는 처리할 수 없는 확장자입니다.", print_color='red')
+        ensure_printed(f"{func_n}() {get_x(f_xls)} {PkMessages2025.UNPROCESSABLE_EXTENSION}.", print_color='red')
         return
 
     try:

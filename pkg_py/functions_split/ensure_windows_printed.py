@@ -1,7 +1,7 @@
 def ensure_windows_printed():
     from pkg_py.functions_split.ensure_console_cleared import ensure_console_cleared
     from pkg_py.functions_split.ensure_printed import ensure_printed
-    from pkg_py.system_object.gui_util import get_windows_opened
+    from pkg_py.functions_split.get_windows_opened import get_windows_opened
     import inspect
     func_n = inspect.currentframe().f_code.co_name
     window_opened_list = get_windows_opened()

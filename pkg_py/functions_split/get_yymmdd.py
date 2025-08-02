@@ -18,7 +18,7 @@ from pkg_py.system_object.map_massages import PkMessages2025
 from Cryptodome.Random import get_random_bytes
 from colorama import init as pk_colorama_init
 from bs4 import BeautifulSoup
-from pkg_py.functions_split.ensure_pk_program_suicided import ensure_pk_program_suicided
+from pkg_py.functions_split.ensure_program_suicided import ensure_program_suicided
 from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
 from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
 from pkg_py.system_object.local_test_activate import LTA

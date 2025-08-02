@@ -1,3 +1,4 @@
+from pkg_py.system_object.map_massages import PkMessages2025
 
 
 def ensure_windows_closed(window_title):
@@ -12,9 +13,9 @@ def ensure_windows_closed(window_title):
     import time
     from pkg_py.functions_split.ensure_printed import ensure_printed
     from pkg_py.functions_split.ensure_process_killed import ensure_process_killed
-    from pkg_py.functions_split.ensure_pk_program_suicided import ensure_pk_program_suicided
+    from pkg_py.functions_split.ensure_program_suicided import ensure_program_suicided
     from pkg_py.functions_split.is_window_opened import is_window_opened
-    from pkg_py.system_object.gui_util import get_windows_opened
+    from pkg_py.functions_split.get_windows_opened import get_windows_opened
 
     # 닫을 창 제목들
     window_titles_to_close = [window_title]
@@ -27,17 +28,17 @@ def ensure_windows_closed(window_title):
         windows_opened = get_windows_opened()
         everything_windows = [w for w in windows_opened if "Everything" in w]
         if everything_windows:
-            ensure_printed(f"발견된 Everything 창들: {everything_windows}", print_color='yellow')
+            ensure_printed(f"{PkMessages2025.FOUND_WINDOWS} Everything 창들: {everything_windows}", print_color='yellow')
         
         # 각 창 제목에 대해 창이 열려있는지 확인하고 닫기
         for title in window_titles_to_close:
             if is_window_opened(window_title_seg=title):
-                ensure_printed(f"창 닫기 시도: {title}", print_color='cyan')
+                ensure_printed(f"{PkMessages2025.WINDOW_CLOSE_ATTEMPT}: {title}", print_color='cyan')
                 ensure_process_killed(window_title=title)
                 return True  # 창을 닫았으면 True 반환
         
         time.sleep(0.5)  # 0.5초씩 대기
         wait_count += 1
     
-    ensure_printed(f"'{window_title}' 창을 찾을 수 없거나 닫을 수 없습니다.", print_color='red')
+    ensure_printed(f"'{window_title}' {PkMessages2025.WINDOW_NOT_FOUND_OR_CANNOT_CLOSE}.", print_color='red')
     return False  # 창을 닫지 못했으면 False 반환

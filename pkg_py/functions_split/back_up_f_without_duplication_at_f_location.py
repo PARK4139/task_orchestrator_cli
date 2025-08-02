@@ -62,7 +62,7 @@ from datetime import datetime, timedelta
 from datetime import datetime
 from bs4 import ResultSet
 from base64 import b64decode
-from pkg_py.functions_split.ensure_video_loaded_at_losslesscut import ensure_video_loaded_at_losslesscut
+from pkg_py.functions_split.ensure_video_played_at_losslesscut import ensure_video_played_at_losslesscut
 from pkg_py.system_object.stamps import STAMP_TRY_GUIDE, STAMP_UNIT_TEST_EXCEPTION_DISCOVERED
 from pkg_py.functions_split.get_value_completed import get_value_completed
 from pkg_py.functions_split.get_pnxs import get_pnxs
