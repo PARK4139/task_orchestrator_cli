@@ -10,7 +10,7 @@ from pkg_py.functions_split.log_success_to_f import log_success_to_f
 from pkg_py.functions_split.normalize_youtube_url import normalize_youtube_url
 from pkg_py.functions_split.open_pnx_by_ext import ensure_pnx_opened_by_ext
 from pkg_py.functions_split.ensure_printed import ensure_printed
-from pkg_py.system_object.directories import D_PKG_TXT
+from pkg_py.system_object.directories import D_PKG_CACHE_PRIVATE
 from pkg_py.system_object.files import F_FFMPEG_EXE
 from pkg_py.system_object.local_test_activate import LTA
 
@@ -59,7 +59,7 @@ def download_youtube_video_via_yt_dlp(url_list, d_pnx, f_func_n_txt):
     # 고품질 성공
     """ 자동으로 쿠키를 가져와서 유튜브 영상을 다운로드하는 함수 """
 
-    cookie_f = rf"{D_PKG_TXT}/chrome_youtube_cookies.txt"
+    cookie_f = rf"{D_PKG_CACHE_PRIVATE}/chrome_youtube_cookies.txt"
     ydl_opts = {
         'ffmpeg_location': rf'{get_pnx_os_style(get_p(F_FFMPEG_EXE))}',
         'format': 'bestvideo+bestaudio/best',  # 최상의 비디오 & 오디오 선택

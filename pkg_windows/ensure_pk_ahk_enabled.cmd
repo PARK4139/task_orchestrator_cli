@@ -9,7 +9,7 @@ set AHK_ZIP_URL=https://www.autohotkey.com/download/1.1/AutoHotkey_1.1.36.02.zip
 set F_AHK_PORTABLE_ZIP=%USERPROFILE%\Downloads\pk_archived\AutoHotkey_Portable.zip
 set D_AHK_PORTABLE=%USERPROFILE%\Downloads\pk_archived\AutoHotkey_Portable
 set F_AHK_EXE=%D_AHK_PORTABLE%\AutoHotkeyU64.exe
-set F_PK_SHORTCUT_AHK=%USERPROFILE%\Downloads\pk_system\pkg_ahk\pk_shortcut.ahk
+set F_PK_SHORTCUT_AHK=%USERPROFILE%\Downloads\pk_system\pkg_windows\pk_shortcut.ahk
 
 cd /d "%USERPROFILE%\Downloads"
 

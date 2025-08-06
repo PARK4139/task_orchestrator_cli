@@ -36,8 +36,8 @@ from pkg_py.functions_split.ensure_printed import ensure_printed
 
 from pkg_py.functions_split.set_pk_context_state import set_pk_context_state
 from pkg_py.system_object.etc import PkFilter
-from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
-from pkg_py.system_object.stamps import STAMP_ATTEMPTED
+# pk_#
+# pk_#
 from pkg_py.system_object.state_via_context import SpeedControlContext
 
 

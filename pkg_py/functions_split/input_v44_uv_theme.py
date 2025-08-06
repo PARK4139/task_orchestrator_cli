@@ -37,10 +37,10 @@ from pkg_py.functions_split.ensure_list_written_to_f import ensure_list_written_
 from pkg_py.functions_split.get_list_sorted import get_list_sorted
 from pkg_py.functions_split.ensure_console_cleared import ensure_console_cleared
 from pkg_py.system_object.etc import PkFilter
-from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
-from pkg_py.system_object.stamps import STAMP_ATTEMPTED
+# pk_#
+# pk_#
 from pkg_py.system_object.files import F_HISTORICAL_PNX
-from pkg_py.system_object.directories_reuseable import D_PROJECT
+from pkg_py.system_object.directories  import D_PROJECT
 from pkg_py.system_object.map_massages import PkMessages2025
 # from pkg_py.system_object.is_os_windows import is_os_windows
 from pkg_py.system_object.get_list_calculated import get_list_calculated

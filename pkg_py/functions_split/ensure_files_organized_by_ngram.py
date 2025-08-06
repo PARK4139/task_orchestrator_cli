@@ -7,7 +7,7 @@ def ensure_files_organized_by_ngram(token_splitter_pattern, d_working):
     allowed_extension_tuple = get_tuple_from_set(get_extension_set_from_d(d_working))
     f_to_organize_list = [f for f in os.listdir(d_working) if f.endswith(allowed_extension_tuple)]
     if not f_to_organize_list:
-        print("📁 대상 파일이 없습니다.")
+        print(" 대상 파일이 없습니다.")
         return
 
     min_support = int(get_value_completed(key_hint='min_support=', values=["2", "3", "4", "5"]))  # 3 추천

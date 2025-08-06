@@ -1,8 +1,9 @@
 """
 Functions Split Package - Common imports for frequently used functions
+TODO : 모든 import 문을 수집하여 이곳으로 이동.
 """
 
-# 자주 사용되는 함수들을 여기서 import하여 간소화된 import 문 사용 가능
+# 자주 사용되는 함수들을 여기서 import하여 간소화된 import 문 사용 가능 한지 확인필요
 from .get_time_as_ import get_time_as_
 from .ensure_printed import ensure_printed
 from .ensure_spoken import ensure_spoken

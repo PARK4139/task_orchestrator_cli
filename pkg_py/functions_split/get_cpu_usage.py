@@ -61,7 +61,7 @@ from pkg_py.functions_split.ensure_list_written_to_f import ensure_list_written_
 from pkg_py.system_object.files import F_POT_PLAYER_MINI_64_EXE, F_HISTORICAL_PNX
 from pkg_py.system_object.files import F_POT_PLAYER_MINI_64_EXE
 from pkg_py.system_object.encodings import Encoding
-from pkg_py.system_object.directories import D_PK_WORKING, D_DOWNLOADS, D_PKG_PKL
+from pkg_py.system_object.directories import D_PK_WORKING, D_DOWNLOADS, D_PKG_CACHE_PRIVATE
 from pkg_py.system_object.state_via_context import SpeedControlContext
 # from pkg_py.system_object.is_os_windows import is_os_windows
 from pkg_py.system_object.local_test_activate import LTA
@@ -99,7 +99,7 @@ from pkg_py.functions_split.get_d_working import get_d_working
 def get_cpu_usage(interval, process_n):
     """LosslessCut 프로세스의 CPU 사용량을 측정"""
     import psutil
-    print("🔍 현재 exec  중인 프로세스 목록:")
+    print(" 현재 exec  중인 프로세스 목록:")
     process_n_list = []
     process_pid_list = []
     for process in psutil.process_iter(attrs=["pid", "name"]):

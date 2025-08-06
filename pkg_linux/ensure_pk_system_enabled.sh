@@ -14,6 +14,9 @@ PROJECT_ROOT="$(dirname "$SCRIPT_DIR")"
 echo "📁 Script directory: $SCRIPT_DIR"
 echo "📁 Project root: $PROJECT_ROOT"
 
+# ➊ 프로젝트 루트를 PYTHONPATH 에 포함
+export PYTHONPATH="$PROJECT_ROOT:${PYTHONPATH:-}"
+
 # Python 찾기 함수
 find_python() {
     echo "🔍 Python 찾는 중..."
@@ -98,12 +101,15 @@ find_python() {
 # Python 찾기 실행
 find_python
 
-# Python 스크립트 실행
-echo "🚀 Python 스크립트 실행 중: $PYTHON_CMD ensure_pk_system_enabled.py"
-cd "$PROJECT_ROOT"
+# Python 스크립트 실행 ---------------------------------------------------------
+# 실행 대상 PY 스크립트 경로
+PY_SCRIPT="$PROJECT_ROOT/pkg_py/functions_split/ensure_pk_system_enabled.py"
 
-if [ -f "ensure_pk_system_enabled.py" ]; then
-    "$PYTHON_CMD" ensure_pk_system_enabled.py
+echo "🚀 Python 스크립트 실행 중: $PYTHON_CMD $PY_SCRIPT"
+
+# 스크립트 존재 여부 확인 후 실행
+if [ -f "$PY_SCRIPT" ]; then
+    "$PYTHON_CMD" "$PY_SCRIPT"
     EXIT_CODE=$?
     
     if [ $EXIT_CODE -eq 0 ]; then
@@ -113,10 +119,7 @@ if [ -f "ensure_pk_system_enabled.py" ]; then
         exit $EXIT_CODE
     fi
 else
-    echo "❌ ensure_pk_system_enabled.py 파일을 찾을 수 없습니다."
-    echo "📁 현재 디렉토리: $(pwd)"
-    echo "📋 파일 목록:"
-    ls -la *.py 2>/dev/null || echo "  (Python 파일 없음)"
+    echo "❌ Python 스크립트를 찾을 수 없습니다: $PY_SCRIPT"
     exit 1
 fi
 

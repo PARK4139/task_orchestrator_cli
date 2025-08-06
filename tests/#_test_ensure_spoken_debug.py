@@ -7,7 +7,7 @@ import sys
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from pkg_py.functions_split.ensure_printed import ensure_printed
-from pkg_py.system_object.directories import D_PKG_SOUND
+from pkg_py.system_object.directories import D_PKG_IMAGE_AND_VIDEO_AND_SOUND
 
 def test_ensure_spoken_step_by_step():
     """ensure_spoken 함수의 각 단계를 자세히 테스트"""
@@ -25,16 +25,16 @@ def test_ensure_spoken_step_by_step():
     
     # 2. 디렉토리 확인
     ensure_printed("2. 오디오 디렉토리 확인...", print_color="yellow")
-    if os.path.exists(D_PKG_SOUND):
-        ensure_printed(f"✅ 오디오 디렉토리 존재: {D_PKG_SOUND}", print_color="green")
-        files = os.listdir(D_PKG_SOUND)
+    if os.path.exists(D_PKG_IMAGE_AND_VIDEO_AND_SOUND):
+        ensure_printed(f"✅ 오디오 디렉토리 존재: {D_PKG_IMAGE_AND_VIDEO_AND_SOUND}", print_color="green")
+        files = os.listdir(D_PKG_IMAGE_AND_VIDEO_AND_SOUND)
         ensure_printed(f"📁 파일 개수: {len(files)}", print_color="blue")
     else:
-        ensure_printed(f"❌ 오디오 디렉토리 없음: {D_PKG_SOUND}", print_color="red")
+        ensure_printed(f"❌ 오디오 디렉토리 없음: {D_PKG_IMAGE_AND_VIDEO_AND_SOUND}", print_color="red")
     
     # 3. index.json 확인
     ensure_printed("3. index.json 확인...", print_color="yellow")
-    index_file = os.path.join(D_PKG_SOUND, "index.json")
+    index_file = os.path.join(D_PKG_IMAGE_AND_VIDEO_AND_SOUND, "index.json")
     if os.path.exists(index_file):
         try:
             import json
@@ -48,7 +48,7 @@ def test_ensure_spoken_step_by_step():
     
     # 4. silent.wav 확인
     ensure_printed("4. silent.wav 확인...", print_color="yellow")
-    silent_wav = os.path.join(D_PKG_SOUND, "silent.wav")
+    silent_wav = os.path.join(D_PKG_IMAGE_AND_VIDEO_AND_SOUND, "silent.wav")
     if os.path.exists(silent_wav):
         size = os.path.getsize(silent_wav)
         ensure_printed(f"✅ silent.wav 존재, 크기: {size} bytes", print_color="green")
@@ -62,7 +62,7 @@ def test_ensure_spoken_step_by_step():
     
     try:
         # 함수 호출 전 파일 개수 확인
-        before_files = len([f for f in os.listdir(D_PKG_SOUND) if f.endswith('.wav')])
+        before_files = len([f for f in os.listdir(D_PKG_IMAGE_AND_VIDEO_AND_SOUND) if f.endswith('.wav')])
         ensure_printed(f"📊 함수 호출 전 WAV 파일 개수: {before_files}", print_color="blue")
         
         # 함수 호출
@@ -70,7 +70,7 @@ def test_ensure_spoken_step_by_step():
         ensure_spoken(test_text)
         
         # 함수 호출 후 파일 개수 확인
-        after_files = len([f for f in os.listdir(D_PKG_SOUND) if f.endswith('.wav')])
+        after_files = len([f for f in os.listdir(D_PKG_IMAGE_AND_VIDEO_AND_SOUND) if f.endswith('.wav')])
         ensure_printed(f"📊 함수 호출 후 WAV 파일 개수: {after_files}", print_color="blue")
         
         if after_files > before_files:
@@ -85,10 +85,10 @@ def test_ensure_spoken_step_by_step():
     
     # 6. 최신 WAV 파일 확인
     ensure_printed("6. 최신 WAV 파일 확인...", print_color="yellow")
-    wav_files = [f for f in os.listdir(D_PKG_SOUND) if f.endswith('.wav')]
+    wav_files = [f for f in os.listdir(D_PKG_IMAGE_AND_VIDEO_AND_SOUND) if f.endswith('.wav')]
     if wav_files:
-        latest_wav = max(wav_files, key=lambda x: os.path.getctime(os.path.join(D_PKG_SOUND, x)))
-        latest_path = os.path.join(D_PKG_SOUND, latest_wav)
+        latest_wav = max(wav_files, key=lambda x: os.path.getctime(os.path.join(D_PKG_IMAGE_AND_VIDEO_AND_SOUND, x)))
+        latest_path = os.path.join(D_PKG_IMAGE_AND_VIDEO_AND_SOUND, latest_wav)
         size = os.path.getsize(latest_path)
         ensure_printed(f"📁 최신 WAV 파일: {latest_wav} (크기: {size} bytes)", print_color="blue")
         

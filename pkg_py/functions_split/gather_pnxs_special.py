@@ -1,6 +1,6 @@
 from pkg_py.functions_split.open_pnx_by_ext import ensure_pnx_opened_by_ext
 from pkg_py.system_object.directories import D_DOWNLOADS
-from pkg_py.system_object.directories_reuseable import D_PROJECT
+from pkg_py.system_object.directories  import D_PROJECT
 from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.is_window_opened import is_window_opened
 from pkg_py.functions_split.get_d_working import get_d_working
@@ -60,7 +60,7 @@ def gather_pnxs_special():
             # print(src)
             try:
                 ensure_printed(rf'storage 이동 시도')
-                move_pnx(storage, dst)
+                ensure_pnx_moved(storage, dst)
             except FileNotFoundError:
                 ensure_printed(f'''{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
 

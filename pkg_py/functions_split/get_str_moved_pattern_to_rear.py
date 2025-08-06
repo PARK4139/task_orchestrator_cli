@@ -2,7 +2,7 @@ import secrets
 
 from selenium.webdriver.chrome.options import Options
 from pkg_py.functions_split.get_list_sorted import get_list_sorted
-from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
+# pk_#
 from enum import Enum
 from concurrent.futures import ThreadPoolExecutor
 from pkg_py.functions_split.get_value_completed import get_value_completed

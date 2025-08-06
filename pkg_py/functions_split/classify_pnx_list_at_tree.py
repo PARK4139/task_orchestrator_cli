@@ -31,14 +31,14 @@ def classify_pnx_list_at_tree(d_working, mode, with_walking, debug_mode=True):
         # classify_pnxs_to_pkg_document(pnx)
         # classify_pnxs_to_pkg_video(pnx)
         # classify_pnxs_to_pk_image(pnx)
-        # classify_pnxs_to_pkg_soundtrack(pnx)
+        # classify_pnxs_to_pkg_image_and_video_and_soundtrack(pnx)
         # classify_pnxs_to_special_keyword_dir(pnx)
 
         # classify_pnxs_to_pkg_compressed(src=src, without_walking=False)
         # classify_pnxs_to_pkg_document(pnx=src, without_walking=False)
         # classify_pnxs_to_pkg_video(pnx=src, without_walking=False)
         # classify_pnxs_to_pk_image(pnx=src, without_walking=False)
-        # classify_pnxs_to_pkg_soundtrack(pnx=src, without_walking=False)
+        # classify_pnxs_to_pkg_image_and_video_and_soundtrack(pnx=src, without_walking=False)
         classify_pnx_list_to_d_special_keyword(d_src=d_working, with_walking=with_walking)
 
         # classify_pnxs_to_pn_dir(src=src)

@@ -110,8 +110,8 @@ def test_requests_direct_download():
     
     # YouTube 쿠키 파일 읽기
     cookies = {}
-    if os.path.exists(r"pkg_txt/youtube_cookies.txt"):
-        with open(r"pkg_txt/youtube_cookies.txt", 'r', encoding='utf-8') as f:
+    if os.path.exists(r"pkg_cache_private/youtube_cookies.txt"):
+        with open(r"pkg_cache_private/youtube_cookies.txt", 'r', encoding='utf-8') as f:
             for line in f:
                 if line.startswith('#') or not line.strip():
                     continue
@@ -175,7 +175,7 @@ def test_yt_dlp_force_download():
     # 가장 강력한 옵션으로 테스트
     ydl_opts = {
         'outtmpl': os.path.join(output_dir, '%(title)s [%(id)s].%(ext)s'),
-        'cookiefile': r"pkg_txt/youtube_cookies.txt",
+        'cookiefile': r"pkg_cache_private/youtube_cookies.txt",
         'age_limit': 0,
         'no_check_age': True,
         'ignoreerrors': True,

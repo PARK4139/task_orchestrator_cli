@@ -8,7 +8,7 @@ from colorama import init as pk_colorama_init
 from pkg_py.functions_split.get_driver_selenium import get_driver_selenium
 
 # from pkg_py.system_object.500_live_logic import ensure_magnets_collected_from_nyaa_si_p1, get_historical_list, ensure_pnx_made, get_driver_selenium
-#, STAMP_TRY_GUIDE, D_PROJECT, STAMP_UNIT_TEST_EXCEPTION_DISCOVERED
+#, '[ TRY GUIDE ]', D_PROJECT, '[ UNIT TEST EXCEPTION DISCOVERED ]'
 #, print_red
 
 ensure_colorama_initialized_once()
@@ -33,4 +33,4 @@ if __name__ == "__main__":
     except Exception as exception:
         ensure_exception_routine_done(traceback=traceback, exception=exception)
     finally:
-        ensure_finally_routine_done(D_PROJECT=D_PROJECT, __file__=__file__, STAMP_TRY_GUIDE=STAMP_TRY_GUIDE)
+        ensure_finally_routine_done(D_PROJECT=D_PROJECT, __file__=__file__)

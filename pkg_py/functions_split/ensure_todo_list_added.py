@@ -1,7 +1,7 @@
 from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_excuted_to_os
 from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style
 from pkg_py.functions_split.print_and_write_schedule_template_cyclic_to_f_memo_todo_txt import print_and_write_schedule_template_cyclic_to_f_memo_todo_txt
-from pkg_py.system_object.directories import D_PKG_TXT
+from pkg_py.system_object.directories import D_PKG_CACHE_PRIVATE
 
 
 def ensure_todo_list_added():
@@ -35,11 +35,11 @@ def ensure_todo_list_added():
     # print_holidays_for_2025(task_name=task_name)
     # print(UNDERLINE)
 
-    memo_todo_txt = rf"{D_PKG_TXT}/memo_todo.txt" # memo_todo.txt is deprecated
+    memo_todo_txt = rf"{D_PKG_CACHE_PRIVATE}/memo_todo.txt" # memo_todo.txt is deprecated
     memo_todo_txt = get_pnx_os_style(memo_todo_txt)
-    memo_trash_bin_txt = rf'{D_PKG_TXT}/memo_trash_bin.txt'
+    memo_trash_bin_txt = rf'{D_PKG_CACHE_PRIVATE}/memo_trash_bin.txt'
     memo_trash_bin_txt = get_pnx_os_style(memo_trash_bin_txt)
-    memo_done_txt = rf'{D_PKG_TXT}/memo_done.txt'
+    memo_done_txt = rf'{D_PKG_CACHE_PRIVATE}/memo_done.txt'
     memo_done_txt = get_pnx_os_style(memo_done_txt)
 
     # make_pnx(pnx=memo_done_txt, mode='f')

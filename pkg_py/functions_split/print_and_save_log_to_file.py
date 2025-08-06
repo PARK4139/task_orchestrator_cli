@@ -1,5 +1,7 @@
+from pkg_py.functions_split.ensure_seconds_measured import ensure_seconds_measured
 
 
+@ensure_seconds_measured
 def print_and_save_log_to_file(msg, log_file_path):
     import logging
 

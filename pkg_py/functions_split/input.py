@@ -30,7 +30,7 @@ from pkg_py.functions_split.ensure_pressed import ensure_pressed
 
 from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_excuted_to_os
 from pkg_py.functions_split.ensure_console_cleared import ensure_console_cleared
-from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
+# pk_#
 from pkg_py.system_object.files import F_LOSSLESSCUT_EXE
 from pkg_py.system_object.encodings import Encoding
 from pkg_py.system_object.map_massages import PkMessages2025

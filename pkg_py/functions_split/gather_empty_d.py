@@ -21,7 +21,7 @@ def gather_empty_d(d_working: str, d_dst=None):
     #  1. 빈 d를 찾아 이동 (한 번만 exec )
     for root, d_nx_list, f_nx_list in os.walk(d_working, topdown=False):
         if not d_nx_list and not f_nx_list and is_empty_d(root):
-            move_pnx(pnx=root, d_dst=d_dst)
+            ensure_pnx_moved(pnx=root, d_dst=d_dst)
 
     #  2. 빈 트리(리프 d)를 이동 후 remove
     ensure_printed(f"d_working={d_working}  {'%%%FOO%%%' if LTA else ''}")
@@ -31,4 +31,4 @@ def gather_empty_d(d_working: str, d_dst=None):
             for d_nx in d_nx_list:
                 d_working = os.path.abspath(os.path.join(root, d_nx))
                 if is_leaf_d(d_working):
-                    move_pnx(pnx=d_working, d_dst=d_dst)
+                    ensure_pnx_moved(pnx=d_working, d_dst=d_dst)

@@ -71,7 +71,7 @@ def test_basic_vs_fallback():
     basic_opts = {
         'quiet': True,
         'skip_download': True,
-        'cookiefile': r"pkg_txt/youtube_cookies.txt" if os.path.exists(r"pkg_txt/youtube_cookies.txt") else None,
+        'cookiefile': r"pkg_cache_private/youtube_cookies.txt" if os.path.exists(r"pkg_cache_private/youtube_cookies.txt") else None,
         'no_warnings': False,
         'ignoreerrors': True,
     }
@@ -92,7 +92,7 @@ def test_basic_vs_fallback():
         'no_check_certificate': True,
         'prefer_insecure': True,
         'force_generic_extractor': False,
-        'cookiefile': r"pkg_txt/youtube_cookies.txt" if os.path.exists(r"pkg_txt/youtube_cookies.txt") else None,
+        'cookiefile': r"pkg_cache_private/youtube_cookies.txt" if os.path.exists(r"pkg_cache_private/youtube_cookies.txt") else None,
     }
     
     # 1. 기본 옵션 테스트

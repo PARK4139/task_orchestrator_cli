@@ -7,7 +7,7 @@ from selenium.webdriver.common.keys import Keys
 from pytube import Playlist
 from pkg_py.functions_split.is_losslesscut_running import is_losslesscut_running
 from functools import partial
-from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
+# pk_#
 
 from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.ensure_printed import ensure_printed
@@ -21,15 +21,15 @@ def cmd_to_remote_os_with_pw_via_paramiko(ip, port, user_n, pw, cmd):
     import traceback
 
     if LTA:
-        ensure_printed(f"{STAMP_REMOTE_DEBUG} {STAMP_TRY_GUIDE} ssh -p {port} {user_n}@{ip} ")
-    ensure_printed(f"{STAMP_REMOTE_DEBUG} cmd={cmd}")
+        ensure_printed(f"{"[ REMOTE DEBUG ]"} {'[ TRY GUIDE ]'} ssh -p {port} {user_n}@{ip} ")
+    ensure_printed(f"{"[ REMOTE DEBUG ]"} cmd={cmd}")
 
     ssh = paramiko.SSHClient()
     ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
     try:
         # Connect to the server
         ssh.connect(hostname=ip, port=port, username=user_n, password=pw, timeout=10)
-        # ensure_printed("{STAMP_DEBUG} SSH connection established")
+        # ensure_printed("{"[ ️ ]"} SSH connection established")
 
         # Execute the cmd
         stdin, stdout_stream, stderr_stream = ssh.exec_command(cmd)
@@ -41,22 +41,22 @@ def cmd_to_remote_os_with_pw_via_paramiko(ip, port, user_n, pw, cmd):
         std_err_list = get_list_from_str(item_str=std_err_str)
         if len(std_out_list) > 1:
             for index, item in enumerate(std_out_list):
-                ensure_printed(f"{STAMP_REMOTE_DEBUG} {item}")
+                ensure_printed(f"{"[ REMOTE DEBUG ]"} {item}")
         if len(std_err_list) > 1:
             for index, item in enumerate(std_err_list):
-                ensure_printed(f"{STAMP_REMOTE_ERROR} {item}")
+                ensure_printed(f"{"[ REMOTE ERROR ]"} {item}")
 
         # Raise an error if there is output in stderr
         if std_err_str:
-            ensure_printed(f"{STAMP_REMOTE_ERROR} {cmd} : {std_err_str}", print_color='red')
+            ensure_printed(f"{"[ REMOTE ERROR ]"} {cmd} : {std_err_str}", print_color='red')
 
         std_out_str = std_out_str.strip()
         std_err_str = std_err_str.strip()
         return std_out_str, std_err_str
     except:
-        ensure_printed(f"{STAMP_REMOTE_ERROR} {traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''} ", print_color='red')
+        ensure_printed(f"{"[ REMOTE ERROR ]"} {traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''} ", print_color='red')
         return std_out_str, traceback.format_exc()
     finally:
         ssh.close()
         if LTA:
-            ensure_printed(rf"{STAMP_REMOTE_DEBUG} SSH connection closed.")
+            ensure_printed(rf"{"[ REMOTE DEBUG ]"} SSH connection closed.")

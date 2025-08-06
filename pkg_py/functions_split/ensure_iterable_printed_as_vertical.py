@@ -1,5 +1,3 @@
-from pkg_py.system_object.stamps import STAMP_LIST, STAMP_TUPLE, STAMP_DICT, STAMP_SET
-
 
 def ensure_iterable_printed_as_vertical(item_iterable, item_iterable_n=None, mode_verbose=1):
     import inspect
@@ -20,19 +18,19 @@ def ensure_iterable_printed_as_vertical(item_iterable, item_iterable_n=None, mod
                 del frame
 
         if isinstance(item_iterable, list):
-            STAMP_DATA_TYPE = STAMP_LIST
+            STAMP_DATA_TYPE = "[ LIST ]"
             open_bracket, kill_bracket = '[', ']'
         elif isinstance(item_iterable, set):
-            STAMP_DATA_TYPE = STAMP_SET
+            STAMP_DATA_TYPE = "[ SET ]"
             open_bracket, kill_bracket = '{', '}'
         elif isinstance(item_iterable, dict):
-            STAMP_DATA_TYPE = STAMP_DICT
+            STAMP_DATA_TYPE = "[ DICT ]"
             open_bracket, kill_bracket = '{', '}'
         elif isinstance(item_iterable, tuple):
-            STAMP_DATA_TYPE = STAMP_TUPLE
+            STAMP_DATA_TYPE = "[ TUPLE ]"
             open_bracket, kill_bracket = '(', ')'
         else:
-            STAMP_DATA_TYPE = STAMP_LIST  # 기본값 설정
+            STAMP_DATA_TYPE = "[ LIST ]"  # 기본값 설정
             open_bracket, kill_bracket = '[', ']'
 
         # todo : dict 일때 key 는 나오는데 value 안나옴. value 나오도록 업그레이드

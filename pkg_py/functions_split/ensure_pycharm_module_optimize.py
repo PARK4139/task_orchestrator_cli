@@ -76,7 +76,7 @@ def ensure_pycharm_module_optimize():
 
     total_file_cnt = len(filtered_files)
 
-    # 🔹 file_skip_limit 먼저 불러오고 file_cnt를 그 다음에 초기화해야 함
+    #  file_skip_limit 먼저 불러오고 file_cnt를 그 다음에 초기화해야 함
     key_name = "file_skip_limit"
     file_skip_limit = db.get_values(db_id=db.get_db_id(key_name, func_n))
     if file_skip_limit is None:
@@ -89,7 +89,7 @@ def ensure_pycharm_module_optimize():
     file_skip_limit = int(file_skip_limit)
 
     loop_cnt = 1
-    file_cnt = file_skip_limit + 1  # ✅ Save point 이후부터 시작
+    file_cnt = file_skip_limit + 1  #  Save point 이후부터 시작
 
     mouse_x, mouse_y = pyautogui.position()
     file_name_last = None

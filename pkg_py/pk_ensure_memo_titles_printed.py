@@ -6,9 +6,9 @@ from pkg_py.functions_split.ensure_finally_routine_done import ensure_finally_ro
 from pkg_py.functions_split.ensure_memo_titles_printed import ensure_memo_titles_printed
 from pkg_py.functions_split.ensure_window_title_replaced import ensure_window_title_replaced
 from pkg_py.functions_split.get_nx import get_nx
-from pkg_py.system_object.directories_reuseable import D_PROJECT
+from pkg_py.system_object.directories  import D_PROJECT
 from pkg_py.system_object.files import F_MEMO_HOW_PK
-from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
+# pk_#
 
 try:
     ensure_colorama_initialized_once()
@@ -19,4 +19,4 @@ try:
 except Exception as exception:
     ensure_exception_routine_done(traceback=traceback, exception=exception)
 finally:
-    ensure_finally_routine_done(D_PROJECT=D_PROJECT, __file__=__file__, STAMP_TRY_GUIDE=STAMP_TRY_GUIDE)
+    ensure_finally_routine_done(D_PROJECT=D_PROJECT, __file__=__file__)

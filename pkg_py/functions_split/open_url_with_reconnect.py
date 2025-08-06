@@ -1,6 +1,6 @@
 import math
 from pkg_py.system_object.encodings import Encoding
-from pkg_py.system_object.directories_reuseable import D_PROJECT
+from pkg_py.system_object.directories  import D_PROJECT
 from pkg_py.system_object.state_via_database import PkSqlite3DB
 from pkg_py.functions_split.get_nx import get_nx
 from pkg_py.functions_split.is_f import is_f

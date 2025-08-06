@@ -99,7 +99,7 @@ class TTLCacheManager:
                 key = str((args, tuple(sorted(kwargs.items()))))
                 cached_result = self.get(key)
                 if cached_result is not None:
-                    print(f"[{PkMessages2025.CASHE_USED}] cached result: {key}")
+                    print(f"[{PkMessages2025.CASHE_USED}] cached result: {key} {func.__name__}")
                     return cached_result
                 result = func(*args, **kwargs)
                 self.set(key, result)

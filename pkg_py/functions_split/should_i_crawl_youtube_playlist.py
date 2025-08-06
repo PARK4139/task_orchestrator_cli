@@ -46,10 +46,10 @@ from pkg_py.functions_split.ensure_pressed import ensure_pressed
 from pkg_py.functions_split.ensure_state_printed import ensure_state_printed
 
 from pkg_py.system_object.etc import PkFilter
-from pkg_py.system_object.stamps import STAMP_ATTEMPTED
+# pk_#
 from pkg_py.system_object.files import F_HISTORICAL_PNX
 from pkg_py.system_object.directories import D_PK_WORKING
-from pkg_py.system_object.directories import D_PKG_TXT, D_PK_WORKING
+from pkg_py.system_object.directories import D_PKG_CACHE_PRIVATE, D_PK_WORKING
 from pkg_py.system_object.map_massages import PkMessages2025
 # from pkg_py.system_object.print_red import print_red
 from pkg_py.system_object.state_via_context import SpeedControlContext
@@ -68,7 +68,7 @@ from collections import defaultdict, Counter
 from collections import Counter
 from base64 import b64decode
 from pkg_py.functions_split.get_nx import get_nx
-from pkg_py.system_object.stamps import STAMP_TRY_GUIDE, STAMP_UNIT_TEST_EXCEPTION_DISCOVERED
+
 from pkg_py.system_object.etc import PK_UNDERLINE
 from pkg_py.functions_split.get_pnxs import get_pnxs
 from pkg_py.functions_split.get_list_calculated import get_list_calculated

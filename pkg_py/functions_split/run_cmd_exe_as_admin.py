@@ -9,7 +9,7 @@ def run_cmd_exe_as_admin():
             ensure_command_excuted_to_os_like_person_as_admin('PowerShell -cmd "Start-Process cmd -Verb RunAs"')
 
             # 네 클릭
-            # f_png=rf"{PROJECT_D}\pkg_image\run cmd exe.png"
+            # f_png=rf"{PROJECT_D}\pkg_image_and_video_and_sound\run cmd exe.png"
             # click_center_of_img_recognized_by_mouse_left(img_abspath=f_png)
 
             # 루프 종료

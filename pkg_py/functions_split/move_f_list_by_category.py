@@ -53,7 +53,7 @@ from pkg_py.functions_split.ensure_printed_once import ensure_printed_once
 from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_excuted_to_os
 from pkg_py.functions_split.ensure_list_written_to_f import ensure_list_written_to_f
 
-from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
+# pk_#
 from pkg_py.system_object.files import F_LOSSLESSCUT_EXE
 from pkg_py.system_object.encodings import Encoding
 # from pkg_py.system_object.print_red import print_red
@@ -67,7 +67,7 @@ from dataclasses import dataclass
 from cryptography.hazmat.backends import default_backend
 from colorama import init as pk_colorama_init
 from pkg_py.functions_split.ensure_program_suicided import ensure_program_suicided
-from pkg_py.system_object.stamps import STAMP_TRY_GUIDE, STAMP_UNIT_TEST_EXCEPTION_DISCOVERED
+
 from pkg_py.system_object.etc import PK_UNDERLINE
 from pkg_py.functions_split.get_value_completed import get_value_completed
 from pkg_py.functions_split.get_pnxs import get_pnxs

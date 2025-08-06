@@ -48,8 +48,8 @@ from pkg_py.functions_split.is_window_title_opened import is_window_title_opened
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 from pkg_py.functions_split.ensure_list_written_to_f import ensure_list_written_to_f
 from pkg_py.functions_split.set_pk_context_state import set_pk_context_state
-from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
-from pkg_py.system_object.stamps import STAMP_ATTEMPTED
+# pk_#
+# pk_#
 from pkg_py.system_object.encodings import Encoding
 from pkg_py.system_object.state_via_database import PkSqlite3DB
 from pkg_py.system_object.state_via_context import SpeedControlContext

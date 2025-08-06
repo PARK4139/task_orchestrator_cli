@@ -23,7 +23,7 @@ from pkg_py.functions_split.open_pnx_by_ext import ensure_pnx_opened_by_ext
 from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.remove_lines_within_keyword_from_f import remove_lines_within_keyword_from_f
 from pkg_py.functions_split.ensure_list_written_to_f import ensure_list_written_to_f
-from pkg_py.system_object.directories import D_PKG_TXT
+from pkg_py.system_object.directories import D_PKG_CACHE_PRIVATE
 from pkg_py.system_object.directories import D_PK_WORKING
 from pkg_py.system_object.etc import PK_BLANK
 from pkg_py.system_object.files import F_FFMPEG_EXE
@@ -42,9 +42,9 @@ def download_youtube_video():
 
         d_pnx = D_PK_WORKING
         func_n = inspect.currentframe().f_code.co_name
-        f_func_n_txt = rf'{D_PKG_TXT}/{func_n}.txt'  # success log 기록 # 불필요함.  success 이면 f_historical 에서 삭제되도록 함.
+        f_func_n_txt = rf'{D_PKG_CACHE_PRIVATE}/{func_n}.txt'  # success log 기록 # 불필요함.  success 이면 f_historical 에서 삭제되도록 함.
 
-        cookie_f = rf"{D_PKG_TXT}/chrome_youtube_cookies.txt"
+        cookie_f = rf"{D_PKG_CACHE_PRIVATE}/chrome_youtube_cookies.txt"
         if is_os_windows():
             ffmpeg_location = rf'{get_pnx_os_style(get_p(F_FFMPEG_EXE))}'
         else:
@@ -67,7 +67,7 @@ def download_youtube_video():
 
         # search_keyword = input(f"{pk_get_colorful_str_working_with_stamp_enviromnet(func_n=func_n, ment='WRITE URL TO DOWNLOAD')} >")
 
-        f_historical = rf'{D_PKG_TXT}/historical_{func_n}.txt'
+        f_historical = rf'{D_PKG_CACHE_PRIVATE}/historical_{func_n}.txt'
         ensure_pnx_made(pnx=f_historical, mode='f')
 
         pk_db = PkSqlite3DB()

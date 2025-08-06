@@ -21,14 +21,14 @@ def ensure_text_decoded():
     text = input("텍스트 입력: ").strip()
     
     if not text:
-        ensure_printed("❌ 텍스트가 입력되지 않았습니다.", print_color='red')
+        ensure_printed(" 텍스트가 입력되지 않았습니다.", print_color='red')
         return None
     
     ensure_printed(" 마스터 패스워드를 입력하세요:", print_color='blue')
     master_password = input("마스터 패스워드(5th sym pw): ").strip()
     
     if not master_password:
-        ensure_printed("❌ 마스터 패스워드가 입력되지 않았습니다.", print_color='red')
+        ensure_printed(" 마스터 패스워드가 입력되지 않았습니다.", print_color='red')
         return None
     
     # 2. 다단계 복호화 수행
@@ -52,18 +52,18 @@ def ensure_text_decoded():
                 metadata_json = decrypted.rstrip(b'\0').decode('utf-8')
                 return json.loads(metadata_json)
             except Exception as e:
-                ensure_printed(f"❌ 메타데이터 복호화 실패: {str(e)}", print_color='red')
+                ensure_printed(f" 메타데이터 복호화 실패: {str(e)}", print_color='red')
                 return None
         
         # 보안 형식 확인
         if not text.startswith("SECURE_"):
-            ensure_printed("❌ 보안 암호화 형식이 아닙니다.", print_color='red')
+            ensure_printed(" 보안 암호화 형식이 아닙니다.", print_color='red')
             return None
         
         # 데이터 분리
         parts = text.split("_", 2)
         if len(parts) != 3:
-            ensure_printed("❌ 잘못된 암호화 형식입니다.", print_color='red')
+            ensure_printed(" 잘못된 암호화 형식입니다.", print_color='red')
             return None
         
         encrypted_metadata_b64 = parts[1]
@@ -74,7 +74,7 @@ def ensure_text_decoded():
         metadata = decrypt_metadata(encrypted_metadata, master_password)
         
         if metadata is None:
-            ensure_printed("❌ 마스터 패스워드가 잘못되었습니다.", print_color='red')
+            ensure_printed(" 마스터 패스워드가 잘못되었습니다.", print_color='red')
             return None
         
         caesar_shift = metadata['caesar_shift']
@@ -115,37 +115,37 @@ def ensure_text_decoded():
             return result
         
         # 복호화 과정
-        ensure_printed("🔄 복호화 진행 중...", print_color='yellow')
+        ensure_printed(" 복호화 진행 중...", print_color='yellow')
         
         # 1단계: Base64 디코딩
         step1 = base64_decode(encrypted_data)
-        ensure_printed(f"📝 1단계 (Base64 디코딩): {len(step1)} bytes", print_color='cyan')
+        ensure_printed(f" 1단계 (Base64 디코딩): {len(step1)} bytes", print_color='cyan')
         
         # 2단계: AES 복호화
         step2 = aes_decrypt(step1, aes_key)
-        ensure_printed(f"🔑 2단계 (AES 복호화): {step2}", print_color='cyan')
+        ensure_printed(f" 2단계 (AES 복호화): {step2}", print_color='cyan')
         
         # 3단계: XOR 복호화
         step3 = xor_decrypt(step2, xor_key)
-        ensure_printed(f"🔒 3단계 (XOR 복호화): {step3}", print_color='cyan')
+        ensure_printed(f" 3단계 (XOR 복호화): {step3}", print_color='cyan')
         
         # 4단계: Caesar Cipher 복호화
         final_decoded = caesar_decrypt(step3, caesar_shift)
         
         # 3. print decoded text
-        ensure_printed(f"✅ 최종 복호화 완료!", print_color='green')
-        ensure_printed(f"🔓 복호화된 텍스트: {final_decoded}", print_color='green')
+        ensure_printed(f" 최종 복호화 완료!", print_color='green')
+        ensure_printed(f" 복호화된 텍스트: {final_decoded}", print_color='green')
         
         # 4. 클립보드에 복사
         try:
             pyperclip.copy(final_decoded)
-            ensure_printed("📋 클립보드에 복사되었습니다! (Ctrl+V로 붙여넣기 가능)", print_color='green')
+            ensure_printed(" 클립보드에 복사되었습니다! (Ctrl+V로 붙여넣기 가능)", print_color='green')
         except Exception as e:
-            ensure_printed(f"⚠️ 클립보드 복사 실패: {str(e)}", print_color='yellow')
+            ensure_printed(f"️ 클립보드 복사 실패: {str(e)}", print_color='yellow')
         
         # 5. return decoded text
         return final_decoded
         
     except Exception as e:
-        ensure_printed(f"❌ 복호화 중 오류 발생: {str(e)}", print_color='red')
+        ensure_printed(f" 복호화 중 오류 발생: {str(e)}", print_color='red')
         return None 

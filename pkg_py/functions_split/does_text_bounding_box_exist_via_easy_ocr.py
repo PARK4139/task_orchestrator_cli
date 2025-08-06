@@ -34,7 +34,7 @@ from pkg_py.functions_split.ensure_printed import ensure_printed
 
 from pkg_py.functions_split.ensure_list_written_to_f import ensure_list_written_to_f
 from pkg_py.functions_split.ensure_console_cleared import ensure_console_cleared
-from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
+# pk_#
 from pkg_py.system_object.files import F_FFMPEG_EXE
 from pkg_py.system_object.encodings import Encoding
 from pkg_py.system_object.directories import D_PK_WORKING
@@ -50,7 +50,7 @@ from datetime import datetime
 from colorama import init as pk_colorama_init
 from collections import Counter
 from base64 import b64decode
-from pkg_py.system_object.stamps import STAMP_TRY_GUIDE, STAMP_UNIT_TEST_EXCEPTION_DISCOVERED
+
 from pkg_py.functions_split.get_list_calculated import get_list_calculated
 from pkg_py.functions_split.is_d import is_d
 from pkg_py.functions_split.get_pnx_windows_style import get_pnx_windows_style

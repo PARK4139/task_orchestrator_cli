@@ -46,12 +46,12 @@ from pkg_py.functions_split.is_losslesscut_running import is_losslesscut_running
 from pkg_py.functions_split.get_d_working import get_d_working
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 from pkg_py.functions_split.ensure_list_written_to_f import ensure_list_written_to_f
-from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
+# pk_#
 from pkg_py.system_object.files import F_POT_PLAYER_MINI_64_EXE
 from pkg_py.system_object.files import F_LOSSLESSCUT_EXE
-from pkg_py.system_object.directories_reuseable import D_PROJECT
-from pkg_py.system_object.directories import D_PK_WORKING, D_DOWNLOADS, D_PKG_PKL
-from pkg_py.system_object.directories import D_PKG_TXT, D_PK_WORKING
+from pkg_py.system_object.directories  import D_PROJECT
+from pkg_py.system_object.directories import D_PK_WORKING, D_DOWNLOADS, D_PKG_CACHE_PRIVATE
+from pkg_py.system_object.directories import D_PKG_CACHE_PRIVATE, D_PK_WORKING
 from pkg_py.system_object.map_massages import PkMessages2025
 from pkg_py.system_object.state_via_database import PkSqlite3DB
 # from pkg_py.system_object.is_os_windows import is_os_windows
@@ -98,7 +98,7 @@ def organize_d_list_by_stamp(d: str):
     import os
     import re
 
-    working_list = get_list_from_f(f=rf'{D_PROJECT}\pkg_txt\collect_magnets_from_nyaa_si.txt')
+    working_list = get_list_from_f(f=rf'{D_PROJECT}\pkg_cache_private\collect_magnets_from_nyaa_si.txt')
 
     # 불필요한 항목 remove
     working_list = get_list_removed_element_contain_prompt(working_list=working_list, prompt="#")
@@ -108,21 +108,21 @@ def organize_d_list_by_stamp(d: str):
 
     # 정규식을 사용하여 stamp 리스트 추출
     pattern = re.compile(r"(\[.*?\])\s*(.*)")
-    stamp_list = []
+    "[ LIST ]" = []
 
     for item in working_list:
         match = pattern.match(item)
         if match:
             stamp = match.group(1).strip()
-            stamp_list.append(stamp)
+            "[ LIST ]".append(stamp)
 
     # 중복 remove
-    stamp_list = get_list_deduplicated(working_list=stamp_list)
+    "[ LIST ]" = get_list_deduplicated(working_list="[ LIST ]")
 
     # d 탐색 및 이동
     for root, d_nx_list, _ in os.walk(d):
         for d_nx in d_nx_list:
-            for stamp in stamp_list:
+            for stamp in "[ LIST ]":
                 if d_nx != stamp and stamp in d_nx:  # _d_명이 stamp를 포함하는지 확인
                     d_stamp = os.path.join(root, stamp)  # stamp 이름의 d 경로 생성
                     os.makedirs(d_stamp, exist_ok=True)

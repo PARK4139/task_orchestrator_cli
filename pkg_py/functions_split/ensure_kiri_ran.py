@@ -1,65 +1,53 @@
-import urllib
-import toml
-import toml
-import sys
-import sqlite3
-import speech_recognition as sr
-import socket
-
-
-import platform
-import os.path
-import mysql.connector
-import ipdb
-import functools
-import datetime
-import cv2
-import clipboard
-import chardet
-from zipfile import BadZipFile
-from webdriver_manager.chrome import ChromeDriverManager
-from urllib.parse import urlparse
-from selenium.common.exceptions import ElementClickInterceptedException
-from pkg_py.functions_split.get_historical_list import get_historical_list
-from pkg_py.functions_split.get_video_filtered_list import get_video_filtered_list
-from pkg_py.functions_split.is_window_title_front import is_window_title_front
-from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
-from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_excuted_to_os
-from pkg_py.functions_split.get_list_sorted import get_list_sorted
-from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
-from pkg_py.system_object.directories_reuseable import D_PROJECT
-
-from passlib.context import CryptContext
-from os.path import dirname
-from os import path
-from moviepy import VideoFileClip
-from fastapi import HTTPException
-from datetime import timedelta
-from datetime import date
-from cryptography.hazmat.backends import default_backend
-from Cryptodome.Random import get_random_bytes
-from pkg_py.functions_split.ensure_video_played_at_losslesscut import ensure_video_played_at_losslesscut
-from pkg_py.system_object.directories import D_PK_WORKING, D_PKG_PKL, D_PKG_PY
-from pkg_py.system_object.directories import D_PKG_PY
-# from pkg_py.system_object.is_os_windows import is_os_windows
-
-
-from pkg_py.functions_split.get_pnx_windows_style import get_pnx_windows_style
-from pkg_py.functions_split.is_os_windows import is_os_windows
-from pkg_py.system_object.local_test_activate import LTA
-
-from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.functions_split.ensure_printed import ensure_printed
-
-
 def ensure_kiri_ran():
+    from pkg_py.TBD import ensure_printed_and_spoken
+    from pkg_py.functions_split import ensure_slept, ensure_spoken, get_time_as_
+
+    from pkg_py.functions_split.back_up_pnx_without_venv_and_idea import back_up_pnx_without_venv_and_idea
+    from pkg_py.functions_split.cmd_f_in_cmd_exe_like_person import cmd_f_in_cmd_exe_like_person
+    from pkg_py.functions_split.download_youtube_thumbnails_from_youtube_channel_main_page_url import download_youtube_thumbnails_from_youtube_channel_main_page_url
+    from pkg_py.functions_split.empty_recycle_bin import empty_recycle_bin
+    from pkg_py.functions_split.ensure_and_get_wsl_port import ensure_and_get_wsl_port
+    from pkg_py.functions_split.ensure_colorama_initialized_once import ensure_colorama_initialized_once
+    from pkg_py.functions_split.ensure_directory_made_for_work import ensure_directory_made_for_work
+    from pkg_py.functions_split.ensure_guided_not_prepared_yet import ensure_guided_not_prepared_yet
+    from pkg_py.functions_split.ensure_python_pkg_to_remote_os import ensure_python_pkg_to_remote_os
+    from pkg_py.functions_split.ensure_sound_track_played import ensure_sound_track_played
+    from pkg_py.functions_split.ensure_todo_list_guided import ensure_todo_list_guided
+    from pkg_py.functions_split.ensure_wsl_distro_enabled import ensure_wsl_distro_enabled
+    from pkg_py.functions_split.ensure_wsl_distro_session import ensure_wsl_distro_session
+    from pkg_py.functions_split.get_comprehensive_weather_information_from_web import get_comprehensive_weather_information_from_web
+    from pkg_py.functions_split.get_element_random import get_element_random
+    from pkg_py.functions_split.get_weekday import get_weekday
+    from pkg_py.functions_split.get_wsl_ip import get_wsl_ip
+    from pkg_py.functions_split.get_wsl_pw import get_wsl_pw
+    from pkg_py.functions_split.get_wsl_user_n import get_wsl_user_n
+    from pkg_py.functions_split.is_internet_connected import is_internet_connected
+    from pkg_py.functions_split.is_mic_device_connected import is_mic_device_connected
+    from pkg_py.functions_split.make_d_with_timestamp import make_d_with_timestamp
+    from pkg_py.functions_split.make_version_new import make_version_new
+    from pkg_py.functions_split.move_f_via_telegram_bot_v2 import move_f_via_telegram_bot_v2
+    from pkg_py.functions_split.play_my_video_track import play_my_video_track
+    from pkg_py.functions_split.restart_f_list_with_new_window_as_async import restart_f_list_with_new_window_as_async
+    from pkg_py.functions_split.run_up_and_down_game import run_up_and_down_game
+    from pkg_py.functions_split.save_power_as_s4 import save_power_as_s4
+    from pkg_py.functions_split.ensure_screen_saved import ensure_screen_saved
+    from pkg_py.functions_split.speak_today_info_as_korean import speak_today_info_as_korean
+    from pkg_py.system_object.directories import D_ARCHIVED
+    from pkg_py.system_object.directories  import D_HOME
+
+    from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_excuted_to_os
+    from pkg_py.functions_split.ensure_printed import ensure_printed
+    from pkg_py.functions_split.is_os_windows import is_os_windows
+    from pkg_py.system_object.directories import D_PKG_PY
+    from pkg_py.system_object.directories import D_PK_WORKING
+    from pkg_py.system_object.directories  import D_PROJECT
+    from pkg_py.system_object.local_test_activate import LTA
+
     import random
     import traceback
     import speech_recognition as sr
 
-    from colorama import init as pk_colorama_init
     import os
-    ensure_colorama_initialized_once()
 
     # ensure wsl
     config_remote_os = {}
@@ -125,7 +113,7 @@ def ensure_kiri_ran():
                 "",
             ]
             ice_breaking_ment = get_element_random(working_list=ice_breaking_ments)
-            ensure_printed_and_speak(ice_breaking_ment)
+            ensure_printed_and_spoken(ice_breaking_ment)
         if loop_cnt % 11 == 0:
             ice_breaking_ments = [
                 "please. give a command.",
@@ -134,7 +122,7 @@ def ensure_kiri_ran():
                 # get_str_today_day_info(),
             ]
             ice_breaking_ment = get_element_random(working_list=ice_breaking_ments)
-            ensure_printed_and_speak(ice_breaking_ment)
+            ensure_printed_and_spoken(ice_breaking_ment)
 
         try:
             if str_working is None:
@@ -156,21 +144,21 @@ def ensure_kiri_ran():
                 import ipdb
                 ipdb.set_trace()
             elif any(keyword in str_working for keyword in ["테스트", "test"]):
-                pk_count_down()
+                ensure_guided_not_prepared_yet()
             elif any(keyword in str_working for keyword in ["휴지통비워", "휴지통정리", "empty_trash_bin"]):
                 empty_recycle_bin()
-                ensure_printed_and_speak("I have emptied the trash bin")
+                ensure_printed_and_spoken("I have emptied the trash bin")
             elif any(keyword in str_working for keyword in ["플레인", "플래인"]):
-                ensure_printed_and_speak("yes. i am here")
+                ensure_printed_and_spoken("yes. i am here")
             elif any(keyword in str_working for keyword in ["영어공부"]):
-                ensure_printed_and_speak("What is the weather like?")
+                ensure_printed_and_spoken("What is the weather like?")
                 ensure_slept(seconds=random.randint(a=200, b=500))
-                ensure_printed_and_speak(
+                ensure_printed_and_spoken(
                     "I can't directly access weather information, but if you share your location, I can guide you!")
                 ensure_slept(seconds=random.randint(a=200, b=500))
-                ensure_printed_and_speak("Quit")
+                ensure_printed_and_spoken("Quit")
                 ensure_slept(seconds=random.randint(a=200, b=500))
-                ensure_printed_and_speak("Ending the conversation. Goodbye!")
+                ensure_printed_and_spoken("Ending the conversation. Goodbye!")
             elif any(keyword in str_working for keyword in ["업무_d_생성", '업무_d_']):
                 make_d_with_timestamp(d_nx=rf"생산관리", dst=rf"{D_PK_WORKING}")
                 ensure_directory_made_for_work()
@@ -200,7 +188,7 @@ def ensure_kiri_ran():
                 nest_asyncio.apply()
                 # asyncio.run(send_f_via_telegram_bot(f)) #  --> limit discovered : 단일파일 50MB 이상은 전송 불가 --> send_f_via_telegram_bot_v2(f)
                 # send_f_via_telegram_bot_v2(f) # -->  fail --> timeout
-                asyncio.run(move_f_via_telegram_bot_v3(f))  # -->
+                asyncio.run(move_f_via_telegram_bot_v2(f))  # -->
                 # change_os_mode_to_power_saving_mode_as_s4()
                 return  # return is necceary code, 처리 안시키면 PC 부팅 시 최대절전모드로 무한 진입, 컴퓨터 전원 재연결해야 된다 -> keyword = '' and use continue -> 시도하면 아마될듯
                 keyword = ''
@@ -236,7 +224,7 @@ def ensure_kiri_ran():
             elif any(keyword in str_working for keyword in ["오늘날짜", "날짜"]):
                 speak_today_info_as_korean()
             elif any(keyword in str_working for keyword in ["요일", "오늘요일", "몇요일"]):
-                ensure_spoken(f'{get_weekday_as_english()}')
+                ensure_spoken(f'{get_weekday()}')
             elif any(keyword in str_working for keyword in ["시간", "몇시야", "몇시"]):
                 HH = get_time_as_('%H')
                 mm = get_time_as_('%M')
@@ -248,28 +236,28 @@ def ensure_kiri_ran():
                 server_seconds = get_time_as_('%S')
                 ensure_spoken(f'{server_seconds} seconds')
             elif any(keyword in str_working for keyword in ["날씨"]):
-                ensure_printed_and_speak("Searching for weather...")
+                ensure_printed_and_spoken("Searching for weather...")
                 get_comprehensive_weather_information_from_web()
             elif any(keyword in str_working for keyword in ["음악"]):
                 ensure_sound_track_played()
-                ensure_printed_and_speak("Playing music...")
+                ensure_printed_and_spoken("Playing music...")
             elif any(keyword in str_working for keyword in ["게임", "미니게임"]):
                 run_up_and_down_game()
-                ensure_printed_and_speak("Playing mini game...")
+                ensure_printed_and_spoken("Playing mini game...")
             elif any(keyword in str_working for keyword in ["exit"]):
                 raise
             elif any(keyword in str_working for keyword in ["비디오"]):
                 play_my_video_track()
-                ensure_printed_and_speak("Playing video...")
+                ensure_printed_and_spoken("Playing video...")
             elif any(keyword in str_working for keyword in ["최대절전모드", "powersave", "sleep"]):
                 save_power_as_s4()
                 return  # return is necceary code, 처리 안시키면 PC 부팅 시 최대절전모드로 무한 진입, 컴퓨터 전원 재연결해야 된다.
             elif any(keyword in str_working for keyword in ["화면보호기", "화면보호"]):
-                save_screen()
+                ensure_screen_saved()
             else:
                 ensure_printed(rf"it was Unknown command", print_color='yellow')  # woas
         except:
-            ensure_printed_and_speak(f'''{__file__} 코드 exec 중 오류가 발생했습니다" ''', print_color='red')
+            ensure_printed_and_spoken(f'''{__file__} 코드 exec 중 오류가 발생했습니다" ''')
             ensure_printed(f"{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}", print_color='red')
             if not is_mic_device_connected():
                 ensure_printed(f'''mic is disconnected. {'%%%FOO%%%' if LTA else ''}''', print_color='red')

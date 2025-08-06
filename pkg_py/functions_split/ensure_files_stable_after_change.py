@@ -21,13 +21,13 @@ def ensure_files_stable_after_change(f_list, stable_seconds_limit, monitoring_in
                 if os.path.exists(f_clean):
                     result[f] = os.path.getmtime(f_clean)
                 else:
-                    ensure_printed(f"❌ 경로 없음: {f_clean}", print_color='red')
+                    ensure_printed(f" 경로 없음: {f_clean}", print_color='red')
             except Exception as e:
-                ensure_printed(f"❌ getmtime 실패: {f_clean} | {e}", print_color='red')
+                ensure_printed(f" getmtime 실패: {f_clean} | {e}", print_color='red')
         return result
 
     f_nx_list = [get_nx(f) for f in f_list]
-    ensure_printed(f"⏳ {stable_seconds_limit}초간 f_nx_list={f_nx_list} 변경 감시 시작...", print_color='white')
+    ensure_printed(f" {stable_seconds_limit}초간 f_nx_list={f_nx_list} 변경 감시 시작...", print_color='white')
     baseline = get_mtime_map(f_list)
     start_time = time.time()
 

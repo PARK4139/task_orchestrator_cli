@@ -12,7 +12,7 @@ from pkg_py.functions_split.ensure_losslesscut_reran import ensure_losslesscut_r
 from pkg_py.functions_split.ensure_pressed import ensure_pressed
 
 from pkg_py.functions_split.get_list_sorted import get_list_sorted
-from pkg_py.system_object.directories_reuseable import D_PROJECT
+from pkg_py.system_object.directories  import D_PROJECT
 from pathlib import Path
 from datetime import datetime
 from datetime import date

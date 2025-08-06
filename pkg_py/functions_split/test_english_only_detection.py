@@ -54,18 +54,18 @@ def test_english_only_detection():
         language = detect_language(text)
         voice_id = get_voice_id_by_language(text)
         
-        ensure_printed(f"\n📝 테스트 {i}: {text}", print_color='cyan')
-        ensure_printed(f"🌐 감지된 언어: {language}", print_color='blue')
-        ensure_printed(f"🎤 선택된 Voice ID: {voice_id}", print_color='green')
+        ensure_printed(f"\n 테스트 {i}: {text}", print_color='cyan')
+        ensure_printed(f" 감지된 언어: {language}", print_color='blue')
+        ensure_printed(f" 선택된 Voice ID: {voice_id}", print_color='green')
         
         # 영어가 아닌 문자 확인
         non_english_chars = re.findall(r'[^a-zA-Z\s\.,!?;:\'\"()\-0-9]', text)
         if non_english_chars:
-            ensure_printed(f"🚫 영어가 아닌 문자: {non_english_chars}", print_color='red')
+            ensure_printed(f" 영어가 아닌 문자: {non_english_chars}", print_color='red')
         else:
-            ensure_printed(f"✅ 영어 전용 텍스트", print_color='green')
+            ensure_printed(f" 영어 전용 텍스트", print_color='green')
     
-    ensure_printed("\n✅ 영어 전용 텍스트 감지 테스트 완료!", print_color='green')
+    ensure_printed("\n 영어 전용 텍스트 감지 테스트 완료!", print_color='green')
 
 if __name__ == "__main__":
     test_english_only_detection() 

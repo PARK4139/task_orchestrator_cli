@@ -25,7 +25,7 @@ from pkg_py.functions_split.is_window_title_opened import is_window_title_opened
 from pkg_py.functions_split.is_window_opened import is_window_opened
 from pkg_py.functions_split.ensure_state_printed import ensure_state_printed
 
-from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
+# pk_#
 from pkg_py.system_object.files import F_POT_PLAYER_MINI_64_EXE
 # from pkg_py.system_object.is_os_windows import is_os_windows
 from os.path import dirname

@@ -17,8 +17,8 @@ from pkg_py.functions_split.is_window_opened import is_window_opened
 from pkg_py.functions_split.ensure_pressed import ensure_pressed
 from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.get_list_sorted import get_list_sorted
-from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
-from pkg_py.system_object.stamps import STAMP_ATTEMPTED
+# pk_#
+# pk_#
 
 from functools import partial
 from dirsync import sync

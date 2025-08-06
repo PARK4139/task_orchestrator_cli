@@ -10,7 +10,7 @@ def kill_chrome_tab_like_person(url_to_kill):
 
     func_n = inspect.currentframe().f_code.co_name
 
-    window_titles = get_window_title_list()
+    window_titles = get_window_titles()
     loop_limit = 50
     for window_title_seg in window_titles:
         if "chrome".lower() in window_title_seg.lower():

@@ -36,7 +36,7 @@ def kill_pid_psutil(pid):
         proc = psutil.Process(pid)
         proc.kill()
     except Exception as e:
-        ensure_printed(f"❌ PK KILL ERROR PID={pid} : {e}", print_color="red")
+        ensure_printed(f" PK KILL ERROR PID={pid} : {e}", print_color="red")
         return False
     return True
 
@@ -47,7 +47,7 @@ def monitor_process_state(proc, max_sec=2.5, interval=0.5):
     from pkg_py.functions_split.ensure_printed import ensure_printed
     start = time.time()
     steps = int(max_sec / interval)
-    ensure_printed(f"👁️ Start monitoring PID={proc.pid}", print_color="blue")
+    ensure_printed(f"️ Start monitoring PID={proc.pid}", print_color="blue")
 
     for _ in range(steps):
         try:
@@ -56,18 +56,18 @@ def monitor_process_state(proc, max_sec=2.5, interval=0.5):
             cpu = proc.cpu_percent()
             mem = proc.memory_info().rss / (1024 * 1024)
             th = proc.num_threads()
-            ensure_printed(f"🔍 PID={proc.pid} CPU={cpu:.1f}% MEM={mem:.1f}MB TH={th}", print_color="blue")
+            ensure_printed(f" PID={proc.pid} CPU={cpu:.1f}% MEM={mem:.1f}MB TH={th}", print_color="blue")
             time.sleep(interval)
         except Exception:
             break
 
     elapsed = time.time() - start
-    ensure_printed(f"👁️ End monitoring PID={proc.pid}", print_color="blue")
+    ensure_printed(f"️ End monitoring PID={proc.pid}", print_color="blue")
 
     if proc.is_running():
         ensure_printed(f"‼️ FORCED TIMEOUT: PID={proc.pid} took {elapsed:.2f}s", print_color="red")
     elif elapsed > max_sec:
-        ensure_printed(f"⚠️ PK KILL PID={proc.pid} TIMEOUT_ELAPSED={elapsed:.2f}s", print_color="red")
+        ensure_printed(f"️ PK KILL PID={proc.pid} TIMEOUT_ELAPSED={elapsed:.2f}s", print_color="red")
 
 
 @ensure_seconds_measured
@@ -84,7 +84,7 @@ def ensure_process_killed_by_window_title(window_title: str):
 
     ensure_printed(f"[INFO] Found {len(matches)} window(s). Similarity check:", print_color="cyan")
     for hwnd, title, is_similar in matches:
-        sim_mark = "✅" if is_similar else "  "
+        sim_mark = "" if is_similar else "  "
         ensure_printed(f"{sim_mark} [{hwnd}] {title}", print_color="cyan")
 
     # 창 핸들을 기준으로 중복 제거 (동일한 창은 하나만 선택)
@@ -103,7 +103,7 @@ def ensure_process_killed_by_window_title(window_title: str):
     best_match_hwnd, best_match_title, _ = unique_windows[first_hwnd]
     _, pid = win32process.GetWindowThreadProcessId(best_match_hwnd)
 
-    ensure_printed(f"🪟 Using best match title: {best_match_title} (HWND={first_hwnd}, PID={pid}, 1개만 종료) {'%%%FOO%%%' if LTA else ''}", print_color="cyan")
+    ensure_printed(f" Using best match title: {best_match_title} (HWND={first_hwnd}, PID={pid}, 1개만 종료) {'%%%FOO%%%' if LTA else ''}", print_color="cyan")
 
     # 특정 창만 닫기 (PID로 프로세스 종료하지 않음)
     try:
@@ -112,7 +112,7 @@ def ensure_process_killed_by_window_title(window_title: str):
 
         # 창을 직접 닫기
         win32gui.PostMessage(best_match_hwnd, win32con.WM_CLOSE, 0, 0)
-        ensure_printed(f"✅ 창 닫기 요청 완료: {best_match_title} (HWND={first_hwnd})", print_color="green")
+        ensure_printed(f" 창 닫기 요청 완료: {best_match_title} (HWND={first_hwnd})", print_color="green")
 
     except Exception as e:
-        ensure_printed(f"❌ 창 닫기 실패: {e}", print_color="red")
+        ensure_printed(f" 창 닫기 실패: {e}", print_color="red")

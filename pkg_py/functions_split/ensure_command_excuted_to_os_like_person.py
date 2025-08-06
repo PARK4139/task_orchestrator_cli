@@ -17,7 +17,6 @@ from pkg_py.functions_split.ensure_window_to_front import ensure_window_to_front
 # from pkg_py.system_object.time_and_lanauge_util import sleep
 # from pkg_py.system_object.directories import D_PKG_WINDOWS
 # from pkg_py.system_object.encodings import Encoding
-# from pkg_py.system_object.stamps import STAMP_REMOTE_ERROR, STAMP_REMOTE_DEBUG, STAMP_ATTEMPTED
 
 
 def ensure_command_excuted_to_os_like_person(cmd, admin_mode=False, mode_exit=True):

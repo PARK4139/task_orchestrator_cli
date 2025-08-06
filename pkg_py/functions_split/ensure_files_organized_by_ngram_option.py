@@ -18,6 +18,6 @@ def ensure_files_organized_by_ngram_option(f_to_organize_list, d_working, token_
     ans = ans.lower()
     if ans == 'o':
         move_f_list_by_category(categorized_f_dict, base_p=d_working)
-        print("\n✅ 분류 완료!")
+        print("\n 분류 완료!")
     else:
-        print("\n❌ 분류를 취소했습니다.")
+        print("\n 분류를 취소했습니다.")

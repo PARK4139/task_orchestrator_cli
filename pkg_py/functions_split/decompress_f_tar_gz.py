@@ -45,7 +45,7 @@ from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.ensure_list_written_to_f import ensure_list_written_to_f
 from pkg_py.functions_split.ensure_console_cleared import ensure_console_cleared
 from pkg_py.system_object.etc import PkFilter
-from pkg_py.system_object.stamps import STAMP_ATTEMPTED
+# pk_#
 from pkg_py.system_object.files import F_HISTORICAL_PNX
 from pkg_py.system_object.directories import D_PK_WORKING
 # from pkg_py.system_object.is_os_windows import is_os_windows
@@ -63,7 +63,7 @@ from Cryptodome.Cipher import AES
 from base64 import b64encode
 from pkg_py.functions_split.get_nx import get_nx
 from pkg_py.functions_split.ensure_video_played_at_losslesscut import ensure_video_played_at_losslesscut
-from pkg_py.system_object.stamps import STAMP_TRY_GUIDE, STAMP_UNIT_TEST_EXCEPTION_DISCOVERED
+
 from pkg_py.functions_split.get_value_completed import get_value_completed
 from pkg_py.functions_split.get_pnxs import get_pnxs
 from pkg_py.functions_split.is_d import is_d

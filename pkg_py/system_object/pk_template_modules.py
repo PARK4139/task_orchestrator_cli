@@ -185,7 +185,7 @@
 # from pkg_py.functions_split.ensure_list_written_to_f import ensure_list_written_to_f
 # from pkg_py.functions_split.ensure_str_writen_to_f import ensure_str_writen_to_f
 # from pkg_py.pk_colorful_cli_util import print, ensure_printed, ensure_printed, ensure_printed, ensure_printed, print_magenta, print_light_white, ColoramaUtil, print_ment_via_colorama, print_success, prijnt_as_log, print_yellow
-# from pkg_py.pk_core_constants import USERPROFILE, HOSTNAME, UNDERLINE, BLANK, BIGGEST_PNXS, SMALLEST_PNXS, PLAYING_SOUNDS, COUNTS_FOR_GUIDE_TO_SLEEP,VIDEO_IDS_ALLOWED, AUDIO_IDS_ALLOWED, STORAGE_VIDEOES_MERGED, PROJECT_PARENTS_D, DESKTOP, DOWNLOADS, PKG_IMAGE, PKG_DPL, PKG_TXT
+# from pkg_py.pk_core_constants import USERPROFILE, HOSTNAME, UNDERLINE, BLANK, BIGGEST_PNXS, SMALLEST_PNXS, PLAYING_SOUNDS, COUNTS_FOR_GUIDE_TO_SLEEP,VIDEO_IDS_ALLOWED, AUDIO_IDS_ALLOWED, STORAGE_VIDEOES_MERGED, PROJECT_PARENTS_D, DESKTOP, DOWNLOADS, pkg_image_and_video_and_sound, PKG_DPL, PKG_CACHE_PRIVATE
 # from pkg_py.gui_util import GuiUtil, get_display_info, print_as_gui, should_i_do
 # 
 # from pkg_py.system_object.get_list_calculated import get_list_calculated
@@ -202,22 +202,22 @@
 # from pkg_py.system_object.color_map import PK_ANSI_COLOR_MAP
 # from pkg_py.system_object.directories import D_DESKTOP
 # from pkg_py.system_object.directories import D_DOWNLOADS
-# from pkg_py.system_object.directories import D_DOWNLOADS, D_PKG_PKL
-# from pkg_py.system_object.directories import D_DOWNLOADS, D_PKG_PKL, D_PKG_PY
+# from pkg_py.system_object.directories import D_DOWNLOADS, D_PKG_CACHE_PRIVATE
+# from pkg_py.system_object.directories import D_DOWNLOADS, D_PKG_CACHE_PRIVATE, D_PKG_PY
 # from pkg_py.system_object.directories import D_PKG_ARCHIVED
-# from pkg_py.system_object.directories import D_PKG_PKL
+# from pkg_py.system_object.directories import D_PKG_CACHE_PRIVATE
 # from pkg_py.system_object.directories import D_PKG_PY
 # from pkg_py.system_object.directories import D_PKG_PY, D_PKG_ARCHIVED
-# from pkg_py.system_object.directories import D_PKG_TXT
-# from pkg_py.system_object.directories import D_PKG_TXT, D_PK_WORKING
+# from pkg_py.system_object.directories import D_PKG_CACHE_PRIVATE
+# from pkg_py.system_object.directories import D_PKG_CACHE_PRIVATE, D_PK_WORKING
 # from pkg_py.system_object.directories import D_PK_FUNCTIONS_SPLIT
 # from pkg_py.system_object.directories import D_PK_FUNCTIONS_SPLIT, D_PKG_ARCHIVED
 # from pkg_py.system_object.directories import D_PK_WORKING
 # from pkg_py.system_object.directories import D_PK_WORKING, D_DOWNLOADS
-# from pkg_py.system_object.directories import D_PK_WORKING, D_DOWNLOADS, D_PKG_PKL
-# from pkg_py.system_object.directories import D_PK_WORKING, D_DOWNLOADS, D_PKG_PKL, D_PKG_PY
+# from pkg_py.system_object.directories import D_PK_WORKING, D_DOWNLOADS, D_PKG_CACHE_PRIVATE
+# from pkg_py.system_object.directories import D_PK_WORKING, D_DOWNLOADS, D_PKG_CACHE_PRIVATE, D_PKG_PY
 # from pkg_py.system_object.directories import D_PK_WORKING, D_DOWNLOADS, D_PKG_PY
-# from pkg_py.system_object.directories_reuseable import D_PROJECT
+# from pkg_py.system_object.directories  import D_PROJECT
 # from pkg_py.system_object.encodings import Encoding
 # from pkg_py.system_object.etc import PK_UNDERLINE
 # from pkg_py.system_object.etc import PkFilter
@@ -228,14 +228,7 @@
 # from pkg_py.system_object.files import F_POT_PLAYER_MINI_64_EXE
 # from pkg_py.system_object.files import F_POT_PLAYER_MINI_64_EXE, F_HISTORICAL_PNX
 # from pkg_py.system_object.files import F_TEMP_TXT
-# from pkg_py.system_object.map_massages import PkMessages2025
-# from pkg_py.system_object.stamps import STAMP_ATTEMPTED
-# from pkg_py.system_object.stamps import STAMP_DEBUG, STAMP_INTERACTIVE, STAMP_SUCCEEDED, STAMP_INFO, STAMP_TEST, STAMP_ERROR
-# from pkg_py.system_object.stamps import STAMP_LIST, STAMP_TUPLE, STAMP_DICT, STAMP_SET
-# from pkg_py.system_object.stamps import STAMP_PK_ENVIRONMENT_WITH_UNDERBAR
-# from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
-# from pkg_py.system_object.stamps import STAMP_TRY_GUIDE, STAMP_EXCEPTION_DISCOVERED
-# from pkg_py.system_object.stamps import STAMP_TRY_GUIDE, STAMP_UNIT_TEST_EXCEPTION_DISCOVERED
+
 # from pkg_py.refactor.ensure_keyboard_mouse_macro import PkMacroRoutines
 # from pkg_py.refactor.pk_ensure_functions_splited import restore_workspace_from_latest_archive, split_by_top_level_def, backup_workspace
 # from pkg_py.refactor.ensure_keyboard_mouse_macro import PkMacroRoutines

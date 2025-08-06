@@ -6,13 +6,13 @@ def ensure_filenames_and_directory_names_replaced():
     from pkg_py.functions_split.ensure_pnx_made import ensure_pnx_made
     from pkg_py.functions_split.ensure_pnx_removed import ensure_pnx_removed
     from pkg_py.functions_split.get_values_from_historical_file_routine import get_values_from_historical_file_routine
-    from pkg_py.system_object.directories import D_PKG_TXT
+    from pkg_py.system_object.directories import D_PKG_CACHE_PRIVATE
 
     func_n = inspect.currentframe().f_code.co_name
     key_name = "d_working"
     d_working = get_values_from_historical_file_routine(file_id=get_file_id(key_name, func_n), key_hint=f'{key_name}=', options_default=['pk_working'], editable=True)
 
-    f_files_to_replace = f"{D_PKG_TXT}/files_to_replace_via_{func_n}.txt"
+    f_files_to_replace = f"{D_PKG_CACHE_PRIVATE}/files_to_replace_via_{func_n}.txt"
     ensure_pnx_removed(pnx=f_files_to_replace)
     ensure_pnx_made(pnx=f_files_to_replace, mode='f')
 

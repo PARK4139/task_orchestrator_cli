@@ -27,7 +27,7 @@ def ensure_keyboard_mouse_macro(macro_routine):
     if macro_routine == PkMacroRoutines.ENSURE_PYCHARM_CODE_OPTIMIZED:
         ensure_pycharm_module_optimize()
     else:
-        ensure_printed(f'''{PkMessages2025.NOT_PREPARED_YET}{'%%%FOO%%%' if LTA else ''}''', print_color='green', mode_verbose=0)
+        ensure_guided_not_prepared_yet()
 
     logging.info(f"[{PkMessages2025.DONE}] {macro_routine}")
 

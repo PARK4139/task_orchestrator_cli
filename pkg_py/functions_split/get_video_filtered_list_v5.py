@@ -5,7 +5,7 @@ import re
 def get_video_filtered_list_v5(
         d_working,
         ext_allowed_list,
-        video_ignored_keyword_list,
+        video_name_parts_to_ignore,
         video_ignored_regex_patterns=None,  # 새로운 매개변수: 정규표현식 패턴 리스트
         cache_ttl=60,
         verbose=True,
@@ -18,7 +18,7 @@ def get_video_filtered_list_v5(
     import pickle
     import time
 
-    from pkg_py.system_object.directories import D_PKG_PKL
+    from pkg_py.system_object.directories import D_PKG_CACHE_PRIVATE
     from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
     from pkg_py.functions_split.ensure_printed import ensure_printed
     from pkg_py.functions_split.get_pk_wsl_mount_d import get_pk_wsl_mount_d
@@ -33,9 +33,9 @@ def get_video_filtered_list_v5(
         d_working = get_pk_wsl_mount_d(windows_path=d_working, path_to_mount='Downloads/pk_working')
 
     # --- 캐시 경로 생성 (정규표현식 패턴도 포함) ---
-    key_src = f"{d_working}|{sorted(ext_allowed_list)}|{sorted(video_ignored_keyword_list)}|{sorted(video_ignored_regex_patterns)}|{skip_hash_prefix}"
+    key_src = f"{d_working}|{sorted(ext_allowed_list)}|{sorted(video_name_parts_to_ignore)}|{sorted(video_ignored_regex_patterns)}|{skip_hash_prefix}"
     key_hash = hashlib.md5(key_src.encode()).hexdigest()
-    f_cache = os.path.join(D_PKG_PKL, f"{func_n}_{key_hash}.pkl")
+    f_cache = os.path.join(D_PKG_CACHE_PRIVATE, f"{func_n}_{key_hash}.pkl")
 
     # --- 캐시 로드 시도 ---
     if use_cache and os.path.exists(f_cache):
@@ -81,7 +81,7 @@ def get_video_filtered_list_v5(
             continue
         
         # 기존 키워드 필터링
-        if any(keyword in base for keyword in video_ignored_keyword_list):
+        if any(keyword in base for keyword in video_name_parts_to_ignore):
             continue
         
         # 정규표현식 패턴 필터링

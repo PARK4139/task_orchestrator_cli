@@ -10,7 +10,7 @@ from pkg_py.functions_split.get_historical_list import get_historical_list
 from pkg_py.functions_split.is_losslesscut_running import is_losslesscut_running
 from pkg_py.functions_split.is_window_title_front import is_window_title_front
 from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_excuted_to_os
-from pkg_py.system_object.stamps import STAMP_ATTEMPTED
+# pk_#
 from pkg_py.system_object.directories import D_PK_WORKING
 
 from functools import partial as functools_partial

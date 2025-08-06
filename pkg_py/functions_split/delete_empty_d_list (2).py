@@ -19,11 +19,11 @@ from pkg_py.functions_split.is_window_opened import is_window_opened
 
 from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_excuted_to_os
 from pkg_py.functions_split.get_list_sorted import get_list_sorted
-from pkg_py.system_object.stamps import STAMP_ATTEMPTED
+# pk_#
 from pkg_py.system_object.files import F_POT_PLAYER_MINI_64_EXE, F_HISTORICAL_PNX
 from pkg_py.system_object.files import F_FFMPEG_EXE
-from pkg_py.system_object.directories_reuseable import D_PROJECT
-from pkg_py.system_object.directories import D_PKG_TXT, D_PK_WORKING
+from pkg_py.system_object.directories  import D_PROJECT
+from pkg_py.system_object.directories import D_PKG_CACHE_PRIVATE, D_PK_WORKING
 from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.system_object.get_list_calculated import get_list_calculated
 from PIL import Image

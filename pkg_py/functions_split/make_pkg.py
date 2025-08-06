@@ -1,9 +1,9 @@
-from pkg_py.system_object.directories_reuseable import D_PROJECT
+from pkg_py.system_object.directories  import D_PROJECT
 
 
 def make_pkg(dst):
     """wsl rar   wsl unrar   bz.exe  의존 """
-    pnxs_required = get_pnxs_from_d_working(d_working=D_PROJECT, with_walking=1)
+    pnxs_required = get_pnxs_from_d_working(d_working=D_PROJECT, with_walking=True)
     exclude_paths = [
         rf"{D_PROJECT}\.git",
         rf"{D_PROJECT}\.idea",
@@ -29,7 +29,7 @@ def make_pkg(dst):
     compress_pnx(src=dst, dst=D_DESKTOP, with_timestamp=0)
 
     # del
-    # move_pnx_to_trash_bin(pnx=dst)
+    # ensure_pnx_moved_to_trash_bin(pnx=dst)
 
     # decompress
     # decompress_pnx(src= rf"{dst}.rar", dst=DESKTOP)

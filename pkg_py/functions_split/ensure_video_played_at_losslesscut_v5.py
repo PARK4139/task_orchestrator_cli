@@ -9,7 +9,7 @@ def ensure_video_played_at_losslesscut_v5(max_files=30):
 
     from pkg_py.functions_split.ensure_exception_routine_done import ensure_exception_routine_done
     from pkg_py.functions_split.ensure_finally_routine_done import ensure_finally_routine_done
-    from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
+    # pk_#
 
     from pkg_py.functions_split.ensure_start_time_logged import ensure_start_time_logged
     from pkg_py.system_object.map_massages import PkMessages2025
@@ -24,9 +24,9 @@ def ensure_video_played_at_losslesscut_v5(max_files=30):
     from pkg_py.functions_split.ensure_state_printed import ensure_state_printed
 
     from pkg_py.system_object.local_test_activate import LTA
-    from pkg_py.system_object.directories import D_DOWNLOADS, D_PKG_PKL
+    from pkg_py.system_object.directories import D_DOWNLOADS, D_PKG_CACHE_PRIVATE
     from pkg_py.system_object.directories import D_PK_WORKING
-    from pkg_py.system_object.directories_reuseable import D_PROJECT
+    from pkg_py.system_object.directories  import D_PROJECT
     from pkg_py.functions_split.ensure_console_cleared import ensure_console_cleared
 
     from pkg_py.functions_split.get_list_sorted import get_list_sorted
@@ -52,7 +52,7 @@ def ensure_video_played_at_losslesscut_v5(max_files=30):
 
     start_time = ensure_start_time_logged()
     func_n = inspect.currentframe().f_code.co_name
-    F_CACHE = f"{D_PKG_PKL}/{func_n}.pkl"
+    F_CACHE = f"{D_PKG_CACHE_PRIVATE}/{func_n}.pkl"
     pk_db = PkSqlite3DB()
 
     INTERVAL_MAX = 5000
@@ -73,7 +73,7 @@ def ensure_video_played_at_losslesscut_v5(max_files=30):
         ensure_list_written_to_f(f=file_to_working, working_list=values_to_save, mode="w")
 
         ext_allowed_list = ['.mp4', '.mkv', '.avi', '.mov', '.wmv', '.flv', '.webm']
-        video_ignored_keyword_list = ['-seg', 'SEG-']
+        video_name_parts_to_ignore = ['-seg', 'SEG-']
         f_video_to_load = None
         f_videos_allowed = None
         loop_cnt = 1
@@ -87,7 +87,7 @@ def ensure_video_played_at_losslesscut_v5(max_files=30):
 
             if f_video_to_load is None:
                 ensure_printed(f'''f_video_to_load is None {'%%%FOO%%%' if LTA else ''}''')
-                f_videos_allowed = get_video_filtered_list(d_working, ext_allowed_list, video_ignored_keyword_list)[:max_files]
+                f_videos_allowed = get_video_filtered_list(d_working, ext_allowed_list, video_name_parts_to_ignore)[:max_files]
                 f_video_to_load = get_f_video_to_load(f_videos_allowed)
                 continue
 
@@ -166,4 +166,4 @@ def ensure_video_played_at_losslesscut_v5(max_files=30):
     except Exception as exception:
         ensure_exception_routine_done(traceback=traceback, exception=exception)
     finally:
-        ensure_finally_routine_done(D_PROJECT=D_PROJECT, __file__=__file__, STAMP_TRY_GUIDE=STAMP_TRY_GUIDE)
+        ensure_finally_routine_done(D_PROJECT=D_PROJECT, __file__=__file__)

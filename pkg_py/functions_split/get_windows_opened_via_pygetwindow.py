@@ -14,7 +14,7 @@ from selenium.webdriver.common.by import By
 from prompt_toolkit import PromptSession
 from pkg_py.functions_split.is_window_title_front import is_window_title_front
 from pkg_py.system_object.files import F_LOSSLESSCUT_EXE
-from pkg_py.system_object.directories_reuseable import D_PROJECT
+from pkg_py.system_object.directories  import D_PROJECT
 from passlib.context import CryptContext
 from gtts import gTTS
 from functools import partial

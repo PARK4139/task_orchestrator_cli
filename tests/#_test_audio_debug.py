@@ -10,7 +10,7 @@ import os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from pkg_py.functions_split.ensure_printed import ensure_printed
-from pkg_py.system_object.directories import D_PKG_SOUND
+from pkg_py.system_object.directories import D_PKG_IMAGE_AND_VIDEO_AND_SOUND
 
 def test_audio_system():
     """오디오 시스템 진단"""
@@ -40,7 +40,7 @@ def test_audio_system():
         from pydub.playback import play
         
         # 기존 WAV 파일 재생
-        wav_file = os.path.join(D_PKG_SOUND, "20250801_211619_안녕하세요.wav")
+        wav_file = os.path.join(D_PKG_IMAGE_AND_VIDEO_AND_SOUND, "20250801_211619_안녕하세요.wav")
         if os.path.exists(wav_file):
             print(f"WAV 파일 재생 중: {os.path.basename(wav_file)}")
             audio = AudioSegment.from_file(wav_file, format="wav")
@@ -59,7 +59,7 @@ def test_audio_system():
         from pydub import AudioSegment
         from pydub.playback import play
         
-        pop_sound = os.path.join(D_PKG_SOUND, "pop_sound.wav")
+        pop_sound = os.path.join(D_PKG_IMAGE_AND_VIDEO_AND_SOUND, "pop_sound.wav")
         if os.path.exists(pop_sound):
             print("시스템 사운드 재생 중...")
             audio = AudioSegment.from_file(pop_sound, format="wav")

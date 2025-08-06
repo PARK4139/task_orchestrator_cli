@@ -21,7 +21,7 @@ from pkg_py.functions_split.ensure_pressed import ensure_pressed
 from pkg_py.functions_split.get_list_sorted import get_list_sorted
 from pkg_py.system_object.files import F_FFMPEG_EXE
 from pkg_py.system_object.encodings import Encoding
-from pkg_py.system_object.directories_reuseable import D_PROJECT
+from pkg_py.system_object.directories  import D_PROJECT
 from pkg_py.system_object.state_via_context import SpeedControlContext
 from PIL import Image
 from moviepy import VideoFileClip

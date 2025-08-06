@@ -1,7 +1,7 @@
 from pkg_py.functions_split.ensure_pnx_made import ensure_pnx_made
 from pkg_py.functions_split.get_historical_list import get_historical_list
-from pkg_py.system_object.directories import D_PKG_TXT
-from pkg_py.system_object.directories_reuseable import D_PROJECT
+from pkg_py.system_object.directories import D_PKG_CACHE_PRIVATE
+from pkg_py.system_object.directories  import D_PROJECT
 from pkg_py.functions_split.ensure_list_written_to_f import ensure_list_written_to_f
 from pkg_py.functions_split.get_value_completed import get_value_completed
 from pkg_py.functions_split.ensure_printed import ensure_printed
@@ -19,7 +19,7 @@ def collect_magnet_set_from_nyaa_si(search_keyword=None, driver=None, via_f_txt=
     if not is_internet_connected():
         raise
 
-    f = rf'{D_PKG_TXT}/pk_magnets.txt'
+    f = rf'{D_PKG_CACHE_PRIVATE}/pk_magnets.txt'
     ensure_pnx_made(pnx=f, mode="f")
     # answer = get_value_completed(message=f'can i open {get_nx(f)} (o/x)=', option_values=['o', 'x'])
     # if is_os_windows():
@@ -29,7 +29,7 @@ def collect_magnet_set_from_nyaa_si(search_keyword=None, driver=None, via_f_txt=
     #     ensure_printed(str_working=rf'''{get_pnx_unix_style(f)}  {'%%%FOO%%%' if LTA else ''}''', print_color='red')
     #     pass # todo
 
-    f_func_n_txt = rf'{D_PROJECT}\pkg_txt\{func_n}.txt'
+    f_func_n_txt = rf'{D_PROJECT}\pkg_cache_private\{func_n}.txt'
     ensure_pnx_made(pnx=f_func_n_txt, mode="f")
     # window_title_seg = get_nx(f_func_n_txt)
 
@@ -103,7 +103,7 @@ def collect_magnet_set_from_nyaa_si(search_keyword=None, driver=None, via_f_txt=
             magnets_set_filtered.add(magnet)
     magnets_set = magnets_set_filtered
 
-    f = rf'{D_PKG_TXT}/pk_magnets.txt'
+    f = rf'{D_PKG_CACHE_PRIVATE}/pk_magnets.txt'
     magnets_list = get_list_url_decoded_element(magnets_set)
     magnets_list = [magnet for magnet in
                     sorted(magnets_list, key=lambda magnet: magnet.split("&dn=")[1] if "&dn=" in magnet else "")]

@@ -38,8 +38,8 @@ from pkg_py.functions_split.is_window_opened import is_window_opened
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 
 
-from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
-from pkg_py.system_object.stamps import STAMP_ATTEMPTED
+# pk_#
+# pk_#
 from pkg_py.system_object.state_via_database import PkSqlite3DB
 # from pkg_py.system_object.is_os_windows import is_os_windows
 

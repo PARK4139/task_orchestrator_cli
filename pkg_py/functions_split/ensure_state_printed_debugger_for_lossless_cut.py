@@ -16,9 +16,9 @@ from pkg_py.functions_split.ensure_iterable_printed_as_vertical import ensure_it
 from pkg_py.functions_split.ensure_losslesscut_reran import ensure_losslesscut_reran
 from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_excuted_to_os
 
-from pkg_py.system_object.stamps import STAMP_ATTEMPTED
+# pk_#
 from pkg_py.system_object.files import F_LOSSLESSCUT_EXE
-from pkg_py.system_object.directories_reuseable import D_PROJECT
+from pkg_py.system_object.directories  import D_PROJECT
 
 from paramiko import SSHClient, AutoAddPolicy
 from moviepy import VideoFileClip

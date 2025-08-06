@@ -69,7 +69,7 @@ from pkg_py.functions_split.ensure_list_written_to_f import ensure_list_written_
 
 from pkg_py.functions_split.set_pk_context_state import set_pk_context_state
 from pkg_py.functions_split.ensure_console_cleared import ensure_console_cleared
-from pkg_py.pk_system_object.stamps import STAMP_TRY_GUIDE
+from pkg_py.pk_system_object.stamps import '[ TRY GUIDE ]'
 from pkg_py.pk_system_object.files import F_LOSSLESSCUT_EXE
 from pkg_py.pk_system_object.files import F_FFMPEG_EXE
 from pkg_py.pk_system_object.encodings import Encoding
@@ -103,7 +103,7 @@ from base64 import b64encode
 from pkg_py.functions_split.get_nx import get_nx
 from pkg_py.functions_split.ensure_video_played_at_losslesscut import ensure_video_played_at_losslesscut
 from pkg_py.functions_split.ensure_program_suicided import ensure_program_suicided
-from pkg_py.pk_system_object.stamps import STAMP_TRY_GUIDE, STAMP_UNIT_TEST_EXCEPTION_DISCOVERED
+from pkg_py.pk_system_object.stamps import '[ TRY GUIDE ]', '[ UNIT TEST EXCEPTION DISCOVERED ]'
 from pkg_py.pk_system_object.etc import PK_UNDERLINE
 from pkg_py.functions_split.get_value_completed import get_value_completed
 from pkg_py.pk_system_object.directories import D_PKG_PY
@@ -134,6 +134,6 @@ def ensure_os_locked_v1():
 
         # 잠잘 시간
         if (now.hour == 0 and now.minute >= 12) or (0 < now.hour < 5) or (now.hour == 5 and now.minute <= 30):
-            pk_lock_os()
+            pk_ensure_os_locked()
 
         ensure_slept(milliseconds=10000)

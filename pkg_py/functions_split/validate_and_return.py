@@ -26,7 +26,7 @@ from pkg_py.functions_split.ensure_iterable_printed_as_vertical import ensure_it
 from pkg_py.functions_split.ensure_losslesscut_reran import ensure_losslesscut_reran
 from pkg_py.functions_split.ensure_f_video_loaded_on_losslesscut import ensure_f_video_loaded_on_losslesscut
 from pkg_py.functions_split.is_window_title_opened import is_window_title_opened
-from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
+# pk_#
 from pkg_py.system_object.encodings import Encoding
 from pkg_py.system_object.state_via_database import PkSqlite3DB
 from pkg_py.system_object.get_list_calculated import get_list_calculated

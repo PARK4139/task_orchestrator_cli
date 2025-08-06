@@ -20,7 +20,7 @@ from pkg_py.functions_split.is_window_title_opened import is_window_title_opened
 from pkg_py.functions_split.ensure_printed_once import ensure_printed_once
 from pkg_py.functions_split.ensure_list_written_to_f import ensure_list_written_to_f
 from pkg_py.system_object.files import F_POT_PLAYER_MINI_64_EXE
-from pkg_py.system_object.directories import D_PKG_TXT
+from pkg_py.system_object.directories import D_PKG_CACHE_PRIVATE
 from PIL import Image
 from functools import lru_cache
 from enum import Enum
@@ -43,7 +43,7 @@ def collect_magnets_from_torrentqq(search_keyword=None, driver=None, via_f_txt=T
         if not is_internet_connected():
             raise
 
-        collect_magnets_from_nyaa_si_txt = rf'{D_PKG_TXT}/collect_magnets_from_nyaa_si.txt'
+        collect_magnets_from_nyaa_si_txt = rf'{D_PKG_CACHE_PRIVATE}/collect_magnets_from_nyaa_si.txt'
         magnets_set = set()
 
         # [OPTION]
@@ -60,7 +60,7 @@ def collect_magnets_from_torrentqq(search_keyword=None, driver=None, via_f_txt=T
 
         # [OPTION]
         # filtered_list.append(search_keyword)
-        filtered_list = get_list_contained_with_stamp_from_f(f=collect_magnets_from_nyaa_si_txt, STAMP=STAMP_TORRENTQQ)
+        filtered_list = get_list_contained_with_stamp_from_f(f=collect_magnets_from_nyaa_si_txt, STAMP='[ TORRENTQQ ]')
 
         # 전처리
         ensure_printed(f'''search_keyword_list={filtered_list}  {'%%%FOO%%%' if LTA else ''}''')
@@ -85,7 +85,7 @@ def collect_magnets_from_torrentqq(search_keyword=None, driver=None, via_f_txt=T
             magnets_set = magnets_set | get_magnets_set_from_torrent_qq(search_keyword=search_keyword)
 
             # save magnets collected
-            magnets_txt = rf'{D_PKG_TXT}/pk_magnets.txt'
+            magnets_txt = rf'{D_PKG_CACHE_PRIVATE}/pk_magnets.txt'
             magnets_list = get_list_url_decoded_element(magnets_set)
             magnets_list = [magnet for magnet in sorted(magnets_list, key=lambda magnet: magnet.split("&dn=")[
                 1] if "&dn=" in magnet else "")]

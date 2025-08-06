@@ -12,8 +12,8 @@ from selenium.webdriver.common.by import By
 from prompt_toolkit.styles import Style
 from pkg_py.functions_split.is_window_opened import is_window_opened
 from pkg_py.functions_split.get_list_sorted import get_list_sorted
-from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
-from pkg_py.system_object.directories_reuseable import D_PROJECT
+# pk_#
+from pkg_py.system_object.directories  import D_PROJECT
 from pkg_py.system_object.performance_logic import ensure_seconds_measured, pk_measure_memory
 # from pkg_py.system_object.is_os_windows import is_os_windows
 

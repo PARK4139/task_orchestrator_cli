@@ -1,7 +1,7 @@
 
 
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
+# pk_#
 from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
@@ -25,7 +25,7 @@ def ensure_ssh_public_key_to_remote_os(**config_remote_os):
     ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
     try:
         ssh.connect(hostname=ip, port=port, username=user_n, password=pw)
-        ensure_printed(f"{STAMP_TRY_GUIDE} ssh -p {port} {user_n}@{ip} ")
+        ensure_printed(f"{'[ TRY GUIDE ]'} ssh -p {port} {user_n}@{ip} ")
 
         add_public_key_to_remote_via_paramiko(ssh_paramiko=ssh, key_public=key_public)
 

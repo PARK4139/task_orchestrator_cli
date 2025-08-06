@@ -67,7 +67,7 @@ def set_wired_connection(vpc_wired_connection, **config_remote_os):
             if "\n" in std_err:
                 error_list = std_err.split("\n")
                 for error_str in error_list:
-                    ensure_printed(f"{STAMP_ERROR}{error_str}", print_color='red')
+                    ensure_printed(f"{"[ ERROR ]"}{error_str}", print_color='red')
             else:
-                ensure_printed(f"{STAMP_ERROR}{std_err}", print_color='red')
+                ensure_printed(f"{"[ ERROR ]"}{std_err}", print_color='red')
     cmd_to_remote_os(cmd="sudo systemctl restart NetworkManager", **config_remote_os)

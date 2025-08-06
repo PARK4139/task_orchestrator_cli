@@ -18,12 +18,12 @@ def ensure_everything_ssd_diagnosis():
             )
             
             if result.returncode == 0 and "RUNNING" in result.stdout:
-                ensure_printed("✓ Windows Search 서비스: 정상 실행", print_color='green')
+                ensure_printed(" Windows Search 서비스: 정상 실행", print_color='green')
             else:
-                ensure_printed("✗ Windows Search 서비스: 비활성화", print_color='red')
+                ensure_printed(" Windows Search 서비스: 비활성화", print_color='red')
                 return False
         except Exception as e:
-            ensure_printed(f"✗ Windows Search 서비스 확인 실패: {e}", print_color='red')
+            ensure_printed(f" Windows Search 서비스 확인 실패: {e}", print_color='red')
             return False
         
         # 2. Windows Search Index 상태
@@ -35,12 +35,12 @@ def ensure_everything_ssd_diagnosis():
                 timeout=10
             )
             if "True" in index_result.stdout:
-                ensure_printed("✓ Windows Search Index: 활성화", print_color='green')
+                ensure_printed(" Windows Search Index: 활성화", print_color='green')
             else:
-                ensure_printed("✗ Windows Search Index: 비활성화", print_color='red')
+                ensure_printed(" Windows Search Index: 비활성화", print_color='red')
                 return False
         except Exception as e:
-            ensure_printed(f"✗ Windows Search Index 확인 실패: {e}", print_color='red')
+            ensure_printed(f" Windows Search Index 확인 실패: {e}", print_color='red')
             return False
         
         # 3. NTFS USN Journal 상태
@@ -50,12 +50,12 @@ def ensure_everything_ssd_diagnosis():
             ], capture_output=True, text=True, timeout=10)
             
             if usn_result.returncode == 0:
-                ensure_printed("✓ NTFS USN Journal: 정상 작동", print_color='green')
+                ensure_printed(" NTFS USN Journal: 정상 작동", print_color='green')
             else:
-                ensure_printed("✗ NTFS USN Journal: 문제 있음", print_color='red')
+                ensure_printed(" NTFS USN Journal: 문제 있음", print_color='red')
                 return False
         except Exception as e:
-            ensure_printed(f"✗ NTFS USN Journal 확인 실패: {e}", print_color='red')
+            ensure_printed(f" NTFS USN Journal 확인 실패: {e}", print_color='red')
             return False
         
         # 4. Everything 설정 파일 확인
@@ -77,12 +77,12 @@ def ensure_everything_ssd_diagnosis():
                         missing_settings.append(setting)
                 
                 if missing_settings:
-                    ensure_printed(f"✗ Everything 설정 누락: {', '.join(missing_settings)}", print_color='red')
+                    ensure_printed(f" Everything 설정 누락: {', '.join(missing_settings)}", print_color='red')
                     return False
                 else:
-                    ensure_printed("✓ Everything 설정: 완료", print_color='green')
+                    ensure_printed(" Everything 설정: 완료", print_color='green')
         else:
-            ensure_printed("✗ Everything 설정 파일 없음", print_color='red')
+            ensure_printed(" Everything 설정 파일 없음", print_color='red')
             return False
         
         # 5. Everything 실행 테스트
@@ -111,16 +111,16 @@ def ensure_everything_ssd_diagnosis():
                 )
                 
                 if test_result.returncode == 0:
-                    ensure_printed("✓ Everything 실행 테스트: 성공", print_color='green')
+                    ensure_printed(" Everything 실행 테스트: 성공", print_color='green')
                 else:
-                    ensure_printed("✗ Everything 실행 테스트: 실패", print_color='red')
+                    ensure_printed(" Everything 실행 테스트: 실패", print_color='red')
                     return False
             else:
-                ensure_printed("✗ Everything 실행 파일 없음", print_color='red')
+                ensure_printed(" Everything 실행 파일 없음", print_color='red')
                 return False
                 
         except Exception as e:
-            ensure_printed(f"✗ Everything 실행 테스트 실패: {e}", print_color='red')
+            ensure_printed(f" Everything 실행 테스트 실패: {e}", print_color='red')
             return False
         
         ensure_printed("=== SSD 진단 완료: 모든 항목 정상 ===", print_color='green')

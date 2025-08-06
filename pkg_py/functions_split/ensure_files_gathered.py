@@ -9,7 +9,7 @@ def ensure_files_gathered():
     from pkg_py.functions_split.get_list_sorted import get_list_sorted
     from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style
     from pkg_py.functions_split.get_value_completed import get_value_completed
-    from pkg_py.system_object.directories import D_PKG_HISTORY, D_DOWNLOADS, D_PK_WORKING
+    from pkg_py.system_object.directories import D_PKG_CACHE_PRIVATE, D_DOWNLOADS, D_PK_WORKING
     from pkg_py.system_object.local_test_activate import LTA
     from pkg_py.system_object.map_massages import PkMessages2025
 
@@ -23,7 +23,7 @@ def ensure_files_gathered():
 
     func_n = inspect.currentframe().f_code.co_name
     key_name = "d_working"
-    file_to_working = rf"{D_PKG_HISTORY}/{get_file_id(key_name, func_n)}.history"
+    file_to_working = rf"{D_PKG_CACHE_PRIVATE}/{get_file_id(key_name, func_n)}.history"
     file_to_working = get_pnx_os_style(file_to_working)
     historical_pnxs = get_historical_list(f=file_to_working)
     options = historical_pnxs + get_list_sorted(working_list=[D_PK_WORKING, D_DOWNLOADS], mode_asc=1)

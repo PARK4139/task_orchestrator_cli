@@ -47,7 +47,7 @@ from cryptography.hazmat.backends import default_backend
 from Cryptodome.Cipher import AES
 from base64 import b64encode
 from base64 import b64decode
-from pkg_py.system_object.stamps import STAMP_TRY_GUIDE, STAMP_UNIT_TEST_EXCEPTION_DISCOVERED
+
 from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style
 from pkg_py.functions_split.is_d import is_d
 from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
@@ -62,7 +62,7 @@ def get_pnxs_with_mtime_without_f_list_to_exclude(d_src):
     f_list_to_exclude = [
         F_DB_YAML,
         F_SUCCESS_LOG,
-        F_LOCAL_PKG_CACHE,
+        F_LOCAL_PKG_CACHE_PRIVATE,
     ]
     f_list_of_d = []
     for root, _, f_nx_list in os.walk(d_src):

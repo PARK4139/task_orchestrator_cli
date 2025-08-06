@@ -1,8 +1,8 @@
-from pkg_py.system_object.directories import D_PKG_TXT
+from pkg_py.system_object.directories import D_PKG_CACHE_PRIVATE
 
 
 def classify_pnx_list_to_d_special_keyword(d_src, with_walking):
-    f = rf'{D_PKG_TXT}/collect_magnets_from_nyaa_si.txt'
+    f = rf'{D_PKG_CACHE_PRIVATE}/collect_magnets_from_nyaa_si.txt'
     special_keywords_from_f_txt = get_list_from_f(f=f)
     special_keywords_from_f_txt = get_list_removed_element_contain_prompt(working_list=special_keywords_from_f_txt,
                                                                           prompt="#")

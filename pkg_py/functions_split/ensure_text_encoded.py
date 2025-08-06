@@ -23,14 +23,14 @@ def ensure_text_encoded():
     text = input("텍스트 입력: ").strip()
     
     if not text:
-        ensure_printed("❌ 텍스트가 입력되지 않았습니다.", print_color='red')
+        ensure_printed(" 텍스트가 입력되지 않았습니다.", print_color='red')
         return None
     
     ensure_printed(" 마스터 패스워드를 입력하세요:", print_color='blue')
     master_password = input("마스터 패스워드(5th sym pw): ").strip()
     
     if not master_password:
-        ensure_printed("❌ 마스터 패스워드가 입력되지 않았습니다.", print_color='red')
+        ensure_printed(" 마스터 패스워드가 입력되지 않았습니다.", print_color='red')
         return None
     
     # 2. 다단계 암호화 수행
@@ -90,7 +90,7 @@ def ensure_text_encoded():
             return encrypted
         
         # 암호화 과정
-        ensure_printed("🔄 암호화 진행 중...", print_color='yellow')
+        ensure_printed(" 암호화 진행 중...", print_color='yellow')
         
         # 1단계: Caesar Cipher
         caesar_shift = secrets.randbelow(26) + 1
@@ -126,21 +126,21 @@ def ensure_text_encoded():
         result = f"SECURE_{encrypted_metadata_b64}_{final_encoded}"
         
         # 3. print encoded text
-        ensure_printed(f"✅ 최종 암호화 완료!", print_color='green')
-        ensure_printed(f"🔐 암호화된 텍스트: {result}", print_color='green')
+        ensure_printed(f" 최종 암호화 완료!", print_color='green')
+        ensure_printed(f" 암호화된 텍스트: {result}", print_color='green')
         ensure_printed(f" 원본 길이: {len(text)} → 암호화 길이: {len(result)}", print_color='blue')
         ensure_printed(f" 메타데이터가 마스터 패스워드로 암호화되었습니다.", print_color='green')
         
         # 4. 클립보드에 복사
         try:
             pyperclip.copy(result)
-            ensure_printed("📋 클립보드에 복사되었습니다! (Ctrl+V로 붙여넣기 가능)", print_color='green')
+            ensure_printed(" 클립보드에 복사되었습니다! (Ctrl+V로 붙여넣기 가능)", print_color='green')
         except Exception as e:
-            ensure_printed(f"⚠️ 클립보드 복사 실패: {str(e)}", print_color='yellow')
+            ensure_printed(f"️ 클립보드 복사 실패: {str(e)}", print_color='yellow')
         
         # 5. return encoded text
         return result
         
     except Exception as e:
-        ensure_printed(f"❌ 암호화 중 오류 발생: {str(e)}", print_color='red')
+        ensure_printed(f" 암호화 중 오류 발생: {str(e)}", print_color='red')
         return None 

@@ -39,11 +39,14 @@ def ensure_process_and_window_deduplicated_all():
                 len_before = len_current
             if len(current_windows_opened_list) != len(previous_windows_opened_list):
                 # ensure_printed(f'''len(current_windows_opened_list)={len(current_windows_opened_list)} len(previous_windows_opened_list)={len(previous_windows_opened_list)}  {'%%%FOO%%%' if LTA else ''}''',print_color="blue")
-                # 창 중복 제거를 위한 기본 창 제목들
                 default_windows_to_close = ["Everything", "explorer.exe", "cmd.exe", "powershell.exe"]
                 for window_title in default_windows_to_close:
                     ensure_windows_closed(window_title)
-                title = ensure_func_info_loaded(func_n="ensure_windows_closed")["title"]
+                func_info = ensure_func_info_loaded(func_n="ensure_windows_closed")
+                if func_info and isinstance(func_info, dict) and "title" in func_info:
+                    title = func_info["title"]
+                else:
+                    title = "ensure_windows_closed"  # 기본값
                 ensure_window_to_front(window_title_seg=title)
                 previous_windows_opened_list = current_windows_opened_list
 

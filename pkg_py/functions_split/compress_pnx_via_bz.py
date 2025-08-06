@@ -2,7 +2,7 @@
 
 import paramiko
 from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_excuted_to_os
-from pkg_py.system_object.directories_reuseable import D_PROJECT
+from pkg_py.system_object.directories  import D_PROJECT
 
 
 from pkg_py.system_object.local_test_activate import LTA
@@ -95,7 +95,7 @@ def compress_pnx_via_bz(pnx):
                             time_to_backed_up__ = datetime.strptime(str(time_to_backed_up_), '%Y-%m-%d %H:%M.%S')
                             time_current = datetime.now()
                             try:
-                                target_dirname_old = rf'{target_dirname}\pkg_zip'
+                                target_dirname_old = rf'{target_dirname}\pkg_cache_private'
                                 if not os.path.exists(target_dirname_old):
                                     os.makedirs(target_dirname_old)
                             except Exception:

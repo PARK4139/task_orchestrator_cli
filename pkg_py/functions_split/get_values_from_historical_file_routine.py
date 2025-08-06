@@ -1,5 +1,5 @@
 from pkg_py.functions_split.ensure_pk_system_exit_silent import ensure_pk_system_exit_silent
-from pkg_py.functions_split.get_f_historical import get_history_file
+from pkg_py.functions_split.get_f_historical import ensure_history_file_pnx_got
 
 
 def get_values_from_historical_file_routine(file_id: str, key_hint: str, options_default=[], editable=False) -> str:
@@ -13,7 +13,7 @@ def get_values_from_historical_file_routine(file_id: str, key_hint: str, options
     from pkg_py.functions_split.open_pnx_by_ext import ensure_pnx_opened_by_ext
     from pkg_py.functions_split.set_values_to_historical_file import set_values_to_historical_file
     from pkg_py.functions_split.get_values_from_historical_file import get_values_from_history_file
-    history_file = get_history_file(file_id=file_id)
+    history_file = ensure_history_file_pnx_got(file_id=file_id)
     if LTA:
         ensure_printed(f'''history_file={history_file} {'%%%FOO%%%' if LTA else ''}''')
     ensure_pnx_made(pnx=history_file, mode='f')

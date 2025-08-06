@@ -30,15 +30,15 @@ def save_chrome_youtube_cookies_to_f():
             secure = "TRUE" if cookie.secure else "FALSE"
             f.write(f"{cookie.domain}\tTRUE\t{cookie.path}\t{secure}\t{expires}\t{cookie.name}\t{cookie.value}\n")
         
-        ensure_printed(f"✅ YouTube 쿠키가 성공적으로 저장되었습니다: {F_YOUTUBE_COOKIES_TXT}", print_color="green")
-        ensure_printed(f"📊 저장된 쿠키 개수: {len(list(cj))}", print_color="cyan")
+        ensure_printed(f" YouTube 쿠키가 성공적으로 저장되었습니다: {F_YOUTUBE_COOKIES_TXT}", print_color="green")
+        ensure_printed(f" 저장된 쿠키 개수: {len(list(cj))}", print_color="cyan")
         return True
         
     except ImportError:
-        ensure_printed("❌ browser_cookie3 라이브러리가 설치되지 않았습니다.", print_color="red")
-        ensure_printed("💡 설치 방법: pip install browser-cookie3", print_color="yellow")
-        ensure_printed("💡 또는: uv add browser-cookie3", print_color="yellow")
+        ensure_printed(" browser_cookie3 라이브러리가 설치되지 않았습니다.", print_color="red")
+        ensure_printed(" 설치 방법: pip install browser-cookie3", print_color="yellow")
+        ensure_printed(" 또는: uv add browser-cookie3", print_color="yellow")
         return False
     except Exception as e:
-        ensure_printed(f"❌ 쿠키 저장 실패: {e}", print_color="red")
+        ensure_printed(f" 쿠키 저장 실패: {e}", print_color="red")
         return False

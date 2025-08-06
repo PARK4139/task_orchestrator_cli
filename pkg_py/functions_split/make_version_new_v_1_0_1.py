@@ -13,7 +13,7 @@ from pkg_py.functions_split.is_window_title_opened import is_window_title_opened
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_excuted_to_os
 from pkg_py.functions_split.ensure_list_written_to_f import ensure_list_written_to_f
-from pkg_py.system_object.directories_reuseable import D_PROJECT
+from pkg_py.system_object.directories  import D_PROJECT
 from functools import partial as functools_partial
 from fastapi import HTTPException
 from dirsync import sync
@@ -35,7 +35,7 @@ def make_version_new_v_1_0_1(via_f_txt=False, working_list=None, debug_mode=True
     import shutil
 
     func_n = inspect.currentframe().f_code.co_name
-    f_func_n_txt = rf'{D_PROJECT}\pkg_txt\{func_n}.txt'
+    f_func_n_txt = rf'{D_PROJECT}\pkg_cache_private\{func_n}.txt'
     ensure_pnx_made(pnx=f_func_n_txt, mode='f')
     ensure_pnx_opened_by_ext(pnx=f_func_n_txt)
 

@@ -1,22 +1,22 @@
 from pkg_py.functions_split.ensure_pnx_made import ensure_pnx_made
 from pkg_py.functions_split.ensure_window_to_front import ensure_window_to_front
 from pkg_py.functions_split.fallback_choice import fallback_choice
-from pkg_py.functions_split.get_f_historical import get_history_file
+from pkg_py.functions_split.get_f_historical import ensure_history_file_pnx_got
 from pkg_py.functions_split.get_fzf_command import get_fzf_command
 from pkg_py.functions_split.get_last_history import get_last_history
 from pkg_py.functions_split.get_nx import get_nx
 from pkg_py.functions_split.open_pnx_by_ext import ensure_pnx_opened_by_ext
 from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.save_to_history import save_to_history
-from pkg_py.system_object.directories import D_PKG_HISTORY
+from pkg_py.system_object.directories import D_PKG_CACHE_PRIVATE
 from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.system_object.map_massages import PkMessages2025
 
 
 def get_value_from_fzf_routine(file_id, editable, options):
     import subprocess
-    ensure_pnx_made(pnx=D_PKG_HISTORY, mode="f")
-    history_file = get_history_file(file_id=file_id)
+    ensure_pnx_made(pnx=D_PKG_CACHE_PRIVATE, mode="f")
+    history_file = ensure_history_file_pnx_got(file_id=file_id)
 
     last_selected = get_last_history(history_file)
     ensure_printed(f'''[{PkMessages2025.DATA}] last_selected={last_selected} {'%%%FOO%%%' if LTA else ''}''')

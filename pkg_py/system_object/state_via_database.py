@@ -1,18 +1,31 @@
+import threading
+
+
 class PkSqlite3DB:
     from typing import Any
     from typing import Optional
 
     from pkg_py.functions_split.ensure_seconds_measured import ensure_seconds_measured
 
+    _instance = None
+    _lock = threading.Lock()
+
+    def __new__(cls):
+        if cls._instance is None:
+            with cls._lock:
+                if cls._instance is None:
+                    cls._instance = super().__new__(cls)
+        return cls._instance
+
     @ensure_seconds_measured
     def __init__(self):
 
-        from pkg_py.system_object.files import F_PK_SQLITE
+        from pkg_py.system_object.files import F_PK_SYSTEM_SQLITE
         import sqlite3
 
         self.sqlite3 = sqlite3
 
-        self.pk_db_pnx = F_PK_SQLITE
+        self.pk_db_pnx = F_PK_SYSTEM_SQLITE
         self.ensure_pk_db(self.pk_db_pnx)
         self.pk_db_connection = sqlite3.connect(self.pk_db_pnx)
         self.ensure_pk_db_table()
@@ -64,14 +77,13 @@ class PkSqlite3DB:
 
     def get_v1(self, db_id: str) -> Optional[str]:
 
-        from pkg_py.functions_split.ensure_printed import ensure_printed
         from pkg_py.system_object.local_test_activate import LTA
         # db 에서 상태를 가져옴
         cur = self.pk_db_connection.cursor()
         cur.execute("SELECT answer FROM pk_table_state WHERE id = ?", (db_id,))
         row = cur.fetchone()
         value = row[0] if row else None
-        ensure_printed(f'''db_id=value : {db_id}={value} {'%%%FOO%%%' if LTA else ''}''', print_color="green")
+        print(f'''db_id=value : {db_id}={value} {'%%%FOO%%%' if LTA else ''}''')
         return value
 
     def default_input_func(self, message: str, answer_options: list[str]) -> str:
@@ -88,14 +100,13 @@ class PkSqlite3DB:
 
     def reset_values(self, db_id: str):
 
-        from pkg_py.functions_split.ensure_printed import ensure_printed
         # TBD : reset_key() 도 있으면 좋겠다
 
         # pk db 초기화
         cur = self.pk_db_connection.cursor()
         cur.execute("UPDATE pk_table_state SET answer = NULL WHERE id = ?", (db_id,))
         self.pk_db_connection.commit()
-        ensure_printed(f"db_id({db_id}) is reset")
+        print(f"db_id({db_id}) is reset")
 
     def set_values(self, db_id: str, values: Any):
 
@@ -153,7 +164,6 @@ class PkSqlite3DB:
     def get_values_v1(self, db_id: str) -> Optional[Any]:
         import json
 
-        from pkg_py.functions_split.ensure_printed import ensure_printed
         from pkg_py.system_object.local_test_activate import LTA
         """
         주어진 db_id에 대한 answer 값을 가져옵니다.
@@ -171,13 +181,12 @@ class PkSqlite3DB:
         except (json.JSONDecodeError, TypeError):
             value = raw_value  # JSON 형식이 아니면 원본 그대로 반환
 
-        ensure_printed(f'''db_id={db_id}, value={value} {'%%%FOO%%%' if LTA else ''}''', print_color="green")
+        print(f'''db_id={db_id}, value={value} {'%%%FOO%%%' if LTA else ''}''')
         return value
 
     def get_values_v2(self, db_id: str) -> Optional[Any]:
         import json
 
-        from pkg_py.functions_split.ensure_printed import ensure_printed
         from pkg_py.system_object.local_test_activate import LTA
         """
         주어진 db_id에 대한 answer 값을 가져옵니다.
@@ -208,10 +217,7 @@ class PkSqlite3DB:
                     value = int(lowered)
                 else:
                     value = raw_value  # fallback 그대로 반환
-        ensure_printed(
-            f'''[get_values_v2] db_id={db_id}, value={value}, type={type(value)}, repr={repr(value)} {'%%%FOO%%%' if LTA else ''}''',
-            print_color="green"
-        )
+        print(f'''[get_values_v2] db_id={db_id}, value={value}, type={type(value)}, repr={repr(value)} {'%%%FOO%%%' if LTA else ''}''')
         return value
 
     def get_db_id(self, key_name, func_n) -> str:

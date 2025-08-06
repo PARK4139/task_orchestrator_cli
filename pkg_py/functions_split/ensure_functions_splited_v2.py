@@ -1,9 +1,12 @@
+from pkg_py.system_object.directories import D_PK_WORKING
+
+
 def ensure_functions_splited_v2():
     from pkg_py.functions_split.backup_workspace import backup_workspace
     import inspect
     import logging
     from pkg_py.functions_split.get_value_completed import get_value_completed
-    from pkg_py.system_object.directories import D_WORKSPACE, D_ARCHIVED
+    from pkg_py.system_object.directories import D_ARCHIVED
     import os.path
     from pkg_py.system_object.map_massages import PkMessages2025
     from pkg_py.functions_split.restore_workspace_from_latest_archive import restore_workspace_from_latest_archive
@@ -11,7 +14,7 @@ def ensure_functions_splited_v2():
     func_n = inspect.currentframe().f_code.co_name
 
     while True:
-        d_working = D_WORKSPACE # pk_option
+        d_working = D_PK_WORKING # pk_option
         D_PKG_ARCHIVED = D_ARCHIVED
 
         if not os.path.isdir(d_working):

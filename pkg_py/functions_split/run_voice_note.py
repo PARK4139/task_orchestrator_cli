@@ -1,7 +1,7 @@
 from tkinter import UNDERLINE
 from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_excuted_to_os
 from pkg_py.system_object.encodings import Encoding
-from pkg_py.system_object.directories import D_PKG_TXT
+from pkg_py.system_object.directories import D_PKG_CACHE_PRIVATE
 
 from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style
 from pkg_py.functions_split.get_pnx_windows_style import get_pnx_windows_style
@@ -12,7 +12,7 @@ from pkg_py.functions_split.ensure_printed import ensure_printed
 from tkinter import UNDERLINE
 
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.system_object.directories import D_PKG_TXT
+from pkg_py.system_object.directories import D_PKG_CACHE_PRIVATE
 from pkg_py.system_object.encodings import Encoding
 from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_excuted_to_os
 from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style
@@ -25,7 +25,7 @@ def run_voice_note():
     import traceback
     import speech_recognition as sr
 
-    f_txt = rf"{D_PKG_TXT}/voice_memo.txt"
+    f_txt = rf"{D_PKG_CACHE_PRIVATE}/voice_memo.txt"
 
     f_txt = get_pnx_unix_style(pnx=f_txt)
     if not does_pnx_exist(pnx=f_txt):
@@ -50,7 +50,7 @@ def run_voice_note():
             ensure_printed_and_speak(rf"{str_prompt}")
 
             # 텍스트를 f에 저장
-            with open(file=rf"{D_PKG_TXT}/voice_memo.txt", mode="a", encoding=Encoding.UTF8.value) as file:
+            with open(file=rf"{D_PKG_CACHE_PRIVATE}/voice_memo.txt", mode="a", encoding=Encoding.UTF8.value) as file:
                 file.write(str_prompt + "\n")
         except sr.UnknownValueError:
             pass  # 음성을 인식하지 못한 경우 무시

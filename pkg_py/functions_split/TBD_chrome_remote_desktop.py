@@ -1,6 +1,6 @@
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.system_object.directories import D_PKG_TXT
-from pkg_py.system_object.directories_reuseable import D_PROJECT
+from pkg_py.system_object.directories import D_PKG_CACHE_PRIVATE
+from pkg_py.system_object.directories  import D_PROJECT
 from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_excuted_to_os
 from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.ensure_pressed import ensure_pressed
@@ -11,7 +11,7 @@ def TBD_chrome_remote_desktop(hostname):
     import inspect
 
     func_n = inspect.currentframe().f_code.co_name
-    f_func_n_txt = rf'{D_PROJECT}\pkg_txt\{func_n}.txt'
+    f_func_n_txt = rf'{D_PROJECT}\pkg_cache_private\{func_n}.txt'
 
     # 페이지 열기
     url =URL_CHROME_REMOTE
@@ -28,7 +28,7 @@ def TBD_chrome_remote_desktop(hostname):
     click_string(string=hostname)
 
     # PIN 입력
-    token_chrome_remote_pin_encoded = get_token_from_f_txt(f_token=rf'{D_PKG_TXT}\token_chrome_remote_pin.txt',
+    token_chrome_remote_pin_encoded = get_token_from_f_txt(f_token=rf'{D_PKG_CACHE_PRIVATE}\token_chrome_remote_pin.txt',
                                                            initial_str="")
     token_chrome_remote_pin = decode_via_pk_system(token_chrome_remote_pin_encoded)
     write(token_chrome_remote_pin, milliseconds=5000)

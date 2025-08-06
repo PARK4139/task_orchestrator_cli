@@ -1,25 +1,33 @@
-def ensure_files_renamed_and_filecontent_replaced(d_target, oldstr, new_str, target_extensions=None):
+def ensure_files_renamed_and_filecontent_replaced(d_target, oldstr, new_str, target_extensions, ignored_directory_names):
     import inspect
     import os
 
     from pkg_py.system_object.map_massages import PkMessages2025
-    target_extensions = target_extensions or [".py", ".cmd", ".bat", ".ps1", ".sh"]
     func_n = inspect.currentframe().f_code.co_name
     d_target = os.path.abspath(d_target)
+
 
     if not os.path.isdir(d_target):
         print(f"[ERROR] 디렉토리 없음: {d_target}")
         return
 
-    # ✨ 처리할 확장자 목록 (유지보수 편하게 리스트로)
+    #  처리할 확장자 목록 (유지보수 편하게 리스트로)
 
     for root, dirs, files in os.walk(d_target):
         for filename in files:
             if not any(filename.lower().endswith(ext) for ext in target_extensions):
-                continue  # 지정된 확장자 외 파일은 스킵
-
+                continue
             old_path = os.path.join(root, filename)
             modified = False
+
+            ignored_detected = False
+            for ignored_directory_name in ignored_directory_names:
+                if ignored_directory_name in old_path:
+                    ignored_detected = True
+                    continue
+            if ignored_detected == True:
+                continue
+
 
             # 파일 내용 수정
             try:

@@ -33,8 +33,8 @@ from pkg_py.functions_split.is_window_title_front import is_window_title_front
 from pkg_py.functions_split.ensure_pressed import ensure_pressed
 from pkg_py.functions_split.ensure_state_printed import ensure_state_printed
 from pkg_py.system_object.etc import PkFilter
-from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
-from pkg_py.system_object.stamps import STAMP_ATTEMPTED
+# pk_#
+# pk_#
 from pkg_py.system_object.directories import D_PK_WORKING
 from passlib.context import CryptContext
 from moviepy import VideoFileClip

@@ -82,14 +82,14 @@ from pkg_py.functions_split.get_list_sorted import get_list_sorted
 from pkg_py.functions_split.set_pk_context_state import set_pk_context_state
 from pkg_py.functions_split.ensure_console_cleared import ensure_console_cleared
 from pkg_py.system_object.etc import PkFilter
-from pkg_py.system_object.stamps import STAMP_ATTEMPTED
+# pk_#
 from pkg_py.system_object.files import F_POT_PLAYER_MINI_64_EXE
 from pkg_py.system_object.files import F_LOSSLESSCUT_EXE
 from pkg_py.system_object.files import F_FFMPEG_EXE
 from pkg_py.system_object.encodings import Encoding
 from pkg_py.system_object.directories import D_PK_WORKING
-from pkg_py.system_object.directories import D_PKG_TXT, D_PK_WORKING
-from pkg_py.system_object.directories import D_DOWNLOADS, D_PKG_PKL
+from pkg_py.system_object.directories import D_PKG_CACHE_PRIVATE, D_PK_WORKING
+from pkg_py.system_object.directories import D_DOWNLOADS, D_PKG_CACHE_PRIVATE
 # from pkg_py.system_object.print_red import print_red
 from pkg_py.system_object.state_via_context import SpeedControlContext
 # from pkg_py.system_object.is_os_windows import is_os_windows

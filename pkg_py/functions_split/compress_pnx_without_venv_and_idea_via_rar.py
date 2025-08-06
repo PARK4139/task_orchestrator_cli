@@ -54,7 +54,7 @@ from pkg_py.system_object.etc import PkFilter
 from pkg_py.system_object.files import F_LOSSLESSCUT_EXE
 from pkg_py.system_object.files import F_FFMPEG_EXE
 from pkg_py.system_object.encodings import Encoding
-from pkg_py.system_object.directories_reuseable import D_PROJECT
+from pkg_py.system_object.directories  import D_PROJECT
 from pkg_py.system_object.state_via_database import PkSqlite3DB
 # from pkg_py.system_object.is_os_windows import is_os_windows
 
@@ -161,7 +161,7 @@ def compress_pnx_without_venv_and_idea_via_rar(pnx, d_dst, with_timestamp=1):
         ensure_printed(f'''f_rar_new={f_rar_new} {'%%%FOO%%%' if LTA else ''}''')
         ensure_printed(f'''dst_nx={dst_nx} {'%%%FOO%%%' if LTA else ''}''')
         ensure_printed(f'''f_rar_wsl={f_rar_wsl}  {'%%%FOO%%%' if LTA else ''}''', print_color="blue")
-    # move_pnx_to_trash_bin(src=f_rar_new)
+    # ensure_pnx_moved_to_trash_bin(src=f_rar_new)
     ensure_pnxs_move_to_recycle_bin(pnx=dst_nx)
     ensure_pnxs_move_to_recycle_bin(pnx=f_rar_wsl)
 

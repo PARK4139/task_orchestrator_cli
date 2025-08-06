@@ -14,7 +14,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from pkg_py.functions_split.ensure_window_to_front import ensure_window_to_front
 from pkg_py.functions_split.get_d_working import get_d_working
 from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_excuted_to_os
-from pkg_py.system_object.stamps import STAMP_ATTEMPTED
+# pk_#
 from pkg_py.system_object.performance_logic import ensure_seconds_measured, pk_measure_memory
 
 from PIL import Image

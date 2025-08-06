@@ -7,6 +7,11 @@ from functools import lru_cache
 
 # @lru_cache(maxsize=1)
 def ensure_pnx_opened_by_ext(pnx):
+    # 수정: pnx가 None인 경우 체크 추가
+    if pnx is None:
+        ensure_printed("파일 경로가 None입니다. 파일을 열 수 없습니다.", print_color='red')
+        return
+    
     from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_excuted_to_os
     from pkg_py.functions_split.get_pnx_windows_style import get_pnx_windows_style
     from pkg_py.functions_split.ensure_printed import ensure_printed
@@ -95,7 +100,7 @@ def ensure_pnx_opened_by_ext(pnx):
         cmd = f'"{text_editor}" "{pnx}"'
         ensure_command_excuted_to_os(cmd=cmd, mode='a')
     else:
-        ensure_printed(f'''{PkMessages2025.NOT_PREPARED_YET}{'%%%FOO%%%' if LTA else ''}''', print_color='green', mode_verbose=0)
+        ensure_guided_not_prepared_yet()
         # if x == '':  # d 인 경우
         #     text_editor = 'explorer.exe'
         # elif x == 'txt':

@@ -1,0 +1,27 @@
+# FastAPI 핵심
+fastapi==0.104.1
+uvicorn[standard]==0.24.0
+pydantic==2.5.0
+pydantic-settings==2.1.0
+
+# 이메일 검증
+email-validator==2.1.0
+
+# 로깅
+structlog==23.2.0
+colorama==0.4.6
+
+# 백그라운드 작업
+python-multipart==0.0.6
+
+# 날짜/시간 처리
+python-dateutil==2.8.2
+
+# UUID 생성
+uuid6==2023.5.2
+
+# HTTP 클라이언트 (외부 API 호출용)
+httpx==0.25.2
+
+# 환경 변수
+python-dotenv==1.0.0

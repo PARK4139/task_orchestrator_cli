@@ -1,17 +1,29 @@
 def ensure_snipping_tool_exe_opened():
+    import inspect
+
+    from pkg_py.functions_split.ensure_window_minimized import ensure_window_minimized
+    from pkg_py.system_object.etc import pk_
+    from pkg_py.functions_split.ensure_window_to_front import ensure_window_to_front
+    from pkg_py.functions_split.is_window_title_front import is_window_title_front
     from pkg_py.functions_split.ensure_pressed import ensure_pressed
     from pkg_py.functions_split.ensure_slept import ensure_slept
     from pkg_py.functions_split.is_os_linux import is_os_linux
     from pkg_py.functions_split.is_os_windows import is_os_windows
     from pkg_py.system_object.files import F_SNIPPING_TOOL_EXE
     from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_excuted_to_os
-    from pkg_py.functions_split.ensure_printed import ensure_printed
-
+    func_n = inspect.currentframe().f_code.co_name
     if is_os_windows():
-        # Windows에서는 explorer.exe로 실행
         ensure_command_excuted_to_os(cmd=fr"explorer.exe {F_SNIPPING_TOOL_EXE}")
-        ensure_slept(milliseconds=100)
-        ensure_pressed("ctrl", "n")
+        while True:
+            # ensure_windows_printed()
+            ensure_window_to_front(window_title_seg="캡처 도구")
+            if is_window_title_front(window_title="캡처 도구"):
+                ensure_window_minimized(window_title=f"{pk_}{func_n}")
+                ensure_slept(milliseconds=100)
+                ensure_pressed("ctrl", "n")
+                return
+            ensure_slept(milliseconds=100)
+
     elif is_os_linux():
         # Linux에서는 gnome-screenshot 사용
         ensure_command_excuted_to_os(cmd="gnome-screenshot --interactive")

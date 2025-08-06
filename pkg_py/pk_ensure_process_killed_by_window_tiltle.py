@@ -9,10 +9,10 @@ if __name__ == "__main__":
     from pkg_py.functions_split.ensure_program_suicided import ensure_program_suicided
     from pkg_py.functions_split.get_set_from_list import get_set_from_list
     from pkg_py.functions_split.get_value_completed import get_value_completed
-    from pkg_py.system_object.directories_reuseable import D_PROJECT
+    from pkg_py.system_object.directories  import D_PROJECT
     from pkg_py.functions_split.get_windows_opened import get_windows_opened
     from pkg_py.system_object.local_test_activate import LTA
-    from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
+    # pk_#
     import traceback
     try:
         ensure_colorama_initialized_once()
@@ -28,6 +28,6 @@ if __name__ == "__main__":
         ensure_exception_routine_done(exception=exception, traceback=traceback)
 
     finally:
-        ensure_finally_routine_done(D_PROJECT=D_PROJECT, __file__=__file__, STAMP_TRY_GUIDE=STAMP_TRY_GUIDE)
+        ensure_finally_routine_done(D_PROJECT=D_PROJECT, __file__=__file__)
 
 

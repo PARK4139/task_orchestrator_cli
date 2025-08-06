@@ -26,8 +26,8 @@ from pkg_py.functions_split.is_window_title_opened import is_window_title_opened
 from pkg_py.functions_split.is_window_opened import is_window_opened
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 from pkg_py.system_object.files import F_FFMPEG_EXE
-from pkg_py.system_object.directories_reuseable import D_PROJECT
-from pkg_py.system_object.directories import D_DOWNLOADS, D_PKG_PKL
+from pkg_py.system_object.directories  import D_PROJECT
+from pkg_py.system_object.directories import D_DOWNLOADS, D_PKG_CACHE_PRIVATE
 from pkg_py.system_object.state_via_database import PkSqlite3DB
 from pkg_py.system_object.state_via_context import SpeedControlContext
 # from pkg_py.system_object.is_os_windows import is_os_windows

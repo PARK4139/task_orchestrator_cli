@@ -1,6 +1,6 @@
 import traceback
 
-# from pkg_py.system_object.static_logic import STAMP_UNIT_TEST_EXCEPTION_DISCOVERED, UNDERLINE, STAMP_TRY_GUIDE, STAMP_PYTHON_DEBUGGING_NOTE, D_PROJECT, STAMP_EXCEPTION_DISCOVERED
+# from pkg_py.system_object.static_logic import '[ UNIT TEST EXCEPTION DISCOVERED ]', UNDERLINE, '[ TRY GUIDE ]', '[ DEBUGGING NOTE ]', D_PROJECT, '[ EXCEPTION DISCOVERED ]'
 # # from pkg_py.system_object.print_red import print_red
 
 if __name__ == "__main__":
@@ -46,4 +46,4 @@ if __name__ == "__main__":
     except Exception as exception:
         ensure_exception_routine_done(traceback=traceback, exception=exception)
     finally:
-        ensure_finally_routine_done(D_PROJECT=D_PROJECT, __file__=__file__, STAMP_TRY_GUIDE=STAMP_TRY_GUIDE)
+        ensure_finally_routine_done(D_PROJECT=D_PROJECT, __file__=__file__)

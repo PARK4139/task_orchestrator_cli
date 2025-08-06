@@ -2,7 +2,7 @@
 
 
 from pkg_py.system_object.directories import D_DOWNLOADS
-from pkg_py.system_object.directories import D_PKG_TXT
+from pkg_py.system_object.directories import D_PKG_CACHE_PRIVATE
 
 from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style
 from pkg_py.functions_split.ensure_printed import ensure_printed
@@ -79,9 +79,9 @@ def assist_to_analize_addup_issue():  # todo
         dropdown_button.click()
 
     # 애드업 웹 로그인 및 이슈검색 및 issue ? .csv 다운로드
-    token_ip_addup_web = get_token_from_f_token(f_token=rf'{D_PKG_TXT}\token_ip_addup_web.txt', initial_str="")
-    token_id_addup_web = get_token_from_f_token(f_token=rf'{D_PKG_TXT}\token_id_addup_web.txt', initial_str="")
-    token_pw_addup_web = get_token_from_f_token(f_token=rf'{D_PKG_TXT}\token_pw_addup_web.txt', initial_str="")
+    token_ip_addup_web = get_token_from_f_token(f_token=rf'{D_PKG_CACHE_PRIVATE}\token_ip_addup_web.txt', initial_str="")
+    token_id_addup_web = get_token_from_f_token(f_token=rf'{D_PKG_CACHE_PRIVATE}\token_id_addup_web.txt', initial_str="")
+    token_pw_addup_web = get_token_from_f_token(f_token=rf'{D_PKG_CACHE_PRIVATE}\token_pw_addup_web.txt', initial_str="")
     browser_debug_mode = True
     driver = get_driver_selenium(browser_debug_mode=browser_debug_mode)
     issues_list_csv = rf"{D_DOWNLOADS}/Issues_list.csv"

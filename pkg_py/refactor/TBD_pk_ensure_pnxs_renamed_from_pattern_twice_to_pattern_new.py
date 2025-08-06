@@ -10,7 +10,7 @@ def pk_ensure_pnxs_renamed_from_pattern_twice_to_pattern_new(pnx, pattern, mode,
     pk_ensure_printed(str_working=rf'''pattern={pattern} pattern_new={pattern_new}  {'%%%FOO%%%' if LTA else ''}''')
 
     txt_to_exclude_list = [
-        F_DB_YAML, F_SUCCESS_LOG, F_LOCAL_PKG_CACHE,
+        F_DB_YAML, F_SUCCESS_LOG, F_LOCAL_PKG_CACHE_PRIVATE,
     ]
 
     if with_walking == True:

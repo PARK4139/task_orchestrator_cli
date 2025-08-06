@@ -17,8 +17,8 @@ from pkg_py.functions_split.is_window_title_opened import is_window_title_opened
 from pkg_py.functions_split.ensure_printed import ensure_printed
 
 from pkg_py.functions_split.ensure_list_written_to_f import ensure_list_written_to_f
-from pkg_py.system_object.directories_reuseable import D_PROJECT
-from pkg_py.system_object.directories import D_DOWNLOADS, D_PKG_PKL
+from pkg_py.system_object.directories  import D_PROJECT
+from pkg_py.system_object.directories import D_DOWNLOADS, D_PKG_CACHE_PRIVATE
 from passlib.context import CryptContext
 from os import path
 from functools import partial as functools_partial

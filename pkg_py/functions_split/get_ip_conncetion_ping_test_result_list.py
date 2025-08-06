@@ -84,12 +84,12 @@ from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_excuted_to_os
 from pkg_py.functions_split.ensure_list_written_to_f import ensure_list_written_to_f
 
-from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
+# pk_#
 from pkg_py.system_object.files import F_POT_PLAYER_MINI_64_EXE
 from pkg_py.system_object.files import F_LOSSLESSCUT_EXE
 from pkg_py.system_object.files import F_HISTORICAL_PNX
 from pkg_py.system_object.files import F_FFMPEG_EXE
-from pkg_py.system_object.directories import D_DOWNLOADS, D_PKG_PKL
+from pkg_py.system_object.directories import D_DOWNLOADS, D_PKG_CACHE_PRIVATE
 # from pkg_py.system_object.print_red import print_red
 from pkg_py.system_object.state_via_context import SpeedControlContext
 # from pkg_py.system_object.is_os_windows import is_os_windows

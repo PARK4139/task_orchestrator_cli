@@ -1,30 +1,22 @@
-import ipdb
-
-from pkg_py.functions_split.ensure_console_debuggable import ensure_console_debuggable
-from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.system_object.map_massages import PkMessages2025
-
 if __name__ == "__main__":
+
+    from pkg_py.system_object.local_test_activate import LTA
+    from pkg_py.system_object.map_massages import PkMessages2025
+    import traceback
+    import os
+
+    from pkg_py.functions_split.ensure_git_project_pushed import ensure_git_project_pushed
+    from pkg_py.functions_split.ensure_program_suicided import ensure_program_suicided
+    from pkg_py.functions_split.ensure_window_title_replaced import ensure_window_title_replaced
+    from pkg_py.functions_split.get_nx import get_nx
+
+    from pkg_py.functions_split.ensure_exception_routine_done import ensure_exception_routine_done
+    from pkg_py.functions_split.ensure_finally_routine_done import ensure_finally_routine_done
+    from pkg_py.functions_split import ensure_printed
+    from pkg_py.system_object.directories  import D_PROJECT
+    # pk_#
+
     try:
-        import traceback
-        from pathlib import Path
-        import os
-
-        from pkg_py.functions_split.ensure_git_project_pushed import ensure_git_project_pushed
-        from pkg_py.functions_split.ensure_program_suicided import ensure_program_suicided
-        from pkg_py.functions_split.ensure_window_title_replaced import ensure_window_title_replaced
-        from pkg_py.functions_split.get_nx import get_nx
-
-        from pkg_py.functions_split.ensure_exception_routine_done import ensure_exception_routine_done
-        from pkg_py.functions_split.ensure_finally_routine_done import ensure_finally_routine_done
-        from pkg_py.functions_split.get_pk_token import get_pk_token
-        from pkg_py.functions_split import get_time_as_, ensure_printed
-        from pkg_py.functions_split.get_value_completed import get_value_completed
-        from pkg_py.functions_split.ensure_colorama_initialized_once import ensure_colorama_initialized_once
-        from pkg_py.functions_split.push_pnx_to_github import push_pnx_to_github
-        from pkg_py.system_object.directories import D_PKG_TOML
-        from pkg_py.system_object.directories_reuseable import D_PROJECT
-        from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
 
         # python_file_base = D_PROJECT
         # python_filename = rf"pk_push_project_to_github.py"
@@ -53,4 +45,4 @@ if __name__ == "__main__":
     except Exception as exception:
         ensure_exception_routine_done(traceback=traceback, exception=exception)
     finally:
-        ensure_finally_routine_done(D_PROJECT=D_PROJECT, __file__=__file__, STAMP_TRY_GUIDE=STAMP_TRY_GUIDE)
+        ensure_finally_routine_done(D_PROJECT=D_PROJECT, __file__=__file__)

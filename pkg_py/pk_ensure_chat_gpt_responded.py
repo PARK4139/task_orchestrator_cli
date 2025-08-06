@@ -5,8 +5,8 @@ from pkg_py.functions_split.ensure_exception_routine_done import ensure_exceptio
 from pkg_py.functions_split.ensure_finally_routine_done import ensure_finally_routine_done
 from pkg_py.functions_split.ensure_window_title_replaced import ensure_window_title_replaced
 from pkg_py.functions_split.get_nx import get_nx
-from pkg_py.system_object.directories_reuseable import D_PROJECT
-from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
+from pkg_py.system_object.directories  import D_PROJECT
+# pk_#
 from pkg_py.system_object.map_massages import PkMessages2025
 
 def pk_ensure_chat_gpt_responded(

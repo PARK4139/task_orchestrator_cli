@@ -46,7 +46,7 @@ from pkg_py.system_object.files import F_LOSSLESSCUT_EXE
 from pkg_py.system_object.files import F_HISTORICAL_PNX
 from pkg_py.system_object.files import F_FFMPEG_EXE
 from pkg_py.system_object.encodings import Encoding
-from pkg_py.system_object.directories import D_DOWNLOADS, D_PKG_PKL
+from pkg_py.system_object.directories import D_DOWNLOADS, D_PKG_CACHE_PRIVATE
 # from pkg_py.system_object.print_red import print_red
 from pkg_py.system_object.state_via_database import PkSqlite3DB
 
@@ -100,7 +100,7 @@ def check_ssh_server_public_key(key_public, **config_remote_os):
             return 0
 
     except Exception as e:
-        ensure_printed(f"{STAMP_ERROR} {e}", print_color='red')
+        ensure_printed(f"{"[ ERROR ]"} {e}", print_color='red')
         raise
     finally:
         ssh.close()

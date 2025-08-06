@@ -1,7 +1,6 @@
 def ensure_command_excuted_to_os_v6(cmd: str, mode="", encoding=None, mode_with_window=1):
     from pkg_py.system_object.local_test_activate import LTA
     from pkg_py.system_object.encodings import Encoding
-    from pkg_py.system_object.stamps import STAMP_ATTEMPTED
     from pkg_py.functions_split.ensure_printed import ensure_printed
     from pkg_py.functions_split.ensure_iterable_printed_as_vertical import ensure_iterable_printed_as_vertical
     from pkg_py.functions_split.is_os_linux import is_os_linux
@@ -23,7 +22,7 @@ def ensure_command_excuted_to_os_v6(cmd: str, mode="", encoding=None, mode_with_
     if mode == "a":
         mode = 'async'
     if LTA:
-        ensure_printed(rf'''{STAMP_ATTEMPTED} {cmd} encoding={encoding:5s} mode={mode}''')
+        ensure_printed(rf'''"[ ATTEMPTED ]" {cmd} encoding={encoding:5s} mode={mode}''')
     std_list = []
     
     if mode == "async":

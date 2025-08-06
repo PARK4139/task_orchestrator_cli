@@ -1,1 +1,0 @@
-"%D_PK_SYSTEM%\.venv\Scripts\activate.bat" && title pk_ensure_pk_system_started && uv run python -m "pkg_py.pk_ensure_pk_system_started"

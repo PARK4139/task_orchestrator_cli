@@ -43,7 +43,7 @@ def ensure_elevenlabs_quota_managed():
                 # 기존 테이블에 reset_date 컬럼 추가 (없으면)
                 if 'reset_date' not in columns:
                     cursor.execute('ALTER TABLE elevenlabs_quota ADD COLUMN reset_date DATE')
-                    ensure_printed("🔧 데이터베이스 스키마 업데이트: reset_date 컬럼 추가", print_color='blue')
+                    ensure_printed(" 데이터베이스 스키마 업데이트: reset_date 컬럼 추가", print_color='blue')
             
             # 사용 로그 테이블 생성
             cursor.execute('''
@@ -136,7 +136,7 @@ def ensure_elevenlabs_quota_managed():
                 conn.commit()
                 conn.close()
                 
-                ensure_printed("✅ ElevenLabs 무료 한도가 초기화되었습니다! (10,000자)", print_color='green')
+                ensure_printed(" ElevenLabs 무료 한도가 초기화되었습니다! (10,000자)", print_color='green')
                 return True
             
             return False
@@ -157,9 +157,9 @@ def ensure_elevenlabs_quota_managed():
             can_use = remaining >= text_length
             
             if can_use:
-                ensure_printed(f"✅ TTS 사용 가능: {text_length}자 사용 예정, 남은 한도: {remaining}자", print_color='green')
+                ensure_printed(f" TTS 사용 가능: {text_length}자 사용 예정, 남은 한도: {remaining}자", print_color='green')
             else:
-                ensure_printed(f"❌ TTS 사용 불가: {text_length}자 필요, 남은 한도: {remaining}자", print_color='red')
+                ensure_printed(f" TTS 사용 불가: {text_length}자 필요, 남은 한도: {remaining}자", print_color='red')
                 ensure_printed(" 다음 달 1일에 무료 한도가 초기화됩니다.", print_color='yellow')
             
             return can_use
@@ -187,7 +187,7 @@ def ensure_elevenlabs_quota_managed():
             conn.commit()
             conn.close()
             
-            ensure_printed(f"📊 사용량 업데이트: {text_length}자 사용됨", print_color='blue')
+            ensure_printed(f" 사용량 업데이트: {text_length}자 사용됨", print_color='blue')
         
         def get_usage_statistics(self):
             """사용 통계 조회"""
@@ -225,7 +225,7 @@ def ensure_elevenlabs_quota_managed():
             stats = self.get_usage_statistics()
             
             if quota_info:
-                ensure_printed("📊 ElevenLabs 무료 한도 정보", print_color='blue')
+                ensure_printed(" ElevenLabs 무료 한도 정보", print_color='blue')
                 ensure_printed(f" 이번 달 사용량: {stats['monthly_usage']:,}자", print_color='cyan')
                 ensure_printed(f" 총 사용량: {stats['total_usage']:,}자", print_color='cyan')
                 ensure_printed(f" 남은 한도: {stats['remaining']:,}자", print_color='green')
@@ -240,6 +240,6 @@ def ensure_elevenlabs_quota_managed():
                     reset_date = datetime.strptime(quota_info['reset_date'], '%Y-%m-%d').date()
                     ensure_printed(f" 다음 초기화일: {reset_date.strftime('%Y년 %m월 %d일')}", print_color='yellow')
             else:
-                ensure_printed("❌ 한도 정보를 가져올 수 없습니다.", print_color='red')
+                ensure_printed(" 한도 정보를 가져올 수 없습니다.", print_color='red')
     
     return ElevenLabsQuotaManager() 

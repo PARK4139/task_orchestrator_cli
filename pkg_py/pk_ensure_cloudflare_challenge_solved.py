@@ -1,8 +1,6 @@
 if __name__ == '__main__':
-    from pkg_py.system_object.directories_reuseable import D_PROJECT
-    from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
+    from pkg_py.system_object.directories  import D_PROJECT
     from pkg_py.functions_split.get_driver_selenium_solved_cloudflare_sequrity import get_driver_selenium_solved_cloudflare_sequrity
-    from pkg_py.functions_split.ensure_finally_routine_done import ensure_finally_routine_done
 
     try:
         url = "https://www.scrapingcourse.com/cloudflare-challenge"
@@ -205,4 +203,4 @@ if __name__ == '__main__':
     except Exception as exception:
         ensure_exception_routine_done(traceback=traceback, exception=exception)
     finally:
-        ensure_finally_routine_done(D_PROJECT=D_PROJECT, __file__=__file__, STAMP_TRY_GUIDE=STAMP_TRY_GUIDE)
+        ensure_finally_routine_done(D_PROJECT=D_PROJECT, __file__=__file__)

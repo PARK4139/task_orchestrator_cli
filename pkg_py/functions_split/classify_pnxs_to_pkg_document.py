@@ -80,8 +80,8 @@ from pkg_py.system_object.files import F_POT_PLAYER_MINI_64_EXE
 from pkg_py.system_object.files import F_HISTORICAL_PNX
 from pkg_py.system_object.files import F_FFMPEG_EXE
 from pkg_py.system_object.encodings import Encoding
-from pkg_py.system_object.directories import D_PKG_TXT, D_PK_WORKING
-from pkg_py.system_object.directories import D_DOWNLOADS, D_PKG_PKL
+from pkg_py.system_object.directories import D_PKG_CACHE_PRIVATE, D_PK_WORKING
+from pkg_py.system_object.directories import D_DOWNLOADS, D_PKG_CACHE_PRIVATE
 from pkg_py.system_object.map_massages import PkMessages2025
 from pkg_py.system_object.state_via_database import PkSqlite3DB
 from pkg_py.system_object.get_list_calculated import get_list_calculated
@@ -106,7 +106,7 @@ from concurrent.futures import ThreadPoolExecutor
 from collections import Counter
 from base64 import b64decode
 from pkg_py.functions_split.ensure_program_suicided import ensure_program_suicided
-from pkg_py.system_object.stamps import STAMP_TRY_GUIDE, STAMP_UNIT_TEST_EXCEPTION_DISCOVERED
+
 from pkg_py.functions_split.get_list_calculated import get_list_calculated
 from pkg_py.functions_split.is_f import is_f
 from pkg_py.functions_split.get_pnx_wsl_unix_style import get_pnx_wsl_unix_style
@@ -135,7 +135,7 @@ def classify_pnxs_to_pkg_document(pnx, without_walking=True):
     txt_to_exclude_list = [
         F_DB_YAML,
         F_SUCCESS_LOG,
-        F_LOCAL_PKG_CACHE,
+        F_LOCAL_PKG_CACHE_PRIVATE,
     ]
     if without_walking == False:
         dir_pnxs, file_pnxs = get_sub_pnx_list(pnx=pnx, txt_to_exclude_list=txt_to_exclude_list)
@@ -153,6 +153,6 @@ def classify_pnxs_to_pkg_document(pnx, without_walking=True):
         file_x = get_x(file_pnx).replace(".", "")  # 확장자에서 점(.) remove
         if file_x in [ext.replace(".", "") for ext in x_allowed]:  # x_allowed의 확장자와 비교
             ensure_pnx_made(dst, mode="d")
-            move_pnx(pnx=file_pnx, d_dst=dst)
+            ensure_pnx_moved(pnx=file_pnx, d_dst=dst)
             ensure_printed(str_working=rf'''file_pnx="{file_pnx}"  {'%%%FOO%%%' if LTA else ''}''')
     ensure_printed(str_working=rf'''dst="{dst}"  {'%%%FOO%%%' if LTA else ''}''')

@@ -7,7 +7,7 @@ import sys
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from pkg_py.functions_split.ensure_printed import ensure_printed
-from pkg_py.system_object.directories import D_PKG_SOUND
+from pkg_py.system_object.directories import D_PKG_IMAGE_AND_VIDEO_AND_SOUND
 
 def test_tts_speed():
     """TTS 속도 개선 테스트"""
@@ -49,7 +49,7 @@ def test_tts_speed():
 def ensure_spoken_fast(text, speed_factor=1.5):
     """고속 TTS 함수"""
     from pkg_py.functions_split.ensure_spoken import ensure_spoken
-    from pkg_py.system_object.directories import D_PKG_SOUND
+    from pkg_py.system_object.directories import D_PKG_IMAGE_AND_VIDEO_AND_SOUND
     import os
     import time
     import json
@@ -83,7 +83,7 @@ def ensure_spoken_fast(text, speed_factor=1.5):
             ensure_printed(f"❌ 고속 재생 실패: {e}", print_color="red")
     
     # 기존 파일이 있으면 고속 재생
-    index_file = os.path.join(D_PKG_SOUND, "index.json")
+    index_file = os.path.join(D_PKG_IMAGE_AND_VIDEO_AND_SOUND, "index.json")
     if os.path.exists(index_file):
         try:
             with open(index_file, 'r', encoding='utf-8') as f:

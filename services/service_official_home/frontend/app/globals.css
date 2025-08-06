@@ -1,0 +1,135 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 뉴모피즘 베이스 스타일 */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply antialiased;
+    background: #f0f0f3;
+    color: #333;
+  }
+}
+
+/* 🥚 뉴모피즘 컴포넌트 스타일 */
+@layer components {
+  .neuro-base {
+    background: #f0f0f3;
+    border-radius: 20px;
+    box-shadow: 
+      20px 20px 60px #bebebe,
+      -20px -20px 60px #ffffff;
+    border: none;
+  }
+
+  .neuro-inset {
+    background: #f0f0f3;
+    border-radius: 20px;
+    box-shadow: 
+      inset 20px 20px 60px #bebebe,
+      inset -20px -20px 60px #ffffff;
+  }
+
+  .neuro-card {
+    @apply neuro-base p-8;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .neuro-card:hover {
+    box-shadow: 
+      25px 25px 75px #bebebe,
+      -25px -25px 75px #ffffff;
+    transform: translateY(-5px);
+  }
+
+  .neuro-btn {
+    @apply neuro-base px-8 py-4 font-semibold;
+    color: #666;
+    transition: all 0.2s ease;
+    cursor: pointer;
+  }
+
+  .neuro-btn-primary {
+    background: linear-gradient(145deg, #667eea, #764ba2);
+    color: white;
+    box-shadow: 
+      20px 20px 60px #5a6fd8,
+      -20px -20px 60px #7c8cfc;
+  }
+
+  .neuro-header {
+    background: #f0f0f3;
+    box-shadow: 
+      0 10px 30px #bebebe,
+      0 -10px 30px #ffffff;
+    backdrop-filter: blur(10px);
+  }
+
+  .neuro-icon {
+    @apply neuro-base w-16 h-16 flex items-center justify-center;
+    font-size: 24px;
+  }
+
+  .neuro-icon-small {
+    @apply neuro-base w-12 h-12 flex items-center justify-center;
+    font-size: 18px;
+    border-radius: 12px;
+    box-shadow: 
+      10px 10px 30px #bebebe,
+      -10px -10px 30px #ffffff;
+  }
+
+  .neuro-section {
+    background: #f0f0f3;
+    border-radius: 30px;
+    box-shadow: 
+      30px 30px 80px #bebebe,
+      -30px -30px 80px #ffffff;
+    margin: 2rem;
+    padding: 3rem;
+  }
+
+  .neuro-gradient-soft {
+    background: linear-gradient(145deg, #667eea 0%, #764ba2 100%);
+  }
+
+  .neuro-text {
+    color: #666;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+  }
+
+  .neuro-text-dark {
+    color: #333;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
+  }
+
+  .neuro-text-gradient {
+    background: linear-gradient(145deg, #667eea, #764ba2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  @keyframes neuro-float {
+    0%, 100% { 
+      transform: translateY(0px);
+      box-shadow: 
+        20px 20px 60px #bebebe,
+        -20px -20px 60px #ffffff;
+    }
+    50% { 
+      transform: translateY(-10px);
+      box-shadow: 
+        25px 30px 70px #bebebe,
+        -25px -30px 70px #ffffff;
+    }
+  }
+
+  .neuro-animate-float {
+    animation: neuro-float 4s ease-in-out infinite;
+  }
+}

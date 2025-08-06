@@ -4,7 +4,7 @@ import traceback
 
 from colorama import init as pk_colorama_init
 
-# from pkg_py.system_object.static_logic import D_PROJECT, UNDERLINE, STAMP_TRY_GUIDE, STAMP_EXCEPTION_DISCOVERED
+# from pkg_py.system_object.static_logic import D_PROJECT, UNDERLINE, '[ TRY GUIDE ]', '[ EXCEPTION DISCOVERED ]'
 #
 
 if __name__ == '__main__':
@@ -18,4 +18,4 @@ if __name__ == '__main__':
     except Exception as exception:
         ensure_exception_routine_done(traceback=traceback, exception=exception)
     finally:
-        ensure_finally_routine_done(D_PROJECT=D_PROJECT, __file__=__file__, STAMP_TRY_GUIDE=STAMP_TRY_GUIDE)
+        ensure_finally_routine_done(D_PROJECT=D_PROJECT, __file__=__file__)

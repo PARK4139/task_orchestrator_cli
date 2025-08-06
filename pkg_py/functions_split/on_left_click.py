@@ -23,8 +23,8 @@ from pkg_py.functions_split.ensure_pressed import ensure_pressed
 from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_excuted_to_os
 from pkg_py.functions_split.ensure_list_written_to_f import ensure_list_written_to_f
 from pkg_py.functions_split.ensure_console_cleared import ensure_console_cleared
-from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
-from pkg_py.system_object.directories import D_PKG_TXT, D_PK_WORKING
+# pk_#
+from pkg_py.system_object.directories import D_PKG_CACHE_PRIVATE, D_PK_WORKING
 
 from paramiko import SSHClient, AutoAddPolicy
 from os import path

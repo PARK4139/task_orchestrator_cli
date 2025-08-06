@@ -13,7 +13,7 @@ from PySide6.QtWidgets import QApplication
 from pkg_py.functions_split.ensure_window_to_front import ensure_window_to_front
 from pkg_py.functions_split.is_window_opened import is_window_opened
 from pkg_py.functions_split.ensure_printed import ensure_printed
-from pkg_py.system_object.directories import D_PKG_TXT
+from pkg_py.system_object.directories import D_PKG_CACHE_PRIVATE
 from pkg_py.system_object.get_list_calculated import get_list_calculated
 
 from os import path
@@ -74,7 +74,7 @@ def make_pnx_interested_list_to_f_txt(pnx_interested_list=None, string_exclude=N
             rf'venv',
             rf'node_modules',
             rf'test_flutter',
-            rf'pkg_font',
+            rf'pkg_cache_private_public',
             rf'telegram memo export by static web',
             rf'docker_image_maker',
             rf'e-magazine',
@@ -82,10 +82,10 @@ def make_pnx_interested_list_to_f_txt(pnx_interested_list=None, string_exclude=N
         ]
 
     pnx_processed_list = []
-    f_func_n_txt = rf"{D_PKG_TXT}\{func_n}.txt"
+    f_func_n_txt = rf"{D_PKG_CACHE_PRIVATE}\{func_n}.txt"
     ensure_str_writen_to_f(msg=f"", f=f_func_n_txt, mode="w")  # 내용 초기화
     for pnx_interested in pnx_interested_list:
-        pnxs_with_walking = get_pnxs(d_working=pnx_interested, filter_option="f", with_walking=1)
+        pnxs_with_walking = get_pnxs(d_working=pnx_interested, filter_option="f", with_walking=True)
         for pnx_with_walking in pnxs_with_walking:
             if any(pnx_exclude in pnx_with_walking for pnx_exclude in string_exclude):
                 continue

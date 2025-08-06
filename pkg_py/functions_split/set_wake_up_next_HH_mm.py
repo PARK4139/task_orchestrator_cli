@@ -62,7 +62,7 @@ def set_wake_up_next_HH_mm(HH, mm):
     cmd = f'schtasks /create /tn "{task_name}" /tr "cmd.exe /c exit" /sc once /st {wake_time_str} /f /it'
 
     # 실제 os 명령 exec  함수(sample: os.system) 대신 아래처럼 가정
-    ensure_printed(f'{STAMP_DEBUG} CMD: {cmd}', print_color="blue")
+    ensure_printed(f'{"[ ️ ]"} CMD: {cmd}', print_color="blue")
     # sample: os.system(cmd)
 
     # 현재 시각과 예약 시각 출력

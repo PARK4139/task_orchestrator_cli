@@ -16,7 +16,7 @@ def classify_pnx_list_to_pkg_compressed(src, without_walking=True):
     txt_to_exclude_list = [
         F_DB_YAML,
         F_SUCCESS_LOG,
-        F_LOCAL_PKG_CACHE,
+        F_LOCAL_PKG_CACHE_PRIVATE,
     ]
 
     if without_walking == False:
@@ -35,6 +35,6 @@ def classify_pnx_list_to_pkg_compressed(src, without_walking=True):
         file_x = get_x(f).replace(".", "")  # 확장자에서 점(.) remove
         if file_x in [ext.replace(".", "") for ext in x_allowed]:  # x_allowed의 확장자와 비교
             ensure_pnx_made(dst, mode="d")
-            move_pnx(pnx=f, d_dst=dst)
+            ensure_pnx_moved(pnx=f, d_dst=dst)
             ensure_printed(str_working=rf'''file_new="{f}"  {'%%%FOO%%%' if LTA else ''}''')
     ensure_printed(str_working=rf'''dst="{dst}"  {'%%%FOO%%%' if LTA else ''}''')

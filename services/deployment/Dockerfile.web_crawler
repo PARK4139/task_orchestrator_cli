@@ -1,0 +1,27 @@
+FROM python:3.12-slim
+
+WORKDIR /app
+
+# 시스템 패키지 설치 (크롤링용 추가 패키지)
+RUN apt-get update && apt-get install -y \
+    gcc \
+    wget \
+    curl \
+    chromium \
+    chromium-driver \
+    && rm -rf /var/lib/apt/lists/*
+
+# Python 의존성 설치  
+COPY pyproject.toml .
+RUN pip install uv
+RUN uv pip install -e .
+
+# 애플리케이션 파일 복사
+COPY shared/ ./shared/
+COPY service_automation_web_crawler/ ./service_automation_web_crawler/
+
+# 포트 노출
+EXPOSE 8012
+
+# 애플리케이션 실행
+CMD ["python", "service_automation_web_crawler/main.py"]

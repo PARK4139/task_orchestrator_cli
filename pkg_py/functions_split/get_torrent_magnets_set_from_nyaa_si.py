@@ -5,7 +5,7 @@ import shutil
 import pyglet
 from tkinter import UNDERLINE
 from selenium.common.exceptions import WebDriverException
-from pkg_py.system_object.directories_reuseable import D_PROJECT
+from pkg_py.system_object.directories  import D_PROJECT
 from pkg_py.system_object.state_via_database import PkSqlite3DB
 # from pkg_py.system_object.is_os_windows import is_os_windows
 
@@ -23,7 +23,7 @@ def get_torrent_magnets_set_from_nyaa_si(title_to_search, driver_selenium, exclu
     include_elements_all = include_elements_all or []
     func_n = inspect.currentframe().f_code.co_name
     ensure_printed(str_working=rf'''{PK_UNDERLINE}{func_n}()  {'%%%FOO%%%' if LTA else ''}''', print_color='blue')
-    f_func_n_txt = rf'{D_PROJECT}\pkg_txt\{func_n}.txt'
+    f_func_n_txt = rf'{D_PROJECT}\pkg_cache_private\{func_n}.txt'
     query = urllib.parse.quote(f"{title_to_search}")
     url = f'https://nyaa.si/?f=0&c=0_0&q={query}'
     ensure_printed(str_working=rf'''url="{url}"  {'%%%FOO%%%' if LTA else ''}''')

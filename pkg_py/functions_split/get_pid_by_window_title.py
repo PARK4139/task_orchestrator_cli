@@ -1,13 +1,13 @@
 def get_pid_by_window_title(window_title_seg):  # 테스트필요
     import psutil
-    from pkg_py.functions_split.get_window_title_list import get_window_title_list
+    from pkg_py.functions_split.get_window_titles import get_window_titles
     from pkg_py.functions_split.ensure_printed import ensure_printed
     from pkg_py.system_object.local_test_activate import LTA
     import inspect
     import pygetwindow
     func_n = inspect.currentframe().f_code.co_name
     # window_titles=pygetwindow.getAllTitles()
-    window_titles = get_window_title_list()
+    window_titles = get_window_titles()
     matching_window = [w for w in window_titles if window_title_seg.lower() in w.lower()]
 
     if not matching_window:

@@ -43,7 +43,7 @@ from pkg_py.functions_split.ensure_list_written_to_f import ensure_list_written_
 from pkg_py.functions_split.get_list_sorted import get_list_sorted
 
 from pkg_py.functions_split.set_pk_context_state import set_pk_context_state
-from pkg_py.system_object.stamps import STAMP_ATTEMPTED
+# pk_#
 from pkg_py.system_object.files import F_POT_PLAYER_MINI_64_EXE, F_HISTORICAL_PNX
 from pkg_py.system_object.files import F_FFMPEG_EXE
 from pkg_py.system_object.encodings import Encoding
@@ -57,7 +57,7 @@ from fastapi import HTTPException
 from datetime import datetime, time
 from cryptography.hazmat.primitives import padding
 from bs4 import ResultSet
-from pkg_py.system_object.stamps import STAMP_TRY_GUIDE, STAMP_UNIT_TEST_EXCEPTION_DISCOVERED
+
 from pkg_py.system_object.etc import PK_UNDERLINE
 from pkg_py.functions_split.get_pnxs import get_pnxs
 from pkg_py.functions_split.is_d import is_d

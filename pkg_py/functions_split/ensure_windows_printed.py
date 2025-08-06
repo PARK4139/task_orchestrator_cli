@@ -7,4 +7,4 @@ def ensure_windows_printed():
     window_opened_list = get_windows_opened()
     ensure_console_cleared()
     for window_opened in window_opened_list:
-        ensure_printed(str_working=rf'[{func_n}] {window_opened}')
+        ensure_printed(str_working=rf'[{func_n}] "{window_opened}" ')

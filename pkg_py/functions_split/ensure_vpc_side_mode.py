@@ -1,5 +1,5 @@
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.system_object.directories import D_PKG_TXT
+from pkg_py.system_object.directories import D_PKG_CACHE_PRIVATE
 from pkg_py.functions_split.get_nx import get_nx
 from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_excuted_to_os
 from pkg_py.functions_split.get_pnx_unix_style import get_pnx_unix_style
@@ -36,10 +36,10 @@ def ensure_vpc_side_mode(vpc_data, config_remote_os):
         d_temp = make_and_get_d_temp()
 
         config_aidev1_ensure_release_server_ran = {
-            'user_n': get_token_from_f_token(f_token=rf'{D_PKG_TXT}\user_gitlab_token.txt', initial_str=""),
-            'ip': get_token_from_f_token(f_token=rf'{D_PKG_TXT}\ip_gitlab_token.txt', initial_str=""),
-            'pw': get_token_from_f_token(f_token=rf'{D_PKG_TXT}\pw_gitlab_token.txt', initial_str=""),
-            'port': get_token_from_f_token(f_token=rf'{D_PKG_TXT}\port_gitlab_token.txt', initial_str=""),
+            'user_n': get_token_from_f_token(f_token=rf'{D_PKG_CACHE_PRIVATE}\user_gitlab_token.txt', initial_str=""),
+            'ip': get_token_from_f_token(f_token=rf'{D_PKG_CACHE_PRIVATE}\ip_gitlab_token.txt', initial_str=""),
+            'pw': get_token_from_f_token(f_token=rf'{D_PKG_CACHE_PRIVATE}\pw_gitlab_token.txt', initial_str=""),
+            'port': get_token_from_f_token(f_token=rf'{D_PKG_CACHE_PRIVATE}\port_gitlab_token.txt', initial_str=""),
         }
         download_pnx_from_aidev1_ensure_release_server_ran(
             remote_f_src=f"/home/user/release/remote_release_{vpc_aifw_version}.zip", local_d_dst=d_temp,
@@ -86,7 +86,7 @@ def ensure_vpc_side_mode(vpc_data, config_remote_os):
         f_remote_src = rf"{d_temp}/xc_field.sh"
         f_remote_src = get_pnx_unix_style(f_remote_src)
         f_nx = get_nx(f_remote_src)
-        token_gitlab_repo = get_token_from_f_token(f_token=rf'{D_PKG_TXT}\token_xc_field_gitlab_repo.txt',
+        token_gitlab_repo = get_token_from_f_token(f_token=rf'{D_PKG_CACHE_PRIVATE}\token_xc_field_gitlab_repo.txt',
                                                    initial_str=rf"")
         download_f_from_gitlab(f_nx_remote_src='xc_field.sh', d_local_dst=d_temp, gitlab_repo_url=token_gitlab_repo)
 
@@ -172,14 +172,14 @@ def ensure_vpc_side_mode(vpc_data, config_remote_os):
         f_remote_src = rf"{d_temp}/xc_field.sh"
         f_remote_src = get_pnx_unix_style(f_remote_src)
         f_nx = get_nx(f_remote_src)
-        token_gitlab_repo = get_token_from_f_token(f_token=rf'{D_PKG_TXT}\token_xc_field_gitlab_repo.txt',
+        token_gitlab_repo = get_token_from_f_token(f_token=rf'{D_PKG_CACHE_PRIVATE}\token_xc_field_gitlab_repo.txt',
                                                    initial_str=rf"")
         download_f_from_gitlab(f_nx_remote_src='xc_field.sh', d_local_dst=d_temp, gitlab_repo_url=token_gitlab_repo)
         if not does_pnx_exist(pnx=f_remote_src):
             ensure_pnx_removed(d_temp)
             ensure_pnx_made(pnx=d_temp, mode='d')
             os.chdir(d_temp)
-            token_gitlab_repo = get_token_from_f_token(f_token=rf'{D_PKG_TXT}\token_xc_field_gitlab_repo.txt',
+            token_gitlab_repo = get_token_from_f_token(f_token=rf'{D_PKG_CACHE_PRIVATE}\token_xc_field_gitlab_repo.txt',
                                                        initial_str=rf"")
             download_f_from_gitlab(f_nx_remote_src='xc_field.sh', d_local_dst=d_temp, gitlab_repo_url=token_gitlab_repo)
         if not does_pnx_exist(pnx=f_remote_src):

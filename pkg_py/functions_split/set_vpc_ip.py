@@ -28,7 +28,7 @@ from pynput import mouse
 from prompt_toolkit.styles import Style
 from pkg_py.functions_split.ensure_iterable_printed_as_vertical import ensure_iterable_printed_as_vertical
 
-from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
+# pk_#
 # from pkg_py.system_object.print_red import print_red
 
 from os.path import dirname

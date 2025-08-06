@@ -36,9 +36,9 @@ from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_e
 from pkg_py.functions_split.get_list_sorted import get_list_sorted
 
 from pkg_py.functions_split.ensure_console_cleared import ensure_console_cleared
-from pkg_py.system_object.stamps import STAMP_ATTEMPTED
+# pk_#
 from pkg_py.system_object.files import F_LOSSLESSCUT_EXE
-from pkg_py.system_object.directories_reuseable import D_PROJECT
+from pkg_py.system_object.directories  import D_PROJECT
 from pathlib import Path
 from passlib.context import CryptContext
 from fastapi import HTTPException
@@ -70,7 +70,7 @@ def merge_pnx_list_via_text_file():
     import inspect
 
     func_n = inspect.currentframe().f_code.co_name
-    f_func_n_txt = rf'{D_PROJECT}\pkg_txt\{func_n}.txt'
+    f_func_n_txt = rf'{D_PROJECT}\pkg_cache_private\{func_n}.txt'
     ensure_pnx_made(pnx=f_func_n_txt, mode="f")
     # if not is_window_opened(window_title=f_func_n_txt):
     #     open_pnx(f_func_n_txt, debug_mode=True)

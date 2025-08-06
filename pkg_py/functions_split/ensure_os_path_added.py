@@ -4,7 +4,7 @@ from pkg_py.functions_split.ensure_pnx_made import ensure_pnx_made
 from pkg_py.functions_split.get_historical_list import get_historical_list
 from pkg_py.functions_split.get_value_completed import get_value_completed
 from pkg_py.functions_split.ensure_list_written_to_f import ensure_list_written_to_f
-from pkg_py.system_object.directories_reuseable import D_PROJECT
+from pkg_py.system_object.directories  import D_PROJECT
 
 
 def ensure_os_path_added():
@@ -15,7 +15,7 @@ def ensure_os_path_added():
     # pkg_py 내부 함수들은 전역으로 사용 가능하다고 가정
 
     func_n = inspect.currentframe().f_code.co_name
-    f_func_n_txt = rf'{D_PROJECT}\pkg_txt\{func_n}.txt'
+    f_func_n_txt = rf'{D_PROJECT}\pkg_cache_private\{func_n}.txt'
     ensure_pnx_made(pnx=f_func_n_txt, mode="f")
 
     # 히스토리에서 이전 입력들 불러오기

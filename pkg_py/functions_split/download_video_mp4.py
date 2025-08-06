@@ -144,7 +144,7 @@ def download_video_mp4(url: str):
                 ensure_printed(cmd, print_color='blue')
                 break
             if src != os.getcwd():  # 여기 또 os.getcwd() 있는 부분 수정하자..
-                move_pnx(src, src_renamed)
+                ensure_pnx_moved(src, src_renamed)
 
         except:
             ensure_printed(f'''{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}''', print_color='red')

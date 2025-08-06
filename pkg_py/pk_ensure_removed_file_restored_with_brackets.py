@@ -6,7 +6,7 @@ if __name__ == "__main__":
         from pathlib import Path
 
         # from pkg_py.system_object.500_live_logic import copy
-        #, STAMP_TRY_GUIDE, D_PROJECT, STAMP_UNIT_TEST_EXCEPTION_DISCOVERED, D_DOWNLOADS
+        #, '[ TRY GUIDE ]', D_PROJECT, '[ UNIT TEST EXCEPTION DISCOVERED ]', D_DOWNLOADS
         #
 
         # todo : 불필요하다고 판단이 되기도함.
@@ -71,9 +71,9 @@ if __name__ == "__main__":
         traceback_format_exc_list = traceback.format_exc().split("\n")
         ensure_printed(str_working=f'{PK_UNDERLINE}', print_color='red')
         for traceback_format_exc_str in traceback_format_exc_list:
-            ensure_printed(str_working=f'{STAMP_UNIT_TEST_EXCEPTION_DISCOVERED} {traceback_format_exc_str}', print_color='red')
+            ensure_printed(str_working=f'{'[ UNIT TEST EXCEPTION DISCOVERED ]'} {traceback_format_exc_str}', print_color='red')
         ensure_printed(str_working=f'{PK_UNDERLINE}', print_color='red')
 
     finally:
-        ensure_finally_routine_done(D_PROJECT=D_PROJECT, __file__=__file__, STAMP_TRY_GUIDE=STAMP_TRY_GUIDE)
+        ensure_finally_routine_done(D_PROJECT=D_PROJECT, __file__=__file__)
         

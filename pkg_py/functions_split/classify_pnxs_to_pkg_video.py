@@ -18,7 +18,7 @@ def classify_pnxs_to_pkg_video(pnx, without_walking=True):
     txt_to_exclude_list = [
         F_DB_YAML,
         F_SUCCESS_LOG,
-        F_LOCAL_PKG_CACHE,
+        F_LOCAL_PKG_CACHE_PRIVATE,
     ]
     if without_walking == False:
         dir_pnxs, file_pnxs = get_sub_pnx_list(pnx=pnx, txt_to_exclude_list=txt_to_exclude_list)
@@ -37,6 +37,6 @@ def classify_pnxs_to_pkg_video(pnx, without_walking=True):
         file_x = get_x(file_pnx).replace(".", "")  # 확장자에서 점(.) remove
         if file_x in [ext.replace(".", "") for ext in x_allowed]:  # x_allowed의 확장자와 비교
             ensure_pnx_made(pnx=dst, mode="d")
-            move_pnx(pnx=file_pnx, d_dst=dst)
+            ensure_pnx_moved(pnx=file_pnx, d_dst=dst)
             ensure_printed(str_working=rf'''file_pnx="{file_pnx}"  {'%%%FOO%%%' if LTA else ''}''')
     ensure_printed(str_working=rf'''dst="{dst}"  {'%%%FOO%%%' if LTA else ''}''')

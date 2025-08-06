@@ -50,11 +50,11 @@ from pkg_py.functions_split.ensure_list_written_to_f import ensure_list_written_
 from pkg_py.functions_split.get_list_sorted import get_list_sorted
 
 from pkg_py.functions_split.ensure_console_cleared import ensure_console_cleared
-from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
-from pkg_py.system_object.stamps import STAMP_ATTEMPTED
+# pk_#
+# pk_#
 from pkg_py.system_object.files import F_FFMPEG_EXE
-from pkg_py.system_object.directories_reuseable import D_PROJECT
-from pkg_py.system_object.directories import D_PKG_TXT, D_PK_WORKING
+from pkg_py.system_object.directories  import D_PROJECT
+from pkg_py.system_object.directories import D_PKG_CACHE_PRIVATE, D_PK_WORKING
 from PIL import Image, ImageFilter
 from PIL import Image
 from passlib.context import CryptContext
@@ -96,7 +96,7 @@ def save_all_drive_pnxs_to_text_file2():  # 루프 수정필요 # 이 함수는 
 
     func_n = inspect.currentframe().f_code.co_name
 
-    f_func_n_txt = rf'{D_PROJECT}\pkg_txt\{func_n}.txt'
+    f_func_n_txt = rf'{D_PROJECT}\pkg_cache_private\{func_n}.txt'
     ensure_pnx_made(pnx=f_func_n_txt, mode="item")
 
     # if not is_window_opened(window_title=f_func_n_txt):
@@ -160,13 +160,13 @@ def save_all_drive_pnxs_to_text_file2():  # 루프 수정필요 # 이 함수는 
                         cnt_files = limit
                         cnt_txt_files = cnt_txt_files + 1
                         # ensure_printed(string = rf'''cnt_txt_files="{cnt_txt_files}"  {'%%%FOO%%%' if LTA else ''}''')
-                        output_pnx_txt_before = rf"{D_PKG_TXT}\{func_n}_{cnt_txt_files - 1}.txt"
+                        output_pnx_txt_before = rf"{D_PKG_CACHE_PRIVATE}\{func_n}_{cnt_txt_files - 1}.txt"
                         temp = get_list_from_f(f=output_pnx_txt_before)
                         if None != temp:
                             if 0 == len(temp):
                                 cnt_txt_files = cnt_txt_files - 1
 
-                        output_pnx_txt = rf"{D_PKG_TXT}\{func_n}_{cnt_txt_files}.txt"
+                        output_pnx_txt = rf"{D_PKG_CACHE_PRIVATE}\{func_n}_{cnt_txt_files}.txt"
                         # ensure_printed(string = rf'''output_pnx_txt="{output_pnx_txt}"  {'%%%FOO%%%' if LTA else ''}''')
                         # if any(exclude_path in file_pnx for exclude_path in exclude_paths):
                         #     continue
@@ -188,6 +188,6 @@ def save_all_drive_pnxs_to_text_file2():  # 루프 수정필요 # 이 함수는 
         ensure_printed(str_working=rf'''temp="{temp}"  {'%%%FOO%%%' if LTA else ''}''')
 
     # exec
-    exclude_paths_txt = rf'{D_PKG_TXT}\{func_n}_exclude_paths.txt'
+    exclude_paths_txt = rf'{D_PKG_CACHE_PRIVATE}\{func_n}_exclude_paths.txt'
     ensure_pnx_made(pnx=exclude_paths_txt, mode='item')
     list_files_in_drives(exclude_paths_txt)

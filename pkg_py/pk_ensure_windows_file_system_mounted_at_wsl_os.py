@@ -5,7 +5,7 @@ import traceback
 from colorama import init as pk_colorama_init
 
 # from pkg_py.system_object.500_live_logic import ensure_tmux_pk_session_removed, get_nx, get_value_completed, get_pk_wsl_mount_d, get_pnxs, is_os_linux, ensure_slept, ensure_spoken
-# from pkg_py.system_object.static_logic import D_PKG_PY, UNDERLINE, STAMP_TRY_GUIDE, D_PROJECT, STAMP_UNIT_TEST_EXCEPTION_DISCOVERED
+# from pkg_py.system_object.static_logic import D_PKG_PY, UNDERLINE, '[ TRY GUIDE ]', D_PROJECT, '[ UNIT TEST EXCEPTION DISCOVERED ]'
 #, print_red
 
 ensure_colorama_initialized_once()
@@ -35,4 +35,4 @@ if __name__ == "__main__":
     except Exception as exception:
         ensure_exception_routine_done(traceback=traceback, exception=exception)
     finally:
-        ensure_finally_routine_done(D_PROJECT=D_PROJECT, __file__=__file__, STAMP_TRY_GUIDE=STAMP_TRY_GUIDE)
+        ensure_finally_routine_done(D_PROJECT=D_PROJECT, __file__=__file__)

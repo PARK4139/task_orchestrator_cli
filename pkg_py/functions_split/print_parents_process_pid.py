@@ -10,7 +10,7 @@ from pynput import mouse
 from pkg_py.functions_split.ensure_iterable_printed_as_vertical import ensure_iterable_printed_as_vertical
 from pkg_py.functions_split.ensure_window_to_front import ensure_window_to_front
 from pkg_py.functions_split.is_window_title_front import is_window_title_front
-from pkg_py.system_object.stamps import STAMP_ATTEMPTED
+# pk_#
 from functools import lru_cache
 from dataclasses import dataclass
 from colorama import init as pk_colorama_init

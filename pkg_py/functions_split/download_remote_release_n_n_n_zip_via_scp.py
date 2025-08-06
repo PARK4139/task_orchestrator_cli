@@ -16,9 +16,9 @@ from pkg_py.functions_split.is_window_opened import is_window_opened
 from pkg_py.functions_split.ensure_pressed import ensure_pressed
 
 from pkg_py.functions_split.ensure_list_written_to_f import ensure_list_written_to_f
-from pkg_py.system_object.stamps import STAMP_ATTEMPTED
+# pk_#
 from pkg_py.system_object.directories import D_PK_WORKING
-from pkg_py.system_object.directories import D_PKG_TXT
+from pkg_py.system_object.directories import D_PKG_CACHE_PRIVATE
 from pkg_py.system_object.state_via_database import PkSqlite3DB
 from passlib.context import CryptContext
 from os import path
@@ -29,10 +29,10 @@ from pkg_py.functions_split.get_pnx_windows_style import get_pnx_windows_style
 def download_remote_release_n_n_n_zip_via_scp(vpc_aifw_version, dst):
     # def send_src_to_remote_os(src, port, users, ip, pw):
     dst = get_pnx_windows_style(dst)
-    user_gitlab_token = get_token_from_f_token(f_token=rf'{D_PKG_TXT}\user_gitlab_token.txt', initial_str="")
-    ip_gitlab_token = get_token_from_f_token(f_token=rf'{D_PKG_TXT}\ip_gitlab_token.txt', initial_str="")
-    pw_gitlab_token = get_token_from_f_token(f_token=rf'{D_PKG_TXT}\pw_gitlab_token.txt', initial_str="")
-    port_gitlab_token = get_token_from_f_token(f_token=rf'{D_PKG_TXT}\port_gitlab_token.txt', initial_str="")
+    user_gitlab_token = get_token_from_f_token(f_token=rf'{D_PKG_CACHE_PRIVATE}\user_gitlab_token.txt', initial_str="")
+    ip_gitlab_token = get_token_from_f_token(f_token=rf'{D_PKG_CACHE_PRIVATE}\ip_gitlab_token.txt', initial_str="")
+    pw_gitlab_token = get_token_from_f_token(f_token=rf'{D_PKG_CACHE_PRIVATE}\pw_gitlab_token.txt', initial_str="")
+    port_gitlab_token = get_token_from_f_token(f_token=rf'{D_PKG_CACHE_PRIVATE}\port_gitlab_token.txt', initial_str="")
     src = rf'{user_gitlab_token}@{ip_gitlab_token}:/home/user/release/remote_release_{vpc_aifw_version}.zip'
     cmd = rf"scp -P {port_gitlab_token} -r {src} {dst}"
     # ensure_command_excuted_to_os(cmd=cmd) # warning : pw 물은 채로 정지

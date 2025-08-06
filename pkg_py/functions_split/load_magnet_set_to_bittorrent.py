@@ -1,7 +1,7 @@
 # from pkg_py.system_object.is_os_windows import is_os_windows
 
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.system_object.directories import D_PKG_TXT
+from pkg_py.system_object.directories import D_PKG_CACHE_PRIVATE
 from pkg_py.functions_split.is_os_windows import is_os_windows
 from pkg_py.functions_split.get_nx import get_nx
 from pkg_py.functions_split.get_value_completed import get_value_completed
@@ -21,7 +21,7 @@ def load_magnet_set_to_bittorrent():
         raise
 
     # pk_magnets.txt explorer
-    f = rf'{D_PKG_TXT}/pk_magnets.txt'
+    f = rf'{D_PKG_CACHE_PRIVATE}/pk_magnets.txt'
     if is_os_windows():
         ensure_command_excuted_to_os(cmd=rf'explorer "{get_pnx_windows_style(f)}"', mode="a")
         if not is_front_window_title(window_title_seg=get_nx(f)):
@@ -57,7 +57,7 @@ def load_magnet_set_to_bittorrent():
         rf'venv',
         rf'node_modules',
         rf'test_flutter',
-        rf'pkg_font',
+        rf'pkg_cache_private_public',
         rf'telegram memo export by static web',
         rf'docker_image_maker',
         rf'e-magazine',

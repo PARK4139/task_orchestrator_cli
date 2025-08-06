@@ -68,7 +68,7 @@ from pkg_py.system_object.files import F_POT_PLAYER_MINI_64_EXE, F_HISTORICAL_PN
 from pkg_py.system_object.files import F_HISTORICAL_PNX
 from pkg_py.system_object.encodings import Encoding
 from pkg_py.system_object.directories import D_PK_WORKING
-from pkg_py.system_object.directories import D_PKG_TXT, D_PK_WORKING
+from pkg_py.system_object.directories import D_PKG_CACHE_PRIVATE, D_PK_WORKING
 from pkg_py.system_object.map_massages import PkMessages2025
 # from pkg_py.system_object.print_red import print_red
 # from pkg_py.system_object.is_os_windows import is_os_windows
@@ -90,7 +90,7 @@ from cryptography.hazmat.backends import default_backend
 from collections import Counter
 from bs4 import ResultSet
 from bs4 import BeautifulSoup
-from pkg_py.system_object.stamps import STAMP_TRY_GUIDE, STAMP_UNIT_TEST_EXCEPTION_DISCOVERED
+
 from pkg_py.system_object.etc import PK_UNDERLINE
 from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style
 from pkg_py.system_object.directories import D_PKG_PY

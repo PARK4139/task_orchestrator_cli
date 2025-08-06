@@ -20,8 +20,8 @@ from pkg_py.functions_split.is_minute import is_minute
 from pkg_py.functions_split.is_month import is_month
 from pkg_py.functions_split.is_year import is_year
 from pkg_py.functions_split.ensure_pk_project_docker_ran import ensure_pk_project_docker_ran
-from pkg_py.system_object.directories import D_PKG_CSV, D_PKG_DB
-from pkg_py.system_object.directories_reuseable import D_PROJECT
+from pkg_py.system_object.directories import D_PKG_CACHE_PRIVATE, D_PKG_DB
+from pkg_py.system_object.directories  import D_PROJECT
 from pkg_py.system_object.gui_util import should_i_do
 from pkg_py.system_object.map_massages import PkMessages2025
 
@@ -207,7 +207,7 @@ def _TEST_CASE_장비현황_로컬DB에서_최신현황만_CSV파일로_저장()
     df_latest["업무수행일"] = df_latest["업무수행일"].apply(parse_tracking_date)
 
     today_str = datetime.now().strftime("%Y%m%d_%H%M%S")
-    f_save_csv = f"{D_PKG_CSV}/xc_latest_tracking_{today_str}.csv"
+    f_save_csv = f"{D_PKG_CACHE_PRIVATE}/xc_latest_tracking_{today_str}.csv"
     f_save_csv = get_pnx_os_style(f_save_csv)
 
     os.makedirs(get_p(f_save_csv), exist_ok=True)
@@ -268,7 +268,7 @@ def _TEST_CASE_장비현황_로컬DB에서_최신현황만_CSV파일로_저장_A
 
     # 4. 저장 경로 지정
     today_str = datetime.now().strftime("%Y%m%d_%H%M%S")
-    f_save_csv = f"{D_PKG_CSV}/xc_full_tracking_with_latest_flag_{today_str}.csv"
+    f_save_csv = f"{D_PKG_CACHE_PRIVATE}/xc_full_tracking_with_latest_flag_{today_str}.csv"
     f_save_csv = get_pnx_os_style(f_save_csv)
     os.makedirs(get_p(f_save_csv), exist_ok=True)
 
@@ -324,7 +324,7 @@ def test_string_handling():
 
     # mkr_텍스트 변환
     # text=r"""
-    # python -m PyInstaller -i ".\pkg_image\icon.PNG" console_blurred.py
+    # python -m PyInstaller -i ".\pkg_image_and_video_and_sound\icon.PNG" console_blurred.py
     # """
     # print_text_converted(text=text)
 
@@ -364,12 +364,12 @@ def _TEST_CASE_시간확인_v2():
     pass
 
 
-def ensure_printed_and_speak(param):
+def ensure_printed_and_spoken(param):
     pass
 
 
 def _TEST_CASE_출력하고TTS():
-    ensure_printed_and_speak("Playing music...")
+    ensure_printed_and_spoken("Playing music...")
 
 
 def _TEST_CASE_어시스트_스케쥴():
@@ -447,7 +447,7 @@ def _TEST_CASE_어시스트_스케쥴():
 
 # todo : python decorater 를 통한 fail tracking      [fail] module function(), red          [success] module function() , green
 
-# todo : pkg_txt 에서 f내용이 empty 이면 f명 앞에 prefix 를 [text_empty]_를 이동하여 rename
+# todo : pkg_cache_private 에서 f내용이 empty 이면 f명 앞에 prefix 를 [text_empty]_를 이동하여 rename
 
 # todo : think : 추출한 magnets를 {search_keyword}.txt 에 저장
 

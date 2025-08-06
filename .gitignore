@@ -65,6 +65,9 @@ pkg_rdp/
 pkg_yt_dlp/
 pkg_blend/
 pkg_csv/
+pkg_cache_private/
+pkg_system_recycle_bin/
+pkg_image_and_video_and_sound/
 
 # 기타 프로젝트별 민감/불필요 폴더
 pkg_ide_backup/

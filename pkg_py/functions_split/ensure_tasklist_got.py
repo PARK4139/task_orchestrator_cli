@@ -32,11 +32,11 @@ def get_image_names_from_tasklist():
                                       errors='ignore')
             
             if result.returncode != 0:
-                ensure_printed(f"❌ tasklist 명령어 실행 실패: {result.stderr}", print_color="red")
+                ensure_printed(f" tasklist 명령어 실행 실패: {result.stderr}", print_color="red")
                 return []
             
             if not result.stdout:
-                ensure_printed("⚠️ tasklist 명령어 결과가 비어있습니다.", print_color="yellow")
+                ensure_printed("️ tasklist 명령어 결과가 비어있습니다.", print_color="yellow")
                 return []
             
             lines = result.stdout.strip().split('\n')
@@ -64,15 +64,15 @@ def get_image_names_from_tasklist():
                                       text=True, 
                                       encoding='utf-8')
             except Exception as e:
-                ensure_printed(f"❌ ps 명령어 실행 실패: {e}", print_color="red")
+                ensure_printed(f" ps 명령어 실행 실패: {e}", print_color="red")
                 return []
             
             if result.returncode != 0:
-                ensure_printed(f"❌ ps 명령어 실행 실패: {result.stderr}", print_color="red")
+                ensure_printed(f" ps 명령어 실행 실패: {result.stderr}", print_color="red")
                 return []
             
             if not result.stdout:
-                ensure_printed("⚠️ ps 명령어 결과가 비어있습니다.", print_color="yellow")
+                ensure_printed("️ ps 명령어 결과가 비어있습니다.", print_color="yellow")
                 return []
             
             lines = result.stdout.strip().split('\n')
@@ -104,15 +104,15 @@ def get_image_names_from_tasklist():
                                       text=True, 
                                       encoding='utf-8')
             except Exception as e:
-                ensure_printed(f"❌ ps 명령어 실행 실패: {e}", print_color="red")
+                ensure_printed(f" ps 명령어 실행 실패: {e}", print_color="red")
                 return []
             
             if result.returncode != 0:
-                ensure_printed(f"❌ ps 명령어 실행 실패: {result.stderr}", print_color="red")
+                ensure_printed(f" ps 명령어 실행 실패: {result.stderr}", print_color="red")
                 return []
             
             if not result.stdout:
-                ensure_printed("⚠️ ps 명령어 결과가 비어있습니다.", print_color="yellow")
+                ensure_printed("️ ps 명령어 결과가 비어있습니다.", print_color="yellow")
                 return []
             
             lines = result.stdout.strip().split('\n')
@@ -151,14 +151,14 @@ def get_image_names_from_tasklist():
             image_names.sort(key=str.lower)
             
             cmd_name = "tasklist" if is_os_windows() else "ps"
-            ensure_printed(f"📋 {cmd_name}에서 {len(image_names)}개의 고유한 이미지명을 수집했습니다.", print_color="green")
+            ensure_printed(f" {cmd_name}에서 {len(image_names)}개의 고유한 이미지명을 수집했습니다.", print_color="green")
         else:
-            ensure_printed("⚠️ 프로세스 목록에서 이미지명을 찾을 수 없습니다.", print_color="yellow")
+            ensure_printed("️ 프로세스 목록에서 이미지명을 찾을 수 없습니다.", print_color="yellow")
         
         return image_names
         
     except Exception as e:
-        ensure_printed(f"❌ 프로세스 목록 처리 중 오류 발생: {e}", print_color="red")
+        ensure_printed(f" 프로세스 목록 처리 중 오류 발생: {e}", print_color="red")
         return []
 
 def ensure_tasklist_got_with_pid():
@@ -184,11 +184,11 @@ def ensure_tasklist_got_with_pid():
                                       errors='ignore')
             
             if result.returncode != 0:
-                ensure_printed(f"❌ tasklist 명령어 실행 실패: {result.stderr}", print_color="red")
+                ensure_printed(f" tasklist 명령어 실행 실패: {result.stderr}", print_color="red")
                 return []
             
             if not result.stdout:
-                ensure_printed("⚠️ tasklist 명령어 결과가 비어있습니다.", print_color="yellow")
+                ensure_printed("️ tasklist 명령어 결과가 비어있습니다.", print_color="yellow")
                 return []
             
             lines = result.stdout.strip().split('\n')
@@ -216,15 +216,15 @@ def ensure_tasklist_got_with_pid():
                                       text=True, 
                                       encoding='utf-8')
             except Exception as e:
-                ensure_printed(f"❌ ps 명령어 실행 실패: {e}", print_color="red")
+                ensure_printed(f" ps 명령어 실행 실패: {e}", print_color="red")
                 return []
             
             if result.returncode != 0:
-                ensure_printed(f"❌ ps 명령어 실행 실패: {result.stderr}", print_color="red")
+                ensure_printed(f" ps 명령어 실행 실패: {result.stderr}", print_color="red")
                 return []
             
             if not result.stdout:
-                ensure_printed("⚠️ ps 명령어 결과가 비어있습니다.", print_color="yellow")
+                ensure_printed("️ ps 명령어 결과가 비어있습니다.", print_color="yellow")
                 return []
             
             lines = result.stdout.strip().split('\n')
@@ -252,14 +252,14 @@ def ensure_tasklist_got_with_pid():
         
         if process_list:
             cmd_name = "tasklist" if is_os_windows() else "ps"
-            ensure_printed(f"📋 {cmd_name}에서 {len(process_list)}개의 프로세스를 수집했습니다.", print_color="green")
+            ensure_printed(f" {cmd_name}에서 {len(process_list)}개의 프로세스를 수집했습니다.", print_color="green")
         else:
-            ensure_printed("⚠️ 프로세스 목록을 찾을 수 없습니다.", print_color="yellow")
+            ensure_printed("️ 프로세스 목록을 찾을 수 없습니다.", print_color="yellow")
         
         return process_list
         
     except Exception as e:
-        ensure_printed(f"❌ 프로세스 목록 처리 중 오류 발생: {e}", print_color="red")
+        ensure_printed(f" 프로세스 목록 처리 중 오류 발생: {e}", print_color="red")
         return []
 
 def ensure_tasklist_got_filtered(filter_keywords=None):
@@ -287,7 +287,7 @@ def ensure_tasklist_got_filtered(filter_keywords=None):
                 filtered_processes.append(process)
                 break
     
-    ensure_printed(f"🔍 키워드 {filter_keywords}로 필터링하여 {len(filtered_processes)}개의 프로세스를 찾았습니다.", print_color="cyan")
+    ensure_printed(f" 키워드 {filter_keywords}로 필터링하여 {len(filtered_processes)}개의 프로세스를 찾았습니다.", print_color="cyan")
     
     return filtered_processes
 
@@ -310,11 +310,11 @@ def get_pids_by_process_name(process_img_n):
         std_list = ensure_command_excuted_to_os(cmd=cmd)
         pids = get_list_leaved_element_pattern(items=std_list, pattern=r'^\S+\s+(\d+)\s+[A-Za-z]')
         
-        ensure_printed(f"🔍 프로세스 '{process_img_n}'에서 {len(pids)}개의 PID를 찾았습니다.", print_color="cyan")
+        ensure_printed(f" 프로세스 '{process_img_n}'에서 {len(pids)}개의 PID를 찾았습니다.", print_color="cyan")
         return pids
         
     except Exception as e:
-        ensure_printed(f"❌ PID 검색 중 오류 발생: {e}", print_color="red")
+        ensure_printed(f" PID 검색 중 오류 발생: {e}", print_color="red")
         return []
 
 def get_pid_by_window_title(window_title_seg):
@@ -338,7 +338,7 @@ def get_pid_by_window_title(window_title_seg):
                 break
 
         if not matching_lines:
-            ensure_printed(f"⚠️ 윈도우 타이틀 '{window_title_seg}'을 포함하는 프로세스를 찾을 수 없습니다.", print_color="yellow")
+            ensure_printed(f"️ 윈도우 타이틀 '{window_title_seg}'을 포함하는 프로세스를 찾을 수 없습니다.", print_color="yellow")
             return None
 
         pids = []
@@ -347,14 +347,14 @@ def get_pid_by_window_title(window_title_seg):
             pids.append(parts[1])
 
         if len(pids) == 1:
-            ensure_printed(f"✅ 윈도우 타이틀 '{window_title_seg}'의 PID: {pids[0]}", print_color="green")
+            ensure_printed(f" 윈도우 타이틀 '{window_title_seg}'의 PID: {pids[0]}", print_color="green")
             return pids[0]
         else:
-            ensure_printed(f"📋 윈도우 타이틀 '{window_title_seg}'의 PID들: {pids}", print_color="cyan")
+            ensure_printed(f" 윈도우 타이틀 '{window_title_seg}'의 PID들: {pids}", print_color="cyan")
             return pids
             
     except Exception as e:
-        ensure_printed(f"❌ 윈도우 타이틀 PID 검색 중 오류 발생: {e}", print_color="red")
+        ensure_printed(f" 윈도우 타이틀 PID 검색 중 오류 발생: {e}", print_color="red")
         return None
 
 def get_process_name_by_pid(pid):
@@ -373,14 +373,14 @@ def get_process_name_by_pid(pid):
         data = ensure_command_excuted_to_os(cmd=f'tasklist | findstr "{pid}"')
         if data and len(data) > 0:
             process_name = data[0].split(" ")[0]
-            ensure_printed(f"✅ PID {pid}의 프로세스명: {process_name}", print_color="green")
+            ensure_printed(f" PID {pid}의 프로세스명: {process_name}", print_color="green")
             return process_name
         else:
-            ensure_printed(f"⚠️ PID {pid}에 해당하는 프로세스를 찾을 수 없습니다.", print_color="yellow")
+            ensure_printed(f"️ PID {pid}에 해당하는 프로세스를 찾을 수 없습니다.", print_color="yellow")
             return None
             
     except Exception as e:
-        ensure_printed(f"❌ 프로세스명 검색 중 오류 발생: {e}", print_color="red")
+        ensure_printed(f" 프로세스명 검색 중 오류 발생: {e}", print_color="red")
         return None
 
 def get_process_info_by_window_title(window_title_seg):
@@ -412,5 +412,5 @@ def get_process_info_by_window_title(window_title_seg):
             return [process_info] if process_info else []
             
     except Exception as e:
-        ensure_printed(f"❌ 윈도우 타이틀 프로세스 정보 검색 중 오류 발생: {e}", print_color="red")
+        ensure_printed(f" 윈도우 타이틀 프로세스 정보 검색 중 오류 발생: {e}", print_color="red")
         return [] 

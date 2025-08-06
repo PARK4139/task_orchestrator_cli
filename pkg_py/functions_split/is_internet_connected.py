@@ -1,5 +1,7 @@
+from torch.fx.experimental.symbolic_shapes import lru_cache
 
 
+@lru_cache(maxsize=10) # pk_options
 def is_internet_connected():
 
     import inspect

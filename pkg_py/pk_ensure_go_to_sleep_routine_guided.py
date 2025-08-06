@@ -11,9 +11,9 @@ if __name__ == "__main__":
 
         # from pkg_py.system_object.500_live_logic import deprecated_get_d_current_n_like_person, get_f_current_n, ensure_copied, assist_to_upload_pnx_to_git, get_time_as_, get_pk_token, ensure_input_preprocessed, ensure_d_size_stable, push_pnx_to_github, LTA
         #
-        # from pkg_py.system_object.static_logic import D_PROJECT, UNDERLINE, STAMP_TRY_GUIDE, STAMP_PYTHON_DEBUGGING_NOTE, STAMP_EXCEPTION_DISCOVERED, D_PKG_TOML
+        # from pkg_py.system_object.static_logic import D_PROJECT, UNDERLINE, '[ TRY GUIDE ]', '[ DEBUGGING NOTE ]', '[ EXCEPTION DISCOVERED ]', D_PKG_TOML
         # from pkg_py.system_object.static_logic import D_PROJECT
-        #, STAMP_TRY_GUIDE, STAMP_EXCEPTION_DISCOVERED, D_PKG_TOML
+        #, '[ TRY GUIDE ]', '[ EXCEPTION DISCOVERED ]', D_PKG_TOML
 
         # backup to local
         pnx_working = D_PROJECT
@@ -42,5 +42,5 @@ if __name__ == "__main__":
     except Exception as exception:
         ensure_exception_routine_done(traceback=traceback, exception=exception)
     finally:
-        ensure_finally_routine_done(D_PROJECT=D_PROJECT, __file__=__file__, STAMP_TRY_GUIDE=STAMP_TRY_GUIDE)
+        ensure_finally_routine_done(D_PROJECT=D_PROJECT, __file__=__file__)
         

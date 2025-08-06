@@ -3,6 +3,9 @@
 def get_value_completed_v4(message, option_values):
     from prompt_toolkit import prompt
     from prompt_toolkit.completion import WordCompleter, FuzzyCompleter
+    from pkg_py.functions_split.ensure_spoken import ensure_spoken
+    from pkg_py.functions_split.is_path_like import is_path_like
+    from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style
     import inspect
 
     func_n = inspect.currentframe().f_code.co_name
@@ -27,15 +30,15 @@ def get_value_completed_v4(message, option_values):
 
     completer = FuzzyCompleter(WordCompleter(deduped, ignore_case=True))
 
-    # 🚨 Loop until non-empty input
+    #  Loop until non-empty input
     while True:
         try:
             user_input = prompt(message + " ", completer=completer).strip()
             if user_input:
                 return user_input
-            print("⚠️ 입력이 비어 있습니다. 다시 입력해주세요.")
+            print("️ 입력이 비어 있습니다. 다시 입력해주세요.")
         except (KeyboardInterrupt, EOFError):
-            print("❌ 입력이 취소되었습니다.")
+            print(" 입력이 취소되었습니다.")
             return None
 
 

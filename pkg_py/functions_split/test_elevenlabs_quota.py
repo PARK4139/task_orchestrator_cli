@@ -55,12 +55,12 @@ python pkg_py/pk_ensure_text_encoded.py
 
 ### 기억할 사항:
 
-- ✅ **매월 1일 자동 초기화**: 무료 한도가 10,000자로 초기화됨
-- ✅ **실시간 한도 확인**: TTS 사용 전 한도 확인
-- ✅ **사용량 로그**: 모든 TTS 사용 기록 저장
-- ✅ **한도 초과 차단**: 무료 한도 초과 시 사용 불가
+-  **매월 1일 자동 초기화**: 무료 한도가 10,000자로 초기화됨
+-  **실시간 한도 확인**: TTS 사용 전 한도 확인
+-  **사용량 로그**: 모든 TTS 사용 기록 저장
+-  **한도 초과 차단**: 무료 한도 초과 시 사용 불가
 
-이제 ElevenLabs API의 무료 한도를 안전하게 관리할 수 있습니다! 🛡️
+이제 ElevenLabs API의 무료 한도를 안전하게 관리할 수 있습니다! ️
 
 def test_elevenlabs_quota():
     """
@@ -71,7 +71,7 @@ def test_elevenlabs_quota():
     
     def test_quota_management():
         """한도 관리 테스트"""
-        ensure_printed("🧪 ElevenLabs 무료 한도 관리 테스트", print_color='blue')
+        ensure_printed(" ElevenLabs 무료 한도 관리 테스트", print_color='blue')
         
         quota_manager = ensure_elevenlabs_quota_manager()
         
@@ -81,7 +81,7 @@ def test_elevenlabs_quota():
         # 초기화 확인
         reset_result = quota_manager.check_and_reset_quota()
         if reset_result:
-            ensure_printed("🔄 한도가 초기화되었습니다.", print_color='green')
+            ensure_printed(" 한도가 초기화되었습니다.", print_color='green')
         
         # 테스트 텍스트들
         test_texts = [
@@ -96,13 +96,13 @@ def test_elevenlabs_quota():
             
             if quota_manager.can_use_tts(text_length):
                 quota_manager.update_usage(text_length, "test_voice")
-                ensure_printed("✅ 사용량 업데이트 완료", print_color='green')
+                ensure_printed(" 사용량 업데이트 완료", print_color='green')
             else:
-                ensure_printed("❌ 한도 초과로 사용 불가", print_color='red')
+                ensure_printed(" 한도 초과로 사용 불가", print_color='red')
                 break
         
         # 최종 한도 정보 표시
-        ensure_printed("\n📊 최종 한도 정보:", print_color='blue')
+        ensure_printed("\n 최종 한도 정보:", print_color='blue')
         quota_manager.display_quota_info()
     
     def reset_quota_for_testing():
@@ -113,7 +113,7 @@ def test_elevenlabs_quota():
         
         quota_manager = ensure_elevenlabs_quota_manager()
         
-        ensure_printed("🔄 테스트용 한도 초기화", print_color='yellow')
+        ensure_printed(" 테스트용 한도 초기화", print_color='yellow')
         
         db_path = os.path.join(os.path.expanduser("~"), ".pk_system", "elevenlabs_quota.db")
         conn = sqlite3.connect(db_path)
@@ -131,7 +131,7 @@ def test_elevenlabs_quota():
         conn.commit()
         conn.close()
         
-        ensure_printed("✅ 테스트용 한도 초기화 완료!", print_color='green')
+        ensure_printed(" 테스트용 한도 초기화 완료!", print_color='green')
         quota_manager.display_quota_info()
     
     # 메인 실행
@@ -146,4 +146,4 @@ def test_elevenlabs_quota():
     elif choice == "2":
         reset_quota_for_testing()
     else:
-        ensure_printed("❌ 잘못된 선택입니다.", print_color='red') 
+        ensure_printed(" 잘못된 선택입니다.", print_color='red') 

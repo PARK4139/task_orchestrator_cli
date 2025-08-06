@@ -5,7 +5,7 @@
 from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
 
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
+# pk_#
 from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
 from pkg_py.functions_split.is_os_windows import is_os_windows
 from pkg_py.functions_split.get_nx import get_nx
@@ -28,7 +28,7 @@ def run_pk_system_process_by_idx_v1(pk_idx, pk_arg_list):
             ensure_printed(f'''pk_arg_list[{idx}]={pk_arg_list[idx]} {'%%%FOO%%%' if LTA else ''}''')
     available_pk_system_process_pnx = get_available_pk_system_process_pnx(pk_idx)
     if pk_arg_list is None:
-        pk_arg_list = []  # ✅ 빈 리스트로 대체
+        pk_arg_list = []  #  빈 리스트로 대체
     # if get_x(available_pk_system_process_pnx) == '.py':
     #     cmd_to_run = 'python'
     cmd_to_run = 'uv run python'
@@ -60,7 +60,7 @@ def run_pk_system_process_by_idx_v1(pk_idx, pk_arg_list):
             #         ensure_command_excuted_to_os(cmd=cmd, mode_with_window=1)
             ensure_command_excuted_to_os(cmd=cmd, mode='a', mode_with_window=1)
         if LTA:
-            ensure_printed(f'''{STAMP_TRY_GUIDE} {cmd} {'%%%FOO%%%' if LTA else ''}''')
+            ensure_printed(f'''{'[ TRY GUIDE ]'} {cmd} {'%%%FOO%%%' if LTA else ''}''')
     if is_os_wsl_linux():
 
         tmux_upper_pane_active = True

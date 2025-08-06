@@ -1,8 +1,12 @@
 def ensure_os_locked():
+    from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_excuted_to_os
+    from pkg_py.functions_split.is_os_windows import is_os_windows
+    from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
+    from pkg_py.functions_split.save_power_as_s3 import save_power_as_s3
+
     from datetime import datetime, time
     from pkg_py.functions_split.ensure_console_cleared import ensure_console_cleared
     from pkg_py.functions_split.ensure_slept import ensure_slept
-    from pkg_py.functions_split.lock_os import lock_os
 
     def parse_time_ranges(text_list):
         """sample: ["12:00-13:00", "15:00-15:10"] -> [(time(12,0), time(13,0)), (time(15,0), time(15,10))]"""
@@ -31,19 +35,23 @@ def ensure_os_locked():
         parse_time_ranges(sleep_time_ranges_text)
     )
 
-    last_cleared_hour = -1  # 아직 클리어된 적 없음을 의미
+    last_cleared_min = -1  # 아직 클리어된 적 없음을 의미
 
     while True:
         now = datetime.now()
         now_time = now.time()
 
-        # 1 시간 마다 콘솔 클리어
-        if now.hour != last_cleared_hour:
+        if now.min != last_cleared_min:
             ensure_console_cleared()
-            last_cleared_hour = now.hour
+            last_cleared_min = now.min
 
         # 시간 블럭에 해당하면 잠금
         if is_now_in_time_ranges(now_time, all_time_blocks):
-            lock_os()
+            if is_os_windows():
+                save_power_as_s3()
+            elif is_os_wsl_linux():
+                save_power_as_s3()
+            else:
+                ensure_command_excuted_to_os('echo TBD')
 
         ensure_slept(milliseconds=10000)

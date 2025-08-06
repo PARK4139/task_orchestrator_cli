@@ -3,17 +3,6 @@
 
 
 
-#
-#
-# from pkg_py.system_object.load_util import load_logged_set
-# from pkg_py.system_object.save_util import save_logged_set
-# from pkg_py.system_object.time_and_lanauge_util import get_time_as_
-# from pkg_py.system_object.directories import D_PKG_PKL
-# from pkg_py.system_object.stamps import STAMP_ERROR, STAMP_DEBUG, STAMP_INTERACTIVE, STAMP_SUCCEEDED, STAMP_INFO, STAMP_TEST
-# from pkg_py.system_object.color_map import ColormaColorMap, COLORAMA_CODE_MAP, PK_ANSI_COLOR_MAP
-# from pkg_py.system_object.etc import PK_UNDERLINE
-
-
 def get_txt_highlighted_v2(txt_whole, config_highlight_dict):
     import re
     # mkr.

@@ -4,17 +4,17 @@ from pkg_py.functions_split.pk_ensure_printed import pk_ensure_printed
 from pkg_py.functions_split.get_nx import get_nx
 from pkg_py.functions_split.get_pnxs_from_d_working import get_pnxs_from_d_working
 from pkg_py.functions_split.is_f import is_f
-from pkg_py.system_object.directories_reuseable import D_PROJECT
+from pkg_py.system_object.directories  import D_PROJECT
 from pkg_py.system_object.etc import PK_UNDERLINE
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.system_object.stamps import STAMP_TRY_GUIDE, STAMP_UNIT_TEST_EXCEPTION_DISCOVERED
+
 
 if __name__ == "__main__":
     try:
         import traceback
 
         # from pkg_py.system_object.500_live_logic import copy, LTA, get_pnxs_from_d_working, is_f, get_nx, pk_ensure_pnx_removed
-        # , STAMP_TRY_GUIDE, D_PROJECT, STAMP_UNIT_TEST_EXCEPTION_DISCOVERED
+        # , '[ TRY GUIDE ]', D_PROJECT, '[ UNIT TEST EXCEPTION DISCOVERED ]'
         #
 
         d_working = fr"C:\Users\WIN10PROPC3\Downloads\working directory for pkg_py pnx restoration via recuva"
@@ -66,8 +66,8 @@ if __name__ == "__main__":
         traceback_format_exc_list = traceback.format_exc().split("\n")
         pk_ensure_printed(str_working=f'{PK_UNDERLINE}', print_color='red')
         for traceback_format_exc_str in traceback_format_exc_list:
-            pk_ensure_printed(str_working=f'{STAMP_UNIT_TEST_EXCEPTION_DISCOVERED} {traceback_format_exc_str}', print_color='red')
+            pk_ensure_printed(str_working=f'{'[ UNIT TEST EXCEPTION DISCOVERED ]'} {traceback_format_exc_str}', print_color='red')
         pk_ensure_printed(str_working=f'{PK_UNDERLINE}', print_color='red')
 
     finally:
-        pk_ensure_finally_routine_done(D_PROJECT=D_PROJECT, __file__=__file__, STAMP_TRY_GUIDE=STAMP_TRY_GUIDE)
+        pk_ensure_finally_routine_done(D_PROJECT=D_PROJECT, __file__=__file__)

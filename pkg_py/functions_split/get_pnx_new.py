@@ -40,7 +40,7 @@ from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
 def get_pnx_new(d_working, pnx):
-    # move_pnx 에  mode_count 로 통합
+    # ensure_pnx_moved 에  mode_count 로 통합
     """중복되지 않는 새로운 f명을 생성"""
     import os
     pnx_nx = get_nx(pnx)

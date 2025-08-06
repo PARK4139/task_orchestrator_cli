@@ -8,7 +8,7 @@ from pkg_py.functions_split.is_f import is_f
 from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
 
 
-def get_sub_pnx_list(pnx, txt_to_exclude_list=None, with_walking=1):
+def get_sub_pnx_list(pnx, txt_to_exclude_list=None, with_walking=True):
     import os
     txt_to_exclude_list = txt_to_exclude_list or []
     if with_walking == 1:

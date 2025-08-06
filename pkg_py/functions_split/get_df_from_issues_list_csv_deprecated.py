@@ -16,5 +16,5 @@ def get_df_from_issues_list_csv_deprecated():
         pnx = issues_list_csv_alternative
         if does_pnx_exist(pnx):
             df = pd.read_csv(filepath_or_buffer=pnx)
-    move_pnx(pnx=pnx, d_dst=Downloads, with_overwrite=1)
+    ensure_pnx_moved(pnx=pnx, d_dst=Downloads, with_overwrite=1)
     return df

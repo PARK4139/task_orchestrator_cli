@@ -1,5 +1,5 @@
 def get_value_via_fzf_or_history_routine(key_name, file_id, editable, init_options=[]):
-    from pkg_py.functions_split.get_f_historical import get_history_file
+    from pkg_py.functions_split.get_f_historical import ensure_history_file_pnx_got
     from pkg_py.functions_split.get_list_calculated import get_list_calculated
     from pkg_py.functions_split.get_value_via_fzf_or_history import get_value_via_fzf_or_history
     from pkg_py.functions_split.get_values_from_historical_file import get_values_from_history_file
@@ -11,7 +11,7 @@ def get_value_via_fzf_or_history_routine(key_name, file_id, editable, init_optio
     if init_options == [""]:
         init_options = []
     # first call 에서 options에 값을 넣고, 이후 호출부터는 init_options = [] 로 해야함, 계속 값이 더해짐
-    f_historical = get_history_file(file_id=file_id)
+    f_historical = ensure_history_file_pnx_got(file_id=file_id)
     historical_values = get_values_from_history_file(f_historical=f_historical)
     init_options = get_list_calculated(origin_list=init_options, plus_list=historical_values)
     ensure_printed(f'''[{PkMessages2025.DATA}] options={init_options} {'%%%FOO%%%' if LTA else ''}''')

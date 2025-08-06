@@ -13,7 +13,7 @@ if __name__ == "__main__":
     except:
         f_current_n= get_f_current_n()
         d_current_n=get_d_current_n_like_person()
-        ensure_finally_routine_done(D_PROJECT=D_PROJECT, __file__=__file__, STAMP_TRY_GUIDE=STAMP_TRY_GUIDE)
+        ensure_finally_routine_done(D_PROJECT=D_PROJECT, __file__=__file__)
         traceback_format_exc_list = traceback.format_exc().split("\n")
         
         ensure_printed(str_working=f'{PK_UNDERLINE}', print_color='red')
@@ -22,7 +22,7 @@ if __name__ == "__main__":
         ensure_printed(str_working=f'{PK_UNDERLINE}', print_color='red')
 
         ensure_printed(str_working=f'{PK_UNDERLINE}\n', print_color="yellow")
-        ensure_printed(str_working=f'{STAMP_PYTHON_DEBUGGING_NOTE} f_current={f_current_n}\nd_current={d_current_n}\n', print_color="yellow")
+        ensure_printed(str_working=f'{'[ DEBUGGING NOTE ]'} f_current={f_current_n}\nd_current={d_current_n}\n', print_color="yellow")
         ensure_printed(str_working=f'{PK_UNDERLINE}\n', print_color="yellow")
 
         

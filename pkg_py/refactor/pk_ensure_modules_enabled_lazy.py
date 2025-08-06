@@ -15,9 +15,9 @@ from pkg_py.functions_split.initialize_and_customize_logging_config import initi
 from pkg_py.functions_split.restore_workspace_from_latest_archive import restore_workspace_from_latest_archive
 from pkg_py.system_object.map_massages import PkMessages2025
 from pkg_py.system_object.directories import D_PKG_PY
-from pkg_py.system_object.directories_reuseable import D_PROJECT
+from pkg_py.system_object.directories  import D_PROJECT
 from pkg_py.system_object.encodings import Encoding
-from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
+# pk_#
 from pkg_py.refactor.A300_pk_ensure_modules_enabled_front import clean_import_block
 
 
@@ -150,4 +150,4 @@ if __name__ == "__main__":
     except Exception as exception:
         ensure_exception_routine_done(traceback=traceback, exception=exception)
     finally:
-        pk_ensure_finally_routine_done(D_PROJECT=D_PROJECT, __file__=__file__, STAMP_TRY_GUIDE=STAMP_TRY_GUIDE)
+        pk_ensure_finally_routine_done(D_PROJECT=D_PROJECT, __file__=__file__)

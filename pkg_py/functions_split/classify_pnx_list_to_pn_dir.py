@@ -26,4 +26,4 @@ def classify_pnx_list_to_pn_dir(d_working):
                 os.makedirs(f_n_d_pn)
 
             # shutil.move(pnx_item, f_n_d_pn) # 중복있으면 에러로 처리됨
-            move_pnx(pnx=pnx_item, d_dst=f_n_d_pn)  # 중복있으면 timestamp를 붙여 이동됨
+            ensure_pnx_moved(pnx=pnx_item, d_dst=f_n_d_pn)  # 중복있으면 timestamp를 붙여 이동됨

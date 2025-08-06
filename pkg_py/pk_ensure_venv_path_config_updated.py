@@ -49,6 +49,7 @@ def process_files():
     start_timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     ensure_printed(f"Task started at: {start_timestamp}")
 
+
     # .venv 디렉토리 내 모든 파일 순회
     processed_count = 0
     for root, dirs, files in os.walk(target_dir):

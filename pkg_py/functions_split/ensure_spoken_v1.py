@@ -1,5 +1,5 @@
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.system_object.directories_reuseable import D_PROJECT
+from pkg_py.system_object.directories  import D_PROJECT
 from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_excuted_to_os
 
 from pkg_py.functions_split.ensure_printed import ensure_printed
@@ -32,7 +32,7 @@ def ensure_spoken_v1(str_working, after_delay=1.00, delimiter=None):
                     ensure_spoken_v2(str_working=str_working, comma_delay=0.98)
                 break
             if type(str_working) == str:
-                cache_mp3 = get_pnx_os_style(rf'{D_PROJECT}/pkg_sound')
+                cache_mp3 = get_pnx_os_style(rf'{D_PROJECT}/pkg_image_and_video_and_sound')
                 ment__mp3 = get_pnx_os_style(rf'{cache_mp3}/{str_working}_.mp3')
                 ment_mp3 = get_pnx_os_style(rf'{cache_mp3}/{str_working}.mp3')
 

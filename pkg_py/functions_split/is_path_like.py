@@ -20,17 +20,17 @@ def is_path_like(s: str) -> bool:
 
     s = s.strip()
 
-    # ❌ URL 은 제외
+    #  URL 은 제외
     if re.match(r'^(https?|ftp)://', s) or re.match(r'^(www\.|youtu\.be|drive\.google\.com)', s):
         return False
 
-    # ✅ 절대 경로 (Windows, POSIX)
+    #  절대 경로 (Windows, POSIX)
     if os.path.isabs(s):
         return True
 
-    # ✅ 상대 경로라도 디렉토리 구분자 포함되면 (예: a/b, a\b)
+    #  상대 경로라도 디렉토리 구분자 포함되면 (예: a/b, a\b)
     if '/' in s or '\\' in s:
         return True
 
-    # ❌ 확장자만 있다고 해서 경로라고 단정하지 않음
+    #  확장자만 있다고 해서 경로라고 단정하지 않음
     return False

@@ -37,7 +37,7 @@ from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.ensure_printed_once import ensure_printed_once
 from pkg_py.functions_split.set_pk_context_state import set_pk_context_state
 from pkg_py.system_object.etc import PkFilter
-from pkg_py.system_object.stamps import STAMP_ATTEMPTED
+# pk_#
 from pkg_py.system_object.files import F_HISTORICAL_PNX
 from pkg_py.system_object.files import F_FFMPEG_EXE
 from pkg_py.system_object.encodings import Encoding
@@ -68,7 +68,7 @@ from pkg_py.functions_split.get_d_working import get_d_working
 
 def ensure_remove_and_make_remote_d(d, config_remote_os):
     # remove d
-    ensure_remove_pnx_of_remote_os(d=d, **config_remote_os)
+    ensure_reensure_pnx_moved_of_remote_os(d=d, **config_remote_os)
 
     # make d
     std_out_list, std_err_list = cmd_to_remote_os(d=f"mkdir -p {d}", **config_remote_os)

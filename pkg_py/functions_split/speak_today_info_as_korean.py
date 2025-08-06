@@ -1,6 +1,9 @@
+
+
 def speak_today_info_as_korean():
     import inspect
-    func_n = inspect.currentframe().f_code.co_name
+    from pkg_py.functions_split import ensure_spoken, get_time_as_
+
     yyyy = get_time_as_('%Y')
     MM = get_time_as_('%m')
     dd = get_time_as_('%d')

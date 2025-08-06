@@ -2,7 +2,7 @@ __author__ = 'pk == junghoon.park'
 
 # from pkg_py.system_object.directories import D_PK_WORKING
 #
-#, STAMP_UNIT_TEST_EXCEPTION_DISCOVERED
+#, '[ UNIT TEST EXCEPTION DISCOVERED ]'
 # from pkg_py.system_object.etc import PK_UNDERLINE
 from pkg_py.functions_split.print_red import print_red
 from pkg_py.functions_split.ensure_printed import ensure_printed
@@ -33,9 +33,9 @@ if __name__ == "__main__":
         traceback_format_exc_list = traceback.format_exc().split("\n")
         print_red(PK_UNDERLINE)
         for line in traceback_format_exc_list:
-            print_red(f'{STAMP_UNIT_TEST_EXCEPTION_DISCOVERED} {line}')
+            print_red(f'{'[ UNIT TEST EXCEPTION DISCOVERED ]'} {line}')
         print_red(PK_UNDERLINE)
 
     finally:
-        ensure_finally_routine_done(D_PROJECT=D_PROJECT, __file__=__file__, STAMP_TRY_GUIDE=STAMP_TRY_GUIDE)
+        ensure_finally_routine_done(D_PROJECT=D_PROJECT, __file__=__file__)
         

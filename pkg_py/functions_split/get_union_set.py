@@ -27,7 +27,7 @@ from pkg_py.functions_split.get_video_filtered_list import get_video_filtered_li
 from pkg_py.functions_split.is_window_opened import is_window_opened
 from pkg_py.functions_split.ensure_printed_once import ensure_printed_once
 
-from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
+# pk_#
 from passlib.context import CryptContext
 from mutagen.mp3 import MP3
 from enum import Enum

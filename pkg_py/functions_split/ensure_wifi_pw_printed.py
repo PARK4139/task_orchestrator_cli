@@ -2,7 +2,6 @@ from pkg_py.system_object.color_map import ANSI_COLOR_MAP
 
 
 def ensure_wifi_pw_printed():
-    from pkg_py.functions_split.common_imports import ensure_printed
     from pkg_py.functions_split.get_str_from_list import get_str_from_list
     from pkg_py.system_object.local_test_activate import LTA
     from pkg_py.functions_split import ensure_command_excuted_to_os

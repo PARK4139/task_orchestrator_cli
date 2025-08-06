@@ -1,5 +1,4 @@
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
 from pkg_py.functions_split.ensure_printed import ensure_printed
 
 
@@ -49,7 +48,7 @@ def assist_to_control_wsl(**pk_config):
 
             try:
                 if LTA:
-                    ensure_printed(f"{STAMP_TRY_GUIDE} silently ran: {' '.join(exec_cmd)}")
+                    ensure_printed(f"{'[ TRY GUIDE ]'} silently ran: {' '.join(exec_cmd)}")
                     ensure_printed(f"{' '.join(exec_cmd)} started in background", print_color='green')
                 if "-d" in exec_cmd:
                     state_before_list = get_wsl_distro_info_std_list()
@@ -76,7 +75,7 @@ def assist_to_control_wsl(**pk_config):
                 ensure_printed(f"Failed to run {' '.join(exec_cmd)}: {e}", print_color='red')
 
         def _guide_error_mssage(self):
-            ensure_printed(f'''{PkMessages2025.NOT_PREPARED_YET}{'%%%FOO%%%' if LTA else ''}''', print_color='green', mode_verbose=0)
+            ensure_guided_not_prepared_yet()
 
     _pwc = _PkWslController()
     cnt_loop = 0

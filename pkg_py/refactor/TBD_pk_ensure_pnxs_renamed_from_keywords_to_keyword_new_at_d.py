@@ -1,5 +1,5 @@
 from pkg_py.system_object.local_test_activate import LTA
-from pkg_py.system_object.directories import D_PKG_TXT
+from pkg_py.system_object.directories import D_PKG_CACHE_PRIVATE
 from pkg_py.functions_split.get_nx import get_nx
 from pkg_py.functions_split.pk_ensure_printed import pk_ensure_printed
 
@@ -13,7 +13,7 @@ def pk_ensure_pnxs_renamed_from_keywords_to_keyword_new_at_d(d, mode, with_walki
     txt_to_exclude_list = [
         F_DB_YAML,
         F_SUCCESS_LOG,
-        F_LOCAL_PKG_CACHE,
+        F_LOCAL_PKG_CACHE_PRIVATE,
     ]
 
     d_list = None
@@ -32,19 +32,19 @@ def pk_ensure_pnxs_renamed_from_keywords_to_keyword_new_at_d(d, mode, with_walki
         return
 
     # pnxs에 "System Volume Information" 있으면 제외
-    keywords_remove_pnxs_unnecessary = [
+    keywords_reensure_pnx_moveds_unnecessary = [
         "System Volume Information",
         "$RECYCLE.BIN",
     ]
 
-    working_list = get_list_from_f(f=rf'{D_PKG_TXT}\collect_magnets_from_nyaa_si.txt')
+    working_list = get_list_from_f(f=rf'{D_PKG_CACHE_PRIVATE}\collect_magnets_from_nyaa_si.txt')
     working_list = get_list_removed_element_contain_prompt(working_list=working_list, prompt="#")
     working_list = get_list_deduplicated(working_list=working_list)
     working_list = get_list_removed_empty(working_list=working_list)
     working_list = get_list_striped_element(working_list=working_list)
     pattern = re.compile(r"(\[.*?\])\s*(.*)")
     # filtered_list = []
-    duplicated_stamp_list: list[tuple[str, str]] = []
+    duplicated_"[ LIST ]": list[tuple[str, str]] = []
     stamp_title_list: list[tuple[str, str]] = []
     for item in working_list:
         match = pattern.match(item)
@@ -57,9 +57,9 @@ def pk_ensure_pnxs_renamed_from_keywords_to_keyword_new_at_d(d, mode, with_walki
                 stamp_title_list.append((title, title_with_stamp))
 
             duplicated_stamp = rf"{stamp} {stamp}"
-            duplicated_stamp_list.append((duplicated_stamp, stamp))
+            duplicated_"[ LIST ]".append((duplicated_stamp, stamp))
 
-    duplicated_stamp_list = get_list_deduplicated(working_list=duplicated_stamp_list)
+    duplicated_"[ LIST ]" = get_list_deduplicated(working_list=duplicated_"[ LIST ]")
 
     keywords = [
                    # '_.. ', # referece : . 으로 끝나는 것 안된다.
@@ -98,7 +98,7 @@ def pk_ensure_pnxs_renamed_from_keywords_to_keyword_new_at_d(d, mode, with_walki
                    ('_.bit_.ch.x_psa_', '_'), ('BluRay', '_'), ('_x264-', '_'), ('x264-SPARKS', '_'),
                    ('BluRay_HEVC_HDR AAC 7.1 Tigole', '_'), ('pkg_movie_horor', '[호러영화]'),
                    ('pkg_movie_image', '[영화이미지]'), ('pkg_movie_korean', '[한국영화]'),
-                   ('pkg_movie_marvel_and_dc', '[marvel dc]'), ('pkg_movie_space', '[우주영화]'), ('pkg_sound', '[영화사운드]'),
+                   ('pkg_movie_marvel_and_dc', '[marvel dc]'), ('pkg_movie_space', '[우주영화]'), ('pkg_image_and_video_and_sound', '[영화사운드]'),
                    ('x264-HANDJOB', '_'),
                    (' x265 ', '_'), (' HEVC ', '_'), (' 10bit ', '_'), (' EAC3 5.1 ', '_'), ('WEBRip.x264-RARBG', '_'),
                    ('WEB-DL.DD5.1.H264-FGT', '_'), ('KORSUB', '_'), ('DTS-FGT', '_'), ('BluRay.x265-RARBG', '_'),
@@ -274,17 +274,17 @@ def pk_ensure_pnxs_renamed_from_keywords_to_keyword_new_at_d(d, mode, with_walki
                    # # "'",
                    # '|', '「️', '」️', '【', '】',
                    # # '+', '&',
-               ] + stamp_title_list + duplicated_stamp_list * 2  # *2 를 해야 stamp 가 충분히 없어집니다.
+               ] + stamp_title_list + duplicated_"[ LIST ]" * 2  # *2 를 해야 stamp 가 충분히 없어집니다.
     # for index, item in enumerate(keywords):
     #     pk_ensure_printed(f'''keywords[{index}]={item}  {'%%%FOO%%%' if LTA else ''}''')
 
     # for index, item in enumerate(stamp_title_list):
     #     pk_ensure_printed(f'''stamp_title_list[{index}]={item}  {'%%%FOO%%%' if LTA else ''}''')
 
-    for index, item in enumerate(duplicated_stamp_list):
-        pk_ensure_printed(f'''duplicated_stamp_list[{index}]={item}  {'%%%FOO%%%' if LTA else ''}''')
+    for index, item in enumerate(duplicated_"[ LIST ]"):
+        pk_ensure_printed(f'''duplicated_"[ LIST ]"[{index}]={item}  {'%%%FOO%%%' if LTA else ''}''')
 
-    for keyword_removed in keywords_remove_pnxs_unnecessary:
+    for keyword_removed in keywords_reensure_pnx_moveds_unnecessary:
         pnxs = [item for item in pnxs if
                 keyword_removed not in item[0]]  # remove_element_to_have_"keywords_remove_dirs_unnecessary"
     # print_list_as_vertical(working_list=d_list, items_name="d_list")

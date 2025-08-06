@@ -94,7 +94,7 @@ def move_chrome_tab_by_url(url):
 
     minimize_all_windows()
     window_title_seg = get_window_title(window_title_seg="Chrome")
-    window_titles = get_window_title_list()
+    window_titles = get_window_titles()
     for window_title in window_titles:
         if "Chrome".lower() in window_title.lower():
             ensure_window_to_front(window_title_seg=window_title)

@@ -1,6 +1,6 @@
 from tkinter import UNDERLINE
 
-from pkg_py.system_object.directories_reuseable import D_PROJECT
+from pkg_py.system_object.directories  import D_PROJECT
 from pkg_py.system_object.encodings import Encoding
 from pkg_py.functions_split.ensure_printed import ensure_printed
 

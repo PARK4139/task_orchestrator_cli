@@ -1,6 +1,6 @@
-# from pkg_py.system_object.500_live_logic import save_power_as_s4, ensure_spoken, save_screen
+# from pkg_py.system_object.500_live_logic import save_power_as_s4, ensure_spoken, ensure_screen_saved
 
-save_screen()
+ensure_screen_saved()
 
 ensure_spoken('최대 절전 모드 진입', after_delay=0.55)
 save_power_as_s4()

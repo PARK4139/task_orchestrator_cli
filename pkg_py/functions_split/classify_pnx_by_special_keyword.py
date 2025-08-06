@@ -26,10 +26,9 @@ from pkg_py.functions_split.is_window_opened import is_window_opened
 from pkg_py.functions_split.ensure_pressed import ensure_pressed
 from pkg_py.functions_split.ensure_printed_once import ensure_printed_once
 from pkg_py.functions_split.set_pk_context_state import set_pk_context_state
-from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
 from pkg_py.system_object.files import F_POT_PLAYER_MINI_64_EXE
 from pkg_py.system_object.files import F_LOSSLESSCUT_EXE
-from pkg_py.system_object.directories_reuseable import D_PROJECT
+from pkg_py.system_object.directories  import D_PROJECT
 from pkg_py.system_object.state_via_database import PkSqlite3DB
 
 from paramiko import SSHClient, AutoAddPolicy
@@ -120,6 +119,6 @@ def classify_pnx_by_special_keyword(d_src, special_keyword, with_walking):
             dst = rf"{D_PK_WORKING_EXTERNAL}\{special_dirs_promised[index]}"
             for pnx_searched in pnxs_searched:
                 if special_dir in os.path.basename(pnx_searched):
-                    move_pnx(pnx=pnx_searched, d_dst=dst)
+                    ensure_pnx_moved(pnx=pnx_searched, d_dst=dst)
         special_dirs_promised = []
         ensure_printed(str_working=rf'''dst="{dst}"  {'%%%FOO%%%' if LTA else ''}''', print_color='green')

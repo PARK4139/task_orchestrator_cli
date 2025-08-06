@@ -2,7 +2,7 @@ import win32con
 import tomllib
 from pkg_py.system_object.get_list_calculated import get_list_calculated
 from pkg_py.functions_split.get_nx import get_nx
-from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
+# pk_#
 from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
 from pkg_py.functions_split.get_pnx_wsl_unix_style import get_pnx_wsl_unix_style
 
@@ -33,7 +33,7 @@ def ensure_pk_project_docker_ran(f, dockerfile_script_list):
     ensure_ssh_public_key_to_remote_os(**config_remote_os)
     ensure_remote_os_as_nopasswd(**config_remote_os)
     if LTA:
-        ensure_printed(f'''{STAMP_TRY_GUIDE} ssh -p {port} {user_n}@{ip} {'%%%FOO%%%' if LTA else ''}''')
+        ensure_printed(f'''{'[ TRY GUIDE ]'} ssh -p {port} {user_n}@{ip} {'%%%FOO%%%' if LTA else ''}''')
 
     # make dockerfile
     ensure_pnx_made(pnx=f, mode='f')

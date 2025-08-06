@@ -50,13 +50,13 @@ def get_youtube_video_metadata(yt_dlp, url):
     
     # 쿠키 파일 확인
     if os.path.exists(F_YOUTUBE_COOKIES_TXT):
-        ensure_printed(f"🍪 YouTube 쿠키 파일 사용: {F_YOUTUBE_COOKIES_TXT}", print_color="cyan")
+        ensure_printed(f" YouTube 쿠키 파일 사용: {F_YOUTUBE_COOKIES_TXT}", print_color="cyan")
     else:
-        ensure_printed(f"⚠️ YouTube 쿠키 파일이 없습니다: {F_YOUTUBE_COOKIES_TXT}", print_color="yellow")
-        ensure_printed("💡 나이 제한 비디오를 다운로드하려면 쿠키 파일이 필요합니다.", print_color="yellow")
+        ensure_printed(f"️ YouTube 쿠키 파일이 없습니다: {F_YOUTUBE_COOKIES_TXT}", print_color="yellow")
+        ensure_printed(" 나이 제한 비디오를 다운로드하려면 쿠키 파일이 필요합니다.", print_color="yellow")
     
     # 1단계: 기본 옵션으로 시도
-    ensure_printed("🔍 1단계: 기본 옵션으로 메타데이터 추출 시도", print_color="yellow")
+    ensure_printed(" 1단계: 기본 옵션으로 메타데이터 추출 시도", print_color="yellow")
     try:
         with yt_dlp.YoutubeDL(basic_extract_opts) as ydl:
             info = ydl.extract_info(url, download=False)
@@ -64,14 +64,14 @@ def get_youtube_video_metadata(yt_dlp, url):
                 title = info.get('title', 'Unknown Title')
                 clip_id = info.get('id', 'Unknown ID')
                 ext = info.get('ext', 'mp4')
-                ensure_printed("✅ 기본 옵션으로 메타데이터 추출 성공", print_color="green")
+                ensure_printed(" 기본 옵션으로 메타데이터 추출 성공", print_color="green")
                 return info, title, clip_id, ext
             else:
-                ensure_printed("❌ 기본 옵션으로 메타데이터 추출 실패", print_color="red")
+                ensure_printed(" 기본 옵션으로 메타데이터 추출 실패", print_color="red")
                 raise Exception("메타데이터 추출 실패")
     except Exception as e:
         error_msg = str(e)
-        ensure_printed(f"❌ 기본 옵션 실패: {error_msg[:100]}", print_color="red")
+        ensure_printed(f" 기본 옵션 실패: {error_msg[:100]}", print_color="red")
         
         # 특정 오류 패턴 확인
         is_age_restricted = any(keyword in error_msg.lower() for keyword in [
@@ -89,7 +89,7 @@ def get_youtube_video_metadata(yt_dlp, url):
         
         # 2단계: Fallback 옵션으로 시도
         if is_age_restricted or is_format_unavailable or is_signature_failed or is_generic_failure:
-            ensure_printed("🔄 2단계: Fallback 옵션으로 메타데이터 추출 재시도", print_color="yellow")
+            ensure_printed(" 2단계: Fallback 옵션으로 메타데이터 추출 재시도", print_color="yellow")
             try:
                 with yt_dlp.YoutubeDL(fallback_extract_opts) as ydl:
                     info = ydl.extract_info(url, download=False)
@@ -97,14 +97,14 @@ def get_youtube_video_metadata(yt_dlp, url):
                         title = info.get('title', 'Unknown Title')
                         clip_id = info.get('id', 'Unknown ID')
                         ext = info.get('ext', 'mp4')
-                        ensure_printed("✅ Fallback 옵션으로 메타데이터 추출 성공", print_color="green")
+                        ensure_printed(" Fallback 옵션으로 메타데이터 추출 성공", print_color="green")
                         return info, title, clip_id, ext
                     else:
-                        ensure_printed("❌ Fallback 옵션으로 메타데이터 추출 실패", print_color="red")
+                        ensure_printed(" Fallback 옵션으로 메타데이터 추출 실패", print_color="red")
                         return None, None, None, None
             except Exception as e2:
-                ensure_printed(f"❌ Fallback 옵션도 실패: {str(e2)[:100]}", print_color="red")
+                ensure_printed(f" Fallback 옵션도 실패: {str(e2)[:100]}", print_color="red")
                 return None, None, None, None
         else:
-            ensure_printed("❌ Fallback 옵션으로 재시도하지 않음 (알 수 없는 오류)", print_color="red")
+            ensure_printed(" Fallback 옵션으로 재시도하지 않음 (알 수 없는 오류)", print_color="red")
             return None, None, None, None

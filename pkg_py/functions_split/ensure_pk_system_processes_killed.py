@@ -33,7 +33,7 @@ def ensure_pk_system_processes_killed():
                 continue
     except Exception as e:
         if LTA:
-            ensure_printed(f"⚠️ 프로세스 목록 수집 중 오류: {e}", print_color='yellow')
+            ensure_printed(f"️ 프로세스 목록 수집 중 오류: {e}", print_color='yellow')
 
     for pk_file in pk_files:
         try:
@@ -49,7 +49,7 @@ def ensure_pk_system_processes_killed():
                 
                 if window_matches:
                     # 로그 최소화: 창 개수만 표시
-                    ensure_printed(f"🎯 {process_name}: {len(window_matches)}개 창 종료", print_color='green')
+                    ensure_printed(f" {process_name}: {len(window_matches)}개 창 종료", print_color='green')
                     # 모든 창을 한번에 종료
                     for hwnd, title, similarity in window_matches:
                         try:
@@ -57,12 +57,12 @@ def ensure_pk_system_processes_killed():
                             window_killed += 1
                         except Exception as e:
                             if LTA:
-                                ensure_printed(f"    ❌ 창 종료 실패 HWND={hwnd}: {e}", print_color='red')
+                                ensure_printed(f"     창 종료 실패 HWND={hwnd}: {e}", print_color='red')
                     window_found = True
                     
             except Exception as e:
                 if LTA:
-                    ensure_printed(f"  ⚠️ 창 검색 중 오류: {e}", print_color='yellow')
+                    ensure_printed(f"  ️ 창 검색 중 오류: {e}", print_color='yellow')
             
             # 2단계: 창을 찾지 못했다면 미리 수집한 프로세스 목록에서 검색
             if not window_found:
@@ -72,27 +72,27 @@ def ensure_pk_system_processes_killed():
                         matching_processes.append(proc)
                 
                 if matching_processes:
-                    ensure_printed(f"🎯 {process_name}: {len(matching_processes)}개 프로세스 직접 종료", print_color='red')
+                    ensure_printed(f" {process_name}: {len(matching_processes)}개 프로세스 직접 종료", print_color='red')
                     for proc in matching_processes:
                         try:
                             proc.kill()
                             process_killed += 1
                         except (psutil.NoSuchProcess, psutil.AccessDenied) as e:
                             if LTA:
-                                ensure_printed(f"    ❌ 프로세스 종료 실패 PID={proc.pid}: {e}", print_color='red')
+                                ensure_printed(f"     프로세스 종료 실패 PID={proc.pid}: {e}", print_color='red')
                 else:
                     not_found += 1
 
         except Exception as e:
             if LTA:
-                ensure_printed(f"❌ {process_name} 처리 중 오류: {e}", print_color='red')
+                ensure_printed(f" {process_name} 처리 중 오류: {e}", print_color='red')
             not_found += 1
 
     # 최종 통계 출력
-    ensure_printed(f"📊 종료 통계:", print_color='cyan')
+    ensure_printed(f" 종료 통계:", print_color='cyan')
     ensure_printed(f"  • 총 검사: {total_attempted}개", print_color='white')
     ensure_printed(f"  • 창으로 종료: {window_killed}개", print_color='green')
     ensure_printed(f"  • 프로세스 직접 종료: {process_killed}개", print_color='red')
     ensure_printed(f"  • 실행 중이지 않음: {not_found}개", print_color='gray')
-    ensure_printed(f"✅ 총 {window_killed + process_killed}개 프로세스 종료 완료", print_color='green')
+    ensure_printed(f" 총 {window_killed + process_killed}개 프로세스 종료 완료", print_color='green')
 

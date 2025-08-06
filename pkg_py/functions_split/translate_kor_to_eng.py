@@ -20,7 +20,7 @@ from pkg_py.functions_split.ensure_list_written_to_f import ensure_list_written_
 from pkg_py.functions_split.set_pk_context_state import set_pk_context_state
 from pkg_py.system_object.files import F_POT_PLAYER_MINI_64_EXE
 from pkg_py.system_object.files import F_LOSSLESSCUT_EXE
-from pkg_py.system_object.directories_reuseable import D_PROJECT
+from pkg_py.system_object.directories  import D_PROJECT
 from pkg_py.system_object.directories import D_PK_WORKING
 from os.path import dirname
 from base64 import b64encode
@@ -59,7 +59,7 @@ def translate_kor_to_eng(question: str):
             ensure_window_to_front(pid=target_pid)
 
             # Enter Text 클릭
-            f_png = rf"{D_PROJECT}\pkg_image\kor to eng.png"
+            f_png = rf"{D_PROJECT}\pkg_image_and_video_and_sound\kor to eng.png"
             click_center_of_img_recognized_by_mouse_left(img_pnx=f_png, is_zoom_toogle_mode=True, loop_limit_cnt=100)
 
             # 번역할 내용 작성
@@ -72,7 +72,7 @@ def translate_kor_to_eng(question: str):
             ensure_slept(30)
 
             # text to voice icon
-            f_png = rf"{D_PROJECT}\pkg_image\text to voice icon.png"
+            f_png = rf"{D_PROJECT}\pkg_image_and_video_and_sound\text to voice icon.png"
             click_center_of_img_recognized_by_mouse_left(img_pnx=f_png, is_zoom_toogle_mode=True, loop_limit_cnt=100)
 
             break

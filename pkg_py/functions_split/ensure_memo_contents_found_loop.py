@@ -1,5 +1,9 @@
+from pkg_py.functions_split import ensure_console_cleared, ensure_printed
+from pkg_py.functions_split.ensure_memo_contents_found import ensure_memo_contents_found
+from pkg_py.functions_split.ensure_pk_system_exit_silent import ensure_pk_system_exit_silent
+
+
 def ensure_memo_contents_found_loop():
-    from pkg_py.functions_split.common_imports import ensure_console_cleared, ensure_memo_contents_found, ensure_pk_system_exit_silent, ensure_printed
     loop_cnt = 1
     user_input = None
     while True:

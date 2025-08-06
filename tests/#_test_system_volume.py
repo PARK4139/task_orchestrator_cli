@@ -42,7 +42,7 @@ def test_system_volume():
     print("3. WAV 파일 직접 재생 테스트")
     try:
         import winsound
-        wav_file = os.path.join("pkg_sound", "pop_sound.wav")
+        wav_file = os.path.join("pkg_image_and_video_and_sound", "pop_sound.wav")
         if os.path.exists(wav_file):
             winsound.PlaySound(wav_file, winsound.SND_FILENAME)
             print("✅ WAV 파일 직접 재생됨")

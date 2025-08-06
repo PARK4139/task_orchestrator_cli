@@ -7,7 +7,7 @@ import sys
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from pkg_py.functions_split.ensure_printed import ensure_printed
-from pkg_py.system_object.directories import D_PKG_SOUND
+from pkg_py.system_object.directories import D_PKG_IMAGE_AND_VIDEO_AND_SOUND
 
 def test_play_audio_direct():
     """ensure_spoken의 play_audio 함수를 직접 테스트"""
@@ -15,14 +15,14 @@ def test_play_audio_direct():
     ensure_printed("=" * 50, print_color="blue")
     
     # 기존 WAV 파일 찾기
-    wav_files = [f for f in os.listdir(D_PKG_SOUND) if f.endswith('.wav')]
+    wav_files = [f for f in os.listdir(D_PKG_IMAGE_AND_VIDEO_AND_SOUND) if f.endswith('.wav')]
     if not wav_files:
         ensure_printed("❌ 테스트할 WAV 파일이 없음", print_color="red")
         return
     
     # 가장 최근 파일 선택
-    latest_wav = max(wav_files, key=lambda x: os.path.getctime(os.path.join(D_PKG_SOUND, x)))
-    wav_path = os.path.join(D_PKG_SOUND, latest_wav)
+    latest_wav = max(wav_files, key=lambda x: os.path.getctime(os.path.join(D_PKG_IMAGE_AND_VIDEO_AND_SOUND, x)))
+    wav_path = os.path.join(D_PKG_IMAGE_AND_VIDEO_AND_SOUND, latest_wav)
     
     ensure_printed(f"📁 테스트 파일: {latest_wav}", print_color="blue")
     ensure_printed(f"📊 파일 크기: {os.path.getsize(wav_path)} bytes", print_color="blue")
@@ -70,7 +70,7 @@ def test_play_audio_direct():
         from pkg_py.functions_split.ensure_spoken import ensure_spoken
         
         # index.json에서 기존 텍스트 찾기
-        index_file = os.path.join(D_PKG_SOUND, "index.json")
+        index_file = os.path.join(D_PKG_IMAGE_AND_VIDEO_AND_SOUND, "index.json")
         if os.path.exists(index_file):
             import json
             with open(index_file, 'r', encoding='utf-8') as f:

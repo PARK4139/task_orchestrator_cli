@@ -7,66 +7,142 @@ import os
 import glob
 from pydub import AudioSegment
 from pkg_py.functions_split.ensure_printed import ensure_printed
-from pkg_py.system_object.directories import D_PKG_SOUND
+from pkg_py.system_object.directories import D_PKG_IMAGE_AND_VIDEO_AND_SOUND
 from pkg_py.functions_split.ensure_ffmpeg_installed_to_pkg_windows import ensure_ffmpeg_installed_to_pkg_windows
+from pathlib import Path
 
-def convert_mp3_to_wav():
-    """pkg_sound 디렉토리의 모든 MP3 파일을 WAV로 변환합니다."""
-    
-    # FFmpeg 설정
-    ffmpeg_path, ffprobe_path = ensure_ffmpeg_installed_to_pkg_windows()
-    if ffmpeg_path and ffprobe_path:
-        AudioSegment.converter = ffmpeg_path
-        AudioSegment.ffprobe = ffprobe_path
-    
-    # pkg_sound 디렉토리의 모든 MP3 파일 찾기
-    mp3_pattern = os.path.join(D_PKG_SOUND, "*.mp3")
-    mp3_files = glob.glob(mp3_pattern)
-    
-    if not mp3_files:
-        ensure_printed("변환할 MP3 파일이 없습니다.", print_color="yellow")
-        return
-    
-    ensure_printed(f"총 {len(mp3_files)}개의 MP3 파일을 WAV로 변환합니다...", print_color="blue")
-    
-    converted_count = 0
-    failed_count = 0
-    
-    for mp3_file in mp3_files:
+def convert_mp3_to_wav(mp3_file, output_dir=None):
+    """MP3 파일을 WAV로 변환"""
+    try:
+        # Lazy import to avoid circular dependency
         try:
-            # WAV 파일명 생성
-            wav_file = mp3_file.replace('.mp3', '.wav')
+            from pkg_py.functions_split.ensure_printed import ensure_printed
+            from pkg_py.system_object.map_massages import PkMessages2025
+        except ImportError:
+            # Use built-in print function directly
+            import builtins
+            print = builtins.print
+            PkMessages2025 = type('PkMessages2025', (), {
+                'CONVERSION_COMPLETE': '변환 완료',
+                'CONVERSION_FAILED': '변환 실패',
+                'CONVERSION_WORK_COMPLETE': '변환 작업 완료'
+            })()
+
+        if output_dir is None:
+            from pkg_py.system_object.directories import D_PK_WORKING
+            output_dir = Path(D_PK_WORKING)
+        
+        output_dir = Path(output_dir)
+        output_dir.mkdir(parents=True, exist_ok=True)
+        
+        mp3_path = Path(mp3_file)
+        if not mp3_path.exists():
+            raise FileNotFoundError(f"MP3 파일을 찾을 수 없습니다: {mp3_file}")
+        
+        # 출력 파일명 생성
+        wav_filename = mp3_path.stem + ".wav"
+        wav_file = output_dir / wav_filename
+        
+        # FFmpeg를 사용하여 변환
+        try:
+            from pkg_py.system_object.files import F_FFMPEG_EXE
+            ffmpeg_path = Path(F_FFMPEG_EXE)
             
-            # 이미 WAV 파일이 존재하면 건너뛰기
-            if os.path.exists(wav_file):
-                ensure_printed(f"이미 존재함: {os.path.basename(wav_file)}", print_color="yellow")
-                continue
+            if not ffmpeg_path.exists():
+                # 시스템 PATH에서 ffmpeg 찾기
+                import shutil
+                ffmpeg_path = shutil.which("ffmpeg")
+                if not ffmpeg_path:
+                    raise FileNotFoundError("FFmpeg를 찾을 수 없습니다")
+                ffmpeg_path = Path(ffmpeg_path)
             
-            # MP3를 WAV로 변환
-            ensure_printed(f"변환 중: {os.path.basename(mp3_file)} → {os.path.basename(wav_file)}", print_color="green")
+            # 변환 명령 실행
+            import subprocess
+            result = subprocess.run([
+                str(ffmpeg_path),
+                "-i", str(mp3_path),
+                "-acodec", "pcm_s16le",
+                "-ar", "44100",
+                "-ac", "2",
+                str(wav_file),
+                "-y"  # 기존 파일 덮어쓰기
+            ], capture_output=True, text=True)
             
-            audio = AudioSegment.from_mp3(mp3_file)
-            # 고품질 WAV로 변환 (44.1kHz, 스테레오, 16비트)
-            audio.export(wav_file, format="wav", parameters=["-ar", "44100", "-ac", "2"])
-            
-            converted_count += 1
-            ensure_printed(f"✅ 변환 완료: {os.path.basename(wav_file)}", print_color="green")
-            
+            if result.returncode == 0 and wav_file.exists():
+                ensure_printed(f"[{PkMessages2025.CONVERSION_COMPLETE}] 파일명={os.path.basename(wav_file)}", print_color="green")
+                return str(wav_file)
+            else:
+                ensure_printed(f"[{PkMessages2025.CONVERSION_FAILED}] 파일명={os.path.basename(mp3_file)} 오류={result.stderr}", print_color="red")
+                return None
+                
         except Exception as e:
-            failed_count += 1
-            ensure_printed(f"❌ 변환 실패: {os.path.basename(mp3_file)} - {e}", print_color="red")
-    
-    # 결과 요약
-    ensure_printed(f"변환 완료: {converted_count}개 성공, {failed_count}개 실패", print_color="blue")
-    
-    # index.json 파일 업데이트
-    update_index_file()
+            ensure_printed(f"[{PkMessages2025.CONVERSION_FAILED}] 파일명={os.path.basename(mp3_file)} 오류={e}", print_color="red")
+            return None
+            
+    except Exception as e:
+        ensure_printed(f"[{PkMessages2025.CONVERSION_FAILED}] 오류={e}", print_color="red")
+        return None
+
+
+def convert_multiple_mp3_to_wav(mp3_files, output_dir=None):
+    """여러 MP3 파일을 WAV로 변환"""
+    try:
+        # Lazy import to avoid circular dependency
+        try:
+            from pkg_py.functions_split.ensure_printed import ensure_printed
+            from pkg_py.system_object.map_massages import PkMessages2025
+        except ImportError:
+            # Use built-in print function directly
+            import builtins
+            print = builtins.print
+            PkMessages2025 = type('PkMessages2025', (), {
+                'CONVERSION_WORK_COMPLETE': '변환 작업 완료'
+            })()
+
+        if isinstance(mp3_files, str):
+            mp3_files = [mp3_files]
+        
+        if output_dir is None:
+            from pkg_py.system_object.directories import D_PK_WORKING
+            output_dir = Path(D_PK_WORKING)
+        
+        output_dir = Path(output_dir)
+        output_dir.mkdir(parents=True, exist_ok=True)
+        
+        converted_files = []
+        failed_files = []
+        
+        for mp3_file in mp3_files:
+            result = convert_mp3_to_wav(mp3_file, output_dir)
+            if result:
+                converted_files.append(result)
+            else:
+                failed_files.append(mp3_file)
+        
+        # 결과 요약
+        total_files = len(mp3_files)
+        success_count = len(converted_files)
+        failed_count = len(failed_files)
+        
+        ensure_printed(f"[{PkMessages2025.CONVERSION_WORK_COMPLETE}] 총파일수={total_files} 성공={success_count} 실패={failed_count}", print_color="blue")
+        
+        return {
+            'converted_files': converted_files,
+            'failed_files': failed_files,
+            'total_files': total_files,
+            'success_count': success_count,
+            'failed_count': failed_count
+        }
+        
+    except Exception as e:
+        ensure_printed(f"[{PkMessages2025.CONVERSION_FAILED}] 오류={e}", print_color="red")
+        return None
 
 def update_index_file():
     """index.json 파일의 파일 경로를 MP3에서 WAV로 업데이트합니다."""
     import json
     
-    index_file = os.path.join(D_PKG_SOUND, "index.json")
+    index_file = os.path.join(D_PKG_IMAGE_AND_VIDEO_AND_SOUND, "index.json")
     
     if not os.path.exists(index_file):
         ensure_printed("index.json 파일이 없습니다.", print_color="yellow")
@@ -100,7 +176,7 @@ def update_index_file():
 
 def cleanup_mp3_files():
     """변환 완료 후 MP3 파일들을 삭제합니다."""
-    mp3_pattern = os.path.join(D_PKG_SOUND, "*.mp3")
+    mp3_pattern = os.path.join(D_PKG_IMAGE_AND_VIDEO_AND_SOUND, "*.mp3")
     mp3_files = glob.glob(mp3_pattern)
     
     if not mp3_files:
@@ -128,7 +204,7 @@ def cleanup_mp3_files():
 
 def main():
     """메인 함수"""
-    ensure_printed("🎵 MP3 → WAV 변환 작업 시작", print_color="blue")
+    ensure_printed(" MP3 → WAV 변환 작업 시작", print_color="blue")
     print("=" * 50)
     
     # 1. MP3를 WAV로 변환
@@ -146,7 +222,7 @@ def main():
     else:
         ensure_printed("MP3 파일들이 보존되었습니다.", print_color="yellow")
     
-    ensure_printed("🎉 변환 작업 완료!", print_color="blue")
+    ensure_printed(" 변환 작업 완료!", print_color="blue")
 
 if __name__ == "__main__":
     main() 

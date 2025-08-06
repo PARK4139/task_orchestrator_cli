@@ -18,7 +18,7 @@ def log_success_to_f(FEATURE_NICK_NAME, FEATURE_ID, FEATURE_REMOVAL_ID, f):
         # 리스트 정리: 공백 remove 및 중복 remove
         # working_list = list(set([item.strip() for item in working_list]))
 
-        hashed_stamp_success = rf'#{STAMP_SUCCEEDED}'
+        hashed_stamp_success = rf'#{"[ SUCCEEDED ]"}'
         for item in working_list:
             if hashed_stamp_success in item:
                 working_list.remove(item)

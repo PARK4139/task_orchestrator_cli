@@ -17,7 +17,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from pytube import Playlist
 from pkg_py.functions_split.get_historical_list import get_historical_list
 from pkg_py.functions_split.is_losslesscut_running import is_losslesscut_running
-from pkg_py.system_object.directories_reuseable import D_PROJECT
+from pkg_py.system_object.directories  import D_PROJECT
 from os import path
 from mutagen.mp3 import MP3
 from moviepy import VideoFileClip

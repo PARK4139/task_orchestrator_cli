@@ -6,7 +6,7 @@ from pkg_py.functions_split.is_window_opened import is_window_opened
 from pkg_py.functions_split.ensure_pressed import ensure_pressed
 
 from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_excuted_to_os
-from pkg_py.system_object.directories import D_PKG_TXT
+from pkg_py.system_object.directories import D_PKG_CACHE_PRIVATE
 
 from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 
@@ -30,8 +30,8 @@ def run_and_login_acu_update_v3_exe_and_run_autoa2zdrive_release_exe(issue_log_i
         os.chdir(acu_update_v3_exe_p)
         cmd = rf' start cmd.exe /k "title {window_title_seg}&& {D_HOME}\Desktop\AutoA2zDrive\ACU_update_v3.exe &" '
         ensure_command_excuted_to_os(cmd=cmd, mode="a")
-        pw = get_token_from_f_token(f_token=rf'{D_PKG_TXT}\token_linux_pw.txt', initial_str="")
-        user_n = get_token_from_f_token(f_token=rf'{D_PKG_TXT}\token_linux_id.txt', initial_str="")
+        pw = get_token_from_f_token(f_token=rf'{D_PKG_CACHE_PRIVATE}\token_linux_pw.txt', initial_str="")
+        user_n = get_token_from_f_token(f_token=rf'{D_PKG_CACHE_PRIVATE}\token_linux_id.txt', initial_str="")
         while 1:
             ensure_slept(milliseconds=2000)
             if is_window_opened(window_title_seg=window_title_seg):

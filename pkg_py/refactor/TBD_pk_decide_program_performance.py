@@ -181,24 +181,24 @@ def main():
     window_title_seg = rf"관리자: C:\WINDOWS\system32\cmd.exe"
     window_title_seg_for_cmd_as_admin = rf"관리자: C:\WINDOWS\system32\cmd.exe"
 
-    hostname_ras_pi = get_token_from_txt_f(f_token=rf'{D_PKG_TXT}\token_hostname_ras_pi.txt', initial_token="")
-    hostname_lg_gram = get_token_from_txt_f(f_token=rf'{D_PKG_TXT}\token_hostname_lg_gram.txt', initial_token="")
-    hostname_desktop = get_token_from_txt_f(f_token=rf'{D_PKG_TXT}\token_hostname_desktop.txt', initial_token="")
-    hostname_galaxy_book = get_token_from_txt_f(f_token=rf'{D_PKG_TXT}\token_hostname_galaxy_book.txt', initial_token="?????")  # todo
-    hostname_xc_front = get_token_from_txt_f(f_token=rf'{D_PKG_TXT}\token_hostname_xc_front.txt', initial_token="")
-    hostname_xc_rear = get_token_from_txt_f(f_token=rf'{D_PKG_TXT}\token_hostname_xc_rear.txt', initial_token="")
-    hostname_mac = get_token_from_txt_f(f_token=rf'{D_PKG_TXT}\token_hostname_mac.txt', initial_token="")
-    users_desktop_wsl = get_token_from_txt_f(f_token=rf'{D_PKG_TXT}\token_user_wsl_24.txt', initial_token="")
-    users_desktop = get_token_from_txt_f(f_token=rf'{D_PKG_TXT}\token_users_desktop.txt', initial_token="")
-    users_mac = get_token_from_txt_f(f_token=rf'{D_PKG_TXT}\token_users_mac.txt', initial_token="")
-    pw_mac = get_token_from_txt_f(f_token=rf'{D_PKG_TXT}\token_pw_mac.txt', initial_token="")
-    port_rdp_mac = int(get_token_from_txt_f(f_token=rf'{D_PKG_TXT}\token_port_rdp_mac.txt', initial_token="3390"))
-    ip_private_lg_gram = get_token_from_txt_f(f_token=rf'{D_PKG_TXT}\token_ip_private_lg_gram.txt', initial_token="")
-    ip_public_desktop = get_token_from_txt_f(f_token=rf'{D_PKG_TXT}\token_ip_public_desktop.txt', initial_token="")
-    ip_private_control_pc = get_token_from_txt_f(f_token=rf'{D_PKG_TXT}\token_ip_private_control_pc.txt', initial_token="")
-    ip_private_mac = get_token_from_txt_f(f_token=rf'{D_PKG_TXT}\token_ip_private_mac.txt', initial_token="")
-    ip_private_acu_front = get_token_from_txt_f(f_token=rf'{D_PKG_TXT}\token_ip_private_xc_front.txt', initial_token="")
-    ip_private_acu_rear = get_token_from_txt_f(f_token=rf'{D_PKG_TXT}\token_ip_private_xc_rear.txt', initial_token="")
+    hostname_ras_pi = get_token_from_txt_f(f_token=rf'{D_PKG_CACHE_PRIVATE}\token_hostname_ras_pi.txt', initial_token="")
+    hostname_lg_gram = get_token_from_txt_f(f_token=rf'{D_PKG_CACHE_PRIVATE}\token_hostname_lg_gram.txt', initial_token="")
+    hostname_desktop = get_token_from_txt_f(f_token=rf'{D_PKG_CACHE_PRIVATE}\token_hostname_desktop.txt', initial_token="")
+    hostname_galaxy_book = get_token_from_txt_f(f_token=rf'{D_PKG_CACHE_PRIVATE}\token_hostname_galaxy_book.txt', initial_token="?????")  # todo
+    hostname_xc_front = get_token_from_txt_f(f_token=rf'{D_PKG_CACHE_PRIVATE}\token_hostname_xc_front.txt', initial_token="")
+    hostname_xc_rear = get_token_from_txt_f(f_token=rf'{D_PKG_CACHE_PRIVATE}\token_hostname_xc_rear.txt', initial_token="")
+    hostname_mac = get_token_from_txt_f(f_token=rf'{D_PKG_CACHE_PRIVATE}\token_hostname_mac.txt', initial_token="")
+    users_desktop_wsl = get_token_from_txt_f(f_token=rf'{D_PKG_CACHE_PRIVATE}\token_user_wsl_24.txt', initial_token="")
+    users_desktop = get_token_from_txt_f(f_token=rf'{D_PKG_CACHE_PRIVATE}\token_users_desktop.txt', initial_token="")
+    users_mac = get_token_from_txt_f(f_token=rf'{D_PKG_CACHE_PRIVATE}\token_users_mac.txt', initial_token="")
+    pw_mac = get_token_from_txt_f(f_token=rf'{D_PKG_CACHE_PRIVATE}\token_pw_mac.txt', initial_token="")
+    port_rdp_mac = int(get_token_from_txt_f(f_token=rf'{D_PKG_CACHE_PRIVATE}\token_port_rdp_mac.txt', initial_token="3390"))
+    ip_private_lg_gram = get_token_from_txt_f(f_token=rf'{D_PKG_CACHE_PRIVATE}\token_ip_private_lg_gram.txt', initial_token="")
+    ip_public_desktop = get_token_from_txt_f(f_token=rf'{D_PKG_CACHE_PRIVATE}\token_ip_public_desktop.txt', initial_token="")
+    ip_private_control_pc = get_token_from_txt_f(f_token=rf'{D_PKG_CACHE_PRIVATE}\token_ip_private_control_pc.txt', initial_token="")
+    ip_private_mac = get_token_from_txt_f(f_token=rf'{D_PKG_CACHE_PRIVATE}\token_ip_private_mac.txt', initial_token="")
+    ip_private_acu_front = get_token_from_txt_f(f_token=rf'{D_PKG_CACHE_PRIVATE}\token_ip_private_xc_front.txt', initial_token="")
+    ip_private_acu_rear = get_token_from_txt_f(f_token=rf'{D_PKG_CACHE_PRIVATE}\token_ip_private_xc_rear.txt', initial_token="")
 
     # todo : chore : etc
     # run_pk_system_info_collector()
@@ -263,7 +263,7 @@ def main():
     # %%%FOO%%% 부분 autofill dev tool 적용 # todo
 
     # todo : chore : 업로드
-    # token_gitlab_repo_url = get_token_from_text_file(token_file=rf'{PKG_TXT}\token_gitlab_repo_url.txt', initial_token="")
+    # token_gitlab_repo_url = get_token_from_text_file(token_file=rf'{PKG_CACHE_PRIVATE}\token_gitlab_repo_url.txt', initial_token="")
     # commit_ment = "test:initial git push test"
     # commit_ment = "fix: run_pk_ensure_release_server_ran() "
     # upload_pnx_to_git(git_repository_url=token_gitlab_repo_url, commit_msg=commit_ment)
@@ -329,7 +329,7 @@ if __name__ == '__main__':
         pk_ensure_printed(str_working=f'{PK_UNDERLINE}[Debugging Note] s\n', print_color="yellow")
         pk_ensure_printed(str_working=f'f_current={f_current}\nd_current={d_current}\n', print_color="yellow")
         pk_ensure_printed(str_working=f'{PK_UNDERLINE}[Debugging Note] e\n', print_color="yellow")
-        pk_ensure_finally_routine_done(D_PROJECT=D_PROJECT, __file__=__file__, STAMP_TRY_GUIDE=STAMP_TRY_GUIDE)
+        pk_ensure_finally_routine_done(D_PROJECT=D_PROJECT, __file__=__file__)
         pk_ensure_printed(script_to_run_python_program_in_venv)
 
         # debug
@@ -589,13 +589,13 @@ class PkProgramPerformanceOptimizingUtil:
 
         생성된 딕셔너리 코드 예시
         dictionary_based_on_tri_structure = [
-            "{PROJECT_D}\pkg_font\Montserrat\static",
-            "{PROJECT_D}\pkg_font\Noto_Sans_KR\static",
-            "{PROJECT_D}\pkg_font\GmarketSans",
-            "{PROJECT_D}\pkg_font\Montserrat",
-            "{PROJECT_D}\pkg_font\Noto_Sans_KR",
-            "{PROJECT_D}\pkg_font\Poppins",
-            "{PROJECT_D}\pkg_yaml",
+            "{PROJECT_D}\pkg_cache_private_public\Montserrat\static",
+            "{PROJECT_D}\pkg_cache_private_public\Noto_Sans_KR\static",
+            "{PROJECT_D}\pkg_cache_private_public\GmarketSans",
+            "{PROJECT_D}\pkg_cache_private_public\Montserrat",
+            "{PROJECT_D}\pkg_cache_private_public\Noto_Sans_KR",
+            "{PROJECT_D}\pkg_cache_private_public\Poppins",
+            "{PROJECT_D}\pkg_cache_private",
             "{PROJECT_D}",
         ]
         """
@@ -624,13 +624,13 @@ class PkProgramPerformanceOptimizingUtil:
         # ipdb.set_trace()
 
     dictionary_for_monitoring_performance = {
-        r"{PROJECT_D}\pkg_font\Montserrat\static": "이거지1",
-        r"{PROJECT_D}\pkg_font\Noto_Sans_KR\static": "이거지2",
-        r"{PROJECT_D}\pkg_font\GmarketSans": "이거지3",
-        r"{PROJECT_D}\pkg_font\Montserrat": "이거지4",
-        r"{PROJECT_D}\pkg_font\Noto_Sans_KR": "이거지5",
-        r"{PROJECT_D}\pkg_font\Poppins": "이거지6",
-        r"{PROJECT_D}\pkg_yaml": "이거지7",
+        r"{PROJECT_D}\pkg_cache_private_public\Montserrat\static": "이거지1",
+        r"{PROJECT_D}\pkg_cache_private_public\Noto_Sans_KR\static": "이거지2",
+        r"{PROJECT_D}\pkg_cache_private_public\GmarketSans": "이거지3",
+        r"{PROJECT_D}\pkg_cache_private_public\Montserrat": "이거지4",
+        r"{PROJECT_D}\pkg_cache_private_public\Noto_Sans_KR": "이거지5",
+        r"{PROJECT_D}\pkg_cache_private_public\Poppins": "이거지6",
+        r"{PROJECT_D}\pkg_cache_private": "이거지7",
         r"{PROJECT_D}": "이거지8",
     }
 
@@ -1544,7 +1544,7 @@ class PkProgramPerformanceOptimizingUtil:
 # fastapi + http server
 # command = f'curl -X POST "https://api.telegram.org/bot{token}/sendDocument" -d "chat_id={chat_id}&document=@{pkg_to_house_zip}"'
 # command_run_v2(command=command)
-# token_gitlab_repo_url = get_token_from_text_file(token_file=rf'{StateManagePKG_TXT}\token_gitlab_repo_url.txt', initial_token="")
+# token_gitlab_repo_url = get_token_from_text_file(token_file=rf'{StateManagePKG_CACHE_PRIVATE}\token_gitlab_repo_url.txt', initial_token="")
 # # commit_ment = "test:initial git push test"
 # commit_ment = "feat:add run_pk_ensure_release_server_ran() "
 # pnx = rf"{StateManagePROJECT_D}\pk_system.py"

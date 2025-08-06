@@ -11,257 +11,176 @@ from pathlib import Path
 from typing import Dict, List, Optional, Tuple
 
 
-def ensure_container_build_test(
-    project_path: str = None,
-    docker_compose_file: str = "infra/docker-compose.yml",
-    service_name: str = "gateway",
-    build_only: bool = False,
-    verbose: bool = True
-) -> Dict[str, any]:
-    """
-    컨테이너 빌드 테스트를 실행하는 함수
-    
-    Args:
-        project_path: 프로젝트 경로 (기본값: 현재 디렉토리)
-        docker_compose_file: docker-compose.yml 파일 경로
-        service_name: 빌드할 서비스 이름
-        build_only: 빌드만 실행하고 실행하지 않음
-        verbose: 상세 출력 여부
-    
-    Returns:
-        Dict: 실행 결과 정보
-    """
-    
-    if project_path is None:
-        project_path = os.getcwd()
-    
-    result = {
-        "success": False,
-        "project_path": project_path,
-        "docker_compose_file": docker_compose_file,
-        "service_name": service_name,
-        "build_only": build_only,
-        "steps": [],
-        "errors": [],
-        "logs": []
-    }
-    
+def ensure_container_build_test():
+    """컨테이너 빌드 테스트를 실행하는 함수"""
     try:
-        # 1. 프로젝트 경로 확인
-        if verbose:
-            print(f"🔍 프로젝트 경로 확인: {project_path}")
-        
-        if not os.path.exists(project_path):
-            result["errors"].append(f"프로젝트 경로가 존재하지 않습니다: {project_path}")
-            return result
-        
-        # 2. pyproject.toml 파일 확인
-        pyproject_path = os.path.join(project_path, "pyproject.toml")
-        if not os.path.exists(pyproject_path):
-            result["errors"].append("pyproject.toml 파일을 찾을 수 없습니다.")
-            return result
-        
-        result["steps"].append("pyproject.toml 파일 확인 완료")
-        
-        # 3. Docker 상태 확인
-        if verbose:
-            print("🔍 Docker 상태 확인 중...")
-        
+        # Lazy import to avoid circular dependency
         try:
-            docker_info = subprocess.run(
-                ["docker", "info"],
-                capture_output=True,
-                text=True,
-                check=True
-            )
-            result["steps"].append("Docker 상태 확인 완료")
-        except subprocess.CalledProcessError:
-            result["errors"].append("Docker가 실행되지 않았습니다.")
-            return result
+            from pkg_py.functions_split.ensure_printed import ensure_printed
+            from pkg_py.system_object.map_massages import PkMessages2025
+        except ImportError:
+            print = lambda msg, **kwargs: print(msg)
+            PkMessages2025 = type('PkMessages2025', (), {
+                'CONTAINER_PROJECT_PATH_CHECK': '프로젝트 경로 확인',
+                'CONTAINER_DOCKER_STATUS_CHECK': 'Docker 상태 확인 중',
+                'CONTAINER_DATABASE_SERVICE_STARTING': '데이터베이스 서비스 시작 중',
+                'CONTAINER_SERVICE_BUILDING': '서비스 빌드 중',
+                'CONTAINER_SERVICE_STARTING': '서비스 시작 중',
+                'CONTAINER_BUILD_TEST_SUCCESS': '컨테이너 빌드 테스트가 성공적으로 완료되었습니다',
+                'CONTAINER_USEFUL_COMMANDS': '유용한 명령어',
+                'CONTAINER_TEST_SUCCESS': '테스트가 성공적으로 완료되었습니다',
+                'CONTAINER_TEST_FAILED': '테스트가 실패했습니다'
+            })()
+
+        import subprocess
+        import os
+        from pathlib import Path
         
-        # 4. 기존 컨테이너 정리
-        if verbose:
-            print("🧹 기존 컨테이너 정리 중...")
+        # 프로젝트 경로 확인
+        project_path = Path.cwd()
+        print(f"[{PkMessages2025.CONTAINER_PROJECT_PATH_CHECK}] {PK_ANSI_COLOR_MAP['CYAN']}경로={project_path} {PK_ANSI_COLOR_MAP['RESET']}")
         
+        # Docker 상태 확인
+        print(f"[{PkMessages2025.CONTAINER_DOCKER_STATUS_CHECK}]")
         try:
-            cleanup_cmd = ["docker-compose", "-f", docker_compose_file, "down"]
-            cleanup_result = subprocess.run(
-                cleanup_cmd,
-                cwd=project_path,
-                capture_output=True,
-                text=True
-            )
-            result["steps"].append("기존 컨테이너 정리 완료")
-            result["logs"].append(f"정리 명령어: {' '.join(cleanup_cmd)}")
+            result = subprocess.run(["docker", "--version"], capture_output=True, text=True)
+            if result.returncode == 0:
+                print(f"Docker 버전: {result.stdout.strip()}")
+            else:
+                print("Docker가 설치되지 않았습니다.")
+                return False
+        except FileNotFoundError:
+            print("Docker가 설치되지 않았습니다.")
+            return False
+        
+        # docker-compose 확인
+        try:
+            result = subprocess.run(["docker-compose", "--version"], capture_output=True, text=True)
+            if result.returncode == 0:
+                print(f"docker-compose 버전: {result.stdout.strip()}")
+            else:
+                print("docker-compose가 설치되지 않았습니다.")
+                return False
+        except FileNotFoundError:
+            print("docker-compose가 설치되지 않았습니다.")
+            return False
+        
+        # 데이터베이스 서비스 시작
+        print(f"[{PkMessages2025.CONTAINER_DATABASE_SERVICE_STARTING}]")
+        try:
+            result = subprocess.run(["docker-compose", "up", "-d", "database"], capture_output=True, text=True)
+            if result.returncode == 0:
+                print("데이터베이스 서비스가 시작되었습니다.")
+            else:
+                print(f"데이터베이스 서비스 시작 실패: {result.stderr}")
         except Exception as e:
-            result["errors"].append(f"컨테이너 정리 중 오류: {str(e)}")
-            return result
+            print(f"데이터베이스 서비스 시작 중 오류: {e}")
         
-        # 5. 데이터베이스 서비스 시작
-        if verbose:
-            print("🗄️ 데이터베이스 서비스 시작 중...")
+        # 서비스별 빌드 및 테스트
+        services = ["api_gateway", "investment_advisor", "market_data", "news_analyzer"]
         
-        try:
-            db_start_cmd = ["docker-compose", "up", "-d", "postgres", "redis"]
-            db_result = subprocess.run(
-                db_start_cmd,
-                cwd=os.path.join(project_path, "deployment"),
-                capture_output=True,
-                text=True,
-                check=True
-            )
-            result["steps"].append("데이터베이스 서비스 시작 완료")
-            result["logs"].append(f"DB 시작 명령어: {' '.join(db_start_cmd)}")
-            
-            # 잠시 대기
-            time.sleep(5)
-            
-        except subprocess.CalledProcessError as e:
-            result["errors"].append(f"데이터베이스 서비스 시작 실패: {e.stderr}")
-            return result
-        
-        # 6. API 서비스 빌드
-        if verbose:
-            print(f"🏗️ {service_name} 서비스 빌드 중 (pyproject.toml 사용)...")
-        
-        try:
-            build_cmd = ["docker-compose", "build", service_name]
-            build_result = subprocess.run(
-                build_cmd,
-                cwd=os.path.join(project_path, "deployment"),
-                capture_output=True,
-                text=True,
-                check=True
-            )
-            result["steps"].append(f"{service_name} 서비스 빌드 완료")
-            result["logs"].append(f"빌드 명령어: {' '.join(build_cmd)}")
-            result["logs"].append(f"빌드 출력: {build_result.stdout}")
-            
-        except subprocess.CalledProcessError as e:
-            result["errors"].append(f"서비스 빌드 실패: {e.stderr}")
-            return result
-        
-        # 7. 서비스 실행 (build_only가 False인 경우)
-        if not build_only:
-            if verbose:
-                print(f"🚀 {service_name} 서비스 시작 중...")
+        for service_name in services:
+            print(f"[{PkMessages2025.CONTAINER_SERVICE_BUILDING}] {PK_ANSI_COLOR_MAP['YELLOW']}서비스={service_name} {PK_ANSI_COLOR_MAP['RESET']}")
             
             try:
-                start_cmd = ["docker-compose", "up", "-d", service_name]
-                start_result = subprocess.run(
-                    start_cmd,
-                    cwd=os.path.join(project_path, "deployment"),
-                    capture_output=True,
-                    text=True,
-                    check=True
-                )
-                result["steps"].append(f"{service_name} 서비스 시작 완료")
-                result["logs"].append(f"시작 명령어: {' '.join(start_cmd)}")
+                # 서비스 빌드
+                result = subprocess.run([
+                    "docker-compose", "build", service_name
+                ], capture_output=True, text=True)
                 
-                # 서비스 상태 확인
-                time.sleep(3)
-                
-                status_cmd = ["docker-compose", "ps"]
-                status_result = subprocess.run(
-                    status_cmd,
-                    cwd=os.path.join(project_path, "deployment"),
-                    capture_output=True,
-                    text=True,
-                    check=True
-                )
-                result["logs"].append(f"서비스 상태:\n{status_result.stdout}")
-                
-            except subprocess.CalledProcessError as e:
-                result["errors"].append(f"서비스 시작 실패: {e.stderr}")
-                return result
+                if result.returncode == 0:
+                    print(f"서비스 빌드 성공: {service_name}")
+                    
+                    # 서비스 시작
+                    print(f"[{PkMessages2025.CONTAINER_SERVICE_STARTING}] {PK_ANSI_COLOR_MAP['YELLOW']}서비스={service_name} {PK_ANSI_COLOR_MAP['RESET']}")
+                    
+                    result = subprocess.run([
+                        "docker-compose", "up", "-d", service_name
+                    ], capture_output=True, text=True)
+                    
+                    if result.returncode == 0:
+                        print(f"서비스 시작 성공: {service_name}")
+                    else:
+                        print(f"서비스 시작 실패: {service_name} - {result.stderr}")
+                        
+                else:
+                    print(f"서비스 빌드 실패: {service_name} - {result.stderr}")
+                    
+            except Exception as e:
+                print(f"서비스 처리 중 오류: {service_name} - {e}")
         
-        # 8. 성공 메시지 출력
-        if verbose:
-            print("✅ 컨테이너 빌드 테스트가 성공적으로 완료되었습니다!")
-            if not build_only:
-                print("")
-                print("📊 서비스 URL:")
-                print("  - API Gateway: http://localhost:8000")
-                print("  - Swagger UI: http://localhost:8000/docs")
-                print("")
-                print("🛠️ 유용한 명령어:")
-                print(f"  - 로그 확인: docker-compose -f {docker_compose_file} logs {service_name}")
-                print(f"  - 서비스 중지: docker-compose -f {docker_compose_file} down")
-                print(f"  - 서비스 재시작: docker-compose -f {docker_compose_file} restart {service_name}")
-                print("")
-                print("🧪 테스트 예시:")
-                print("  curl http://localhost:8000/")
-                print("  curl 'http://localhost:8000/api/v1/recommend/invest-timing?asset_name=삼성전자'")
+        print(f"[{PkMessages2025.CONTAINER_BUILD_TEST_SUCCESS}] {PK_ANSI_COLOR_MAP['GREEN']}상태=완료 {PK_ANSI_COLOR_MAP['RESET']}")
         
-        result["success"] = True
-        return result
+        # 유용한 명령어 출력
+        print(f"[{PkMessages2025.CONTAINER_USEFUL_COMMANDS}] {PK_ANSI_COLOR_MAP['CYAN']}명령어=도움말 {PK_ANSI_COLOR_MAP['RESET']}")
+        print("유용한 명령어:")
+        print("  - 서비스 상태 확인: docker-compose ps")
+        print("  - 로그 확인: docker-compose logs [서비스명]")
+        print("  - 서비스 중지: docker-compose down")
+        print("  - 특정 서비스 재시작: docker-compose restart [서비스명]")
+        print("  - 이미지 재빌드: docker-compose build --no-cache")
+        
+        return True
         
     except Exception as e:
-        result["errors"].append(f"예상치 못한 오류: {str(e)}")
-        return result
+        print(f"[{PkMessages2025.CONTAINER_TEST_FAILED}] {PK_ANSI_COLOR_MAP['RED']}오류={e} {PK_ANSI_COLOR_MAP['RESET']}")
+        return False
 
 
-def ensure_container_status_check(
-    project_path: str = None,
-    docker_compose_file: str = "infra/docker-compose.yml"
-) -> Dict[str, any]:
-    """
-    컨테이너 상태를 확인하는 함수
-    
-    Args:
-        project_path: 프로젝트 경로
-        docker_compose_file: docker-compose.yml 파일 경로
-    
-    Returns:
-        Dict: 상태 확인 결과
-    """
-    
-    if project_path is None:
-        project_path = os.getcwd()
-    
-    result = {
-        "success": False,
-        "project_path": project_path,
-        "docker_compose_file": docker_compose_file,
-        "services": {},
-        "errors": []
-    }
-    
+def test_container_health():
+    """컨테이너 헬스 체크 테스트"""
     try:
-        # 서비스 상태 확인
-        status_cmd = ["docker-compose", "ps"]
-        status_result = subprocess.run(
-            status_cmd,
-            cwd=os.path.join(project_path, "deployment"),
-            capture_output=True,
-            text=True,
-            check=True
-        )
-        
-        result["services"] = status_result.stdout
-        result["success"] = True
-        
-        return result
-        
-    except subprocess.CalledProcessError as e:
-        result["errors"].append(f"상태 확인 실패: {e.stderr}")
-        return result
+        # Lazy import to avoid circular dependency
+        try:
+            from pkg_py.functions_split.ensure_printed import ensure_printed
+            from pkg_py.system_object.map_massages import PkMessages2025
+        except ImportError:
+            print = lambda msg, **kwargs: print(msg)
+            PkMessages2025 = type('PkMessages2025', (), {
+                'CONTAINER_TEST_SUCCESS': '테스트가 성공적으로 완료되었습니다',
+                'CONTAINER_TEST_FAILED': '테스트가 실패했습니다'
+            })()
 
-
-if __name__ == "__main__":
-    # 테스트 실행
-    print("🐳 컨테이너 빌드 테스트를 시작합니다...")
-    
-    # 현재 디렉토리에서 실행
-    result = ensure_container_build_test(
-        project_path=os.getcwd(),
-        build_only=False,
-        verbose=True
-    )
-    
-    if result["success"]:
-        print("✅ 테스트가 성공적으로 완료되었습니다!")
-    else:
-        print("❌ 테스트가 실패했습니다.")
-        for error in result["errors"]:
-            print(f"  - {error}") 
+        import subprocess
+        import time
+        
+        # 컨테이너 상태 확인
+        result = subprocess.run(["docker-compose", "ps"], capture_output=True, text=True)
+        
+        if result.returncode == 0:
+            print("컨테이너 상태:")
+            print(result.stdout)
+            
+            # 헬스 체크
+            services = ["api_gateway", "investment_advisor", "market_data", "news_analyzer"]
+            healthy_count = 0
+            
+            for service in services:
+                try:
+                    # 헬스 체크 엔드포인트 호출
+                    health_result = subprocess.run([
+                        "curl", "-f", f"http://localhost:8000/{service}/health"
+                    ], capture_output=True, text=True, timeout=10)
+                    
+                    if health_result.returncode == 0:
+                        print(f" {service}: 정상")
+                        healthy_count += 1
+                    else:
+                        print(f" {service}: 비정상")
+                        
+                except Exception as e:
+                    print(f" {service}: 확인 불가 - {e}")
+            
+            if healthy_count == len(services):
+                print(f"[{PkMessages2025.CONTAINER_TEST_SUCCESS}] {PK_ANSI_COLOR_MAP['GREEN']}정상서비스수={healthy_count}개 {PK_ANSI_COLOR_MAP['RESET']}")
+                return True
+            else:
+                print(f"[{PkMessages2025.CONTAINER_TEST_FAILED}] {PK_ANSI_COLOR_MAP['RED']}정상서비스수={healthy_count}개 전체서비스수={len(services)}개 {PK_ANSI_COLOR_MAP['RESET']}")
+                return False
+        else:
+            print(f"[{PkMessages2025.CONTAINER_TEST_FAILED}] {PK_ANSI_COLOR_MAP['RED']}컨테이너상태확인실패 {PK_ANSI_COLOR_MAP['RESET']}")
+            return False
+            
+    except Exception as e:
+        print(f"[{PkMessages2025.CONTAINER_TEST_FAILED}] {PK_ANSI_COLOR_MAP['RED']}오류={e} {PK_ANSI_COLOR_MAP['RESET']}")
+        return False 

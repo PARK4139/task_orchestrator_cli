@@ -7,7 +7,7 @@ import sys
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from pkg_py.functions_split.ensure_printed import ensure_printed
-from pkg_py.system_object.directories import D_PKG_SOUND
+from pkg_py.system_object.directories import D_PKG_IMAGE_AND_VIDEO_AND_SOUND
 
 def test_simple_ensure_spoken():
     """ensure_spoken 함수를 단순화해서 테스트"""
@@ -15,14 +15,14 @@ def test_simple_ensure_spoken():
     ensure_printed("=" * 50, print_color="blue")
     
     # 기존 WAV 파일 찾기
-    wav_files = [f for f in os.listdir(D_PKG_SOUND) if f.endswith('.wav')]
+    wav_files = [f for f in os.listdir(D_PKG_IMAGE_AND_VIDEO_AND_SOUND) if f.endswith('.wav')]
     if not wav_files:
         ensure_printed("❌ 테스트할 WAV 파일이 없음", print_color="red")
         return
     
     # 가장 최근 파일 선택
-    latest_wav = max(wav_files, key=lambda x: os.path.getctime(os.path.join(D_PKG_SOUND, x)))
-    wav_path = os.path.join(D_PKG_SOUND, latest_wav)
+    latest_wav = max(wav_files, key=lambda x: os.path.getctime(os.path.join(D_PKG_IMAGE_AND_VIDEO_AND_SOUND, x)))
+    wav_path = os.path.join(D_PKG_IMAGE_AND_VIDEO_AND_SOUND, latest_wav)
     
     ensure_printed(f"📁 테스트 파일: {latest_wav}", print_color="blue")
     
@@ -68,7 +68,7 @@ def test_simple_ensure_spoken():
     # 3. silent.wav 연결 테스트
     ensure_printed("3. silent.wav 연결 테스트...", print_color="yellow")
     try:
-        silent_wav = os.path.join(D_PKG_SOUND, "silent.wav")
+        silent_wav = os.path.join(D_PKG_IMAGE_AND_VIDEO_AND_SOUND, "silent.wav")
         if os.path.exists(silent_wav):
             from pkg_py.functions_split.ensure_ffmpeg_installed_to_pkg_windows import ensure_ffmpeg_installed_to_pkg_windows
             import subprocess

@@ -1,7 +1,7 @@
 
 
 from pkg_py.functions_split.ensure_iterable_printed_as_vertical import ensure_iterable_printed_as_vertical
-from pkg_py.system_object.directories import D_PKG_TXT
+from pkg_py.system_object.directories import D_PKG_CACHE_PRIVATE
 from pkg_py.functions_split.get_pnxs import get_pnxs
 from pkg_py.functions_split.ensure_iterable_printed_as_vertical import ensure_iterable_printed_as_vertical
 
@@ -51,7 +51,7 @@ def make_pnx_interested_list_to_txt_f_x(pnx_interested_list=None, string_exclude
             rf'venv',
             rf'node_modules',
             rf'test_flutter',
-            rf'pkg_font',
+            rf'pkg_cache_private_public',
             rf'telegram memo export by static web',
             rf'docker_image_maker',
             rf'e-magazine',
@@ -62,7 +62,7 @@ def make_pnx_interested_list_to_txt_f_x(pnx_interested_list=None, string_exclude
     write_cnt = 0
     write_cnt_limit = 1000000
     for pnx_interested in pnx_interested_list:
-        pnxs_with_walking = get_pnxs(d_working=pnx_interested, filter_option="f", with_walking=1)
+        pnxs_with_walking = get_pnxs(d_working=pnx_interested, filter_option="f", with_walking=True)
 
         # 'pnxs_exclude'를 set으로 변경하여 'in' 연산을 최적화
         func_n_file_cnt_txt = None
@@ -76,9 +76,9 @@ def make_pnx_interested_list_to_txt_f_x(pnx_interested_list=None, string_exclude
             if write_cnt == write_cnt_limit % 2 == 0:
                 file_cnt = file_cnt + 1
                 ensure_iterable_printed_as_vertical(item_iterable=pnx_processed_list, item_iterable_n="pnx_processed_list")
-                # func_n_file_cnt_txt = rf"{D_PKG_TXT}\{func_n}_{file_cnt}.txt"
+                # func_n_file_cnt_txt = rf"{D_PKG_CACHE_PRIVATE}\{func_n}_{file_cnt}.txt"
                 # ensure_list_written_to_file(texts=pnx_processed_list, pnx=func_n_file_cnt_txt, mode="w")
-            func_n_file_cnt_txt = rf"{D_PKG_TXT}\{func_n}_{file_cnt}.txt"
+            func_n_file_cnt_txt = rf"{D_PKG_CACHE_PRIVATE}\{func_n}_{file_cnt}.txt"
             # ensure_printed(str_working=rf'''write_cnt="{write_cnt}"  {'%%%FOO%%%' if LTA else ''}''')
             ensure_str_writen_to_f(msg=f"{pnx_with_walking}\n", f=func_n_file_cnt_txt, mode="a")
             write_cnt = write_cnt + 1

@@ -1,4 +1,4 @@
-from pkg_py.system_object.directories_reuseable import D_PROJECT
+from pkg_py.system_object.directories  import D_PROJECT
 
 from pkg_py.functions_split.ensure_printed import ensure_printed
 
@@ -8,7 +8,7 @@ def sum_via_txt_f():
 
     func_n = inspect.currentframe().f_code.co_name
 
-    f_func_n_txt = rf'{D_PROJECT}\pkg_txt\{func_n}.txt'
+    f_func_n_txt = rf'{D_PROJECT}\pkg_cache_private\{func_n}.txt'
     ensure_pnx_made(pnx=f_func_n_txt, mode="f")
     ensure_pnx_opened_by_ext(f_func_n_txt)
 

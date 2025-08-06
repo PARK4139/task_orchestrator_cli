@@ -46,20 +46,20 @@ def is_process_killed(window_title_seg: str, timeout: float = 1.0) -> bool:
                     try:
                         proc.wait(timeout=timeout)
                     except psutil.TimeoutExpired:
-                        ensure_printed(f"🛑 PID={pid} 종료 실패 (TIMEOUT)", print_color="red")
+                        ensure_printed(f" PID={pid} 종료 실패 (TIMEOUT)", print_color="red")
                         all_killed = False
                         continue
 
                 if proc.is_running():
-                    ensure_printed(f"⚠️ PID={pid} 여전히 실행 중", print_color="yellow")
+                    ensure_printed(f"️ PID={pid} 여전히 실행 중", print_color="yellow")
                     all_killed = False
                 else:
-                    ensure_printed(f"✅ PID={pid} 종료 확인됨", print_color="green")
+                    ensure_printed(f" PID={pid} 종료 확인됨", print_color="green")
 
             except psutil.NoSuchProcess:
                 continue
             except Exception as e:
-                ensure_printed(f"❌ 예외 발생 PID={pid}, error={e}", print_color="red")
+                ensure_printed(f" 예외 발생 PID={pid}, error={e}", print_color="red")
                 all_killed = False
 
         return all_killed

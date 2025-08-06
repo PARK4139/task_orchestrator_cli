@@ -18,13 +18,13 @@ def classify_pnxs_to_pkg_compressed(src, without_walking=1):
     txt_to_exclude_list = [
         F_DB_YAML,
         F_SUCCESS_LOG,
-        F_LOCAL_PKG_CACHE,
+        F_LOCAL_PKG_CACHE_PRIVATE,
     ]
 
     if without_walking == 0:
         dir_pnxs, file_pnxs = get_sub_pnx_list(pnx=src, txt_to_exclude_list=txt_to_exclude_list)
     else:
-        dir_pnxs, file_pnxs = get_sub_pnx_list(pnx=src, txt_to_exclude_list=txt_to_exclude_list, with_walking=1)
+        dir_pnxs, file_pnxs = get_sub_pnx_list(pnx=src, txt_to_exclude_list=txt_to_exclude_list, with_walking=True)
 
     # f 처리
     x_allowed = [".zip", '.tar']
@@ -37,6 +37,6 @@ def classify_pnxs_to_pkg_compressed(src, without_walking=1):
         file_x = get_x(file_pnx).replace(".", "")  # 확장자에서 점(.) remove
         if file_x in [ext.replace(".", "") for ext in x_allowed]:  # x_allowed의 확장자와 비교
             ensure_pnx_made(dst, mode="d")
-            move_pnx(pnx=file_pnx, d_dst=dst)
+            ensure_pnx_moved(pnx=file_pnx, d_dst=dst)
             ensure_printed(str_working=rf'''file_new="{file_pnx}"  {'%%%FOO%%%' if LTA else ''}''')
     ensure_printed(str_working=rf'''dst="{dst}"  {'%%%FOO%%%' if LTA else ''}''')

@@ -1,21 +1,26 @@
 def push_pnx_to_github(d_working, git_repo_url, commit_msg, branch_n):
+    import os
+
+    from pkg_py.functions_split import ensure_pnx_made
+    from pkg_py.functions_split.is_internet_connected import is_internet_connected
+
     from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_excuted_to_os
     from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
     from pkg_py.system_object.local_test_activate import LTA
     from pkg_py.functions_split.ensure_printed import ensure_printed
-    ensure_colorama_initialized_once()
     ensure_printed(f'''commit_msg={commit_msg} {'%%%FOO%%%' if LTA else ''}''')
     if not is_internet_connected():
         return
     if not does_pnx_exist(pnx=d_working):
         ensure_pnx_made(pnx=d_working, mode='d')
     os.chdir(d_working)
-    d_git = rf"{d_working}/.git"
+    git_local_repo_checkfile = rf"{d_working}/.git"
     std_list = None
     state_done = [0, 0, 0, 0]
+
     while 1:
         if state_done[0] == 0:
-            if not does_pnx_exist(pnx=d_git):
+            if not does_pnx_exist(pnx=git_local_repo_checkfile):
                 std_list = ensure_command_excuted_to_os(cmd=rf'git init')
                 continue
         state_done[0] = 1

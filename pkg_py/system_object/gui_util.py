@@ -438,7 +438,7 @@ class GuiUtil:
         def __init__(self, q_application):
             from pkg_py.functions_split.ensure_printed import ensure_printed
             from pkg_py.functions_split.play_wav_f import play_wav_f
-            from pkg_py.system_object.directories_reuseable import D_PROJECT
+            from pkg_py.system_object.directories  import D_PROJECT
             from pkg_py.system_object.etc import PK_UNDERLINE
             from pkg_py.system_object.files import F_POP_SOUND_POP_SOUND_WAV
             func_n = inspect.currentframe().f_code.co_name
@@ -471,7 +471,7 @@ class GuiUtil:
 
             #  메인창 설정
             self.setWindowTitle('.')
-            icon_png = rf"{D_PROJECT}\pkg_image\icon.PNG"
+            icon_png = rf"{D_PROJECT}\pkg_image_and_video_and_sound\icon.PNG"
             self.setWindowIcon(QIcon(icon_png))  # 메인창 아이콘 설정
             # self.setAttribute(Qt.WA_TranslucentBackground) # 메인창 블러 설정
             # self.setWindowFlags(Qt.WindowType.FramelessWindowHint) # 메인창 최상단 프레임레스 설정

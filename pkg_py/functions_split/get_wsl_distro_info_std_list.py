@@ -32,7 +32,7 @@ def get_wsl_distro_info_std_list() -> list[str]:
     import subprocess
     try:
         result = subprocess.run(['wsl', '-l', '-v'], capture_output=True)
-        output = result.stdout.decode('utf-16')  # ✅
+        output = result.stdout.decode('utf-16')  # 
         std_list = output.splitlines()
         highlight_config_dict = {
             "green": [

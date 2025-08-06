@@ -17,7 +17,7 @@ from pkg_py.functions_split.ensure_pressed import ensure_pressed
 from pkg_py.functions_split.ensure_printed_once import ensure_printed_once
 
 from pkg_py.system_object.etc import PkFilter
-from pkg_py.system_object.directories_reuseable import D_PROJECT
+from pkg_py.system_object.directories  import D_PROJECT
 # from pkg_py.system_object.is_os_windows import is_os_windows
 from pkg_py.system_object.local_test_activate import LTA
 from moviepy import VideoFileClip
@@ -53,7 +53,7 @@ def find_direction_via_naver_map(destination: str):
         # press("alt", "left")
 
         # 출발지 입력 클릭
-        f_png = rf"{D_PROJECT}\pkg_image\find_direction_via_naver_direction.png"
+        f_png = rf"{D_PROJECT}\pkg_image_and_video_and_sound\find_direction_via_naver_direction.png"
         click_center_of_img_recognized_by_mouse_left(img_pnx=f_png, loop_limit_cnt=100, is_zoom_toogle_mode=True)
         ensure_slept(30)
 

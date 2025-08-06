@@ -7,7 +7,7 @@ if __name__ == "__main__":
         from colorama import init as pk_colorama_init
 
         # from pkg_py.system_object.500_live_logic import copy, kill_self_pk_program, LTA, assist_to_load_video_at_losslesscut, pk_input_v33_nvim_theme, pk_input_v44_uv_theme
-        # from pkg_py.system_object.static_logic import UNDERLINE, STAMP_TRY_GUIDE, D_PROJECT, STAMP_UNIT_TEST_EXCEPTION_DISCOVERED, D_PK_WORKING
+        # from pkg_py.system_object.static_logic import UNDERLINE, '[ TRY GUIDE ]', D_PROJECT, '[ UNIT TEST EXCEPTION DISCOVERED ]', D_PK_WORKING
         # from pkg_py.system_object.print_util import print
 
         colorama_init_once()
@@ -36,9 +36,9 @@ if __name__ == "__main__":
         traceback_format_exc_list = traceback.format_exc().split("\n")
         print_red(UNDERLINE)
         for line in traceback_format_exc_list:
-            print_red(f'{STAMP_UNIT_TEST_EXCEPTION_DISCOVERED} {line}')
+            print_red(f'{'[ UNIT TEST EXCEPTION DISCOVERED ]'} {line}')
         print_red(UNDERLINE)
 
     finally:
-        ensure_do_finally_routine(D_PROJECT=D_PROJECT, __file__=__file__, STAMP_TRY_GUIDE=STAMP_TRY_GUIDE)
+        ensure_do_finally_routine(D_PROJECT=D_PROJECT, __file__=__file__, '[ TRY GUIDE ]'='[ TRY GUIDE ]')
         

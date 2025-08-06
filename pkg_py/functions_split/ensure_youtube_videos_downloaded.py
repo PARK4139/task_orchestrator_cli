@@ -9,7 +9,7 @@ from pkg_py.functions_split.get_list_via_user_input import get_list_via_user_inp
 from pkg_py.functions_split.is_window_opened import is_window_opened
 from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.functions_split.ensure_iterable_printed_as_vertical import ensure_iterable_printed_as_vertical
-from pkg_py.system_object.directories_reuseable import D_PROJECT
+from pkg_py.system_object.directories  import D_PROJECT
 from pkg_py.system_object.local_test_activate import LTA
 
 
@@ -18,7 +18,7 @@ def ensure_youtube_videos_downloaded(via_f_txt=None, video_url_list=None):
     from urllib.parse import quote
 
     func_n = inspect.currentframe().f_code.co_name
-    f_func_n_txt = rf'{D_PROJECT}\pkg_txt\{func_n}.txt'
+    f_func_n_txt = rf'{D_PROJECT}\pkg_cache_private\{func_n}.txt'
     ensure_pnx_made(pnx=f_func_n_txt, mode="f")
 
     if via_f_txt is None and video_url_list is None:

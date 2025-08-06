@@ -4,61 +4,126 @@ import subprocess
 import sys
 
 def ensure_os_path_deduplicated():
-    """Windows 환경변수 PATH 정리"""
-    
-    # 시스템 PATH와 사용자 PATH 모두 가져오기
-    system_path = get_system_path()
-    user_path = get_user_path()
-    
-    print(f"📋 시스템 PATH 항목 수: {len(system_path.split(';')) if system_path else 0}")
-    print(f"📋 사용자 PATH 항목 수: {len(user_path.split(';')) if user_path else 0}")
-    
-    # 모든 PATH 병합
-    all_paths = system_path + ";" + user_path if user_path else system_path
-    path_list = all_paths.split(";")
-    
-    # 중복 제거 및 정리
-    seen = set()
-    clean_path = []
-    
-    for path in path_list:
-        norm = os.path.normpath(path.strip())
-        if not norm:
-            continue
-        if "user" in norm.lower() and "pk_system" not in norm.lower():  # 다른 사용자 경로 제거 (pk_system 제외)
-            continue
-        if norm not in seen:
-            seen.add(norm)
-            clean_path.append(norm)
-    
-    # 필수 경로 재정렬 (시스템, .venv, pk_system 우선)
-    priority = ["system32", ".venv", "pk_system"]
-    def sort_key(p):
-        for i, keyword in enumerate(priority):
-            if keyword.lower() in p.lower():
-                return i
-        return len(priority)
-    
-    clean_path.sort(key=sort_key)
-    
-    # 병합
-    new_path = ";".join(clean_path)
-    
-    # 사용자 환경변수에만 저장 (시스템 환경변수는 관리자 권한 필요)
+    """OS PATH 환경변수에서 중복된 경로를 제거하는 함수"""
     try:
-        with winreg.OpenKey(winreg.HKEY_CURRENT_USER, "Environment", 0, winreg.KEY_SET_VALUE) as key:
-            winreg.SetValueEx(key, "Path", 0, winreg.REG_EXPAND_SZ, new_path)
-        print("✅ 사용자 PATH 환경변수가 정리되었습니다.")
+        # Lazy import to avoid circular dependency
+        try:
+            from pkg_py.functions_split.ensure_printed import ensure_printed
+            from pkg_py.system_object.map_massages import PkMessages2025
+        except ImportError:
+            print = lambda msg, **kwargs: print(msg)
+            PkMessages2025 = type('PkMessages2025', (), {
+                'OS_PATH_USER_CLEANED': '사용자 PATH 환경변수가 정리되었습니다',
+                'OS_PATH_CLEAN_FAILED': '환경변수 정리 실패',
+                'OS_PATH_CHANGE_NOTIFICATION_SENT': '환경변수 변경 알림이 전송되었습니다',
+                'OS_PATH_CHANGE_NOTIFICATION_FAILED': '환경변수 변경 알림 전송 실패',
+                'OS_PATH_CHANGE_NOTIFICATION_ERROR': '환경변수 변경 알림 실패'
+            })()
+
+        import os
+        import platform
+        import subprocess
         
-        # 환경변수 변경 알림
-        broadcast_environment_change()
+        # 현재 PATH 가져오기
+        current_path = os.environ.get('PATH', '')
         
-        print(" 새 터미널을 열어서 환경변수 변경사항을 확인하세요.")
-        print("📝 또는 다음 명령어로 현재 세션에 적용:")
-        print("   refreshenv")
+        if not current_path:
+            print("PATH 환경변수가 비어있습니다.")
+            return False
         
+        # PATH를 경로별로 분리
+        path_list = current_path.split(os.pathsep)
+        
+        # 중복 제거 (순서 유지)
+        unique_paths = []
+        seen = set()
+        
+        for path in path_list:
+            normalized_path = os.path.normpath(path)
+            if normalized_path not in seen:
+                unique_paths.append(path)
+                seen.add(normalized_path)
+        
+        # 변경사항 확인
+        if len(unique_paths) == len(path_list):
+            print("중복된 PATH가 없습니다.")
+            return True
+        
+        # 새로운 PATH 생성
+        new_path = os.pathsep.join(unique_paths)
+        
+        # 환경변수 업데이트
+        try:
+            os.environ['PATH'] = new_path
+            
+            # 운영체제별 영구 설정
+            os_type = platform.system()
+            
+            if os_type == "Windows":
+                # Windows 레지스트리 업데이트
+                try:
+                    import winreg
+                    
+                    # 사용자 환경변수 업데이트
+                    key = winreg.OpenKey(winreg.HKEY_CURRENT_USER, "Environment", 0, winreg.KEY_WRITE)
+                    winreg.SetValueEx(key, "PATH", 0, winreg.REG_EXPAND_SZ, new_path)
+                    winreg.CloseKey(key)
+                    
+                    print(f"[{PkMessages2025.OS_PATH_USER_CLEANED}] {PK_ANSI_COLOR_MAP['GREEN']}제거된중복={len(path_list) - len(unique_paths)}개 {PK_ANSI_COLOR_MAP['RESET']}")
+                    
+                    # 환경변수 변경 알림
+                    try:
+                        subprocess.run(["setx", "PATH", new_path], check=True)
+                        print(f"[{PkMessages2025.OS_PATH_CHANGE_NOTIFICATION_SENT}] {PK_ANSI_COLOR_MAP['GREEN']}상태=성공 {PK_ANSI_COLOR_MAP['RESET']}")
+                    except subprocess.CalledProcessError:
+                        print(f"[{PkMessages2025.OS_PATH_CHANGE_NOTIFICATION_FAILED}] {PK_ANSI_COLOR_MAP['YELLOW']}상태=실패 {PK_ANSI_COLOR_MAP['RESET']}")
+                        
+                except Exception as e:
+                    print(f"[{PkMessages2025.OS_PATH_CHANGE_NOTIFICATION_ERROR}] {PK_ANSI_COLOR_MAP['RED']}오류={e} {PK_ANSI_COLOR_MAP['RESET']}")
+                    
+            elif os_type in ["Linux", "Darwin"]:
+                # Linux/macOS 설정 파일 업데이트
+                shell_configs = [
+                    os.path.expanduser("~/.bashrc"),
+                    os.path.expanduser("~/.zshrc"),
+                    os.path.expanduser("~/.profile")
+                ]
+                
+                for config_file in shell_configs:
+                    if os.path.exists(config_file):
+                        try:
+                            # 기존 PATH 설정 제거
+                            with open(config_file, 'r') as f:
+                                lines = f.readlines()
+                            
+                            # PATH 설정 라인 제거
+                            filtered_lines = []
+                            for line in lines:
+                                if not line.strip().startswith('export PATH='):
+                                    filtered_lines.append(line)
+                            
+                            # 새로운 PATH 설정 추가
+                            filtered_lines.append(f'export PATH="{new_path}"\n')
+                            
+                            # 파일 업데이트
+                            with open(config_file, 'w') as f:
+                                f.writelines(filtered_lines)
+                            
+                            print(f"[{PkMessages2025.OS_PATH_USER_CLEANED}] {PK_ANSI_COLOR_MAP['GREEN']}설정파일={config_file} {PK_ANSI_COLOR_MAP['RESET']}")
+                            break
+                            
+                        except Exception as e:
+                            print(f"[{PkMessages2025.OS_PATH_CHANGE_NOTIFICATION_ERROR}] {PK_ANSI_COLOR_MAP['RED']}파일={config_file} 오류={e} {PK_ANSI_COLOR_MAP['RESET']}")
+            
+            return True
+            
+        except Exception as e:
+            print(f"[{PkMessages2025.OS_PATH_CLEAN_FAILED}] {PK_ANSI_COLOR_MAP['RED']}오류={e} {PK_ANSI_COLOR_MAP['RESET']}")
+            return False
+            
     except Exception as e:
-        print(f"❌ 환경변수 정리 실패: {e}")
+        print(f"[{PkMessages2025.OS_PATH_CLEAN_FAILED}] {PK_ANSI_COLOR_MAP['RED']}오류={e} {PK_ANSI_COLOR_MAP['RESET']}")
+        return False
 
 def get_system_path():
     """시스템 환경변수 PATH 가져오기"""
@@ -99,11 +164,11 @@ def broadcast_environment_change():
             SMTO_ABORTIFHUNG, 5000, ctypes.byref(ctypes.c_ulong())
         )
         if result:
-            print("✅ 환경변수 변경 알림이 전송되었습니다.")
+            print(" 환경변수 변경 알림이 전송되었습니다.")
         else:
-            print("⚠️ 환경변수 변경 알림 전송 실패")
+            print("️ 환경변수 변경 알림 전송 실패")
     except Exception as e:
-        print(f"⚠️ 환경변수 변경 알림 실패: {e}")
+        print(f"️ 환경변수 변경 알림 실패: {e}")
 
 if __name__ == "__main__":
     ensure_os_path_deduplicated()

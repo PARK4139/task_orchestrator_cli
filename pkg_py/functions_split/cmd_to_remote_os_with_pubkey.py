@@ -48,7 +48,7 @@ def cmd_to_remote_os_with_pubkey(cmd, **config_remote_os):
 
         # cmd_with_sudo_s = f"sudo -S {cmd}"
         cmd_with_sudo_s = f"{cmd}"
-        ensure_printed(f'''{STAMP_REMOTE_DEBUG} cmd={cmd}  {'%%%FOO%%%' if LTA else ''}''')
+        ensure_printed(f'''{"[ REMOTE DEBUG ]"} cmd={cmd}  {'%%%FOO%%%' if LTA else ''}''')
         stdin, stdout, stderr = ssh.exec_command(cmd_with_sudo_s)
 
         stdout_str = stdout.read().decode()
@@ -60,12 +60,12 @@ def cmd_to_remote_os_with_pubkey(cmd, **config_remote_os):
             std_err_list = stderr_str.split("\n")
 
         for std_out_str in std_out_list:
-            ensure_printed(f'''{STAMP_REMOTE_DEBUG} {std_out_str} {'%%%FOO%%%' if LTA else ''}''', print_color='green')
+            ensure_printed(f'''{"[ REMOTE DEBUG ]"} {std_out_str} {'%%%FOO%%%' if LTA else ''}''', print_color='green')
 
         if len(std_out_list) > 0 and len(std_err_list) > 0:
             # std_out_list 가 std_err_list 모두 있는 경우는 성공했지만 warning 을 띄우는 경우이다. 이 경우는 std_err_list 는 [] 로 초기화 처리했다
             for std_err_str in std_err_list:
-                ensure_printed(f'''{STAMP_REMOTE_ERROR} {std_err_str} {'%%%FOO%%%' if LTA else ''}''', print_color='yellow')
+                ensure_printed(f'''{"[ REMOTE ERROR ]"} {std_err_str} {'%%%FOO%%%' if LTA else ''}''', print_color='yellow')
             std_err_list = []
             if LTA:
                 ensure_printed(f'''std_out_list={std_out_list} {'%%%FOO%%%' if LTA else ''}''')
@@ -74,7 +74,7 @@ def cmd_to_remote_os_with_pubkey(cmd, **config_remote_os):
             return std_out_list, std_err_list
         else:
             for std_err_str in std_err_list:
-                ensure_printed(f'''{STAMP_REMOTE_ERROR} {std_err_str} {'%%%FOO%%%' if LTA else ''}''', print_color='red')
+                ensure_printed(f'''{"[ REMOTE ERROR ]"} {std_err_str} {'%%%FOO%%%' if LTA else ''}''', print_color='red')
             if LTA:
                 ensure_printed(f'''std_out_list={std_out_list} {'%%%FOO%%%' if LTA else ''}''')
                 ensure_printed(f'''std_err_list={std_err_list} {'%%%FOO%%%' if LTA else ''}''')

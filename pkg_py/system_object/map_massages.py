@@ -1,6 +1,10 @@
 from pkg_py.functions_split.get_pk_program_language import get_pk_program_language
 
+
 class PkMessages2025:
+    SUCCEEDED = None
+    INTERACTIVE = None
+    WARNING = None
     CASHE_USED = None
     FAILED = None
     COPIED = None
@@ -92,7 +96,6 @@ class PkMessages2025:
     test = None
     VERSION_INFO = None
     VERSION = None
-    ERROR = None
     EXCEPTION_OCCURRED = None
     WRITE_DONE = None
     WAITING = None
@@ -199,7 +202,6 @@ class PkMessages2025:
     START_TEST = None
     COMMANDS = None
     HELLO = None
-    TIME = None
     DATE = None
     CLEAR = None
     QUIT = None
@@ -223,6 +225,7 @@ class PkMessages2025:
     SOUND_SETTINGS_FAILED = None
     TEST_COMPLETE = None
     GOOD_MORNING = None
+    GOOD_AFTERNOON = None
     GOOD_EVENING = None
     QUIT_MESSAGE = None
     QUITTING = None
@@ -245,8 +248,6 @@ class PkMessages2025:
     # 일반적인 메시지들
     EXTENSION = None
     TEST = None
-    TEST_FAILED = None
-    TEST_SUCCESS = None
     CURRENT_TIME = None
     AGE_RESTRICTED = None
     FORMAT_UNAVAILABLE = None
@@ -279,7 +280,6 @@ class PkMessages2025:
     SELENIUM_DRIVER_DEBUG_MODE = None
     DRIVER_GET_TARGET_URL = None
     BROWSER_SCREEN_INITIAL_LOADING = None
-    SECONDS = None
     SCROLL_TO_BOTTOM = None
     SCROLL_TO_BOTTOM_COMPLETE = None
     COMPRESSION_TARGET_SIZE_WARNING = None
@@ -307,12 +307,10 @@ class PkMessages2025:
     METADATA_EXTRACTION_FAILED_SKIP = None
     DEBUG_METADATA_EXT = None
     DEBUG_OUTPUT_FILENAME = None
-    # 추가 메시지들
     POTPLAYER_PLAYLIST_ADDED = None
     POTPLAYER_PLAYLIST_ADD_FAILED = None
     FINAL_FILE_NOT_FOUND = None
     TOTAL_DOWNLOAD_COMPLETED = None
-    # TTS 관련 메시지들
     PLAYBACK_FAILED = None
     ELEVENLABS_API_KEY_INPUT = None
     GTTS_FAILED = None
@@ -320,6 +318,526 @@ class PkMessages2025:
     API_ERROR = None
     REQUEST_FAILED = None
     TTS_GENERATION_FAILED = None
+    DEPRECATED_FUNCTION = None
+    USE_INSTEAD = None
+    MONDAY = None
+    TUESDAY = None
+    WEDNESDAY = None
+    THURSDAY = None
+    FRIDAY = None
+    SATURDAY = None
+    SUNDAY = None
+    # Log cleanup related messages
+    LOG_CLEANUP_START = None
+    LOG_CLEANUP_COMPLETE = None
+    OLD_LOG_FILE_DELETED = None
+    LOG_FILE_DELETE_FAILED = None
+    NO_OLD_FILES_TO_DELETE = None
+    FILES_DELETED = None
+    FILES_KEPT = None
+    LOG_CLEANUP_ERROR = None
+    
+    # System setup and installation messages
+    SYSTEM_SETUP_START = None
+    UV_INSTALLATION = None
+    FZF_INSTALLATION = None
+    PATH_SETUP = None
+    ALIAS_SETUP = None
+    PACKAGE_SYNC = None
+    VENV_SETUP = None
+    INSTALLATION_SUCCESS = None
+    INSTALLATION_FAILED = None
+    PERMISSION_ERROR = None
+    BACKUP_CREATED = None
+    BACKUP_FAILED = None
+    FILE_NOT_FOUND = None
+    DIRECTORY_CREATED = None
+    DIRECTORY_CREATION_FAILED = None
+    FILE_COPY_SUCCESS = None
+    FILE_COPY_FAILED = None
+    ALTERNATIVE_INSTALLATION = None
+    TEMP_CLEANUP_FAILED = None
+    REGISTRY_SETUP_SUCCESS = None
+    REGISTRY_SETUP_FAILED = None
+    VENV_PYTHON_NOT_FOUND = None
+    VENV_PYTHON_FOUND = None
+    PACKAGE_INSTALLING = None
+    PACKAGE_INSTALL_SUCCESS = None
+    PACKAGE_INSTALL_FAILED = None
+    PACKAGE_INSTALL_ERROR = None
+    VENV_PACKAGE_INSTALL_COMPLETE = None
+    VENV_PYTHON_TEST = None
+    VENV_PYTHON_VERSION = None
+    VENV_MODULE_TEST = None
+    VENV_TEST_SUCCESS = None
+    VENV_TEST_FAILED = None
+    ALL_STEPS_COMPLETED = None
+    EXECUTION_TIME = None
+    TOTAL_EXECUTION_TIME = None
+    
+    # Process and operation messages
+    PROCESS_START = None
+    PROCESS_COMPLETE = None
+    PROCESS_FAILED = None
+    OPERATION_IN_PROGRESS = None
+    OPERATION_SUCCESS = None
+    OPERATION_FAILED = None
+    DEBUG_INFO = None
+    DEBUG_METADATA = None
+    DEBUG_OUTPUT = None
+    DEBUG_SEARCH = None
+    DEBUG_NORMALIZED = None
+    DEBUG_CALL = None
+    DEBUG_FILE = None
+    DEBUG_ID = None
+    
+    # Status messages
+    STATUS_CHECKING = None
+    STATUS_VERIFIED = None
+    STATUS_FAILED = None
+    STATUS_SKIPPED = None
+    STATUS_WARNING = None
+    STATUS_ERROR = None
+    STATUS_SUCCESS = None
+    STATUS_INFO = None
+    
+    # Step messages
+    STEP_1 = None
+    STEP_2 = None
+    STEP_3 = None
+    STEP_4 = None
+    STEP_5 = None
+    STEP_6 = None
+    STEP_COMPLETE = None
+    STEP_FAILED = None
+    
+    # Try guide messages
+    TRY_GUIDE = None
+    ACTIVATE_VENV = None
+    DEACTIVATE_VENV = None
+    COMMAND_EXECUTION = None
+    
+    # File conversion messages
+    CONVERSION_COMPLETE = None
+    CONVERSION_FAILED = None
+    CONVERSION_WORK_COMPLETE = None
+    
+    # Audio and WAV messages
+    AUDIO_COMPONENT_CREATED = None
+    AUDIO_COMPONENT_FAILED = None
+    AUDIO_COMPONENTS_COMPLETE = None
+    AUDIO_TIME_EXPRESSION_CREATED = None
+    AUDIO_TIME_EXPRESSION_FAILED = None
+    AUDIO_SPECIFIC_COMPONENTS_COMPLETE = None
+    AUDIO_WAV_COMPONENTS_START = None
+    AUDIO_ALL_COMPONENTS_EXIST = None
+    AUDIO_MISSING_COMPONENTS = None
+    AUDIO_ALL_COMPONENTS_COMPLETE = None
+    AUDIO_SOME_COMPONENTS_FAILED = None
+    
+    # Performance and optimization messages
+    PERFORMANCE_OPTIMIZATION_TEST_START = None
+    PERFORMANCE_OPTIMIZATION_TEST_SUCCESS = None
+    PERFORMANCE_OPTIMIZATION_TEST_FAILED = None
+    PERFORMANCE_OPTIMIZATION_TEST_ERROR = None
+    TOTAL_EXECUTION_TIME_SECONDS = None
+    UV_VS_PYTHON_PERFORMANCE_COMPARISON = None
+    TEST_DESCRIPTION = None
+    COMMAND_EXECUTION = None
+    SUCCESS_TIME = None
+    FAILURE_STDERR = None
+    TIMEOUT_5_SECONDS = None
+    ERROR_OCCURRED = None
+    PERFORMANCE_COMPARISON_RESULTS = None
+    ALL_TESTS_COMPLETE = None
+    
+    # TTS and audio test messages
+    TTS_SPEED_IMPROVEMENT_TEST = None
+    BASIC_TTS_SPEED_TEST = None
+    TEST_TEXT = None
+    BASIC_TTS_SPEED_TEST_COMPLETE = None
+    BASIC_TTS_SPEED_TEST_FAILED = None
+    HIGH_SPEED_TTS_TEST = None
+    HIGH_SPEED_TTS_TEST_COMPLETE = None
+    HIGH_SPEED_TTS_TEST_FAILED = None
+    TTS_SPEED_TEST_COMPLETE = None
+    HIGH_SPEED_AUDIO_PLAYBACK_START = None
+    SPEED_ADJUSTMENT = None
+    AUDIO_NORMALIZATION_COMPLETE = None
+    HIGH_SPEED_PLAYBACK_COMPLETE = None
+    HIGH_SPEED_PLAYBACK_FAILED = None
+    VOLUME_AND_AUDIO_STATUS_CHECK = None
+    WINDOWS_SYSTEM_SOUND_TEST = None
+    SYSTEM_SOUND_PLAYED = None
+    SYSTEM_SOUND_FAILED = None
+    SIMPLE_BEEP_TEST = None
+    BEEP_PLAYED = None
+    BEEP_FAILED = None
+    EXISTING_WAV_FILE_PLAYBACK = None
+    WAV_FILE_PLAYED = None
+    WAV_FILE_PLAYBACK_FAILED = None
+    NO_WAV_FILE_TO_PLAY = None
+    VOLUME_BOOST_TEST = None
+    ORIGINAL_AUDIO_LENGTH = None
+    VOLUME_BOOST_APPLIED = None
+    TEMP_FILE_SAVED = None
+    VOLUME_BOOST_PLAYBACK_COMPLETE = None
+    TEMP_FILE_DELETED = None
+    VOLUME_BOOST_TEST_FAILED = None
+    DID_YOU_HEAR_SOUND = None
+    SYSTEM_SOUND_HEARD = None
+    BEEP_HEARD = None
+    WAV_FILE_HEARD = None
+    VOLUME_BOOST_HEARD = None
+    
+    # TTS final check messages
+    FINAL_TTS_CHECK = None
+    TTS_SETTINGS = None
+    TTS_SPEED = None
+    TTS_VOLUME = None
+    TTS_PRIORITY = None
+    TTS_TEST = None
+    FINAL_CHECK_COMPLETE = None
+    TTS_WORKING_NORMALLY = None
+    
+    # TTS final settings messages
+    FINAL_SETTINGS_APPLIED_TEST = None
+    TEST_SUCCESS = None
+    TEST_FAILED = None
+    VARIOUS_TEXT_TEST = None
+    TEST_CASE = None
+    CASE_SUCCESS = None
+    CASE_FAILED = None
+    FINAL_SETTINGS_TEST_START = None
+    CURRENT_SETTINGS = None
+    ENGINE_SETTING = None
+    SPEED_SETTING = None
+    VOLUME_SETTING = None
+    OUTPUT_SETTING = None
+    FINAL_SETTINGS_TEST_COMPLETE = None
+    CHECK_ALL_TESTS_HEARD = None
+    
+    # TTS headphone debug messages
+    AUDIO_DEVICE_CHECK = None
+    AUDIO_DEVICES = None
+    AUDIO_DEVICE_CHECK_FAILED = None
+    ERROR_OCCURRED = None
+    SAPI_DIRECT_TEST = None
+    SAPI_TEST = None
+    SAPI_TEST_SUCCESS = None
+    SAPI_TEST_FAILED = None
+    SAPI_TEST_ERROR = None
+    PYTTSX3_DIRECT_TEST = None
+    PYTTSX3_DIRECT_TEST_COMPLETE = None
+    PYTTSX3_FAILED = None
+    HYBRID_TTS_TEST = None
+    HYBRID_TTS_TEST_COMPLETE = None
+    HYBRID_TTS_FAILED = None
+    OPENING_WINDOWS_SOUND_SETTINGS = None
+    WINDOWS_SOUND_SETTINGS_OPENED = None
+    FOLLOW_THESE_STEPS = None
+    SELECT_HEADPHONES = None
+    SET_AS_DEFAULT_DEVICE = None
+    SET_AS_DEFAULT_COMMUNICATION_DEVICE = None
+    SET_VOLUME_TO_100 = None
+    DISABLE_OTHER_DEVICES = None
+    SOUND_SETTINGS_OPEN_FAILED = None
+    HEADPHONE_DEBUGGING_START = None
+    HEADPHONE_DEBUGGING_COMPLETE = None
+    WHICH_TEST_HEARD_SOUND = None
+    
+    # TTS quick check messages
+    QUICK_SAPI_TEST = None
+    SAPI_SUCCESS = None
+    SAPI_FAILED = None
+    SAPI_ERROR = None
+    QUICK_HYBRID_TEST = None
+    HYBRID_TEST_FAILED = None
+    
+    # TTS SAPI speed messages
+    SAPI_SPEED_1_5_TEST = None
+    SAPI_SPEED_1_5_TEST_SUCCESS = None
+    SAPI_SPEED_1_5_TEST_FAILED = None
+    SAPI_SPEED_1_5_TEST_ERROR = None
+    SAPI_SPEED_1_5_TEST_COMPLETE = None
+    SAPI_SPEED_1_0_TEST = None
+    SAPI_SPEED_1_0_TEST_SUCCESS = None
+    SAPI_SPEED_1_0_TEST_FAILED = None
+    SAPI_SPEED_1_0_TEST_ERROR = None
+    SAPI_SPEED_1_0_TEST_COMPLETE = None
+    SAPI_SPEED_COMPARISON_TEST = None
+    SPEED_TEST = None
+    SPEED_SUCCESS = None
+    SPEED_FAILED = None
+    SPEED_ERROR = None
+    SAPI_SPEED_TEST_START = None
+    SAPI_SPEED_TEST_COMPLETE = None
+    CHECK_WHICH_SPEED_BEST = None
+    
+    # TTS voice change messages
+    AVAILABLE_SAPI_VOICES = None
+    AVAILABLE_VOICES = None
+    VOICE_LIST_GET_FAILED = None
+    VARIOUS_VOICE_TEST = None
+    VOICE_TEST = None
+    VOICE_SUCCESS = None
+    VOICE_FAILED = None
+    VOICE_ERROR = None
+    SET_VOLUME_SPEED_VOICE_TEST = None
+    SET_VOLUME_SPEED_TEST = None
+    SET_VOLUME_SPEED_SUCCESS = None
+    SET_VOLUME_SPEED_FAILED = None
+    SET_VOLUME_SPEED_ERROR = None
+    VOICE_CHANGE_TEST_START = None
+    VOICE_CHANGE_TEST_COMPLETE = None
+    WHICH_VOICE_BEST = None
+    
+    # WAV playback messages
+    WAV_FILE_PLAYBACK_TEST = None
+    WAV_TEST = None
+    WAV_TEST_COMPLETE = None
+    WAV_TEST_FAILED = None
+    WAV_TEST_COMPLETE_FINAL = None
+    
+    # Wrapper import messages
+    TESTING_WRAPPER_IMPORT = None
+    WRAPPER_IMPORT_SUCCESS = None
+    WRAPPER_IMPORT_FAILED = None
+    
+    # Comprehensive TTS test messages
+    COMPREHENSIVE_TTS_TEST = None
+    BASIC_TTS_METHODS_TEST = None
+    BASIC_ENSURE_SPOKEN = None
+    HYBRID_TTS_DIRECT_CALL = None
+    VOLUME_SETTINGS_TEST = None
+    VOLUME_SETTING_TEST = None
+    SPEED_SETTINGS_TEST = None
+    SPEED_SETTING_TEST = None
+    HYBRID_TTS_COMPONENTS_TEST = None
+    PYTTSX3_TEST = None
+    PYTTSX3_SUCCESS = None
+    PYTTSX3_FAILED = None
+    WINDOWS_SAPI_TEST = None
+    WINDOWS_SAPI_SUCCESS = None
+    WINDOWS_SAPI_FAILED = None
+    GTTS_TEST = None
+    GTTS_SUCCESS = None
+    GTTS_FAILED = None
+    VOICE_SETTINGS_TEST = None
+    BASIC_VOICE_SETTING = None
+    FAST_VOICE_SETTING = None
+    QUIET_VOICE_SETTING = None
+    BLUETOOTH_HEADPHONE_SPECIALIZED_TEST = None
+    
+    # Register fix messages
+    SUCCESSFULLY_IMPORTED = None
+    CALLING_FUNCTION = None
+    FUNCTION_COMPLETED = None
+    ERROR_OCCURRED = None
+    
+    # Final Bluetooth test messages
+    HEADPHONE_10_PERCENT_VOLUME_TTS_FINAL_TEST = None
+    VOICE_SETTINGS = None
+    VOICE_SPEED = None
+    VOICE_VOLUME = None
+    VOICE_LANGUAGE = None
+    VOICE_TEST_FINAL = None
+    HEADPHONE_TTS_FINAL_TEST_COMPLETE = None
+    HEADPHONE_SOUND_HEARD_NORMAL = None
+    QUICK_VOLUME_CHECK = None
+    VOLUME_TEST = None
+    VOLUME_TEST_TEXT = None
+    HEADPHONE_TTS_FINAL_CONFIRMATION = None
+    SETTINGS_COMPLETE = None
+    VOLUME_SETTING = None
+    SPEED_SETTING = None
+    LANGUAGE_SETTING = None
+    OUTPUT_SETTING = None
+    
+    # Additional system messages
+    SYSTEM_START_SUCCESS = None
+    SYSTEM_START_FAILED = None
+    SYSTEM_START_ERROR = None
+    OPTIMIZED_FUNCTION_LOADED = None
+    TOTAL_EXECUTION_TIME_SECONDS_ALT = None
+    PERFORMANCE_OPTIMIZATION_TEST_START_ALT = None
+    PERFORMANCE_OPTIMIZATION_TEST_SUCCESS_ALT = None
+    PERFORMANCE_OPTIMIZATION_TEST_FAILED_ALT = None
+    PERFORMANCE_OPTIMIZATION_TEST_ERROR_ALT = None
+    UV_VS_PYTHON_PERFORMANCE_COMPARISON_ALT = None
+    TEST_DESCRIPTION_ALT = None
+    COMMAND_EXECUTION_ALT = None
+    SUCCESS_TIME_ALT = None
+    FAILURE_STDERR_ALT = None
+    TIMEOUT_5_SECONDS_ALT = None
+    ERROR_OCCURRED_ALT = None
+    PERFORMANCE_COMPARISON_RESULTS_ALT = None
+    ALL_TESTS_COMPLETE_ALT = None
+    PERFORMANCE_OPTIMIZATION_TEST_ALT = None
+    
+    # Docker installation messages
+    DOCKER_INSTALLATION_WSL_UBUNTU = None
+    SYSTEM_UPDATE = None
+    SYSTEM_UPDATE_COMPLETE = None
+    SYSTEM_UPDATE_FAILED = None
+    REQUIRED_PACKAGES_INSTALLATION = None
+    PACKAGE_INSTALLATION_COMPLETE = None
+    PACKAGE_INSTALLATION_FAILED = None
+    DOCKER_GPG_KEY_ADDITION = None
+    DOCKER_GPG_KEY_ADDITION_COMPLETE = None
+    DOCKER_GPG_KEY_ADDITION_FAILED = None
+    DOCKER_REPOSITORY_ADDITION = None
+    DOCKER_REPOSITORY_ADDITION_COMPLETE = None
+    DOCKER_REPOSITORY_ADDITION_FAILED = None
+    PACKAGE_LIST_UPDATE = None
+    PACKAGE_LIST_UPDATE_COMPLETE = None
+    PACKAGE_LIST_UPDATE_FAILED = None
+    DOCKER_INSTALLATION = None
+    DOCKER_INSTALLATION_COMPLETE = None
+    DOCKER_INSTALLATION_FAILED = None
+    DOCKER_COMPOSE_INSTALLATION = None
+    DOCKER_COMPOSE_INSTALLATION_COMPLETE = None
+    DOCKER_COMPOSE_INSTALLATION_FAILED = None
+    ADD_USER_TO_DOCKER_GROUP = None
+    ADD_USER_TO_DOCKER_GROUP_COMPLETE = None
+    ADD_USER_TO_DOCKER_GROUP_FAILED = None
+    DOCKER_SERVICE_START = None
+    DOCKER_SERVICE_START_COMPLETE = None
+    DOCKER_SERVICE_START_FAILED = None
+    INSTALLATION_VERIFICATION = None
+    DOCKER_INSTALLATION_VERIFICATION = None
+    DOCKER_INSTALLATION_VERIFICATION_COMPLETE = None
+    DOCKER_INSTALLATION_VERIFICATION_FAILED = None
+    DOCKER_COMPOSE_INSTALLATION_VERIFICATION = None
+    DOCKER_COMPOSE_INSTALLATION_VERIFICATION_COMPLETE = None
+    DOCKER_COMPOSE_INSTALLATION_VERIFICATION_FAILED = None
+    DOCKER_INSTALLATION_COMPLETE_FINAL = None
+    WSL_RESTART_REQUIRED = None
+    ERROR_OCCURRED_FINAL = None
+    DOCKER_INSTALLATION_SUCCESS = None
+    DOCKER_INSTALLATION_FAILED_FINAL = None
+    
+    # Alert messages
+    ALARM_SETTING_CANCELLED = None
+    
+    # PotPlayer messages
+    POTPLAYER_COMMAND_FAILED = None
+    POTPLAYER_PLAYLIST_ADD_FAILED_EXCEPTION = None
+    
+    # URL navigation messages
+    URL_MOVEMENT_SUCCESS = None
+    
+    # File operation messages
+    FILE_OPEN_FAILED_WSL = None
+    SAVE_COMPLETE = None
+    
+    # Colorama messages
+    COLORAMA_NOT_INSTALLED = None
+    DEBUG_MESSAGE = None
+    ERROR_MESSAGE = None
+    INFO_MESSAGE = None
+    
+    # Docker WSL messages
+    DOCKER_INSTALLATION_ROUTINE_WSL_UBUNTU = None
+    D_PROJECT_DOCKER_INSTALLATION_SUCCESS = None
+    D_PROJECT_DOCKER_INSTALLATION_FAILED = None
+    D_PROJECT_UNEXPECTED_ERROR = None
+    
+    # FZF diagnosis messages
+    FZF_DIAGNOSIS_START = None
+    FZF_FOUND = None
+    FZF_NOT_FOUND = None
+    FZF_EXE_FOUND = None
+    FZF_EXE_NOT_FOUND = None
+    FZF_PATH_FOUND = None
+    FZF_PATH_NOT_FOUND = None
+    FZF_EXECUTION_SUCCESS = None
+    FZF_EXECUTION_FAILED = None
+    FZF_CORRUPTED_FILE = None
+    FZF_OS_ERROR = None
+    FZF_FILE_NOT_FOUND = None
+    FZF_OTHER_ERROR = None
+    FZF_AVAILABLE = None
+    FZF_NOT_AVAILABLE = None
+    
+    # Alarm messages
+    ALARM_BACKGROUND_RUNNING = None
+    
+    # Import script messages
+    IMPORT_SCRIPT_START = None
+    IMPORT_FILE_READ_ERROR = None
+    IMPORT_FILE_PROCESS_ERROR = None
+    IMPORT_SCRIPT_COMPLETE = None
+    IMPORT_THIRD_PARTY_LIBRARIES = None
+    
+    # Backup messages
+    BACKUP_OS_DETECTED = None
+    BACKUP_COMPLETE = None
+    BACKUP_FAILED = None
+    BACKUP_FILE_NOT_FOUND = None
+    BACKUP_TOTAL_COMPLETE = None
+    BACKUP_NO_FILES = None
+    
+    # ChatGPT messages
+    CHATGPT_RESPONSE_COMPLETE = None
+    CHATGPT_API_CALL_FAILED = None
+    CHATGPT_RESPONSE_PARSE_FAILED = None
+    CHATGPT_UNEXPECTED_ERROR = None
+    CHATGPT_CONVERSATION_SAVE_FAILED = None
+    CHATGPT_CONVERSATION_LOAD_FAILED = None
+    
+    # Container build messages
+    CONTAINER_PROJECT_PATH_CHECK = None
+    CONTAINER_DOCKER_STATUS_CHECK = None
+    CONTAINER_DATABASE_SERVICE_STARTING = None
+    CONTAINER_SERVICE_BUILDING = None
+    CONTAINER_SERVICE_STARTING = None
+    CONTAINER_BUILD_TEST_SUCCESS = None
+    CONTAINER_USEFUL_COMMANDS = None
+    CONTAINER_TEST_SUCCESS = None
+    CONTAINER_TEST_FAILED = None
+    
+    # OS path messages
+    OS_PATH_USER_CLEANED = None
+    OS_PATH_CLEAN_FAILED = None
+    OS_PATH_CHANGE_NOTIFICATION_SENT = None
+    OS_PATH_CHANGE_NOTIFICATION_FAILED = None
+    OS_PATH_CHANGE_NOTIFICATION_ERROR = None
+    
+    # Linux system messages
+    LINUX_UV_INSTALLATION = None
+    LINUX_UV_ALREADY_INSTALLED = None
+    LINUX_UV_BINARY_ALREADY_INSTALLED = None
+    LINUX_UV_INSTALLATION_COMPLETE = None
+    LINUX_FZF_INSTALLATION = None
+    LINUX_FZF_ALREADY_INSTALLED = None
+    LINUX_FZF_BINARY_ALREADY_INSTALLED = None
+    LINUX_FZF_INSTALLATION_COMPLETE = None
+    LINUX_PATH_SETUP = None
+    LINUX_SHELL_PATH_SETUP_COMPLETE = None
+    LINUX_SHELL_CONFIG_NOT_FOUND = None
+    LINUX_PATH_SETUP_COMPLETE = None
+    LINUX_ALIAS_SETUP = None
+    LINUX_ALIAS_SETUP_COMPLETE = None
+    LINUX_ALIAS_SETUP_FAILED = None
+    LINUX_PACKAGE_SYNC = None
+    LINUX_PYPROJECT_TOML_FOUND = None
+    LINUX_PYPROJECT_TOML_OR_ROOT_FOUND = None
+    LINUX_UV_SYNC_COMPLETE = None
+    LINUX_VENV_SETUP = None
+    LINUX_VENV_PYTHON_NOT_FOUND = None
+    LINUX_VENV_PYTHON_FOUND = None
+    LINUX_PACKAGE_INSTALLING = None
+    LINUX_PACKAGE_INSTALL_COMPLETE = None
+    LINUX_PACKAGE_INSTALL_FAILED = None
+    
+    # Windows system messages
+    WINDOWS_PERMISSION_PROBLEM_DETECTED = None
+    WINDOWS_PERMISSION_CHECK_ERROR = None
+    WINDOWS_REGISTRY_SETUP_SUCCESS = None
+    WINDOWS_REGISTRY_SETUP_FAILED = None
+    WINDOWS_REGISTRY_SETUP_SUCCESS = None
+    WINDOWS_REGISTRY_SETUP_FAILED = None
     _localized_texts = {
         "PAUSE": {"kr": "잠시 멈춤", "en": "Pause"},
         "ARCHIVE_CREATED": {"kr": "압축 파일 생성 완료", "en": "Archive created"},
@@ -335,10 +853,10 @@ class PkMessages2025:
         "TOTAL_EXCUTION_TIME": {"kr": "프로그램 실행 시간", "en": "TOTAL EXECUTION TIME"},
         "TOTAL": {"kr": "총", "en": "TOTAL"},
         "EXECUTION": {"kr": "실행", "en": "EXECUTION"},
-        "TIME": {"kr": "시간", "en": "TIME"},
         "TIME_LEFT": {"kr": "남은 시간", "en": "TIME LEFT"},
         "test": {"kr": "테스트", "en": "Test"},
         "success": {"kr": "성공", "en": "Success"},
+        "SUCCEEDED": {"kr": "✅성공", "en": "✅SUCCEEDED"},
         "STOPPED": {"kr": "중지완료", "en": "STOPPED"},
         "STATE": {"kr": "상태", "en": "STATE"},
         "STARTED": {"kr": "시작", "en": "STARTED"},
@@ -372,7 +890,6 @@ class PkMessages2025:
         "I_WANT_TO_DO_NEXT_TIME": {"kr": "다음에 할게", "en": "I'll do it next time"},
         "GUIDED": {"kr": "가이드", "en": "GUIDED"},
         "fail": {"kr": "실패", "en": "Fail"},
-        "ERROR": {"kr": "에러", "en": "ERROR"},
         "ERROR_MASSAGE": {"kr": "에러 메시지", "en": "ERROR MASSAGE"},
         "MASSAGE": {"kr": "메시지", "en": "MASSAGE"},
         "DUPLICATE_FUNCTION": {"kr": "중복 함수 이름", "en": "DUPLICATE FUNCTION"},
@@ -512,10 +1029,9 @@ class PkMessages2025:
         "ERROR_PATTERN_DETECTION_TEST": {"kr": "오류 패턴 감지 테스트", "en": "Error pattern detection test"},
         "MODULE_NOT_FOUND": {"kr": "모듈을 찾을 수 없습니다", "en": "module not found"},
         "INSTALL_FAILED": {"kr": "설치 실패", "en": "Failed to install"},
-        # Jarvis 관련 메시지들
+        "COMMANDS": {"kr": "명령어", "en": "Commands"},
         "START": {"kr": "Jarvis 시작", "en": "Jarvis Start"},
         "START_TEST": {"kr": "Jarvis 시작 테스트", "en": "Jarvis Start Test"},
-        "COMMANDS": {"kr": "Jarvis 명령어", "en": "Jarvis Commands"},
         "HELLO": {"kr": "안녕", "en": "Hello"},
         "TIME": {"kr": "시간", "en": "Time"},
         "DATE": {"kr": "날짜", "en": "Date"},
@@ -565,9 +1081,6 @@ class PkMessages2025:
         "VERSION": {"kr": "버전", "en": "Version"},
         "TEST": {"kr": "테스트", "en": "Test"},
         "ERROR": {"kr": "오류", "en": "Error"},
-        "EXCEPTION_OCCURRED": {"kr": "예외 발생", "en": "Exception occurred"},
-        "TEST_FAILED": {"kr": "테스트 실패", "en": "Test failed"},
-        "TEST_SUCCESS": {"kr": "테스트 성공", "en": "Test success"},
         "CURRENT_TIME": {"kr": "현재 시간은", "en": "Current time is"},
         "AGE_RESTRICTED": {"kr": "나이 제한", "en": "Age restricted"},
         "FORMAT_UNAVAILABLE": {"kr": "형식 불가", "en": "Format unavailable"},
@@ -645,6 +1158,397 @@ class PkMessages2025:
         "API_ERROR": {"kr": "API 오류", "en": "API error"},
         "REQUEST_FAILED": {"kr": "요청 실패", "en": "Request failed"},
         "TTS_GENERATION_FAILED": {"kr": "TTS 생성 실패", "en": "TTS generation failed"},
+        # Deprecation related messages
+        "DEPRECATED_FUNCTION": {"kr": "더 이상 사용되지 않는 함수", "en": "Deprecated function"},
+        "USE_INSTEAD": {"kr": "대신 사용하세요", "en": "Use instead"},
+        # Weekday related messages
+        "MONDAY": {"kr": "월요일", "en": "monday"},
+        "TUESDAY": {"kr": "화요일", "en": "tuesday"},
+        "WEDNESDAY": {"kr": "수요일", "en": "wednesday"},
+        "THURSDAY": {"kr": "목요일", "en": "thursday"},
+        "FRIDAY": {"kr": "금요일", "en": "friday"},
+        "SATURDAY": {"kr": "토요일", "en": "saturday"},
+        "SUNDAY": {"kr": "일요일", "en": "sunday"},
+        # Log cleanup related messages
+        "LOG_CLEANUP_START": {"kr": "로그 정리 시작", "en": "Log cleanup start"},
+        "LOG_CLEANUP_COMPLETE": {"kr": "로그 정리 완료", "en": "Log cleanup complete"},
+        "OLD_LOG_FILE_DELETED": {"kr": "오래된 로그 파일 삭제", "en": "Old log file deleted"},
+        "LOG_FILE_DELETE_FAILED": {"kr": "로그 파일 삭제 실패", "en": "Log file delete failed"},
+        "NO_OLD_FILES_TO_DELETE": {"kr": "삭제할 오래된 파일 없음", "en": "No old files to delete"},
+        "FILES_DELETED": {"kr": "개 파일 삭제", "en": "files deleted"},
+        "FILES_KEPT": {"kr": "개 파일 보관", "en": "files kept"},
+        "LOG_CLEANUP_ERROR": {"kr": "로그 정리 중 오류 발생", "en": "Error occurred during log cleanup"},
+        "WARNING": {"kr": "⚠️주의", "en": "⚠️WARNING"},
+        "INTERACTIVE": {"kr": "상호작용", "en": "INTERACTIVE"},
+        # System setup and installation messages
+        "SYSTEM_SETUP_START": {"kr": "시스템 설정 시작", "en": "System setup start"},
+        "UV_INSTALLATION": {"kr": "UV 설치", "en": "UV installation"},
+        "FZF_INSTALLATION": {"kr": "FZF 설치", "en": "FZF installation"},
+        "PATH_SETUP": {"kr": "PATH 설정", "en": "PATH setup"},
+        "ALIAS_SETUP": {"kr": "별칭 설정", "en": "Alias setup"},
+        "PACKAGE_SYNC": {"kr": "패키지 동기화", "en": "Package sync"},
+        "VENV_SETUP": {"kr": "가상환경 설정", "en": "Virtual environment setup"},
+        "INSTALLATION_SUCCESS": {"kr": "설치 완료", "en": "Installation success"},
+        "INSTALLATION_FAILED": {"kr": "설치 실패", "en": "Installation failed"},
+        "PERMISSION_ERROR": {"kr": "권한 오류", "en": "Permission error"},
+        "BACKUP_CREATED": {"kr": "백업 생성됨", "en": "Backup created"},
+        "BACKUP_FAILED": {"kr": "백업 실패", "en": "Backup failed"},
+        "FILE_NOT_FOUND": {"kr": "파일을 찾을 수 없음", "en": "File not found"},
+        "DIRECTORY_CREATED": {"kr": "디렉토리 생성됨", "en": "Directory created"},
+        "DIRECTORY_CREATION_FAILED": {"kr": "디렉토리 생성 실패", "en": "Directory creation failed"},
+        "FILE_COPY_SUCCESS": {"kr": "파일 복사 성공", "en": "File copy success"},
+        "FILE_COPY_FAILED": {"kr": "파일 복사 실패", "en": "File copy failed"},
+        "ALTERNATIVE_INSTALLATION": {"kr": "대안 설치", "en": "Alternative installation"},
+        "TEMP_CLEANUP_FAILED": {"kr": "임시 파일 정리 실패", "en": "Temporary cleanup failed"},
+        "REGISTRY_SETUP_SUCCESS": {"kr": "레지스트리 설정 완료", "en": "Registry setup success"},
+        "REGISTRY_SETUP_FAILED": {"kr": "레지스트리 설정 실패", "en": "Registry setup failed"},
+        "WINDOWS_REGISTRY_SETUP_SUCCESS": {"kr": "Windows 레지스트리 설정 완료", "en": "Windows registry setup success"},
+        "WINDOWS_REGISTRY_SETUP_FAILED": {"kr": "Windows 레지스트리 설정 실패", "en": "Windows registry setup failed"},
+        "VENV_PYTHON_NOT_FOUND": {"kr": "가상환경 Python을 찾을 수 없음", "en": "Virtual environment Python not found"},
+        "VENV_PYTHON_FOUND": {"kr": "가상환경 Python 사용", "en": "Virtual environment Python found"},
+        "PACKAGE_INSTALLING": {"kr": "설치 중", "en": "Installing"},
+        "PACKAGE_INSTALL_SUCCESS": {"kr": "설치 완료", "en": "Package install success"},
+        "PACKAGE_INSTALL_FAILED": {"kr": "설치 실패", "en": "Package install failed"},
+        "PACKAGE_INSTALL_ERROR": {"kr": "설치 오류", "en": "Package install error"},
+        "VENV_PACKAGE_INSTALL_COMPLETE": {"kr": "가상환경 패키지 설치 완료", "en": "Virtual environment package install complete"},
+        "VENV_PYTHON_TEST": {"kr": "가상환경 Python 테스트", "en": "Virtual environment Python test"},
+        "VENV_PYTHON_VERSION": {"kr": "가상환경 Python 버전", "en": "Virtual environment Python version"},
+        "VENV_MODULE_TEST": {"kr": "모듈 사용 가능", "en": "Module test"},
+        "VENV_TEST_SUCCESS": {"kr": "테스트 성공", "en": "Test success"},
+        "VENV_TEST_FAILED": {"kr": "테스트 실패", "en": "Test failed"},
+        "ALL_STEPS_COMPLETED": {"kr": "모든 단계 완료", "en": "All steps completed"},
+        "EXECUTION_TIME": {"kr": "실행 시간", "en": "Execution time"},
+        "TOTAL_EXECUTION_TIME": {"kr": "총 실행 시간", "en": "Total execution time"},
+        # Process and operation messages
+        "PROCESS_START": {"kr": "프로세스 시작", "en": "Process start"},
+        "PROCESS_COMPLETE": {"kr": "프로세스 완료", "en": "Process complete"},
+        "PROCESS_FAILED": {"kr": "프로세스 실패", "en": "Process failed"},
+        "OPERATION_IN_PROGRESS": {"kr": "작업 진행 중", "en": "Operation in progress"},
+        "OPERATION_SUCCESS": {"kr": "작업 성공", "en": "Operation success"},
+        "OPERATION_FAILED": {"kr": "작업 실패", "en": "Operation failed"},
+        # Status messages
+        "STATUS_CHECKING": {"kr": "상태 확인 중", "en": "Status checking"},
+        "STATUS_VERIFIED": {"kr": "상태 확인됨", "en": "Status verified"},
+        "STATUS_FAILED": {"kr": "상태 실패", "en": "Status failed"},
+        "STATUS_SKIPPED": {"kr": "상태 건너뜀", "en": "Status skipped"},
+        "STATUS_WARNING": {"kr": "상태 경고", "en": "Status warning"},
+        "STATUS_ERROR": {"kr": "상태 오류", "en": "Status error"},
+        "STATUS_SUCCESS": {"kr": "상태 성공", "en": "Status success"},
+        "STATUS_INFO": {"kr": "상태 정보", "en": "Status info"},
+        # Step messages
+        "STEP_1": {"kr": "1단계", "en": "Step 1"},
+        "STEP_2": {"kr": "2단계", "en": "Step 2"},
+        "STEP_3": {"kr": "3단계", "en": "Step 3"},
+        "STEP_4": {"kr": "4단계", "en": "Step 4"},
+        "STEP_5": {"kr": "5단계", "en": "Step 5"},
+        "STEP_6": {"kr": "6단계", "en": "Step 6"},
+        "STEP_COMPLETE": {"kr": "단계 완료", "en": "Step complete"},
+        "STEP_FAILED": {"kr": "단계 실패", "en": "Step failed"},
+        # Try guide messages
+        "TRY_GUIDE": {"kr": "시도 가이드", "en": "Try guide"},
+        "ACTIVATE_VENV": {"kr": "가상환경 활성화", "en": "Activate virtual environment"},
+        "DEACTIVATE_VENV": {"kr": "가상환경 비활성화", "en": "Deactivate virtual environment"},
+        "COMMAND_EXECUTION": {"kr": "명령 실행", "en": "Command execution"},
+        # File conversion messages
+        "CONVERSION_COMPLETE": {"kr": "변환 완료", "en": "Conversion complete"},
+        "CONVERSION_FAILED": {"kr": "변환 실패", "en": "Conversion failed"},
+        "CONVERSION_WORK_COMPLETE": {"kr": "변환 작업 완료", "en": "Conversion work complete"},
+        # Debug messages
+        "DEBUG_INFO": {"kr": "디버그 정보", "en": "Debug info"},
+        "DEBUG_METADATA": {"kr": "디버그 메타데이터", "en": "Debug metadata"},
+        "DEBUG_OUTPUT": {"kr": "디버그 출력", "en": "Debug output"},
+        "DEBUG_SEARCH": {"kr": "디버그 검색", "en": "Debug search"},
+        "DEBUG_NORMALIZED": {"kr": "디버그 정규화", "en": "Debug normalized"},
+        "DEBUG_CALL": {"kr": "디버그 호출", "en": "Debug call"},
+        "DEBUG_FILE": {"kr": "디버그 파일", "en": "Debug file"},
+        "DEBUG_ID": {"kr": "디버그 ID", "en": "Debug ID"},
+        # Performance and optimization messages
+        "PERFORMANCE_OPTIMIZATION_TEST_START": {"kr": "성능 최적화 테스트 시작", "en": "Performance optimization test start"},
+        "PERFORMANCE_OPTIMIZATION_TEST_SUCCESS": {"kr": "성능 최적화 테스트 성공", "en": "Performance optimization test success"},
+        "PERFORMANCE_OPTIMIZATION_TEST_FAILED": {"kr": "성능 최적화 테스트 실패", "en": "Performance optimization test failed"},
+        "PERFORMANCE_OPTIMIZATION_TEST_ERROR": {"kr": "성능 최적화 테스트 오류", "en": "Performance optimization test error"},
+        "TOTAL_EXECUTION_TIME_SECONDS": {"kr": "총 실행 시간", "en": "Total execution time"},
+        "UV_VS_PYTHON_PERFORMANCE_COMPARISON": {"kr": "uv vs python 성능 비교", "en": "uv vs python performance comparison"},
+        "TEST_DESCRIPTION": {"kr": "테스트", "en": "Test"},
+        "COMMAND_EXECUTION": {"kr": "명령어", "en": "Command"},
+        "SUCCESS_TIME": {"kr": "성공", "en": "Success"},
+        "FAILURE_STDERR": {"kr": "실패", "en": "Failure"},
+        "TIMEOUT_5_SECONDS": {"kr": "타임아웃: 5초 초과", "en": "Timeout: 5 seconds exceeded"},
+        "ERROR_OCCURRED": {"kr": "오류", "en": "Error occurred"},
+        "PERFORMANCE_COMPARISON_RESULTS": {"kr": "성능 비교 결과", "en": "Performance comparison results"},
+        "ALL_TESTS_COMPLETE": {"kr": "모든 테스트 완료", "en": "All tests complete"},
+        # TTS and audio test messages
+        "TTS_SPEED_IMPROVEMENT_TEST": {"kr": "TTS 속도 개선 테스트", "en": "TTS speed improvement test"},
+        "BASIC_TTS_SPEED_TEST": {"kr": "기본 TTS 속도 테스트", "en": "Basic TTS speed test"},
+        "TEST_TEXT": {"kr": "테스트 텍스트", "en": "Test text"},
+        "BASIC_TTS_SPEED_TEST_COMPLETE": {"kr": "기본 TTS 속도 테스트 완료", "en": "Basic TTS speed test complete"},
+        "BASIC_TTS_SPEED_TEST_FAILED": {"kr": "기본 TTS 속도 테스트 실패", "en": "Basic TTS speed test failed"},
+        "HIGH_SPEED_TTS_TEST": {"kr": "고속 TTS 테스트", "en": "High speed TTS test"},
+        "HIGH_SPEED_TTS_TEST_COMPLETE": {"kr": "고속 TTS 테스트 완료", "en": "High speed TTS test complete"},
+        "HIGH_SPEED_TTS_TEST_FAILED": {"kr": "고속 TTS 테스트 실패", "en": "High speed TTS test failed"},
+        "TTS_SPEED_TEST_COMPLETE": {"kr": "TTS 속도 테스트 완료", "en": "TTS speed test complete"},
+        "HIGH_SPEED_AUDIO_PLAYBACK_START": {"kr": "고속 오디오 재생 시작", "en": "High speed audio playback start"},
+        "SPEED_ADJUSTMENT": {"kr": "속도 조절", "en": "Speed adjustment"},
+        "AUDIO_NORMALIZATION_COMPLETE": {"kr": "오디오 정규화 완료", "en": "Audio normalization complete"},
+        "HIGH_SPEED_PLAYBACK_COMPLETE": {"kr": "고속 재생 완료", "en": "High speed playback complete"},
+        "HIGH_SPEED_PLAYBACK_FAILED": {"kr": "고속 재생 실패", "en": "High speed playback failed"},
+        "VOLUME_AND_AUDIO_STATUS_CHECK": {"kr": "볼륨 및 오디오 상태 확인", "en": "Volume and audio status check"},
+        "WINDOWS_SYSTEM_SOUND_TEST": {"kr": "Windows 시스템 사운드 테스트", "en": "Windows system sound test"},
+        "SYSTEM_SOUND_PLAYED": {"kr": "시스템 사운드 재생됨", "en": "System sound played"},
+        "SYSTEM_SOUND_FAILED": {"kr": "시스템 사운드 실패", "en": "System sound failed"},
+        "SIMPLE_BEEP_TEST": {"kr": "간단한 비프음 테스트", "en": "Simple beep test"},
+        "BEEP_PLAYED": {"kr": "비프음 재생됨", "en": "Beep played"},
+        "BEEP_FAILED": {"kr": "비프음 실패", "en": "Beep failed"},
+        "EXISTING_WAV_FILE_PLAYBACK": {"kr": "기존 WAV 파일 재생", "en": "Existing WAV file playback"},
+        "WAV_FILE_PLAYED": {"kr": "WAV 파일 재생됨", "en": "WAV file played"},
+        "WAV_FILE_PLAYBACK_FAILED": {"kr": "WAV 파일 재생 실패", "en": "WAV file playback failed"},
+        "NO_WAV_FILE_TO_PLAY": {"kr": "재생할 WAV 파일이 없음", "en": "No WAV file to play"},
+        "VOLUME_BOOST_TEST": {"kr": "볼륨 부스트 테스트", "en": "Volume boost test"},
+        "ORIGINAL_AUDIO_LENGTH": {"kr": "원본 오디오 길이", "en": "Original audio length"},
+        "VOLUME_BOOST_APPLIED": {"kr": "볼륨 부스트 적용됨", "en": "Volume boost applied"},
+        "TEMP_FILE_SAVED": {"kr": "임시 파일 저장", "en": "Temporary file saved"},
+        "VOLUME_BOOST_PLAYBACK_COMPLETE": {"kr": "볼륨 부스트 재생 완료", "en": "Volume boost playback complete"},
+        "TEMP_FILE_DELETED": {"kr": "임시 파일 삭제됨", "en": "Temporary file deleted"},
+        "VOLUME_BOOST_TEST_FAILED": {"kr": "볼륨 부스트 테스트 실패", "en": "Volume boost test failed"},
+        "DID_YOU_HEAR_SOUND": {"kr": "위의 테스트에서 소리가 들렸나요?", "en": "Did you hear sound in the above tests?"},
+        "SYSTEM_SOUND_HEARD": {"kr": "시스템 사운드: 들림/안들림", "en": "System sound: heard/not heard"},
+        "BEEP_HEARD": {"kr": "비프음: 들림/안들림", "en": "Beep: heard/not heard"},
+        "WAV_FILE_HEARD": {"kr": "WAV 파일: 들림/안들림", "en": "WAV file: heard/not heard"},
+        "VOLUME_BOOST_HEARD": {"kr": "볼륨 부스트: 들림/안들림", "en": "Volume boost: heard/not heard"},
+        # TTS final check messages
+        "FINAL_TTS_CHECK": {"kr": "최종 TTS 확인", "en": "Final TTS check"},
+        "TTS_SETTINGS": {"kr": "설정", "en": "Settings"},
+        "TTS_SPEED": {"kr": "속도", "en": "Speed"},
+        "TTS_VOLUME": {"kr": "볼륨", "en": "Volume"},
+        "TTS_PRIORITY": {"kr": "우선순위", "en": "Priority"},
+        "TTS_TEST": {"kr": "테스트", "en": "Test"},
+        "FINAL_CHECK_COMPLETE": {"kr": "최종 확인 완료", "en": "Final check complete"},
+        "TTS_WORKING_NORMALLY": {"kr": "TTS가 정상 작동합니다", "en": "TTS is working normally"},
+        # TTS final settings messages
+        "FINAL_SETTINGS_APPLIED_TEST": {"kr": "최종 설정이 적용된 테스트", "en": "Final settings applied test"},
+        "TEST_SUCCESS": {"kr": "테스트 성공", "en": "Test success"},
+        "TEST_FAILED": {"kr": "테스트 실패", "en": "Test failed"},
+        "VARIOUS_TEXT_TEST": {"kr": "다양한 텍스트 테스트", "en": "Various text test"},
+        "TEST_CASE": {"kr": "케이스", "en": "Case"},
+        "CASE_SUCCESS": {"kr": "케이스 성공", "en": "Case success"},
+        "CASE_FAILED": {"kr": "케이스 실패", "en": "Case failed"},
+        "FINAL_SETTINGS_TEST_START": {"kr": "최종 설정 테스트 시작", "en": "Final settings test start"},
+        "CURRENT_SETTINGS": {"kr": "현재 설정", "en": "Current settings"},
+        "ENGINE_SETTING": {"kr": "엔진", "en": "Engine"},
+        "SPEED_SETTING": {"kr": "속도", "en": "Speed"},
+        "VOLUME_SETTING": {"kr": "볼륨", "en": "Volume"},
+        "OUTPUT_SETTING": {"kr": "출력", "en": "Output"},
+        "FINAL_SETTINGS_TEST_COMPLETE": {"kr": "최종 설정 테스트 완료", "en": "Final settings test complete"},
+        "CHECK_ALL_TESTS_HEARD": {"kr": "모든 테스트가 정상적으로 들렸는지 확인해주세요", "en": "Please check if all tests were heard normally"},
+        # TTS headphone debug messages
+        "AUDIO_DEVICE_CHECK": {"kr": "오디오 장치 확인", "en": "Audio device check"},
+        "AUDIO_DEVICES": {"kr": "오디오 장치", "en": "Audio devices"},
+        "AUDIO_DEVICE_CHECK_FAILED": {"kr": "오디오 장치 확인 실패", "en": "Audio device check failed"},
+        "ERROR_OCCURRED": {"kr": "오류 발생", "en": "Error occurred"},
+        "SAPI_DIRECT_TEST": {"kr": "SAPI 직접 테스트", "en": "SAPI direct test"},
+        "SAPI_TEST": {"kr": "SAPI 테스트", "en": "SAPI test"},
+        "SAPI_TEST_SUCCESS": {"kr": "SAPI 테스트 성공", "en": "SAPI test success"},
+        "SAPI_TEST_FAILED": {"kr": "SAPI 테스트 실패", "en": "SAPI test failed"},
+        "SAPI_TEST_ERROR": {"kr": "SAPI 테스트 오류", "en": "SAPI test error"},
+        "PYTTSX3_DIRECT_TEST": {"kr": "pyttsx3 직접 테스트", "en": "pyttsx3 direct test"},
+        "PYTTSX3_DIRECT_TEST_COMPLETE": {"kr": "pyttsx3 직접 테스트 완료", "en": "pyttsx3 direct test complete"},
+        "PYTTSX3_FAILED": {"kr": "pyttsx3 실패", "en": "pyttsx3 failed"},
+        "HYBRID_TTS_TEST": {"kr": "하이브리드 TTS 테스트", "en": "Hybrid TTS test"},
+        "HYBRID_TTS_TEST_COMPLETE": {"kr": "하이브리드 TTS 테스트 완료", "en": "Hybrid TTS test complete"},
+        "HYBRID_TTS_FAILED": {"kr": "하이브리드 TTS 실패", "en": "Hybrid TTS failed"},
+        "OPENING_WINDOWS_SOUND_SETTINGS": {"kr": "Windows 소리 설정을 열어드립니다", "en": "Opening Windows sound settings"},
+        "WINDOWS_SOUND_SETTINGS_OPENED": {"kr": "Windows 소리 설정이 열렸습니다", "en": "Windows sound settings opened"},
+        "FOLLOW_THESE_STEPS": {"kr": "다음 단계를 따라해주세요", "en": "Please follow these steps"},
+        "SELECT_HEADPHONES": {"kr": "헤드폰 선택", "en": "Select headphones"},
+        "SET_AS_DEFAULT_DEVICE": {"kr": "기본 장치로 설정", "en": "Set as default device"},
+        "SET_AS_DEFAULT_COMMUNICATION_DEVICE": {"kr": "기본 통신 장치로 설정", "en": "Set as default communication device"},
+        "SET_VOLUME_TO_100": {"kr": "볼륨을 100%로 설정", "en": "Set volume to 100%"},
+        "DISABLE_OTHER_DEVICES": {"kr": "다른 장치들 비활성화", "en": "Disable other devices"},
+        "SOUND_SETTINGS_OPEN_FAILED": {"kr": "소리 설정 열기 실패", "en": "Sound settings open failed"},
+        "HEADPHONE_DEBUGGING_START": {"kr": "헤드폰 디버깅 시작", "en": "Headphone debugging start"},
+        "HEADPHONE_DEBUGGING_COMPLETE": {"kr": "헤드폰 디버깅 완료", "en": "Headphone debugging complete"},
+        "WHICH_TEST_HEARD_SOUND": {"kr": "어떤 테스트에서 소리가 들렸는지 알려주세요", "en": "Please tell me which test you heard sound"},
+        # TTS quick check messages
+        "QUICK_SAPI_TEST": {"kr": "빠른 SAPI 테스트", "en": "Quick SAPI test"},
+        "SAPI_SUCCESS": {"kr": "SAPI 성공", "en": "SAPI success"},
+        "SAPI_FAILED": {"kr": "SAPI 실패", "en": "SAPI failed"},
+        "SAPI_ERROR": {"kr": "SAPI 오류", "en": "SAPI error"},
+        "QUICK_HYBRID_TEST": {"kr": "빠른 하이브리드 테스트", "en": "Quick hybrid test"},
+        "HYBRID_TEST_FAILED": {"kr": "하이브리드 테스트 실패", "en": "Hybrid test failed"},
+        # TTS SAPI speed messages
+        "SAPI_SPEED_1_5_TEST": {"kr": "SAPI 속도 1.5 테스트", "en": "SAPI speed 1.5 test"},
+        "SAPI_SPEED_1_5_TEST_SUCCESS": {"kr": "SAPI 속도 1.5 테스트 성공", "en": "SAPI speed 1.5 test success"},
+        "SAPI_SPEED_1_5_TEST_FAILED": {"kr": "SAPI 속도 1.5 테스트 실패", "en": "SAPI speed 1.5 test failed"},
+        "SAPI_SPEED_1_5_TEST_ERROR": {"kr": "SAPI 속도 1.5 테스트 오류", "en": "SAPI speed 1.5 test error"},
+        "SAPI_SPEED_1_5_TEST_COMPLETE": {"kr": "SAPI 속도 1.5 테스트 완료", "en": "SAPI speed 1.5 test complete"},
+        "SAPI_SPEED_1_0_TEST": {"kr": "SAPI 속도 1.0 테스트", "en": "SAPI speed 1.0 test"},
+        "SAPI_SPEED_1_0_TEST_SUCCESS": {"kr": "SAPI 속도 1.0 테스트 성공", "en": "SAPI speed 1.0 test success"},
+        "SAPI_SPEED_1_0_TEST_FAILED": {"kr": "SAPI 속도 1.0 테스트 실패", "en": "SAPI speed 1.0 test failed"},
+        "SAPI_SPEED_1_0_TEST_ERROR": {"kr": "SAPI 속도 1.0 테스트 오류", "en": "SAPI speed 1.0 test error"},
+        "SAPI_SPEED_1_0_TEST_COMPLETE": {"kr": "SAPI 속도 1.0 테스트 완료", "en": "SAPI speed 1.0 test complete"},
+        "SAPI_SPEED_COMPARISON_TEST": {"kr": "SAPI 속도 비교 테스트", "en": "SAPI speed comparison test"},
+        "SPEED_TEST": {"kr": "속도 테스트", "en": "Speed test"},
+        "SPEED_SUCCESS": {"kr": "속도 성공", "en": "Speed success"},
+        "SPEED_FAILED": {"kr": "속도 실패", "en": "Speed failed"},
+        "SPEED_ERROR": {"kr": "속도 오류", "en": "Speed error"},
+        "SAPI_SPEED_TEST_START": {"kr": "SAPI 속도 테스트 시작", "en": "SAPI speed test start"},
+        "SAPI_SPEED_TEST_COMPLETE": {"kr": "SAPI 속도 테스트 완료", "en": "SAPI speed test complete"},
+        "CHECK_WHICH_SPEED_BEST": {"kr": "어떤 속도가 가장 적당한지 확인해주세요", "en": "Please check which speed is best"},
+        # TTS voice change messages
+        "AVAILABLE_SAPI_VOICES": {"kr": "사용 가능한 SAPI 음성 목록", "en": "Available SAPI voices"},
+        "AVAILABLE_VOICES": {"kr": "사용 가능한 음성", "en": "Available voices"},
+        "VOICE_LIST_GET_FAILED": {"kr": "음성 목록 가져오기 실패", "en": "Voice list get failed"},
+        "VARIOUS_VOICE_TEST": {"kr": "다양한 음성 테스트", "en": "Various voice test"},
+        "VOICE_TEST": {"kr": "음성 테스트", "en": "Voice test"},
+        "VOICE_SUCCESS": {"kr": "음성 성공", "en": "Voice success"},
+        "VOICE_FAILED": {"kr": "음성 실패", "en": "Voice failed"},
+        "VOICE_ERROR": {"kr": "음성 오류", "en": "Voice error"},
+        "SET_VOLUME_SPEED_VOICE_TEST": {"kr": "설정된 볼륨/속도로 음성 테스트", "en": "Voice test with set volume/speed"},
+        "SET_VOLUME_SPEED_TEST": {"kr": "설정된 볼륨/속도 테스트", "en": "Set volume/speed test"},
+        "SET_VOLUME_SPEED_SUCCESS": {"kr": "설정된 볼륨/속도 성공", "en": "Set volume/speed success"},
+        "SET_VOLUME_SPEED_FAILED": {"kr": "설정된 볼륨/속도 실패", "en": "Set volume/speed failed"},
+        "SET_VOLUME_SPEED_ERROR": {"kr": "설정된 볼륨/속도 오류", "en": "Set volume/speed error"},
+        "VOICE_CHANGE_TEST_START": {"kr": "목소리 변경 테스트 시작", "en": "Voice change test start"},
+        "VOICE_CHANGE_TEST_COMPLETE": {"kr": "목소리 변경 테스트 완료", "en": "Voice change test complete"},
+        "WHICH_VOICE_BEST": {"kr": "어떤 음성이 가장 마음에 드시는지 알려주세요", "en": "Please tell me which voice you like best"},
+        # WAV playback messages
+        "WAV_FILE_PLAYBACK_TEST": {"kr": "WAV 파일 재생 테스트", "en": "WAV file playback test"},
+        "WAV_TEST": {"kr": "WAV 테스트", "en": "WAV test"},
+        "WAV_TEST_COMPLETE": {"kr": "WAV 테스트 완료", "en": "WAV test complete"},
+        "WAV_TEST_FAILED": {"kr": "WAV 테스트 실패", "en": "WAV test failed"},
+        "WAV_TEST_COMPLETE_FINAL": {"kr": "테스트 완료", "en": "Test complete"},
+        # Wrapper import messages
+        "TESTING_WRAPPER_IMPORT": {"kr": "래퍼 import 테스트", "en": "Testing wrapper import"},
+        "WRAPPER_IMPORT_SUCCESS": {"kr": "래퍼 import 성공", "en": "Wrapper import success"},
+        "WRAPPER_IMPORT_FAILED": {"kr": "래퍼 import 실패", "en": "Wrapper import failed"},
+        # Comprehensive TTS test messages
+        "COMPREHENSIVE_TTS_TEST": {"kr": "종합 TTS 테스트", "en": "Comprehensive TTS test"},
+        "BASIC_TTS_METHODS_TEST": {"kr": "기본 TTS 방법들 테스트", "en": "Basic TTS methods test"},
+        "BASIC_ENSURE_SPOKEN": {"kr": "기본 ensure_spoken", "en": "Basic ensure_spoken"},
+        "HYBRID_TTS_DIRECT_CALL": {"kr": "하이브리드 TTS 직접 호출", "en": "Hybrid TTS direct call"},
+        "VOLUME_SETTINGS_TEST": {"kr": "볼륨 설정 테스트", "en": "Volume settings test"},
+        "VOLUME_SETTING_TEST": {"kr": "볼륨 설정 테스트", "en": "Volume setting test"},
+        "SPEED_SETTINGS_TEST": {"kr": "속도 설정 테스트", "en": "Speed settings test"},
+        "SPEED_SETTING_TEST": {"kr": "속도 설정 테스트", "en": "Speed setting test"},
+        "HYBRID_TTS_COMPONENTS_TEST": {"kr": "하이브리드 TTS 구성 요소 테스트", "en": "Hybrid TTS components test"},
+        "PYTTSX3_TEST": {"kr": "pyttsx3 테스트", "en": "pyttsx3 test"},
+        "PYTTSX3_SUCCESS": {"kr": "pyttsx3 성공", "en": "pyttsx3 success"},
+        "PYTTSX3_FAILED": {"kr": "pyttsx3 실패", "en": "pyttsx3 failed"},
+        "WINDOWS_SAPI_TEST": {"kr": "Windows SAPI 테스트", "en": "Windows SAPI test"},
+        "WINDOWS_SAPI_SUCCESS": {"kr": "Windows SAPI 성공", "en": "Windows SAPI success"},
+        "WINDOWS_SAPI_FAILED": {"kr": "Windows SAPI 실패", "en": "Windows SAPI failed"},
+        "GTTS_TEST": {"kr": "gTTS 테스트", "en": "gTTS test"},
+        "GTTS_SUCCESS": {"kr": "gTTS 성공", "en": "gTTS success"},
+        "GTTS_FAILED": {"kr": "gTTS 실패", "en": "gTTS failed"},
+        "VOICE_SETTINGS_TEST": {"kr": "음성 설정 테스트", "en": "Voice settings test"},
+        "BASIC_VOICE_SETTING": {"kr": "기본 음성 설정", "en": "Basic voice setting"},
+        "FAST_VOICE_SETTING": {"kr": "빠른 음성 설정", "en": "Fast voice setting"},
+        "QUIET_VOICE_SETTING": {"kr": "조용한 음성 설정", "en": "Quiet voice setting"},
+        "BLUETOOTH_HEADPHONE_SPECIALIZED_TEST": {"kr": "블루투스 헤드폰 특화 테스트", "en": "Bluetooth headphone specialized test"},
+        # Register fix messages
+        "SUCCESSFULLY_IMPORTED": {"kr": "성공적으로 import됨", "en": "Successfully imported"},
+        "CALLING_FUNCTION": {"kr": "함수 호출 중", "en": "Calling function"},
+        "FUNCTION_COMPLETED": {"kr": "함수 완료", "en": "Function completed"},
+        "ERROR_OCCURRED": {"kr": "오류 발생", "en": "Error occurred"},
+        # Final Bluetooth test messages
+        "HEADPHONE_10_PERCENT_VOLUME_TTS_FINAL_TEST": {"kr": "헤드폰에서 10% 볼륨 TTS 최종 테스트", "en": "Headphone 10% volume TTS final test"},
+        "VOICE_SETTINGS": {"kr": "음성 설정", "en": "Voice settings"},
+        "VOICE_SPEED": {"kr": "속도", "en": "Speed"},
+        "VOICE_VOLUME": {"kr": "볼륨", "en": "Volume"},
+        "VOICE_LANGUAGE": {"kr": "언어", "en": "Language"},
+        "VOICE_TEST_FINAL": {"kr": "테스트", "en": "Test"},
+        "HEADPHONE_TTS_FINAL_TEST_COMPLETE": {"kr": "헤드폰 TTS 최종 테스트 완료", "en": "Headphone TTS final test complete"},
+        "HEADPHONE_SOUND_HEARD_NORMAL": {"kr": "헤드폰에서 소리가 들렸다면 정상 작동입니다", "en": "If you heard sound from headphones, it's working normally"},
+        "QUICK_VOLUME_CHECK": {"kr": "빠른 볼륨 체크", "en": "Quick volume check"},
+        "VOLUME_TEST": {"kr": "볼륨 테스트", "en": "Volume test"},
+        "VOLUME_TEST_TEXT": {"kr": "테스트", "en": "Test"},
+        "HEADPHONE_TTS_FINAL_CONFIRMATION": {"kr": "헤드폰 TTS 최종 확인", "en": "Headphone TTS final confirmation"},
+        "SETTINGS_COMPLETE": {"kr": "설정 완료", "en": "Settings complete"},
+        "VOLUME_SETTING": {"kr": "볼륨", "en": "Volume"},
+        "SPEED_SETTING": {"kr": "속도", "en": "Speed"},
+        "LANGUAGE_SETTING": {"kr": "언어", "en": "Language"},
+        "OUTPUT_SETTING": {"kr": "출력", "en": "Output"},
+        # Additional system messages
+        "SYSTEM_START_SUCCESS": {"kr": "시스템 시작 성공", "en": "System start success"},
+        "SYSTEM_START_FAILED": {"kr": "시스템 시작 실패", "en": "System start failed"},
+        "SYSTEM_START_ERROR": {"kr": "시스템 시작 오류", "en": "System start error"},
+        "OPTIMIZED_FUNCTION_LOADED": {"kr": "최적화된 함수 로드 완료", "en": "Optimized function loaded"},
+        "TOTAL_EXECUTION_TIME_SECONDS_ALT": {"kr": "총 실행 시간", "en": "Total execution time"},
+        "PERFORMANCE_OPTIMIZATION_TEST_START_ALT": {"kr": "성능 최적화 테스트 시작", "en": "Performance optimization test start"},
+        "PERFORMANCE_OPTIMIZATION_TEST_SUCCESS_ALT": {"kr": "성능 최적화 테스트 성공", "en": "Performance optimization test success"},
+        "PERFORMANCE_OPTIMIZATION_TEST_FAILED_ALT": {"kr": "성능 최적화 테스트 실패", "en": "Performance optimization test failed"},
+        "PERFORMANCE_OPTIMIZATION_TEST_ERROR_ALT": {"kr": "성능 최적화 테스트 오류", "en": "Performance optimization test error"},
+        "UV_VS_PYTHON_PERFORMANCE_COMPARISON_ALT": {"kr": "uv vs python 성능 비교", "en": "uv vs python performance comparison"},
+        "TEST_DESCRIPTION_ALT": {"kr": "테스트", "en": "Test"},
+        "COMMAND_EXECUTION_ALT": {"kr": "명령어", "en": "Command"},
+        "SUCCESS_TIME_ALT": {"kr": "성공", "en": "Success"},
+        "FAILURE_STDERR_ALT": {"kr": "실패", "en": "Failure"},
+        "TIMEOUT_5_SECONDS_ALT": {"kr": "타임아웃: 5초 초과", "en": "Timeout: 5 seconds exceeded"},
+        "ERROR_OCCURRED_ALT": {"kr": "오류", "en": "Error occurred"},
+        "PERFORMANCE_COMPARISON_RESULTS_ALT": {"kr": "성능 비교 결과", "en": "Performance comparison results"},
+        "ALL_TESTS_COMPLETE_ALT": {"kr": "모든 테스트 완료", "en": "All tests complete"},
+        "PERFORMANCE_OPTIMIZATION_TEST_ALT": {"kr": "성능 최적화 테스트", "en": "Performance optimization test"},
+        # Docker installation messages
+        "DOCKER_INSTALLATION_WSL_UBUNTU": {"kr": "WSL Ubuntu에 Docker 설치 중", "en": "Installing Docker in WSL Ubuntu"},
+        "SYSTEM_UPDATE": {"kr": "시스템 업데이트", "en": "System update"},
+        "SYSTEM_UPDATE_COMPLETE": {"kr": "시스템 업데이트 완료", "en": "System update complete"},
+        "SYSTEM_UPDATE_FAILED": {"kr": "시스템 업데이트 실패", "en": "System update failed"},
+        "REQUIRED_PACKAGES_INSTALLATION": {"kr": "필요한 패키지 설치", "en": "Required packages installation"},
+        "PACKAGE_INSTALLATION_COMPLETE": {"kr": "패키지 설치 완료", "en": "Package installation complete"},
+        "PACKAGE_INSTALLATION_FAILED": {"kr": "패키지 설치 실패", "en": "Package installation failed"},
+        "DOCKER_GPG_KEY_ADDITION": {"kr": "Docker GPG 키 추가", "en": "Docker GPG key addition"},
+        "DOCKER_GPG_KEY_ADDITION_COMPLETE": {"kr": "Docker GPG 키 추가 완료", "en": "Docker GPG key addition complete"},
+        "DOCKER_GPG_KEY_ADDITION_FAILED": {"kr": "Docker GPG 키 추가 실패", "en": "Docker GPG key addition failed"},
+        "DOCKER_REPOSITORY_ADDITION": {"kr": "Docker 저장소 추가", "en": "Docker repository addition"},
+        "DOCKER_REPOSITORY_ADDITION_COMPLETE": {"kr": "Docker 저장소 추가 완료", "en": "Docker repository addition complete"},
+        "DOCKER_REPOSITORY_ADDITION_FAILED": {"kr": "Docker 저장소 추가 실패", "en": "Docker repository addition failed"},
+        "PACKAGE_LIST_UPDATE": {"kr": "패키지 목록 업데이트", "en": "Package list update"},
+        "PACKAGE_LIST_UPDATE_COMPLETE": {"kr": "패키지 목록 업데이트 완료", "en": "Package list update complete"},
+        "PACKAGE_LIST_UPDATE_FAILED": {"kr": "패키지 목록 업데이트 실패", "en": "Package list update failed"},
+        "DOCKER_INSTALLATION": {"kr": "Docker 설치", "en": "Docker installation"},
+        "DOCKER_INSTALLATION_COMPLETE": {"kr": "Docker 설치 완료", "en": "Docker installation complete"},
+        "DOCKER_INSTALLATION_FAILED": {"kr": "Docker 설치 실패", "en": "Docker installation failed"},
+        "DOCKER_COMPOSE_INSTALLATION": {"kr": "Docker Compose 설치", "en": "Docker Compose installation"},
+        "DOCKER_COMPOSE_INSTALLATION_COMPLETE": {"kr": "Docker Compose 설치 완료", "en": "Docker Compose installation complete"},
+        "DOCKER_COMPOSE_INSTALLATION_FAILED": {"kr": "Docker Compose 설치 실패", "en": "Docker Compose installation failed"},
+        "ADD_USER_TO_DOCKER_GROUP": {"kr": "현재 사용자를 docker 그룹에 추가", "en": "Add current user to docker group"},
+        "ADD_USER_TO_DOCKER_GROUP_COMPLETE": {"kr": "사용자를 docker 그룹에 추가 완료", "en": "Add user to docker group complete"},
+        "ADD_USER_TO_DOCKER_GROUP_FAILED": {"kr": "사용자를 docker 그룹에 추가 실패", "en": "Add user to docker group failed"},
+        "DOCKER_SERVICE_START": {"kr": "Docker 서비스 시작", "en": "Docker service start"},
+        "DOCKER_SERVICE_START_COMPLETE": {"kr": "Docker 서비스 시작 완료", "en": "Docker service start complete"},
+        "DOCKER_SERVICE_START_FAILED": {"kr": "Docker 서비스 시작 실패", "en": "Docker service start failed"},
+        "INSTALLATION_VERIFICATION": {"kr": "설치 확인", "en": "Installation verification"},
+        "DOCKER_INSTALLATION_VERIFICATION": {"kr": "Docker 설치 확인", "en": "Docker installation verification"},
+        "DOCKER_INSTALLATION_VERIFICATION_COMPLETE": {"kr": "Docker 설치 확인 완료", "en": "Docker installation verification complete"},
+        "DOCKER_INSTALLATION_VERIFICATION_FAILED": {"kr": "Docker 설치 확인 실패", "en": "Docker installation verification failed"},
+        "DOCKER_COMPOSE_INSTALLATION_VERIFICATION": {"kr": "Docker Compose 설치 확인", "en": "Docker Compose installation verification"},
+        "DOCKER_COMPOSE_INSTALLATION_VERIFICATION_COMPLETE": {"kr": "Docker Compose 설치 확인 완료", "en": "Docker Compose installation verification complete"},
+        "DOCKER_COMPOSE_INSTALLATION_VERIFICATION_FAILED": {"kr": "Docker Compose 설치 확인 실패", "en": "Docker Compose installation verification failed"},
+        "DOCKER_INSTALLATION_COMPLETE_FINAL": {"kr": "Docker 설치가 완료되었습니다", "en": "Docker installation complete"},
+        "WSL_RESTART_REQUIRED": {"kr": "WSL을 재시작한 후 docker 명령어를 사용할 수 있습니다", "en": "WSL restart required to use docker commands"},
+        "ERROR_OCCURRED_FINAL": {"kr": "오류 발생", "en": "Error occurred"},
+        "DOCKER_INSTALLATION_SUCCESS": {"kr": "Docker 설치 성공", "en": "Docker installation success"},
+        "DOCKER_INSTALLATION_FAILED_FINAL": {"kr": "Docker 설치 실패", "en": "Docker installation failed"},
+        # Alert messages
+        "ALARM_SETTING_CANCELLED": {"kr": "알람 설정을 취소합니다", "en": "Alarm setting cancelled"},
+        # PotPlayer messages
+        "POTPLAYER_COMMAND_FAILED": {"kr": "PotPlayer 명령 실패", "en": "PotPlayer command failed"},
+        "POTPLAYER_PLAYLIST_ADD_FAILED_EXCEPTION": {"kr": "PotPlayer 재생목록 추가 실패", "en": "PotPlayer playlist add failed"},
+        # URL navigation messages
+        "URL_MOVEMENT_SUCCESS": {"kr": "URL 이동 성공", "en": "URL movement success"},
+        # File operation messages
+        "FILE_OPEN_FAILED_WSL": {"kr": "파일 열기 실패(WSL)", "en": "File open failed (WSL)"},
+        "SAVE_COMPLETE": {"kr": "저장 완료", "en": "Save complete"},
+        # Colorama messages
+        "COLORAMA_NOT_INSTALLED": {"kr": "colorama 라이브러리가 설치되어 있지 않습니다", "en": "colorama library not installed"},
+        "DEBUG_MESSAGE": {"kr": "디버그", "en": "Debug"},
+        "ERROR_MESSAGE": {"kr": "오류", "en": "Error"},
+        "INFO_MESSAGE": {"kr": "정보", "en": "Info"},
+        # Docker WSL messages
+        "DOCKER_INSTALLATION_ROUTINE_WSL_UBUNTU": {"kr": "WSL Ubuntu에 Docker 설치 루틴 실행", "en": "Docker installation routine in WSL Ubuntu"},
+        "D_PROJECT_DOCKER_INSTALLATION_SUCCESS": {"kr": "D_PROJECT: Docker 설치 성공적으로 완료", "en": "D_PROJECT: Docker installation completed successfully"},
+        "D_PROJECT_DOCKER_INSTALLATION_FAILED": {"kr": "D_PROJECT: Docker 설치 실패", "en": "D_PROJECT: Docker installation failed"},
+        "D_PROJECT_UNEXPECTED_ERROR": {"kr": "D_PROJECT: 예상치 못한 오류 발생", "en": "D_PROJECT: Unexpected error occurred"},
     }
 
     @classmethod
@@ -655,14 +1559,13 @@ class PkMessages2025:
             setattr(cls, key, val.get(lang, f"[{key}]"))
 
 
-PkMessages2025.set_lang(get_pk_program_language()) # pk_option
+# PkMessages2025.set_lang(get_pk_program_language())  # pk_option
 # PkMessages2025.set_lang("en") # pk_option
 
 # 안전한 언어 설정을 위한 fallback 추가
 try:
-    lang = get_pk_program_language()
-    if lang is None:
-        lang = "kr"  # 기본값으로 한국어 설정
+    # 순환 import 방지를 위해 기본값 사용
+    lang = "kr"  # 기본값으로 한국어 설정
     PkMessages2025.set_lang(lang)
 except Exception as e:
     # 언어 설정이 실패하면 기본값으로 한국어 설정

@@ -1,8 +1,9 @@
-from pkg_py.system_object.local_test_activate import LTA
 from pkg_py.functions_split.ensure_printed import ensure_printed
+from pkg_py.functions_split.get_wsl_distro_info_std_list import get_wsl_distro_info_std_list
+from pkg_py.system_object.local_test_activate import LTA
 
 
-def check_enabled_wsl():
+def ensure_wsl_enabled():
     import subprocess
     import re
 

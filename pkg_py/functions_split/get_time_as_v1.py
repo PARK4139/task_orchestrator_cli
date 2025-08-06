@@ -1,9 +1,9 @@
 def get_time_as_v1(pattern: str):
-    from pkg_py.functions_split.get_weekday_as_korean import get_weekday_as_korean
+    from pkg_py.functions_split.get_weekday import get_weekday
     import time
     from datetime import datetime
     now = datetime.now()
-    weekday = get_weekday_as_korean()
+    weekday = get_weekday()
     epoch_time = time.time()
     seconds = int(epoch_time)
     nanoseconds = int((epoch_time - seconds) * 1e9)  # 나노초 부분

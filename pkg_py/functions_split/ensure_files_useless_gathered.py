@@ -4,11 +4,11 @@ from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_e
 from pkg_py.functions_split.ensure_pnx_made import ensure_pnx_made
 from pkg_py.functions_split.get_list_from_f import get_list_from_f
 from pkg_py.functions_split.is_empty_d import is_empty_d
-from pkg_py.functions_split.move_pnx import move_pnx
+from pkg_py.functions_split.ensure_pnx_moved import ensure_pnx_moved
 from pkg_py.functions_split.ensure_pnxs_moved_to_trash_bin import ensure_pnxs_moved_to_trash_bin
 from pkg_py.functions_split.ensure_pnxs_move_to_recycle_bin import ensure_pnxs_move_to_recycle_bin
 from pkg_py.functions_split.open_pnx_by_ext import ensure_pnx_opened_by_ext
-from pkg_py.system_object.directories_reuseable import D_PROJECT
+from pkg_py.system_object.directories  import D_PROJECT
 from pkg_py.system_object.files import F_USELESS_FILE_NAMES_TXT
 
 
@@ -86,7 +86,7 @@ def ensure_files_useless_gathered():
             return
         else:
             for useless_f in useless_f_set:
-                # move_pnx(pnx=useless_f, d_dst=dst)  # todo : fix:외장드라이브에서는 안되는듯
+                # ensure_pnx_moved(pnx=useless_f, d_dst=dst)  # todo : fix:외장드라이브에서는 안되는듯
                 ensure_pnxs_move_to_recycle_bin(pnx=useless_f)
         ensure_printed(str_working=rf'''dst="{dst}"  {'%%%FOO%%%' if LTA else ''}''', print_color='green')
     except Exception as exception:

@@ -14,7 +14,7 @@ from pkg_py.functions_split.set_pk_context_state import set_pk_context_state
 from pkg_py.system_object.files import F_POT_PLAYER_MINI_64_EXE
 from pkg_py.system_object.files import F_HISTORICAL_PNX
 from pkg_py.system_object.encodings import Encoding
-from pkg_py.system_object.directories import D_PKG_TXT
+from pkg_py.system_object.directories import D_PKG_CACHE_PRIVATE
 from passlib.context import CryptContext
 from mutagen.mp3 import MP3
 from datetime import datetime
@@ -36,7 +36,7 @@ def find_pnx_interested_list_from_txt_f_x(including_texts=[], exclude_texts=[], 
 
     # d 내의 모든 f 리스트 가져오기
     # d="."  # 현재 d에서 확인
-    d = D_PKG_TXT
+    d = D_PKG_CACHE_PRIVATE
     # d=get_pnx_os_style(pnx=d)
     # pattern=rf"{re.escape(d)}\update_pnx_interested_list_to_text_file_\d\.txt$"
     # pattern=rf"{re.escape(d)}\\update_pnx_interested_list_to_text_file_\d\.txt$"

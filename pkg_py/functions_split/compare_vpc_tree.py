@@ -33,7 +33,7 @@ def compare_vpc_tree(f_vpc_tree_answer_list, f_vpc_ref_tree2_list, ignore_list):
 
     # 추가된 f 출력
     ensure_printed(
-        f"{STAMP_INFO} {get_nx(f_vpc_ref_tree2_list)} 에 추가된 f (+{len(added_files)} EA) : 참고 : ({get_nx(f_vpc_tree_answer_list)}[원격지_f_]와 {get_nx(f_vpc_ref_tree2_list)}[로컬_f_]의 트리비교)",
+        f"{"[ INFO ]"} {get_nx(f_vpc_ref_tree2_list)} 에 추가된 f (+{len(added_files)} EA) : 참고 : ({get_nx(f_vpc_tree_answer_list)}[원격지_f_]와 {get_nx(f_vpc_ref_tree2_list)}[로컬_f_]의 트리비교)",
         print_color='blue')
     for file in sorted(added_files):
         ensure_printed(file)
@@ -41,11 +41,11 @@ def compare_vpc_tree(f_vpc_tree_answer_list, f_vpc_ref_tree2_list, ignore_list):
     # 누락된 f 출력
     # 누락 파악이 더 중요.
     ensure_printed(
-        f"{STAMP_ERROR} {get_nx(f_vpc_ref_tree2_list)} 에서 누락된 f (-{len(removed_files)} EA) : 참고 : ({get_nx(f_vpc_tree_answer_list)}[원격지_f_]와 {get_nx(f_vpc_ref_tree2_list)}[로컬_f_]의 트리비교)",
+        f"{"[ ERROR ]"} {get_nx(f_vpc_ref_tree2_list)} 에서 누락된 f (-{len(removed_files)} EA) : 참고 : ({get_nx(f_vpc_tree_answer_list)}[원격지_f_]와 {get_nx(f_vpc_ref_tree2_list)}[로컬_f_]의 트리비교)",
         print_color='red')
     for file in sorted(removed_files):
         ensure_printed(f"{file}", print_color='red')
     if len(removed_files) == 0:
         ensure_printed(
-            f"{STAMP_SUCCEEDED} {get_nx(f_vpc_ref_tree2_list)} 에서 누락된 f이 없습니다 : 참고 : ({get_nx(f_vpc_tree_answer_list)}와 {get_nx(f_vpc_ref_tree2_list)}의 트리비교)",
+            f"{"[ SUCCEEDED ]"} {get_nx(f_vpc_ref_tree2_list)} 에서 누락된 f이 없습니다 : 참고 : ({get_nx(f_vpc_tree_answer_list)}와 {get_nx(f_vpc_ref_tree2_list)}의 트리비교)",
             print_color='green')

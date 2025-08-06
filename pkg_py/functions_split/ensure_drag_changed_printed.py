@@ -39,7 +39,7 @@ def ensure_drag_changed_printed ():
                     self.has_moved_while_pressed = False  # 시작 시 초기화
                 else:
                     if self.is_left_pressed and self.has_moved_while_pressed:
-                        # ✅ 드래그 완료 시점
+                        #  드래그 완료 시점
                         dragged_text = get_txt_dragged()
                         if dragged_text.strip():
                             lines = dragged_text.split("\n")

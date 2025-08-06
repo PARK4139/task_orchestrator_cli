@@ -1,3 +1,7 @@
+from pkg_py.functions_split.ensure_seconds_measured import ensure_seconds_measured
+
+
+@ensure_seconds_measured
 def save_to_history(contents_to_save: str, history_file):
     import os
 
@@ -9,5 +13,3 @@ def save_to_history(contents_to_save: str, history_file):
     if os.path.exists(history_file):
         with open(history_file, "w", encoding="utf-8") as f_obj:
             f_obj.write(contents_to_save.strip())
-
-

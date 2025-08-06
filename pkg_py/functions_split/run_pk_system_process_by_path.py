@@ -6,7 +6,7 @@ from pkg_py.system_object.etc import
 @ensure_seconds_measured
 def run_pk_system_process_by_path(pnx, pk_arg_list=None):
     from pkg_py.system_object.local_test_activate import LTA
-    from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
+    # pk_#
     from pkg_py.functions_split.ensure_tmux_pk_session_removed import ensure_tmux_pk_session_removed
     from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
     from pkg_py.functions_split.is_os_windows import is_os_windows
@@ -40,7 +40,7 @@ def run_pk_system_process_by_path(pnx, pk_arg_list=None):
             ensure_command_excuted_to_os(cmd=cmd, mode='a', mode_with_window=1)
 
         if LTA:
-            ensure_printed(f'{STAMP_TRY_GUIDE} {cmd} %%%FOO%%%')
+            ensure_printed(f'{'[ TRY GUIDE ]'} {cmd} %%%FOO%%%')
 
     elif is_os_wsl_linux():
 
@@ -54,17 +54,17 @@ def run_pk_system_process_by_path(pnx, pk_arg_list=None):
             ensure_command_excuted_to_os("tmux split-window -v")
             ensure_command_excuted_to_os(f"tmux send-keys -t {current_pane} '{full_cmd}' C-m")
             if LTA:
-                ensure_printed(f"{STAMP_TRY_GUIDE} tmux split → send-keys: {full_cmd}")
+                ensure_printed(f"{'[ TRY GUIDE ]'} tmux split → send-keys: {full_cmd}")
         else:
             tmux_session = nx.replace(".", "_")
             ensure_tmux_pk_session_removed(tmux_session)
             ensure_command_excuted_to_os(f"tmux new-session -s {tmux_session} -d '{full_cmd}'")
             ensure_command_excuted_to_os(f"tmux attach-session -t {tmux_session}")
             if LTA:
-                ensure_printed(f"{STAMP_TRY_GUIDE} tmux new-session: {full_cmd}")
+                ensure_printed(f"{'[ TRY GUIDE ]'} tmux new-session: {full_cmd}")
     else:
         # 기타 리눅스
         cmd = f"{cmd_to_run} {pnx}"
         ensure_command_excuted_to_os(cmd=cmd)
         if LTA:
-            ensure_printed(f"{STAMP_TRY_GUIDE} {cmd}")
+            ensure_printed(f"{'[ TRY GUIDE ]'} {cmd}")

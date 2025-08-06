@@ -17,11 +17,11 @@ def ensure_ffmpeg_installed_to_pkg_windows():
 
     # 둘 다 있으면 바로 반환
     if os.path.exists(ffmpeg_exe_path) and os.path.exists(ffprobe_exe_path):
-        ensure_printed(f"[FFMPEG] ✅ ffmpeg.exe 및 ffprobe.exe 이미 설치됨", print_color="green")
+        ensure_printed(f"[FFMPEG]  ffmpeg.exe 및 ffprobe.exe 이미 설치됨", print_color="green")
         return ffmpeg_exe_path, ffprobe_exe_path
 
     # 설치 시작
-    ensure_printed(f"[FFMPEG] 🔧 설치 시작", print_color="cyan")
+    ensure_printed(f"[FFMPEG]  설치 시작", print_color="cyan")
     os.makedirs(D_PKG_WINDOWS, exist_ok=True)
 
     try:
@@ -29,20 +29,20 @@ def ensure_ffmpeg_installed_to_pkg_windows():
         temp_zip = os.path.join(D_PKG_WINDOWS, "ffmpeg_temp.zip")
         extract_dir = os.path.join(D_PKG_WINDOWS, "extracted_ffmpeg")
 
-        ensure_printed(f"[FFMPEG] 🌐 다운로드 중: {zip_url}", print_color="cyan")
+        ensure_printed(f"[FFMPEG]  다운로드 중: {zip_url}", print_color="cyan")
         urllib.request.urlretrieve(zip_url, temp_zip)
-        ensure_printed(f"[FFMPEG] 📦 다운로드 완료: {temp_zip}", print_color="cyan")
+        ensure_printed(f"[FFMPEG]  다운로드 완료: {temp_zip}", print_color="cyan")
 
         with zipfile.ZipFile(temp_zip, 'r') as zip_ref:
             zip_ref.extractall(extract_dir)
-        ensure_printed(f"[FFMPEG] 📂 압축 해제 완료: {extract_dir}", print_color="cyan")
+        ensure_printed(f"[FFMPEG]  압축 해제 완료: {extract_dir}", print_color="cyan")
 
         found = False
         for root, dirs, files in os.walk(extract_dir):
             if "ffmpeg.exe" in files and "ffprobe.exe" in files:
                 shutil.copy2(os.path.join(root, "ffmpeg.exe"), ffmpeg_exe_path)
                 shutil.copy2(os.path.join(root, "ffprobe.exe"), ffprobe_exe_path)
-                ensure_printed(f"[FFMPEG] ✅ ffmpeg.exe, ffprobe.exe 복사 완료", print_color="green")
+                ensure_printed(f"[FFMPEG]  ffmpeg.exe, ffprobe.exe 복사 완료", print_color="green")
                 found = True
                 break
 
@@ -55,6 +55,6 @@ def ensure_ffmpeg_installed_to_pkg_windows():
         return ffmpeg_exe_path, ffprobe_exe_path
 
     except Exception as e:
-        ensure_printed(f"[FFMPEG] ❌ 설치 실패: {e}", print_color="red")
+        ensure_printed(f"[FFMPEG]  설치 실패: {e}", print_color="red")
         traceback.print_exc()
         return None, None

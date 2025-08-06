@@ -9,7 +9,6 @@ def ensure_py_system_process_ran_by_pnx(file_to_excute, file_title):
     from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux
 
     if is_os_windows():
-        # title 명령어로 창 제목 지정 (pk_ 접두사 제거된 제목)
         file_title = file_title.strip()
         cmd = f'start "" cmd.exe /k "python {file_to_excute}"'
         print(f"[실행 중 - Windows] {cmd}")

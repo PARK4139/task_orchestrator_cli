@@ -16,7 +16,7 @@ def ensure_potplayer_started():
             try:
                 if 'PotPlayer' in proc.info['name']:
                     potplayer_running = True
-                    ensure_printed(f"🎬 PotPlayer가 이미 실행 중입니다 (PID: {proc.info['pid']})", print_color="green")
+                    ensure_printed(f" PotPlayer가 이미 실행 중입니다 (PID: {proc.info['pid']})", print_color="green")
                     break
             except (psutil.NoSuchProcess, psutil.AccessDenied, psutil.ZombieProcess):
                 pass
@@ -24,16 +24,16 @@ def ensure_potplayer_started():
         if not potplayer_running:
             # PotPlayer 시작
             cmd = f'"{F_POT_PLAYER_MINI_64_EXE}"'
-            ensure_printed(f"🎬 PotPlayer를 시작합니다...", print_color="cyan")
+            ensure_printed(f" PotPlayer를 시작합니다...", print_color="cyan")
             
             # 백그라운드에서 실행
             subprocess.Popen(cmd, shell=True)
-            ensure_printed(f"✅ PotPlayer가 시작되었습니다", print_color="green")
+            ensure_printed(f" PotPlayer가 시작되었습니다", print_color="green")
         else:
             ensure_printed(f"ℹ️ PotPlayer가 이미 실행 중입니다", print_color="yellow")
             
     except Exception as e:
-        ensure_printed(f"❌ PotPlayer 시작 실패: {e}", print_color="red")
+        ensure_printed(f" PotPlayer 시작 실패: {e}", print_color="red")
         raise Exception(f"PotPlayer 시작 실패: {e}")
 
 def is_potplayer_running():

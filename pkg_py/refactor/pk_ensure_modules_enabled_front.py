@@ -15,8 +15,8 @@ from pkg_py.functions_split.restore_workspace_from_latest_archive import restore
 from pkg_py.system_object.map_massages import PkMessages2025
 from pkg_py.system_object.directories import D_PKG_ARCHIVED
 from pkg_py.system_object.directories import D_PKG_PY
-from pkg_py.system_object.directories_reuseable import D_PROJECT
-from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
+from pkg_py.system_object.directories  import D_PROJECT
+# pk_#
 
 
 def clean_import_block(block: str) -> str:
@@ -111,7 +111,7 @@ def main():
     except Exception as e:
         ensure_exception_routine_done(traceback=traceback, exception=e)
     finally:
-        pk_ensure_finally_routine_done(D_PROJECT=D_PROJECT, __file__=__file__, STAMP_TRY_GUIDE=STAMP_TRY_GUIDE)
+        pk_ensure_finally_routine_done(D_PROJECT=D_PROJECT, __file__=__file__)
 
 
 if __name__ == "__main__":

@@ -40,7 +40,7 @@ class HybridTTS:
         ]
         self._queue = queue.Queue()
         self._thread_started = False
-        self._cache_dir = os.path.join(os.path.expanduser("~"), "Downloads", "pk_system", "pkg_sound")
+        self._cache_dir = os.path.join(os.path.expanduser("~"), "Downloads", "pk_system", "pkg_image_and_video_and_sound")
         os.makedirs(self._cache_dir, exist_ok=True)
     
     def set_voice_config(self, config: VoiceConfig):
@@ -215,14 +215,14 @@ class HybridTTS:
         
         # 하이브리드 방식: 순차적으로 시도
         for method_name, method_func in self.tts_methods:
-            ensure_printed(f"🔄 {method_name} 시도 중...")
+            ensure_printed(f" {method_name} 시도 중...")
             if method_func(text):
-                ensure_printed(f"✅ {method_name} 성공")
+                ensure_printed(f" {method_name} 성공")
                 return True
             else:
-                ensure_printed(f"❌ {method_name} 실패")
+                ensure_printed(f" {method_name} 실패")
         
-        ensure_printed("❌ 모든 TTS 방법 실패")
+        ensure_printed(" 모든 TTS 방법 실패")
         return False
     
     def speak_async(self, text: str, delay: float = 0.5):
@@ -295,7 +295,7 @@ def set_voice_config(config: VoiceConfig):
 
 def test_hybrid_tts():
     """하이브리드 TTS 테스트"""
-    ensure_printed("🧪 하이브리드 TTS 테스트 시작")
+    ensure_printed(" 하이브리드 TTS 테스트 시작")
     
     # 사용 가능한 음성 목록 출력
     voices = get_available_voices()
@@ -306,14 +306,14 @@ def test_hybrid_tts():
     
     # 테스트 음성 재생
     test_text = "안녕하세요, 하이브리드 TTS 테스트입니다"
-    ensure_printed(f"🔊 '{test_text}' 재생 중...")
+    ensure_printed(f" '{test_text}' 재생 중...")
     
     success = _hybrid_tts.speak(test_text)
     
     if success:
-        ensure_printed("✅ 하이브리드 TTS 테스트 성공")
+        ensure_printed(" 하이브리드 TTS 테스트 성공")
     else:
-        ensure_printed("❌ 하이브리드 TTS 테스트 실패")
+        ensure_printed(" 하이브리드 TTS 테스트 실패")
     
     return success
 

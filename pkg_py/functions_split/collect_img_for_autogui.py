@@ -13,7 +13,7 @@ def collect_img_for_autogui():
 
     func_n = inspect.currentframe().f_code.co_name
     server_time = get_time_as_('%Y_%m_%d_%H_%M_%S')
-    func_n_server_time_png = rf'{D_PKG_IMAGE}\{func_n}_{server_time}.png'
+    func_n_server_time_png = rf'{D_PKG_IMAGE_AND_VIDEO_AND_SOUND}\{func_n}_{server_time}.png'
     f = func_n_server_time_png
     f_p = get_p(func_n_server_time_png)
     file_nx = get_nx(func_n_server_time_png)

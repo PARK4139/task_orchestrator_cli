@@ -1,4 +1,4 @@
-from pkg_py.functions_split.get_f_historical import get_history_file
+from pkg_py.functions_split.get_f_historical import ensure_history_file_pnx_got
 from pkg_py.functions_split.get_list_by_file_id import get_list_by_file_id
 from pkg_py.functions_split.get_list_removed_element_empty import get_list_removed_empty
 from pkg_py.functions_split.get_list_removed_none import get_list_removed_none
@@ -30,7 +30,7 @@ def get_value_by_file_id(file_id):
                 return text_to_move_cursor
         else:
             logging.info(f'''text_to_move_cursors is None={text_to_move_cursors is None} {'%%%FOO%%%' if LTA else ''}''')
-            f_historical = get_history_file(file_id)
+            f_historical = ensure_history_file_pnx_got(file_id)
             ensure_pnx_opened_by_ext(pnx=f_historical)
             ensure_window_to_front(window_title_seg=get_nx(f_historical))
             decision = get_value_completed(key_hint=PkMessages2025.ARE_YOU_SURE_EDIT_DONE,

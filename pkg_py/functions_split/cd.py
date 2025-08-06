@@ -17,7 +17,7 @@ from pynput import mouse
 from pkg_py.pk_system_object.files import F_FFMPEG_EXE
 from pkg_py.pk_system_object.encodings import Encoding
 from pkg_py.pk_system_object.directories_reuseable import D_PROJECT
-from pkg_py.pk_system_object.directories import D_PKG_TXT
+from pkg_py.pk_system_object.directories import D_PKG_CACHE_PRIVATE
 from base64 import b64decode
 from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style
 from pkg_py.pk_system_object.directories import D_WORKING, D_DOWNLOADS
@@ -46,7 +46,7 @@ def cd(sys_argv):
 
     import os
     import sys
-    f_cd_txt = os.path.join(D_PKG_TXT, "pk_cd.txt")
+    f_cd_txt = os.path.join(D_PKG_CACHE_PRIVATE, "pk_cd.txt")
     if not does_pnx_exist(f_cd_txt):
         ensure_pnx_made(f_cd_txt, mode='f')
     d_working_list = get_pnxs(with_walking=0, d_working=get_d_working_in_python(), filter_option='d')

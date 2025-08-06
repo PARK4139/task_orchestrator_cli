@@ -1,17 +1,18 @@
+from pkg_py.functions_split.get_fzf_options_customized_optimized import get_fzf_options_customized_optimized
+from pkg_py.system_object.directories import D_G_DRIVE_PK_WORKING, D_PK_WORKING, D_PK_SYSTEM, D_DOWNLOADS
 
 
 def ensure_file_found():
     """파일 검색 및 열기 함수 - Everything → PowerShell fallback 체인"""
-    from pkg_py.functions_split.ensure_seconds_measured import ensure_seconds_measured
     import subprocess
     from pkg_py.functions_split.get_drives_connected import get_drives_connected
     import os
     from pkg_py.functions_split.get_value_completed import get_value_completed
     from pkg_py.functions_split.ensure_printed import ensure_printed
-    from pkg_py.functions_split.ensure_process_killed import ensure_process_killed
-    from pkg_py.functions_split.ensure_program_suicided import ensure_program_suicided
-    from pkg_py.functions_split.is_window_opened import is_window_opened
     from pkg_py.functions_split.ensure_windows_closed import ensure_windows_closed
+    from pkg_py.functions_split.ensure_seconds_measured import ensure_seconds_measured
+
+    from pkg_py.functions_split.ensure_fzf_windows_compatible import run_fzf_windows_safe as run_fzf_windows
 
     # 검색 제외 경로 하드코딩
     EXCLUDE_PATHS = [
@@ -28,11 +29,11 @@ def ensure_file_found():
         "C:\\Users\\wjdgn\\AppData\\Roaming\\Microsoft\\Windows\\Recent",
         "C:\\Users\\wjdgn\\Downloads\\pk_system\\.venv",
         "C:\\Users\\wjdgn\\Downloads\\pk_system\\pkg_log",
-        "C:\\Users\\wjdgn\\Downloads\\pk_system\\pkg_pkl",
-        "C:\\Users\\wjdgn\\Downloads\\pk_system\\pkg_sound",
+        "C:\\Users\\wjdgn\\Downloads\\pk_system\\pkg_cache_private",
+        "C:\\Users\\wjdgn\\Downloads\\pk_system\\pkg_image_and_video_and_sound",
         "C:\\Users\\wjdgn\\Downloads\\pk_system\\pkg_video",
         "C:\\Users\\wjdgn\\Downloads\\pk_system\\pkg_video",
-        "C:\\Users\\wjdgn\\Downloads\\pk_system\\pkg_zip",
+        "C:\\Users\\wjdgn\\Downloads\\pk_system\\pkg_cache_private",
         "C:\\Users\\wjdgn\\Downloads\\pk_system\\pkg_archived",
     ]
 
@@ -92,35 +93,26 @@ def ensure_file_found():
                     temp_file_path = temp_file.name
 
                 # fzf를 대화형으로 실행
-                fzf_cmd = [
-                    "fzf",
-                    "--height", "40%",
-                    "--layout", "reverse",
-                    "--border",
-                    "--preview", "echo {}",
-                    "--preview-window", "right:50%",
-                    "--bind", "ctrl-o:execute(echo 'OPEN_FILE_PATH')",
-                    "--bind", "ctrl-x:execute(echo 'OPEN_FILE')",
-                    "--header", "Ctrl+O: 파일 경로 열기 | Ctrl+X: 파일 열기 | Enter: 선택"
-                ]
+                fzf_cmd = ["fzf"] + get_fzf_options_customized_optimized(prompt_text=prompt_text)
 
                 # 임시 파일에 결과 저장 후 fzf 실행
                 import tempfile
                 temp_file_path = tempfile.mktemp(suffix='.txt')
                 with open(temp_file_path, 'w', encoding='utf-8') as f:
                     f.write(result.stdout)
-                
-                # PowerShell을 통해 fzf 실행 (대화형) - 한글 인코딩 수정
-                ps_cmd = f'''powershell -NoProfile -ExecutionPolicy Bypass -Command "[Console]::OutputEncoding = [System.Text.Encoding]::UTF8; [Console]::InputEncoding = [System.Text.Encoding]::UTF8; Get-Content '{temp_file_path}' -Encoding UTF8 | fzf --height 40% --layout reverse --border --preview 'echo {{}}' --preview-window 'right:50%' --bind 'ctrl-o:execute(echo OPEN_FILE_PATH)' --bind 'ctrl-x:execute(echo OPEN_FILE)' --header 'Ctrl+O: 파일 경로 열기 | Ctrl+X: 파일 열기 | Enter: 선택'"'''
-                
-                # 대화형 터미널에서 fzf 실행
-                fzf_process = subprocess.run(
-                    ps_cmd,
-                    shell=True,
-                    text=True,
-                    encoding='utf-8'
-                )
-                
+
+                # Windows에서 fzf 실행 - 새로운 함수 사용
+                with open(temp_file_path, 'r', encoding='utf-8') as f:
+                    file_content = f.read()
+
+                selected_file = run_fzf_windows(file_content)
+
+                if selected_file:
+                    return selected_file
+                else:
+                    ensure_printed("Everything에서 검색 결과가 없습니다.", print_color='yellow')
+                    return None
+
                 # 임시 파일 삭제
                 try:
                     os.unlink(temp_file_path)
@@ -162,58 +154,36 @@ def ensure_file_found():
                 drives_list = "','".join([d.replace("\\", "") for d in drives])
                 ps_cmd = f'''powershell -NoProfile -ExecutionPolicy Bypass -Command "[Console]::OutputEncoding = [System.Text.Encoding]::UTF8; Get-ChildItem -Path '{drives_list}' -Recurse -File -ErrorAction SilentlyContinue | Where-Object {{ {exclude_filter} }} | Select-Object -ExpandProperty FullName"'''
 
-            # fzf와 함께 사용
-            fzf_cmd = [
-                "fzf",
-                "--height", "40%",
-                "--layout", "reverse",
-                "--border",
-                "--preview", "echo {}",
-                "--preview-window", "right:50%",
-                "--bind", "ctrl-o:execute(echo 'OPEN_FILE_PATH')",
-                "--bind", "ctrl-x:execute(echo 'OPEN_FILE')",
-                "--header", "Ctrl+O: 파일 경로 열기 | Ctrl+X: 파일 열기 | Enter: 선택"
-            ]
-
             # 타임아웃 설정 (1시간)
             timeout_seconds = 3600
-            
-            ps_process = subprocess.Popen(
-                ps_cmd,
-                stdout=subprocess.PIPE,
-                stderr=subprocess.PIPE,
-                text=True,
-                encoding='utf-8',  # 한글 인코딩 명시
-                shell=True
-            )
-            
-            fzf_process = subprocess.Popen(
-                fzf_cmd,
-                stdin=ps_process.stdout,
-                stdout=subprocess.PIPE,
-                stderr=subprocess.PIPE,
-                text=True,
-                encoding='utf-8'  # 한글 인코딩 명시
-            )
 
             try:
-                selected_file, stderr = fzf_process.communicate(timeout=timeout_seconds)
-                ps_process.wait(timeout=timeout_seconds)
-                
-                if fzf_process.returncode == 0 and selected_file.strip():
-                    ensure_printed(f"파일 선택됨: {selected_file.strip()}", print_color='green')
-                    return selected_file.strip()
-                elif fzf_process.returncode == 130:  # Ctrl+C로 취소
-                    ensure_printed("파일 선택이 취소되었습니다.", print_color='yellow')
-                    return None
+                # PowerShell 명령어 실행
+                ps_process = subprocess.run(
+                    ps_cmd,
+                    shell=True,
+                    text=True,
+                    encoding='utf-8',
+                    capture_output=True,
+                    timeout=timeout_seconds
+                )
+
+                if ps_process.returncode == 0 and ps_process.stdout.strip():
+                    # fzf로 결과 필터링
+                    selected_file = run_fzf_windows(ps_process.stdout)
+
+                    if selected_file:
+                        ensure_printed(f"파일 선택됨: {selected_file}", print_color='green')
+                        return selected_file
+                    else:
+                        ensure_printed("파일이 선택되지 않았습니다.", print_color='yellow')
+                        return None
                 else:
-                    ensure_printed("파일이 선택되지 않았습니다.", print_color='yellow')
+                    ensure_printed("검색 결과가 없습니다.", print_color='yellow')
                     return None
-                    
+
             except subprocess.TimeoutExpired:
                 ensure_printed("PowerShell 검색 시간 초과", print_color='red')
-                ps_process.kill()
-                fzf_process.kill()
                 return None
 
         except Exception as e:
@@ -223,24 +193,24 @@ def ensure_file_found():
     # 드라이브 선택 (모든 드라이브 옵션 포함)
     drives = get_drives_connected()
     drives.reverse()  # 드라이브 목록을 reverse
-    
-    # 모든 드라이브에서 검색 옵션 추가
-    search_options = ["모든 드라이브에서 검색"] + drives
 
-    selected_drive = get_value_completed("영역 선택: ", search_options)
-    if selected_drive is None:
+    # 모든 드라이브에서 검색 옵션 추가
+    search_options = [D_DOWNLOADS, D_PK_SYSTEM, D_PK_WORKING, D_G_DRIVE_PK_WORKING] + ["모든 드라이브에서 검색"] + drives
+
+    selected = get_value_completed("영역 선택: ", search_options)
+    if selected is None:
         print("드라이브 선택이 취소되었습니다.")
         return
-    
+
     # 검색 경로 설정
-    if selected_drive == "모든 드라이브에서 검색":
+    if selected == "모든 드라이브에서 검색":
         search_path = ""
     else:
-        search_path = selected_drive
+        search_path = selected
 
     # 검색어 입력
     # search_query = input("검색어를 입력하세요 (Enter: 모든 파일): ").strip() # pk_option
-    search_query = "" # pk_option
+    search_query = ""  # pk_option
 
     # Fallback 체인 실행 (Everything → PowerShell)
     selected_file = None
@@ -248,28 +218,28 @@ def ensure_file_found():
     # 1. Everything 우선 시도 (가장 빠름)
     if check_everything_available():
         ensure_printed("Everything으로 검색 중... (최고 속도)", print_color='cyan')
-        
+
         # Everything DB 최적화 확인
         try:
             from pkg_py.functions_split.ensure_everything_db_optimized import ensure_everything_db_optimized
             ensure_everything_db_optimized()
         except ImportError:
             ensure_printed("Everything DB 최적화 함수를 찾을 수 없습니다.", print_color='yellow')
-        
+
         # Everything SSD 최적화 확인
         try:
             from pkg_py.functions_split.ensure_everything_ssd_optimized import ensure_everything_ssd_optimized
             ensure_everything_ssd_optimized()
         except ImportError:
             ensure_printed("Everything SSD 최적화 함수를 찾을 수 없습니다.", print_color='yellow')
-        
+
         # Everything 빠른 검색 최적화
         try:
             from pkg_py.functions_split.ensure_everything_fast_search import ensure_everything_fast_search
             ensure_everything_fast_search()
         except ImportError:
             ensure_printed("Everything 빠른 검색 최적화 함수를 찾을 수 없습니다.", print_color='yellow')
-        
+
         # Everything 검색 시도
         try:
             everything_exe = check_everything_available()
@@ -282,7 +252,7 @@ def ensure_file_found():
             else:
                 ensure_printed("Everything을 찾을 수 없습니다.", print_color='yellow')
                 ensure_printed("PowerShell 시도...", print_color='yellow')
-                
+
         except Exception as e:
             ensure_printed(f"Everything 검색 오류: {e}", print_color='red')
             ensure_printed("PowerShell 시도...", print_color='yellow')
@@ -306,7 +276,7 @@ def ensure_file_found():
     # 파일 처리
     if selected_file:
         ensure_printed(f"선택된 파일: {selected_file}", print_color='cyan')
-        
+
         # 모드 선택 (tab 자동완성)
         open_modes = [
             "파일 경로 열기",
@@ -340,8 +310,3 @@ def ensure_file_found():
             ensure_printed(f"파일 열기 중 오류: {e}", print_color='red')
     elif not selected_file:
         ensure_printed("파일이 선택되지 않았습니다.", print_color='yellow')
-
-
-
-
-

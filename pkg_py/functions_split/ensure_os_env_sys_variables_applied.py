@@ -5,7 +5,7 @@ def ensure_os_env_sys_variables_applied():
     # 아...이거 좋은데. python 설치에 의존됨... 결국 batch 로 작성을 해야하나?
     from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style
     from pkg_py.system_object.directories import (
-        D_PKG_WINDOWS, D_PKG_TXT, D_PKG_WINDOWS, D_PK_MEMO, D_DOWNLOADS,
+        D_PKG_WINDOWS, D_PKG_CACHE_PRIVATE, D_PKG_WINDOWS, D_PK_MEMO, D_DOWNLOADS,
         D_PK_SYSTEM, D_PK_WORKING, D_BUSINESS_DEMO,
     )
     from pkg_py.system_object.files import (
@@ -26,7 +26,7 @@ def ensure_os_env_sys_variables_applied():
         "D_PK_MEMO": D_PK_MEMO,
         "D_PKG_WINDOWS": D_PKG_WINDOWS,
         "D_PKG_WINDOWS": D_PKG_WINDOWS,
-        "D_PKG_TXT": D_PKG_TXT,
+        "D_PKG_CACHE_PRIVATE": D_PKG_CACHE_PRIVATE,
         "F_UV_ZIP": F_UV_ZIP,
         "F_UV_EXE": F_UV_EXE,
         "F_PK_ALIAS_MACROS_TXT": F_PK_ALIAS_MACROS_TXT,

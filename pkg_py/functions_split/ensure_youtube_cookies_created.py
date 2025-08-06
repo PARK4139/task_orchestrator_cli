@@ -17,12 +17,12 @@ def ensure_youtube_cookies_created():
     try:
         # 쿠키 파일이 이미 존재하는지 확인
         if os.path.exists(F_YOUTUBE_COOKIES_TXT):
-            ensure_printed(f"✅ YouTube 쿠키 파일이 이미 존재합니다: {F_YOUTUBE_COOKIES_TXT}", print_color="green")
+            ensure_printed(f" YouTube 쿠키 파일이 이미 존재합니다: {F_YOUTUBE_COOKIES_TXT}", print_color="green")
             return True
         
         # 쿠키 파일 생성 안내
-        ensure_printed("🍪 YouTube 쿠키 파일을 생성해야 합니다.", print_color="yellow")
-        ensure_printed("📝 다음 단계를 따라하세요:", print_color="cyan")
+        ensure_printed(" YouTube 쿠키 파일을 생성해야 합니다.", print_color="yellow")
+        ensure_printed(" 다음 단계를 따라하세요:", print_color="cyan")
         ensure_printed("1. 브라우저에서 YouTube에 로그인", print_color="cyan")
         ensure_printed("2. 개발자 도구 열기 (F12)", print_color="cyan")
         ensure_printed("3. Application/Storage 탭에서 Cookies 확인", print_color="cyan")
@@ -50,13 +50,13 @@ def ensure_youtube_cookies_created():
         with open(F_YOUTUBE_COOKIES_TXT, 'w', encoding='utf-8') as f:
             f.write(cookie_template)
         
-        ensure_printed(f"📄 쿠키 파일 템플릿이 생성되었습니다: {F_YOUTUBE_COOKIES_TXT}", print_color="green")
-        ensure_printed("⚠️ 실제 쿠키 값으로 교체해야 합니다.", print_color="yellow")
+        ensure_printed(f" 쿠키 파일 템플릿이 생성되었습니다: {F_YOUTUBE_COOKIES_TXT}", print_color="green")
+        ensure_printed("️ 실제 쿠키 값으로 교체해야 합니다.", print_color="yellow")
         
         return True
         
     except Exception as e:
-        ensure_printed(f"❌ 쿠키 파일 생성 실패: {e}", print_color="red")
+        ensure_printed(f" 쿠키 파일 생성 실패: {e}", print_color="red")
         return False
 
 def get_youtube_cookies_help():
@@ -64,7 +64,7 @@ def get_youtube_cookies_help():
     YouTube 쿠키 생성 도움말을 출력하는 함수
     """
     help_text = """
-🍪 YouTube 쿠키 생성 방법:
+ YouTube 쿠키 생성 방법:
 
 1. 브라우저에서 YouTube에 로그인
 2. 개발자 도구 열기 (F12)
@@ -72,11 +72,11 @@ def get_youtube_cookies_help():
 4. 쿠키를 Netscape 형식으로 내보내기
 5. 파일을 다음 경로에 저장: {cookie_file}
 
-💡 쿠키 브라우저 확장 프로그램 사용:
+ 쿠키 브라우저 확장 프로그램 사용:
 - Chrome: "Get cookies.txt" 확장 프로그램
 - Firefox: "cookies.txt" 확장 프로그램
 
-🔗 유용한 링크:
+ 유용한 링크:
 - https://github.com/yt-dlp/yt-dlp/wiki/FAQ#how-do-i-pass-cookies-to-yt-dlp
 - https://github.com/yt-dlp/yt-dlp/wiki/Extractors#exporting-youtube-cookies
 """.format(cookie_file=F_YOUTUBE_COOKIES_TXT)

@@ -30,8 +30,8 @@ from pkg_py.functions_split.ensure_f_video_loaded_on_losslesscut import ensure_f
 from pkg_py.functions_split.ensure_list_written_to_f import ensure_list_written_to_f
 
 from pkg_py.functions_split.ensure_console_cleared import ensure_console_cleared
-from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
-from pkg_py.system_object.stamps import STAMP_ATTEMPTED
+# pk_#
+# pk_#
 from pkg_py.system_object.files import F_HISTORICAL_PNX
 from pkg_py.system_object.directories import D_PK_WORKING
 from pkg_py.system_object.state_via_context import SpeedControlContext

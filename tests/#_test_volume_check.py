@@ -7,7 +7,7 @@ import sys
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from pkg_py.functions_split.ensure_printed import ensure_printed
-from pkg_py.system_object.directories import D_PKG_SOUND
+from pkg_py.system_object.directories import D_PKG_IMAGE_AND_VIDEO_AND_SOUND
 
 def test_volume_check():
     """볼륨과 오디오 상태를 확인"""
@@ -34,10 +34,10 @@ def test_volume_check():
     
     # 3. 기존 WAV 파일 재생 (볼륨 부스트 없이)
     ensure_printed("3. 기존 WAV 파일 재생 (볼륨 부스트 없이)...", print_color="yellow")
-    wav_files = [f for f in os.listdir(D_PKG_SOUND) if f.endswith('.wav')]
+    wav_files = [f for f in os.listdir(D_PKG_IMAGE_AND_VIDEO_AND_SOUND) if f.endswith('.wav')]
     if wav_files:
-        latest_wav = max(wav_files, key=lambda x: os.path.getctime(os.path.join(D_PKG_SOUND, x)))
-        wav_path = os.path.join(D_PKG_SOUND, latest_wav)
+        latest_wav = max(wav_files, key=lambda x: os.path.getctime(os.path.join(D_PKG_IMAGE_AND_VIDEO_AND_SOUND, x)))
+        wav_path = os.path.join(D_PKG_IMAGE_AND_VIDEO_AND_SOUND, latest_wav)
         
         try:
             import winsound

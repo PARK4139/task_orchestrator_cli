@@ -88,54 +88,97 @@ def get_backup_directory_by_os():
         return os.path.join(os.path.expanduser("~"), "Downloads", "pk_system", "pkg_ide_backup")
 
 
-def ensure_bashrc_zshrc_backed_up(custom_suffix=None):
-    """운영체제에 따라 적절한 파일들을 백업하는 함수"""
-    # 운영체제 감지
-    os_type = detect_os()
-    print(f"🔍 감지된 운영체제: {os_type}")
-    
-    # 백업 대상 파일들
-    backup_files = get_backup_files_by_os()
-    
-    # 백업 디렉토리
-    backup_dir = get_backup_directory_by_os()
-    
-    # 타임스탬프 생성
-    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    
-    # 사용자 정의 suffix가 있으면 사용, 없으면 기본값
-    if custom_suffix:
-        suffix = custom_suffix
-    else:
-        suffix = timestamp
-    
-    backed_up_files = []
-    
-    for file_path in backup_files:
-        if os.path.exists(file_path):
-            # 파일명 추출
-            filename = os.path.basename(file_path)
-            
-            # 백업 파일명 생성
-            backup_filename = f"{filename}.bak.{suffix}"
-            backup_path = os.path.join(backup_dir, backup_filename)
-            
+def ensure_bashrc_zshrc_backed_up():
+    """bashrc와 zshrc 파일을 백업하는 함수"""
+    try:
+        # Lazy import to avoid circular dependency
+        try:
+            from pkg_py.functions_split.ensure_printed import ensure_printed
+            from pkg_py.system_object.map_massages import PkMessages2025
+        except ImportError:
+            print = lambda msg, **kwargs: print(msg)
+            PkMessages2025 = type('PkMessages2025', (), {
+                'BACKUP_OS_DETECTED': '감지된 운영체제',
+                'BACKUP_COMPLETE': '백업 완료',
+                'BACKUP_FAILED': '백업 실패',
+                'BACKUP_FILE_NOT_FOUND': '파일이 존재하지 않음',
+                'BACKUP_TOTAL_COMPLETE': '총 백업 완료',
+                'BACKUP_NO_FILES': '백업할 파일이 없습니다'
+            })()
+
+        import os
+        import platform
+        from datetime import datetime
+        
+        # 운영체제 감지
+        os_type = platform.system()
+        print(f"[{PkMessages2025.BACKUP_OS_DETECTED}] {PK_ANSI_COLOR_MAP['CYAN']}OS={os_type} {PK_ANSI_COLOR_MAP['RESET']}")
+        
+        # 백업할 파일 목록
+        files_to_backup = []
+        
+        if os_type == "Linux" or os_type == "Darwin":  # Linux 또는 macOS
+            home_dir = os.path.expanduser("~")
+            potential_files = [
+                os.path.join(home_dir, ".bashrc"),
+                os.path.join(home_dir, ".zshrc"),
+                os.path.join(home_dir, ".bash_profile"),
+                os.path.join(home_dir, ".profile"),
+                os.path.join(home_dir, ".bash_login")
+            ]
+        elif os_type == "Windows":
+            home_dir = os.path.expanduser("~")
+            potential_files = [
+                os.path.join(home_dir, ".bashrc"),
+                os.path.join(home_dir, ".zshrc"),
+                os.path.join(home_dir, ".bash_profile")
+            ]
+        else:
+            print(f"지원하지 않는 운영체제: {os_type}")
+            return False
+        
+        # 존재하는 파일만 백업 목록에 추가
+        for file_path in potential_files:
+            if os.path.exists(file_path):
+                files_to_backup.append(file_path)
+        
+        if not files_to_backup:
+            print(f"[{PkMessages2025.BACKUP_NO_FILES}]")
+            return False
+        
+        # 백업 실행
+        backed_up_files = []
+        for file_path in files_to_backup:
             try:
-                # 백업 디렉토리가 없으면 생성
-                os.makedirs(backup_dir, exist_ok=True)
+                # 백업 파일명 생성
+                filename = os.path.basename(file_path)
+                timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+                backup_filename = f"{filename}.backup_{timestamp}"
+                backup_path = os.path.join(os.path.dirname(file_path), backup_filename)
                 
                 # 파일 복사
+                import shutil
                 shutil.copy2(file_path, backup_path)
                 
                 backed_up_files.append(backup_path)
-                print(f"✅ 백업 완료: {filename} -> {backup_filename}")
+                print(f"[{PkMessages2025.BACKUP_COMPLETE}] {PK_ANSI_COLOR_MAP['GREEN']}파일={filename} 백업={backup_filename} {PK_ANSI_COLOR_MAP['RESET']}")
                 
             except Exception as e:
-                print(f"❌ 백업 실패: {filename} - {str(e)}")
+                print(f"[{PkMessages2025.BACKUP_FAILED}] {PK_ANSI_COLOR_MAP['RED']}파일={file_path} 오류={str(e)} {PK_ANSI_COLOR_MAP['RESET']}")
+            except FileNotFoundError:
+                print(f"[{PkMessages2025.BACKUP_FILE_NOT_FOUND}] {PK_ANSI_COLOR_MAP['YELLOW']}파일={file_path} {PK_ANSI_COLOR_MAP['RESET']}")
+        
+        # 결과 요약
+        if backed_up_files:
+            print(f"[{PkMessages2025.BACKUP_TOTAL_COMPLETE}] {PK_ANSI_COLOR_MAP['GREEN']}총파일수={len(backed_up_files)}개 {PK_ANSI_COLOR_MAP['RESET']}")
+            return True
         else:
-            print(f"⚠️ 파일이 존재하지 않음: {file_path}")
-    
-    return backed_up_files
+            print(f"[{PkMessages2025.BACKUP_NO_FILES}]")
+            return False
+            
+    except Exception as e:
+        print(f"[{PkMessages2025.BACKUP_FAILED}] {PK_ANSI_COLOR_MAP['RED']}오류={e} {PK_ANSI_COLOR_MAP['RESET']}")
+        return False
 
 
 if __name__ == "__main__":
@@ -145,12 +188,12 @@ if __name__ == "__main__":
     custom_suffix = None
     if len(sys.argv) > 1:
         custom_suffix = sys.argv[1]
-        print(f"📝 사용자 정의 suffix 사용: {custom_suffix}")
+        print(f" 사용자 정의 suffix 사용: {custom_suffix}")
     
     # 테스트 실행
     backed_up_files = ensure_bashrc_zshrc_backed_up(custom_suffix=custom_suffix)
     
     if backed_up_files:
-        print(f"✅ 총 {len(backed_up_files)}개 파일 백업 완료")
+        print(f" 총 {len(backed_up_files)}개 파일 백업 완료")
     else:
-        print("⚠️ 백업할 파일이 없습니다") 
+        print("️ 백업할 파일이 없습니다") 

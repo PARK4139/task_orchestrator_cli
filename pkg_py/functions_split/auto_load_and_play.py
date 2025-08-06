@@ -1,5 +1,5 @@
 import time
-from pkg_py.functions_split.get_window_title_list import get_window_title_list
+from pkg_py.functions_split.get_window_titles import get_window_titles
 from pkg_py.functions_split.ensure_f_video_loaded_on_losslesscut import ensure_f_video_loaded_on_losslesscut
 from pkg_py.functions_split.ensure_video_playied_at_losslesscut import ensure_video_playied_at_losslesscut
 
@@ -11,7 +11,7 @@ def is_editing_or_exporting(titles):
 
 def auto_load_and_play(video_path, check_interval=2.0):
     while True:
-        titles = get_window_title_list()
+        titles = get_window_titles()
         if is_editing_or_exporting(titles):
             print("편집/출력 중이므로 대기...")
         else:

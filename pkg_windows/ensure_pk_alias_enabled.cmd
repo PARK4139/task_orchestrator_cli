@@ -1,1 +1,0 @@
-reg add "HKCU\Software\Microsoft\Command Processor" /v AutoRun /t REG_SZ /d "%USERPROFILE%\Downloads\pk_system\pkg_windows\ensure_alias_enabled.cmd" /f

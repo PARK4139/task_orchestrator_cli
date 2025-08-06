@@ -5,7 +5,7 @@ setlocal
 :: 경로 설정
 set AHK_FOLDER=%USERPROFILE%\Downloads\pk_archived\AutoHotkey_Portable
 set AHK_EXE=%AHK_FOLDER%\AutoHotkeyU64.exe
-set AHK_SCRIPT=%USERPROFILE%\Downloads\pk_system\pkg_ahk\pk_shortcut.ahk
+set AHK_SCRIPT=%USERPROFILE%\Downloads\pk_system\pkg_windows\pk_shortcut.ahk
 
 :: AHK 실행 확인
 if not exist "%AHK_EXE%" (

@@ -15,7 +15,7 @@ from pkg_py.functions_split.get_historical_list import get_historical_list
 from pkg_py.functions_split.ensure_printed import ensure_printed
 
 from pkg_py.functions_split.ensure_list_written_to_f import ensure_list_written_to_f
-from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
+# pk_#
 from pkg_py.system_object.state_via_context import SpeedControlContext
 
 from passlib.context import CryptContext

@@ -54,7 +54,7 @@ def try_solve_cloudflare_sequrity_legacy(driver):  # fail
     try_cnt_limit = 22
     try_cnt = 0
     tab_title_negative = "잠시만 기다리십시오"
-    f_png = rf'{D_PKG_IMAGE}\collect_img_for_autogui_2024_11_03_19_41_12.png'
+    f_png = rf'{D_PKG_IMAGE_AND_VIDEO_AND_SOUND}\collect_img_for_autogui_2024_11_03_19_41_12.png'
     while 1:
         if does_normal_tab_exist(driver_selenium=driver, tab_title_negative=tab_title_negative):
             # move to tab

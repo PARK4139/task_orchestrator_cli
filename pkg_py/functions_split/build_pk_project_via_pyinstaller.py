@@ -10,7 +10,7 @@ from pkg_py.functions_split.get_f_video_to_load import get_f_video_to_load
 from pkg_py.functions_split.ensure_f_video_loaded_on_losslesscut import ensure_f_video_loaded_on_losslesscut
 from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_excuted_to_os
 from pkg_py.system_object.encodings import Encoding
-from pkg_py.system_object.directories_reuseable import D_PROJECT
+from pkg_py.system_object.directories  import D_PROJECT
 
 from passlib.context import CryptContext
 from functools import lru_cache
@@ -45,7 +45,7 @@ def build_pk_project_via_pyinstaller():
             rf"{D_PROJECT}\pk.spec",
         ]
         for item in items_useless:
-            remove_pnx_parmanently(pnx=item)
+            reensure_pnx_moved_parmanently(pnx=item)
 
         # pip 업그레이드
         ensure_command_excuted_to_os(cmd="python -m pip install --upgrade pip")
@@ -54,10 +54,10 @@ def build_pk_project_via_pyinstaller():
         ensure_command_excuted_to_os(cmd="pip install pyinstaller --upgrade")
 
         if not LTA:
-            ensure_command_excuted_to_os(cmd=rf"python -m PyInstaller -i .\pkg_image\icon.PNG pk_test_test.py")
+            ensure_command_excuted_to_os(cmd=rf"python -m PyInstaller -i .\pkg_image_and_video_and_sound\icon.PNG pk_test_test.py")
 
         if LTA:
-            ensure_command_excuted_to_os(cmd=rf'echo d | xcopy ".\pkg_sound" ".\dist\pk_test_test\_internal\pkg_sound" /e /h /k /y')
+            ensure_command_excuted_to_os(cmd=rf'echo d | xcopy ".\pkg_image_and_video_and_sound" ".\dist\pk_test_test\_internal\pkg_image_and_video_and_sound" /e /h /k /y')
 
         # f = f'{D_PROJECT}/pk_temp.py'
         # write_f(f)

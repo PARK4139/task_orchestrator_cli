@@ -50,7 +50,7 @@ from pkg_py.functions_split.get_list_sorted import get_list_sorted
 
 from pkg_py.system_object.files import F_POT_PLAYER_MINI_64_EXE
 from pkg_py.system_object.encodings import Encoding
-from pkg_py.system_object.directories_reuseable import D_PROJECT
+from pkg_py.system_object.directories  import D_PROJECT
 from pkg_py.system_object.directories import D_PK_WORKING
 from pkg_py.system_object.map_massages import PkMessages2025
 from pkg_py.system_object.performance_logic import ensure_seconds_measured, pk_measure_memory
@@ -69,7 +69,6 @@ from collections import Counter
 from bs4 import ResultSet
 from bs4 import BeautifulSoup
 from base64 import b64decode
-from pkg_py.system_object.stamps import STAMP_TRY_GUIDE, STAMP_UNIT_TEST_EXCEPTION_DISCOVERED
 from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style
 # from pkg_py.system_object.is_os_windows import is_os_windows
 from pkg_py.functions_split.is_os_wsl_linux import is_os_wsl_linux

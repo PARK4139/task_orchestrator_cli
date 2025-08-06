@@ -43,7 +43,7 @@ for /r "%SCRIPT_DIR%" %%i in (python.exe) do (
 
 @REM Python을 찾을 수 없는 경우
 echo ❌ Python을 찾을 수 없습니다.
-echo 📥 Python 설치를 시도합니다...
+echo ✅ Python 설치를 시도합니다...
 echo.
 echo 다음 중 하나를 선택하세요:
 echo 1. Microsoft Store에서 Python 설치 (권장)
@@ -51,10 +51,9 @@ echo 2. python.org에서 수동 설치
 echo 3. 취소
 echo.
 set /p choice="선택 (1-3): "
-
 if "%choice%"=="1" (
     echo 🛒 Microsoft Store에서 Python 설치 중...
-    start ms-windows-store://pdp/?ProductId=9NRWMJP3717K
+    start ms-windows-store://pdp/?ProductId=9PNRBTZXMB4Z
     echo 설치 완료 후 이 스크립트를 다시 실행하세요.
     pause
     exit /b 1
@@ -72,8 +71,9 @@ if "%choice%"=="1" (
 
 :run_script
 @REM Python으로 스크립트 실행
-echo 🚀 Python 스크립트 실행 중: %PYTHON_CMD% ensure_pk_system_enabled.py
-"%PYTHON_CMD%" ensure_pk_system_enabled.py
+echo ✅ Python 스크립트 실행 중: %PYTHON_CMD% %SCRIPT_DIR%\pkg_py\functions_split\ensure_pk_system_enabled.py
+"%PYTHON_CMD%" "%SCRIPT_DIR%\pkg_py\functions_split\ensure_pk_system_enabled.py"
+@REM "%PYTHON_CMD%" "..\pkg_py\functions_split\ensure_pk_system_enabled.py"
 
 @REM 실행 결과 확인
 if %errorlevel%==0 (

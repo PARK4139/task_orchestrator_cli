@@ -6,7 +6,7 @@ def download_video_f(url: str):
     from pkg_py.functions_split.ensure_command_excuted_to_os import ensure_command_excuted_to_os
     from pkg_py.functions_split.ensure_command_excuted_to_os_like_person_as_admin import ensure_command_excuted_to_os_like_person_as_admin
     from pkg_py.functions_split.is_pattern_in_prompt import is_pattern_in_prompt
-    from pkg_py.functions_split.move_pnx import move_pnx
+    from pkg_py.functions_split.ensure_pnx_moved import ensure_pnx_moved
     from pkg_py.functions_split.parse_youtube_video_id import parse_youtube_video_id
     from pkg_py.functions_split.print_magenta import print_magenta
     from pkg_py.system_object.gui_util import GuiUtil
@@ -136,7 +136,7 @@ def download_video_f(url: str):
                 break
             # shutil.move(src, storage)
             if src != os.getcwd():  # 여기 또 os.getcwd() 있는 부분 수정하자..
-                move_pnx(src, src_renamed)
+                ensure_pnx_moved(src, src_renamed)
 
         except:
             ensure_printed(f'''{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''}''', print_color='red')

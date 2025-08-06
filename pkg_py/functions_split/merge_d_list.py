@@ -119,7 +119,7 @@ def merge_d_list(d_list: List[str]):
         # for index, directory in enumerate(directoryies_):
         #     if is_d(directory):
         #         if is_empty_directory(directory):
-        #             move_pnx_without_overwrite(pnx_todo=directory, dst=D_EMPTY)
+        #             ensure_pnx_moved_without_overwrite(pnx_todo=directory, dst=D_EMPTY)
         #             indices_to_remove.append(index)
         # for index in indices_to_remove:
         #     directoryies_.pop(index)
@@ -146,7 +146,7 @@ def merge_d_list(d_list: List[str]):
         ensure_printed(rf'dst : {dst}')
 
         for f_to_move in f_list_to_move:
-            move_pnx(pnx=f_to_move, d_dst=dst)
+            ensure_pnx_moved(pnx=f_to_move, d_dst=dst)
 
         # 이 함수는 캐싱문제를 해결하지 못함.
         def count_f_in_folder(folder_path):
@@ -199,7 +199,7 @@ def merge_d_list(d_list: List[str]):
                 break
 
             for d_to_move in d_list_to_move:
-                move_pnx(pnx=d_to_move, d_dst=dst)
+                ensure_pnx_moved(pnx=d_to_move, d_dst=dst)
 
         for d in d_list:
             gather_empty_d(d_working=d)

@@ -28,7 +28,7 @@ from pkg_py.functions_split.does_pnx_exist import does_pnx_exist
 from pkg_py.functions_split.ensure_pressed import ensure_pressed
 from pkg_py.functions_split.ensure_printed import ensure_printed
 
-from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
+# pk_#
 from pkg_py.system_object.files import F_POT_PLAYER_MINI_64_EXE
 from pkg_py.system_object.files import F_FFMPEG_EXE
 from pkg_py.system_object.map_massages import PkMessages2025
@@ -79,18 +79,18 @@ def ensure_remote_os_as_nopasswd(**config_remote_os):
                 std_out_list, std_err_list = cmd_to_remote_os_with_pubkey(cmd=cmd, **config_remote_os)
                 if not len(std_err_list) == 0:
                     for std_err_str in std_err_list:
-                        ensure_printed(str_working=rf'{STAMP_REMOTE_ERROR} {std_err_str}', print_color='red')
+                        ensure_printed(str_working=rf'{"[ REMOTE ERROR ]"} {std_err_str}', print_color='red')
                 if not len(std_out_list) == 0:
                     for std_out_str in std_out_list:
-                        ensure_printed(str_working=rf'{STAMP_REMOTE_DEBUG} {std_out_str}')
+                        ensure_printed(str_working=rf'{"[ REMOTE DEBUG ]"} {std_out_str}')
                 cmd = f"sudo visudo -c"
                 std_out_list, std_err_list = cmd_to_remote_os_with_pubkey(cmd=cmd, **config_remote_os)
                 if not len(std_err_list) == 0:
                     for std_err_str in std_err_list:
-                        ensure_printed(str_working=rf'{STAMP_REMOTE_ERROR} {std_err_str}', print_color='red')
+                        ensure_printed(str_working=rf'{"[ REMOTE ERROR ]"} {std_err_str}', print_color='red')
                 if not len(std_out_list) == 0:
                     for std_out_str in std_out_list:
-                        ensure_printed(str_working=rf'{STAMP_REMOTE_DEBUG} {std_out_str}')
+                        ensure_printed(str_working=rf'{"[ REMOTE DEBUG ]"} {std_out_str}')
     except:
         import traceback
         ensure_printed(str_working=rf"{traceback.format_exc()}  {'%%%FOO%%%' if LTA else ''} ", print_color='red')

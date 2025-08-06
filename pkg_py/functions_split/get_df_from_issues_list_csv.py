@@ -15,6 +15,6 @@ def get_df_from_issues_list_csv(issues_list_csv):
         if does_pnx_exist(pnx_unix):
             df = pd.read_csv(filepath_or_buffer=pnx_unix)
             if does_pnx_exist(pnx_unix):
-                move_pnx(pnx=pnx_unix, d_dst=alternative_csv_pnx, with_overwrite=1)
+                ensure_pnx_moved(pnx=pnx_unix, d_dst=alternative_csv_pnx, with_overwrite=1)
             return df
     return None

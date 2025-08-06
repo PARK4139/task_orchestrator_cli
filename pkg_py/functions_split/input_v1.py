@@ -68,7 +68,7 @@ from cryptography.hazmat.backends import default_backend
 from Cryptodome.Cipher import AES
 from bs4 import ResultSet
 from pkg_py.functions_split.get_nx import get_nx
-from pkg_py.system_object.stamps import STAMP_TRY_GUIDE, STAMP_UNIT_TEST_EXCEPTION_DISCOVERED
+
 from pkg_py.system_object.etc import PK_UNDERLINE
 from pkg_py.functions_split.get_pnx_os_style import get_pnx_os_style
 from pkg_py.system_object.directories import D_PKG_PY
@@ -126,7 +126,7 @@ def input_v1(str_working, limit_seconds, return_default, get_input_validated=Non
                 return user_input
             except Empty:
                 remaining = limit_seconds - int(time.time() - start_time)
-                print(f"\r⏳ remaining seconds : {remaining:2d} {str_working}{user_input}", end="", flush=True)
+                print(f"\r remaining seconds : {remaining:2d} {str_working}{user_input}", end="", flush=True)
         print()  # 줄 바꿈 (시간 초과 시)
         ensure_printed(f"[TIMEOUT] 입력 시간 초과 → 기본값 반환: {return_default}", print_color='red')
         return return_default

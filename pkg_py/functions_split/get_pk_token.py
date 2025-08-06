@@ -29,7 +29,7 @@ from pkg_py.functions_split.ensure_printed import ensure_printed
 from pkg_py.system_object.files import F_LOSSLESSCUT_EXE
 from pkg_py.system_object.files import F_HISTORICAL_PNX
 from pkg_py.system_object.encodings import Encoding
-from pkg_py.system_object.directories_reuseable import D_PROJECT
+from pkg_py.system_object.directories  import D_PROJECT
 from pkg_py.system_object.directories import D_PK_WORKING, D_PK_RECYCLE_BIN
 
 from passlib.context import CryptContext
@@ -61,7 +61,7 @@ def get_pk_token(f_token, initial_str):
         f_master_key_cloned = os.path.join(D_PK_RECYCLE_BIN, "pk_token_key.toml")
         if not os.path.exists(f_master_key_cloned):
             raise FileNotFoundError(f"Cloned key file not found at: {f_master_key_cloned}")
-        move_pnx(pnx=f_master_key_cloned, d_dst=D_PKG_TOML)
+        ensure_pnx_moved(pnx=f_master_key_cloned, d_dst=D_PKG_TOML)
 
     set_pk_plain_str(f_token=f_token, plain_str=initial_str, f_key=f_master_key)
     pk_plain_str = get_pk_plain_str(f_token=f_token, f_key=f_master_key)

@@ -30,7 +30,7 @@ def refresh_chrome_tab(url_to_close):
 
     # minimize_all_windows()
     # window_title_seg = get_window_title(window_title_seg="Chrome")
-    window_titles = get_window_title_list()
+    window_titles = get_window_titles()
     import time
 
     timeout_seconds = 10

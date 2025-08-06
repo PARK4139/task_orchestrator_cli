@@ -4,8 +4,8 @@ def ensure_spoken_v3(str_working, segment_delay=0.90, queue_mode=False):
 
     from pkg_py.functions_split.ensure_exception_routine_done import ensure_exception_routine_done
     from pkg_py.functions_split.ensure_finally_routine_done import ensure_finally_routine_done
-    from pkg_py.system_object.directories_reuseable import D_PROJECT
-    from pkg_py.system_object.stamps import STAMP_TRY_GUIDE
+    from pkg_py.system_object.directories  import D_PROJECT
+    # pk_#
 
     from pkg_py.functions_split.debug_call_depth import debug_call_depth
     import threading
@@ -80,4 +80,4 @@ def ensure_spoken_v3(str_working, segment_delay=0.90, queue_mode=False):
     except Exception as e:
         ensure_exception_routine_done(traceback=traceback, exception=e)
     finally:
-        ensure_finally_routine_done(D_PROJECT=D_PROJECT, __file__=__file__, STAMP_TRY_GUIDE=STAMP_TRY_GUIDE)
+        ensure_finally_routine_done(D_PROJECT=D_PROJECT, __file__=__file__)

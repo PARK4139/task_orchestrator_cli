@@ -23,7 +23,7 @@ def ensure_youtube_login_via_selenium():
         from selenium.webdriver.support import expected_conditions as EC
         from selenium.common.exceptions import TimeoutException, NoSuchElementException
         
-        ensure_printed("🤖 Selenium을 사용한 YouTube 자동 로그인을 시작합니다...", print_color="cyan")
+        ensure_printed(" Selenium을 사용한 YouTube 자동 로그인을 시작합니다...", print_color="cyan")
         
         # Chrome 옵션 설정 (디버깅 모드)
         chrome_options = Options()
@@ -40,51 +40,51 @@ def ensure_youtube_login_via_selenium():
         chrome_options.add_argument("--disable-features=VizDisplayCompositor")  # 성능 최적화
         
         # 브라우저 실행
-        ensure_printed("🚀 Chrome 브라우저를 시작하는 중...", print_color="cyan")
+        ensure_printed(" Chrome 브라우저를 시작하는 중...", print_color="cyan")
         driver = webdriver.Chrome(options=chrome_options)
         driver.execute_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})")
         
         # 브라우저 창 크기 설정 및 위치 조정
         driver.set_window_size(1200, 800)
         driver.set_window_position(100, 100)
-        ensure_printed("✅ Chrome 브라우저가 성공적으로 시작되었습니다.", print_color="green")
+        ensure_printed(" Chrome 브라우저가 성공적으로 시작되었습니다.", print_color="green")
         
         try:
             # YouTube 로그인 페이지로 이동
-            ensure_printed("📱 YouTube 로그인 페이지로 이동 중...", print_color="yellow")
+            ensure_printed(" YouTube 로그인 페이지로 이동 중...", print_color="yellow")
             driver.get("https://accounts.google.com/signin/v2/identifier?service=youtube")
-            ensure_printed(f"📍 현재 URL: {driver.current_url}", print_color="cyan")
+            ensure_printed(f" 현재 URL: {driver.current_url}", print_color="cyan")
             
             # 사용자 입력 대기
-            ensure_printed("⏳ 사용자 입력을 기다리는 중...", print_color="yellow")
-            ensure_printed("💡 브라우저에서 수동으로 로그인을 완료해주세요.", print_color="cyan")
-            ensure_printed("💡 로그인이 완료되면 Enter 키를 눌러주세요.", print_color="cyan")
+            ensure_printed(" 사용자 입력을 기다리는 중...", print_color="yellow")
+            ensure_printed(" 브라우저에서 수동으로 로그인을 완료해주세요.", print_color="cyan")
+            ensure_printed(" 로그인이 완료되면 Enter 키를 눌러주세요.", print_color="cyan")
             
             # 사용자 입력 대기
             input("로그인이 완료되면 Enter 키를 눌러주세요: ")
             
             # YouTube 메인 페이지로 이동하여 쿠키 확인
-            ensure_printed("🔍 YouTube 메인 페이지로 이동 중...", print_color="yellow")
+            ensure_printed(" YouTube 메인 페이지로 이동 중...", print_color="yellow")
             driver.get("https://www.youtube.com")
             time.sleep(3)
-            ensure_printed(f"📍 현재 URL: {driver.current_url}", print_color="cyan")
+            ensure_printed(f" 현재 URL: {driver.current_url}", print_color="cyan")
             
             # 쿠키 추출
-            ensure_printed("🍪 YouTube 쿠키를 추출하는 중...", print_color="yellow")
+            ensure_printed(" YouTube 쿠키를 추출하는 중...", print_color="yellow")
             cookies = driver.get_cookies()
-            ensure_printed(f"📊 총 쿠키 개수: {len(cookies)}", print_color="cyan")
+            ensure_printed(f" 총 쿠키 개수: {len(cookies)}", print_color="cyan")
             
             # YouTube 도메인 쿠키만 필터링
             youtube_cookies = [c for c in cookies if '.youtube.com' in c.get('domain', '')]
-            ensure_printed(f"📊 YouTube 쿠키 개수: {len(youtube_cookies)}", print_color="cyan")
+            ensure_printed(f" YouTube 쿠키 개수: {len(youtube_cookies)}", print_color="cyan")
             
             # 중요한 쿠키들 확인
             important_cookies = ['SID', 'HSID', 'SSID', 'APISID', 'SAPISID', '__Secure-1PSID', '__Secure-3PSID']
             found_cookies = [c['name'] for c in youtube_cookies if c['name'] in important_cookies]
-            ensure_printed(f"🔑 찾은 중요 쿠키: {found_cookies}", print_color="cyan")
+            ensure_printed(f" 찾은 중요 쿠키: {found_cookies}", print_color="cyan")
             
             # Netscape 형식으로 쿠키 파일 생성
-            ensure_printed("💾 쿠키 파일을 생성하는 중...", print_color="yellow")
+            ensure_printed(" 쿠키 파일을 생성하는 중...", print_color="yellow")
             with open(F_YOUTUBE_COOKIES_TXT, 'w', encoding='utf-8') as f:
                 f.write("# Netscape HTTP Cookie File\n")
                 f.write("# This file is generated by yt-dlp. Do not edit.\n\n")
@@ -102,28 +102,28 @@ def ensure_youtube_login_via_selenium():
                         
                         f.write(f"{domain}\tTRUE\t{path}\t{secure}\t{expires}\t{name}\t{value}\n")
                         saved_count += 1
-                        ensure_printed(f"💾 쿠키 저장: {name} = {value[:20]}{'...' if len(value) > 20 else ''}", print_color="green")
+                        ensure_printed(f" 쿠키 저장: {name} = {value[:20]}{'...' if len(value) > 20 else ''}", print_color="green")
             
-            ensure_printed(f"✅ YouTube 쿠키가 성공적으로 저장되었습니다: {F_YOUTUBE_COOKIES_TXT}", print_color="green")
-            ensure_printed(f"📊 저장된 쿠키 개수: {saved_count}", print_color="cyan")
+            ensure_printed(f" YouTube 쿠키가 성공적으로 저장되었습니다: {F_YOUTUBE_COOKIES_TXT}", print_color="green")
+            ensure_printed(f" 저장된 쿠키 개수: {saved_count}", print_color="cyan")
             
             # 브라우저 닫기 전 확인
-            ensure_printed("🔍 브라우저를 닫기 전에 확인하시겠습니까?", print_color="yellow")
-            ensure_printed("💡 브라우저를 계속 열어두려면 'n'을 입력하세요.", print_color="cyan")
+            ensure_printed(" 브라우저를 닫기 전에 확인하시겠습니까?", print_color="yellow")
+            ensure_printed(" 브라우저를 계속 열어두려면 'n'을 입력하세요.", print_color="cyan")
             close_browser = input("브라우저를 닫으시겠습니까? (y/n): ").lower().strip()
             
             if close_browser == 'n':
-                ensure_printed("🔍 브라우저를 열어둡니다. 수동으로 닫아주세요.", print_color="cyan")
+                ensure_printed(" 브라우저를 열어둡니다. 수동으로 닫아주세요.", print_color="cyan")
                 return True
             else:
-                ensure_printed("🔒 브라우저를 닫는 중...", print_color="yellow")
+                ensure_printed(" 브라우저를 닫는 중...", print_color="yellow")
                 driver.quit()
-                ensure_printed("✅ 브라우저가 닫혔습니다.", print_color="green")
+                ensure_printed(" 브라우저가 닫혔습니다.", print_color="green")
             
             return True
             
         except Exception as e:
-            ensure_printed(f"❌ 브라우저 실행 중 오류 발생: {e}", print_color="red")
+            ensure_printed(f" 브라우저 실행 중 오류 발생: {e}", print_color="red")
             try:
                 driver.quit()
             except:
@@ -131,12 +131,12 @@ def ensure_youtube_login_via_selenium():
             return False
             
     except ImportError:
-        ensure_printed("❌ Selenium 라이브러리가 설치되지 않았습니다.", print_color="red")
-        ensure_printed("💡 설치 방법: pip install selenium", print_color="yellow")
-        ensure_printed("💡 또는: uv add selenium", print_color="yellow")
+        ensure_printed(" Selenium 라이브러리가 설치되지 않았습니다.", print_color="red")
+        ensure_printed(" 설치 방법: pip install selenium", print_color="yellow")
+        ensure_printed(" 또는: uv add selenium", print_color="yellow")
         return False
     except Exception as e:
-        ensure_printed(f"❌ YouTube 로그인 실패: {e}", print_color="red")
+        ensure_printed(f" YouTube 로그인 실패: {e}", print_color="red")
         return False
 
 
@@ -145,7 +145,7 @@ def get_youtube_selenium_login_help():
     Selenium을 사용한 YouTube 로그인 도움말을 출력하는 함수
     """
     help_text = """
-🤖 Selenium을 사용한 YouTube 자동 로그인 방법:
+ Selenium을 사용한 YouTube 자동 로그인 방법:
 
 1. 함수 실행: ensure_youtube_login_via_selenium()
 2. Chrome 브라우저가 자동으로 열림
@@ -154,13 +154,13 @@ def get_youtube_selenium_login_help():
 5. 로그인 완료 후 Enter 키 입력
 6. 자동으로 쿠키 추출 및 저장
 
-💡 장점:
+ 장점:
 - 관리자 권한 불필요
 - 실제 브라우저 세션 사용
 - 안정적인 쿠키 추출
 - 자동화 가능
 
-⚠️ 주의사항:
+️ 주의사항:
 - 로그인 정보는 수동 입력 필요
 - 2단계 인증이 설정된 경우 추가 인증 필요
 - 브라우저가 자동으로 닫힘
