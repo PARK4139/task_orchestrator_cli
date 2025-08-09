@@ -1,1 +1,0 @@
-# API Gateway v1 API endpoints 

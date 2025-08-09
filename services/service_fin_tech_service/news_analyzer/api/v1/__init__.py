@@ -1,1 +1,0 @@
-# News Analyzer v1 API endpoints 
