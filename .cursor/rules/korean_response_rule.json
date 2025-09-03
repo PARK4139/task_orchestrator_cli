@@ -1,0 +1,57 @@
+{
+  "name": "Korean Response Rule",
+  "description": "항상 한글로 답변하도록 하는 규칙",
+  "version": "1.0",
+  "rules": [
+    {
+      "id": "always_respond_in_korean",
+      "description": "모든 응답은 반드시 한국어로 작성해야 합니다",
+      "condition": "true",
+      "action": "respond_in_korean",
+      "priority": 1
+    },
+    {
+      "id": "korean_language_enforcement",
+      "description": "사용자가 한국어로 질문하는 경우 한국어로 답변",
+      "condition": "user_message_contains_korean",
+      "action": "enforce_korean_response",
+      "priority": 2
+    },
+    {
+      "id": "korean_context_preservation",
+      "description": "프로젝트가 한국어 기반인 경우 한국어 사용 유지",
+      "condition": "project_is_korean_based",
+      "action": "maintain_korean_context",
+      "priority": 3
+    },
+    {
+      "id": "tts_cache_management",
+      "description": "TTS 캐시 파일은 D_LOGS/tts_cache 디렉토리에 저장하고, 테스트 전 기존 캐시 정리",
+      "condition": "tts_related_work",
+      "action": "manage_tts_cache_properly",
+      "priority": 4
+    },
+    {
+      "id": "speak_on_cursor_task_completion",
+      "description": "CURSOR 작업 완료 시 음성 출력",
+      "condition": "cursor_task_completed",
+      "action": "execute_command",
+      "command": "python -m pk_system_sources.pk_system_wrappers.pk_ensure_cursor_worked_done",
+      "priority": 5
+    },
+    {
+      "id": "speak_on_gemini_task_completion",
+      "description": "GEMINI 작업 완료 시마다 (반복적으로) 음성 출력",
+      "condition": "gemini_task_completed",
+      "action": "execute_command",
+      "command": "python -m pk_system_sources.pk_system_wrappers.pk_ensure_gemini_worked_done",
+      "priority": 6
+    }
+  ],
+  "metadata": {
+    "created_by": "user_request",
+    "created_date": "2025-01-27",
+    "purpose": "한국어 답변 강제 적용",
+    "scope": "all_interactions"
+  }
+}
