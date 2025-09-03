@@ -6,3 +6,4 @@ git commit -m "make save point by !SCRIPT_NAME!"
 git push
 
 
+pause
