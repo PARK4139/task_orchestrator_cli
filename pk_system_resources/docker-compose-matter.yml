@@ -1,0 +1,26 @@
+
+
+services:
+  matter-server:
+    image: ghcr.io/home-assistant-libs/python-matter-server:8.1.0
+    container_name: matter-server
+    restart: unless-stopped
+    volumes:
+      - matter_data:/data
+    ports:
+      - "5580:5580"   # WebSocket + 대시보드
+    environment:
+      - MATTER_SERVER_LOG_LEVEL=INFO
+    networks:
+      - matter_network
+    devices:
+      - /dev/bluetooth:/dev/bluetooth
+    privileged: true
+
+volumes:
+  matter_data:
+    driver: local
+
+networks:
+  matter_network:
+    driver: bridge
