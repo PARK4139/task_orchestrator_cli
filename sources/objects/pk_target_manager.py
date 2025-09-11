@@ -767,6 +767,7 @@ class PkTargetManager(PkDevice):
         # windows usbipd 설치
         self.ensure_usbipd_enabled()
 
+
         # target 리커버리 모드진입
         if not self.ensure_target_recovery_mode_entered():
             logging.warning('device target should be entered to recovery mode for flash jetpack')
@@ -1354,15 +1355,41 @@ class PkTargetManager(PkDevice):
                     logging.warning("usbipd-win 종속성이 해결되지 않아 플래시 프로세스를 중단합니다.")
                     return False
 
-                # execute sdkmanager    # todo sdkmanager cli 로 업그레이드 시도
+                # sdkmanager가 의존하는 패키지 INSTALLATION
+                # sudo apt update
+                # sudo apt --fix-broken install -y
+                # sudo apt --fix-broken install
+                # sudo apt install -y binutils
+                # sudo apt install -y build-essential
+                # sudo apt install -y libxml2-utils simg2img abootimg liblz4-tool binutils
+
+                # windows sdkmanager-cli 다운로드 (sdkmanager_2.2.1-12028_amd64.deb)
+                # nvidia developer website.
+                # nvidia developer login.
+                # download sdkmanager_2.2.1-12028_amd64.deb by clicking button
+
+                # wsl distro sdkmanager-cli 설치 (sdkmanager_2.2.1-12028_amd64.deb)
+                # sudo dpkg -i sdkmanager_
+
+
+                # wsl
+                # mkdir -p ~/Downloads
+                # copy "C:\Users\Autonomousa2z\Downloads\sdkmanager_2.2.1-12028_amd64.deb" \\wsl.localhost\Ubuntu-20.04\home\a2z\Downloads
+                # cp /mnt/c/Users/user/Downloads/sdkmanager_2.2.1-12028_amd64.deb ~/Downloads/
+                # cd ~/Downloads
+
+
                 self.ensure_sdkmanager_executed()
                 # sdkmanager    #  sdkmanager --archived-versions 이거 아님. # 안될때 sudo sdkmanager 로그인 했다가 종료하고 sdkmanager 로 다시 접속
                 # self.ensure_command_to_wsl_distro_like_human(cmd="sdkmanager", window_title_seg=windows_title_seg)
+
 
                 # start "5: cd ~/flash/no_flash/Linux_for_Tegra" cmd.exe /k "wsl sudo find ~/flash -type f -name 'flash.sh'"
 
                 # WSL 에서 실행중인데 cmd  를 관리자 권한으로 실행하고 WSL 을 실행해서 sdkmanger 실행했는데 여전히 You do not have permission to access the download folder. 나와
                 # download 폴더를 변경 create and select pk_download   -> ~/Downloads/pk_nvidia ->   flash/evm_flash
+
+                # jetpack installation via sdkmanager as gui
 
                 # nvidia developer login
                 # 로그인웹이 자동으로 안열리는 경우, 재부팅부터 해보자, QR code 로 시도
@@ -1640,11 +1667,13 @@ class PkTargetManager(PkDevice):
                     logging.debug(rf'''bus_id={bus_id}  {'%%%FOO%%%' if LTA else ''}''')
 
                     # wsl --shutdown 을 실행해야합니다 진행할까요?
-                    ensure_command_executed(cmd="wsl --shutdown", encoding='cp949')
+                    # ensure_command_executed(cmd="wsl --shutdown", encoding='cp949')
+                    ensure_command_executed(cmd=f"wsl --terminate -d {self.wsl.distro_name}", encoding='cp949') # wsl --terminate  # 바인딩 하지 않을 wsl distro 해제
+
 
                     souts = ensure_command_executed(cmd=rf"wsl -d {self.wsl.distro_name} -- exit", encoding='cp949')
                     if check_signiture_in_loop(time_limit=10, working_list=souts, signiture="제공된 이름의 배포가 없습니다", signiture_found_ment=rf"'{cmd}' 할수없었습니다"):
-                        raise
+                        return False
 
                     souts = ensure_command_executed(cmd="wsl -l -v", encoding='utf-16-le')
                     ensure_command_executed(cmd=rf"usbipd unbind -b {bus_id}", encoding='cp949')
@@ -1658,22 +1687,34 @@ class PkTargetManager(PkDevice):
                     # signiture="제공된 이름의 배포가 없습니다" or 'xxxx'
                     souts = ensure_command_executed(cmd=rf"wsl -d {self.wsl.distro_name} lsusb", encoding='cp949')  # 수동가이드 : watch -n 1 lsusb
                     if check_signiture_in_loop(time_limit=10, working_list=souts, signiture="제공된 이름의 배포가 없습니다", signiture_found_ment="wsl 에 attach 할수없었습니다"):
-                        raise
+                        return False
                     if check_signiture_in_loop(time_limit=10, working_list=souts, signiture="NVidia Corp.", signiture_found_ment="wsl 에 attach 되었습니다"):
-                        return
+                        return False
+
+
+                    # jetpack update" via sdkmanger #원격방식 가능#usb방식 가능?
+
 
                 # pk_* : 가이드
                 guide = textwrap.dedent(rf'''
                     # {guide_title} 수동가이드
+                    
+                    # Force Recovery Mode of Jetson Xavier Series way 1 (success)
+                    n. Power on the carrier board # power button
+                    n. hold the RECOVERY button  # cw button # # EVM 의 가운데 버튼
+                    n. Press the RESET button    # ccw button
                     n. USB C to A 케이블을 연결 PC 의 뒷편(A), Xaver WHITE LED 인디케이터 옆 USB 포트(C)  
-                    n. connect power
-                    n. remove auto power mode selector pin
-                    n. 전원 진입버튼 # EVM 의 왼쪽 버튼
-                    n. Recovery mode 진입버튼 # EVM 의 가운데 버튼
-                    n. recovery mode 버튼을 3초간 누르고 홀드
-                    n. 전원버튼 3초간 누르고 홀드
-                    n. 두 버튼을 모두 release
+                    
+                    # Force Recovery Mode of Jetson Xavier Series way 2
+                    n. remove all plugs 
+                    n. remove auto power selector pin
+                    n. reconnect power cable
+                    n. reconnect usb c(right port # not left port)
+                    n. hold the RESET button.    # ccw button
+                    n. press power button.
+                    n. release power button.
                     n. reinstall auto power mode selector pin
+                    
                 ''')
                 logging.debug(get_text_cyan(guide))
                 ok = ensure_value_completed(key_hint=rf"{question}=", options=[PkTexts.YES, PkTexts.NO, PkTexts.FAILED])
@@ -1911,6 +1952,11 @@ class PkTargetManager(PkDevice):
     def ensure_sdkmanager_executed(self):
         if not self.ensure_sdkmanager_installed():
             return False
+
+        # sdkmanager --cli --help
+        # list products
+        # list targets
+        # list components
 
     def ensure_sdkmanager_installed(self):
         self.ensure_wsl_distro_pkg_rar_installed()

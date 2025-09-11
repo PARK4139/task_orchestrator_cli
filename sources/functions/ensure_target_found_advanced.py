@@ -189,7 +189,7 @@ def perform_debug_query():
 
     """DB 내용을 직접 조회하여 스캔 문제를 진단"""
     db_path = get_db_path("모두")
-    logging.info(f"--- 디버그 모드: {db_path} DB 내용 확인 ---")
+    logging.info(f"디버그 모드: {db_path} DB 내용 확인 ---")
     if not db_path.exists():
         logging.error("DB 파일이 존재하지 않습니다. 스캔을 먼저 실행해주세요.")
         return
@@ -198,7 +198,7 @@ def perform_debug_query():
         cursor = conn.cursor()
 
         # 1. Downloads 폴더 내용 확인
-        logging.info("\n[1] 'Downloads' 포함 경로 조회 (최대 20개):")
+        logging.info("[1] 'Downloads' 포함 경로 조회 (최대 20개):")
         cursor.execute("SELECT path FROM targets WHERE path LIKE '%Downloads%' LIMIT 20")
         results_downloads = cursor.fetchall()
         if results_downloads:
@@ -208,7 +208,7 @@ def perform_debug_query():
             logging.info("  -> 'Downloads' 포함 경로를 찾을 수 없습니다.")
 
         # 2. '박정훈' 키워드 내용 확인
-        logging.info("\n[2] '박정훈' 포함 경로 조회 (최대 20개):")
+        logging.info("[2] '박정훈' 포함 경로 조회 (최대 20개):")
         cursor.execute("SELECT path FROM targets WHERE path LIKE '%박정훈%' LIMIT 20")
         results_keyword = cursor.fetchall()
         if results_keyword:
@@ -232,7 +232,6 @@ def perform_debug_query():
     logging.info("--- 디버그 모드 종료 ---")
 
 
-# --- 메인 함수 ---
 def ensure_target_found_advanced():
     import logging
 
@@ -256,18 +255,16 @@ def ensure_target_found_advanced():
                 filter_choice = ensure_value_completed("시스템 타겟을 포함할까요?", ["포함", "제외"]) or "제외"
                 display_format = ensure_value_completed("조회 방식을 선택하세요:", ["타겟명만", "경로포함"]) or "경로포함"
             db_path = get_db_path(target_type)
+            if not db_path.exists():
+                perform_full_scan()
             include_system = (filter_choice == "포함")
             perform_query(db_path, include_system, display_format)
         elif operation == "디버그":
             perform_debug_query()
 
     except (KeyboardInterrupt, EOFError):
-        logging.info("\n프로그램을 종료합니다.")
+        logging.info("프로그램을 종료합니다.")
     except Exception as e:
         logging.error(f"예상치 못한 오류가 발생했습니다: {e}", exc_info=True)
     finally:
         logging.info("--- 대화형 타겟 검색 도구 종료 ---")
-
-
-if __name__ == "__main__":
-    ensure_target_found_advanced()
