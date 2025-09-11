@@ -1,0 +1,45 @@
+[2025-09-09 13:42:32,600] INFO flet_alert_server: No existing Flet Alert Server found. Starting new instance.
+[2025-09-09 13:42:32,761] INFO flet_alert_server: Starting IPC server on 127.0.0.1:50001
+[2025-09-09 13:42:32,762] INFO flet_alert_server: IPC server listening...
+[2025-09-09 13:42:33,627] INFO flet_alert_server: Connected by ('127.0.0.1', 6186)
+[2025-09-09 13:42:33,628] INFO flet_alert_server: Connected by ('127.0.0.1', 6187)
+[2025-09-09 13:42:33,628] INFO flet_alert_server: Connection with ('127.0.0.1', 6186) closed.
+[2025-09-09 13:42:33,628] DEBUG flet_alert_server: Received show_alert command: {'title': 'title_', 'ment': 'ment', 'input_text_default': 'input_text_default', 'btn_list': ['확인']}
+[2025-09-09 13:42:33,638] ERROR flet_alert_server: Error handling client ('127.0.0.1', 6187): 'Page' object has no attribute 'run_sync'
+Traceback (most recent call last):
+  File "C:\Users\wjdgn\Downloads\pk_system\pk_system_sources\pk_system_functions\flet_alert_server.py", line 99, in handle_client_connection
+    flet_page_instance.run_sync(show_flet_dialog)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Page' object has no attribute 'run_sync'
+[2025-09-09 13:42:33,640] INFO flet_alert_server: Connection with ('127.0.0.1', 6187) closed.
+[2025-09-09 13:44:06,297] INFO flet_alert_server: Connected by ('127.0.0.1', 6208)
+[2025-09-09 13:44:06,297] INFO flet_alert_server: Connected by ('127.0.0.1', 6209)
+[2025-09-09 13:44:06,297] INFO flet_alert_server: Connection with ('127.0.0.1', 6208) closed.
+[2025-09-09 13:44:06,297] DEBUG flet_alert_server: Received show_alert command: {'title': 'title_', 'ment': 'ment', 'input_text_default': 'input_text_default', 'btn_list': ['확인']}
+[2025-09-09 13:44:06,298] ERROR flet_alert_server: Error handling client ('127.0.0.1', 6209): 'Page' object has no attribute 'run_sync'
+Traceback (most recent call last):
+  File "C:\Users\wjdgn\Downloads\pk_system\pk_system_sources\pk_system_functions\flet_alert_server.py", line 99, in handle_client_connection
+    flet_page_instance.run_sync(show_flet_dialog)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Page' object has no attribute 'run_sync'
+[2025-09-09 13:44:06,299] INFO flet_alert_server: Connection with ('127.0.0.1', 6209) closed.
+[2025-09-09 13:44:22,087] INFO flet_alert_server: Connected by ('127.0.0.1', 6219)
+[2025-09-09 13:44:22,087] INFO flet_alert_server: Connected by ('127.0.0.1', 6220)
+[2025-09-09 13:44:22,087] DEBUG flet_alert_server: Received show_alert command: {'title': 'title_', 'ment': 'ment', 'input_text_default': 'input_text_default', 'btn_list': ['확인']}
+[2025-09-09 13:44:22,087] ERROR flet_alert_server: Error handling client ('127.0.0.1', 6220): 'Page' object has no attribute 'run_sync'
+Traceback (most recent call last):
+  File "C:\Users\wjdgn\Downloads\pk_system\pk_system_sources\pk_system_functions\flet_alert_server.py", line 99, in handle_client_connection
+    flet_page_instance.run_sync(show_flet_dialog)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Page' object has no attribute 'run_sync'
+[2025-09-09 13:44:22,088] INFO flet_alert_server: Connection with ('127.0.0.1', 6219) closed.
+[2025-09-09 13:44:22,089] INFO flet_alert_server: Connection with ('127.0.0.1', 6220) closed.
+[2025-09-09 13:45:44,431] INFO flet_alert_server: Connected by ('127.0.0.1', 6237)
+[2025-09-09 13:45:44,431] INFO flet_alert_server: Connected by ('127.0.0.1', 6238)
+[2025-09-09 13:45:44,431] INFO flet_alert_server: Connection with ('127.0.0.1', 6237) closed.
+[2025-09-09 13:45:44,431] DEBUG flet_alert_server: Received show_alert command: {'title': 'title_', 'ment': 'ment', 'input_text_default': 'input_text_default', 'btn_list': ['확인']}
+[2025-09-09 13:45:44,431] ERROR flet_alert_server: Error handling client ('127.0.0.1', 6238): 'Page' object has no attribute 'run_sync'
+Traceback (most recent call last):
+  File "C:\Users\wjdgn\Downloads\pk_system\pk_system_sources\pk_system_functions\flet_alert_server.py", line 99, in handle_client_connection
+AttributeError: 'Page' object has no attribute 'run_sync'
+[2025-09-09 13:45:44,435] INFO flet_alert_server: Connection with ('127.0.0.1', 6238) closed.

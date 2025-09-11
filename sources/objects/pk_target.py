@@ -1,0 +1,135 @@
+from objects.device_identifiers import PkDevice
+
+
+class PkTarget(PkDevice):
+    def __init__(
+            self,
+            identifier=None,
+            ip=None,
+            pw=None,
+            hostname=None,
+            port=None,
+            user_n=None,
+            f_local_ssh_public_key=None,
+            f_local_ssh_private_key=None,
+            nick_name=None,
+            distro_name=None,
+    ):
+        if identifier is None:
+            raise ValueError("identifier는 반드시 초기화되어야 합니다.")
+
+        if nick_name is None:
+            nick_name = f"nick_name_{identifier.value}"
+        super().__init__(identifier=identifier)
+
+        # 내부 저장소 (_로 시작)
+        self._identifier = identifier
+        self._ip = ip
+        self._pw = pw
+        self._hostname = hostname
+        self._port = port
+        self._user_n = user_n
+        self._f_local_ssh_public_key = f_local_ssh_public_key
+        self._f_local_ssh_private_key = f_local_ssh_private_key
+        self._nick_name = nick_name
+        self._distro_name = distro_name
+
+    @property
+    def identifier(self):
+        return self._identifier
+
+    @identifier.setter
+    def identifier(self, value):
+        self._identifier = value
+
+    @property
+    def ip(self):
+        return self._ip
+
+    @ip.setter
+    def ip(self, value):
+        self._ip = value
+
+    @property
+    def distro_name(self):
+        return self._distro_name
+
+    @distro_name.setter
+    def distro_name(self, value):
+        self._distro_name = value
+
+    @property
+    def pw(self):
+        return self._pw
+
+    @pw.setter
+    def pw(self, value):
+        self._pw = value
+
+    @property
+    def hostname(self):
+        return self._hostname
+
+    @hostname.setter
+    def hostname(self, value):
+        self._hostname = value
+
+    @property
+    def port(self):
+        return self._port
+
+    @port.setter
+    def port(self, value):
+        self._port = value
+
+    @property
+    def user_n(self):
+        return self._user_n
+
+    @user_n.setter
+    def user_n(self, value):
+        self._user_n = value
+
+    @property
+    def f_local_ssh_public_key(self):
+        return self._f_local_ssh_public_key
+
+    @f_local_ssh_public_key.setter
+    def f_local_ssh_public_key(self, value):
+        self._f_local_ssh_public_key = value
+
+    @property
+    def f_local_ssh_private_key(self):
+        return self._f_local_ssh_private_key
+
+    @f_local_ssh_private_key.setter
+    def f_local_ssh_private_key(self, value):
+        self._f_local_ssh_private_key = value
+
+    @property
+    def nick_name(self):
+        return self._nick_name
+
+    @nick_name.setter
+    def nick_name(self, value):
+        self._nick_name = value
+
+    def to_dict(self):
+        """Converts the PkTarget object to a dictionary."""
+        return {
+            "identifier": self.identifier.value if hasattr(self.identifier, 'value') else self.identifier,
+            "ip": self.ip,
+            "pw": self.pw,
+            "hostname": self.hostname,
+            "port": self.port,
+            "user_n": self.user_n,
+            "f_local_ssh_public_key": str(self.f_local_ssh_public_key) if self.f_local_ssh_public_key else None,
+            "f_local_ssh_private_key": str(self.f_local_ssh_private_key) if self.f_local_ssh_private_key else None,
+            "nick_name": self.nick_name,
+            "distro_name": self.distro_name,
+        }
+
+    def to_json(self, indent=4, ensure_ascii=False):
+        """Converts the PkTarget object to a JSON string."""
+        import json
+        return json.dumps(self.to_dict(), indent=indent, ensure_ascii=ensure_ascii)

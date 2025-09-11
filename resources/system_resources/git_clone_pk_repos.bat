@@ -1,0 +1,2 @@
+call git_clone_task_orchestrator_cli.bat
+call git_clone_pk_memo.bat
