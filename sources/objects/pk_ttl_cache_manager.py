@@ -4,13 +4,20 @@ from objects.task_orchestrator_cli_directories import D_TTL_CACHE
 class TTLCacheManager:
     """이 유틸은  데코레이터 스타일 + 직접 get/set 형태 모두 지원"""
 
-    def __init__(self, ttl_seconds: int = 5, maxsize: int = 128):
+    def __init__(self, ttl_seconds: int = 5, maxsize: int = 128, db_path=None):
         from functions import ensure_pnx_made
+        from pathlib import Path
 
-        self.db_path = D_TTL_CACHE / "ensure_function_return_ttl_cached.sqlite"
+        if db_path:
+            self.db_path = db_path
+        else:
+            self.db_path = D_TTL_CACHE / "ensure_function_return_ttl_cached.sqlite"
 
-        if not self.db_path.exists():
-            ensure_pnx_made(self.db_path, mode='f')
+        if self.db_path != ":memory:":
+            db_path_obj = Path(self.db_path)
+            if not db_path_obj.exists():
+                ensure_pnx_made(db_path_obj, mode='f')
+        
         self.ttl = ttl_seconds
         self.maxsize = maxsize
         self._ensure_table()
@@ -145,7 +152,7 @@ class TTLCacheManager:
         return wrapper_factory
 
 
-def ensure_function_return_ttl_cached(ttl_seconds=5, maxsize=10):
+def ensure_function_return_ttl_cached(ttl_seconds=5, maxsize=10, db_path=None):
     # TBD : # TODO : get_video_filtered_list 의 결과가 None or "" 처럼 파일이 없는 경우 라면 캐시가 초기화되도록 수정. 반드시 목록 1개라도 있도록 하기 위함.
     # maxsize= 128
-    return TTLCacheManager(ttl_seconds=ttl_seconds, maxsize=maxsize).decorator()
+    return TTLCacheManager(ttl_seconds=ttl_seconds, maxsize=maxsize, db_path=db_path).decorator()

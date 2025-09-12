@@ -24,7 +24,8 @@ def ensure_spoken(text="", voice_config=None, verbose=False, wait: bool = False)
 
     # 예외적으로 출력
     if text != "":
-        logging.debug(rf"text={text}")
+        # logging.debug(rf"text={text}")
+        logging.debug(rf"{text}")
     if verbose:
         logging.debug(rf"verbose={verbose}")
 

@@ -18,7 +18,7 @@ def get_value_advanced_return_via_fzf_routine(file_id, editable, options=[]):
     options = get_list_calculated(origin_list=options, dedup=True)
 
     # prompt_label = get_prompt_label(file_id)
-    # prompt_label_guide_ment = get_prompt_label_guide_ment(prompt_label)
+    # prompt_label_guide_ment = get_prompt_label_guide_text(prompt_label)
     # easy_speakable_prompt_label = get_easy_speakable_text(prompt_label_guide_ment)
     # ensure_spoken(easy_speakable_prompt_label, verbose=False)
 

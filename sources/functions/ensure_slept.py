@@ -1,7 +1,22 @@
-def ensure_slept(milliseconds=None, seconds=None, minutes=None, hours=None, mode_countdown=1):
+from enum import IntFlag, auto
+
+
+class _SetupOps(IntFlag):
+    NORMAL = auto()
+    SILENT = auto()
+
+
+def _ensure_executed_by_following_setup(setup_ops: "_SetupOps", msg_to_print) -> None:
+    from objects.pk_map_texts import PkTexts
     import logging
-    from sources.objects.pk_map_texts import PkTexts
-    import inspect
+    if setup_ops & _SetupOps.NORMAL:
+        logging.debug(f"[{PkTexts.TIME_LEFT}] {msg_to_print}")
+    if setup_ops & _SetupOps.SILENT:
+        pass
+
+
+def ensure_slept(milliseconds=None, seconds=None, minutes=None, hours=None, mode_countdown=1, setup_op: "_SetupOps" = _SetupOps.NORMAL):
+    import logging
     import time
     from functions.get_caller_n import get_caller_n
     func_n = get_caller_n()
@@ -16,9 +31,9 @@ def ensure_slept(milliseconds=None, seconds=None, minutes=None, hours=None, mode
 
     # milliseconds 인자의 정밀도를 유지
     if unit == "milliseconds":
-        value = float(value) # milliseconds는 float으로 처리하여 정밀도 유지
+        value = float(value)  # milliseconds는 float으로 처리하여 정밀도 유지
     else:
-        value = int(value) # 다른 단위는 정수로 처리
+        value = int(value)  # 다른 단위는 정수로 처리
 
     # 시간을 초 단위로 변환
     time_value = None
@@ -51,7 +66,7 @@ def ensure_slept(milliseconds=None, seconds=None, minutes=None, hours=None, mode
         # 카운트다운
         for i in range(remaining, 0, -1):
             msg_to_print = get_msg_to_print_with_time_formatted(i)
-            logging.debug(f"[{PkTexts.TIME_LEFT}] {msg_to_print}")
+            _ensure_executed_by_following_setup(setup_op, msg_to_print)
             time.sleep(1)
 
         # 남은 시간이 소수점으로 딱 맞지 않는 경우, 잉여 시간 처리
@@ -62,5 +77,5 @@ def ensure_slept(milliseconds=None, seconds=None, minutes=None, hours=None, mode
             # logging.debug("count down complete")
             pass
     else:
-        logging.debug(f"Sleeping for {time_value:.3f} seconds ({value} {unit}).") # 이 줄을 추가
+        logging.debug(f"Sleeping for {time_value:.3f} seconds ({value} {unit}).")  # 이 줄을 추가
         time.sleep(time_value)

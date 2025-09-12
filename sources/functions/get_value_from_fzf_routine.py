@@ -9,7 +9,7 @@ def get_value_from_fzf_routine(file_id, editable, options, query=""):
     import tempfile
 
     from functions.get_prompt_label import get_prompt_label
-    from functions.get_prompt_label_guide_ment import get_prompt_label_guide_ment
+    from functions.get_prompt_label_guide_text import get_prompt_label_guide_text
     from objects.pk_map_texts import PkTexts
     from objects.task_orchestrator_cli_files import F_PK_ENSURE_GEMINI_CLI_LOCATED_TO_FRONT, F_PK_ENSURE_GEMINI_CLI_WHIP_KIT_ENABLED_INTERACTIVE
     from sources.functions.ensure_pnx_made import ensure_pnx_made
@@ -129,7 +129,7 @@ def get_value_from_fzf_routine(file_id, editable, options, query=""):
 
         # 6) 프롬프트/풋터 (개행 금지)
         prompt_label = get_prompt_label(file_id)
-        prompt_label_guide_ment = get_prompt_label_guide_ment(prompt_label)
+        prompt_label_guide_ment = get_prompt_label_guide_text(prompt_label)
         footer_text = (
             f"# 단축키\n"
             f"CTRL-O: 열기\n"

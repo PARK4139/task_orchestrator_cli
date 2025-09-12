@@ -31,7 +31,8 @@ class LosslessCutWindowMonitorHandler(EventHandler):
                     source="LosslessCutWindowMonitorHandler"
                 )
                 self.event_queue.add_event(event)
-                ensure_slept(milliseconds=5000)
+                # ensure_slept(milliseconds=5000) # task_orchestrator_cli_option
+                ensure_slept(milliseconds=500)
             else:
                 logging.debug("LosslessCut 창 아직 감지되지 않음. 대기 중...")
                 ensure_slept(milliseconds=500)

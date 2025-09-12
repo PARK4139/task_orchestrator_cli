@@ -17,23 +17,23 @@ class _SetupOps(IntFlag):
     AS_EVENT = auto()
 
 
-def _run_setups(setup_ops: "_SetupOps", video_player: PkVideoPlayer) -> None:
+def _ensure_executed_by_following_setup(setup_op: "_SetupOps", video_player: PkVideoPlayer) -> None:
     from objects.task_orchestrator_cli_files import F_LOSSLESSCUT_EXE
 
     if video_player is None:
         video_player = PkVideoPlayer(f_video_player=F_LOSSLESSCUT_EXE)
 
-    if setup_ops & _SetupOps.AS_VOID:
+    if setup_op & _SetupOps.AS_VOID:
         ensure_video_played_at_losslesscut(video_player)
 
-    if setup_ops & _SetupOps.AS_LOOP:
+    if setup_op & _SetupOps.AS_LOOP:
         loop_cnt = 0
         while 1:
             ensure_video_played_at_losslesscut(video_player, loop_cnt)
             loop_cnt += 1
             ensure_slept(milliseconds=5000)
 
-    if setup_ops & _SetupOps.AS_EVENT:
+    if setup_op & _SetupOps.AS_EVENT:
         logging.info("이벤트 기반 시스템을 시작합니다...")
         main_pk_event_system = EventSystemManager()
         losslesscut_monitor_handler = LosslessCutWindowMonitorHandler(main_pk_event_system.event_queue, video_player)

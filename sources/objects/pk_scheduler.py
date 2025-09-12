@@ -180,7 +180,7 @@ class PkRoutineScheduler:
         def do_routine_work():
             try:
                 self.speak_routine_start(self.current_routine.routine_name)
-                self._ensure_resource_not_necessary_to_routine_removed()
+                # self._ensure_resource_not_necessary_to_routine_removed()
 
                 # video stop
                 # if self.lossclescut.is_video_played():
@@ -285,13 +285,9 @@ class PkRoutineScheduler:
             ("20:05", "20:10", "휴식시간", do_routine_rest),
             ("20:10", "20:40", "작업시간", do_routine_work),
             ("20:40", "20:45", "휴식시간", do_routine_rest),
-            ("20:45", "21:15", "작업시간", do_routine_work),
-            ("21:15", "21:20", "휴식시간", do_routine_rest),
-            ("21:20", "21:50", "작업시간", do_routine_work),
-            ("21:50", "21:55", "휴식시간", do_routine_rest),
-            ("21:55", "22:25", "작업시간", do_routine_work),
-            ("22:25", "22:30", "휴식시간", do_routine_rest),
-            ("22:30", "23:00", "자야할시간", do_routine_go_to_sleep),
+            ("20:45", "21:00", "자야전휴식시간", do_routine_rest),
+            ("21:00", "23:00", "자야할시간", do_routine_go_to_sleep),
+            ("00:00", "05:00", "자야할시간", do_routine_go_to_sleep), #  세벽 루틴
         ]
 
     def speak_routine_start(self, routine_title: str):
@@ -436,11 +432,12 @@ class PkRoutineScheduler:
     def _ensure_resource_not_necessary_to_routine_removed(self):
 
         # 작업루틴에 불 필요한 리소스 제거
-        from sources.functions import ensure_slept
+        # from sources.functions import ensure_slept
 
         # ensure_slept(milliseconds=80)
         # ensure_potplayer_killed()
-        ensure_slept(milliseconds=80)
+        # ensure_slept(milliseconds=80)
+        pass
 
     def get_current_time_range(self) -> Optional[TimeRange]:
 
@@ -602,7 +599,7 @@ class PkRoutineScheduler:
         }
 
 
-def get_scheduler(state_file_path: Optional[str] = None, speak_mode: bool = True) -> PkRoutineScheduler:
+def get_pk_scheduler(state_file_path: Optional[str] = None, speak_mode: bool = True) -> PkRoutineScheduler:
     """스케줄러 싱글턴 인스턴스를 반환합니다. 설정 변경 시 재초기화합니다."""
     instance = PkRoutineScheduler(state_file_path=state_file_path, speak_mode=speak_mode)
     return instance

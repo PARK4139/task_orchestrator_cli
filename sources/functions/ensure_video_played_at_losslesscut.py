@@ -1,5 +1,7 @@
 import traceback
 
+import logging
+
 from functions.ensure_debug_loged_verbose import ensure_debug_loged_verbose
 from sources.functions.ensure_seconds_measured import ensure_seconds_measured
 
@@ -33,13 +35,9 @@ def ensure_video_played_at_losslesscut(video_player=None, loop_cnt=0):
         if not video_player.ensure_video_player_screen_maximized():
             return False
 
-        # if 1<loop_cnt:
-        #     # idle window title monitored
-        #     video_player.ensure_video_player_idle_window_title_monitored()
-        #
-        #     # export window title monitored
-        #     while 1:
-        #         logging.debug(f'''video_player.window_title_next={video_player.window_title_next} {'%%%FOO%%%' if LTA else ''}''')
+        # idle window title monitored # task_orchestrator_cli_option
+        if 1 <= loop_cnt :
+            video_player.ensure_video_player_idle_window_title_monitored()
 
         return True
 

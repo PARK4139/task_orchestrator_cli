@@ -5,9 +5,10 @@ from pathlib import Path
 from typing import List
 from typing import Optional, Tuple
 
-from functions import ensure_slept
+from functions import ensure_slept, ensure_spoken
 from functions.ensure_console_paused import ensure_console_paused
 from functions.ensure_debug_loged_verbose import ensure_debug_loged_verbose
+from functions.ensure_losslescut_killed import ensure_losslescut_killed
 from functions.ensure_pnx_opened_by_ext import ensure_pnx_opened_by_ext
 from sources.functions.ensure_seconds_measured import ensure_seconds_measured
 
@@ -160,6 +161,8 @@ class PkVideoPlayer:
         logging.debug(rf"self.video_ignored_regex_patterns={self.video_ignored_regex_patterns}")
 
         logging.debug(rf"previous_video={previous_video}")
+
+        # task_orchestrator_cli_option : get_video_filtered_list 에 TTL 적용
         videos = get_video_filtered_list(
             str(d_working), self.ext_allowed_list, self.video_name_parts_to_ignore, self.video_ignored_regex_patterns
         )
@@ -490,6 +493,7 @@ class PkVideoPlayer:
                             return True
                 else:
                     logging.debug(f"로드할 비디오 파일이 존재하지 않습니다: {video}")
+                    self.update_video_to_load(self.d_working)
         except:
             ensure_debug_loged_verbose(traceback)
             raise
@@ -595,13 +599,13 @@ class PkVideoPlayer:
         title = "LosslessCut"
         while 1:
             logging.debug(rf"{title} is monitoring...")
-            if not self.is_video_player_running():
-                self.ensure_video_player_reopened()
             if is_window_opened_via_window_title(window_title=title):
                 logging.debug(rf"{title} is monitored")
                 break
             else:
-                ensure_slept(milliseconds=80)
+                logging.debug(rf"{title} is not monitored")
+            # ensure_slept(milliseconds=80)
+            ensure_slept(seconds=3)
 
     def ensure_video_toogled_between_pause_and_play(self):
 

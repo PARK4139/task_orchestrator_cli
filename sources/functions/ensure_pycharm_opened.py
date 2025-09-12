@@ -2,8 +2,7 @@ from sources.functions.ensure_seconds_measured import ensure_seconds_measured
 
 
 @ensure_seconds_measured
-def \
-        ensure_pycharm_opened():
+def ensure_pycharm_opened():
     from sources.functions.get_execute_cmd_with_brakets import get_cmd_chains
     from sources.functions.ensure_command_executed import ensure_command_executed
 
