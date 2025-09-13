@@ -14,10 +14,10 @@ class DeviceState(Enum):
 
 
 class PkDeviceIdentifiers(Enum):
-    device_asus_desktop = "asus_board"
-    jetson_xavier = "jetson_xavier"
+    asus_desktop = "asus_desktop"
+    jetson_agx_xavier = "jetson_agx_xavier"
     esp32_dev = "esp32_dev"
-    arduino_nano_classic = "arduino_nano"
+    arduino_nano = "arduino_nano(Atmege328P)"
     arduino_nano_esp32 = "arduino_nano_esp32"
     jetson_nano = "jetson_nano"
     ras_berry_pi_4_b_plus = "ras_berry_pi_4_b_plus"
@@ -37,8 +37,7 @@ class PkDevice(ABC):
         caller_n = get_caller_n()
         logging.debug(f'{caller_n} initiallized')
 
-
-    @property # getter
+    @property  # getter
     def identifier(self) -> "PkDeviceIdentifiers":
         """디바이스의 고유 식별자를 가져옵니다."""
         return self._identifier
@@ -48,7 +47,7 @@ class PkDevice(ABC):
         """디바이스의 별명을 가져옵니다."""
         return self._nick_name
 
-    @nick_name.setter # setter
+    @nick_name.setter  # setter
     def nick_name(self, value: str):
         """디바이스의 별명을 설정합니다."""
         self._nick_name = value
@@ -86,6 +85,7 @@ class PkDevice(ABC):
 
     @classmethod
     def to_str(self):
+        # TODO  :
         return self.__str__()
 
     @classmethod
@@ -108,4 +108,3 @@ class PkDevice(ABC):
 
     def to_json(cls):
         pass
-

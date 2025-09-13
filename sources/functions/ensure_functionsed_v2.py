@@ -16,7 +16,7 @@ def ensure_functionsed_v2():
     func_n = get_caller_n()
 
     while True:
-        d_working = D_PK_WORKING # task_orchestrator_cli_option
+        d_working = D_PK_WORKING # pk_option
         D_PKG_ARCHIVED = D_ARCHIVED
 
         if not os.path.isdir(d_working):

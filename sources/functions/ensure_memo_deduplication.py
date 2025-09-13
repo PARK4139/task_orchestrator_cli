@@ -153,15 +153,15 @@ def ensure_memo_deduplication():
     try:
         logging.debug("메모 DB 중복 제거 시작...")
         
-        # 1. 내용 중복 제거 (해시 기반)
+        # n. 내용 중복 제거 (해시 기반)
         logging.debug(" 1단계: 내용 중복 제거")
         remove_duplicates_by_hash()
         
-        # 2. 제목 중복 제거
+        # n. 제목 중복 제거
         logging.debug(" 2단계: 제목 중복 제거")
         remove_title_duplicates()
         
-        # 3. 최종 상태 확인
+        # n. 최종 상태 확인
         logging.debug(" 3단계: 최종 상태 확인")
         from sources.functions.ensure_memo_db_status import ensure_memo_db_status
         ensure_memo_db_status()

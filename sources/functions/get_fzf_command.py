@@ -38,7 +38,7 @@ def get_fzf_command_full_validation():
     # Windows에서 우선적으로 확인할 경로들
     possible_paths = []
 
-    # 1. 시스템 PATH에서 찾기
+    # n. 시스템 PATH에서 찾기
     fzf_path = shutil.which("fzf")
     if fzf_path:
         possible_paths.append(fzf_path)
@@ -47,7 +47,7 @@ def get_fzf_command_full_validation():
     if f_fzf:
         possible_paths.append(f_fzf)
 
-    # 2. 일반적인 설치 경로들 확인
+    # n. 일반적인 설치 경로들 확인
     common_paths = [
         r"C:\Program Files\fzf\fzf.exe",
         r"C:\Program Files (x86)\fzf\fzf.exe",
@@ -62,7 +62,7 @@ def get_fzf_command_full_validation():
         if os.path.isfile(path):
             possible_paths.append(path)
 
-    # 3. 각 경로에서 실제 실행 가능한지 테스트
+    # n. 각 경로에서 실제 실행 가능한지 테스트
     for fzf_cmd in possible_paths:
         try:
             result = subprocess.run(
@@ -78,7 +78,7 @@ def get_fzf_command_full_validation():
         except (subprocess.CalledProcessError, subprocess.TimeoutExpired, OSError, FileNotFoundError):
             continue
 
-    # 4. 마지막으로 기본 명령어들 시도
+    # n. 마지막으로 기본 명령어들 시도
     for name in ["fzf", "fzf.exe"]:
         try:
             result = subprocess.run([name, "--version"], capture_output=True, check=True, timeout=5)

@@ -2,8 +2,10 @@ import threading
 from dataclasses import dataclass
 from typing import Callable, Optional, Dict, Any
 
+from functions import ensure_slept
 from functions.ensure_losslescut_killed import ensure_losslescut_killed
 from functions.ensure_potplayer_killed import ensure_potplayer_killed
+from functions.ensure_slept import _SetupOps
 
 
 @dataclass
@@ -82,10 +84,11 @@ class PkRoutineScheduler:
                 from sources.functions.ensure_potplayer_killed import ensure_potplayer_killed
 
                 # pk_* : pk_scheduler entry point
-                ensure_spoken("스케줄러가 시작되었습니다.")
+                # ensure_spoken("pk 스케줄러가 시작되었습니다.")
+                logging.debug("pk 스케줄러가 시작되었습니다.")
 
-                ensure_potplayer_killed()
-                ensure_losslescut_killed()
+                # ensure_potplayer_killed()
+                # ensure_losslescut_killed()
                 # ensure_process_killed_by_image_name('chrome.exe')
                 # ensure_process_killed_by_image_name('code.exe')
                 # ensure_process_killed_by_image_name('cursor.exe')
@@ -97,16 +100,17 @@ class PkRoutineScheduler:
                 # d_working = Path('G:\Downloads\pk_working')
                 d_working = D_DOWNLOADED_FROM_TORRENT
                 self.losslesscut_mgr = PkVideoPlayer(f_video_player=F_LOSSLESSCUT_EXE, d_working=d_working)
-                self.potplayer_mgr = PkVideoPlayer(f_video_player=F_POT_PLAYER, d_working=d_working)
-                # self.potplayer.ensure_video_player_reopened()
 
-                # ensure_python_file_enabled_advanced(file_path=D_TASK_ORCHESTRATOR_CLI_WRAPPERS / 'pk_ensure_task_orchestrator_cli_log_editable.py')
+                # ensure_python_file_executed_advanced(file_path=D_TASK_ORCHESTRATOR_CLI_WRAPPERS / 'pk_ensure_task_orchestrator_cli_log_editable.py')
                 ensure_routine_startup_enabled()
 
-        logging.info("========== 등록된 스케줄 ==========")
-        for start, end, name, _ in self.schedule_config:
-            logging.info(f"- {start} ~ {end}: {name}")
-        logging.info("===================================")
+
+                logging.info("========== 등록된 일정 ==========")
+                for start, end, name, _ in self.schedule_config:
+                    logging.info(f"- {start} ~ {end}: {name}")
+                logging.info("===================================")
+
+                ensure_slept(seconds=3, setup_op=_SetupOps.SILENT)
 
     def define_routines(self):
 
@@ -126,10 +130,8 @@ class PkRoutineScheduler:
 
         @self._routine_decorator
         def do_routine_rest():
-            from functions.ensure_potplayer_killed import ensure_potplayer_killed
             try:
                 self.speak_routine_start(self.current_routine.routine_name)
-
                 ensure_potplayer_killed()
 
                 # 비디오 이어서 재생
@@ -140,14 +142,9 @@ class PkRoutineScheduler:
                 self.losslesscut_mgr.ensure_video_player_play_button_pressed()
                 self.losslesscut_mgr.ensure_video_player_screen_maximized()
 
-                if not self.potplayer_mgr.is_video_loaded_already(loop_cnt=0):
-                    self.potplayer_mgr.ensure_video_file_loaded_on_video_player(video_to_play=self.potplayer_mgr.f_video_to_load)
-                self.potplayer_mgr.ensure_video_player_play_button_pressed()
-                self.potplayer_mgr.ensure_video_player_screen_maximized()
-
-
             except:
                 ensure_debug_loged_verbose(traceback)
+            
 
         @self._routine_decorator
         def do_routine_dinner():
@@ -259,9 +256,9 @@ class PkRoutineScheduler:
             ("11:10", "11:15", "휴식시간", do_routine_rest),
             ("11:15", "11:40", "작업시간", do_routine_work),
             ("11:40", "12:40", "운동시간", do_routine_exercise),
-            ("12:40", "14:00", "점심시간", do_routine_lunch),
-            ("14:00", "14:10", "오후주간작업전준비", do_routine_afternoon_prep),
-            ("14:10", "14:40", "작업시간", do_routine_work),
+            ("12:40", "14:00", "휴식시간", do_routine_rest),
+            ("14:00", "14:10", "점심시간", do_routine_lunch),
+            ("14:10", "14:40", "오후주간작업전준비", do_routine_afternoon_prep),
             ("14:40", "14:45", "휴식시간", do_routine_rest),
             ("14:45", "15:15", "작업시간", do_routine_work),
             ("15:15", "15:20", "휴식시간", do_routine_rest),

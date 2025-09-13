@@ -1,9 +1,11 @@
 import logging
+import re
 import textwrap
 from pathlib import Path
 
 from functions import ensure_value_completed
 from functions.ensure_value_completed_advanced import ensure_value_completed_advanced
+from functions.get_text_cyan import get_text_cyan
 from functions.get_text_from_clipboard import get_text_from_clipboard
 from objects.task_orchestrator_cli_directories import D_TASK_ORCHESTRATOR_CLI_TESTS
 
@@ -127,7 +129,7 @@ def ensure_function_only_created(func_n: str) -> tuple[str, str]:
     selected = ensure_value_completed(key_hint=key_name, options=options)
     function_name = selected
 
-    file_base_name = (function_name or "").strip()
+    file_base_name = function_name
 
     extension = ".py"
     filename_with_ext = file_base_name if file_base_name.endswith(extension) else f"{file_base_name}{extension}"
@@ -138,15 +140,15 @@ def ensure_function_only_created(func_n: str) -> tuple[str, str]:
     logging.debug(f"[{pk_msg.CREATED}] {file_pnx_to_made}")
 
     template_content = _function_creation_template.replace("{func_n_to_replace}", function_name)
-    logging.debug("생성된 템플릿 내용:", "yellow")
-    logging.debug(template_content, "white")
+    logging.debug("생성된 템플릿 내용:")
+    logging.debug(get_text_cyan(template_content))
     _write_template_to_file(file_pnx_to_made, template_content)
     if file_pnx_to_made.exists():
         logging.debug(f"[{pk_msg.COPIED}] template copied → {file_pnx_to_made}")
-        logging.debug(f'[{pk_msg.SUCCESS}] Function file created!', "green")
-        logging.debug(f'Function name={function_name}', "cyan")
-        logging.debug(f'file_pnx_to_made.name={file_pnx_to_made.name}', "cyan")
-        logging.debug(f'file_pnx_to_made={file_pnx_to_made}', "cyan")
+        logging.debug(f'[{pk_msg.SUCCESS}] Function file created!')
+        logging.debug(f'Function name={function_name}')
+        logging.debug(f'file_pnx_to_made.name={file_pnx_to_made.name}')
+        logging.debug(f'file_pnx_to_made={file_pnx_to_made}')
 
     ensure_pnx_opened_by_ext(pnx=str(file_pnx_to_made))
     return str(file_pnx_to_made), function_name
@@ -192,7 +194,6 @@ def ensure_tests_code_created(function_name: str) -> str:
     try:
         # 안전한 파일명 생성
         logging.debug(f"안전한 파일명 생성 시작")
-        import re
         safe_name = re.sub(r"[^A-Za-z0-9_]+", "_", (function_name or "unnamed").strip())
         logging.debug(f"원본 함수명: '{function_name}' → 안전한 이름: '{safe_name}'")
 
@@ -218,9 +219,9 @@ def ensure_tests_code_created(function_name: str) -> str:
         logging.debug(f"[{PkTexts.COPIED}] template copied → {f_test}")
 
         # 성공 메시지 출력
-        logging.debug(f'[{PkTexts.SUCCEEDED}] Test file created!', "green")
-        logging.debug(f'Test file: {f_test.name}', "cyan")
-        logging.debug(f'Path: {f_test}', "yellow")
+        logging.debug(f'[{PkTexts.SUCCEEDED}] Test file created!')
+        logging.debug(f'Test file: {f_test.name}')
+        logging.debug(f'Path: {f_test}')
 
         # 파일 열기
         logging.debug(f"테스트 파일 열기 시작: {f_test}")
@@ -466,7 +467,7 @@ def ensure_routine_code_created_once():
     # 모드 선택 과정 로깅
     logging.debug(f"모드 선택...")
     # available_modes는 이미 문자열 리스트이므로 안전함
-    mode = ensure_value_completed(key_hint='mode=', options=available_modes)
+    mode = ensure_value_completed(key_hint='mode', options=available_modes)
     logging.debug(f"선택: {mode}")
 
     # 모드 검증

@@ -90,14 +90,14 @@ def ensure_fd_exe_enabled():
         logging.debug("3. 다운로드한 파일을 C:\\Windows\\System32 또는 PATH에 추가된 폴더에 복사")
         logging.debug("4. 또는 fd.exe를 원하는 폴더에 두고 PATH에 추가")
 
-    # 1. fd가 이미 설치되어 있는지 확인
+    # n. fd가 이미 설치되어 있는지 확인
     if check_fd_enabled():
         return True
 
     logging.debug("fd가 설치되어 있지 않습니다.")
     logging.debug("fd는 find보다 훨씬 빠른 파일 검색 도구입니다.")
 
-    # 2. 설치 방법 선택
+    # n. 설치 방법 선택
     install_methods = [
         "Chocolatey로 설치 (권장)",
         "Scoop으로 설치",
@@ -113,7 +113,7 @@ def ensure_fd_exe_enabled():
         logging.debug("설치가 취소되었습니다.")
         return False
 
-    # 3. 선택된 방법으로 설치 시도
+    # n. 선택된 방법으로 설치 시도
     if selected_method == "Chocolatey로 설치 (권장)":
         # Chocolatey가 설치되어 있는지 확인
         try:
@@ -152,7 +152,7 @@ def ensure_fd_exe_enabled():
         logging.debug("설치가 취소되었습니다.")
         return False
 
-    # 4. 설치 후 다시 확인
+    # n. 설치 후 다시 확인
     if check_fd_enabled():
         logging.debug("fd 설치가 완료되었습니다!")
         return True

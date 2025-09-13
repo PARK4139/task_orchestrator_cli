@@ -41,7 +41,7 @@ def ensure_pk_scheduler_reloaded_at_windows_startup_directory():
             os.makedirs(startup_folder)
             logging.debug(f'시작 프로그램 폴더를 생성했습니다 {"%%%FOO%%%" if LTA else ""}')
 
-        # PowerShell을 사용하여 바로가기 생성
+        # pk_* : PowerShell을 사용하여 바로가기 생성
         ps_script = textwrap.dedent(rf"""
             $WshShell = New-Object -comObject WScript.Shell
             $Shortcut = $WshShell.CreateShortcut("{shortcut_path}")

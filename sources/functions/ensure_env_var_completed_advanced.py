@@ -1,5 +1,7 @@
 from typing import Optional
 
+from functions import ensure_spoken
+from functions.ensure_env_var_reset import ensure_env_var_reset
 from functions.ensure_task_orchestrator_cli_env_file_setup import ensure_task_orchestrator_cli_env_file_setup
 from sources.functions.ensure_seconds_measured import ensure_seconds_measured
 
@@ -13,6 +15,7 @@ def ensure_env_var_completed_advanced(
         mask_log: bool = True,
         sensitive_masking_mode=None,
         options=None,
+        history_reset = False
 ) -> Optional[str]:
     """
     환경 변수에서 값을 가져오거나, 없으면 사용자 입력/옵션 선택을 통해 값을 받습니다.
@@ -32,15 +35,16 @@ def ensure_env_var_completed_advanced(
 
     key_name = key_name.upper()
 
+    if history_reset:
+        ensure_env_var_reset(key_name=key_name, func_n=func_n)
+
     env_var_id = get_env_var_id(key_name, func_n)
-
     value = os.getenv(env_var_id)
-    default_value = None
+    if not value:
+        ensure_spoken(f"해당 환경변수 미등록되어 있습니다. 콘솔에 입력해주세요")
 
-    # ---------------------------
-    # Case 1. options가 없는 경우
-    # ---------------------------
-    if options is None:
+    default_value = None
+    if options is None:# Case 1. options가 없는 경우
         if not value:
             logging.warning(f"Environment variable '{key_name}' not found.")
             prompt_message = f"{key_name}="
@@ -79,15 +83,10 @@ def ensure_env_var_completed_advanced(
                     f"No value found for '{key_name}' and no default provided."
                 )
                 return None
-
-    # ---------------------------
-    # Case 2. options가 있는 경우
-    # ---------------------------
-    else:
+    else: # Case 2. options가 있는 경우
         if not value:  # ENV에 값이 없을 때만 options에서 선택
             logging.warning(f"Environment variable '{key_name}' not found.")
-            choice = ensure_value_completed(key_hint=key_name, options=options)
-            value = choice
+            value = ensure_value_completed(key_hint=key_name, options=options)
 
             # .env 파일에 저장
             try:

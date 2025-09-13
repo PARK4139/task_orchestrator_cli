@@ -14,7 +14,7 @@ def ensure_wsl_distro_ssh_enabled():
     from dataclasses import asdict
 
     remote_device_target_config = get_wsl_distro_config()
-    ensure_wsl_distro_session(wsl_distro_name=remote_device_target_config.distro_name)
+    ensure_wsl_distro_session(distro_name=remote_device_target_config.distro_name)
     ensure_ssh_public_key_to_remote_os(**asdict(remote_device_target_config))
     ensure_remote_os_as_nopasswd(**asdict(remote_device_target_config))
 
@@ -39,7 +39,7 @@ def ensure_wsl_distro_ssh_enabled():
         except Exception as e:
             ip = remote_device_target_config.ip
             port = remote_device_target_config.port
-            user_n = remote_device_target_config.user_n
+            user_n = remote_device_target_config.user_name
             logging.error(f"Failed to execute command '{cmd}' on remote OS: {e}")
             logging.debug(f"SSH 연결 가이드: ssh -p {port} {user_n}@{ip} {'%%%FOO%%%' if LTA else ''}")
             raise  # Re-raising to indicate failure to the calling function

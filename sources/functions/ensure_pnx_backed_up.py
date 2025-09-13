@@ -37,7 +37,7 @@ def ensure_pnx_backed_up(pnx_working, d_dst, with_timestamp: bool = True, blackl
             if not ok:
                 question = "디스크 용량이 부족합니다. 휴지통을 비울까요?"
                 ensure_spoken(question)
-                ok = ensure_value_completed(key_hint=rf"{question}=", options=[PkTexts.YES, PkTexts.NO])
+                ok = ensure_value_completed(key_hint=question, options=[PkTexts.YES, PkTexts.NO])
                 logging.debug(f"User choice for trash bin: {ok}")
                 if ok == PkTexts.YES:
                     logging.debug("휴지통 비우기 실행")

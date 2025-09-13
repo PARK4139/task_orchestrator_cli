@@ -7,12 +7,12 @@ def ensure_finally_routine_done(*, D_TASK_ORCHESTRATOR_CLI, __file__):
     import logging
     from sources.objects.pk_etc import PK_UNDERLINE
 
-    # task_orchestrator_cli_option
+    # pk_option
     ensure_task_orchestrator_cli_log_blocked()
 
     logging.debug(PK_UNDERLINE)
     if LTA:
-        # task_orchestrator_cli_option
+        # pk_option
         exceptions = [
             "pk_ensure_snipping_tool_exe_opened.py",
             "pk_ensure_test_scenarios_executed.py",
@@ -35,5 +35,5 @@ def ensure_finally_routine_done(*, D_TASK_ORCHESTRATOR_CLI, __file__):
     get_pk_spoken_manager()._queue.join()  # 완전히 재생될때 까지 # 모든 큐 작업이 완료될 때까지 flow 더 흘러가지 못하도록, 블로킹
     get_pk_spoken_manager().terminate()  # 리소스 해제
 
-    # task_orchestrator_cli_option : remove useless lines from end of file
+    # pk_option : remove useless lines from end of file
     # ensure_task_orchestrator_cli_useless_log_removed(text=PK_UNDERLINE)

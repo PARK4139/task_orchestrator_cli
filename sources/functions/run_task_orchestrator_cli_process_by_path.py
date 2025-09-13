@@ -21,9 +21,9 @@ def run_task_orchestrator_cli_process_by_path(pnx, pk_arg_list=None):
         pk_arg_list = []
 
     cmd_to_run = "python"
-    # nx = get_nx(pnx) # task_orchestrator_cli_option
-    # nx = rf"{pk_}{get_nx(pnx)}" # task_orchestrator_cli_option
-    nx = get_nx(pnx).replace(pk_, "") # task_orchestrator_cli_option
+    # nx = get_nx(pnx) # pk_option
+    # nx = rf"{pk_}{get_nx(pnx)}" # pk_option
+    nx = get_nx(pnx).replace(pk_, "") # pk_option
 
     if is_os_windows():
 

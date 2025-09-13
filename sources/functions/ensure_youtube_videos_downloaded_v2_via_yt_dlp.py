@@ -59,7 +59,7 @@ def ensure_youtube_videos_downloaded_v2_via_yt_dlp(url_list, d_pnx, f_func_n_txt
     # 고품질 성공
     """ 자동으로 쿠키를 가져와서 유튜브 영상을 다운로드하는 함수 """
 
-    cookie_f = rf"{D_TASK_ORCHESTRATOR_CLI_SENSITIVE}/chrome_youtube_cookies.txt"
+    cookie_f = rf"{D_TASK_ORCHESTRATOR_CLI_SENSITIVE}/youtube_cookies.txt"
     ydl_opts = {
         'ffmpeg_location': rf'{Path(get_p(F_FFMPEG_EXE))}',
         'format': 'bestvideo+bestaudio/best',  # 최상의 비디오 & 오디오 선택
@@ -72,13 +72,17 @@ def ensure_youtube_videos_downloaded_v2_via_yt_dlp(url_list, d_pnx, f_func_n_txt
             'preferedformat': 'mp4'  # 변환 후 MP4로 저장
         }],
         'geo_bypass': True,  # 지역 제한 우회
-        'cookiefile': cookie_f  # 유튜브영상 성인인증
+        'cookiefile': cookie_f,  # 유튜브영상 성인인증
+        'extractor_args': ['youtube:player_client=web'],
+        'user_agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140 Safari/537.36'
     }
     with yt_dlp.YoutubeDL(ydl_opts) as ydl:
         for url in url_list:
             url = normalize_youtube_url(url)
             # clip_id = url.split("v=")[-1]
             info = ydl.extract_info(url, download=False)
+            logging.debug(f"Type of info: {type(info)}")
+            logging.debug(f"Content of info: {info}")
             clip_id = info.get('id', None)
             feature_str = f"[{clip_id}]"
             if is_f_contained_feature_str(feature_str=feature_str, d_pnx=d_pnx):

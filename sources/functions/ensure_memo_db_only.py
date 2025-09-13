@@ -133,29 +133,29 @@ def ensure_memo_db_only():
         
         logging.debug("DB 전용 구조로 전환 시작...")
         
-        # 1. 원본 파일 경로
+        # n. 원본 파일 경로
         original_path = Path("/mnt/c/Users/pk_system_security_literal/Downloads/pk_memo/pkg_pk/pk_memo_how.pk")
         
-        # 2. DB 경로
+        # n. DB 경로
         db_path = F_PK_MEMO_SQLITE
         
         if not db_path.exists():
             logging.debug("메모 DB가 존재하지 않습니다.")
             return False
         
-        # 3. DB 무결성 검증
+        # n. DB 무결성 검증
         logging.debug("DB 무결성 검증 중...")
         if not verify_db_integrity(db_path):
             logging.debug("DB 무결성 검증 실패")
             return False
         
-        # 4. 원본 파일 백업
+        # n. 원본 파일 백업
         logging.debug("원본 파일 백업 중...")
         if not backup_original_file(original_path):
             logging.debug("원본 파일 백업 실패")
             return False
         
-        # 5. DB 전용 구조 생성
+        # n. DB 전용 구조 생성
         logging.debug("️ DB 전용 구조 생성 중...")
         if not create_db_only_structure(db_path):
             logging.debug("DB 전용 구조 생성 실패")

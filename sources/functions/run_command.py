@@ -81,14 +81,14 @@ if __name__ == "__main__":
     # 테스트 실행
     print("=== run_command 테스트 ===")
     
-    # 1. 기본 명령어 실행
+    # n. 기본 명령어 실행
     code, output = run_command("echo Hello World")
     print(f"기본 실행: code={code}, output='{output}'")
     
-    # 2. 출력 캡처 테스트
+    # n. 출력 캡처 테스트
     code, output = run_command("dir", capture_output=True)
     print(f"출력 캡처: code={code}, output 길이={len(output)}")
     
-    # 3. 오류 명령어 테스트
+    # n. 오류 명령어 테스트
     code, output = run_command("nonexistent_command", capture_output=True)
     print(f"오류 명령어: code={code}, output='{output}'")

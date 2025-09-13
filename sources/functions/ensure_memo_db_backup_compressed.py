@@ -190,22 +190,22 @@ def ensure_memo_db_backup_compressed():
         
         logging.debug("메모 DB 압축 백업 시작...")
         
-        # 1. 압축 백업 생성
+        # n. 압축 백업 생성
         backup_path = create_compressed_backup(db_path)
         if not backup_path:
             return False
         
-        # 2. 백업 무결성 검증
+        # n. 백업 무결성 검증
         logging.debug("백업 무결성 검증 중...")
         if not verify_backup_integrity(Path(backup_path), db_path):
             logging.debug("백업 무결성 검증 실패")
             return False
         
-        # 3. 오래된 백업 정리
+        # n. 오래된 백업 정리
         logging.debug("오래된 백업 정리 중...")
         cleanup_old_backups(backup_dir)
         
-        # 4. 백업 상태 표시
+        # n. 백업 상태 표시
         logging.debug("백업 상태 확인 중...")
         get_backup_status(backup_dir)
         

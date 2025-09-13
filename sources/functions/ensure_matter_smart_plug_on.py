@@ -9,7 +9,7 @@ P110M Matter 장치 완전 자동화 제어
 import logging
 from typing import Optional, Tuple
 
-FINAL_TOGGLE: Optional[bool] = True  # task_orchestrator_cli_option: True=ON, False=OFF, None=상태만 확인
+FINAL_TOGGLE: Optional[bool] = True  # pk_option: True=ON, False=OFF, None=상태만 확인
 
 
 # -------------------------- HELPER FUNCTIONS ------------------------------
@@ -124,7 +124,7 @@ async def ensure_matter_smart_plug_on() -> bool:
             logging.error(f"❌ 관리자 권한 처리 중 심각한 오류 발생: {e}")
             return False
 
-        # 1. Wi-Fi 연결 상태 확인
+        # n. Wi-Fi 연결 상태 확인
         wifi_connected, current_network = await check_wifi_connection_status()
         if not wifi_connected:
             logging.debug("⚠️ Wi-Fi가 연결되지 않았습니다. Wi-Fi 연결 후 다시 시도하세요.")
@@ -133,11 +133,11 @@ async def ensure_matter_smart_plug_on() -> bool:
 
         logging.debug(f"📶 Wi-Fi 연결됨: {current_network}")
 
-        # 2. 로컬 네트워크 범위 자동 감지
+        # n. 로컬 네트워크 범위 자동 감지
         local_ip_range = await detect_local_network_range()
         logging.debug(f"🔍 감지된 네트워크 범위: {local_ip_range}")
 
-        # 3. P110M 자동 발견 및 제어 (Windows 실용적 방법 우선)
+        # n. P110M 자동 발견 및 제어 (Windows 실용적 방법 우선)
         if platform.system().lower() == "windows":
             try:
                 from sources.functions.ensure_p110m_practical_control import P110MPracticalController
@@ -220,7 +220,7 @@ async def ensure_matter_smart_plug_on() -> bool:
             except Exception as e:
                 logging.debug(f"실용적 제어 중 오류: {e}")
 
-        # 4. Docker 기반 Matter 제어 시도 (백업)
+        # n. Docker 기반 Matter 제어 시도 (백업)
         try:
             logging.debug("🐳 Docker 기반 Matter 제어 시도...")
             from sources.functions.ensure_matter_docker_control import control_p110m_via_docker_matter
@@ -239,7 +239,7 @@ async def ensure_matter_smart_plug_on() -> bool:
         except Exception as e:
             logging.debug(f"Docker Matter 제어 중 오류: {e}")
 
-        # 5. 최종 실패
+        # n. 최종 실패
         logging.debug("❌ 모든 제어 방법이 실패했습니다.")
         logging.debug("💡 해결 방법:")
         logging.debug("  1. 관리자 PowerShell에서 실행")

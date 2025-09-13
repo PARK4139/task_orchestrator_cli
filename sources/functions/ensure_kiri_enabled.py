@@ -47,7 +47,7 @@ def ensure_kiri_ran():
     wsl_distro_config = get_wsl_distro_config()
 
     ensure_wsl_distro_enabled(distro_name=wsl_distro_config.distro_name)
-    ensure_wsl_distro_session(wsl_distro_name=wsl_distro_config.distro_name)
+    ensure_wsl_distro_session(distro_name=wsl_distro_config.distro_name)
 
     ensure_python_pkg_to_remote_os(py_pkg_n='SpeechRecognition', **wsl_distro_config)
     ensure_python_pkg_to_remote_os(py_pkg_n='PyAudio', **wsl_distro_config)

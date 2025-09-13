@@ -1,11 +1,11 @@
+from functions.get_window_title_temp_for_cmd_exe import get_window_title_temp_for_cmd_exe
 from sources.functions.ensure_seconds_measured import ensure_seconds_measured
-from sources.functions.get_nx import get_nx
 
 
 @ensure_seconds_measured
-def ensure_command_executed_like_human(text, __file__):
-    # todo : return 에 대해서 개선필요
-    from sources.functions.ensure_window_title_replaced import ensure_window_title_replaced
+def ensure_command_executed_like_human(cmd) -> None:
+    # todo : return 할수 있도록 할수 있을까?
+    from functions.run_cmd_exe import _SetupOps
 
     from sources.functions.run_cmd_exe import ensure_cmd_exe_executed
     from sources.functions import ensure_slept
@@ -14,16 +14,15 @@ def ensure_command_executed_like_human(text, __file__):
     from sources.functions.ensure_pressed import ensure_pressed
     from sources.functions.ensure_window_to_front import ensure_window_to_front
 
-    ensure_window_title_replaced(rf"{get_nx(__file__)}_child_process")
+    # ensure_window_title_replaced(custom_title)
 
-    ensure_cmd_exe_executed()
+    custom_title = get_window_title_temp_for_cmd_exe()
+    ensure_cmd_exe_executed(setup_op=_SetupOps.CUSTOM_TITLE, custom_title=custom_title)
     ensure_slept(milliseconds=80)
 
-    window_title_seg = rf'cmd.exe'
-    ensure_window_to_front(window_title_seg)
+    ensure_window_to_front(window_title_seg=custom_title)
     ensure_slept(milliseconds=80)
 
-    ensure_text_saved_to_clipboard_and_pasted_with_keeping_clipboard(text=text)
+    ensure_text_saved_to_clipboard_and_pasted_with_keeping_clipboard(text=cmd)
     ensure_slept(milliseconds=80)
     ensure_pressed("enter")
-    # std_str = get_str_from_clipboard()

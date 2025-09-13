@@ -27,7 +27,7 @@ def ensure_modules_printed():
         # decision = "f_working_mode"
         # decision = ensure_value_completed(key_hint=rf"{PkTexts.MODE}=", values=["d_working_mode", "f_working_mode"])
     else:
-        decision = ensure_value_completed(key_hint=rf"{PkTexts.MODE}=", options=["d_working_mode", "f_working_mode"])
+        decision = ensure_value_completed(key_hint=rf"{PkTexts.MODE}", options=["d_working_mode", "f_working_mode"])
     if decision == "d_working_mode":
         all_modules = set()  # 전체 모듈을 저장할 set
         save_file = os.path.join(D_TASK_ORCHESTRATOR_CLI_SENSITIVE, "modules_collected.txt")

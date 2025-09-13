@@ -6,7 +6,7 @@ def ensure_sound_track_played():
     from sources.functions.is_os_linux import is_os_linux
     from sources.functions.is_os_windows import is_os_windows
 
-    ensure_potplayer_killed()  # task_orchestrator_cli_option
+    ensure_potplayer_killed()  # pk_option
 
     if is_os_windows():
         ensure_command_executed(cmd=rf'explorer "{F_SOUND_POTPLAYER64_DPL}" ')

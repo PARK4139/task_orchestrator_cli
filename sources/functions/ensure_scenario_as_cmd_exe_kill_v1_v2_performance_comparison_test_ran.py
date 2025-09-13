@@ -64,8 +64,8 @@ def ensure_scenario_as_cmd_exe_kill_v1_v2_performance_comparison_test_ran():
         logging.debug("사용자에 의해 중단되었습니다.")
         sys.exit(0)
 
-    # mode = "cumulative" # task_orchestrator_cli_option
-    mode = "non_cumulative"  # task_orchestrator_cli_option
+    # mode = "cumulative" # pk_option
+    mode = "non_cumulative"  # pk_option
     iterations = 3
 
     logging.debug(PK_UNDERLINE)
@@ -82,7 +82,7 @@ def ensure_scenario_as_cmd_exe_kill_v1_v2_performance_comparison_test_ran():
         logging.debug(f"\n[자동] {mode} 모드로 모든 테스트를 순차적으로 실행합니다...")
         logging.debug(PK_UNDERLINE)
 
-        # 1. 성능 테스트 실행
+        # n. 성능 테스트 실행
         logging.debug(PK_UNDERLINE)
         logging.debug("[1단계] 성능 테스트 실행 (10회)")
         logging.debug(f"[테스트] 성능 테스트 실행 ({iterations}회)")
@@ -105,19 +105,19 @@ def ensure_scenario_as_cmd_exe_kill_v1_v2_performance_comparison_test_ran():
             ensure_cmd_exe_killed_v2()
             logging.debug(PK_UNDERLINE)
 
-        # 2. 결과 분석
+        # n. 결과 분석
         logging.debug(PK_UNDERLINE)
         logging.debug("[2단계] 결과 분석")
         analyze_samples_results()
         logging.debug(PK_UNDERLINE)
 
-        # 3. 성능 순위
+        # n. 성능 순위
         logging.debug(PK_UNDERLINE)
         logging.debug("[3단계] 성능 순위")
         log_samples_ranking()
         logging.debug(PK_UNDERLINE)
 
-        # 4. 리포트 생성 (D_TASK_ORCHESTRATOR_CLI_LOGS 디렉토리에 동적 파일명으로 저장)
+        # n. 리포트 생성 (D_TASK_ORCHESTRATOR_CLI_LOGS 디렉토리에 동적 파일명으로 저장)
         # logging.debug(PK_UNDERLINE)
         # logging.debug("[4단계] 리포트 생성")
         # result_filename = get_test_scenario_result_filename("foo", mode)

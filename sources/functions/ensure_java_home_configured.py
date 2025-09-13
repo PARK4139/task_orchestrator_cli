@@ -10,7 +10,7 @@ def ensure_java_home_configured() -> bool:
     Returns:
         bool: JAVA_HOME이 성공적으로 설정되었으면 True, 아니면 False.
     """
-    # 1. JAVA_HOME이 이미 올바르게 설정되었는지 확인
+    # n. JAVA_HOME이 이미 올바르게 설정되었는지 확인
     java_home = os.environ.get('JAVA_HOME')
     if java_home:
         # java.exe 또는 java 바이너리가 있는지 확인하여 경로 유효성 검사
@@ -19,13 +19,13 @@ def ensure_java_home_configured() -> bool:
             logging.info(f"JAVA_HOME is already set and valid: {java_home}")
             return True
 
-    # 2. Windows가 아닌 경우, 자동 감지 지원 안 함을 알림
+    # n. Windows가 아닌 경우, 자동 감지 지원 안 함을 알림
     if platform.system() != 'Windows':
         logging.warning("Automatic JAVA_HOME detection is currently only supported on Windows.")
         logging.warning("Please set the JAVA_HOME environment variable manually.")
         return False
 
-    # 3. Windows의 경우, 일반적인 경로에서 Java 설치 위치 탐색
+    # n. Windows의 경우, 일반적인 경로에서 Java 설치 위치 탐색
     logging.info("JAVA_HOME not set or invalid. Searching for Java installations...")
     search_paths = [
         os.environ.get("ProgramFiles", "C:\\Program Files"),
@@ -42,14 +42,14 @@ def ensure_java_home_configured() -> bool:
                     potential_homes.append(dirpath)
 
     if not potential_homes:
-        # 4. Java 설치를 찾지 못한 경우, 사용자에게 안내
+        # n. Java 설치를 찾지 못한 경우, 사용자에게 안내
         logging.error("--- Java Installation Not Found ---")
         logging.error("KoNLPy requires a Java installation to function.")
         logging.error("Please install a Java JDK (version 8 or higher) and try again.")
         logging.error("Recommended Download: https://www.oracle.com/java/technologies/downloads/")
         return False
 
-    # 5. 찾은 경로 중 가장 적합한 것을 선택 (JDK 우선, 최신 버전 우선)
+    # n. 찾은 경로 중 가장 적합한 것을 선택 (JDK 우선, 최신 버전 우선)
     potential_homes.sort(key=lambda p: ('jdk' not in p.lower(), p), reverse=True)
     best_path = potential_homes[0]
 

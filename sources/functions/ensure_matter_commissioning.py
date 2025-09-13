@@ -49,19 +49,19 @@ class MatterCommissioningController:
             logging.debug("🚀 P110M 커미셔닝 프로세스 시작")
             logging.debug(f"📋 커미션 코드: {self._mask_commission_code(commission_code)}")
             
-            # 1. LED 상태 확인
+            # n. LED 상태 확인
             await self.check_p110m_led_status()
             
-            # 2. 커미셔닝 모드 대기
+            # n. 커미셔닝 모드 대기
             if not await self.wait_for_commissioning_mode():
                 return False
             
-            # 3. Docker 기반 커미셔닝 시도
+            # n. Docker 기반 커미셔닝 시도
             success = await self._commission_via_docker(commission_code)
             if success:
                 return True
             
-            # 4. 수동 커미셔닝 안내
+            # n. 수동 커미셔닝 안내
             await self._provide_manual_commissioning_guide(commission_code)
             return False
             

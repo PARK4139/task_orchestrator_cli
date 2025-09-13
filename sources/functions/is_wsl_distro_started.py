@@ -13,9 +13,9 @@ def is_wsl_distro_started(wsl_distro_name):
     std_outs, std_errs = ensure_command_executed(cmd=cmd, encoding='utf-16-le')
     std_list = std_outs # Assign stdout_lines to std_list
 
-    logging.debug(f"DEBUG: In is_wsl_distro_started, type(std_list)={type(std_list)}, std_list={std_list}")
+    logging.debug(f"In is_wsl_distro_started, type(std_list)={type(std_list)}, std_list={std_list}")
     if std_list and len(std_list) > 0:
-        logging.debug(f"DEBUG: In is_wsl_distro_started, type(std_list[0])={type(std_list[0])}, std_list[0]={std_list[0]}")
+        logging.debug(f"In is_wsl_distro_started, type(std_list[0])={type(std_list[0])}, std_list[0]={std_list[0]}")
     try:
         from sources.functions.get_list_removed_by_removing_runtine import get_list_removed_by_removing_runtine
     except ImportError:

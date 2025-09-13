@@ -23,7 +23,7 @@ def ensure_gemini_cli_opened(__file__, opened=None):
             opened = is_gemini_opened()
 
         if not opened:
-            ensure_command_executed_like_human("gemini", __file__)
+            ensure_command_executed_like_human("gemini")
             # ensure_slept(seconds=3)
 
             # pk_* : time limit loop

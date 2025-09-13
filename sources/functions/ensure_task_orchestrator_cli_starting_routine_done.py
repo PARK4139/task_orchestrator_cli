@@ -8,7 +8,7 @@ def ensure_task_orchestrator_cli_starting_routine_done(*, __file__, traceback):
     from sources.functions.ensure_task_orchestrator_cli_wrapper_suicided import ensure_task_orchestrator_cli_wrapper_suicided
     from sources.functions.ensure_task_orchestrator_cli_wrapper_window_title_replaced import ensure_task_orchestrator_cli_wrapper_window_title_replaced
 
-    # task_orchestrator_cli_option
+    # pk_option
     # if is_os_windows():
     #     ensure_chcp_65001()
 

@@ -16,7 +16,7 @@ def ensure_docker_installed_in_wsl():
     logging.debug(PK_UNDERLINE)
     
     try:
-        # 1. 시스템 업데이트
+        # n. 시스템 업데이트
         logging.debug("1️⃣ 시스템 업데이트...")
         result = subprocess.run(
             ['wsl', '-d', 'Ubuntu', '-e', 'bash', '-c', 'sudo apt-get update'],
@@ -32,7 +32,7 @@ def ensure_docker_installed_in_wsl():
             logging.debug(f"시스템 업데이트 실패: {result.stderr}")
             return False
         
-        # 2. 필요한 패키지 설치
+        # n. 필요한 패키지 설치
         logging.debug("\n2️⃣ 필요한 패키지 설치...")
         packages = [
             'apt-transport-https',
@@ -57,7 +57,7 @@ def ensure_docker_installed_in_wsl():
                 logging.debug(f"{package} 설치 실패: {result.stderr}")
                 return False
         
-        # 3. Docker GPG 키 추가
+        # n. Docker GPG 키 추가
         logging.debug("\n3️⃣ Docker GPG 키 추가...")
         result = subprocess.run(
             ['wsl', '-d', 'Ubuntu', '-e', 'bash', '-c', 
@@ -74,7 +74,7 @@ def ensure_docker_installed_in_wsl():
             logging.debug(f"Docker GPG 키 추가 실패: {result.stderr}")
             return False
         
-        # 4. Docker 저장소 추가
+        # n. Docker 저장소 추가
         logging.debug("\n4️⃣ Docker 저장소 추가...")
         result = subprocess.run(
             ['wsl', '-d', 'Ubuntu', '-e', 'bash', '-c', 
@@ -91,7 +91,7 @@ def ensure_docker_installed_in_wsl():
             logging.debug(f"Docker 저장소 추가 실패: {result.stderr}")
             return False
         
-        # 5. 패키지 목록 업데이트
+        # n. 패키지 목록 업데이트
         logging.debug("\n5️⃣ 패키지 목록 업데이트...")
         result = subprocess.run(
             ['wsl', '-d', 'Ubuntu', '-e', 'bash', '-c', 'sudo apt-get update'],

@@ -31,9 +31,9 @@ def ensure_files_gathered():
     if LTA:
         # d_working = rf"G:\Downloads\pk_test2"
         # d_working = rf"G:\Downloads\pk_test"
-        d_working = ensure_value_completed(key_hint='d_working=', options=options)
+        d_working = ensure_value_completed(key_hint='d_working', options=options)
     else:
-        d_working = ensure_value_completed(key_hint='d_working=', options=options)
+        d_working = ensure_value_completed(key_hint='d_working', options=options)
     d_working = Path(d_working)
 
     logging.debug(f'''len(historical_pnxs)={len(historical_pnxs)} {'%%%FOO%%%' if LTA else ''}''')
@@ -47,7 +47,7 @@ def ensure_files_gathered():
         print(f"[ERROR] d_working 경로가 존재하지 않습니다: {d_working}")
         return
 
-    # 1. 하위 모든 파일 수집
+    # n. 하위 모든 파일 수집
     all_files = []
     for root, _, files in os.walk(d_working):
         for f in files:
@@ -55,7 +55,7 @@ def ensure_files_gathered():
             if os.path.isfile(full_path):
                 all_files.append(full_path)
 
-    # 2. 파일 이동 (중복 처리 포함, 상수 사용)
+    # n. 파일 이동 (중복 처리 포함, 상수 사용)
     for file_path in all_files:
         filename = os.path.basename(file_path)
         base, ext = os.path.splitext(filename)
@@ -84,7 +84,7 @@ def ensure_files_gathered():
                 dst_path = os.path.join(d_working, new_filename)
                 attempt += 1
 
-    # 3. 하위 디렉토리 중 빈 디렉토리만 재귀적으로 제거
+    # n. 하위 디렉토리 중 빈 디렉토리만 재귀적으로 제거
     for root, dirs, _ in os.walk(d_working, topdown=False):
         for dir_name in dirs:
             full_dir = os.path.join(root, dir_name)

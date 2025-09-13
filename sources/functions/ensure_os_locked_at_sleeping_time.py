@@ -47,7 +47,7 @@ def ensure_os_locked_at_sleeping_time():
     ensure_spoken("시스템 통제를 시작합니다")
 
 
-    range_reserved = ["23:00-05:00"] # task_orchestrator_cli_option
+    range_reserved = ["23:00-05:00"] # pk_option
 
     # 파싱
     all_time_blocks = parse_time_ranges(range_reserved)

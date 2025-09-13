@@ -8,7 +8,7 @@ def ensure_everything_ssd_diagnosis():
         """SSD 성능 진단"""
         logging.debug("SSD에서 Everything 성능 진단 시작 ===")
         
-        # 1. Windows Search 서비스 상태
+        # n. Windows Search 서비스 상태
         try:
             result = subprocess.run(
                 ['sc', 'query', 'WSearch'],
@@ -26,7 +26,7 @@ def ensure_everything_ssd_diagnosis():
             logging.debug(f"Windows Search 서비스 확인 실패: {e}")
             return False
         
-        # 2. Windows Search Index 상태
+        # n. Windows Search Index 상태
         try:
             index_result = subprocess.run(
                 ['powershell', '-Command', 'Get-WmiObject -Class "Win32_Volume" | Where-Object {$_.DriveLetter -eq "C:"} | Select-Object IndexingEnabled'],
@@ -43,7 +43,7 @@ def ensure_everything_ssd_diagnosis():
             logging.debug(f"Windows Search Index 확인 실패: {e}")
             return False
         
-        # 3. NTFS USN Journal 상태
+        # n. NTFS USN Journal 상태
         try:
             usn_result = subprocess.run([
                 'fsutil', 'usn', 'queryjournal', 'C:'
@@ -58,7 +58,7 @@ def ensure_everything_ssd_diagnosis():
             logging.debug(f"NTFS USN Journal 확인 실패: {e}")
             return False
         
-        # 4. Everything 설정 파일 확인
+        # n. Everything 설정 파일 확인
         everything_ini = os.path.expanduser(r"~\AppData\Roaming\Everything\Everything.ini")
         if os.path.exists(everything_ini):
             with open(everything_ini, 'r', encoding='utf-8') as f:
@@ -85,7 +85,7 @@ def ensure_everything_ssd_diagnosis():
             logging.debug("Everything 설정 파일 없음")
             return False
         
-        # 5. Everything 실행 테스트
+        # n. Everything 실행 테스트
         try:
             everything_paths = [
                 r"C:\Program Files\Everything\Everything.exe",

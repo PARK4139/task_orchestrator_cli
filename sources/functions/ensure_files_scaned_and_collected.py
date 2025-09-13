@@ -142,7 +142,7 @@ def ensure_files_scaned_and_collected():
 
     while True:
         if not working_dir:
-            working_dir = ensure_value_completed(key_hint='d_working=', options=tab_completer)
+            working_dir = ensure_value_completed(key_hint='d_working', options=tab_completer)
             tab_completer.append(working_dir)
 
         if not os.path.isdir(working_dir):
@@ -159,7 +159,7 @@ def ensure_files_scaned_and_collected():
 
         print_f_list_preview(f_list)
 
-        choice = ensure_value_completed(key_hint='choice (o/x)=', options=['o', 'x'])
+        choice = ensure_value_completed(key_hint='choice (o/x)', options=['o', 'x'])
         if choice.strip().lower() != 'o':
             print("수집 취소됨.")
             return
@@ -175,7 +175,7 @@ def ensure_files_scaned_and_collected():
         print(f"모든 항목을 '{working_dir}_merged'로 이동했습니다. (이동됨: {moved_count}/{total_before})")
         continue
 
-        choice = ensure_value_completed(key_hint='choice (o/x)=', options=['o', 'x'])
+        choice = ensure_value_completed(key_hint='choice (o/x)', options=['o', 'x'])
         if choice.strip().lower() != 'o':
             print("수집 취소됨.")
             continue

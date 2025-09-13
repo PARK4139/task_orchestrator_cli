@@ -160,13 +160,13 @@ def ensure_gemini_cli_assistance_executed(gemini_cli_window_title):
             ''').strip(),
     }
 
-    # task_orchestrator_cli_option
+    # pk_option
     # prompt_groups = [field.name for field in PkPromptGroups]
     # selected = ensure_value_completed(key_hint='프롬프트 그룹=', values=prompt_groups)
     # prompt_group = PkPromptGroups[selected]
     # prompts_raw = prompts_by_group.get(prompt_group, "")
 
-    # task_orchestrator_cli_option
+    # pk_option
     prompt_group = PkPromptGroups.COMMON
     prompts_raw = prompts_by_group.get(prompt_group, "")
 
@@ -176,7 +176,7 @@ def ensure_gemini_cli_assistance_executed(gemini_cli_window_title):
 
     parsed_prompts = [p.strip() for p in prompts_raw.split('\n\n') if p.strip()]
 
-    # task_orchestrator_cli_option
+    # pk_option
     key_name = "prompt_to_request"
     from functions.get_caller_n import get_caller_n
     func_n = get_caller_n()

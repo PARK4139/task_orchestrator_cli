@@ -3,7 +3,7 @@ from pathlib import Path
 from sources.objects.encodings import Encoding
 
 
-def ensure_str_writen_to_f(msg: str, f: str or Path, mode: str = "a", encoding=None) -> None:
+def ensure_str_writen_to_f(text: str, f: str or Path, mode: str = "a", encoding=None) -> None:
     from enum import Enum
     encoding: Enum
 
@@ -11,4 +11,4 @@ def ensure_str_writen_to_f(msg: str, f: str or Path, mode: str = "a", encoding=N
 
     f = str(f)
     with open(file=f, mode=mode, encoding=encoding.value) as file:
-        file.write(msg)
+        file.write(text)

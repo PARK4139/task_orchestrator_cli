@@ -1,9 +1,9 @@
-# editable = True  # task_orchestrator_cli_option
+# editable = True  # pk_option
 from sources.functions import ensure_console_cleared, ensure_spoken
 from sources.objects.pk_map_colors import TASK_ORCHESTRATOR_CLI_ANSI_COLOR_MAP
 from sources.objects.pk_map_texts import PkTexts
 
-editable = False  # task_orchestrator_cli_option
+editable = False  # pk_option
 
 
 def parse_time_input(time_str):

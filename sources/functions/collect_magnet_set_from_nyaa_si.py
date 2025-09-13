@@ -51,7 +51,7 @@ def collect_magnet_set_from_nyaa_si(search_keyword=None, driver=None, via_f_txt=
     ensure_pnx_made(pnx=rf'historical_{func_n}.txt', mode='f')
     historical_search_keyword_list = get_historical_list(f=rf'historical_{func_n}.txt')
     option_values = ['', '1080 [Batch]'] + historical_search_keyword_list
-    search_keyword = ensure_value_completed(key_hint='search_keyword=', options=option_values)
+    search_keyword = ensure_value_completed(key_hint='search_keyword', options=option_values)
     search_keyword = search_keyword.strip()
     ensure_list_written_to_f(f=rf'historical_{func_n}.txt', working_list=[search_keyword] + historical_search_keyword_list,
                              mode="w")
@@ -77,13 +77,13 @@ def collect_magnet_set_from_nyaa_si(search_keyword=None, driver=None, via_f_txt=
     if driver is None:
         driver = get_driver_selenium(browser_debug_mode=False)
 
-    nyaa_si_supplier = ensure_value_completed(key_hint='nyaa_si_supplier=', options=['SubsPlease', '', 'Erai-raws'])
+    nyaa_si_supplier = ensure_value_completed(key_hint='nyaa_si_supplier', options=['SubsPlease', '', 'Erai-raws'])
     magnets_set = magnets_set | get_magnets_set_from_nyaa_si(nyaa_si_supplier=nyaa_si_supplier,
                                                              search_keyword=search_keyword, driver=driver)
 
     magnets_set_filtered = set()
 
-    positive_filter_keywords = ensure_value_completed(key_hint='positive_filter_keywords=', options=['1080'])
+    positive_filter_keywords = ensure_value_completed(key_hint='positive_filter_keywords', options=['1080'])
     for magnet in magnets_set:
         decoded_magnet = unquote(magnet)
         parsed = urlparse(decoded_magnet)

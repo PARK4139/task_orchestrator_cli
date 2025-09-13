@@ -18,11 +18,11 @@ PK_DEBUG_LINE = "PK_DEBUG " * 22
 PK_USERLESS_LINE = "USELESS " * 22
 PK_BLANK = " "
 PK_UNDERLINE_HALF = '_' * 33
-PK_UNDERLINE = PK_UNDERLINE_HALF * 2 + rf"{PK_BLANK}"  # task_orchestrator_cli_option # python pep8 최대권장길이(79)를 기준으로 13 자 내외로 제목작성을 작성을 최대한 준수
-PK_DIVIDER = PK_UNDERLINE  # task_orchestrator_cli_option
-PK_UNDERLINESHORT = '_' * 6  # task_orchestrator_cli_option
-pk_INDENTATION_PROMISED = ' ' * 5  # task_orchestrator_cli_option
-PK_BLANK = ' '  # task_orchestrator_cli_option
+PK_UNDERLINE = PK_UNDERLINE_HALF * 2 + rf"{PK_BLANK}"  # pk_option # python pep8 최대권장길이(79)를 기준으로 13 자 내외로 제목작성을 작성을 최대한 준수
+PK_DIVIDER = PK_UNDERLINE  # pk_option
+PK_UNDERLINESHORT = '_' * 6  # pk_option
+pk_INDENTATION_PROMISED = ' ' * 5  # pk_option
+PK_BLANK = ' '  # pk_option
 
 COUNTS_FOR_GUIDE_TO_SLEEP = []
 

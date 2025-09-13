@@ -184,7 +184,7 @@ class ComprehensiveYouTubeSolution:
         try:
             logging.debug("쿠키 파일 수동 갱신 시도 중...")
             
-            # 1. 기존 쿠키 백업
+            # n. 기존 쿠키 백업
             from sources.objects.task_orchestrator_cli_directories import D_TASK_ORCHESTRATOR_CLI_SENSITIVE
             cookie_dir = D_TASK_ORCHESTRATOR_CLI_SENSITIVE
             
@@ -202,7 +202,7 @@ class ComprehensiveYouTubeSolution:
                 if backup_files:
                     logging.debug(f"{len(backup_files)}개 쿠키 파일 백업 완료")
             
-            # 2. 새로운 쿠키 생성 시도
+            # n. 새로운 쿠키 생성 시도
             cookie_creation_success = False
             
             # 방법 1: 기존 쿠키 저장 함수 사용
@@ -217,14 +217,14 @@ class ComprehensiveYouTubeSolution:
             # 방법 2: yt-dlp 쿠키 추출 시도
             if not cookie_creation_success:
                 try:
-                    from sources.functions.ensure_youtube_cookies_managed_v2 import ensure_youtube_cookies_managed_v2
-                    if ensure_youtube_cookies_managed_v2(force_refresh=True):
+                    from sources.functions.ensure_youtube_cookies_created_v2 import ensure_youtube_cookies_created_v2
+                    if ensure_youtube_cookies_created_v2(force_refresh=True):
                         cookie_creation_success = True
                         logging.debug("yt-dlp 쿠키 추출로 새 쿠키 생성 성공")
                 except Exception as e:
                     logging.debug(f"️ yt-dlp 쿠키 추출 실패: {e}")
             
-            # 3. 쿠키 유효성 검증
+            # n. 쿠키 유효성 검증
             if cookie_creation_success:
                 cookie_file = cookie_dir / "chrome_youtube_cookies.txt"
                 if cookie_file.exists() and cookie_file.stat().st_size > 0:

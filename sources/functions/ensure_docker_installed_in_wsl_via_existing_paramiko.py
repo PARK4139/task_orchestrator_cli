@@ -10,7 +10,7 @@ from sources.functions.ensure_command_to_remote_os_with_pubkey import ensure_com
 def ensure_docker_installed_in_wsl_via_existing_paramiko():
     """기존 paramiko 도구들을 활용해서 WSL에 Docker를 설치하는 함수"""
     try:
-        # 1. WSL IP 주소 감지
+        # n. WSL IP 주소 감지
         logging.debug("WSL IP 주소 감지 중...")
         wsl_ip = ensure_wsl_ip_detected()
         
@@ -18,7 +18,7 @@ def ensure_docker_installed_in_wsl_via_existing_paramiko():
             logging.debug("WSL IP 주소를 찾을 수 없어 Docker 설치를 중단합니다.")
             return False
         
-        # 2. SSH 설정
+        # n. SSH 설정
         remote_device_target_config = {
             'ip': wsl_ip,
             'port': 22,
@@ -26,7 +26,7 @@ def ensure_docker_installed_in_wsl_via_existing_paramiko():
             'local_ssh_private_key': os.path.expanduser('~/.ssh/id_ed25519')
         }
         
-        # 3. 시스템 업데이트
+        # n. 시스템 업데이트
         logging.debug("1️⃣ 시스템 업데이트 중...")
         std_out, std_err = ensure_command_to_target_with_pubkey(
             "sudo apt-get update -y",
@@ -39,7 +39,7 @@ def ensure_docker_installed_in_wsl_via_existing_paramiko():
         
         logging.debug("시스템 업데이트 완료")
         
-        # 4. Docker 설치
+        # n. Docker 설치
         logging.debug("2️⃣ Docker 설치 중...")
         docker_install_commands = [
             "sudo apt-get install -y apt-transport-https ca-certificates curl gnupg lsb-release",
@@ -57,7 +57,7 @@ def ensure_docker_installed_in_wsl_via_existing_paramiko():
                 logging.debug(f"Docker 설치 실패: {std_err}")
                 return False
         
-        # 5. Docker 서비스 시작
+        # n. Docker 서비스 시작
         logging.debug("3️⃣ Docker 서비스 시작 중...")
         std_out, std_err = ensure_command_to_target_with_pubkey(
             "sudo systemctl start docker && sudo systemctl enable docker",

@@ -4,14 +4,14 @@ def get_text_from_clipboard():
     from sources.functions.ensure_command_executed import ensure_command_executed
 
     if is_os_windows():
-        # 1. stdout과 stderr를 분리해서 받습니다.
+        # n. stdout과 stderr를 분리해서 받습니다.
         stdout_lines, stderr_lines = ensure_command_executed('powershell.exe Get-Clipboard')
 
         if stderr_lines:
             logging.error(f"클립보드 읽기 실패: {stderr_lines}")
             return "" # 에러 발생 시 빈 문자열 반환
 
-        # 2. 실제 클립보드 내용인 stdout_lines (리스트)를 줄바꿈 문자로 합쳐서 반환합니다.
+        # n. 실제 클립보드 내용인 stdout_lines (리스트)를 줄바꿈 문자로 합쳐서 반환합니다.
         return "\n".join(stdout_lines)
     else:
         try:

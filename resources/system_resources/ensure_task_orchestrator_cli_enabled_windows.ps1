@@ -24,7 +24,7 @@ Write-Host "📁 Project root: $PROJECT_ROOT" -ForegroundColor Yellow
 function Find-Python {
     Write-Host "🔍 Python 찾는 중..." -ForegroundColor Yellow
     
-    # 1. 시스템 python 확인
+    # n. 시스템 python 확인
     try {
         $pythonVersion = python --version 2>$null
         if ($LASTEXITCODE -eq 0) {
@@ -33,7 +33,7 @@ function Find-Python {
         }
     } catch {}
     
-    # 2. python3 확인
+    # n. python3 확인
     try {
         $pythonVersion = python3 --version 2>$null
         if ($LASTEXITCODE -eq 0) {
@@ -42,14 +42,14 @@ function Find-Python {
         }
     } catch {}
     
-    # 3. virtual environment python 확인
+    # n. virtual environment python 확인
     $venvPython = Join-Path $PROJECT_ROOT ".venv_windows\Scripts\python.exe"
     if (Test-Path $venvPython) {
         Write-Host "task_orchestrator_cli virtual environment python detected: $venvPython" -ForegroundColor Cyan
         return $venvPython
     }
     
-    # 4. 전체 프로젝트에서 python 찾기
+    # n. 전체 프로젝트에서 python 찾기
     $pythonFiles = Get-ChildItem -Path $PROJECT_ROOT -Recurse -Name "python*.exe" -ErrorAction SilentlyContinue
     if ($pythonFiles) {
         $firstPython = Join-Path $PROJECT_ROOT $pythonFiles[0]

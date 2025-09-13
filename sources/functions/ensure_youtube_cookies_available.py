@@ -13,7 +13,7 @@ def ensure_youtube_cookies_available():
     from sources.functions.ensure_youtube_login_via_selenium import ensure_youtube_login_via_selenium
     import os
     try:
-        # 1. 쿠키 파일이 이미 존재하는지 확인
+        # n. 쿠키 파일이 이미 존재하는지 확인
         if os.path.exists(F_YOUTUBE_COOKIES_TXT):
             file_size = os.path.getsize(F_YOUTUBE_COOKIES_TXT)
             if file_size > 100:  # 파일이 의미있는 크기인지 확인
@@ -23,17 +23,17 @@ def ensure_youtube_cookies_available():
             else:
                 logging.debug(f"️ 쿠키 파일이 너무 작습니다: {file_size} bytes")
 
-        # 2. Chrome에서 쿠키 자동 추출 시도
+        # n. Chrome에서 쿠키 자동 추출 시도
         logging.debug("Chrome에서 YouTube 쿠키를 자동으로 추출합니다...")
         if save_chrome_youtube_cookies_to_f():
             return True
 
-        # 3. Selenium을 사용한 자동 로그인 시도
+        # n. Selenium을 사용한 자동 로그인 시도
         logging.debug("Selenium을 사용한 YouTube 자동 로그인을 시도합니다...")
         if ensure_youtube_login_via_selenium():
             return True
 
-        # 4. 자동 추출 실패 시 수동 생성 안내
+        # n. 자동 추출 실패 시 수동 생성 안내
         logging.debug("️ 자동 쿠키 추출에 실패했습니다.")
         logging.debug("수동으로 쿠키를 생성하겠습니다...")
 
@@ -42,7 +42,7 @@ def ensure_youtube_cookies_available():
             logging.debug("쿠키 파일을 수동으로 생성한 후 다시 시도해주세요.")
             return False  # 수동 생성은 완료되었지만 실제 쿠키는 없음
 
-        # 4. 최소한의 쿠키 파일 생성
+        # n. 최소한의 쿠키 파일 생성
         try:
             with open(F_YOUTUBE_COOKIES_TXT, 'w', encoding='utf-8') as f:
                 f.write("# Netscape HTTP Cookie File\n")

@@ -43,11 +43,11 @@ def get_target_data_raw_from_target_request():
                                                                                options=['4.6.5', '5.0.2', '5.1.2'])
     request_template['target_device_jetson_setup_ver'] = ensure_value_completed(key_hint="request_template['target_device_jetson_setup_ver']=",
                                                                                 options=['', '2.0.1', '2.0.1'])
-    request_template['target_device_side'] = ensure_value_completed(key_hint="request_template['target_device_side']=", options=['a', 'b'])
+    request_template['target_device_side'] = ensure_value_completed(key_hint="request_template['target_device_side']", options=['a', 'b'])
     request_template['target_device_aifw_packing_mode'] = ensure_value_completed(
-        key_hint="request_template['target_device_aifw_packing_mode']=", options=['1: TBD 납품차량용 ', '0: TBD 내부테스트용'])
+        key_hint="request_template['target_device_aifw_packing_mode']", options=['1: TBD 납품차량용 ', '0: TBD 내부테스트용'])
     request_template['target_device_flash_image_version'] = ensure_value_completed(
-        key_hint="request_template['target_device_flash_image_version']=", options=['1.0.0', '1.3.0', '1.0.0'])
+        key_hint="request_template['target_device_flash_image_version']", options=['1.0.0', '1.3.0', '1.0.0'])
     if request_template['target_device_flash_image_version'] == '':
         request_template['target_device_with_flash_image'] = '0'  # 0 : flash image 없음
     else:

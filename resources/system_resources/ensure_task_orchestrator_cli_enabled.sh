@@ -21,21 +21,21 @@ export PYTHONPATH="$PROJECT_ROOT:${PYTHONPATH:-}"
 find_python() {
     echo "🔍 Python 찾는 중..."
     
-    # 1. 시스템 python 확인
+    # n. 시스템 python 확인
     if command -v python3 &> /dev/null; then
         echo "✅ 시스템 Python 발견: python3"
         PYTHON_CMD="python3"
         return 0
     fi
     
-    # 2. python 명령어 확인
+    # n. python 명령어 확인
     if command -v python &> /dev/null; then
         echo "✅ 시스템 Python 발견: python"
         PYTHON_CMD="python"
         return 0
     fi
     
-    # 3. virtual environment python 확인 (Linux/WSL용)
+    # n. virtual environment python 확인 (Linux/WSL용)
     VENV_PYTHON="$PROJECT_ROOT/.venv_linux/bin/python"
     if [ -f "$VENV_PYTHON" ]; then
         echo "task_orchestrator_cli virtual environment python detected: $VENV_PYTHON"
@@ -43,7 +43,7 @@ find_python() {
         return 0
     fi
     
-    # 4. system_resources 하위에서 python 찾기
+    # n. system_resources 하위에서 python 찾기
     for python_file in "$PROJECT_ROOT/system_resources"/*/python*; do
         if [ -f "$python_file" ] && [ -x "$python_file" ]; then
             echo "✅ Python 발견: $python_file"
@@ -52,7 +52,7 @@ find_python() {
         fi
     done
     
-    # 5. 전체 프로젝트에서 python 찾기
+    # n. 전체 프로젝트에서 python 찾기
     while IFS= read -r -d '' python_file; do
         if [ -f "$python_file" ] && [ -x "$python_file" ]; then
             echo "✅ Python 발견: $python_file"

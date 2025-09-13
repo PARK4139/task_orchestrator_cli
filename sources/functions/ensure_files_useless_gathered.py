@@ -41,7 +41,7 @@ def ensure_files_useless_gathered():
             file_to_working = get_file_id(key_name, func_n)
             historical_pnxs = get_historical_list(f=file_to_working)
             options = historical_pnxs + get_list_sorted(working_list=[D_PK_WORKING, D_DOWNLOADS], mode_asc=1)
-            d_working = ensure_value_completed(key_hint='d_working=', options=options)
+            d_working = ensure_value_completed(key_hint='d_working', options=options)
             logging.debug(f'''len(historical_pnxs)={len(historical_pnxs)} {'%%%FOO%%%' if LTA else ''}''')
             logging.debug(f'''len(options)={len(options)} {'%%%FOO%%%' if LTA else ''}''')
             d_working = Path(d_working)
@@ -49,7 +49,7 @@ def ensure_files_useless_gathered():
             values_to_save = get_list_calculated(origin_list=values_to_save, dedup=True)
             ensure_list_written_to_f(f=file_to_working, working_list=values_to_save, mode="w")
 
-        editable = True  # task_orchestrator_cli_option
+        editable = True  # pk_option
 
         useless_file_names_txt = F_USELESS_FILE_NAMES_TXT
         if editable:

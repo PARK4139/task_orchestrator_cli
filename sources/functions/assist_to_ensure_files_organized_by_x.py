@@ -7,7 +7,7 @@ def assist_to_ensure_files_organized_by_x():
     import os
 
     while 1:
-        d_working = ensure_value_completed(key_hint='d_working=', options=[os.getcwd(), D_PK_WORKING, D_TASK_ORCHESTRATOR_CLI, D_DOWNLOADS])
+        d_working = ensure_value_completed(key_hint='d_working', options=[os.getcwd(), D_PK_WORKING, D_TASK_ORCHESTRATOR_CLI, D_DOWNLOADS])
         # ext_set = {".webm"}
         ext_set = get_extensions_from_d(d_working)
         for ext in ext_set:

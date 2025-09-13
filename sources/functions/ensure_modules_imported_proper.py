@@ -31,21 +31,21 @@ def ensure_modules_imported_proper():
     # 4단계: 적용 시작 안내
     announce_start_applying()
 
-    f_working = "TODO"  # task_orchestrator_cli_option
+    f_working = "TODO"  # pk_option
     d_backup_target = D_ARCHIVED
     backup_path = backup_f_working(f_working, d_backup_target)
 
-    # 1. f_working 내용 읽기
+    # n. f_working 내용 읽기
     with open(f_working, encoding='utf-8') as f:
         original_code = f.read()
 
-    # 2. lazy import 목록 읽기
+    # n. lazy import 목록 읽기
     lazy_imports = open(f_txt, encoding='utf-8').read().splitlines()
 
-    # 3. PREVIEW 코드 생성
+    # n. PREVIEW 코드 생성
     preview_code = preview_lazy_import_applied_code(original_code, lazy_imports)
 
-    # 4. PREVIEW 저장 및 열기
+    # n. PREVIEW 저장 및 열기
     preview_path = f"{os.path.splitext(f_working)[0]}_preview.py"
     with open(preview_path, "w", encoding='utf-8') as f:
         f.write(preview_code)

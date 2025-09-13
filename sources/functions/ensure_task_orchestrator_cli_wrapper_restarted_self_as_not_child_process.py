@@ -3,7 +3,7 @@ from sources.functions.ensure_seconds_measured import ensure_seconds_measured
 
 
 @ensure_seconds_measured
-def ensure_python_file_enabled_advanced(file_path, not_child_process_mode = True):
+def ensure_python_file_executed_advanced(file_path, not_child_process_mode = True):
     from sources.functions.get_nx import get_nx
     import logging
 

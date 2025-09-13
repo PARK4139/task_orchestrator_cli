@@ -2,10 +2,12 @@ import logging
 import traceback
 from pathlib import Path
 
+from functions.ensure_env_var_completed_advanced import ensure_env_var_completed_advanced
 from functions.ensure_gemini_cli_installed_as_latest_version import ensure_gemini_cli_installed_as_latest_version
 from functions.ensure_spoken import ensure_spoken
 from functions.alert_as_gui import alert_as_gui
 from functions.ensure_debug_loged_verbose import ensure_debug_loged_verbose
+from functions.get_caller_n import get_caller_n
 from objects.pk_etc import PK_UNDERLINE
 from sources.functions.ensure_command_executed import ensure_command_executed
 from sources.functions.ensure_debug_log_seperated import ensure_log_seperated_by_pk_debug_line
@@ -37,8 +39,8 @@ def ensure_draft_scenario_sample1_and_smaple2_performance_compared(__file__):
     from sources.functions.analyze_samples_results import analyze_samples_results
     from sources.functions.clear_benchmark_data import clear_benchmark_data
 
-    # mode = "cumulative" # task_orchestrator_cli_option
-    mode = "non_cumulative"  # task_orchestrator_cli_option
+    # mode = "cumulative" # pk_option
+    mode = "non_cumulative"  # pk_option
     iterations = 10
 
     try:
@@ -51,7 +53,7 @@ def ensure_draft_scenario_sample1_and_smaple2_performance_compared(__file__):
         logging.debug(f"\n[자동] {mode} 모드로 모든 테스트를 순차적으로 실행합니다...")
         logging.debug(PK_UNDERLINE)
 
-        # 1. 성능 테스트 실행
+        # n. 성능 테스트 실행
         logging.debug(PK_UNDERLINE)
         logging.debug("[1단계] 성능 테스트 실행 (10회)")
         logging.debug(f"[테스트] 성능 테스트 실행 ({iterations}회)")
@@ -67,13 +69,13 @@ def ensure_draft_scenario_sample1_and_smaple2_performance_compared(__file__):
             logging.debug(f"실행 {i + 1}/{iterations}...")
             _execute_sample2()
 
-        # 2. 결과 분석
+        # n. 결과 분석
         logging.debug(PK_UNDERLINE)
         logging.debug("[2단계] 결과 분석")
         analyze_samples_results()
         logging.debug(PK_UNDERLINE)
 
-        # 3. 성능 순위
+        # n. 성능 순위
         logging.debug(PK_UNDERLINE)
         logging.debug("[3단계] 성능 순위")
         log_samples_ranking()
@@ -100,23 +102,23 @@ def _execute_sample1():
     from sources.functions.get_execute_cmd_with_brakets import get_cmd_chains
     from sources.objects.task_orchestrator_cli_directories import D_TASK_ORCHESTRATOR_CLI_FUNCTIONS
     from sources.objects.task_orchestrator_cli_files import F_VENV_PYTHON_EXE
-    # task_orchestrator_cli_option
+    # pk_option
     file_sample = D_TASK_ORCHESTRATOR_CLI_FUNCTIONS / "ensure_task_orchestrator_cli_started.py"
     cmd = get_cmd_chains(F_VENV_PYTHON_EXE, file_sample)
     ensure_command_executed(cmd)
 
-    # task_orchestrator_cli_option
-    # ensure_python_file_enabled_advanced(file_sample)
+    # pk_option
+    # ensure_python_file_executed_advanced(file_sample)
 
     # target_file = D_TASK_ORCHESTRATOR_CLI_WRAPPERS  / "pk_ensure_pnx_backed_up.py"
     # ensure_task_orchestrator_cli_python_file_executed_in_uv_venv_windows(target_file)
 
 
 def _execute_sample2():
-    from sources.functions.ensure_task_orchestrator_cli_wrapper_restarted_self_as_not_child_process import ensure_python_file_enabled_advanced
+    from sources.functions.ensure_task_orchestrator_cli_wrapper_restarted_self_as_not_child_process import ensure_python_file_executed_advanced
     from sources.objects.task_orchestrator_cli_directories import D_TASK_ORCHESTRATOR_CLI_FUNCTIONS
     file_sample = D_TASK_ORCHESTRATOR_CLI_FUNCTIONS / "ensure_task_orchestrator_cli_started.py"
-    ensure_python_file_enabled_advanced(file_sample)
+    ensure_python_file_executed_advanced(file_sample)
 
 
 def _ensure_draft_scenario_executed_ver_pattern(__file__):
@@ -135,13 +137,9 @@ def _ensure_draft_scenario_executed_ver_pattern(__file__):
 @ensure_log_seperated_by_pk_debug_line
 def ensure_draft_scenario_executed(__file__):
     try:
-        # ensure_gemini_cli_installed_as_latest_version()
-
         # alert_as_gui(title_="title_", ment="ment", auto_click_positive_btn_after_seconds=5, input_text_default="input_text_default")
 
-
-        ensure_gemini_cli_installed_as_latest_version(__file__)
-
+        # ensure_gemini_cli_installed_as_latest_version(__file__)
         return
 
         # pk_* : 모든 테스트 시나리오 테스트
@@ -180,7 +178,7 @@ def ensure_draft_scenario_executed(__file__):
         # pk_* :  사용자 응답확인
         question = f'깃 허브로 퍼블리싱을 진행할까요?'
         ensure_spoken(get_easy_speakable_text(question))
-        ok = ensure_value_completed(key_hint=rf"{question}=", options=[PkTexts.YES, PkTexts.NO])
+        ok = ensure_value_completed(key_hint=question, options=[PkTexts.YES, PkTexts.NO])
         if ok != PkTexts.YES:
             ensure_task_orchestrator_cli_wrapper_suicided(__file__)
 

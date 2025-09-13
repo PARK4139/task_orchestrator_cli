@@ -84,7 +84,7 @@ def functions():
         try:
             result = subprocess.run(
                 ["wsl", "-d", "Ubuntu-24.04", "-e", "bash", "-c", 
-                 "cd /mnt/c/Users/user/Downloads/task_orchestrator_cli/pkg_finance_invest_assist && pwd"],
+                 "cd /mnt/c/Users/pk_system_security_literals/Downloads/task_orchestrator_cli/pkg_finance_invest_assist && pwd"],
                 capture_output=True,
                 text=True,
                 encoding='utf-8',
@@ -106,7 +106,7 @@ def functions():
             # .env 파일 복사
             result1 = subprocess.run(
                 ["wsl", "-d", "Ubuntu-24.04", "-e", "bash", "-c", 
-                 "cd /mnt/c/Users/user/Downloads/task_orchestrator_cli/pkg_finance_invest_assist && cp env.example .env"],
+                 "cd /mnt/c/Users/pk_system_security_literals/Downloads/task_orchestrator_cli/pkg_finance_invest_assist && cp env.example .env"],
                 capture_output=True,
                 text=True,
                 encoding='utf-8',
@@ -116,7 +116,7 @@ def functions():
             # 필요한 디렉토리 생성
             result2 = subprocess.run(
                 ["wsl", "-d", "Ubuntu-24.04", "-e", "bash", "-c", 
-                 "cd /mnt/c/Users/user/Downloads/task_orchestrator_cli/pkg_finance_invest_assist && mkdir -p logs deployment/ssl"],
+                 "cd /mnt/c/Users/pk_system_security_literals/Downloads/task_orchestrator_cli/pkg_finance_invest_assist && mkdir -p logs deployment/ssl"],
                 capture_output=True,
                 text=True,
                 encoding='utf-8',
@@ -138,7 +138,7 @@ def functions():
         try:
             print("️  Docker 컨테이너 빌드는 Windows 환경에서 직접 실행할 수 없습니다.")
             print("WSL 환경에서 직접 실행하거나 Docker Desktop을 통해 실행해야 합니다.")
-            print("빌드 명령어: cd /mnt/c/Users/user/Downloads/task_orchestrator_cli/pkg_finance_invest_assist/deployment && docker-compose build --no-cache")
+            print("빌드 명령어: cd /mnt/c/Users/pk_system_security_literals/Downloads/task_orchestrator_cli/pkg_finance_invest_assist/deployment && docker-compose build --no-cache")
             return False
         except Exception as e:
             print(f" Docker 컨테이너 빌드 실패: {e}")
@@ -149,7 +149,7 @@ def functions():
         try:
             print("️  컨테이너 시작은 Windows 환경에서 직접 실행할 수 없습니다.")
             print("WSL 환경에서 직접 실행하거나 Docker Desktop을 통해 실행해야 합니다.")
-            print("시작 명령어: cd /mnt/c/Users/user/Downloads/task_orchestrator_cli/pkg_finance_invest_assist/deployment && docker-compose up -d")
+            print("시작 명령어: cd /mnt/c/Users/pk_system_security_literals/Downloads/task_orchestrator_cli/pkg_finance_invest_assist/deployment && docker-compose up -d")
             return False
         except Exception as e:
             print(f" 컨테이너 시작 실패: {e}")
@@ -160,7 +160,7 @@ def functions():
         try:
             print("️  컨테이너 상태 확인은 Windows 환경에서 직접 실행할 수 없습니다.")
             print("WSL 환경에서 직접 실행하거나 Docker Desktop을 통해 실행해야 합니다.")
-            print("상태 확인 명령어: cd /mnt/c/Users/user/Downloads/task_orchestrator_cli/pkg_finance_invest_assist/deployment && docker-compose ps")
+            print("상태 확인 명령어: cd /mnt/c/Users/pk_system_security_literals/Downloads/task_orchestrator_cli/pkg_finance_invest_assist/deployment && docker-compose ps")
             return {"status": "error", "output": "Windows 환경에서는 직접 실행 불가"}
         except Exception as e:
             print(f" 컨테이너 상태 확인 실패: {e}")
@@ -195,7 +195,7 @@ def functions():
         try:
             print("️  컨테이너 정리는 Windows 환경에서 직접 실행할 수 없습니다.")
             print("WSL 환경에서 직접 실행하거나 Docker Desktop을 통해 실행해야 합니다.")
-            print("정리 명령어: cd /mnt/c/Users/user/Downloads/task_orchestrator_cli/pkg_finance_invest_assist/deployment && docker-compose down")
+            print("정리 명령어: cd /mnt/c/Users/pk_system_security_literals/Downloads/task_orchestrator_cli/pkg_finance_invest_assist/deployment && docker-compose down")
             return False
         except Exception as e:
             print(f" 컨테이너 정리 실패: {e}")

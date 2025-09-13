@@ -1,3 +1,4 @@
+from functions.get_window_title_temp import get_window_title_temp
 from objects.task_orchestrator_cli_files import F_ENSURE_ARG_RECIEVED
 
 
@@ -104,11 +105,11 @@ def get_value_from_fzf_routine(file_id, editable, options, query=""):
             "alt-D:half-page-down",  # Alt+Shift+d
             "alt-U:half-page-up",  # Alt+Shift+u
 
-            f'alt-`:execute(cmd /c start "" "{history_file}")',
+            f'alt-`:execute(cmd /c start "{get_window_title_temp()}" "{history_file}")',
 
-            f'ALT-1:execute(start "" python "{F_PK_ENSURE_GEMINI_CLI_WHIP_KIT_ENABLED_INTERACTIVE})',
-            f'ALT-2:execute(cmd /c start "" "{history_file}")',
-            f'ALT-3:execute(start "" python "{F_PK_ENSURE_GEMINI_CLI_LOCATED_TO_FRONT})',
+            f'ALT-1:execute(start "{get_window_title_temp()}" python "{F_PK_ENSURE_GEMINI_CLI_WHIP_KIT_ENABLED_INTERACTIVE})',
+            f'ALT-2:execute(cmd /c start "{get_window_title_temp()}" "{history_file}")',
+            f'ALT-3:execute(start "{get_window_title_temp()}" python "{F_PK_ENSURE_GEMINI_CLI_LOCATED_TO_FRONT})',
         ]
 
         def add_binds(cmd_list, entries, max_len=1500):
@@ -141,9 +142,9 @@ def get_value_from_fzf_routine(file_id, editable, options, query=""):
             f"CTRL-E: 커서를 뒤로 이동(줄끝 단위)\n"
             f"ALT-B: 커서를 앞으로 이동(단어 단위)\n"
             f"ALT-F: 커서를 뒤로 이동(단어 단위)\n"
-            f"ALT-`: *히스토리 RAW 파일 수정(EDITABLE)\n"
-            f"ALT-1: *GEMINI CLI WIP 재실행\n"
-            f"ALT-2: *GEMINI CLI WIP 프롬프트 히스토리 RAW 파일 수정(EDITABLE)\n"
+            f"ALT-`: *히스토리 RAW 파일 수정(EDIT)\n"
+            f"ALT-1: *GEMINI CLI ASSISTANCE ROUTINE RESTART\n"
+            f"ALT-2: *GEMINI CLI ASSISTANCE 프롬프트 히스토리 RAW 파일 수정\n"
             f"ALT-3: *GEMINI CLI 창 앞으로 이동\n"
             f"\n"
             f"# 사용자 입력 가이드\n"

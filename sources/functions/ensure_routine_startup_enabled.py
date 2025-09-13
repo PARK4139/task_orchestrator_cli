@@ -1,5 +1,5 @@
 from functions.ensure_seconds_measured import ensure_seconds_measured
-from objects.pk_target_manager import SetupOps
+from objects.pk_target_manager import _SetupOpsForPkTargetManager
 
 
 @ensure_seconds_measured
@@ -19,7 +19,7 @@ def ensure_routine_startup_enabled():
     from sources.functions.ensure_vscode_enabled import ensure_vscode_enabled
     from sources.functions.ensure_windows_minimized import ensure_windows_minimized
 
-    pk_tm = PkTargetManager(identifier=PkDeviceIdentifiers.device_asus_desktop, setup_ops=SetupOps.WSL)
+    pk_tm = PkTargetManager(identifier=PkDeviceIdentifiers.asus_desktop, setup_op=_SetupOpsForPkTargetManager.WSL_DISTRO)
 
     if is_pc_renova():
         ensure_memo_editable()

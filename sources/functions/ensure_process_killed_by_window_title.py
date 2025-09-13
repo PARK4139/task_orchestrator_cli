@@ -14,11 +14,11 @@ def calculate_similarity(target: str, window_title: str) -> float:
     target_name = os.path.splitext(target)[0].lower()
 
     # 가장 엄격한 매칭: 창 제목이 파일명과 정확히 일치하는 경우만
-    # 1. 창 제목이 파일명과 정확히 일치 (확장자 포함)
+    # n. 창 제목이 파일명과 정확히 일치 (확장자 포함)
     if title_lower == target_lower:
         return 1.0
 
-    # 2. 창 제목이 파일명과 정확히 일치 (확장자 제외)
+    # n. 창 제목이 파일명과 정확히 일치 (확장자 제외)
     if title_lower == target_name:
         return 1.0
 

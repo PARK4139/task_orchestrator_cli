@@ -11,7 +11,7 @@ from sources.functions.ensure_wsl_ip_detected import ensure_wsl_ip_detected
 def ensure_docker_installed_in_wsl_via_paramiko():
     """paramiko를 사용해서 WSL에 Docker를 설치하는 함수"""
     try:
-        # 1. WSL IP 주소 감지
+        # n. WSL IP 주소 감지
         logging.debug("WSL IP 주소 감지 중...")
         wsl_ip = ensure_wsl_ip_detected()
         
@@ -19,7 +19,7 @@ def ensure_docker_installed_in_wsl_via_paramiko():
             logging.debug("WSL IP 주소를 찾을 수 없어 Docker 설치를 중단합니다.")
             return False
         
-        # 2. SSH 클라이언트 설정
+        # n. SSH 클라이언트 설정
         logging.debug("SSH 클라이언트 설정 중...")
         ssh = paramiko.SSHClient()
         ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
@@ -45,7 +45,7 @@ def ensure_docker_installed_in_wsl_via_paramiko():
             logging.debug(f"SSH 연결 실패: {str(e)}")
             return False
         
-        # 3. 시스템 업데이트
+        # n. 시스템 업데이트
         logging.debug("1️⃣ 시스템 업데이트 중...")
         stdin, stdout, stderr = ssh.exec_command("sudo apt-get update -y", timeout=300)
         exit_status = stdout.channel.recv_exit_status()
@@ -57,7 +57,7 @@ def ensure_docker_installed_in_wsl_via_paramiko():
         
         logging.debug("시스템 업데이트 완료")
         
-        # 4. Docker 설치
+        # n. Docker 설치
         logging.debug("2️⃣ Docker 설치 중...")
         docker_install_commands = [
             "sudo apt-get install -y apt-transport-https ca-certificates curl gnupg lsb-release",
@@ -77,7 +77,7 @@ def ensure_docker_installed_in_wsl_via_paramiko():
                 logging.debug(f"Docker 설치 실패: {error_output}")
                 return False
         
-        # 5. Docker 서비스 시작
+        # n. Docker 서비스 시작
         logging.debug("3️⃣ Docker 서비스 시작 중...")
         stdin, stdout, stderr = ssh.exec_command("sudo systemctl start docker && sudo systemctl enable docker", timeout=60)
         exit_status = stdout.channel.recv_exit_status()

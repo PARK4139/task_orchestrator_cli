@@ -13,7 +13,7 @@ def test_p110m_connection_status():
     
     print("=== P110M Matter 연결 테스트 시작 ===")
     
-    # 1. 기본 설정 정보 출력
+    # n. 기본 설정 정보 출력
     try:
         from sources.functions.ensure_matter_smart_plug_on import (
             WS_URL, COMMISSION_CODE, DEVICE_MAC, FINAL_TOGGLE,
@@ -32,7 +32,7 @@ def test_p110m_connection_status():
         print(f"❌ Import 오류: {e}")
         return False
     
-    # 2. Matter Server 상태 확인
+    # n. Matter Server 상태 확인
     try:
         from sources.functions.ensure_matter_smart_plug_on import is_matter_server_running
         
@@ -46,7 +46,7 @@ def test_p110m_connection_status():
         print(f"❌ Matter Server 상태 확인 실패: {e}")
         return False
     
-    # 3. Python 환경 확인
+    # n. Python 환경 확인
     try:
         import sys
         print(f"Python 환경:")
@@ -63,7 +63,7 @@ def test_p110m_connection_status():
     except Exception as e:
         print(f"❌ Python 환경 확인 실패: {e}")
     
-    # 4. 네트워크 환경 확인  
+    # n. 네트워크 환경 확인  
     try:
         from sources.functions.ensure_matter_smart_plug_on import (
             detect_windows_wifi_ssid_and_password, detect_windows_bluetooth_present
@@ -110,14 +110,14 @@ def main():
     print("🔌 P110M IOT 장치 Matter 연결 디버깅 도구")
     print(PK_UNDERLINE)
     
-    # 1. 기본 연결 상태 테스트
+    # n. 기본 연결 상태 테스트
     if not test_p110m_connection_status():
         print("❌ 기본 테스트 실패 - 전체 테스트를 건너뜁니다.")
         return
     
     print()
     
-    # 2. 사용자 선택
+    # n. 사용자 선택
     try:
         choice = input("전체 연결 테스트를 실행하시겠습니까? (y/N): ").strip().lower()
         if choice in ('y', 'yes'):

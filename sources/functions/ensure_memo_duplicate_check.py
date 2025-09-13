@@ -169,11 +169,11 @@ def ensure_memo_duplicate_check():
     try:
         logging.debug("메모 DB 중복 확인 시작...")
         
-        # 1. 기본 중복 확인
+        # n. 기본 중복 확인
         logging.debug(" 1단계: 기본 중복 확인")
         check_duplicates_by_content()
         
-        # 2. 해시 기반 중복 확인
+        # n. 해시 기반 중복 확인
         logging.debug(" 2단계: 해시 기반 중복 확인")
         check_duplicates_by_hash()
         

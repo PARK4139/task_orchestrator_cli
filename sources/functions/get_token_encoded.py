@@ -20,8 +20,8 @@ def get_token_encoded(token_id):
     token = get_str_from_file(pnx=f_token)
 
     # 디버깅 정보 출력
-    logging.debug(f"DEBUG: token_id={token_id}, f_token={f_token}")
-    logging.debug(f"DEBUG: raw_token='{token}'")
+    logging.debug(f"token_id={token_id}, f_token={f_token}")
+    logging.debug(f"raw_token='{token}'")
 
     # 토큰 정리 및 검증
     if token is None:

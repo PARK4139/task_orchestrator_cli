@@ -3,19 +3,19 @@ from typing import Optional
 
 # @ensure_seconds_measured
 def ensure_command_executed(cmd: str, mode: str = "sync", encoding: Optional[str] = None, mode_with_window: bool = True, errors: Optional[str] = None):
+    import logging
+    import subprocess
+    import traceback
+
+    from functions.ensure_console_paused import ensure_console_paused
+    from functions.ensure_debug_loged_verbose import ensure_debug_loged_verbose
     from functions.get_caller_n import get_caller_n
     from functions.log_aligned import log_aligned
     from objects.pk_etc import PK_UNDERLINE
-
-    import subprocess
-    import logging
-    import traceback
-
-    from sources.objects.pk_local_test_activate import LTA
-    from sources.objects.encodings import Encoding
     from sources.functions.is_os_windows import is_os_windows
+    from sources.objects.encodings import Encoding
+    from sources.objects.pk_local_test_activate import LTA
 
-    from functions.get_caller_n import get_caller_n
     func_n = get_caller_n()
 
     gap = len(func_n)  # 가장 긴 key 길이
@@ -76,12 +76,8 @@ def ensure_command_executed(cmd: str, mode: str = "sync", encoding: Optional[str
             for idx, line in enumerate(stderr_lines):
                 log_aligned(gap=gap, key=f"LINE {idx}", value=f"{line:<100}")
 
-        return stdout_lines, stderr_lines # Return two lists
-
-    except FileNotFoundError:
-        logging.error(f"Command not found: {cmd.split()[0]}")
-        return [], [] # Return two empty lists on FileNotFoundError
-    except Exception:
-        logging.error(f"An error occurred while executing '{cmd}':")
-        logging.error(traceback.format_exc())
-        return [], [] # Return two empty lists on other exceptions
+        return stdout_lines, stderr_lines  # Return two lists
+    except:
+        ensure_debug_loged_verbose(traceback)
+        ensure_console_paused()  # pk_option
+        return [], []  # Return two empty lists on other exceptions

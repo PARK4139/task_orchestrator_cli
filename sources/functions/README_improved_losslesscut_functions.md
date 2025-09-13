@@ -6,17 +6,17 @@
 
 ## 해결된 문제점
 
-### 1. Ctrl+C/V 동작하지 않는 문제 ✅
+### n. Ctrl+C/V 동작하지 않는 문제 ✅
 - **원인**: `pyautogui` 키 입력이 시스템 전체에 영향을 줌
 - **해결**: 윈도우 포커스 기반의 정확한 키 입력 처리
 - **함수**: `ensure_video_playied_at_losslesscut_improved()`
 
-### 2. LosslessCut 실행 모니터링 성능 문제 ✅
+### n. LosslessCut 실행 모니터링 성능 문제 ✅
 - **원인**: `tasklist.exe | findstr` 명령어가 느림
 - **해결**: 윈도우 핸들 + 프로세스 목록의 하이브리드 방식
 - **함수**: `is_video_player_running_improved()`
 
-### 3. 비디오 로드 후 재생 지연 문제 ✅
+### n. 비디오 로드 후 재생 지연 문제 ✅
 - **원인**: 고정 대기 시간으로 인한 비효율성
 - **해결**: 적응형 대기 시간 + 진행률 표시
 - **함수**: `ensure_video_playied_at_losslesscut_with_adaptive_wait()`
@@ -42,17 +42,17 @@ USE_ADAPTIVE_WAIT = False           # 적응형 대기 시간 사용 (더 정확
 
 ## 개선된 함수 상세 설명
 
-### 1. `is_video_player_running_improved()`
+### n. `is_video_player_running_improved()`
 - **1차**: 윈도우 핸들로 빠른 확인 (가장 빠름)
 - **2차**: psutil로 프로세스 목록 확인 (백업)
 - **3차**: 기존 tasklist 방식 (최종 폴백)
 
-### 2. `ensure_video_playied_at_losslesscut_improved()`
+### n. `ensure_video_playied_at_losslesscut_improved()`
 - 윈도우 포커스 정확히 설정
 - ESC 키 입력 후 충분한 대기 시간 (500ms)
 - 클립보드 기능 방해 최소화
 
-### 3. `ensure_video_playied_at_losslesscut_with_adaptive_wait()`
+### n. `ensure_video_playied_at_losslesscut_with_adaptive_wait()`
 - 비디오 준비 상태를 실시간으로 모니터링
 - 최대 30초까지 대기 (설정 가능)
 - 10초마다 진행률 표시

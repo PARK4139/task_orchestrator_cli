@@ -2,11 +2,10 @@ from functions import get_time_as_
 from functions.get_nx import get_nx
 from objects.pk_local_test_activate import LTA
 from sources.objects.task_orchestrator_cli_directories import (
-    D_DOWNLOADS, D_TASK_ORCHESTRATOR_CLI_SOUND, D_TASK_ORCHESTRATOR_CLI_VIDEO, D_TASK_ORCHESTRATOR_CLI_RESOURCES_WINDOWS,
-    D_TASK_ORCHESTRATOR_CLI_CACHE, D_C_DRIVE, D_ETC,
+    D_DOWNLOADS, D_TASK_ORCHESTRATOR_CLI_SOUND, D_TASK_ORCHESTRATOR_CLI_VIDEO, D_TASK_ORCHESTRATOR_CLI_CACHE, D_C_DRIVE, D_ETC,
     D_TASK_ORCHESTRATOR_CLI_SENSITIVE, D_TASK_ORCHESTRATOR_CLI_LOGS, D_TASK_ORCHESTRATOR_CLI, D_TASK_ORCHESTRATOR_CLI_OS_LAYER_RESOURCES,
     D_TASK_ORCHESTRATOR_CLI_FUNCTIONS, D_TASK_ORCHESTRATOR_CLI_WRAPPERS, D_PK_MEMO, D_PK_RECYCLE_BIN, D_TASK_ORCHESTRATOR_CLI_RESOURCES, D_DESKTOP,
-    D_USERPROFILE, D_VENV
+    D_USERPROFILE, D_VENV, D_LOSSLESSCUT, D_TASK_ORCHESTRATOR_CLI_RESOURCES_WINDOWS
 )
 
 F_VENV_PYTHON_EXE = D_VENV / "Scripts" / "python.exe"
@@ -71,8 +70,8 @@ F_EVERYTHING = D_C_DRIVE / "Program Files" / "Everything" / "Everything.exe"
 # F_SNIPPING_TOOL = D_C_DRIVE / "Program Files" / "WindowsApps" / "Microsoft.ScreenSketch_11.2507.14.0_x64__8wekyb3d8bbwe" / "SnippingTool" / "SnippingTool.exe"
 
 
-F_LOSSLESSCUT_EXE = D_TASK_ORCHESTRATOR_CLI_RESOURCES_WINDOWS / "LosslessCut-win-x64_3.64.0" / "LosslessCut.exe"
-F_FFMPEG_EXE = D_TASK_ORCHESTRATOR_CLI_RESOURCES_WINDOWS / "LosslessCut-win-x64" / "resources" / "ffmpeg.exe"
+F_LOSSLESSCUT_EXE = D_LOSSLESSCUT / "LosslessCut.exe"
+F_FFMPEG_EXE = D_LOSSLESSCUT / "resources" / "ffmpeg.exe"
 
 F_TASK_ORCHESTRATOR_CLI_LAUNCHER_LNK = D_DESKTOP / "task_orchestrator_cli_launcher.lnk"
 
@@ -112,9 +111,10 @@ F_SILENT_WAV = D_TASK_ORCHESTRATOR_CLI_SOUND / "silent.wav"
 F_POP_SOUND_POP_SOUND_WAV = D_TASK_ORCHESTRATOR_CLI_SOUND / "pop_sound.wav"
 F_SOUND_POTPLAYER64_DPL = D_TASK_ORCHESTRATOR_CLI_SOUND / "PotPlayer64.dpl"
 
-F_PK_ENSURE_GEMINI_CLI_WHIP_KIT_ENABLED_INTERACTIVE = f'{D_TASK_ORCHESTRATOR_CLI_WRAPPERS}\pk_ensure_routine_gemini_cli_assistance_enabled_enabled.py'
-F_PK_ENSURE_GEMINI_CLI_LOCATED_TO_FRONT = f'{D_TASK_ORCHESTRATOR_CLI_WRAPPERS}\pk_ensure_gemini_cli_located_to_front.py'
-F_ENSURE_ARG_RECIEVED = f'{D_TASK_ORCHESTRATOR_CLI_WRAPPERS}\pk_ensure_arg_recieved.py'
+F_PK_ENSURE_GEMINI_CLI_WHIP_KIT_ENABLED_INTERACTIVE = D_TASK_ORCHESTRATOR_CLI_WRAPPERS / 'pk_ensure_routine_gemini_cli_assistance_enabled.py'
+F_PK_ENSURE_GEMINI_CLI_LOCATED_TO_FRONT = D_TASK_ORCHESTRATOR_CLI_WRAPPERS/f'pk_ensure_gemini_cli_located_to_front.py'
+F_ENSURE_ARG_RECIEVED = D_TASK_ORCHESTRATOR_CLI_WRAPPERS / 'pk_ensure_arg_recieved.py'
+F_USBPIPD_MSI = D_TASK_ORCHESTRATOR_CLI_RESOURCES_WINDOWS / 'usbipd-win_5.2.0_x64.msi'
 
 # F_LOSSLESSCUT_EXE = D_TASK_ORCHESTRATOR_CLI_RESOURCES / "LosslessCut-win-x64_3.65.0"/"LosslessCut.exe" # 3.60.0 pre release video 간헐적 끊김 issue discovered
 F_LOSSLESSCUT = D_TASK_ORCHESTRATOR_CLI_RESOURCES / "LosslessCut-linux-x64" / "LosslessCut"
@@ -185,3 +185,4 @@ F_CURSOR = "cursor"  # Linux Cursor 실행 파일
 F_CLAUDE = rf"claude"
 F_UV = "uv"  # 시스템에 설치된 uv 사용
 F_PYCHARM = "pycharm-community"  # 시스템 PATH에 있는 경우
+

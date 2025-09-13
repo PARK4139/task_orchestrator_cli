@@ -83,11 +83,11 @@ class PkTarget(PkDevice):
         self._port = value
 
     @property
-    def user_n(self):
+    def user_name(self):
         return self._user_n
 
-    @user_n.setter
-    def user_n(self, value):
+    @user_name.setter
+    def user_name(self, value):
         self._user_n = value
 
     @property
@@ -122,7 +122,7 @@ class PkTarget(PkDevice):
             "pw": self.pw,
             "hostname": self.hostname,
             "port": self.port,
-            "user_n": self.user_n,
+            "user_n": self.user_name,
             "f_local_ssh_public_key": str(self.f_local_ssh_public_key) if self.f_local_ssh_public_key else None,
             "f_local_ssh_private_key": str(self.f_local_ssh_private_key) if self.f_local_ssh_private_key else None,
             "nick_name": self.nick_name,

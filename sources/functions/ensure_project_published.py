@@ -184,11 +184,11 @@ def ensure_project_published(*, d_project_to_publish: Path, d_destination: Path,
         question = f'깃 허브로 퍼블리싱을 진행할까요?'
         ensure_spoken(get_easy_speakable_text(question))
         if LTA:
-            # task_orchestrator_cli_option
+            # pk_option
             # ok = ensure_value_completed(key_hint=rf"{question}=", values=[PkTexts.YES, PkTexts.NO])
             ok = PkTexts.YES
         else:
-            ok = ensure_value_completed(key_hint=rf"{question}=", options=[PkTexts.YES, PkTexts.NO])
+            ok = ensure_value_completed(key_hint=question, options=[PkTexts.YES, PkTexts.NO])
         if ok != PkTexts.YES:
             ensure_task_orchestrator_cli_wrapper_suicided(__file__)
         state = ensure_git_project_pushed(d_local_repo=d_checkout)

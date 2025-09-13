@@ -115,9 +115,9 @@
 
 ### **하드코딩 방식 선호 규칙**
 - **CLI 인자 vs 하드코딩**: 명령줄 인자를 받는 형식보다는 하드코딩 방식을 선호
-- **옵셔널 하드코딩 표기**: 하드코딩된 코드 중 옵셔널한 부분에는 `# task_orchestrator_cli_option` 주석으로 표기
+- **옵셔널 하드코딩 표기**: 하드코딩된 코드 중 옵셔널한 부분에는 `# pk_option` 주석으로 표기
 - **가독성 우선**: 복잡한 argparse보다는 직관적인 하드코딩 값 사용
-- **유지보수성**: 옵션 변경이 필요한 부분은 `# task_orchestrator_cli_option` 주석으로 쉽게 식별 가능
+- **유지보수성**: 옵션 변경이 필요한 부분은 `# pk_option` 주석으로 쉽게 식별 가능
 
 ### **경로 처리 규칙**
 - **Path 객체 사용**: 모든 파일 경로는 `pathlib.Path` 객체를 사용하여 작성
@@ -144,7 +144,7 @@
 
 ### **LTA (Local Test Activate) 규칙**
 - **테스트 모드 플래그**: `LTA` 변수를 통해 테스트 모드와 일반 모드 구분
-- **테스트 환경 감지**: `sources/system_object/pk_local_test_activate.py`에서 LTA 상태 확인
+- **테스트 환경 감지**: `sources/objects/pk_local_test_activate.py`에서 LTA 상태 확인
 - **하드 코딩 테스트**: LTA 모드에서만 테스트용 하드 코딩된 값 사용 (URL, 설정 등)
 - **일반 모드 보호**: LTA가 False일 때는 사용자 입력이나 동적 값 사용
 - **테스트 코드 분리**: LTA 모드와 일반 모드의 로직을 명확하게 분리하여 작성
@@ -161,10 +161,10 @@
 ### **경로 처리 규칙**
 - **Path 객체 활용**: 파이썬에서 파일 및 디렉토리 경로 처리 시 Path 객체 사용
 - **레거시 변환**: str path 사용 시 Path 객체로 변환 (예: `D_PKG_WINDOWS` → `Path(D_PKG_WINDOWS)`)
-- **경로 유틸리티**: `sources/system_object/files.py`, `sources/system_object/directories.py` 활용
+- **경로 유틸리티**: `sources/objects/files.py`, `sources/objects/directories.py` 활용
 
 ### **코드 구조 규칙**
-- **클래스 작성**: `sources/system_object`에 작성
+- **클래스 작성**: `sources/objects`에 작성
 - **함수 작성**: `sources/functions`에 작성 (function_split 대신)
 - **래퍼 패턴**: sources에 래퍼 작성 시 주변 래퍼의 패턴을 비교하여 재생성
 
@@ -236,8 +236,8 @@
 - **Event Handler 분리**: 각 기능별로 독립적인 핸들러 구현
 
 ### **Event 시스템 구조**
-- **핵심 클래스**: `sources/system_object/pk_event_system.py`에 기본 Event 시스템 클래스들 배치
-- **전용 핸들러**: `sources/system_object/losslesscut_event_handlers.py`에 LosslessCut 전용 핸들러들 배치
+- **핵심 클래스**: `sources/objects/pk_event_system.py`에 기본 Event 시스템 클래스들 배치
+- **전용 핸들러**: `sources/objects/losslesscut_event_handlers.py`에 LosslessCut 전용 핸들러들 배치
 - **실행 스크립트**: `sources/functions/`에 Event 기반 실행 스크립트 배치 (functions_split 대신)
 
 ### **Event 타입 정의**

@@ -34,11 +34,11 @@ def get_pk_program_language_v2():
         print("First launch detected")
         pk_program_language = None
         if LTA:
-            pk_program_language = get_values_from_historical_file_routine(file_id=get_file_id(key_name, func_n), key_hint=f'{key_name}=', options_default=["kr", "en"], editable=True)  # task_orchestrator_cli_option
+            pk_program_language = get_values_from_historical_file_routine(file_id=get_file_id(key_name, func_n), key_hint=f'{key_name}', options_default=["kr", "en"], editable=True)  # pk_option
         else:
-            pk_program_language = get_values_from_historical_file_routine(file_id=get_file_id(key_name, func_n), key_hint=f'{key_name}=', options_default=["kr", "en"], editable=True)
+            pk_program_language = get_values_from_historical_file_routine(file_id=get_file_id(key_name, func_n), key_hint=f'{key_name}', options_default=["kr", "en"], editable=True)
         db.set_values(db_id=db.get_db_id(key_name, func_n), values=pk_program_language)
-        db.set_values(db_id=db.get_db_id(key_hint1, func_n), values=False)  # task_orchestrator_cli_option
+        db.set_values(db_id=db.get_db_id(key_hint1, func_n), values=False)  # pk_option
     else:
         print("Subsequent launch")
         pk_program_language = db.get_values(db_id=db.get_db_id(key_name, func_n))
@@ -49,14 +49,14 @@ def get_pk_program_language_v2():
                                                                               )
             db.set_values(db_id=db.get_db_id(key_name, func_n), values=pk_program_language)
 
-    # reset_is_initial_launch(db,key_hint1,func_n)  # task_orchestrator_cli_option
+    # reset_is_initial_launch(db,key_hint1,func_n)  # pk_option
 
     print(f"[{func_n}] {key_name} = {pk_program_language} %%%FOO%%%")
 
-    # return pk_program_language # task_orchestrator_cli_option
-    # return "kr"  # task_orchestrator_cli_option
-    return "en"  # task_orchestrator_cli_option
+    # return pk_program_language # pk_option
+    # return "kr"  # pk_option
+    return "en"  # pk_option
 
 
 def reset_is_initial_launch(db, key_hint1, func_n):
-    db.set_values(db_id=db.get_db_id(key_hint1, func_n), values=True)  # task_orchestrator_cli_option
+    db.set_values(db_id=db.get_db_id(key_hint1, func_n), values=True)  # pk_option

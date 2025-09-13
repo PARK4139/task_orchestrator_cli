@@ -223,19 +223,19 @@ def main():
     
     logging.debug("테스트 환경 자동 활성화 시작 ===")
     
-    # 1. OS 환경 감지
+    # n. OS 환경 감지
     env_info = detect_os_environment()
     
-    # 2. virtual environment 찾기
+    # n. virtual environment 찾기
     venv_path = find_virtual_environment(env_info)
     
-    # 3. Python 실행 파일 찾기
+    # n. Python 실행 파일 찾기
     python_cmd = find_python_executable(env_info)
     if not python_cmd:
         logging.error("Python 실행 파일을 찾을 수 없음")
         return False
     
-    # 4. virtual environment 활성화 (가능한 경우)
+    # n. virtual environment 활성화 (가능한 경우)
     if venv_path:
         if activate_virtual_environment(venv_path, env_info):
             logging.debug("virtual environment 활성화 완료")
@@ -244,7 +244,7 @@ def main():
     else:
         logging.debug("virtual environment 없음 - 시스템 Python 사용")
     
-    # 5. 의존성 설치
+    # n. 의존성 설치
     if not install_dependencies(python_cmd, env_info):
         logging.warning("의존성 설치 실패 - 계속 진행")
     

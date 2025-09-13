@@ -252,7 +252,7 @@ def test_clipboard_functionality():
     
     print("=== 클립보드 기능 테스트 ===")
     
-    # 1. 클립보드 접근 테스트
+    # n. 클립보드 접근 테스트
     print("1. 클립보드 접근 테스트...")
     if preserver._test_clipboard_access():
         print(" 클립보드 접근 성공")
@@ -260,7 +260,7 @@ def test_clipboard_functionality():
         print(" 클립보드 접근 실패")
         return False
     
-    # 2. 복사 테스트
+    # n. 복사 테스트
     print("2. 클립보드 복사 테스트...")
     test_text = "테스트 텍스트 12345"
     if preserver._copy_to_clipboard(test_text):
@@ -269,7 +269,7 @@ def test_clipboard_functionality():
         print(" 클립보드 복사 실패")
         return False
     
-    # 3. 읽기 테스트
+    # n. 읽기 테스트
     print("3. 클립보드 읽기 테스트...")
     time.sleep(0.1)
     retrieved = preserver._get_from_clipboard()
@@ -279,7 +279,7 @@ def test_clipboard_functionality():
         print(" 클립보드 읽기 실패")
         return False
     
-    # 4. 보존/복원 테스트
+    # n. 보존/복원 테스트
     print("4. 클립보드 보존/복원 테스트...")
     if preserver.preserve():
         print(" 클립보드 보존 성공")

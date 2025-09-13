@@ -20,7 +20,7 @@ def get_master_pw():
                 ensure_pnx_made(pk_security_file, mode='f')
                 logging.debug("type your master_password")
                 master_password = input("master_password(5th sym pw)=").strip()
-                ensure_str_writen_to_f(msg=master_password, f=pk_security_file)
+                ensure_str_writen_to_f(text=master_password, f=pk_security_file)
             else:
                 master_password = get_str_from_file(pnx=pk_security_file).strip()
                 logging.debug(f"master_password={master_password}")

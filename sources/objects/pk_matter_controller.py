@@ -441,7 +441,7 @@ async def quick_device_control(node_id: int, action: str) -> bool:
 if __name__ == "__main__":
     async def main():
         """사용 예시"""
-        # 1. 컨텍스트 매니저 사용
+        # n. 컨텍스트 매니저 사용
         async with PkMatterController() as controller:
             # 장치 발견
             devices = await controller.discover_devices()
@@ -458,7 +458,7 @@ if __name__ == "__main__":
                 if await controller.turn_on(device.node_id):
                     logging.debug(f"{device.display_name} 켜기 성공")
         
-        # 2. 빠른 제어
+        # n. 빠른 제어
         success = await quick_device_control(1, "toggle")
         logging.debug(f"빠른 제어 결과: {success}")
     

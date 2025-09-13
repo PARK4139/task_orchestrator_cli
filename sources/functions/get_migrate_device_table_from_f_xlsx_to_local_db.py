@@ -7,23 +7,23 @@ def get_migrate_device_table_from_f_xlsx_to_local_db():
     import pandas as pd
     import sqlite3
 
-    # 1. 엑셀 파일 로드
+    # n. 엑셀 파일 로드
     excel_path = f"{D_TASK_ORCHESTRATOR_CLI_RELEASE_SERVER}\\영상처리제어기 업무현황.xlsx"
     sheet_name = "업무현황"
     df_raw = pd.read_excel(excel_path, sheet_name=sheet_name)
 
-    # 2. 첫 번째 행을 컬럼으로 설정하고 불필요한 행 remove
+    # n. 첫 번째 행을 컬럼으로 설정하고 불필요한 행 remove
     df_raw.columns = df_raw.iloc[0]
     df = df_raw[1:].copy()
 
-    # 3. 필요한 컬럼만 선택
+    # n. 필요한 컬럼만 선택
     df = df[[
         "장비식별자", "스티커라벨코드", "Nvidia Serial", "용도",
         "AI fraework 배포파일 버전", "위치", "업무트래킹", "최신업무트래킹"
     ]]
     df = df.dropna(subset=["장비식별자"])
 
-    # 4. SQLite DB로 저장
+    # n. SQLite DB로 저장
     db_path = "xc_status.db"
     conn = sqlite3.connect(db_path)
     df.to_sql("xc_status", conn, if_exists="replace", index=False)

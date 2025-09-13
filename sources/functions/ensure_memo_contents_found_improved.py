@@ -393,16 +393,16 @@ def ensure_memo_contents_found_improved():
     # 메인 실행 로직
     logging.debug("개선된 메모 편집 시스템 초기화 ===")
     
-    # 1. pk_memo_how.pk 백업
+    # n. pk_memo_how.pk 백업
     backup_path = backup_memo_file()
     
-    # 2. 로그 파일 열기
+    # n. 로그 파일 열기
     log_file_path = open_result_log_file()
     
     if not log_file_path:
         logging.debug("로그 파일을 열 수 없어 편집 기능이 제한됩니다.")
 
-    # 3. 인코딩 설정
+    # n. 인코딩 설정
     if get_os_n() == 'windows':
         ensure_chcp_65001()
         sys.stdout.reconfigure(encoding='utf-8')
@@ -415,13 +415,13 @@ def ensure_memo_contents_found_improved():
             except:
                 pass
 
-    # 4. 메모 파일 확인
+    # n. 메모 파일 확인
     f_memo = rf'{F_MEMO_WORKING_MD}'
     if not does_pnx_exist(f_memo):
         logging.debug(f'''{f_memo} does not exist %%%FOO%%%''')
         return
 
-    # 5. 실시간 검색 인터페이스
+    # n. 실시간 검색 인터페이스
     try:
         ensure_console_cleared()
         logging.debug("개선된 실시간 메모 검색 + 편집 시스템 ===")

@@ -136,25 +136,25 @@ class MatterDockerController:
         try:
             logging.debug("🐳 Docker 기반 Matter 제어 시작")
             
-            # 1. Docker 사용 가능 여부 확인
+            # n. Docker 사용 가능 여부 확인
             if not await self.is_docker_available():
                 logging.debug("Docker를 사용할 수 없어 Matter 제어를 건너뜁니다")
                 return False
             
-            # 2. 작업 디렉토리 생성
+            # n. 작업 디렉토리 생성
             if not await self.create_working_directory():
                 logging.debug("작업 디렉토리 생성 실패")
                 return False
             
-            # 3. 기존 컨테이너 정리
+            # n. 기존 컨테이너 정리
             await self.stop_existing_container()
             
-            # 4. Matter 이미지 다운로드 (필요시)
+            # n. Matter 이미지 다운로드 (필요시)
             if not await self.pull_matter_image():
                 logging.debug("Matter 이미지 다운로드 실패")
                 return False
             
-            # 5. Matter 컨트롤러 실행
+            # n. Matter 컨트롤러 실행
             success = await self.run_matter_controller(commission_code, action, device_ip)
             
             if success:

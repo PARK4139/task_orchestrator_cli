@@ -21,11 +21,11 @@ def ensure_pk_project_docker_ran(f, dockerfile_script_list):
     wsl_distro_config = get_wsl_distro_config()
 
     ensure_wsl_distro_enabled(distro_name=wsl_distro_config.distro_name)
-    ensure_wsl_distro_session(wsl_distro_name=wsl_distro_config.distro_name)
+    ensure_wsl_distro_session(distro_name=wsl_distro_config.distro_name)
 
     ip = wsl_distro_config.ip
     port = wsl_distro_config.port
-    user_n = wsl_distro_config.user_n
+    user_n = wsl_distro_config.user_name
 
     ensure_ssh_public_key_to_remote_os(**wsl_distro_config)
     ensure_remote_os_as_nopasswd(**wsl_distro_config)

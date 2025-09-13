@@ -253,16 +253,16 @@ async def control_p110m_quick(
     # 시도할 IP 목록 구성
     ips_to_try = []
     
-    # 1. 지정된 IP가 있으면 최우선
+    # n. 지정된 IP가 있으면 최우선
     if target_ip:
         ips_to_try.append(target_ip)
         logging.info(f"지정된 IP 사용: {target_ip}")
     
-    # 2. ARP 테이블에서 TP-Link 장치 찾기
+    # n. ARP 테이블에서 TP-Link 장치 찾기
     arp_ips = await controller.find_p110m_by_arp()
     ips_to_try.extend(arp_ips)
     
-    # 3. 일반적인 IP들 추가 (옵션)
+    # n. 일반적인 IP들 추가 (옵션)
     if try_common_ips and not target_ip:
         common_ips = controller.get_common_router_ips()
         ips_to_try.extend(common_ips)
@@ -277,7 +277,7 @@ async def control_p110m_quick(
     
     logging.info(f"총 {len(ips_to_try)}개 IP 주소에서 P110M 검색 시작")
     
-    # 4. 각 IP에 대해 Kasa 프로토콜로 제어 시도
+    # n. 각 IP에 대해 Kasa 프로토콜로 제어 시도
     for i, ip in enumerate(ips_to_try, 1):
         try:
             logging.info(f"[{i}/{len(ips_to_try)}] {ip} 시도 중...")

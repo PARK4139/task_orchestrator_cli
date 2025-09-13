@@ -69,7 +69,7 @@ def fix_git_push_fail_for_large_file():
             script_path = download_git_filter_repo()
             return script_path is not None, script_path
     
-    # 1. Git 저장소 확인
+    # n. Git 저장소 확인
     logging.debug("🔧 Git 저장소 상태 확인...")
     
     result = run_git_command("git rev-parse --is-inside-work-tree")
@@ -90,7 +90,7 @@ def fix_git_push_fail_for_large_file():
     if not result or result.returncode != 0:
         logging.debug("🔧 원격 저장소가 설정되지 않음")
     
-    # 2. 대용량 파일 탐지 (100MB 이상)
+    # n. 대용량 파일 탐지 (100MB 이상)
     logging.debug("🔧 대용량 파일 탐지 중...")
     
     def find_large_files(size_limit_mb=100):
@@ -137,7 +137,7 @@ def fix_git_push_fail_for_large_file():
     else:
         logging.debug("🔧 .gitignore 변경사항 없음")
     
-    # 3. 추적 중인 대용량 파일 추적 해제
+    # n. 추적 중인 대용량 파일 추적 해제
     if large_files:
         logging.debug("🔧 대용량 파일 추적 해제...")
         
@@ -152,7 +152,7 @@ def fix_git_push_fail_for_large_file():
     else:
         logging.debug("🔧 추적 해제할 대용량 파일 없음")
     
-    # 4. git-filter-repo 준비
+    # n. git-filter-repo 준비
     logging.debug("🔧 git-filter-repo 준비...")
     use_direct_script, filter_repo_path = check_git_filter_repo_available()
     
@@ -160,7 +160,7 @@ def fix_git_push_fail_for_large_file():
         logging.debug("🔧 git-filter-repo를 사용할 수 없습니다.")
         return False
     
-    # 5. Git GC 실행
+    # n. Git GC 실행
     logging.debug("🔧 Git 정리...")
     run_git_command("git gc --prune=now --aggressive")
     

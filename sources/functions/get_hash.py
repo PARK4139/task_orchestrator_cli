@@ -2,10 +2,9 @@ from sources.functions.ensure_seconds_measured import ensure_seconds_measured
 
 
 @ensure_seconds_measured
-def get_hash(key_src):
-    # key_src = f"담고싶은|것들을|담는다|예를 들어서"
+def get_hash(text : str):
+    # text = f"담고싶은|것들을|담는다|예를 들어서"
+    # TODO : 검증필요
     import hashlib
-
-
-    key_hash = hashlib.md5(key_src.encode()).hexdigest()
+    key_hash = hashlib.md5(text.encode()).hexdigest()
     return key_hash

@@ -34,7 +34,7 @@ def diagnose_fzf_installation():
 
         print("fzf 설치 상태를 진단합니다...")
         
-        # 1. 시스템 PATH에서 fzf 검색
+        # n. 시스템 PATH에서 fzf 검색
         import shutil
         fzf_path = shutil.which("fzf")
         if fzf_path:
@@ -42,7 +42,7 @@ def diagnose_fzf_installation():
         else:
             logging.debug(f"[{PkTexts.FZF_NOT_FOUND}]")
         
-        # 2. Windows에서 fzf.exe 검색
+        # n. Windows에서 fzf.exe 검색
         from sources.objects.task_orchestrator_cli_files import F_FZF
         f_fzf :Path = F_FZF
         if f_fzf.exists():
@@ -50,7 +50,7 @@ def diagnose_fzf_installation():
         else:
             logging.debug(f"[{PkTexts.FZF_EXE_NOT_FOUND}]")
         
-        # 3. 일반적인 설치 경로 확인
+        # n. 일반적인 설치 경로 확인
         common_paths = [
             "/usr/bin/fzf",
             "/usr/local/bin/fzf",
@@ -68,7 +68,7 @@ def diagnose_fzf_installation():
             else:
                 logging.debug(f"[{PkTexts.FZF_PATH_NOT_FOUND}] {TASK_ORCHESTRATOR_CLI_ANSI_COLOR_MAP['GRAY']}경로={path} {TASK_ORCHESTRATOR_CLI_ANSI_COLOR_MAP['RESET']}")
         
-        # 4. 실행 테스트
+        # n. 실행 테스트
         working_fzf = None
         test_paths = [fzf_path] + found_paths if fzf_path else found_paths
         
@@ -96,7 +96,7 @@ def diagnose_fzf_installation():
             except Exception as e:
                 logging.debug(f"[{PkTexts.FZF_OTHER_ERROR}] {TASK_ORCHESTRATOR_CLI_ANSI_COLOR_MAP['RED']}경로={path} 오류={e} {TASK_ORCHESTRATOR_CLI_ANSI_COLOR_MAP['RESET']}")
         
-        # 5. 결과 요약
+        # n. 결과 요약
         if working_fzf:
             logging.debug(f"[{PkTexts.FZF_AVAILABLE}] {TASK_ORCHESTRATOR_CLI_ANSI_COLOR_MAP['CYAN']}경로={working_fzf} {TASK_ORCHESTRATOR_CLI_ANSI_COLOR_MAP['RESET']}")
             return working_fzf

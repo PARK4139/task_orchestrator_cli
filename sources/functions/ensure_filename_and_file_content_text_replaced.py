@@ -43,7 +43,7 @@ def ensure_filename_and_file_content_text_replaced_core(f_target, old_text, new_
         modified = True
 
     if not modified:
-        # print(f"[SKIP] 변경 없음: {file_path_old}") # task_orchestrator_cli_option
+        # print(f"[SKIP] 변경 없음: {file_path_old}") # pk_option
         pass
 
 

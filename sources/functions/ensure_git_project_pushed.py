@@ -1,5 +1,6 @@
 import traceback
 
+from functions.ensure_console_paused import ensure_console_paused
 from functions.ensure_debug_loged_verbose import ensure_debug_loged_verbose
 from functions.ensure_windows_killed_like_human import ensure_windows_killed_like_human
 from functions.get_easy_speakable_text import get_easy_speakable_text
@@ -34,7 +35,7 @@ def _ensure_auto_commit_message_used(__file__):
     from functions.ensure_spoken import ensure_spoken
 
     commit_message = get_auto_commit_message(__file__)
-    ensure_spoken("오토 커밋 메시지가 사용되었습니다")
+    # ensure_spoken("오토 커밋 메시지가 사용되었습니다")
     return commit_message
 
 
@@ -232,12 +233,12 @@ def ensure_git_project_pushed(d_local_repo, with_commit_massage=None):
         global step_counter
 
         if LTA:
-            # task_orchestrator_cli_option
+            # pk_option
             # if with_commit_massage is None:
             # with_commit_massage = False
             # editable = True
 
-            # task_orchestrator_cli_option
+            # pk_option
             if with_commit_massage is None:
                 with_commit_massage = True
             editable = False
@@ -249,8 +250,8 @@ def ensure_git_project_pushed(d_local_repo, with_commit_massage=None):
         start_time = time.time()
         logging.debug(PK_UNDERLINE)
         d_project_to_push = get_nx(os.getcwd())
-        easy_speakable_text = get_easy_speakable_text(d_project_to_push)
-        ensure_spoken(rf"{easy_speakable_text} 푸쉬 시도")
+        # easy_speakable_text = get_easy_speakable_text(d_project_to_push)
+        # ensure_spoken(rf"{easy_speakable_text} 푸쉬 시도")
         logging.debug(f"LOCAL LEPO : {TASK_ORCHESTRATOR_CLI_ANSI_COLOR_MAP['CYAN']}{d_project_to_push}{TASK_ORCHESTRATOR_CLI_ANSI_COLOR_MAP['RESET']}")
         logging.debug(f"STARTED AT : {TASK_ORCHESTRATOR_CLI_ANSI_COLOR_MAP['CYAN']}{time.strftime('%Y-%m-%d %H:%M:%S')}{TASK_ORCHESTRATOR_CLI_ANSI_COLOR_MAP['RESET']}")
 
@@ -266,7 +267,7 @@ def ensure_git_project_pushed(d_local_repo, with_commit_massage=None):
             set_text_from_history_file("user_email", user_email)
             label = ensure_status_printed_step(step_counter + 1, cmd, code, output)
             if not ensure_label_process_done(label, start_time):
-                return
+                ensure_console_paused()
             step_counter += 1
 
         if len(user_name.strip()) == 0:
@@ -277,7 +278,7 @@ def ensure_git_project_pushed(d_local_repo, with_commit_massage=None):
             set_text_from_history_file("user_name", user_name)
             label = ensure_status_printed_step(step_counter + 1, cmd, code, output)
             if not ensure_label_process_done(label, start_time):
-                return
+                ensure_console_paused()
             step_counter += 1
 
         # git add
@@ -318,11 +319,11 @@ def ensure_git_project_pushed(d_local_repo, with_commit_massage=None):
         if any(protocol in output for protocol in ["To https://", "To http://", "To git@"]):
             pass
         elif "everything up-to-date" in output.lower():
-            pass
+            pass # TODO
         else:
             label = "FAILED"
             if ensure_git_state_checked(start_time, label) == False:
-                return False
+                ensure_console_paused()
 
         duration = time.time() - start_time
         logging.debug(f"{TASK_ORCHESTRATOR_CLI_ANSI_COLOR_MAP['CYAN']}ALL PROCESS COMPLETED SUCCESSFULLY. TOTAL EXECUTION TIME: {duration:.2f} SECONDS {TASK_ORCHESTRATOR_CLI_ANSI_COLOR_MAP['RESET']}")

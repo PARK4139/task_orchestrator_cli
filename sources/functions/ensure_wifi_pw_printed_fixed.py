@@ -15,7 +15,7 @@ import logging
 def ensure_wifi_pw_printed_fixed() -> Tuple[Optional[str], Optional[str]]:
     from sources.functions.ensure_sensitive_info_masked import ensure_sensitive_info_masked
     try:
-        # 1. Wi-Fi 프로필 목록 조회
+        # n. Wi-Fi 프로필 목록 조회
         logging.info("Wi-Fi 프로필 목록을 조회합니다...")
 
         result = subprocess.run(
@@ -30,7 +30,7 @@ def ensure_wifi_pw_printed_fixed() -> Tuple[Optional[str], Optional[str]]:
             logging.error(f"Wi-Fi 프로필 조회 실패: {result.stderr}")
             return None, None
 
-        # 2. 프로필 이름 파싱
+        # n. 프로필 이름 파싱
         wifi_profiles = []
         lines = result.stdout.split('\n')
 
@@ -47,11 +47,11 @@ def ensure_wifi_pw_printed_fixed() -> Tuple[Optional[str], Optional[str]]:
             logging.warning("저장된 Wi-Fi 프로필이 없습니다.")
             return None, None
 
-        # 3. 첫 번째 프로필의 비밀번호 조회
+        # n. 첫 번째 프로필의 비밀번호 조회
         wifi_name = wifi_profiles[0]
         logging.info(f"선택된 Wi-Fi 프로필: {ensure_sensitive_info_masked(wifi_name)}")
 
-        # 4. 비밀번호 조회
+        # n. 비밀번호 조회
         wifi_password = get_wifi_password(wifi_name)
 
         if wifi_password:
@@ -253,7 +253,7 @@ def get_current_ip() -> Optional[str]:
 #
 #     logging.debug("Wi-Fi 정보 조회 및 연결 테스트 ===")
 #
-#     # 1. Wi-Fi 프로필 및 비밀번호 조회
+#     # n. Wi-Fi 프로필 및 비밀번호 조회
 #     wifi_name, wifi_password = ensure_wifi_pw_printed_fixed()
 #
 #     if wifi_name:
@@ -263,7 +263,7 @@ def get_current_ip() -> Optional[str]:
 #         else:
 #             logging.debug("🔑 Wi-Fi 비밀번호: (없음 또는 접근 불가)")
 #
-#         # 2. 현재 연결 상태 확인
+#         # n. 현재 연결 상태 확인
 #         if check_wifi_connection():
 #             logging.debug("📶 현재 Wi-Fi 연결됨")
 #             current_ip = get_current_ip()
@@ -272,7 +272,7 @@ def get_current_ip() -> Optional[str]:
 #         else:
 #             logging.debug("📶 현재 Wi-Fi 연결되지 않음")
 #
-#             # 3. 연결 시도
+#             # n. 연결 시도
 #             logging.debug(f"\n🔗 '{wifi_name}'에 연결 시도...")
 #             if connect_to_wifi(wifi_name):
 #                 logging.debug("✅ Wi-Fi 연결 성공!")

@@ -35,7 +35,7 @@ def ensure_video_played_at_losslesscut(video_player=None, loop_cnt=0):
         if not video_player.ensure_video_player_screen_maximized():
             return False
 
-        # idle window title monitored # task_orchestrator_cli_option
+        # idle window title monitored # pk_option
         if 1 <= loop_cnt :
             video_player.ensure_video_player_idle_window_title_monitored()
 

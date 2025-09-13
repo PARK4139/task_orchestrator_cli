@@ -82,11 +82,11 @@ class PkVideoPlayer:
         # self.ext_allowed_list: List[str] = ['.mp4', '.mkv', '.avi', '.mov', '.wmv', '.flv', '.webm' ]
         self.ext_allowed_list: List[str] = ['.mp4', '.mkv', '.avi', '.mov', '.wmv', '.flv', '.webm', '.mp3', '.flac']
 
-        # task_orchestrator_cli_option
+        # pk_option
         # self.video_name_parts_to_ignore: List[str] = []
         # self.video_ignored_regex_patterns: List[str] = []
 
-        # task_orchestrator_cli_option
+        # pk_option
         self.video_name_parts_to_ignore: List[str] = ['-seg', 'SEG-']
         self.video_ignored_regex_patterns: List[str] = [
             r'\d{2}\.\d{2}\.\d{2}\.\d{3}-\d{2}\.\d{2}\.\d{2}\.\d{3}',
@@ -106,7 +106,7 @@ class PkVideoPlayer:
 
         if self.d_working is None:
             if LTA:
-                # task_orchestrator_cli_option
+                # pk_option
                 self.d_working = self.get_d_working_from_routine()
                 # self.d_working = str(D_DOWNLOADED_FROM_TORRENT)
                 # self.d_working = str(D_PK_WORKING_S)
@@ -162,7 +162,7 @@ class PkVideoPlayer:
 
         logging.debug(rf"previous_video={previous_video}")
 
-        # task_orchestrator_cli_option : get_video_filtered_list 에 TTL 적용
+        # pk_option : get_video_filtered_list 에 TTL 적용
         videos = get_video_filtered_list(
             str(d_working), self.ext_allowed_list, self.video_name_parts_to_ignore, self.video_ignored_regex_patterns
         )
@@ -231,7 +231,7 @@ class PkVideoPlayer:
             window_title_loaded_reference = f'{get_nx(self.f_video_to_load)} - 팟플레이어'
         else:
             window_title_loaded_reference = "not defined refence window title"
-        return window_title_loaded_reference.strip()  # task_orchestrator_cli_option : strip() 처리 " f.mp4" 인경우 재생 안되는 문제
+        return window_title_loaded_reference.strip()  # pk_option : strip() 처리 " f.mp4" 인경우 재생 안되는 문제
 
     def get_window_title_and_hwnd_loaded_at_video_player(self) -> Optional[Tuple[str, int]]:
         import logging
@@ -556,7 +556,7 @@ class PkVideoPlayer:
 
         from sources.objects.task_orchestrator_cli_directories import D_PK_WORKING, D_G_DRIVE_PK_WORKING
 
-        # task_orchestrator_cli_option
+        # pk_option
         key_name = "d_working"
         func_n = get_caller_n()
         # func_n = "ensure_video_played_at_video_player"

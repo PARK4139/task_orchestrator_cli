@@ -20,7 +20,7 @@ def ensure_task_orchestrator_cli_log_initialized(__file__, with_file_logging_mod
         return
     ensure_task_orchestrator_cli_log_initialized._initialized = True
 
-    # task_orchestrator_cli_option: 콘솔 로깅 활성화/비활성화 (하드코딩 옵션)
+    # pk_option: 콘솔 로깅 활성화/비활성화 (하드코딩 옵션)
     ENABLE_CONSOLE_LOGGING = True
     # ENABLE_CONSOLE_LOGGING = False
 
@@ -39,7 +39,7 @@ def ensure_task_orchestrator_cli_log_initialized(__file__, with_file_logging_mod
 
     D_TASK_ORCHESTRATOR_CLI_LOGS.mkdir(parents=True, exist_ok=True)
 
-    # task_orchestrator_cli_option : 하루 이상 지난 로그 파일 삭제
+    # pk_option : 하루 이상 지난 로그 파일 삭제
     if not LTA:
         cleanup_old_log_files(D_TASK_ORCHESTRATOR_CLI_LOGS)
 

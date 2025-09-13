@@ -23,7 +23,7 @@ def ensure_gemini_cli_installed_as_latest_version(__file__):
             ensure_spoken(f'{question}')
         else:
             question = rf"GEMINI 최신버전 설치 계속 진행할까요"
-            ok = ensure_value_completed(key_hint=rf"{question}=", options=[PkTexts.YES, PkTexts.NO])
+            ok = ensure_value_completed(key_hint=question, options=[PkTexts.YES, PkTexts.NO])
             if ok != PkTexts.YES:
                 ensure_task_orchestrator_cli_wrapper_suicided(__file__)
 

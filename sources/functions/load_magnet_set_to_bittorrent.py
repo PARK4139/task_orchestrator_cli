@@ -36,7 +36,7 @@ def load_magnet_set_to_bittorrent():
     #     f = get_pnx_unix_style(f)
     # ensure_command_executed(cmd=rf'sudo nano "{f}"', debug_mode=True, mode="a")
 
-    answer = ensure_value_completed(key_hint='answer(o/x)=', options=['o', 'x'])
+    answer = ensure_value_completed(key_hint='answer(o/x)', options=['o', 'x'])
     if answer != 'o':
         return
     magnet_list = get_list_from_f(f=Path(f))
@@ -95,7 +95,7 @@ def load_magnet_set_to_bittorrent():
         if magnet.strip() == "":
             continue
         logging.debug(f'''magnet={magnet}  {'%%%FOO%%%' if LTA else ''}''')
-        interval_seconds = int(ensure_value_completed(key_hint='interval_seconds=', options=['1000', '5000', '10000']))
+        interval_seconds = int(ensure_value_completed(key_hint='interval_seconds', options=['1000', '5000', '10000']))
         if "&mgt_url=" in magnet:
             magnet = magnet.split("&mgt_url=")[1].strip()
             webbrowser.open(magnet)

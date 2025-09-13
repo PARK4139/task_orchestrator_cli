@@ -18,7 +18,7 @@
 #     preview = True
 # _____________________________________________________________________ fzf
 # key_name = 'file_to_hot_reload'
-# values = get_pnxs(d_working=D_TASK_ORCHESTRATOR_CLI_RESOURCES, with_walking=0, filter_option="f")
+# values = get_pnxs(d_working=D_TASK_ORCHESTRATOR_CLI_RESOURCES, with_walking=False, filter_option="f")
 # file_to_hot_reload = get_value_from_fzf(key_name=key_name, values=values)
 # file_to_hot_reload = Path(file_to_hot_reload)
 # logging.debug(f'''file_to_hot_reload={file_to_hot_reload} {'%%%FOO%%%' if LTA else ''}''')
@@ -41,7 +41,7 @@
 # ensure_pnx_opened_by_ext(save_file)
 # _____________________________________________________________________  history sqlite
 # key_name = "pk_program_language"
-# pk_program_language = get_values_from_historical_database_routine(db_id = db.get_id(key_name,func_n), key_hint=f'{key_name}=', options_default=["kr", "en"])
+# pk_program_language = get_values_from_historical_database_routine(db_id = db.get_id(key_name,func_n), key_hint=f'{key_name}', options_default=["kr", "en"])
 # _____________________________________________________________________  history sqlite
 # key_name = "is_initial_launch"
 # is_initial_launch = db.get_values(db_id = db.get_id(key_name,func_n)) or True
@@ -50,7 +50,7 @@
 # is_initial_launch = db.get_values(db_id = db.get_id(key_name,func_n)) or ""
 # _____________________________________________________________________  history file
 # key_name = "d_working"
-# d_working = get_values_from_historical_file_routine(file_id=get_file_id(key_name,func_n), key_hint=f'{key_name}=', options_default=['pk_working'], editable=True)
+# d_working = get_values_from_historical_file_routine(file_id=get_file_id(key_name,func_n), key_hint=f'{key_name}', options_default=['pk_working'], editable=True)
 # _____________________________________________________________________ options
 # options = []
 # d_working = ensure_value_completed(key_hint='d_working=', values=options)

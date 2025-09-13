@@ -73,7 +73,7 @@ def ensure_value_completed(key_hint, options):
     logging.debug(f"{get_text_cyan("방향키")}->이동")
     logging.debug(f"{get_text_cyan("Enter")}->선택")
     logging.debug(f"")
-    message = rf"{key_hint}{PK_BLANK}"
+    message = rf"{key_hint}={PK_BLANK}"
     # ensure_spoken(rf"{get_easy_speakable_text(message)} 를 입력해주세요")
 
     option_selected = prompt(

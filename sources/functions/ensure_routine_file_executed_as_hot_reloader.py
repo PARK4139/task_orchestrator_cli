@@ -62,7 +62,7 @@ def ensure_routine_file_executed_as_hot_reloader():
         ]
         loop_cnt = 1
 
-        # task_orchestrator_cli_option
+        # pk_option
         # key_name = 'stable_seconds_limit'
         # stable_seconds_limit = ensure_value_completed_advanced(key_name=key_name, func_n=func_n, options=[1, 2,3,4,5,6,10])
         stable_seconds_limit = 2
@@ -81,7 +81,7 @@ def ensure_routine_file_executed_as_hot_reloader():
                         logging.debug(f'''f={file_to_execute} {'%%%FOO%%%' if LTA else ''}''')
                         windows_opened.add(get_nx(file_to_execute))
                         file_to_execute = file_to_execute
-                        window_title_to_kill = get_nx(file_to_execute)  # task_orchestrator_cli_option
+                        window_title_to_kill = get_nx(file_to_execute)  # pk_option
                         ensure_py_system_process_ran_by_pnx(file_to_execute=file_to_execute, mode='a')
                     loop_cnt = loop_cnt + 1
                     continue
@@ -106,7 +106,7 @@ def ensure_routine_file_executed_as_hot_reloader():
                 ensure_slept(milliseconds=80)
                 # time.sleep(80)  # 로깅 방지
 
-                # task_orchestrator_cli_option
+                # pk_option
                 ensure_task_orchestrator_cli_useless_log_removed(text=PK_USERLESS_LINE)
 
     except:

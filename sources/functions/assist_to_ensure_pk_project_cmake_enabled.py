@@ -17,7 +17,7 @@ def assist_to_ensure_project_cmake_executed_at_remote_device_target():
 
     wsl_distro_name = get_wsl_distro_name_installed()
 
-    ensure_wsl_distro_session(wsl_distro_name=wsl_distro_name)
+    ensure_wsl_distro_session(distro_name=wsl_distro_name)
 
     wsl_distro_config = get_wsl_distro_config()
 
@@ -30,7 +30,7 @@ def assist_to_ensure_project_cmake_executed_at_remote_device_target():
         std_outs, std_err_list = ensure_command_to_target_with_pubkey(cmd=rf"echo y | sudo apt install build-essential", **wsl_distro_config)
         std_outs, std_err_list = ensure_command_to_target_with_pubkey(cmd=rf"echo y | sudo apt install libyaml-cpp-dev", **wsl_distro_config)
     except:
-        logging.debug(f'''{'[ TRY GUIDE ]'} ssh -p {wsl_distro_config.port} {wsl_distro_config.user_n}@{wsl_distro_config.ip} {'%%%FOO%%%' if LTA else ''}''')
+        logging.debug(f'''{'[ TRY GUIDE ]'} ssh -p {wsl_distro_config.port} {wsl_distro_config.user_name}@{wsl_distro_config.ip} {'%%%FOO%%%' if LTA else ''}''')
 
     build_project_cmake(project_pnx=project_pnx, **wsl_distro_config)
     exec_project_cmake(project_pnx=project_pnx, **wsl_distro_config)

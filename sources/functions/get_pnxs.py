@@ -1,9 +1,7 @@
-
-
-def get_pnxs(with_walking: int = 0, filtered=None, d_working=None):
+def get_pnxs(with_walking: bool = False, filtered=None, d_working=None):
     from sources.functions.is_d import is_d
     import os
-    if with_walking == 1:
+    if with_walking:
         if d_working is None:
             d_working = os.getcwd()
 
@@ -38,7 +36,7 @@ def get_pnxs(with_walking: int = 0, filtered=None, d_working=None):
             pass
 
         return pnx_list
-    elif with_walking == 0:
+    elif not with_walking:
         import os
         if d_working is None:
             d_working = os.getcwd()
@@ -46,11 +44,11 @@ def get_pnxs(with_walking: int = 0, filtered=None, d_working=None):
         # 절대경로로 변환
         d_working = os.path.abspath(d_working)
 
-        pnx_nx_list = os.listdir(d_working)
+        pnx_nxs = os.listdir(d_working)
         f_list = []
         d_list = []
 
-        for pnx_nx in pnx_nx_list:
+        for pnx_nx in pnx_nxs:
             pnx = os.path.join(d_working, pnx_nx)  # 절대경로로 결합
             if is_d(pnx):
                 d_list.append(pnx)  # d의 절대경로 추가
@@ -65,3 +63,4 @@ def get_pnxs(with_walking: int = 0, filtered=None, d_working=None):
         else:
             pnx_list = f_list + d_list
         return pnx_list
+    return None

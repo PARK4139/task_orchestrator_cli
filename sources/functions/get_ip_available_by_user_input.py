@@ -106,7 +106,7 @@ def get_ip_available_by_user_input():
             available_ip_without_localhost_list.append('R(RETRY)')
             available_ip_without_localhost_list.append('0(TBD IP)')
 
-            user_input = ensure_value_completed(key_hint="user_input=", options=available_ip_without_localhost_list)
+            user_input = ensure_value_completed(key_hint="user_input", options=available_ip_without_localhost_list)
             if user_input.upper() == '0' or '0(TBD IP)':
                 ip = None
                 return ip

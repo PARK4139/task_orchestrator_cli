@@ -13,7 +13,7 @@ def ensure_api_usage_allowed(api_key_id):
         ensure_command_executed(cmd=fr"explorer.exe {URL_OPEN_API_USAGE_DASHBOARD}")
 
     question = rf"are you sure {api_key_id} usage proper"
-    decision = ensure_value_completed(key_hint=rf"{question}=", options=[PkTexts.YES, PkTexts.NO])
+    decision = ensure_value_completed(key_hint=question, options=[PkTexts.YES, PkTexts.NO])
     if decision == PkTexts.YES:
         return True
     else:

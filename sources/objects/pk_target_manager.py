@@ -1,52 +1,77 @@
 import logging
+import subprocess
 import textwrap
 import traceback
 from enum import IntFlag, auto
 from pathlib import Path
-from typing import Optional
 
-from functions import ensure_spoken, ensure_value_completed, ensure_command_executed
-from functions.check_signiture_in_loop import check_signiture_in_loop
+from functions import ensure_spoken, ensure_value_completed, ensure_command_executed, ensure_slept
+from functions.ensure_command_executed_advanced import ensure_command_executed_advanced
+from functions.ensure_command_executed_as_admin import ensure_command_executed_as_admin
 from functions.ensure_debug_loged_verbose import ensure_debug_loged_verbose
 from functions.ensure_env_var_completed import ensure_env_var_completed
 from functions.ensure_env_var_completed_advanced import ensure_env_var_completed_advanced
+from functions.ensure_guided_not_prepared_yet import ensure_not_prepared_yet_guided
+from functions.ensure_signiture_found_in_lines import ensure_signiture_found_in_lines
+from functions.ensure_signiture_found_in_souts_for_milliseconds_limited import ensure_signiture_found_in_souts_for_milliseconds_limited
 from functions.ensure_value_completed_advanced import ensure_value_completed_advanced
+from functions.ensure_window_to_front import ensure_window_to_front
+from functions.ensure_windows_killed_like_human import ensure_windows_killed_like_human
 from functions.get_caller_n import get_caller_n
+from functions.get_current_terminal_console_title import get_current_terminal_console_title
 from functions.get_easy_speakable_text import get_easy_speakable_text
 from functions.get_env_var_name_id import get_env_var_id
+from functions.get_milliseconds_from_seconds import get_milliseconds_from_seconds
 from functions.get_text_cyan import get_text_cyan
 from functions.get_text_yellow import get_text_yellow
+from functions.get_window_title_temp import get_window_title_temp
+from functions.get_window_title_temp_for_cmd_exe import get_window_title_temp_for_cmd_exe
+from functions.get_window_title_temp_identified import get_window_title_temp_identified
 from functions.is_internet_connected import is_internet_connected
+from functions.is_os_linux import is_os_linux
 from functions.is_os_windows import is_os_windows
+from functions.is_window_opened import is_window_opened
 from objects.device_identifiers import PkDevice, PkDeviceIdentifiers
+from objects.pk_etc import PK_UNDERLINE
 from objects.pk_local_test_activate import LTA
 from objects.pk_map_texts import PkTexts
-from objects.task_orchestrator_cli_files import F_WSL_SSHD_CONFIG
+from objects.task_orchestrator_cli_files import F_WSL_SSHD_CONFIG, F_USBPIPD_MSI
 from objects.pk_target import PkTarget
-from objects.pk_ttl_cache_manager import ensure_function_return_ttl_cached
 from objects.pk_ubuntu_package_name import UbuntuPakageName
 from task_orchestrator_cli_sensitive.task_orchestrator_cli_sensitive_pnxs import F_LOCAL_SSH_PUBLIC_KEY, F_LOCAL_SSH_PRIVATE_KEY
 
 
-class SetupOps(IntFlag):
-    NONE = 0
+class _SetupOpsForPkTargetManager(IntFlag):
+    # NONE = 0
     SELF = auto()
     TARGET = auto()
-    WSL = auto()
-    ALL = SELF | TARGET | WSL
+    WSL_DISTRO = auto()
+    ALL = SELF | TARGET | WSL_DISTRO
+
+
+class _SetupOpsForSdkManager(IntFlag):
+    CLI = auto()
+    GUI = auto()
 
 
 class PkTargetManager(PkDevice):
+    from objects.pk_ttl_cache_manager import ensure_function_return_ttl_cached
+    from pathlib import Path
+    from typing import Optional
+
+    from objects.pk_target import PkTarget
+
     """
-        programmer : programmer device is working for flashing target device
-        target : target device flashed
+        # remote device == target 을 제어하기 위한 목적
+        self : host machine is working for control target device
+        target : target hardware device
     """
     _wsl: PkTarget = None
     target: PkTarget = None
 
     from functions.ensure_seconds_measured import ensure_seconds_measured
 
-    def __init__(self, identifier: "PkDeviceIdentifiers", ip=None, pw=None, hostname=None, port=None, user_n=None, f_local_ssh_public_key=None, f_local_ssh_private_key=None, nick_name=None, setup_ops: "SetupOps" = SetupOps.ALL):
+    def __init__(self, identifier: "PkDeviceIdentifiers", ip=None, pw=None, hostname=None, port=None, user_n=None, f_local_ssh_public_key=None, f_local_ssh_private_key=None, nick_name=None, setup_op: "_SetupOpsForPkTargetManager" = _SetupOpsForPkTargetManager.ALL):
         super().__init__(identifier)
 
         connected = is_internet_connected()
@@ -54,26 +79,20 @@ class PkTargetManager(PkDevice):
             ensure_spoken("network is not connected")
             return
 
-        # self.set_self(ip=ip, pw=pw, hostname=hostname, port=port, user_n=user_n, f_local_ssh_public_key=f_local_ssh_public_key, f_local_ssh_private_key=f_local_ssh_private_key, nick_name=nick_name)
-        # self.set_target()
-        # self.set_wsl()
-
-        # 저장해두면 이후 메서드에서 기본값처럼 재사용 가능
-        self._setup_ops_default = setup_ops
+        self._setup_op = setup_op
         self._init_kwargs = dict(ip=ip, pw=pw, hostname=hostname, port=port, user_n=user_n, f_local_ssh_public_key=f_local_ssh_public_key, f_local_ssh_private_key=f_local_ssh_private_key, nick_name=nick_name)
-        # 필요한 단계만 실행
-        self._setup_successful = False  # Initialize setup status
-        self._run_setups(setup_ops, **self._init_kwargs)
-        if self._wsl is not None:  # Check if WSL was successfully set up
+        self._setup_successful = False
+        self.ensure_executed_by_setup_op(setup_op, **self._init_kwargs)
+        if self._wsl is not None:
             self._setup_successful = True
-
+        self.window_title_temp = get_window_title_temp_identified()
         logging.debug(f'{get_caller_n()} is initialized')
 
-    def _run_setups(self, setup_ops: "SetupOps", *, ip=None, pw=None, hostname=None, port=None, user_n=None, f_local_ssh_public_key=None, f_local_ssh_private_key=None, nick_name=None) -> None:
+    def ensure_executed_by_setup_op(self, setup_ops: "_SetupOpsForPkTargetManager", *, ip=None, pw=None, hostname=None, port=None, user_n=None, f_local_ssh_public_key=None, f_local_ssh_private_key=None, nick_name=None) -> None:
         import logging
         from objects.device_identifiers import PkDeviceIdentifiers
 
-        if setup_ops & SetupOps.SELF:
+        if setup_ops & _SetupOpsForPkTargetManager.SELF:
             self.set_self(
                 ip=ip, pw=pw, hostname=hostname, port=port, user_n=user_n,
                 f_local_ssh_public_key=f_local_ssh_public_key,
@@ -82,7 +101,7 @@ class PkTargetManager(PkDevice):
             )
             logging.debug("set_self() done")
 
-        if setup_ops & SetupOps.TARGET:
+        if setup_ops & _SetupOpsForPkTargetManager.TARGET:
             # 기존 로직: identifier가 기본 WSL이면 target 설정 생략
             if not self.identifier == PkDeviceIdentifiers.undefined:
                 self.set_target()
@@ -90,8 +109,8 @@ class PkTargetManager(PkDevice):
             else:
                 logging.debug("set_target() skipped for wsl_distro_default")
 
-        if setup_ops & SetupOps.WSL:
-            self.setup_wsl()
+        if setup_ops & _SetupOpsForPkTargetManager.WSL_DISTRO:
+            self.setup_wsl_distro()
             logging.debug("setup_wsl() done")
             if self._wsl is None:
                 logging.error("WSL setup failed. Cannot proceed with WSL-dependent operations.")
@@ -123,6 +142,32 @@ class PkTargetManager(PkDevice):
         logging.debug("usbipd가 이미 설치 및 활성화되어 있습니다.")
         return True
 
+    def get_wsl_version(self):
+        import logging
+        import subprocess
+
+        wsl_version = None
+        try:
+            result = subprocess.run(["wsl", "--version"], capture_output=True, text=True, check=True, encoding='utf-8', errors='ignore')
+            output = result.stdout
+            for line in output.splitlines():
+                if line.strip().startswith("WSL 버전:") or line.strip().startswith("WSL version:"):
+                    wsl_version = line.split(':')[-1].strip()
+                    break
+
+            if not wsl_version:
+                logging.warning("Could not parse WSL version from 'wsl --version'.")
+
+        except FileNotFoundError:
+            logging.error("`wsl.exe` not found. Is WSL installed and in your PATH?")
+            wsl_version = "Not Installed"
+        except subprocess.CalledProcessError as e:
+            logging.warning(f"'wsl --version' failed, possibly an older WSL. Error: {e.stderr}")
+            wsl_version = "Unknown (command failed)"
+
+        logging.debug(f"wsl_version={wsl_version}")
+        return wsl_version
+
     def is_wsl_installed(self):
         import logging
         import subprocess
@@ -146,12 +191,12 @@ class PkTargetManager(PkDevice):
         # pk_*
         # 명시적 초기화, ⚠️ 수동 초기화
         # env_var_name = "selected"
-        # selected = ensure_value_completed_advanced(env_var_name=env_var_name, prompt_message=f"{env_var_name}=", options=get_wsl_distro_names_installed())
+        # selected = ensure_value_completed_advanced(env_var_name=env_var_name, prompt_message=f"{env_var_name}", options=get_wsl_distro_names_installed())
 
         # pk_*
         # 자동 초기화, ⚠️ 환경변수 selected 를 수정하기 위해서는 selected 수동 수정 필요
         env_var_name = "wsl_distro_name_default"
-        selected = ensure_env_var_completed(env_var_name=env_var_name, prompt_message=f"{env_var_name}=", options=self.get_wsl_distro_names_installed())
+        selected = ensure_env_var_completed(env_var_name=env_var_name, prompt_message=f"{env_var_name}", options=self.get_wsl_distro_names_installed())
         wsl_distro_name_default = selected
         return wsl_distro_name_default
 
@@ -171,6 +216,125 @@ class PkTargetManager(PkDevice):
         except Exception as e:
             logging.error(f"An unexpected error occurred while getting WSL distro names: {e}")
             return []
+
+    def get_wsl_distro_names_installable(self):
+        """Returns a list of installable WSL distro names from 'wsl --list --online'."""
+        import logging
+        import subprocess
+        import re
+        from functions.ensure_debug_loged_verbose import ensure_debug_loged_verbose
+        import traceback
+
+        if not self.is_wsl_installed():
+            logging.warning("WSL이 설치되어 있지 않아 설치 가능한 배포판 목록을 가져올 수 없습니다.")
+            return []
+
+        try:
+            cmd = ["wsl", "--list", "--online"]
+            logging.debug(f"WSL 명령 실행: {' '.join(cmd)}")
+            result = subprocess.run(cmd, capture_output=True, text=True, check=True, encoding='utf-16-le', errors='ignore')
+            output = result.stdout
+            lines = output.strip().splitlines()
+
+            if not lines:
+                logging.warning("'wsl --list --online' 명령의 출력이 비어 있습니다.")
+                return []
+
+            distro_names = []
+            header_found = False
+            for i, line in enumerate(lines):
+                if "NAME" in line and "FRIENDLY NAME" in line:  # Look for header line
+                    header_found = True
+                    # Start parsing from the next line
+                    for data_line in lines[i + 1:]:  # Start from the line after the header
+                        line_content = data_line.strip()
+                        if not line_content:
+                            continue
+                        # Split by multiple spaces to handle variable spacing
+                        parts = re.split(r'\s{2,}', line_content)
+                        if parts and parts[0]:
+                            distro_names.append(parts[0])
+                    break  # Stop after processing data lines
+
+            if not header_found:
+                logging.warning("Could not find header 'NAME' in 'wsl --list --online' output. Parsing might be incorrect.")
+                # Fallback to old parsing if header not found, assuming it's still valid for some cases
+                if len(lines) >= 3:
+                    for line in lines[2:]:
+                        line_content = line.strip()
+                        if not line_content:
+                            continue
+                        parts = re.split(r'\s{2,}', line_content)
+                        if parts and parts[0]:
+                            distro_names.append(parts[0])
+
+            logging.debug(f"설치 가능한 WSL 배포판 목록: {distro_names}")
+            return distro_names
+        except FileNotFoundError:
+            logging.error("wsl.exe를 찾을 수 없습니다. WSL이 설치되어 있고 PATH에 등록되어 있는지 확인하세요.")
+            return []
+        except subprocess.CalledProcessError as e:
+            logging.error(f"온라인 WSL 배포판 목록을 가져오는 데 실패했습니다: {e.stderr}")
+            return []
+        except Exception as e:
+            logging.error(f"설치 가능한 WSL 배포판을 가져오는 중 예상치 못한 오류가 발생했습니다: {e}")
+            ensure_debug_loged_verbose(traceback)
+            return []
+
+    def ensure_wsl_distro_installed_by_user_selection(self):
+        import logging
+        from functions.ensure_value_completed_advanced import ensure_value_completed_advanced
+        from functions.ensure_command_executed_as_admin import ensure_command_executed_as_admin
+
+        # n. Get list of installable distros
+        installable_distros = self.get_wsl_distro_names_installable()
+        if not installable_distros:
+            logging.error("Could not retrieve a list of installable WSL distributions.")
+            ensure_spoken("설치 가능한 WSL 배포판 목록을 가져올 수 없습니다.")
+            return None
+
+        # n. Prompt user for selection
+        key_name = 'wsl_distro_to_install'
+        prompt_message = "설치할 WSL 배포판을 선택하세요:"
+        selected_distro = ensure_value_completed_advanced(
+            key_name=key_name,
+            func_n="ensure_wsl_distro_installed_by_user_selection",
+            options=installable_distros
+        )
+
+        if not selected_distro:
+            logging.warning("No WSL distribution selected for installation.")
+            return None
+
+        # n. Check if it's already installed
+        if self.is_wsl_distro_installed(selected_distro):
+            logging.info(f"WSL distribution '{selected_distro}' is already installed.")
+            ensure_spoken(f"{selected_distro} 배포판은 이미 설치되어 있습니다.")
+            return selected_distro
+
+        # n. Install the selected distro
+        logging.info(f"Attempting to install WSL distribution: {selected_distro}")
+        ensure_spoken(f"{selected_distro} 배포판 설치를 시작합니다. 이 작업은 시간이 걸릴 수 있습니다.")
+
+        install_cmd = f"wsl --install -d {selected_distro}"
+
+        # n. Installation requires admin rights.
+        _, souts, errs = ensure_command_executed_as_admin(cmd=install_cmd)
+
+        if errs:
+            logging.error(f"Failed to install WSL distribution '{selected_distro}'. Error: {errs}")
+            ensure_spoken(f"{selected_distro} 배포판 설치에 실패했습니다.")
+            return None
+
+        # n. Verify installation
+        if self.is_wsl_distro_installed(selected_distro):
+            logging.info(f"Successfully installed WSL distribution: {selected_distro}")
+            ensure_spoken(f"{selected_distro} 배포판이 성공적으로 설치되었습니다.")
+            return selected_distro
+        else:
+            logging.error(f"Installation command for '{selected_distro}' was executed, but verification failed.")
+            ensure_spoken(f"{selected_distro} 배포판 설치 후 확인 과정에서 실패했습니다.")
+            return None
 
     def get_wsl_distro_hostname(self, distro_name):
         import logging
@@ -216,19 +380,19 @@ class PkTargetManager(PkDevice):
 
     def get_wsl_distro_port(self, distro_name: str) -> Optional[str]:
         """
-        WSL 배포판의 sshd_config 파일에서 SSH 포트 번호를 추출합니다.
-        파일이 없으면 openssh-server 설치를 시도하고, 포트가 주석처리된 경우 주석을 해제합니다.
+        WSL 배포판의 sshd_config 파일에서 SSH PORT 번호를 추출합니다.
+        파일이 없으면 openssh-server 설치를 시도하고, PORT가 주석처리된 경우 주석을 해제합니다.
         """
         import subprocess
         from sources.objects.pk_local_test_activate import LTA
 
-        # 1. Ensure the config file exists and get its path
-        f_ssh_config = self.ensure_wsl_sshd_config_created(distro_name=distro_name)
+        # n. Ensure the config file exists and get its path
+        f_ssh_config = self.ensure_wsl_distro_sshd_config_created(distro_name=distro_name)
         if not f_ssh_config:
             logging.error(f"[{distro_name}] sshd_config 파일을 확보하는데 최종 실패했습니다.")
             return None
 
-        # 2. Read the file content from WSL
+        # n. Read the file content from WSL
         try:
             logging.debug(f"sshd_config 파일 내용을 WSL에서 읽습니다: {f_ssh_config}")
             cmd = ["wsl", "-d", distro_name, "--", "cat", str(f_ssh_config)]
@@ -244,7 +408,7 @@ class PkTargetManager(PkDevice):
             logging.error(f"sshd_config 파일 읽기 중 예상치 못한 오류 발생: {e}")
             return None
 
-        # 3. Auto-fix logic: Uncomment the default port if no other port is active
+        # n. Auto-fix logic: Uncomment the default port if no other port is active
         PORT_SIGNATURE_COMMENTED = "#Port 22"
         PORT_TO_SET = "Port 22"
 
@@ -252,7 +416,7 @@ class PkTargetManager(PkDevice):
         has_active_port = any(line.strip().startswith("Port") and not line.strip().startswith("#") for line in config_content.splitlines())
 
         if has_commented_port and not has_active_port:
-            logging.warning(f"[{distro_name}] 활성 포트 없이 기본 포트가 주석 처리되어 있습니다. 자동 수정을 시도합니다.")
+            logging.warning(f"[{distro_name}] 활성 PORT 없이 기본 PORT가 주석 처리되어 있습니다. 자동 수정을 시도합니다.")
             try:
                 new_content = config_content.replace(PORT_SIGNATURE_COMMENTED, PORT_TO_SET, 1)
                 f_ssh_config.write_text(new_content, encoding='utf-8')
@@ -262,7 +426,7 @@ class PkTargetManager(PkDevice):
                 logging.error(f"sshd_config 파일 수정 중 오류 발생: {e}. 권한 문제일 수 있습니다.")
                 # Fall through to parsing, which will likely return None.
 
-        # 4. Parse the content to find the active port
+        # n. Parse the content to find the active port
         stdout_lines = config_content.splitlines()
         PORT_PREFIX = "Port"
         port_wsl = None
@@ -276,17 +440,17 @@ class PkTargetManager(PkDevice):
                 try:
                     port_wsl = line.replace(PORT_PREFIX, "").strip().split()[0]
                     if port_wsl.isdigit():
-                        logging.debug(f"추출된 WSL SSH 포트: {port_wsl} {'%%%FOO%%%' if LTA else ''}")
+                        logging.debug(f"추출된 WSL SSH PORT: {port_wsl} {'%%%FOO%%%' if LTA else ''}")
                         return port_wsl
                     else:
-                        logging.warning(f"추출된 포트 값 '{port_wsl}'이 유효한 숫자가 아닙니다.")
+                        logging.warning(f"추출된 PORT 값 '{port_wsl}'이 유효한 숫자가 아닙니다.")
                         port_wsl = None
                 except Exception as e:
-                    logging.error(f"포트 추출 중 오류 발생: {e}")
+                    logging.error(f"PORT 추출 중 오류 발생: {e}")
                     port_wsl = None
 
         if port_wsl is None:
-            logging.debug("sshd_config 파일에서 활성화된 유효한 SSH 포트 설정을 찾을 수 없습니다.")
+            logging.debug("sshd_config 파일에서 활성화된 유효한 SSH PORT 설정을 찾을 수 없습니다.")
 
         return port_wsl
 
@@ -294,6 +458,7 @@ class PkTargetManager(PkDevice):
         import logging
         func_n = get_caller_n()
         try:
+            ensure_slept(milliseconds=333)
             key_name = f'wsl_pw_of_{distro_name}'
             selected = ensure_env_var_completed_advanced(key_name=key_name, func_n=func_n)
             wsl_pw_of_distro_name = selected
@@ -351,7 +516,7 @@ class PkTargetManager(PkDevice):
             logging.error(f"An unexpected error occurred while ensuring WSL persistent session: {e}")
             return False
 
-    def ensure_wsl_sshd_config_created(self, distro_name):
+    def ensure_wsl_distro_sshd_config_created(self, distro_name):
         import logging
         import subprocess
         import textwrap
@@ -416,78 +581,6 @@ class PkTargetManager(PkDevice):
             logging.error("`wsl.exe` not found. Is WSL installed and in your PATH?")
             return None
 
-    # def get_wsl_distros_data(self):
-    #     import logging
-    #     import re
-    #
-    #     func_n = get_caller_n()
-    #
-    #     """WSL 배포판의 상세 정보를 구조화된 데이터로 반환합니다."""
-    #     distro_info_list = self.get_wsl_distro_info_std_list()
-    #     if not distro_info_list or len(distro_info_list) < 2:
-    #         logging.info("Could not retrieve WSL distro information.")
-    #         return None
-    #
-    #     key_name = 'wsl_distro_name'
-    #     options = self.get_wsl_distro_names_installed()
-    #     selected = ensure_env_var_completed_advanced(key_name=key_name, func_n=func_n, options=options)
-    #     wsl_distro_name = selected
-    #
-    #     key_name = f'distro_pw_of_{self.get_wsl_distro_names_installed()}'
-    #     selected = ensure_env_var_completed_advanced(key_name=key_name, func_n=func_n)
-    #     distro_pw_of_distro = selected
-    #
-    #     distros = distro_info_list[1:]
-    #     data = {"distros": []}
-    #     for line in distros:
-    #         line = line.lstrip('*').strip()
-    #         parts = re.split(r'\s+', line, 2)  # 공백 기준으로 최대 2번 분리
-    #         if len(parts) >= 3:
-    #             name = parts[0]
-    #             state = parts[1]
-    #             version = parts[2]
-    #             data["distros"].append({
-    #                 "name": name,
-    #                 "state": state,
-    #                 "version": version,
-    #             })
-    #     return data
-
-    def get_wsl_version(self):
-        import logging
-        import subprocess
-
-        wsl_version = None
-        try:
-            result = subprocess.run(
-                ["wsl", "--version"],
-                capture_output=True,
-                text=True,
-                check=True,
-                encoding='utf-8',
-                errors='ignore'
-            )
-
-            output = result.stdout
-
-            for line in output.splitlines():
-                if line.strip().startswith("WSL 버전:") or line.strip().startswith("WSL version:"):
-                    wsl_version = line.split(':')[-1].strip()
-                    break
-
-            if not wsl_version:
-                logging.warning("Could not parse WSL version from 'wsl --version'.")
-
-        except FileNotFoundError:
-            logging.error("`wsl.exe` not found. Is WSL installed and in your PATH?")
-            wsl_version = "Not Installed"
-        except subprocess.CalledProcessError as e:
-            logging.warning(f"'wsl --version' failed, possibly an older WSL. Error: {e.stderr}")
-            wsl_version = "Unknown (command failed)"
-
-        logging.debug(f"wsl_version={wsl_version}")
-        return wsl_version
-
     def get_wsl_distro_info_std_list(self) -> list[str]:
         import logging
         import subprocess
@@ -527,26 +620,12 @@ class PkTargetManager(PkDevice):
             ensure_debug_loged_verbose(traceback)
             return []
 
-    def get_wsl_distro_names(self, distro_name) -> list[str]:
-        import subprocess
-
-        try:
-            if not self.is_wsl_distro_installed(distro_name): return []
-            result = subprocess.run(['wsl', '--list', '--quiet'], capture_output=True, text=True, encoding='utf-8', errors='ignore')
-            if result.returncode != 0: return []
-
-            output = result.stdout.replace('\x00', '').strip()
-            return [line.strip() for line in output.splitlines() if line.strip()]
-        except:
-            ensure_debug_loged_verbose(traceback)
-            return []
-
     def ensure_wsl_distro_executed(self, distro_name) -> bool:
         import logging
         import subprocess
         # Removed re and ensure_command_executed imports as they are now in _get_wsl_distro_status
 
-        status = self._get_wsl_distro_status(distro_name)
+        status = self.get_wsl_distro_status(distro_name)
 
         if status == "Running":
             logging.info(f"WSL 배포판 '{distro_name}'이(가) 설치되어 있고 실행 중입니다.")
@@ -582,7 +661,7 @@ class PkTargetManager(PkDevice):
         logging.debug(f'"{distro_name} is not installed"')
         return False
 
-    def _get_wsl_distro_status(self, distro_name) -> Optional[str]:
+    def get_wsl_distro_status(self, distro_name) -> Optional[str]:
         import logging
         import re
         from sources.functions.ensure_command_executed import ensure_command_executed
@@ -612,7 +691,7 @@ class PkTargetManager(PkDevice):
             logging.error(f"An unexpected error occurred while getting WSL distro status: {e}")
             return None
 
-    def _start_wsl_distro(self, distro_name, persistent: bool = False) -> bool:
+    def ensure_wsl_distro_executed_fallback(self, distro_name, persistent: bool = False) -> bool:
         import logging
         import subprocess
         try:
@@ -635,10 +714,10 @@ class PkTargetManager(PkDevice):
             logging.error(f"An unexpected error occurred while starting WSL distro '{distro_name}': {e}")
             return False
 
-    def getERROR(self) -> PkTarget:
-        return self._wsl
+    def get_wsl_distro_name(self):
+        return self.wsl.distro_name
 
-    def setup_wsl(self):
+    def setup_wsl_distro(self):
         func_n = get_caller_n()
 
         installed = self.is_wsl_installed()
@@ -646,17 +725,41 @@ class PkTargetManager(PkDevice):
             ensure_spoken("this process need wsl, but not installed")
             return
 
-        key_name = 'wsl_distro_name'
-        options = self.get_wsl_distro_names_installed()
-        selected = ensure_env_var_completed_advanced(key_name=key_name, func_n=func_n, options=options)
-        wsl_distro_name = selected
+        wsl_distro_name = None
+        another_option = "ANOTHER WSL DISTRO AVAILABLE"
+        if LTA:
+            while True:
+                key_name = 'wsl_distro_name_for_debug'
+                options = self.get_wsl_distro_names_installed() + [another_option]
+                selected = ensure_value_completed_advanced(key_name=key_name, func_n=func_n, options=options)
+                if selected == another_option:
+                    question = f'do you want to install another wsl distro and use it'
+                    ok = ensure_value_completed(key_hint=question, options=[PkTexts.YES, PkTexts.NO])
+                    if ok == PkTexts.YES:
+                        self.ensure_wsl_distro_installed_by_user_selection()
+                        continue
+                wsl_distro_name = selected
+                break
+        else:
+            while True:
+                key_name = 'wsl_distro_name'
+                options = self.get_wsl_distro_names_installed() + [another_option]
+                selected = ensure_value_completed_advanced(key_name=key_name, func_n=func_n, options=options)
+                if selected == another_option:
+                    question = f'do you want to install another wsl distro and use it'
+                    ok = ensure_value_completed(key_hint=question, options=[PkTexts.YES, PkTexts.NO])
+                    if ok == PkTexts.YES:
+                        self.ensure_wsl_distro_installed_by_user_selection()
+                        continue
+                wsl_distro_name = selected
+                break
 
         sessions_enabled = self.ensure_wsl_distro_executed_with_persistent_session(distro_name=wsl_distro_name)
         if not sessions_enabled:
             ensure_spoken("wsl persistaent sessions is not enabled")
             return
 
-        f_ssh_config = self.ensure_wsl_sshd_config_created(distro_name=wsl_distro_name)
+        f_ssh_config = self.ensure_wsl_distro_sshd_config_created(distro_name=wsl_distro_name)
         if LTA:
             wsl = PkTarget(
                 identifier=wsl_distro_name,
@@ -704,6 +807,7 @@ class PkTargetManager(PkDevice):
         self._wsl = wsl
 
     def get_wsl_distros_data(self):
+        # TODO : wsl 에 설치된 distro 정보들을 수집할때 필요
         import logging
         import re
 
@@ -760,20 +864,51 @@ class PkTargetManager(PkDevice):
         import logging
 
         # wsl distro lsusb 설치
-        if self.ensure_wsl_distro_ubuntu_pkg_installed(UbuntuPakageName.usbutils):
-            # wsl_distro_ssh_config = self.get_wsl_distro_ssh_config_file_contents()
-            self.ensure_command_to_target(cmd='sudo apt install -y usbutils')
+        if not self.ensure_wsl_distro_ubuntu_pkg_installed(UbuntuPakageName.usbutils):
+            ensure_command_executed(cmd='sudo apt install -y usbutils')
 
         # windows usbipd 설치
         self.ensure_usbipd_enabled()
 
-
         # target 리커버리 모드진입
-        if not self.ensure_target_recovery_mode_entered():
-            logging.warning('device target should be entered to recovery mode for flash jetpack')
+        bus_id = self.ensure_target_recovery_mode_entered()
+        if not bus_id:
+            logging.warning('bus_id is not found')
             return False
 
-    from sources.functions.ensure_seconds_measured import ensure_seconds_measured
+        logging.debug(rf'''bus_id={bus_id}  {'%%%FOO%%%' if LTA else ''}''')
+
+        # ensure_command_executed_advanced(cmd=f"wsl --shutdown")
+        # 바인딩 하지 않을 wsl distro 해제, 다른 wsl distro 에서 USB_ID 점유 예방
+        for wsl_distro_name_installed in self.get_wsl_distro_names_installed():
+            if wsl_distro_name_installed != self.wsl.distro_name:
+                # TODO fix: 엔코딩 깨짐
+                ensure_command_executed_advanced(cmd=f"wsl --terminate -d {wsl_distro_name_installed}")
+
+        # ensure_command_executed(cmd=f"wsl -d {self.wsl.distro_name} -- exit")
+        self.ensure_wsl_distro_session_alived(self.wsl.distro_name)
+        ensure_command_executed(cmd=rf"usbipd unbind -b {bus_id}", encoding='utf-8')
+        # ensure_command_executed_as_admin(cmd=rf"usbipd bind --force -b {bus_id}")  # --force can make usb bridge Timeout problem when Xavier AGX flashing
+        ensure_command_executed_as_admin(cmd=rf"usbipd bind -b {bus_id}")
+        ensure_command_executed(cmd=rf'start "{get_window_title_temp()}" usbipd attach --wsl --busid {bus_id} --auto-attach', mode='a')
+
+        # pk_* : seconds_limited loop
+        if self.wsl.distro_name == "Ubuntu-18.04":
+            signiture = 'NVidia Corp.'
+        else:
+            signiture = "NVIDIA Corp. APX"
+        is_found = ensure_signiture_found_in_souts_for_milliseconds_limited(
+            cmd=rf"wsl -d {self.wsl.distro_name} lsusb",
+            signiture=signiture,
+            milliseconds_limited=get_milliseconds_from_seconds(seconds=30),
+        )
+        if not is_found:
+            return False
+
+        guide_text_if_found = "usb bridge established between windows and wsl"
+        logging.debug(rf'''{guide_text_if_found}  {'%%%FOO%%%' if LTA else ''}''')
+
+        return True
 
     @ensure_seconds_measured
     def ensure_wsl_distros_enabled(self):
@@ -798,7 +933,7 @@ class PkTargetManager(PkDevice):
         finally:
             pass
 
-    def cmd_to_wsl_os_like_human_deprecated(self, cmd, distro_name, wsl_window_title_seg, exit_mode=False):
+    def ensure_command_to_wsl_distro_like_human_deprecated(self, cmd, distro_name, wsl_window_title_seg, exit_mode=False):
         import logging
 
         from functions import ensure_slept
@@ -900,47 +1035,43 @@ class PkTargetManager(PkDevice):
 
         logging.info(f"Package '{pkg_name}' not found in {distro_name}. Attempting to install...")
 
-        # 패키지 목록 업데이트 및 설치
-        update_cmd = f"wsl -d {distro_name} -- sudo apt-get update"
-        install_cmd = f"wsl -d {distro_name} -- sudo apt-get install -y {pkg_name}"
-
         try:
-            subprocess.run(update_cmd.split(), check=True, capture_output=True, text=True, encoding='utf-8', errors='ignore')
-            logging.info("Package list updated successfully.")
+            #
+            logging.debug(PK_UNDERLINE)
+            update_cmd = f"wsl -d {distro_name} -- sudo apt-get update"
+            update_result = subprocess.run(update_cmd.split(), capture_output=True, text=True, encoding='utf-8', errors='ignore')
+            if update_result.returncode == 0:
+                logging.info(f"apt update successful for {pkg_name}.")
+            else:
+                logging.warning(f"apt update failed for {pkg_name}.")
 
-            install_result = subprocess.run(install_cmd.split(), check=True, capture_output=True, text=True, encoding='utf-8', errors='ignore')
-            logging.info(f"Package '{pkg_name}' installed successfully in {distro_name}.")
-            logging.debug(install_result.stdout)
-            return True
-        except subprocess.CalledProcessError as e:
-            logging.error(f"Failed to install package '{pkg_name}' in {distro_name}.")
-            logging.error(f"Command: {' '.join(e.cmd)}")
-            logging.error(f"Stderr: {e.stderr}")
-            logging.error(f"Stdout: {e.stdout}")
-            return False
+            #
+            logging.debug(PK_UNDERLINE)
+            install_cmd = f"wsl -d {distro_name} -- sudo apt-get install -y {pkg_name}"
+            install_result = subprocess.run(install_cmd.split(), capture_output=True, text=True, check=True, encoding='utf-8', errors='ignore')
+            if install_result.returncode == 0:
+                logging.info(f"Package '{pkg_name}' installation command succeeded.")
+            else:
+                logging.error(f"Package '{pkg_name}' installation command failed.")
+                return False
+
+            # Verify installation after attempting to install
+            logging.debug(PK_UNDERLINE)
+            verify_cmd = f"wsl -d {distro_name} -- dpkg -s {pkg_name}"
+            verify_result = subprocess.run(verify_cmd.split(), capture_output=True, text=True, encoding='utf-8', errors='ignore')
+            if "Status: install ok installed" in verify_result.stdout:
+                logging.info(f"Package '{pkg_name}' is successfully installed and verified in {distro_name}.")
+                return True
+            else:
+                logging.error(f"Package '{pkg_name}' installation verification failed in {distro_name}. dpkg -s output: {verify_result.stdout}")
+                return False
+
         except FileNotFoundError:
             logging.error("`wsl.exe` not found. Is WSL installed and in your PATH?")
             return False
-
-    def ensure_wsl_enabled(self, distro_name):
-        import logging
-
-        wsl_distro_name_list = self.get_wsl_distro_names(distro_name)
-        if not wsl_distro_name_list:
-            logging.debug("No WSL distros found.")
-            return False, {}
-
-        wsl_cmd_map_dict = {"wsl state": ["wsl", "-l", "-v"]}
-        std_list = self.get_wsl_distro_info_std_list()
-
-        for idx, name in enumerate(wsl_distro_name_list):
-            clean_name = name.replace('\x00', '').strip()
-            if not clean_name: continue
-
-            wsl_cmd_map_dict[f"wsl {idx}"] = ["wsl", "-d", clean_name]
-
-        wsl_cmd_map_dict["wsl shutdown"] = ["wsl", "--shutdown"]
-        return True, wsl_cmd_map_dict
+        except Exception as e:  # Catch any other unexpected errors during subprocess execution
+            logging.error(f"An unexpected error occurred during package installation: {e}")
+            return False
 
     def ensure_wsl_distro_enabled(self, distro_name, f_local_ssh_public_key):
         from sources.functions.ensure_wsl_distro_install import ensure_wsl_distro_install
@@ -1129,40 +1260,38 @@ class PkTargetManager(PkDevice):
                     logging.debug(f"ufw is inactive in {distro_name}.")
         return True
 
-    def ensure_target_distro_pkg_installed(self, distro_pkg_n):
+    def ensure_target_distro_package_installed(self, distro_package_name):
+        # TODO : windows/linux 에 따라 다르게 구현 필요.
+        #  distro_pkg_n 는 windows 라면 application_name
         import logging
-        from sources.functions.check_signiture_in_loop import check_signiture_in_loop
         from sources.functions.ensure_general_ubuntu_pkg import ensure_general_ubuntu_pkg
         from sources.functions.is_internet_connected import is_internet_connected
         from sources.functions.todo import todo
         from sources.objects.pk_local_test_activate import LTA
 
         if not is_internet_connected():
-            logging.debug(f'''can not install ubuntu pakage ({distro_pkg_n}) for internet not connected  {'%%%FOO%%%' if LTA else ''}''')
+            logging.debug(f'''can not install ubuntu pakage ({distro_package_name}) for internet not connected  {'%%%FOO%%%' if LTA else ''}''')
             raise
-        if distro_pkg_n == 'docker':
-            std_outs, std_err_list = self.ensure_command_to_target_with_pubkey(cmd='docker --version')
+        if distro_package_name == 'docker':
+            std_outs, std_errs = self.ensure_command_to_target_with_pubkey(cmd='docker --version')
             if std_outs is None:  # Added check for None
                 logging.error(f"Failed to get docker version from remote OS. SSH connection might be down.")
-                return False  # Indicate failure
-            if check_signiture_in_loop(time_limit=10, working_list=std_outs,
-                                       signiture="The cmd 'docker' could not be found in this WSL 2 distro.",
-                                       signiture_found_ment="docker is not installed in wsl"):
+                return False
+            if ensure_signiture_found_in_lines(signiture="The cmd 'docker' could not be found", lines=std_outs):
+                logging.debug("docker is not installed in wsl")
                 self.ensure_target_distro_docker_installed()
-        elif distro_pkg_n == 'net-tools':
+        elif distro_package_name == 'net-tools':
             todo('%%%FOO%%%')
         else:
-            # std_outs, std_err_list = ensure_command_to_remote_os_with_pubkey(cmd=f'{ubuntu_pkg_n} --version')
-            std_outs, std_err_list = self.ensure_command_to_target_with_pubkey(
-                cmd=f'sudo apt list --installed | grep {distro_pkg_n}')
-            if std_outs is None:  # Added check for None
-                logging.error(f"Failed to list installed packages for {distro_pkg_n} from remote OS. SSH connection might be down.")
-                return False  # Indicate failure
-            signiture = 'installed'
-            if check_signiture_in_loop(time_limit=10, working_list=std_outs, signiture=signiture,
-                                       signiture_found_ment=f"{distro_pkg_n} is installed in {self.target.distro_name}"):
-                ensure_general_ubuntu_pkg(ubuntu_pkg_n=distro_pkg_n)
-        return True  # Indicate success
+            # std_outs, std_errs = ensure_command_to_remote_os_with_pubkey(cmd=f'{ubuntu_pkg_n} --version')
+            std_outs, std_errs = self.ensure_command_to_target_with_pubkey(cmd=f'sudo apt list --installed | grep {distro_package_name}')
+            if std_outs is None:
+                logging.error(f"Failed to list installed packages for {distro_package_name} from remote OS. SSH connection might be down.")
+                return False
+            if ensure_signiture_found_in_lines(signiture='installed', lines=std_outs):
+                logging.debug(f"{distro_package_name} is installed in {self.target.distro_name}")
+                ensure_general_ubuntu_pkg(ubuntu_pkg_n=distro_package_name)
+        return True
 
     def ensure_target_distro_docker_installed(self):
         std_outs, std_err_list = self.ensure_command_to_target_with_pubkey(cmd='sudo usermod -aG docker $USER')
@@ -1204,7 +1333,7 @@ class PkTargetManager(PkDevice):
             # TODO...
             # packages_to_install = ["ufw"]
 
-            key_path = self.f_local_ssh_private_key
+            key_path = self.target.f_local_ssh_private_key
             if not is_pnx_existing(pnx=key_path):
                 state = is_os_windows()
                 ensure_state_printed(state=state, pk_id="%%%FOO%%%")
@@ -1216,13 +1345,13 @@ class PkTargetManager(PkDevice):
 
             logging.debug(f'self.target.ip={self.target.ip}')
             logging.debug(f'self.target.port={self.target.port}')
-            logging.debug(f'self.target.user_n={self.target.user_n}')
+            logging.debug(f'self.target.user_n={self.target.user_name}')
 
             if not self.target.ip:
                 logging.debug(f'''self.target.ip ] is None ''')
                 return None, None
 
-            ssh.connect(hostname=self.target.ip, port=self.target.port, username=self.target.user_n, pkey=key_private)
+            ssh.connect(hostname=self.target.ip, port=self.target.port, username=self.target.user_name, pkey=key_private)
 
             # The authenticity of host 'todo' can't be established.
             # ED25519 key fingerprint is SHA256:kO5qGJ92luOdRTm1Ye4pycNnXbNV4sl8gSoB9dAp9Uc.
@@ -1272,8 +1401,8 @@ class PkTargetManager(PkDevice):
             logging.error("SSH 연결에 실패했습니다. 다음 사항을 확인해 주십시오:")
             logging.error(r"1. WSL IP 주소 확인: WSL 터미널에서 'ip addr show eth0 | grep -oP '(?<=inet\s)\d+(\.\d+){3}'' 명령을 실행하여 현재 IP 주소를 확인하고, 코드에서 사용되는 IP와 일치하는지 확인하십시오.")
             logging.error("2. WSL 내 SSH 서버 실행 확인: WSL 터미널에서 'sudo service ssh status' 명령을 실행해 주십시오. 실행 중이 아니라면 'sudo service ssh start' 명령으로 시작할 수 있습니다.")
-            logging.error("3. 방화벽 설정 확인: Windows 방화벽 또는 다른 네트워크 방화벽이 22번 포트의 인바운드 연결을 차단하고 있을 수 있습니다. Windows Defender 방화벽 설정에서 22번 포트에 대한 인바운드 규칙이 허용되어 있는지 확인해 주십시오.")
-            logging.error(f"연결 시도 정보: IP={self.target.ip}, Port={self.target.port}, User={self.target.user_n}")
+            logging.error("3. 방화벽 설정 확인: Windows 방화벽 또는 다른 네트워크 방화벽이 22번 PORT의 인바운드 연결을 차단하고 있을 수 있습니다. Windows Defender 방화벽 설정에서 22번 PORT에 대한 인바운드 규칙이 허용되어 있는지 확인해 주십시오.")
+            logging.error(f"연결 시도 정보: IP={self.target.ip}, Port={self.target.port}, User={self.target.user_name}")
 
     def get_f_local_ssh_public_key(self):
         pass
@@ -1282,7 +1411,7 @@ class PkTargetManager(PkDevice):
         func_n = get_caller_n()
         if LTA:
             target = PkTarget(
-                identifier=PkDeviceIdentifiers.jetson_xavier,
+                identifier=PkDeviceIdentifiers.jetson_agx_xavier,
                 user_n=None,
                 f_local_ssh_public_key=None,
                 f_local_ssh_private_key=None,
@@ -1297,7 +1426,7 @@ class PkTargetManager(PkDevice):
             return
         else:
             key_name = 'target_identifier'
-            options = [PkDeviceIdentifiers.jetson_xavier, PkDeviceIdentifiers.jetson_nano, PkDeviceIdentifiers.arduino_nano_classic, PkDeviceIdentifiers.arduino_nano_esp32]
+            options = [PkDeviceIdentifiers.jetson_agx_xavier, PkDeviceIdentifiers.jetson_nano, PkDeviceIdentifiers.arduino_nano, PkDeviceIdentifiers.arduino_nano_esp32]
             selected = ensure_value_completed_advanced(key_name=key_name, func_n=func_n, options=options)
             target_identifier = selected
 
@@ -1340,206 +1469,194 @@ class PkTargetManager(PkDevice):
             import logging
 
             if not self._setup_successful:
-                logging.error("Target setup was not successful. Cannot proceed with flashing.")
+                logging.warning("flash environment setup was not successful")
                 return False
 
             # self.ensure_target_info_printed()
+            self.ensure_self_effective_info_printed()
             self.ensure_target_effective_info_printed()
             self.ensure_wsl_effective_info_printed()
 
-            # ensure_spoken(rf"{get_easy_speakable_text(self.target.identifier.value)} 플래시 작업을 시작합니다")
-            if self.target.identifier == PkDeviceIdentifiers.jetson_xavier:
+            ensure_windows_killed_like_human(window_title="wsl")
+            ensure_windows_killed_like_human(window_title="SDK Manager CLI 2.3.0.12626")
+            ensure_windows_killed_like_human(window_title=get_window_title_temp())
+            ensure_windows_killed_like_human(window_title=get_window_title_temp_for_cmd_exe())
+            ensure_windows_killed_like_human(window_title=self.window_title_temp)
 
-                # windows 과 wsl 간 usb 브릿지 생성
+            # ensure_spoken(rf"{get_easy_speakable_text(self.target.identifier.value)} 플래시 작업을 시작합니다")
+            if self.target.identifier == PkDeviceIdentifiers.jetson_agx_xavier:
+
+                if self.wsl.distro_name == "Ubuntu-24.04":
+                    logging.warning("Ubuntu-24.04 is not supported on Jetson AGX")
+                    return False
+                elif self.wsl.distro_name == "Ubuntu-20.04":
+                    pass
+                elif self.wsl.distro_name == "Ubuntu-18.04":
+                    pass
+                # user_name added
+                # TODO : add user_name
+
+                # no password
+                self.ensure_wsl_distro_apps_without_user_pw_access_advanced(
+                    self.wsl.distro_name,
+                    self.wsl.user_name,
+                )
+
+                # usb bridge
                 if not self.ensure_usb_bridge_between_windows_and_wsl_established():
-                    logging.warning("usbipd-win 종속성이 해결되지 않아 플래시 프로세스를 중단합니다.")
+                    logging.warning("usb_bridge not established")
                     return False
 
-                # sdkmanager가 의존하는 패키지 INSTALLATION
-                # sudo apt update
-                # sudo apt --fix-broken install -y
-                # sudo apt --fix-broken install
-                # sudo apt install -y binutils
-                # sudo apt install -y build-essential
-                # sudo apt install -y libxml2-utils simg2img abootimg liblz4-tool binutils
+                # sdkmanager_dependencies
+                sdkmanager_dependencies = [
+                    UbuntuPakageName.binutils,
+                    UbuntuPakageName.build_essential,
+                    UbuntuPakageName.libxml2_utils,
+                    UbuntuPakageName.android_sdk_libsparse_utils,
+                    UbuntuPakageName.abootimg,
+                    UbuntuPakageName.liblz4_tool,
+                ]
+                for pkg in sdkmanager_dependencies:
+                    if not self.ensure_wsl_distro_ubuntu_pkg_installed(pkg):
+                        logging.error(f"sdkmanager 의존성 패키지 {pkg.value}를 설치하는 데 실패했습니다. 프로세스를 중단합니다.")
+                        return False
+                logging.info("sdkmanager 의존성 패키지 설치를 완료했습니다.")
 
-                # windows sdkmanager-cli 다운로드 (sdkmanager_2.2.1-12028_amd64.deb)
-                # nvidia developer website.
-                # nvidia developer login.
-                # download sdkmanager_2.2.1-12028_amd64.deb by clicking button
+                # self.ensure_sdkmanager_executed(setup_op=_SetupOpsForSdkManager.GUI)
+                self.ensure_sdkmanager_executed(setup_op=_SetupOpsForSdkManager.CLI)
 
-                # wsl distro sdkmanager-cli 설치 (sdkmanager_2.2.1-12028_amd64.deb)
-                # sudo dpkg -i sdkmanager_
+                # pk_development_history :
+                # attach fail -> reattach -> attach fail ->재부팅 -> reattach -> attach fail -> persist 에서 APX 가 사라지지 않음 -> usbipd remove  -> reattach -> attach success
+                # sdkmanager execution fail -> sdkmanager 로그인-> sdkmanager 종료 -> sdkmanager 재접속 -> sdkmanager execution success
+                # flash fail -> usb bridge timing issue  -> usbipd bind 단계 --force 옵션` 지우기 -> reflash -> flash succeeded
+                # flash fail -> uninstall 5.1.5 of HOST Machine and Target H/W
+                # flash fail ->  sdkmanager--cli/install -> default 옵션 설치
+                # flash fail ->  DeepStream not installed
+                # flash fail ->  Jetson SDK Component not installed
+                # flash fail ->  warm reset -> reflash -> flash success
+                # flash fail -> debug -> usb bridge timing issue discovered -> hot reset -> reflash -> flash success
+                # 5.1.5 flash fail -> hot reset -> 5.1.5 reflash -> flash succeeded -> but, terminal not opened -> tty terminal(ctrl alt f2~f6 ?) 로 접속 -> 중도포기
+                # 5.1.5 flash success -> login ok -> terminal not open -> AGX Xavier old revision problem 으로 판단-> 5.1.5 사용 forgive
+                # -> Ubuntu-18.04 LTS install -> Microsoft Store -> Ubuntu-18.04 -> 설치 -> 열기 -> type id -> type pw -> retype pw
+                # -> 4.6.6 flash
+                # -> target hardware ssh 접속허용 ->
 
+                # usb bridge timing issue
+                # LATEST_INITRD_LOG=$(ls -t ~/nvidia/nvidia_sdk/*/Linux_for_Tegra/initrdlog/flash_*.log | head -1)
+                # echo "[initrd log] $LATEST_INITRD_LOG"
+                # tail -n 200 "$LATEST_INITRD_LOG"
+                # # 에러 키워드 요약
+                # grep -nE "ERROR|Error|Fail|FAILED|Exception|Traceback|not found|timeout|Permission denied|partition|size|GPT|mmcblk|nvme|USB|rcm" "$LATEST_INITRD_LOG" | tail -n 120
+                # # 최신 initrd 로그 파일 선택 (말미 200줄 (여기에 대부분의 에러가 정확한 문구로 찍혀요)
+                # LATEST_INITRD_LOG=$(ls -t ~/nvidia/nvidia_sdk/*/Linux_for_Tegra/initrdlog/flash_*.log | head -1)
+                # echo "[initrd log] $LATEST_INITRD_LOG"
+                # tail -n 200 "$LATEST_INITRD_LOG"
 
-                # wsl
-                # mkdir -p ~/Downloads
-                # copy "C:\Users\Autonomousa2z\Downloads\sdkmanager_2.2.1-12028_amd64.deb" \\wsl.localhost\Ubuntu-20.04\home\a2z\Downloads
-                # cp /mnt/c/Users/user/Downloads/sdkmanager_2.2.1-12028_amd64.deb ~/Downloads/
-                # cd ~/Downloads
+                # Cold Boot
+                # PWR + RECOVERY 버튼조합 기반 RCM 진입 (Cold Boot) -> 5.1.5 flash fail
+                # → 전원 켜질 때 BootROM이 RECOVERY 핀을 HIGH로 감지하면 RCM 모드 진입.
+                # (RESET 안 쓰고도 가능하지만, 완전히 전원이 꺼진 상태에서만 유효)
 
+                # Warm Reset
+                # RECOVERY + RESET 버튼조합 기반 RCM 진입 (Warm Reset) -> 5.1.5 flash success -> login ok -> terminal not open
+                # → 이미 전원이 들어온 상태에서 강제로 다시 시작하면서 Recovery 핀 상태를 읽게 함.
+                # → '전원 전체 OFF/ON 하지 않고도 RCM 모드 진입' 가능.
+                # → 개발자가 보통 플래싱할 때 이 방식을 많이 씀.
+                # reflash fail ->  (usbipd 재설치/재부팅/target jetpack reinstall/host jetpack reinstall) -> reflash fail -> warm reset -> reflash success
 
-                self.ensure_sdkmanager_executed()
-                # sdkmanager    #  sdkmanager --archived-versions 이거 아님. # 안될때 sudo sdkmanager 로그인 했다가 종료하고 sdkmanager 로 다시 접속
-                # self.ensure_command_to_wsl_distro_like_human(cmd="sdkmanager", window_title_seg=windows_title_seg)
+                # def ensure_nvidia_developer_login():
+                #     smart phone 에서 QR 촬영을 해서 smart phone web 열리면 로그인
+                #     다른거 치라는데 패스워드 치면 됨.
+                #     로그인 되면서 device type select 창이 나옴.
+                #     Jetson AGX Xavier
+                #     OK
+                #     Later
+                #     while True:
+                #     가이드 로그인웹이 자동으로 안열리는 경우, 재부팅부터 해보자, QR code 로 시도
 
+                # ensure_sdkmanager_success_history_routine_followed()
+                #     Install
+                #     Jetson
+                #     Target Hardware
+                #     Jetson AGX Xavier modules
+                #     y
+                #     5.1.5 # Jetpack Version
+                #     OEM Configuration/pre-config : default # 10% 대에서 fail, 재부팅후 재시도는 시도해볼 필요 있음.
+                #     Storage Device: EMMC (Default)
+                #     OEM Configuration/Runtime 는 진행하지 않음.
+                #     OEM Configuration/Runtime
+                #     ensure ubuntu OEM
+                #     evm
+                #     EVM terminal x
+                #     accept blah lisence
+                #     display on
+                #     agree
+                #     english
+                #     english(US)
+                #     english(US)
+                #     seoul
+                #     nvidia
+                #     nvidia
+                #     nvidia
+                #     nvidia
+                #     nvidia
 
-                # start "5: cd ~/flash/no_flash/Linux_for_Tegra" cmd.exe /k "wsl sudo find ~/flash -type f -name 'flash.sh'"
+                # def ensure_target_hardware_customized_for_jung_hoon_park()
+                    # set evm network wired connection 1 as 192.168.2.124 22 192.168.1.1 8.8.8.8 manualy in evm
+                    # sudo apt update
+                    # ensure MAXN
+                    # ensure log in automatically
+                    # ensure passwd set  target Hardware pw 는 필요.
 
-                # WSL 에서 실행중인데 cmd  를 관리자 권한으로 실행하고 WSL 을 실행해서 sdkmanger 실행했는데 여전히 You do not have permission to access the download folder. 나와
-                # download 폴더를 변경 create and select pk_download   -> ~/Downloads/pk_nvidia ->   flash/evm_flash
+                    # ensure stack size 10240 #MEMORY LEAK 예방 #10240로 합의
+                        # sudo vi /etc/security/limits.conf
+                        # #End of file
+                        # nvidia hard stack 10240
+                        # nvidia soft stack 10240
+                        # ubuntu hard stack 10240
+                        # ubuntu soft stack 10240
+                        # root hard stack 10240
+                        # root soft stack 10240
+                        # :wq
+                        # cat /etc/security/limits.conf
 
-                # jetpack installation via sdkmanager as gui
+                    # ensure ntp available
+                        # sudo vi /etc/systemd/timesyncd.conf
+                        # [Time]
+                        # NTP=192.168.10.10 #server ip(control PC)
+                        # FallbackNTP=ntp.ubuntu.com
+                        # RootDistanceMaxSec=15 #5→15
+                        # PollIntervalMinSec=32
+                        # PollIntervalMaxSec=2048
+                        # # timedatectl set-ntp no #자동 시간동기화 해제
+                        # # date
+                        # # timedatectl set-time "2024-10-28 13:26:00" #수동 시간 SETTING
 
-                # nvidia developer login
-                # 로그인웹이 자동으로 안열리는 경우, 재부팅부터 해보자, QR code 로 시도
-                # smart phone 에서 QR 촬영을 해서 smart phone web 열리면 로그인
-                # 다른거 치라는데 패스워드 치면 됨.
-                # 로그인 되면서 device type select 창이 나옴.
-                # Jetson AGX Xavier
-                # OK
-                # Later
-
-                # show all versions
-                # 4.6.6
-                # [fail] ensure only os without nvidia sdk component
-                # ensure both os and nvidia sdk component
-                # continue
-                # ensure download now. install later. disable # 이거 체크하면 flash 진행하지 않음
-                # ensure I accpet the terms and conditions of the license agreements. able
-                # continue
-                # manual flash try, # 안해도 될 듯 download now. install later. able 처리해서 발생한 문제
-                # wait for OEM Configuration setting pop up
-                # Runtime # OEM Configuration # 자꾸 안되서 Runtime 안하고 pre-config 로 해봄 pre-config는 default 임
-                # Flash
-                # finish
-
-                # [fail] ensure ubuntu OEM : in evm
-                # evm
-                # EVM terminal x
-                # accept blah lisence
-                # display on
-                # agree
-                # english
-                # english(US)
-                # english(US)
-                # seoul
-                # nvidia
-                # nvidia
-                # nvidia
-                # nvidia
-                # nvidia
-                # MAXN
-                # log in automatically
-                # Install # if this process fail, retry flash
-
-                # set evm network wired connection 1 as 192.168.2.124 22 192.168.1.1 8.8.8.8 manualy in evm
-                # sudo apt update in evm
-                # skip check
-                # pkill sdkmanger-gui
-                # sdkmanger
-                # ensure only nvidia sdk component without os(jetpack)
-                # Ethernet
-                # 192.168.2.124
-                # nvidia
-                # nvidia
-                # install
-
-                # ensure log in automatically
-
-                # ensure MAXN
-
-                # ensure no passwd
-
-                # ensure stack size 10240 #MEMORY LEAK 예방 #10240로 합의
-                # sudo vi /etc/security/limits.conf
-                # #End of file
-                # nvidia hard stack 10240
-                # nvidia soft stack 10240
-                # ubuntu hard stack 10240
-                # ubuntu soft stack 10240
-                # root hard stack 10240
-                # root soft stack 10240
-                # :wq
-                # cat /etc/security/limits.conf
-
-                # ensure ntp available
-                # sudo vi /etc/systemd/timesyncd.conf
-                # [Time]
-                # NTP=192.168.10.10 #server ip(control PC)
-                # FallbackNTP=ntp.ubuntu.com
-                # RootDistanceMaxSec=15 #5→15
-                # PollIntervalMinSec=32
-                # PollIntervalMaxSec=2048
-                # # timedatectl set-ntp no #자동 시간동기화 해제
-                # # date
-                # # timedatectl set-time "2024-10-28 13:26:00" #수동 시간 SETTING
-
-                # ensure auto reboot
-
-                # make flash image # started at 15:18
-                # recovery mode again
-                # sudo find /home -type f -name "flash.sh"
-                # evm_flash_jetpack_4_6_6_ready.img 는 ip124,  ntp, stack, ensure 함.
-                # evm_flash_jetpack_4_6_6_with_side_a.img
-                # evm_flash_jetpack_4_6_6_with_side_b.img
-                # sudo ./flash.sh -r -k APP -G evm_flash_jetpack_4_6_6_ready.img jetson-xavier mmcblk0p1
-                # sudo ./flash.sh -r -k APP -G evm_flash_jetpack_4_6_6_with_side_a.img jetson-xavier mmcblk0p1
-                # sudo ./flash.sh -r -k APP -G evm_flash_jetpack_4_6_6_with_side_b.img jetson-xavier mmcblk0p1
-                # sudo find /home -type f -name "evm_flash_jetpack_4_6_6*"
-                # ended at mkr.
+                    # if not ensure_xavier_auto_rebootable:
+                    #     ssh command -> restart
+                    #     wait ssh connection success
+                    #     while True:
+                    #         enure_guide_auto_power_pin_connected_performed():
 
                 pass
-            # elif self.is_target_flash_image_exists() == 1:
-            # sudo ./flash.sh -r -k APP -G EVM_flash_241125.img jetson-xavier mmcblk0p1
-            # pass
-
-            # elif 'no' == self.target.identifier:
-            #     with_flash_image = self.is_target_flash_image_exists()
-            #     if self.is_target_flash_image_exists():
-            #         ensure_command_to_remote_os(cmd='sdkmanager',
-            #                          wsl)  # execute sdkmanager    # todo sdkmanager cli 로 업그레이드 시도
-            #
             #         ensure_remote_os_connection(wsl)  # test_ip
-            #
-            #         ensure_target_jetpack(wsl)
-            #
-            #         ensure_remote_os_connection(wsl)  # test_ip
-            #
             #         ensure_os_locked()
             #         ensure_screen_black_never()
             #         ensure_maxn()
             #         reboot_vpc()
-            #
-            #     if not self.is_target_flash_image_exists():
-            #         ensure_remote_os_connection(wsl)
-            #
-            #     ensure_target_aifw_running(selfwsl)  # todo
-            # elif 'xc' == self.target.identifier:
-            #     while 1:
-            #         # todo : reference : XC도 4.6.6 고정되고 나면 플래시 이미지로만 관리
-            #         if self.is_target_flash_image_exists():
-            #             cmd_to_wsl_os_like_human_deprecated(cmd=rf"echo {wsl_pw} | sudo -S ./flash.sh -r jetson-xavier mmcblk0p1",
-            #                                                 distro_name=wsl.selected,
-            #                                                 wsl_window_title_seg=wsl_window_title_seg)
-            #
-            #             # target_device_data 추가설정
-            #             #  ntp
-            #             #  stacksize
-            #
             #             gen_target_flash_image()
             #
             #         elif not self.is_target_flash_image_exists():
             #             # cd
             #             # cmd = "cd ~/Downloads/flash/xc_flash/Linux_for_Tegra/"
-            #             # cmd_to_wsl_os_like_human_deprecated(cmd=cmd, distro_name=target_device_data_os_n, wsl_window_title_seg=wsl_window_title_seg, exit_mode=exit_mode)
+            #             # ensure_command_to_wsl_distro_like_human_deprecated(cmd=cmd, distro_name=target_device_data_os_n, wsl_window_title_seg=wsl_window_title_seg, exit_mode=exit_mode)
             #
             #             # ensure system.img* and system.img.raw
             #             ensure_location_about_system_img_and_system_img_raw(wsl)
             #
             #             # flash
             #             cmd = rf"echo {wsl_pw} | sudo -S ./flash.sh -r jetson-xavier mmcblk0p1"
-            #             cmd_to_wsl_os_like_human_deprecated(cmd=cmd, distro_name=wsl.selected,
+            #             ensure_command_to_wsl_distro_like_human_deprecated(cmd=cmd, distro_name=wsl.selected,
             #                                                 wsl_window_title_seg=wsl_window_title_seg)
             #
             #             # sudo mv /home/task_orchestrator_cli/Downloads/flash/xc_flash/Linux_for_Tegra/system.img* /home/task_orchestrator_cli/Downloads/flash/xc_flash/Linux_for_Tegra/rootfs/bin/
@@ -1547,24 +1664,13 @@ class PkTargetManager(PkDevice):
             #             # cmd = rf'sudo find -type f -name "system.img*"'
             #             # cmd_to_wsl_like_human(cmd=cmd, distro_name=distro_name, wsl_window_title_seg=wsl_window_title_seg)
             #             #
-            #             # cmd = rf'df -h'
-            #             # cmd_to_wsl_like_human(cmd=cmd, distro_name=distro_name, wsl_window_title_seg=wsl_window_title_seg)
-            #             #
-            #             # cmd = rf'explorer \\wsl$'
-            #             # ensure_command_executed(cmd=cmd)
-            #
-            #             time_s = time.localtime(time_s)
-            #             check_manual_task_iteractively(
-            #                 f'''The flash has Started at {time_s.tm_hour:02}:{time_s.tm_min:02}. Has the flash ended?''')
-            #
-            #             elapsed_seconds = time.time() - time_s
-            #             elapsed_minutes = elapsed_seconds / 60
+            #             # cmd_to_wsl_like_human(cmd = rf'df -h', distro_name=distro_name, wsl_window_title_seg=wsl_window_title_seg)
+            #             # ensure_command_executed(cmd = rf'explorer \\wsl$')
             #
             #             logging.debug(rf'''FLASH : This function took {elapsed_minutes} minutes  {'%%%FOO%%%' if LTA else ''}''')
             #             # todo : elapsed_minutes 이걸 f에 매번 기록, 공정시간 자동통계
             #             # 해당공정이 통계시간보다 느리거나 빠르게 종료되었다는 것을 출력 하도록
             #
-            #         check_manual_task_iteractively(question=rf'''DID YOU EXIT WSL FLASH PROGRAM AT LOCAL?  %%%FOO%%%''')
             #         check_manual_task_iteractively(question=rf'''DID YOU EXIT WSL ATTACH PROGRAM AT LOCAL?  %%%FOO%%%''')
             #         # todo : 플래시이미지 재생성 후 해당 내용 네트워크 설정 자동화 후 추후삭제예정
             #         check_manual_task_iteractively(question=rf'''DID YOU SET WIRED CONNECTION 3 AS {target_device_wired_connection_3_new} ?  %%%FOO%%%''')
@@ -1573,11 +1679,6 @@ class PkTargetManager(PkDevice):
             #             # history : ensure_target_accessable() 수행 -> target_device 접속안됨 -> Wired Connection 활성화 실패->gui 통해서 2.76 으로 ssh 접속 시도->fail->flash 재수행->success
             #             # flash 재수행해야 하는 경우로 판단
             #             continue
-            #
-            # else:
-            #     logging.debug(f'''unknown target_device_data.identifier ({self.target_device_identifier}) {'%%%FOO%%%' if LTA else ''}''',
-            #                   )
-            #     raise
 
             return True
         except:
@@ -1608,132 +1709,97 @@ class PkTargetManager(PkDevice):
         return pretty_json
 
     def ensure_target_recovery_mode_entered(self):
+        # RCM MODE
         import logging
         import re
         from objects.device_identifiers import PkDeviceIdentifiers
-        if self.target.identifier == PkDeviceIdentifiers.jetson_xavier:
-            guide_title = "리커버리 모드 진입"
-            question = f'{guide_title}시도'
-            ensure_spoken(get_easy_speakable_text(question))
+        if self.target.identifier == PkDeviceIdentifiers.jetson_agx_xavier:
+            bus_id = None
+            # ensure_spoken(get_easy_speakable_text(question))
             while True:
                 if is_os_windows():
-                    cmd = "usbipd.exe list"  # 수동가이드 : start "1: usbipd.exe list" wsl watch -n 0.3 usbipd.exe list 대응 파이썬 코드
-
+                    cmd = "usbipd.exe list"
                     souts, _ = ensure_command_executed(cmd=cmd, encoding='utf-8')
-                    bus_id = None
                     device_signature = "APX"
-
                     # 정규표현식을 사용하여 BUSID, VID:PID, DEVICE, STATE를 정확히 파싱
                     line_pattern = re.compile(r"^\s*([0-9\-]+)\s+([0-9a-fA-F]{4}:[0-9a-fA-F]{4})\s+(.*?)\s{2,}(.*)$")
-
                     logging.debug("--- 'usbipd list' 출력 파싱 시작 ---")
                     if not souts:
                         logging.warning("'usbipd list' 명령어의 출력이 없습니다.")
-
                     for line in souts:
                         if not line.strip():
                             continue
-                        logging.debug(f"파싱 대상 라인: \"{line}\"")
+                        logging.debug(f"target line to parse='{line}'")
                         match = line_pattern.match(line)
                         if match:
+                            logging.debug(f"line is matched with expected pattern")
                             parsed_bus_id = match.group(1)
                             parsed_vid_pid = match.group(2)
                             parsed_device = match.group(3).strip()
                             parsed_state = match.group(4).strip()
 
-                            logging.debug(f"  -> 파싱 결과: BUSID={parsed_bus_id}, VID:PID={parsed_vid_pid}, DEVICE='{parsed_device}', STATE='{parsed_state}'")
+                            logging.debug(f"파싱 결과: BUSID={parsed_bus_id}, VID:PID={parsed_vid_pid}, DEVICE='{parsed_device}', STATE='{parsed_state}'")
 
                             if device_signature in parsed_device:
                                 bus_id = parsed_bus_id
                                 logging.info(f"타겟 장치 '{device_signature}' 발견. BUSID: {bus_id}")
-                                break  # 첫 번째 일치하는 장치를 찾으면 중단
+                                return bus_id
                         else:
-                            # 파싱에 실패한 라인도 로그를 남겨 디버깅을 용이하게 함
-                            logging.debug(f"  -> 라인이 예상 형식과 일치하지 않아 파싱에 실패했습니다.")
-
+                            logging.debug(f"line is not matched with expected pattern")
                     if bus_id is None:
-                        error_message = "Could not find a device with the required signature (APX) from 'usbipd list' output."
-                        logging.warning(error_message)
+                        ensure_command_executed(cmd=rf'start "{self.window_title_temp}" wsl watch -n 0.3 usbipd.exe list', mode='a')  # code for monitoring
+                        while True:
+                            if is_window_opened(window_title_seg=self.window_title_temp):
+                                break
+                            ensure_slept(milliseconds=80)
 
-                        guide_message = textwrap.dedent("""
-                                    [가이드] 타겟 장치(APX)를 찾을 수 없습니다.
-                                    플래시를 계속하려면, Jetson 장치를 복구 모드(Recovery Mode)로 설정하고 PC와 USB로 연결해야 합니다.
-                                    연결 상태를 확인하고 다시 시도해주세요.
-                                """)
-                        logging.warning(get_text_yellow(guide_message))
-                        ensure_spoken(get_easy_speakable_text("타겟 장치를 찾을 수 없습니다. 화면의 가이드를 확인해주세요."))
+                        # pk_* : 가이드
+                        guide_title = "리커버리 모드 진입"
+                        logging.warning("Could not find a device with the required signature (APX) from 'usbipd list' output.")
+                        logging.warning(get_text_yellow("타겟 장치(APX)를 찾을 수 없습니다."))
+                        ensure_window_to_front(window_title_seg=get_current_terminal_console_title())
+                        guide_text = textwrap.dedent(rf'''
+                            # {guide_title} 수동가이드
 
-                        return False
-                    logging.debug(rf'''bus_id={bus_id}  {'%%%FOO%%%' if LTA else ''}''')
+                            ## RECOVERY MODE ENTRY ROUTINE WITH SAFE FOR JETSON AGX XAVIER 
+                            n. If possible, please power off Xavier using the "poweroff" command.
+                            n. press power button. if device turn off, release power button 
+                            n. remove power (Xavier/carrier board/배럴 잭)
+                            n. remove auto power selector pin
+                            n. connect power cable (Xavier/carrier board/배럴 잭)
+                            n. connect data cable (PC/USB PORT, Xavier/carrier board/WHITE LED INDICATOR SIDE USB PORT(C))
+                            n. hold the RECOVERY button  # ccw button (center button)
+                            n. press power button. if device turn on, release buttons
+                            n. reinstall auto power mode selector pin
 
-                    # wsl --shutdown 을 실행해야합니다 진행할까요?
-                    # ensure_command_executed(cmd="wsl --shutdown", encoding='cp949')
-                    ensure_command_executed(cmd=f"wsl --terminate -d {self.wsl.distro_name}", encoding='cp949') # wsl --terminate  # 바인딩 하지 않을 wsl distro 해제
+                        ''')
+                        logging.warning(get_text_yellow(guide_text))
+                        question = f'{guide_title} 수동가이드를 완료하셨나요?'
+                        ok = ensure_value_completed(key_hint=question, options=[PkTexts.YES, PkTexts.NO, PkTexts.FAILED])
+                        if ok == PkTexts.YES:
+                            continue
+                        elif ok == PkTexts.NO:
+                            ensure_spoken(get_easy_speakable_text(f'{guide_title}를 반드시 수행해야 다음으로 진행할 수 있습니다'))
+                            continue
+                        elif ok == PkTexts.FAILED:
+                            guide_title = f'{guide_title} 트러블슈팅'
+                            guide_text = textwrap.dedent(rf'''
+                                # {guide_title} 수동가이드
+                                n. 플래시 케이블 연결안함
+                                n. 네트워크 케이블 remove 후 재시도
+                            ''')
+                            logging.debug(get_text_yellow(guide_text))
+                            ok = ensure_value_completed(key_hint=question, options=[PkTexts.YES, PkTexts.NO])
+                            if ok != PkTexts.YES:
+                                ensure_spoken(get_easy_speakable_text(f'{guide_title}를 반드시 수행해야 다음으로 진행할 수 있습니다'))
+                                continue
+                elif is_os_linux():
+                    ensure_not_prepared_yet_guided()
+        else:
+            # 다른 디바이스
+            ensure_not_prepared_yet_guided()
 
-
-                    souts = ensure_command_executed(cmd=rf"wsl -d {self.wsl.distro_name} -- exit", encoding='cp949')
-                    if check_signiture_in_loop(time_limit=10, working_list=souts, signiture="제공된 이름의 배포가 없습니다", signiture_found_ment=rf"'{cmd}' 할수없었습니다"):
-                        return False
-
-                    souts = ensure_command_executed(cmd="wsl -l -v", encoding='utf-16-le')
-                    ensure_command_executed(cmd=rf"usbipd unbind -b {bus_id}", encoding='cp949')
-
-                    ensure_command_executed(cmd=rf"usbipd bind -b {bus_id}", encoding='cp949')  # 수동가이드 : start "3: usbipd bind -b $BUSID" cls && usbipd bind -b $BUSID
-                    # ensure_command_executed_like_human(cmd=rf"usbipd attach --wsl --busid {bus_id} --auto-attach")
-                    ensure_command_executed(cmd=rf'start "" usbipd attach --wsl --busid {bus_id} --auto-attach')  # 수동가이드 : start "4: usbipd attach --wsl --busid $BUSID --auto-attach" cls && usbipd attach --wsl --busid $BUSID --auto-attach
-
-                    # usb/ip attached to wsl
-                    # 수동가이드 : start "2: lsusb" wsl watch -n 0.3 lsusb
-                    # signiture="제공된 이름의 배포가 없습니다" or 'xxxx'
-                    souts = ensure_command_executed(cmd=rf"wsl -d {self.wsl.distro_name} lsusb", encoding='cp949')  # 수동가이드 : watch -n 1 lsusb
-                    if check_signiture_in_loop(time_limit=10, working_list=souts, signiture="제공된 이름의 배포가 없습니다", signiture_found_ment="wsl 에 attach 할수없었습니다"):
-                        return False
-                    if check_signiture_in_loop(time_limit=10, working_list=souts, signiture="NVidia Corp.", signiture_found_ment="wsl 에 attach 되었습니다"):
-                        return False
-
-
-                    # jetpack update" via sdkmanger #원격방식 가능#usb방식 가능?
-
-
-                # pk_* : 가이드
-                guide = textwrap.dedent(rf'''
-                    # {guide_title} 수동가이드
-                    
-                    # Force Recovery Mode of Jetson Xavier Series way 1 (success)
-                    n. Power on the carrier board # power button
-                    n. hold the RECOVERY button  # cw button # # EVM 의 가운데 버튼
-                    n. Press the RESET button    # ccw button
-                    n. USB C to A 케이블을 연결 PC 의 뒷편(A), Xaver WHITE LED 인디케이터 옆 USB 포트(C)  
-                    
-                    # Force Recovery Mode of Jetson Xavier Series way 2
-                    n. remove all plugs 
-                    n. remove auto power selector pin
-                    n. reconnect power cable
-                    n. reconnect usb c(right port # not left port)
-                    n. hold the RESET button.    # ccw button
-                    n. press power button.
-                    n. release power button.
-                    n. reinstall auto power mode selector pin
-                    
-                ''')
-                logging.debug(get_text_cyan(guide))
-                ok = ensure_value_completed(key_hint=rf"{question}=", options=[PkTexts.YES, PkTexts.NO, PkTexts.FAILED])
-                if ok != PkTexts.YES:
-                    ensure_spoken(get_easy_speakable_text(f'{guide_title}를 반드시 수행해야 다음으로 진행할 수 있습니다'))
-                    continue
-                if ok != PkTexts.FAILED:
-                    guide_title = f'{guide_title} 트러블슈팅'
-                    guide = textwrap.dedent(rf'''
-                                            # {guide_title} 수동가이드
-                                            n. 플래시 케이블 연결안함
-                                            n. 네트워크 케이블 remove 후 재시도
-                                        ''')
-                    logging.debug(get_text_yellow(guide))
-                    ok = ensure_value_completed(key_hint=rf"{question}=", options=[PkTexts.YES])
-                    if ok != PkTexts.YES:
-                        ensure_spoken(get_easy_speakable_text(f'{guide_title}를 반드시 수행해야 다음으로 진행할 수 있습니다'))
-                        continue
-                continue
+            # TBD jetpack update" via sdkmanager #원격으로 jetpack 업데이트 가능#usb방식 가능?
 
     def ensure_target_info_printed(self):
         logging.debug(f'self.target.to_json()={self.target.to_json()}')
@@ -1756,6 +1822,36 @@ class PkTargetManager(PkDevice):
         pretty_json = json.dumps(effective_dict, indent=4, ensure_ascii=False)
 
         logging.debug(pretty_json)
+        return pretty_json
+
+    def ensure_self_effective_info_printed(self):
+        """
+        Print only non-None fields of the PkTargetManager (self) in pretty JSON format.
+        """
+        import logging
+        import json
+
+        # Manually construct a dictionary from self's attributes
+        self_dict = {
+            "identifier": self.identifier.value if self.identifier else None,
+            "nick_name": self.nick_name,
+            "state": self.state.name if self.state else None,
+            "ip": getattr(self, 'ip', None),
+            "hostname": getattr(self, 'hostname', None),
+            "port": getattr(self, 'port', None),
+            "user_n": getattr(self, 'user_n', None),
+            "f_local_ssh_public_key": str(getattr(self, 'f_local_ssh_public_key', None)),
+            "f_local_ssh_private_key": str(getattr(self, 'f_local_ssh_private_key', None)),
+            # Password ('pw') is intentionally omitted for security.
+        }
+
+        # Filter out None values
+        effective_dict = {k: v for k, v in self_dict.items() if v is not None}
+
+        # Convert to pretty JSON string
+        pretty_json = json.dumps(effective_dict, indent=4, ensure_ascii=False)
+
+        logging.debug(f"PkTargetManager (self) effective info:\n{pretty_json}")
         return pretty_json
 
     def get_f_wsl_sshd_config_path(self, distro_name: str) -> Optional[Path]:
@@ -1788,6 +1884,18 @@ class PkTargetManager(PkDevice):
 
     def ensure_usbipd_installed(self):
         from functions import ensure_command_executed
+
+        if F_USBPIPD_MSI.exists():
+            ensure_command_executed(rf'start "" {F_USBPIPD_MSI}')
+            # pk_* : seconds_limited loop
+            is_found = ensure_signiture_found_in_souts_for_milliseconds_limited(
+                cmd=rf"usbipd --version",
+                signiture=".master.",
+                milliseconds_limited=get_milliseconds_from_seconds(seconds=30),
+            )
+            if is_found:
+                return True
+
         guide_title = "usbipd-win 설치"
         question = f"'{guide_title}' 가이드를 모두 완료하고 uspipd가 준비되었습니까?"
         ensure_spoken(get_easy_speakable_text(f"{guide_title}를 시작합니다. 웹페이지를 확인해주세요."))
@@ -1803,7 +1911,7 @@ class PkTargetManager(PkDevice):
                     ''')
             logging.info(get_text_cyan(guide))
 
-            ok = ensure_value_completed(key_hint=rf"{question} (y/n): ", options=[PkTexts.YES, PkTexts.NO])
+            ok = ensure_value_completed(key_hint=question, options=[PkTexts.YES, PkTexts.NO])
 
             if ok == PkTexts.YES:
                 logging.info("사용자가 설치 완료를 확인했습니다. uspipd 상태를 다시 확인합니다...")
@@ -1949,36 +2057,158 @@ class PkTargetManager(PkDevice):
             logging.error(f"An unexpected error occurred while checking usbipd version: {e}")
             return None
 
-    def ensure_sdkmanager_executed(self):
+    def ensure_sdkmanager_executed(self, setup_op: "_SetupOpsForSdkManager" = _SetupOpsForSdkManager.GUI):
         if not self.ensure_sdkmanager_installed():
+            logging.warning("sdkmanager is not installed")
+            return False
+        logging.info("Attempting to launch NVIDIA SDK Manager")
+
+        ensure_spoken("NVIDIA SDK Manager를 실행합니다. 창을 확인해주세요.")
+
+        distro_name = self.wsl.distro_name
+        wsl_user_n = self.wsl.user_name if self.wsl.user_name != "root" else "pk"  # pk_option
+        sdk_cmd = None
+        if setup_op == _SetupOpsForSdkManager.GUI:
+            sdk_cmd = f"start wsl -d {distro_name} -u {wsl_user_n} -- sdkmanager"
+        elif setup_op == _SetupOpsForSdkManager.CLI:
+            sdk_cmd = f'start "" wsl -d {distro_name} sdkmanager --cli'
+
+        stdout, stderr = ensure_command_executed(sdk_cmd)
+
+        if stderr:
+            logging.error(f"Failed to launch SDK Manager: {stderr}")
+            logging.warning("SDK Manager를 시작하지 못했습니다. WSL에 지원이 설정되어 있는지 확인하세요 (예: WSLg).")
+            ensure_spoken("SDK Manager를 시작하지 못했습니다.")
             return False
 
-        # sdkmanager --cli --help
-        # list products
-        # list targets
-        # list components
+        logging.info("SDK Manager launched. Please proceed with the installation steps in the GUI.")
+        logging.info("GUI에서의 작업이 완료되면 다음 단계를 진행하세요.")
+        return True
 
     def ensure_sdkmanager_installed(self):
-        self.ensure_wsl_distro_pkg_rar_installed()
-
-    def ensure_wsl_distro_pkg_rar_installed(self):
+        """
+        Ensures NVIDIA SDK Manager is installed in the WSL distro.
+        Checks for existing file before guiding the user to download it, then copies and installs it.
+        """
         import logging
+        import os
+        from pathlib import Path
+        import glob
+        from sources.objects.task_orchestrator_cli_directories import D_TASK_ORCHESTRATOR_CLI_RESOURCES_LINUX, D_TASK_ORCHESTRATOR_CLI_RESOURCES_WSL
 
-        try:
-            logging.debug("Starting ensure_wsl_distro_pkg_rar_installed...")
-            wsl_distro_config = self.get_wsl_distro_config()
+        distro_name = self.wsl.distro_name
+        wsl_user_n = self.wsl.user_name if self.wsl.user_name != "root" else "pk"  # pk_option
+        wsl_user_home = f"/home/{wsl_user_n}"
 
-            # Ensure dependencies
-            packages_to_install = ["rar"]
-            # return ensure_wsl_packages_installed(wsl_distro_config.distro_name, packages_to_install)
-            return self.ensure_wsl_packages_installed(wsl_distro_config['distro_name'], packages_to_install)
+        # Define the correct check command once
+        check_cmd = f'wsl -d {distro_name} -- sdkmanager --ver'
 
-        except Exception as e:
-            ensure_debug_loged_verbose(traceback)
+        # n. Check if sdkmanager command is already installed
+        stdout, stderr = ensure_command_executed(check_cmd)
+        # If the command produces any output on stdout and no errors, consider it successful.
+        if stdout and not stderr:
+            logging.info(f"sdkmanager is already installed in {distro_name}. Version: {' '.join(stdout)}")
+            return True
+
+        # n. Define search paths and perform an initial search for the .deb file
+        downloads_path = Path(os.path.expanduser("~")) / "Downloads"
+        fallback_paths = [D_TASK_ORCHESTRATOR_CLI_RESOURCES_LINUX, D_TASK_ORCHESTRATOR_CLI_RESOURCES_WSL]
+        search_paths = [downloads_path] + fallback_paths
+
+        sdkmanager_debs = []
+        for path in search_paths:
+            logging.info(f"Searching for sdkmanager_*.deb in {path}...")
+            found_debs = glob.glob(str(path / "sdkmanager_*.deb"))
+            if found_debs:
+                sdkmanager_debs.extend(found_debs)
+                logging.info(f"Found {len(found_debs)} .deb file(s) in {path}.")
+                break
+
+        # n. If not found, guide user to download
+        if not sdkmanager_debs:
+            guide_title = "NVIDIA SDK Manager 다운로드"
+            question = f"'{guide_title}'를 완료했습니까? (sdkmanager_*.deb 파일)"
+            download_url = "https://developer.nvidia.com/nvidia-sdk-manager"
+            ensure_spoken(get_easy_speakable_text(f"{guide_title}를 시작합니다. 웹페이지를 열고 로그인 후 DEB 파일을 다운로드하세요."))
+            ensure_command_executed(f"explorer {download_url}")
+
+            while True:
+                guide = textwrap.dedent(f'''
+                    # {guide_title} 수동 가이드
+                    1. 방금 열린 웹페이지({download_url})에서 로그인하세요.
+                    2. 'SDK Manager'를 찾아 DEB 패키지(.deb)를 다운로드하세요.
+                    3. 다운로드가 완료되면 터미널로 돌아와 질문에 답변해주세요.
+                ''')
+                logging.info(get_text_cyan(guide))
+                ok = ensure_value_completed(key_hint=question, options=[PkTexts.YES, PkTexts.NO])
+                if ok != PkTexts.YES:
+                    ensure_spoken(get_easy_speakable_text(f'{guide_title}를 반드시 수행해야 다음으로 진행할 수 있습니다.'))
+                    continue
+
+                # Search again after user confirmation
+                for path in search_paths:
+                    found_debs = glob.glob(str(path / "sdkmanager_*.deb"))
+                    if found_debs:
+                        sdkmanager_debs.extend(found_debs)
+                        break
+
+                if sdkmanager_debs:
+                    break  # Exit download loop if file is found
+                else:
+                    logging.error(f"다음 경로들에서 sdkmanager 데비안 파일을 찾을 수 없습니다: {[str(p) for p in search_paths]}")
+                    ensure_spoken("SDK Manager 파일을 찾지 못했습니다. 다시 시도해주세요.")
+                    continue
+
+        # n. Proceed with copy and installation if the file was found
+        latest_deb_path = max(sdkmanager_debs, key=os.path.getmtime)
+        latest_deb_filename = Path(latest_deb_path).name
+        logging.info(f"Using SDK Manager DEB file: {latest_deb_path}")
+
+        wsl_downloads_dir_host_path = Path(f"//wsl.localhost/{distro_name}{wsl_user_home.replace('/', '//')}/Downloads")
+        ensure_command_executed(f"wsl -d {distro_name} -- mkdir -p {wsl_user_home}/Downloads")
+
+        logging.info(f"Copying {latest_deb_filename} to WSL ({wsl_downloads_dir_host_path})...")
+        copy_cmd = f'copy "{latest_deb_path}" "{wsl_downloads_dir_host_path}"'
+        stdout, stderr = ensure_command_executed(copy_cmd)
+        if stderr and "지정된 파일을 찾을 수 없습니다" not in " ".join(stderr):
+            logging.error(f"Failed to copy file to WSL: {stderr}")
+            ensure_spoken("파일을 WSL로 복사하는 데 실패했습니다.")
+            return False
+
+        wsl_deb_path = f"{wsl_user_home}/Downloads/{latest_deb_filename}"
+        logging.info(f"Installing {latest_deb_filename} in WSL...")
+        install_cmd = f'wsl -d {distro_name} --user {wsl_user_n} -- sudo apt install -y {wsl_deb_path}'
+        stdout, stderr = ensure_command_executed(install_cmd)
+
+        if stderr and ("Err:" in " ".join(stderr) or "E:" in " ".join(stderr)):
+            logging.error(f"Failed to install sdkmanager in WSL: {stderr}")
+            logging.info("`apt install` failed, falling back to `dpkg -i`...")
+            install_cmd_dpkg = f'wsl -d {distro_name} --user {wsl_user_n} -- sudo dpkg -i {wsl_deb_path}'
+            stdout_dpkg, stderr_dpkg = ensure_command_executed(install_cmd_dpkg)
+            if stderr_dpkg:
+                logging.error(f"dpkg installation also failed: {stderr_dpkg}")
+                ensure_spoken("SDK Manager 설치에 최종 실패했습니다.")
+                return False
+
+            logging.info("Fixing broken dependencies after dpkg...")
+            ensure_command_executed(f'wsl -d {distro_name} --user {wsl_user_n} -- sudo apt-get install -f -y')
+
+        # n. Final verification
+        logging.info("Verifying sdkmanager installation...")
+        stdout, stderr = ensure_command_executed(check_cmd)
+        if stdout and not stderr:
+            logging.info(f"Successfully installed sdkmanager in {distro_name}. Version: {' '.join(stdout)}")
+            ensure_spoken("SDK Manager 설치를 완료했습니다.")
+            return True
+        else:
+            logging.error("Verification failed after installation attempt.")
+            logging.error(f"Stdout: {stdout}")
+            logging.error(f"Stderr: {stderr}")
+            ensure_spoken("SDK Manager 설치 후 확인에 실패했습니다.")
             return False
 
     @ensure_seconds_measured
-    @ensure_function_return_ttl_cached(ttl_seconds=60 * 1 * 1, maxsize=10)  # task_orchestrator_cli_option
+    @ensure_function_return_ttl_cached(ttl_seconds=60 * 1 * 1, maxsize=128)  # pk_option
     def ensure_wsl_packages_installed(self, distro_name, packages):
         import logging
 
@@ -2028,7 +2258,6 @@ class PkTargetManager(PkDevice):
         return True
 
     @ensure_seconds_measured
-    @ensure_function_return_ttl_cached(ttl_seconds=60 * 60 * 1, maxsize=10)  # task_orchestrator_cli_option
     def get_wsl_distro_name_installed_legacy(self):
         from functions.ensure_value_completed_advanced import ensure_value_completed_advanced
 
@@ -2045,23 +2274,6 @@ class PkTargetManager(PkDevice):
             wsl_distro_name = selected
 
             return wsl_distro_name
-
-    def get_wsl_distro_name_installable(self, cmd):
-        from sources.functions.ensure_command_executed import ensure_command_executed
-        wsl_distro_name = []
-        std_outs = ensure_command_executed(cmd=cmd, encoding='utf-16')
-        for line_str in std_outs:
-            line_str = line_str.strip()
-            if line_str.startswith("NAME"):
-                continue
-            if line_str.startswith("*"):
-                line_str = line_str.replace("* ", "")
-                line_str = line_str.strip()
-            parts = line_str.split(' ')
-            name = parts[0]
-            line_str = line_str.strip()
-            wsl_distro_name.append(name)
-        return wsl_distro_name
 
     def get_wsl_distro_pw_legacy(self, distro_name):
         from functions.get_caller_n import get_caller_n
@@ -2094,8 +2306,8 @@ class PkTargetManager(PkDevice):
 
         wsl_ip = None
         if std_outs and len(std_outs) > 0:
-            logging.debug(f"DEBUG: In get_wsl_ip, type(std_outs)={type(std_outs)}, std_outs={std_outs}")
-            logging.debug(f"DEBUG: In get_wsl_ip, type(std_outs[0])={type(std_outs[0])}, std_outs[0]={std_outs[0]}")
+            logging.debug(f"In get_wsl_ip, type(std_outs)={type(std_outs)}, std_outs={std_outs}")
+            logging.debug(f"In get_wsl_ip, type(std_outs[0])={type(std_outs[0])}, std_outs[0]={std_outs[0]}")
             wsl_ip = std_outs[0][0].split(" ")[0]
 
         if not wsl_ip:
@@ -2142,3 +2354,243 @@ class PkTargetManager(PkDevice):
         if user_n:
             logging.debug(rf'''user_n"{user_n}"  {'%%%FOO%%%' if LTA else ''}''')
         return user_n
+
+    def ensure_wsl_distro_user_added(self, distro: str, user_name: str):
+        subprocess.run(
+            ["wsl.exe", "-d", distro, "-u", "root", "--", "adduser", user_name],
+            check=True
+        )
+
+    def ensure_wsl_distro_user_pw_changed(self, distro: str, user_name: str):
+        subprocess.run(
+            ["wsl.exe", "-d", distro, "-u", "root", "--", "passwd", user_name],
+            check=True
+        )
+
+    def ensure_wsl_distro_specific_app_without_user_pw_access(self, distro_name: str, user_name: str, executable_abs_path: str):
+        cmd = f'echo "{user_name} ALL=(ALL) NOPASSWD: {executable_abs_path}" | EDITOR="tee -a" visudo'
+        subprocess.run(["wsl.exe", "-d", distro_name, "-u", "root", "--", "sh", "-lc", cmd], check=True)
+
+    def ensure_wsl_distro_apps_without_user_pw_access(self, distro_name: str, user_name: str):
+        cmd = f'echo "{user_name} ALL=(ALL) NOPASSWD: ALL" | EDITOR="tee -a" visudo'
+        subprocess.run(["wsl.exe", "-d", distro_name, "-u", "root", "--", "sh", "-lc", cmd], check=True)
+
+    def ensure_wsl_distro_root_account_access_permitted(self, distro_name: str, user_name: str):
+        cmd = f'echo "{user_name} ALL=(ALL) NOPASSWD: /bin/su" | EDITOR="tee -a" visudo'
+        subprocess.run(["wsl.exe", "-d", distro_name, "-u", "root", "--", "sh", "-lc", cmd], check=True)
+
+    def ensure_wsl_distro_user_added_advanced(self, distro_name: str, user_name: str, password: str, create_home: bool = True, shell: str = "/bin/bash"):
+        rc = self.ensure_command_executed_to_wsl_distro_as_root_account(distro_name, f"id -u {self.get_sh_quote(user_name)} >/dev/null 2>&1 || echo NOUSER")
+        if "NOUSER" in (rc.stdout or ""):
+            home_flag = "-m" if create_home else "-M"
+            self.ensure_command_executed_to_wsl_distro_as_root_account(distro_name, f"useradd {home_flag} -s {self.get_sh_quote(shell)} {self.get_sh_quote(user_name)}")
+        self.ensure_command_executed_to_wsl_distro_as_root_account(distro_name, f"echo {self.get_sh_quote(user_name)}:{self.get_sh_quote(password)} | chpasswd")
+
+    def ensure_wsl_distro_user_pw_changed_advanced(self, distro_name: str, user_name: str, new_password: str):
+        self.ensure_command_executed_to_wsl_distro_as_root_account(distro_name, f"echo {self.get_sh_quote(user_name)}:{self.get_sh_quote(new_password)} | chpasswd")
+
+    def ensure_wsl_distro_specific_app_without_user_pw_access_advanced(self, distro_name: str, user_name: str, executable_abs_path: str, group_name: str | None = None, file_tag: str | None = None):
+        rc = self.ensure_command_executed_to_wsl_distro_as_root_account(distro_name, f"test -x {self.get_sh_quote(executable_abs_path)} || echo NOEXE")
+        if "NOEXE" in (rc.stdout or ""):
+            raise RuntimeError(f"Executable not found: {executable_abs_path}")
+        if group_name:
+            self.ensure_command_executed_to_wsl_distro_as_root_account(distro_name, f"usermod -aG {self.get_sh_quote(group_name)} {self.get_sh_quote(user_name)}")
+        tag = file_tag or f"{user_name}-nopasswd-{Path(executable_abs_path).name}"
+        line = f"{user_name} ALL=(ALL) NOPASSWD: {executable_abs_path}\n"
+        self.ensure_wsl_distro_sudoers_fragment_written(distro_name, tag, line)
+
+    def ensure_wsl_distro_apps_without_user_pw_access_advanced(self, distro_name: str, user_name: str, file_tag: str | None = None):
+        tag = file_tag or f"{user_name}-nopasswd-all"
+        line = f"{user_name} ALL=(ALL) NOPASSWD: ALL\n"
+        self.ensure_wsl_distro_sudoers_fragment_written(distro_name, tag, line)
+
+    def ensure_wsl_distro_root_account_access_permitted_advanced(self, distro_name: str, user_name: str, file_tag: str | None = None):
+        rc = self.ensure_command_executed_to_wsl_distro_as_root_account(distro_name, "test -x /bin/su || echo NOSU")
+        if "NOSU" in (rc.stdout or ""):
+            raise RuntimeError("/bin/su not found")
+        tag = file_tag or f"{user_name}-nopasswd-su"
+        line = f"{user_name} ALL=(ALL) NOPASSWD: /bin/su\n"
+        self.ensure_wsl_distro_sudoers_fragment_written(distro_name, tag, line)
+
+    def get_sh_quote(self, s: str) -> str:
+        # TODO renaming
+        return "'" + s.replace("'", "'\"'\"'") + "'"
+
+    def ensure_command_executed_to_wsl_distro_as_root_account(self, distro_name: str, cmd: str):
+
+        return subprocess.run(
+            ["wsl.exe", "-d", distro_name, "-u", "root", "--", "sh", "-lc", cmd],
+            check=True, capture_output=True, text=True, encoding="utf-8", errors="ignore"
+        )
+
+    def ensure_wsl_distro_sudoers_fragment_written(self, distro: str, filename: str, content: str):
+        tmp_path = f"/tmp/.{filename}.tmp"
+        remote_path = f"/etc/sudoers.d/{filename}"
+        cmd = (
+            f"printf %s {self.get_sh_quote(content)} > {self.get_sh_quote(tmp_path)} && "
+            f"chown root:root {self.get_sh_quote(tmp_path)} && "
+            f"chmod 0440 {self.get_sh_quote(tmp_path)} && "
+            f"mv {self.get_sh_quote(tmp_path)} {self.get_sh_quote(remote_path)} && "
+            f"visudo -cf /etc/sudoers"
+        )
+        self.ensure_command_executed_to_wsl_distro_as_root_account(distro, cmd)
+
+    def ensure_wsl_distro_session_alived(self, distro_name):
+        import logging
+        import time  # Added import
+
+        from functions.is_wsl_distro_started import is_wsl_distro_started
+        from sources.functions.is_os_windows import is_os_windows
+        from sources.functions.is_os_wsl_linux import is_os_wsl_linux
+        from sources.objects.pk_local_test_activate import LTA
+        import subprocess
+
+        logging.debug(f"Attempting to ensure WSL distro session for: {distro_name}")
+
+        if is_os_windows():
+            if not is_os_wsl_linux():
+                if not is_wsl_distro_started(distro_name):
+                    logging.debug(f"WSL distro {distro_name} is not started. Attempting to start it.")
+                    # subprocess.Popen(f"wsl -d {distro_name}", creationflags=subprocess.CREATE_NO_WINDOW)
+                    subprocess.Popen(f"wsl -d {distro_name} --exit", creationflags=subprocess.CREATE_NO_WINDOW)
+
+                    retry_cnt_limited = 10
+                    retry_delay = 1  # seconds
+                    started = False
+                    for i in range(retry_cnt_limited):
+                        self.ensure_wsl_distro_executed(self.wsl.distro_name)
+                        logging.debug(f"Checking if WSL distro {distro_name} started (attempt {i + 1}/{retry_cnt_limited})...")
+                        if is_wsl_distro_started(distro_name):
+                            started = True
+                            logging.debug(f"WSL distro {distro_name} successfully started.")
+                            break
+                        time.sleep(retry_delay)
+
+                    if not started:
+                        logging.error(f"Failed to start WSL distro {distro_name} after {retry_cnt_limited} attempts.")
+
+                if is_wsl_distro_started(distro_name):  # This check is redundant after the loop, but keeping for consistency with original logic
+                    logging.debug(f'''{distro_name} is started already in wsl with keeping session {'%%%FOO%%%' if LTA else ''}''')
+                else:  # This else branch should ideally not be reached if the above logic is correct
+                    logging.debug(f'''{distro_name} is not started in wsl with keeping session {'%%%FOO%%%' if LTA else ''}''')
+
+        return True
+
+    def ensure_wsl_distro_assistance_executed(self, distro_name: str):
+        import logging
+        import subprocess
+        from pathlib import Path
+        import shutil
+
+        from functions.ensure_value_completed import ensure_value_completed
+
+        logging.info(f"WSL 배포판 지원 기능 시작: {distro_name}")
+
+        OPT_ENTER = "배포판 진입"
+        OPT_DELETE = "배포판 삭제"
+        OPT_INSTALL = "배포판 설치"
+        OPT_INFO = "정보 출력"
+        OPT_EXIT = "종료"
+
+        menu_options = [OPT_ENTER, OPT_DELETE, OPT_INSTALL, OPT_INFO, OPT_EXIT]
+
+        while True:
+            logging.info("\n--- WSL 배포판 지원 메뉴 ---")
+            option = ensure_value_completed(key_hint="옵션을 선택하세요", options=menu_options)
+
+            if option == OPT_ENTER:
+                logging.info(f"WSL 배포판 '{distro_name}'에 진입합니다.")
+                try:
+                    subprocess.run(f"wsl -d {distro_name}", shell=True, check=True)
+                except subprocess.CalledProcessError as e:
+                    logging.error(f"WSL 진입 중 오류 발생: {e}")
+                except FileNotFoundError:
+                    logging.error("WSL 명령어를 찾을 수 없습니다. WSL이 설치되어 있는지 확인하세요.")
+
+            elif option == OPT_DELETE:
+                logging.info(f"WSL 배포판 '{distro_name}'을(를) 삭제(unregister)합니다.")
+                ok = ensure_value_completed(
+                    key_hint=f"정말로 '{distro_name}' 배포판을 unregister 하시겠습니까?",
+                    options=[PkTexts.YES, PkTexts.NO],
+                )
+                if ok == PkTexts.YES:
+                    try:
+                        subprocess.run(f"wsl --unregister {distro_name}", shell=True, check=True)
+                        logging.info(f"'{distro_name}' 배포판이 성공적으로 unregister 되었습니다.")
+
+                        ok_delete_dir = ensure_value_completed(
+                            key_hint=f"'{distro_name}'의 실제 설치 디렉토리도 삭제하시겠습니까?",
+                            options=[PkTexts.YES, PkTexts.NO],
+                        )
+                        if ok_delete_dir == PkTexts.YES:
+                            import os
+                            options = []
+                            local_app_data = os.environ.get('LOCALAPPDATA')
+                            if local_app_data:
+                                packages_path = Path(local_app_data) / 'Packages'
+                                if packages_path.exists():
+                                    try:
+                                        for package_dir in packages_path.iterdir():
+                                            if distro_name.lower() in package_dir.name.lower():
+                                                potential_path = package_dir / 'LocalState'
+                                                if potential_path.exists():
+                                                    options.append(str(potential_path))
+                                                    logging.info(f"'{distro_name}'의 예상 설치 경로를 찾았습니다: {potential_path}")
+                                                    break
+                                    except Exception as e:
+                                        logging.warning(f"WSL 배포판 경로 검색 중 오류 발생: {e}")
+                            distro_path_input = ensure_value_completed(
+                                key_hint=rf"'{distro_name}'의 설치 디렉토리 경로를 입력해주세요 ",
+                                options=options
+                            )
+                            if distro_path_input:
+                                distro_path = Path(distro_path_input)
+                                if distro_path.exists() and distro_path.is_dir():
+                                    ok_confirm_delete = ensure_value_completed(
+                                        key_hint=f"'{distro_path}' 디렉토리를 삭제하시겠습니까?",
+                                        options=[PkTexts.YES, PkTexts.NO],
+                                    )
+                                    if ok_confirm_delete == PkTexts.YES:
+                                        try:
+                                            shutil.rmtree(distro_path)
+                                            logging.info(f"'{distro_path}' 디렉토리가 성공적으로 삭제되었습니다.")
+                                        except Exception as e:
+                                            logging.error(f"디렉토리 삭제 중 오류 발생: {e}")
+                                    else:
+                                        logging.info("디렉토리 삭제를 취소했습니다.")
+                                else:
+                                    logging.warning(
+                                        f"입력된 경로 '{distro_path}'가 유효하지 않거나 존재하지 않습니다. "
+                                        "디렉토리를 수동으로 삭제해주세요."
+                                    )
+                            else:
+                                logging.info("디렉토리 경로가 입력되지 않아 삭제를 건너뛰었습니다.")
+                    except subprocess.CalledProcessError as e:
+                        logging.error(f"WSL unregister 중 오류 발생: {e}")
+                else:
+                    logging.info("WSL 배포판 삭제를 취소했습니다.")
+
+            elif option == OPT_INSTALL:
+                logging.info(f"WSL 배포판 '{distro_name}'을(를) 설치합니다.")
+                try:
+                    subprocess.run(f"wsl --install -d {distro_name}", shell=True, check=True)
+                    logging.info(f"'{distro_name}' 배포판 설치 명령이 실행되었습니다. 설치가 완료될 때까지 기다려주세요.")
+                except subprocess.CalledProcessError as e:
+                    logging.error(f"WSL 설치 중 오류 발생: {e}")
+
+            elif option == OPT_INFO:
+                logging.info("WSL 배포판 OS/용량 정보 및 상태를 출력합니다.")
+                try:
+                    logging.info("\n--- 설치된 WSL 배포판 목록 ---")
+                    subprocess.run("wsl -l -v", shell=True, check=True)
+                    logging.info(f"\n--- '{distro_name}' 배포판 내부 디스크 사용량 ---")
+                    subprocess.run(f"wsl -d {distro_name} df -h", shell=True, check=True)
+                except subprocess.CalledProcessError as e:
+                    logging.error(f"WSL 정보 출력 중 오류 발생: {e}")
+
+            elif option == OPT_EXIT:
+                logging.info("WSL 배포판 지원 기능을 종료합니다.")
+                break
+
+            else:
+                logging.warning("유효하지 않은 옵션입니다. 다시 선택해주세요.")

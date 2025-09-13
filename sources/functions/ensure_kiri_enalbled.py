@@ -142,17 +142,17 @@ class ProcessMatcher:
         """개선된 단순 토큰화 (konlpy 없을 때 사용)"""
         import re
 
-        # 1. 한글, 영문, 숫자만 추출 (특수문자 제거)
+        # n. 한글, 영문, 숫자만 추출 (특수문자 제거)
         tokens = re.findall(r'[가-힣a-zA-Z0-9]+', text)
 
-        # 2. 2글자 이상만 유지
+        # n. 2글자 이상만 유지
         tokens = [token for token in tokens if len(token) > 1]
 
-        # 3. 한국어 조사 제거
+        # n. 한국어 조사 제거
         korean_particles = ['은', '는', '이', '가', '을', '를', '의', '에', '에서', '로', '으로', '와', '과', '도', '만', '부터', '까지', '처럼', '같이', '보다', '마다', '당', '씩', '마다', '당', '씩']
         tokens = [token for token in tokens if token not in korean_particles]
 
-        # 4. 일반적인 불용어 제거
+        # n. 일반적인 불용어 제거
         stop_words = ['그', '이', '저', '것', '수', '등', '때', '곳', '말', '일', '년', '월', '일', '시', '분', '초']
         tokens = [token for token in tokens if token not in stop_words]
 
@@ -611,18 +611,18 @@ def process_command(command: str, state: KiriState) -> bool:
             # 동적 매핑 정보 항상 출력
             state.process_matcher.print_dynamic_mapping(command)
 
-            # 1. 동적 매핑 우선 실행
+            # n. 동적 매핑 우선 실행
             dynamic_matches = state.process_matcher.find_dynamic_matches(command)
             if dynamic_matches:
                 logging.debug(f"동적으로 매핑된 함수: {dynamic_matches}")
                 # 실제 실행은 나중에 구현, 일단 매핑 정보만 출력
                 return True
 
-            # 2. 정확한 프로세스명 매칭 시도
+            # n. 정확한 프로세스명 매칭 시도
             if try_execute_pk_process(command, state):
                 return True
 
-            # 3. 유사도 기반 제안
+            # n. 유사도 기반 제안
             if suggest_and_execute_process(command, state):
                 return True
 

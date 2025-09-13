@@ -13,7 +13,7 @@ def ensure_filenames_and_directory_names_replaced():
     from functions.get_caller_n import get_caller_n
     func_n = get_caller_n()
     key_name = "d_working"
-    d_working = get_values_from_historical_file_routine(file_id=get_file_id(key_name, func_n), key_hint=f'{key_name}=', options_default=['pk_working'], editable=True)
+    d_working = get_values_from_historical_file_routine(file_id=get_file_id(key_name, func_n), key_hint=f'{key_name}', options_default=['pk_working'], editable=True)
 
     f_files_to_replace = f"{D_TASK_ORCHESTRATOR_CLI_SENSITIVE}/files_to_replace_via_{func_n}.txt"
     ensure_pnx_removed(pnx=f_files_to_replace)

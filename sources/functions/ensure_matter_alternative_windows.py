@@ -336,19 +336,19 @@ if __name__ == "__main__":
         
         print("=== Windows Matter 제어 대안 테스트 ===")
         
-        # 1. chip-tool 테스트
+        # n. chip-tool 테스트
         print("\n1. chip-tool 방법 테스트:")
         success = await control_matter_device_windows(1, "status", "chip-tool")
         print(f"   결과: {'성공' if success else '실패'}")
         
-        # 2. REST API 테스트 (예시 IP)
+        # n. REST API 테스트 (예시 IP)
         print("\n2. REST API 방법 테스트:")
         success = await control_matter_device_windows(
             1, "status", "rest", device_ip="192.168.1.100"
         )
         print(f"   결과: {'성공' if success else '실패'}")
         
-        # 3. 자동 방법 테스트
+        # n. 자동 방법 테스트
         print("\n3. 자동 방법 테스트:")
         success = await control_matter_device_windows(1, "status", "auto")
         print(f"   결과: {'성공' if success else '실패'}")

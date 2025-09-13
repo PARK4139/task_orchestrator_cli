@@ -152,12 +152,24 @@ def perform_query(db_path: Path, include_system: bool, display_format: str):
         query += " WHERE " + " AND ".join(["path NOT LIKE ?"] * len(filters))
         params.extend(filters)
     try:
-        fzf_cmd = ["fzf", "--height", "80%", "--layout", "reverse", "--info", "inline", "--prompt", "🔍 검색: ", "--header", "실시간 검색"]
-
+        fzf_cmd = [
+            "fzf",
+            # "--height",
+            # "99%",
+            "--layout",
+            "reverse",
+            "--info",
+            "inline",
+            "--prompt", "🔍 검색: ",
+            "--header", "실시간 검색",
+            # "--preview", "ls -la {}"
+            # "--regex",
+        ]
         if display_format == "타겟명만":
             fzf_cmd.extend(["--delimiter", "\t", "--with-nth", "1"])
         elif display_format == "경로포함":
-            fzf_cmd.extend(["--preview", "ls -la {}"])
+            fzf_cmd.extend([])
+            # fzf_cmd.extend(["--regex"])
 
         with get_db_connection(db_path) as conn, subprocess.Popen(fzf_cmd, stdin=subprocess.PIPE, text=True, errors='ignore') as fzf_proc:
             cursor = conn.cursor()
@@ -197,7 +209,7 @@ def perform_debug_query():
     with get_db_connection(db_path) as conn:
         cursor = conn.cursor()
 
-        # 1. Downloads 폴더 내용 확인
+        # n. Downloads 폴더 내용 확인
         logging.info("[1] 'Downloads' 포함 경로 조회 (최대 20개):")
         cursor.execute("SELECT path FROM targets WHERE path LIKE '%Downloads%' LIMIT 20")
         results_downloads = cursor.fetchall()
@@ -207,7 +219,7 @@ def perform_debug_query():
         else:
             logging.info("  -> 'Downloads' 포함 경로를 찾을 수 없습니다.")
 
-        # 2. '박정훈' 키워드 내용 확인
+        # n. '박정훈' 키워드 내용 확인
         logging.info("[2] '박정훈' 포함 경로 조회 (최대 20개):")
         cursor.execute("SELECT path FROM targets WHERE path LIKE '%박정훈%' LIMIT 20")
         results_keyword = cursor.fetchall()
@@ -217,7 +229,7 @@ def perform_debug_query():
         else:
             logging.info("  -> '박정훈' 포함 경로를 찾을 수 없습니다.\n")
 
-        # 3. Downloads 폴더 직접 접근 시도
+        # n. Downloads 폴더 직접 접근 시도
         downloads_dir = Path.home() / "Downloads"
         logging.info(f"\n[3] Downloads 폴더 직접 접근 시도: {downloads_dir}")
         if downloads_dir.exists() and downloads_dir.is_dir():
@@ -249,7 +261,8 @@ def ensure_target_found_advanced():
             if LTA:
                 target_type = "파일"
                 filter_choice = "제외"
-                display_format = "경로포함"
+                # display_format = "경로포함"
+                display_format = "타겟명만"
             else:
                 target_type = ensure_value_completed("조회할 타겟 타입을 선택하세요:", ["파일", "디렉토리", "모두"]) or "파일"
                 filter_choice = ensure_value_completed("시스템 타겟을 포함할까요?", ["포함", "제외"]) or "제외"

@@ -103,7 +103,7 @@ def save_all_drive_pnxs_to_text_file2():  # 루프 수정필요 # 이 함수는 
     # if not is_window_opened(window_title=f_func_n_txt):
     #     run_pnx_via_explorer_exe(f_func_n_txt, debug_mode=False)
 
-    # 1. 특정 경로를 제외할 텍스트 f에서 경로 읽어오기
+    # n. 특정 경로를 제외할 텍스트 f에서 경로 읽어오기
     def load_pnxs_exclude(file_path):
 
         import inspect
@@ -121,7 +121,7 @@ def save_all_drive_pnxs_to_text_file2():  # 루프 수정필요 # 이 함수는 
             print(f"Error opening item {file_path}: {e}")
         return exclude_paths
 
-    # 2. 모든 드라이브에서 f 목록 가져오기
+    # n. 모든 드라이브에서 f 목록 가져오기
     def get_drives_connected():
 
         import inspect
@@ -136,7 +136,7 @@ def save_all_drive_pnxs_to_text_file2():  # 루프 수정필요 # 이 함수는 
         logging.debug(rf'''drives="{drives}"  {'%%%FOO%%%' if LTA else ''}''')
         return drives
 
-    # 3. 드라이브에서 f 검색하고 처리하기
+    # n. 드라이브에서 f 검색하고 처리하기
     def list_files_in_drives(exclude_paths_txt):
         import inspect
         from functions.get_caller_n import get_caller_n

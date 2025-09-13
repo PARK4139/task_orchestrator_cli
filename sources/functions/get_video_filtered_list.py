@@ -2,7 +2,7 @@ from objects.pk_map_texts import PkTexts
 from objects.pk_ttl_cache_manager import ensure_function_return_ttl_cached
 
 
-@ensure_function_return_ttl_cached(ttl_seconds=60 * 30, maxsize=16)  # 5분 캐시 활성화 # task_orchestrator_cli_option
+@ensure_function_return_ttl_cached(ttl_seconds=60 * 30, maxsize=16)  # 5분 캐시 활성화 # pk_option
 # @ensure_function_return_ttl_cached(ttl_seconds=60 * 1, maxsize=10)
 def get_video_filtered_list(d_working, ext_allowed_list, video_name_parts_to_ignore, video_ignored_regex_patterns=None):
     import re

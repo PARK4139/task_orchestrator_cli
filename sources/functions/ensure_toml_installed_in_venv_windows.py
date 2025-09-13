@@ -84,19 +84,19 @@ def ensure_toml_installed_in_venv_windows(force_reinstall: bool = False) -> bool
     
     # 설치 방법들 (우선순위 순서)
     install_methods = [
-        # 1. uv pip 사용 (가장 빠름)
+        # n. uv pip 사용 (가장 빠름)
         {
             "name": "uv pip",
             "cmd": ["uv", "pip", "install", "toml", "--python", str(python_exe)],
             "timeout": 60
         },
-        # 2. 일반 pip 사용
+        # n. 일반 pip 사용
         {
             "name": "pip",
             "cmd": [str(pip_exe), "install", "toml"],
             "timeout": 120
         },
-        # 3. python -m pip 사용
+        # n. python -m pip 사용
         {
             "name": "python -m pip",
             "cmd": [str(python_exe), "-m", "pip", "install", "toml"],

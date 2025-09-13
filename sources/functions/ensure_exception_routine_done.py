@@ -19,7 +19,7 @@ def ensure_exception_routine_done(*, __file__, traceback, exception=None):
     logging.debug(PK_UNDERLINE)
     ensure_debug_loged_verbose(traceback)  # logging.debug(rf"traceback.format_exc()={traceback.format_exc()}")
 
-    # task_orchestrator_cli_option
+    # pk_option
     if not LTA:
         ensure_task_orchestrator_cli_log_editable()
     # ensure_task_orchestrator_cli_wrapper_suicided(__file__)

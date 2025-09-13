@@ -16,9 +16,9 @@ def ensure_elapsed_time_logged(start_time, log_file_path=None):
     msg = f"{TASK_ORCHESTRATOR_CLI_ANSI_COLOR_MAP['YELLOW']}ENDED AT : {duration:.2f} {PkTexts.SECONDS} {TASK_ORCHESTRATOR_CLI_ANSI_COLOR_MAP['RESET']}"
     print_and_save_log_to_file(msg, log_file_path)
 
-    # task_orchestrator_cli_option
+    # pk_option
     # print_marker_and_stop()
 
-    # task_orchestrator_cli_option
+    # pk_option
     # ensure_task_orchestrator_cli_exit_silent()
     return elapsed_time

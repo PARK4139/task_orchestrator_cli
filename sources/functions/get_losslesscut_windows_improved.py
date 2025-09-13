@@ -25,27 +25,27 @@ def is_losslesscut_window(title):
 
     title_lower = title.lower()
 
-    # 1. 정확한 기본 창 제목
+    # n. 정확한 기본 창 제목
     if title_lower == "losslesscut":
         return True
 
-    # 2. LosslessCut으로 시작하고 끝나는 패턴
+    # n. LosslessCut으로 시작하고 끝나는 패턴
     if (title_lower.startswith("losslesscut") and
             title_lower.endswith("losslesscut") and
             " - " in title):
         return True
 
-    # 3. "LosslessCut - [내용] - LosslessCut" 형태
+    # n. "LosslessCut - [내용] - LosslessCut" 형태
     if (title_lower.startswith("losslesscut - ") and
             title_lower.endswith(" - losslesscut")):
         return True
 
-    # 4. "Loading file - [filename] - LosslessCut" 형태
+    # n. "Loading file - [filename] - LosslessCut" 형태
     if (title_lower.startswith("loading file - ") and
             title_lower.endswith(" - losslesscut")):
         return True
 
-    # 5. "Exporting - [filename] - LosslessCut" 형태
+    # n. "Exporting - [filename] - LosslessCut" 형태
     if (title_lower.startswith("exporting - ") and
             title_lower.endswith(" - losslesscut")):
         return True

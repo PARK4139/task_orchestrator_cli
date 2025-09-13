@@ -24,8 +24,8 @@ def download_single_youtube_video(url, output_dir):
 
             # 디버그 정보
             logging.debug(f"[{PkTexts.DEBUG_METADATA_EXT}] = '{ext}' (타입: {type(ext)})")
-            logging.debug(f"DEBUG: title = '{title}'")
-            logging.debug(f"DEBUG: clip_id = '{clip_id}'")
+            logging.debug(f"title = '{title}'")
+            logging.debug(f"clip_id = '{clip_id}'")
 
             # 출력 파일명 생성
             safe_title = "".join(c for c in title if c.isalnum() or c in (' ', '-', '_')).rstrip()
@@ -35,7 +35,7 @@ def download_single_youtube_video(url, output_dir):
             logging.debug(f"[{PkTexts.DEBUG_OUTPUT_FILENAME}] = '{output_filename}'")
 
             # 실제 다운로드
-            logging.debug(f"DEBUG: ensure_youtube_videos_downloaded_via_yt_dlp_v2 호출 - ext='{ext}'")
+            logging.debug(f"ensure_youtube_videos_downloaded_via_yt_dlp_v2 호출 - ext='{ext}'")
             result = ensure_youtube_videos_downloaded_via_yt_dlp_v2(url, output_dir, output_filename=output_filename)
 
             if result and output_path.exists():
@@ -47,8 +47,8 @@ def download_single_youtube_video(url, output_dir):
 
                 # 파일명 정규화 확인
                 normalized_filename = output_path.nick_name
-                logging.debug(f"DEBUG: 정규화된 파일명 = '{normalized_filename}'")
-                logging.debug(f"DEBUG: clip_id 검색 = '[{clip_id}]'")
+                logging.debug(f"정규화된 파일명 = '{normalized_filename}'")
+                logging.debug(f"clip_id 검색 = '[{clip_id}]'")
 
                 return {
                     'url': url,

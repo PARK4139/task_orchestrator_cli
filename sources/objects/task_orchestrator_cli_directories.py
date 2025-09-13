@@ -25,7 +25,7 @@ if platform.system().lower() == "windows":
 
     D_DOWNLOADS = D_USERPROFILE / 'Downloads'
     D_DESKTOP = D_USERPROFILE / 'Desktop'
-    D_PK_RECYCLE_BIN = D_DESKTOP / "휴지통"  # task_orchestrator_cli_option
+    D_PK_RECYCLE_BIN = D_DESKTOP / "휴지통"  # pk_option
     D_TEMP = D_PK_RECYCLE_BIN / "temp"
     D_TEST = D_TEMP / "test"
     D_TEST_RESULT = D_TEMP / "test_result"
@@ -37,11 +37,11 @@ if platform.system().lower() == "windows":
 
     D_TASK_ORCHESTRATOR_CLI_LOGS = None
     if LTA:
-        # task_orchestrator_cli_option : recomanded
+        # pk_option : recomanded
         # D_TASK_ORCHESTRATOR_CLI_LOGS = D_PK_RECYCLE_BIN / "logs"
         # D_TASK_ORCHESTRATOR_CLI_RESOURCES = D_PK_RECYCLE_BIN / 'resources'
 
-        # task_orchestrator_cli_option : for gemini cli가 외부 경로에서 파일 리소스 못찾는 문제해결하기 위함.
+        # pk_option : for gemini cli가 외부 경로에서 파일 리소스 못찾는 문제해결하기 위함.
         D_TASK_ORCHESTRATOR_CLI_LOGS = D_TASK_ORCHESTRATOR_CLI / "logs"
     else:
         D_TASK_ORCHESTRATOR_CLI_LOGS = D_TASK_ORCHESTRATOR_CLI / "logs"
@@ -69,6 +69,8 @@ if platform.system().lower() == "windows":
     D_TASK_ORCHESTRATOR_CLI_WRAPPERS = D_TASK_ORCHESTRATOR_CLI_SOURCES / "wrappers"
 
     D_TASK_ORCHESTRATOR_CLI_OS_LAYER_RESOURCES = D_TASK_ORCHESTRATOR_CLI_RESOURCES / 'system_resources'
+    D_TASK_ORCHESTRATOR_CLI_RESOURCES_LINUX = D_TASK_ORCHESTRATOR_CLI_RESOURCES / 'resources_linux'
+    D_TASK_ORCHESTRATOR_CLI_RESOURCES_WSL = D_TASK_ORCHESTRATOR_CLI_RESOURCES / 'resources_wsl'
     D_TASK_ORCHESTRATOR_CLI_VIDEO = D_TASK_ORCHESTRATOR_CLI_RESOURCES / 'task_orchestrator_cli_video'
     D_TASK_ORCHESTRATOR_CLI_SOUND = D_TASK_ORCHESTRATOR_CLI_RESOURCES / 'system_sounds'
     D_PKG_VIDEO = D_TASK_ORCHESTRATOR_CLI_RESOURCES / 'task_orchestrator_cli_video'
@@ -89,6 +91,8 @@ if platform.system().lower() == "windows":
     D_BUSINESS_DEMO = D_DOWNLOADS / "business_demo"
 
     D_ETC = Path("/etc") # WINDOWS 에서 WSL 경로 추론 시 필요.
+
+    D_LOSSLESSCUT = D_TASK_ORCHESTRATOR_CLI_RESOURCES_WINDOWS / "LosslessCut-win-x64_3.64.0"
 else:
     D_ROOT = Path("/")
     D_ETC = Path("/etc")
@@ -96,3 +100,5 @@ else:
     D_DOWNLOADS = D_HOME / 'Downloads'
     D_TASK_ORCHESTRATOR_CLI = D_DOWNLOADS / "task_orchestrator_cli"
     D_VENV = D_TASK_ORCHESTRATOR_CLI / '.venv_linux'
+
+

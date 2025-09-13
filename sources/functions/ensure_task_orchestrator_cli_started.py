@@ -64,7 +64,7 @@ class UltraFastFzfProcessor:
         return proc.returncode, out.strip(), err
 
 
-@lru_cache(maxsize=1)  # task_orchestrator_cli_option
+@lru_cache(maxsize=1)  # pk_option
 def get_cached_files(d_working):
     from functions.get_pnxs import get_pnxs
     import time

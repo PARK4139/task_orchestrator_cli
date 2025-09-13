@@ -82,13 +82,13 @@ def main():
         
         # 설치 방법들 (우선순위 순서)
         install_methods = [
-            # 1. 일반 pip 사용
+            # n. 일반 pip 사용
             {
                 "name": "pip",
                 "cmd": [str(pip_exe), "install", package],
                 "timeout": 180
             },
-            # 2. python -m pip 사용
+            # n. python -m pip 사용
             {
                 "name": "python -m pip",
                 "cmd": [str(python_exe), "-m", "pip", "install", package],

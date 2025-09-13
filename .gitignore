@@ -15,6 +15,8 @@ pk_system_cache/pnx_dbs_scanned/
 pk_system.egg-info/
 node_modules/
 pk_system_resources/pk_system_resources_windows/
+pk_system_resources/pk_system_resources_linux/
+pk_system_resources/pk_system_resources_wsl/
 TBD_pk_system/
 deprecated_derectory/
 #pk_system_resources/pk_system_resources_linux/ # TODO

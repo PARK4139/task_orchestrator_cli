@@ -5,7 +5,7 @@ import asyncio # Added for sleep
 async def ensure_matter_repo() -> bool:
     logging.info("🚀 Matter Repository 클론/확인 시작...")
     try:
-        # 1. Git 설치 확인 및 설치 시도
+        # n. Git 설치 확인 및 설치 시도
         for _ in range(2): # 최대 2번 시도
             result = subprocess.run(["wsl", "-d", "Ubuntu", "-e", "bash", "-c", "command -v git"], capture_output=True, text=True, encoding='utf-8', errors='ignore')
             if result.returncode == 0 and result.stdout.strip():
@@ -23,7 +23,7 @@ async def ensure_matter_repo() -> bool:
             logging.error("❌ Git 설치에 실패했거나 WSL 환경에서 Git을 찾을 수 없습니다.")
             return False
 
-        # 2. Matter Repository 클론
+        # n. Matter Repository 클론
         result = subprocess.run(["wsl", "-d", "Ubuntu", "-e", "bash", "-c", "test -d ~/connectedhomeip"], capture_output=True, text=True, encoding='utf-8', errors='ignore')
         if result.returncode != 0: # 디렉토리가 없으면 클론
             logging.info("✅ Matter Repository 클론 중...")

@@ -41,13 +41,13 @@ def ensure_target_bsp_enabled (target_device_data, remote_device_target_config):
         pass
     elif 'evm' in target_device_data.device_identifier:
         # Driver Package (BSP) DOWNLOAD
-        # sudo mv "/mnt/c/Users/user/Downloads/Jetson_LINUX_R32.7.5_aarch64.tbz2" /Downloads/flash/EVM_flash/
+        # sudo mv "/mnt/c/Users/pk_system_security_literals/Downloads/Jetson_LINUX_R32.7.5_aarch64.tbz2" /Downloads/flash/EVM_flash/
         # sudo tar -jxvf /Downloads/flash/EVM_flash/Jetson_LINUX_R32.7.5_aarch64.tbz2 #압축해제
         # sudo find -type f -name "Jetson_LINUX_R32.7.5_aarch64.tbz2"
 
         # ensure existance JETSON_LINUX_R32.7.5_AARCH64.TBZ2
         #    explorer https://developer.nvidia.com/jetpack-sdk-465  # jetpack 4.6.5 Driver for Jetson AGX Xavier
-        #    sudo mv /mnt/c/Users/user/Downloads/Tegra_LINUX_Sample-Root-Filesystem_R32.7.5_aarch64.tbz2 /Downloads/flash/EVM_flash/LINUX_for_Tegra/rootfs
+        #    sudo mv /mnt/c/Users/pk_system_security_literals/Downloads/Tegra_LINUX_Sample-Root-Filesystem_R32.7.5_aarch64.tbz2 /Downloads/flash/EVM_flash/LINUX_for_Tegra/rootfs
 
         # ensure tar
         # sudo tar -jxvf /Downloads/flash/EVM_flash/LINUX_for_Tegra/rootfs/Tegra_LINUX_Sample-Root-Filesystem_R32.7.5_aarch64.tbz2 #압축해제

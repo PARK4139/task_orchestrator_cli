@@ -44,9 +44,9 @@ def get_magnets_set_from_nyaa_si_v1(nyaa_si_supplier, search_keyword, driver):  
 
     page_number_str_list = [str(i) for i in get_list_from_int_a_to_int_b(int_a=1, int_b=page_number_last)]
     page_number_start_to_download = int(
-        ensure_value_completed(key_hint='page_number_start_to_download=', options=page_number_str_list))
+        ensure_value_completed(key_hint='page_number_start_to_download', options=page_number_str_list))
     page_number_end_to_download = int(
-        ensure_value_completed(key_hint='page_number_end_to_download=', options=page_number_str_list))
+        ensure_value_completed(key_hint='page_number_end_to_download', options=page_number_str_list))
 
     magnets_set = set()
     logging.debug(f'''page_number_end_to_download={page_number_end_to_download}  {'%%%FOO%%%' if LTA else ''}''')

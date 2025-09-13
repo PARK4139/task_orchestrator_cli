@@ -1,4 +1,4 @@
-from objects.pk_target_manager import SetupOps
+from objects.pk_target_manager import _SetupOpsForPkTargetManager
 from sources.functions.ensure_seconds_measured import ensure_seconds_measured
 
 

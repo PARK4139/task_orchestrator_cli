@@ -197,7 +197,7 @@ def _handle_url_input_mode_advanced(f_historical, d_pnx, ydl_opts, pk_db, play_o
         option_values.extend(historical_lines)
 
         # URL 입력 받기
-        answer = ensure_value_completed(key_hint='YOUTUBE URL TO DOWNLOAD=', options=option_values)
+        answer = ensure_value_completed(key_hint='YOUTUBE URL TO DOWNLOAD', options=option_values)
         answer = answer.strip()
 
         url = answer
@@ -358,7 +358,7 @@ def _handle_download_error_advanced(url, error_msg, cookie_exists):
     logging.debug(f"고급 다운로드 오류 분석 중...")
 
     if "Sign in to confirm your age" in error_msg or "age-restricted" in error_msg:
-        logging.debug("연령 제한 동영상입니다.")
+        logging.warning("연령 제한 동영상입니다.")
         
         if not cookie_exists:
             logging.debug("해결 방법:")
@@ -366,7 +366,7 @@ def _handle_download_error_advanced(url, error_msg, cookie_exists):
             logging.debug("  2. 확장 프로그램 'Get cookies.txt' 설치")
             logging.debug("  3. YouTube 페이지에서 쿠키 내보내기")
             logging.debug("  4. 자동 쿠키 관리 실행:")
-            logging.debug("     python -m resources.functions.ensure_youtube_cookies_managed_v2")
+            logging.debug("     python -m resources.functions.ensure_youtube_cookies_created_v2")
         else:
             logging.debug("쿠키 파일이 있지만 인증에 실패했습니다.")
             logging.debug("  고급 옵션으로 재시도 중...")

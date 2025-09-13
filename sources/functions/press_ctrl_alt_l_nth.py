@@ -2,8 +2,8 @@ def press_ctrl_alt_l_nth_like_human():
     from sources.functions.ensure_pressed import ensure_pressed
     from sources.functions.ensure_slept import ensure_slept
 
-    # n = 3 # task_orchestrator_cli_option
-    n = 2 # task_orchestrator_cli_option
+    # n = 3 # pk_option
+    n = 2 # pk_option
     for _ in range(n):
         ensure_slept(100)
         ensure_pressed("ctrl+alt+shift+l")

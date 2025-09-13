@@ -207,15 +207,15 @@ def main():
     logging.debug("MP3 → WAV 변환 작업 시작")
     print(PK_UNDERLINE)
     
-    # 1. MP3를 WAV로 변환
+    # n. MP3를 WAV로 변환
     convert_mp3_to_wav()
     print()
     
-    # 2. index.json 업데이트
+    # n. index.json 업데이트
     update_index_file()
     print()
     
-    # 3. 사용자에게 MP3 파일 삭제 여부 확인
+    # n. 사용자에게 MP3 파일 삭제 여부 확인
     response = input("변환 완료 후 MP3 파일들을 삭제하시겠습니까? (y/N): ").strip().lower()
     if response in ['y', 'yes']:
         cleanup_mp3_files()

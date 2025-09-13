@@ -28,7 +28,7 @@ if __name__ == '__main__':
         traceback.print_exc()
         sys.exit(1)
 
-    # task_orchestrator_cli_option
+    # pk_option
     ensure_task_orchestrator_cli_colorama_initialized_once()
     # ensure_task_orchestrator_cli_starting_routine_done(__file__=__file__, traceback=traceback)
     # ensure_task_orchestrator_cli_wrapper_suicided(__file__) # : 사용목표 : 인스턴스 1개만 유지,  속도개선 목표 시 :  코드 제거 하여, 속도 개선 가능.

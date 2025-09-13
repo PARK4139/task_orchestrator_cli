@@ -15,12 +15,12 @@ def extract_korean_nouns(text: str) -> List[str]:
     from .ensure_java_installed import ensure_java_installed # New import
     import logging
 
-    # 1. Java가 설치되어 있고 PATH에 등록되어 있는지 확인
+    # n. Java가 설치되어 있고 PATH에 등록되어 있는지 확인
     if not ensure_java_installed():
         logging.error("Java가 설치되지 않았거나 PATH에 등록되지 않았습니다. 명사 추출 불가.")
         return []
 
-    # 2. JAVA_HOME 환경 변수 설정 확인 및 자동 설정
+    # n. JAVA_HOME 환경 변수 설정 확인 및 자동 설정
     if not ensure_java_home_configured():
         logging.error("JAVA_HOME 환경 변수 설정에 실패했습니다. 명사 추출 불가.")
         return []

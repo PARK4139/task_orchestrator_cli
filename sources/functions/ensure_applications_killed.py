@@ -29,5 +29,5 @@ def ensure_applications_killed(task_orchestrator_cli_application_killing_mode = 
     ensure_windows_deduplicated()
 
     if task_orchestrator_cli_application_killing_mode:
-        ensure_process_killed_by_image_name('pycharm64.exe') # task_orchestrator_cli_optioni
+        ensure_process_killed_by_image_name('pycharm64.exe') # pk_optioni
         # ensure_wrappers_killed()  # execute last # 프로세스 자기 자신 죽여서 수행불가 상태로 만듬.

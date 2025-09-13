@@ -52,15 +52,15 @@ def ensure_token_file_generated(f, token_id):
                     text_decoded = get_text_decoded(text=initial_str, master_password=get_master_pw())
                     if text_decoded is not None:
                         # 복호화 성공
-                        ensure_str_writen_to_f(msg=f"{text_decoded}\n", f=f, mode="w")
+                        ensure_str_writen_to_f(text=f"{text_decoded}\n", f=f, mode="w")
                         logging.debug(rf'''token({token}) is decoded and saved at {f} {'%%%FOO%%%' if LTA else ''}''')
                     else:
                         # 복호화 실패 시 원본 저장
-                        ensure_str_writen_to_f(msg=f"{initial_str}\n", f=f, mode="w")
+                        ensure_str_writen_to_f(text=f"{initial_str}\n", f=f, mode="w")
                         logging.debug(rf'''token({token}) is saved as original (decoding failed) at {f} {'%%%FOO%%%' if LTA else ''}''')
                 else:
                     # 일반 텍스트인 경우 그대로 저장
-                    ensure_str_writen_to_f(msg=f"{initial_str}\n", f=f, mode="w")
+                    ensure_str_writen_to_f(text=f"{initial_str}\n", f=f, mode="w")
                     logging.debug(rf'''token({token}) is saved as plain text at {f} {'%%%FOO%%%' if LTA else ''}''')
 
     finally:

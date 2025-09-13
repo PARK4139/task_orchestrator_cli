@@ -828,7 +828,6 @@ class PkTexts:
         "YOUTUBE_COOKIES_SET_SUCCESS": {"korean": "YouTube 쿠키가 성공적으로 설정되었습니다", "english": "YouTube cookies set successfully"},
         "YOUTUBE_COOKIES_SET_FAILED": {"korean": "YouTube 쿠키 설정에 실패했습니다", "english": "YouTube cookies setting failed"},
         "YOUTUBE_COOKIES_COUNT": {"korean": "YouTube 쿠키 개수", "english": "YouTube cookies count"},
-        "YES": {"korean": "응", "english": "Yes"},
         "WSL_RESTART_REQUIRED": {"korean": "WSL을 재시작한 후 docker 명령어를 사용할 수 있습니다", "english": "WSL restart required to use docker commands"},
         "WRITE": {"korean": "쓰기", "english": "WRITE"},
         "WRITE_DONE": {"korean": "파일 저장 완료", "english": "WRITE DONE"},
@@ -1164,7 +1163,6 @@ class PkTexts:
         "OK_I_WILL_DO_IT_NOW": {"korean": "지금할게", "english": "I'll do it now"},
         "NOT_PREPARED_YET": {"korean": "아직 준비되지 않은 서비스입니다   :)", "english": "THIS SERVICE IS NOT READY YET :)"},
         "NORMAL_EXIT": {"korean": "정상 종료됨", "english": "Normal exit"},
-        "NO": {"korean": "아니오", "english": "No"},
         "NO_WAV_FILE_TO_PLAY": {"korean": "재생할 WAV 파일이 없음", "english": "No WAV file to play"},
         "NO_OLD_FILES_TO_DELETE": {"korean": "삭제할 오래된 파일 없음", "english": "No old files to delete"},
         "NEGATIVE": {"korean": "아니오", "english": "No"},
@@ -1469,11 +1467,13 @@ class PkTexts:
         "ADD_USER_TO_DOCKER_GROUP_COMPLETE": {"korean": "사용자를 docker 그룹에 추가 완료", "english": "Add user to docker group complete"},
         "ACTIVATE_VENV": {"korean": "virtual environment 활성화", "english": "Activate virtual environment"},
 
-        # 앞으로는 todo/done/question 아래의 샘플 패턴으로만 작성
+        # 앞으로는 가능하다면 todo/done/question 아래의 샘플 패턴으로만 작성
+        "YES": {"korean": "예", "english": "Yes"},
+        "NO": {"korean": "아니오", "english": "No"},
         "DB": {"korean": "데이터베이스", "english": "DB"},
 
         # "DEBUG": {"korean": "🦋디버그", "english": "🦋DEBUG"},
-        "DEBUG": {"korean": "🔍원인분석자료", "english": "🔍DEBUG"},
+        "DEBUG": {"korean": "🔍️개발자분석용자료", "english": "🔍DEBUG"},
         # "DEBUG": {"korean": "🔍", "english": "🔍DEBUG"},
         # "DEBUG": {"korean": "⚡", "english": "🔍DEBUG"},
         # "DEBUG": {"korean": "✅", "english": "🔍DEBUG"},
@@ -1482,12 +1482,12 @@ class PkTexts:
         "WARNING": {"korean": "⚠️에러발생가능성발견", "english": "⚠️WARNING"},
         # "WARNING": {"korean": "⚠️", "english": "⚠️WARNING"},
 
-        "INFO": {"korean": "ℹ️정보발견", "english": "ℹ️INFO"},
+        "INFO": {"korean": "ℹ️사용자정보", "english": "ℹ️INFO"},
         # "INFO": {"korean": "🧩정보", "english": "🧩INFO"},
         # "INFO": {"korean": "ℹ️", "english": "ℹ️INFO"},
 
         # "ERROR": {"korean": "❌오류", "english": "Error"},
-        "ERROR": {"korean": "❌오류발생원인발견", "english": "Error"},
+        "ERROR": {"korean": "❌오류발생원인분석자료", "english": "Error"},
         # "ERROR": {"korean": "❌", "english": "❌Error"},
 
         "DOCKER_INSTALLATION_ROUTINE_WSL_UBUNTU": {"korean": "WSL Ubuntu에 Docker 설치 루틴 실행", "english": "Docker installation routine in WSL Ubuntu"},
